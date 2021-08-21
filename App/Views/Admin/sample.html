@@ -6,20 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>testing</title>
-    <script src="../../../Public/JS/HttpRequest/HttpRequest.js">function test() {
-        let values = {
-            "namespace": "admin",
-            "controller": "users",
-            "action": "index"
+    <script src="../../../Public/JS/HttpRequest/HttpRequest.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function myFun(){
+            let values = {
+                "namespace": "admin",
+                "controller": "users",
+                "action": "index"
+            }
+            let url = '../../../Public/index.php';
+            let data = obj.sendPostRequestOnLoad(url,values);
+            console.log(data);
+            return false;
         }
-        obj = new HttpRequest;
-        let data = obj.sendPostRequestOnLoad(url,values);
-        console.log(data);
-        return false;
-    }</script>
+    </script>
 </head>
 
-<body onload='test()'>
+<body onload='myFun()'>
+    <h1>hello world</h1>
 
 </body>
 
