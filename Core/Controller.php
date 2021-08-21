@@ -10,12 +10,17 @@ namespace Core;
 abstract class Controller
 {
 
+    
+
     /**
      * Parameters from the matched route
      * @var array
      */
     protected $route_params = [];
 
+
+    
+    
     /**
      * Class constructor
      *
@@ -27,6 +32,14 @@ abstract class Controller
     {
         $this->route_params = $route_params;
     }
+
+    /**
+     * response data will be added to this @param array
+     * this array will be the final response will @return  json in the after function
+     *
+     * 
+     */ 
+    protected $data;
 
     /**
      * Magic method called when a non-existent or inaccessible method is
@@ -69,5 +82,6 @@ abstract class Controller
      */
     protected function after()
     {
+        
     }
 }

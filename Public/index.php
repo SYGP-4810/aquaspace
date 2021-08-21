@@ -6,13 +6,6 @@
 
  */
 
-/**
- * Error and Exception handling
- * this will get serverside all errors
- */
-error_reporting(E_ALL);
-set_error_handler('Core\Error::errorHandler');
-set_exception_handler('Core\Error::exceptionHandler');
 
 /**
  * Autoloader
@@ -22,18 +15,45 @@ spl_autoload_register(function ($class) {
     $root = dirname(__DIR__);   // get the parent directory
     $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
     if (is_readable($file)) {
-        require $root . '/' . str_replace('\\', '/', $class) . '.php';
+        require_once $root . '/' . str_replace('\\', '/', $class) . '.php';
     }
-});
+}); 
+
+
+/**
+ * Error and Exception handling
+ * this will get serverside all errors
+ */
+error_reporting(E_ALL);
+set_error_handler('Core\Error::errorHandler');
+set_exception_handler('Core\Error::exceptionHandler');
+
+
+ 
 
 /**
  * get the action,controller,namespace throgh json 
  */
 //get json values
 $data = json_decode(file_get_contents('php://input'), true);
-$params['namespace'] = isset($data['user']) ? $data['user'] : '';
-$params['controller'] = isset($data['controller']) ? $data['controller'] : null;
-$params['action'] = isset($data['action']) ? $data['action'] : null;
+if (isset($data['namespace'])){
+    $params['namespace'] = $data['namespace'];
+}
+if (isset($data['data'])){
+    $params['data'] = $data['data'];
+}
+if(isset($data['controller'])){
+    $params['controller'] = $data['controller'];
+}
+if(isset($data['action'])){
+    $params['action'] = $data['action'];
+}
+
+
+
+
+
+
 
 
 
@@ -63,7 +83,9 @@ function convertToCamelCase($string)
     {
         return lcfirst(convertToStudlyCaps($string));
     }
-
+/**
+ * reequire controllers
+ */
 
 /**
  * Routing
@@ -92,5 +114,3 @@ function convertToCamelCase($string)
     } else {
         throw new \Exception("Controller class $controller not found");
     }
-
-?>

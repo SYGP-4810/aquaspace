@@ -5,7 +5,7 @@ namespace App;
 /**
  * Application configuration
  *
- * PHP version 5.4
+ * 
  */
 class Config
 {
@@ -45,5 +45,5 @@ class Config
      * Show or hide error messages on screen
      * @var boolean
      */
-    const SHOW_ERRORS = true;
+    const SHOW_ERRORS = false;
 }
