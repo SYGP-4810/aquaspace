@@ -44,9 +44,13 @@ if (isset($data['data'])) {
 }
 if (isset($data['controller'])) {
     $params['controller'] = $data['controller'];
+} else {
+    throw new \Exception("controller is not set");
 }
 if (isset($data['action'])) {
     $params['action'] = $data['action'];
+} else {
+    throw new \Exception("action is not set");
 }
 
 

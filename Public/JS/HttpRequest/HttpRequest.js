@@ -1,7 +1,9 @@
 class HttpRequestCustom{
 
-    sendPostRequestOnLoad(url,values){
-        
+    sendPostRequestOnLoad(url,namespace='',controller,method,data=[]){
+
+
+        const values = {"namespace" : namespace, "controller" : controller, "method" : method, "data" : data};
         const xhr = new XMLHttpRequest();
             // open a connection
         xhr.open("POST", url, true);
@@ -21,7 +23,7 @@ class HttpRequestCustom{
 
         // Sending data with the request
         xhr.send(data);    
-        if(typeof search === 'undefined') return; 
+        if(typeof search === 'undefined') return false; 
         return search;
     }
 
