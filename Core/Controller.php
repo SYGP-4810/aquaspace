@@ -10,7 +10,7 @@ namespace Core;
 abstract class Controller
 {
 
-    
+
 
     /**
      * Parameters from the matched route
@@ -19,8 +19,8 @@ abstract class Controller
     protected $route_params = [];
 
 
-    
-    
+
+
     /**
      * Class constructor
      *
@@ -38,7 +38,7 @@ abstract class Controller
      * this array will be the final response will @return  json in the after function
      *
      * 
-     */ 
+     */
     protected $data;
 
     /**
@@ -82,6 +82,12 @@ abstract class Controller
      */
     protected function after()
     {
-        
+    }
+    /**
+     * send the response to the front end
+     */
+    protected function sendResponse($data)
+    {
+        echo $data;
     }
 }

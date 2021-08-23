@@ -10,11 +10,12 @@
     <script type="text/javascript">
         function myFun(){
             let values = {
-                "namespace": "admin",
-                "controller": "users",
+                "namespace": "Admin",
+                "controller": "Users",
                 "action": "index"
             }
             let url = '../../../Public/index.php';
+            let obj = new HttpRequestCustom;
             let data = obj.sendPostRequestOnLoad(url,values);
             console.log(data);
             return false;

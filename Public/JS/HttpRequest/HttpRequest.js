@@ -1,4 +1,4 @@
-class HttpRequest{
+class HttpRequestCustom{
 
     sendPostRequestOnLoad(url,values){
         
@@ -20,7 +20,8 @@ class HttpRequest{
                 }
 
         // Sending data with the request
-        xhr.send(data);     
+        xhr.send(data);    
+        if(typeof search === 'undefined') return; 
         return search;
     }
 

@@ -1,109 +1,175 @@
 <?php
 
 namespace Core;
+
 use App\Config;
 use PDO;
 
-class DB{
+class DB
+{
 
 
-	//(A)connect to database
-	public $error = "";
 	private $pdo = null;
 	private $stmt = null;
 
-
-	function __construct(){
-			$this ->pdo = new PDO(
-				"mysql:host =".DB_HOST.";port=3309;dbname=".DB_NAME.";charset=".DB_CHARSET,
-				DB_USER,DB_PASSWORD,[
-					PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-					PDO::ATTR_DEFAULT_FETCH_MODE =>PDO::FETCH_ASSOC
-					]
-			);
-			// Throw an Exception when an error occurs
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	//connect to database
+	function __construct()
+	{
+		$this->pdo = new PDO(
+			"mysql:host =" . DB_HOST . ";dbname=" . DB_NAME,
+			DB_USER,
+			DB_PASSWORD,
+			[
+				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, //throw an exception an error
+				PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+				PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"
+			]
+		);
+		// Throw an Exception when an error occurs
+		//$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 
-//(B)close connection
-	function __destruct(){
-		if($this-> stmt!==null){$this->stmt = null;}
-		if($this-> pdo!==null){$this->pdo = null;}
-	}
 
-//(c) run a select query 
-	function select($sql, $cond=null){
-		$result = false;
-		$this->stmt = $this->pdo->prepare($sql);
-		$this->stmt->execute($cond);
-		$result = $this->stmt->fetchAll();
-		if(count($result) == 0){
-			return false;
-		}else{
-			return $result;
-		} 
 
-	}
-
-	//sql insert $sql -> ex : INSERT INTO users (email, vorname, nachname) VALUES (?, ?, ?) $vals is a array of values needed to be inserted
-	function insert($sql,$vals = []){
-			if(count($vals) == 0 || substr_count($sql,"?") == count($vals)) throw new \Exception("there should be values to add or there is invalid structure of values");
-			$this->stmt = $this->pdo->prepare($sql);
-			$this->stmt->execute($vals);
-	}
-
-	function insertNew($table = '',$cols = [],$vals = []){
-			if($table == '') throw new \Exception("add a table name");
-			if(count($cols) != count($vals)) throw new \Exception("number of columns and number of values are not equal");
-			$sql = "INSERT INTO " . $table . " (";
-			for($i = 0 ; $i < count($cols); $i){
-				$sql += $cols[$i]; 
-			}
-			$sql += ")";
-			$brackets = " VALUES (?";
-			for($i = 0; $i < count($cols)-1; $i++){
-				$brackets += ",?"; 
-			}
-			$brackets += ")";
-			$sql += $brackets;
-			$this->stmt = $this->pdo->prepare($sql);
-			$this->stmt->execute($vals);
-	}
-
-	//sql update $sql -> ex : UPDATE users SET name=?, surname=?, sex=? WHERE id=? $vals is a array of values needed to be updated
-	function update($sql, $vals = []) {
-			if(count($vals) == 0 || substr_count($sql,"?") != count($vals)) throw new \Exception("there should be values to update or there is invalid structure of values");
-			$this->stmt= $this->pdo->prepare($sql);
-			$this->stmt->execute($vals);
-		
-
-	}
-
-	//sql update $sql -> ex : UPDATE users SET name=?, surname=?, sex=? WHERE id=? $vals is a array of values needed to be updated
-	/**
-	 * @array $cols only contain columns which needed to be updated
-	 * @string $cond should contatin condition ex : id > ? or sallery = 1000
-	 * @array $vals should contain all values to be updated and sequentially values of condition  
-	 *  */ 
-	function updateNew($table = '' , $cols = [], $cond = '' ,$vals = []){
-
-		$sql = "UPDATE ".$table." SET ".$cols[0]."=?";
-		for($i = 1; $i < count($cols);$i++){
-			$sql += ", ".$cols[$i]."=?";
+	//close connection
+	function __destruct()
+	{
+		if ($this->stmt !== null) {
+			$this->stmt = null;
 		}
-		$sql += " WHERE ".$cond;
-		if($table == '') throw new \Exception("table name is empty in the update string");
-		if(substr_count($sql,"?") != count($vals)) throw new \Exception("update sql is wrong");
-		$this->stmt= $this->pdo->prepare($sql);
-		$this->stmt->execute($vals);
-			
+		if ($this->pdo !== null) {
+			$this->pdo = null;
+		}
+	}
+
+	//select execution if the result needed
+	public function execute($sql)
+	{
+		if ($this->stmt !== null) {
+			$this->stmt = null;
+		}
+		$this->stmt = $this->pdo->prepare($sql);
+		$this->stmt->execute();
+		$this->stmt->setFetchMode(PDO::FETCH_ASSOC);
+		return $this->stmt;
+	}
+
+	//update and delete execution if there is no result to supply
+	public function exec($sql)
+	{
+		return $this->pdo->exec($sql);
+	}
+
+	//sql creating methods
+
+	//select query without condition
+	public function getAll($table, $select = '*', $limit = '', $offset = 0)
+	{
+
+		// set limits
+		$limit = is_int($limit) ? " LIMIT " . $offset . ", " . $limit : "";
+
+		if (is_string($select))
+			$sql = "SELECT " . $select . " FROM " . $table . $limit;
+		else
+			$sql = "SELECT " . implode(', ', $select) . " FROM " . $table . $limit;
+		return $sql;
 	}
 
 
+	//select query with condition
+	public function get($table, $select = '*', $condition = '', $limit = '', $offset = 0)
+	{
+
+		// set limits
+		$limit = is_int($limit) ? " LIMIT " . $offset . ", " . $limit : "";
+		// Set Conditon
+		$condition = $condition === '' ? '' : ' WHERE ' . $condition;
+
+		if (is_string($select))
+			$sql = "SELECT " . $select . " FROM " . $table . $condition . $limit;
+		else
+			$sql = "SELECT " . implode(', ', $select) . " FROM " . $table . $condition . $limit;
+
+		return $sql;
+	}
+
+	//select query with having clouse
+	public function getHaving($table, $select = '*', $condition = '', $limit = '', $offset = 0)
+	{
+
+		// set limits
+		$limit = is_int($limit) ? " LIMIT " . $offset . ", " . $limit : "";
+		// Set Conditon
+		$condition = $condition === '' ? '' : ' HAVING ' . $condition;
+
+		if (is_string($select))
+			$sql = "SELECT " . $select . " FROM " . $table . $condition . $limit;
+		else
+			$sql = "SELECT " . implode(', ', $select) . " FROM " . $table . $condition . $limit;
+
+		return $sql;
+	}
+
+	public function join($table, $select = '*', $condition = '', $limit = '', $offset = 0)
+	{
+
+		// set limits
+		$limit = is_int($limit) ? " LIMIT " . $offset . ", " . $limit : "";
+		// Set Conditon
+		$condition = $condition === '' ? '' :  $condition;
+
+		if (is_string($select))
+			$sql = "SELECT " . $select . " FROM " . $table . " " . $condition . $limit;
+		else
+			$sql = "SELECT " . implode(', ', $select) . " FROM " . $table . " " . $condition . $limit;
+
+		return $sql;
+	}
+
+	public function save($table, $data)
+	{
+
+		$keys = '';
+		$values = '';
+
+		foreach ($data as $key => $value) {
+			$keys .= $key . ", ";
+			// $values .= ":" . $key . ", ";
+			$values .= is_int($value) ? $value . ", " : "'" . $value . "', ";
+		}
+
+		$sql = "INSERT INTO " . $table  . "(" . rtrim($keys, ', ') . ") VALUES(" . rtrim($values, ', ') . ")";
+
+		return $sql;
+	}
+
+	public function delete($table, $condition)
+	{
+		$sql = "DELETE FROM " . $table . " WHERE " . $condition;
+		return $sql;
+	}
+
+	public function update($table, $columns, $condition)
+	{
+		$sql = "UPDATE " . $table . " SET ";
+
+		foreach ($columns as $key => $value) {
+			if (is_int($value))
+				$sql .= $key . "= " . $value . " ";
+			else
+				$sql .= $key . "= '" . $value . "', ";
+		}
+		$sql = rtrim($sql, ", "); //remove last comma seperator
+		$sql .= $condition === '' ? '' : ' WHERE ' . $condition;
+
+		return $sql;
+	}
 }
-define('DB_HOST',Config::DB_HOST);
-define('DB_NAME',Config::DB_NAME);
-define('DB_CHARSET',Config::DB_CHARSET);
-define('DB_USER',Config::DB_USER);
-define('DB_PASSWORD',Config::DB_PASSWORD);
-?>
+
+
+define('DB_HOST', Config::DB_HOST);
+define('DB_NAME', Config::DB_NAME);
+//define('DB_CHARSET', Config::DB_CHARSET);
+define('DB_USER', Config::DB_USER);
+define('DB_PASSWORD', Config::DB_PASSWORD);

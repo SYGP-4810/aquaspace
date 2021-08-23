@@ -7,7 +7,6 @@ class Users extends \Core\Controller
 {
 
 
-    
 
     /**
      * Before filter
@@ -27,11 +26,12 @@ class Users extends \Core\Controller
      */
     public function indexAction()
     {
-        $this->data['index'] =  "hello this is the index";
+        $data['index'] =  "hello this is the index";
+        $data['name'] = "hello world";
+        $this->sendResponse($data);
     }
 
-    public function after(){
-        //make sure send response as json
-        echo json_encode(isset($this->data) ? $this->data : null);
+    public function after()
+    {
     }
 }
