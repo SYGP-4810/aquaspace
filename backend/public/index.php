@@ -34,7 +34,6 @@ $router->add('{controller}/{id:\d+}/{action}');
 $router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
 
 $reqData = json_decode(file_get_contents('php://input'), true);
-if (!isset($reqData)) throw new \Exception("request is empy ");
 
-$router->dispatch($reqData[0], $reqData[1]);
+$router->dispatch($_SERVER['QUERY_STRING'], $reqData);
 //$reqData[0]->route param, $reqData[1] -> data if there is

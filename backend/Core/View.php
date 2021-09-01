@@ -31,7 +31,7 @@ class View
         }
     }
 
-    public static function render($args = [])
+    public static function response($args = [])
     {
         if (sizeof($args) != 0) {
             echo json_encode($args);

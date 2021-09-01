@@ -7,14 +7,25 @@
     <title>Document</title>
     <script src="../../ajax/Request.js"></script>
     <script>
-        function samp(){
-            let obj = new Request();
-            document.getElementById("sample").innerHTML = obj.postJson('/Admin/Users');
+        function samp(url,data=null){
+            let home = "http://127.0.0.1/aquaspace/backend/public/index.php";
+            let finalUrl = home + "?"+ url;
+            var xhr = new XMLHttpRequest();
+			xhr.open("POST",finalUrl,false);
+			xhr.onload = function(){
+				res = JSON.parse(this.response);
+			};
+			xhr.send(JSON.stringify(data));
+            document.getElementById("sample").innerHTML = res.data1 + " " + res.data2;
+            
         }
+
+        
+        
     </script>
 </head>
 <body>
     <div id="sample"></div>
+    <button onclick="samp('Admin/Users/index')">click here to get data</button>
 </body>
-<button onclick="samp()">click here to get data</button>
 </html>

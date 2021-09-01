@@ -2,6 +2,8 @@
 
 namespace App\Controllers\Admin;
 
+use Core\View;
+
 /**
  * User admin controller
  *
@@ -28,6 +30,7 @@ class Users extends \Core\Controller
      */
     public function indexAction()
     {
-        echo 'User admin index';
+        $data = array("data1" => "this  is data 1", "data2" => "this is data 2");
+        View::response($data);
     }
 }
