@@ -47,13 +47,13 @@ class Error
         http_response_code(200);
 
         if (\App\Config::SHOW_ERRORS) {
-            $err =  "<h1>Fatal error</h1>";
-            $err .= "<p> error code : " . $erCode . "</p>";
-            $err .= "<p>Uncaught exception: '" . get_class($exception) . "'</p>";
-            $err .= "<p>Message: '" . $exception->getMessage() . "'</p>";
-            $err .= "<p>Stack trace:<pre>" . $exception->getTraceAsString() . "</pre></p>";
-            $err .= "<p>Thrown in '" . $exception->getFile() . "' on line " . $exception->getLine() . "</p>";
-            echo json_encode($err);
+            $errResponse = "<h1>Error occur</h1>";
+            $errResponse .= "error code : " . $erCode . "\n";
+            $errResponse .= "Uncaught exception: " . get_class($exception) . "\n";
+            $errResponse .= "Message: " . $exception->getMessage() . "\n";
+            $errResponse .= "Stack trace: " . $exception->getTraceAsString() . "\n";
+            $errResponse .= "Thrown in " . $exception->getFile() . "' on line " . $exception->getLine();
+            echo json_encode(nl2br($errResponse));
         } else {
             $log = dirname(__DIR__) . '/logs/' . date('Y-m-d') . '.txt';
             ini_set('error_log', $log);
@@ -64,7 +64,8 @@ class Error
             $message .= "\nThrown in '" . $exception->getFile() . "' on line " . $exception->getLine();
 
             error_log($message);
-            View::renderError("$code.html");
+            echo json_encode(null);
+            //View::renderError("$code.html");
         }
     }
 }
