@@ -55,7 +55,7 @@ class Error
             $err .= "<p>Thrown in '" . $exception->getFile() . "' on line " . $exception->getLine() . "</p>";
             echo json_encode($err);
         } else {
-            $log = '../logs' . date('Y-m-d') . '.txt';
+            $log = dirname(__DIR__) . '/logs/' . date('Y-m-d') . '.txt';
             ini_set('error_log', $log);
             $message = "Uncaught exception: '" . get_class($exception) . "'";
             $message = "with error code : " . $erCode . "'";
