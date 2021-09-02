@@ -13,19 +13,17 @@
             var xhr = new XMLHttpRequest();
 			xhr.open("POST",finalUrl,false);
 			xhr.onload = function(){
-				res = JSON.parse(this.response);
+				//res = JSON.parse(this.response);
+                res = this.response;
 			};
 			xhr.send(JSON.stringify(data));
-            document.getElementById("sample").innerHTML = res.data1 + " " + res.data2;
+            document.getElementById("sample").innerHTML =  res;
             
         }
-
-        
-        
+                
     </script>
 </head>
-<body>
+<body onload="samp('Admin/Users/indx')">
     <div id="sample"></div>
-    <button onclick="samp('Admin/Users/index')">click here to get data</button>
 </body>
 </html>

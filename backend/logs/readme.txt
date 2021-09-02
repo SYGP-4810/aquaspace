@@ -1,0 +1,1 @@
+this folder contain server side error logs 

@@ -20,9 +20,8 @@ class View
      */
     public static function renderError($view)
     {
-        extract($args, EXTR_SKIP);
 
-        $file = "../App/Views/$view";  // relative to Core directory
+        $file = "http://127.0.0.1/aquaspace/frontend/src/Error" . $view;  // relative to Core directory
 
         if (is_readable($file)) {
             header("Location : $file");

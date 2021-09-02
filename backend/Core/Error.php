@@ -2,6 +2,7 @@
 
 namespace Core;
 
+
 /**
  * Error and exception handler
  *
@@ -27,6 +28,7 @@ class Error
         }
     }
 
+
     /**
      * Exception handler.
      *
@@ -38,35 +40,30 @@ class Error
     {
         // Code is 404 (not found) or 500 (general error)
         $code = $exception->getCode();
+        $erCode = $code;
         if ($code != 404) {
             $code = 500;
         }
-        http_response_code($code);
+        http_response_code(200);
 
         if (\App\Config::SHOW_ERRORS) {
-            echo "<h1>Fatal error</h1>";
-            echo "<p>Uncaught exception: '" . get_class($exception) . "'</p>";
-            echo "<p>Message: '" . $exception->getMessage() . "'</p>";
-            echo "<p>Stack trace:<pre>" . $exception->getTraceAsString() . "</pre></p>";
-            echo "<p>Thrown in '" . $exception->getFile() . "' on line " . $exception->getLine() . "</p>";
+            $err =  "<h1>Fatal error</h1>";
+            $err .= "<p> error code : " . $erCode . "</p>";
+            $err .= "<p>Uncaught exception: '" . get_class($exception) . "'</p>";
+            $err .= "<p>Message: '" . $exception->getMessage() . "'</p>";
+            $err .= "<p>Stack trace:<pre>" . $exception->getTraceAsString() . "</pre></p>";
+            $err .= "<p>Thrown in '" . $exception->getFile() . "' on line " . $exception->getLine() . "</p>";
+            echo json_encode($err);
         } else {
-            $log = dirname(__DIR__) . '/logs/' . date('Y-m-d') . '.txt';
+            $log = '../logs' . date('Y-m-d') . '.txt';
             ini_set('error_log', $log);
-
             $message = "Uncaught exception: '" . get_class($exception) . "'";
+            $message = "with error code : " . $erCode . "'";
             $message .= " with message '" . $exception->getMessage() . "'";
             $message .= "\nStack trace: " . $exception->getTraceAsString();
             $message .= "\nThrown in '" . $exception->getFile() . "' on line " . $exception->getLine();
 
             error_log($message);
-            //echo "<h1>An error occurred</h1>";
-            /*
-            if ($code == 404) {
-                echo "<h1>Page not found</h1>";
-            } else {
-                echo "<h1>An error occurred</h1>";
-            }
-            */
             View::renderError("$code.html");
         }
     }
