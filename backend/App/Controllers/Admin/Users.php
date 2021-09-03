@@ -7,7 +7,7 @@ use Core\View;
 /**
  * User admin controller
  *
- * PHP version 5.4
+ * 
  */
 class Users extends \Core\Controller
 {

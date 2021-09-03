@@ -5,7 +5,7 @@ namespace Core;
 /**
  * View
  *
- * PHP version 5.4
+ * 
  */
 class View
 {
@@ -18,17 +18,6 @@ class View
      *
      * @return void
      */
-    public static function renderError($view)
-    {
-
-        $file = "http://127.0.0.1/aquaspace/frontend/src/Error" . $view;  // relative to Core directory
-
-        if (is_readable($file)) {
-            header("Location : $file");
-        } else {
-            throw new \Exception("$file file not found");
-        }
-    }
 
     public static function response($args = [])
     {

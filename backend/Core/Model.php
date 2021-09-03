@@ -5,6 +5,10 @@ namespace Core;
 use App\Config;
 use PDO;
 
+/***
+ * base model
+ */
+
 class DB
 {
 
