@@ -13,8 +13,13 @@
             var xhr = new XMLHttpRequest();
 			xhr.open("POST",finalUrl,false);
 			xhr.onload = function(){
+                if (this.readyState == 4 && this.status == 200) {
 				res = JSON.parse(this.response);
-                //res = this.response;
+               }else{
+                let urlError = "../Error/"+ this.status +".html";
+                window.location.replace(urlError);
+               }
+                
 			};
 			xhr.send(JSON.stringify(data));
             document.getElementById("sample").innerHTML =  res;

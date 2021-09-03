@@ -44,9 +44,11 @@ class Error
         if ($code != 404) {
             $code = 500;
         }
-        http_response_code(200);
 
         if (\App\Config::SHOW_ERRORS) {
+
+            http_response_code(200);
+
             $errResponse = "<h1>Error occur</h1>";
             $errResponse .= "error code : " . $erCode . "\n";
             $errResponse .= "Uncaught exception: " . get_class($exception) . "\n";
@@ -64,8 +66,7 @@ class Error
             $message .= "\nThrown in '" . $exception->getFile() . "' on line " . $exception->getLine();
 
             error_log($message);
-            echo json_encode(null);
-            //View::renderError("$code.html");
+            http_response_code($code);
         }
     }
 }
