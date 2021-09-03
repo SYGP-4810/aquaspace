@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="../../ajax/Request.js"></script>
     <script>
         function samp(url,data=null){
             let home = "http://127.0.0.1/aquaspace/backend/public/index.php";
@@ -15,15 +14,14 @@
 			xhr.onload = function(){
                 if (this.readyState == 4 && this.status == 200) {
 				res = JSON.parse(this.response);
+                document.getElementById("sample").innerHTML =  res.data1 + " " + res.data2;
                }else{
                 let urlError = "../Error/"+ this.status +".html";
                 window.location.replace(urlError);
                }
                 
 			};
-			xhr.send(JSON.stringify(data));
-            document.getElementById("sample").innerHTML =  res.data1 + " " + res.data2;
-            
+			xhr.send(JSON.stringify(data));            
         }
                 
     </script>
