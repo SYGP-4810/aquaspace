@@ -24,7 +24,7 @@ class DB
             DB_USER,
             DB_PASSWORD,
             [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, //throw an exception an error
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, //set attributes
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"
             ]
