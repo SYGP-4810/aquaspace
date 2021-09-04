@@ -12,13 +12,13 @@ class Router
 
     /**
      * Associative array of routes (the routing table)
-     * @var array
+     * @var array $routes
      */
     protected $routes = [];
 
     /**
      * Parameters from the matched route
-     * @var array
+     * @var array $params
      */
     protected $params = [];
 

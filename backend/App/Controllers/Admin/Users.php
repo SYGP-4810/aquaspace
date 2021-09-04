@@ -6,6 +6,7 @@ use Core\View;
 
 /**
  * User admin controller
+ * just a sample of controller
  *
  * 
  */

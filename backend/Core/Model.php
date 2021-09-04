@@ -46,7 +46,12 @@ class DB
         }
     }
 
-    //select execution if the result needed
+    /**
+     * sql execution if result neede (common uses : select)
+     * @param string $sql sql for the execution
+     * @return string result of the execution
+     */
+
     public function execute($sql)
     {
         if ($this->stmt !== null) {
@@ -58,6 +63,12 @@ class DB
         return $this->stmt;
     }
 
+    /**
+     * sql execution if result not needed (common uses : update , delete)
+     * @param string $sql sql for the execution
+     * @return  void
+     */
+
     //update and delete execution if there is no result to supply
     public function exec($sql)
     {
@@ -66,7 +77,15 @@ class DB
 
     //sql creating methods
 
-    //select query without condition
+    /***
+     * select all query results without condition
+     * @param string $table table of the sql
+     * @param string $select field of the sql
+     * @param int limit $limit limit of the sql
+     * @param int $offset offset of the sql
+     * @return string complete sql 
+     */
+
     public function getAll($table, $select = '*', $limit = '', $offset = 0)
     {
 
@@ -81,7 +100,16 @@ class DB
     }
 
 
-    //select query with condition
+    /***
+     * select all query results with condition (WHERE)
+     * @param string $table table of the sql
+     * @param string $select field of the sql
+     * @param string condition condition of the sql
+     * @param int limit $limit limit of the sql
+     * @param int $offset offset of the sql
+     * @return string complete sql 
+     */
+
     public function get($table, $select = '*', $condition = '', $limit = '', $offset = 0)
     {
 
@@ -98,7 +126,15 @@ class DB
         return $sql;
     }
 
-    //select query with having clouse
+    /***
+     * select all query results with condition (HAVING)
+     * @param string $table table of the sql
+     * @param string $select field of the sql
+     * @param string condition condition of the sql
+     * @param int limit $limit limit of the sql
+     * @param int $offset offset of the sql
+     * @return string complete sql 
+     */
     public function getHaving($table, $select = '*', $condition = '', $limit = '', $offset = 0)
     {
 
@@ -115,6 +151,16 @@ class DB
         return $sql;
     }
 
+    /**
+     * joining sql 
+     *
+     * @param [string] $table array of table names of sql
+     * @param string $select field of sql
+     * @param string $condition condition of sql join condition
+     * @param int $limit  limit of the sql    
+     * @param integer $offset of set of the sql
+     * @return string completed string
+     */
     public function join($table, $select = '*', $condition = '', $limit = '', $offset = 0)
     {
 
@@ -130,6 +176,14 @@ class DB
 
         return $sql;
     }
+
+    /**
+     * insert query sql
+     * @param string $table table name of the sql
+     * @param [string => string] $data data to insert key : field , value : data
+     * @return string completed sql query
+     * 
+     */
 
     public function save($table, $data)
     {
@@ -148,11 +202,26 @@ class DB
         return $sql;
     }
 
+    /**
+     * delete sql query with a condition (where)
+     *
+     * @param string $table table name of the sql
+     * @param string $condition $condition to sql
+     * @return string completed sql
+     */
     public function delete($table, $condition)
     {
         $sql = "DELETE FROM " . $table . " WHERE " . $condition;
         return $sql;
     }
+
+    /**
+     * update sql query condition (WHERE)
+     * @param string $table table name of the sql
+     * @param [string => string] $colomns values and data of the sql [field => value]
+     * @param string $condition condition to the sql
+     * @return string completed sql
+     */
 
     public function update($table, $columns, $condition)
     {
@@ -171,6 +240,7 @@ class DB
     }
 }
 
+//db configuration defined here
 
 define('DB_HOST', Config::DB_HOST);
 define('DB_NAME', Config::DB_NAME);

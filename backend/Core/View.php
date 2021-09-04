@@ -11,10 +11,9 @@ class View
 {
 
     /**
-     * Render a view file
+     * send response to the view file
      *
-     * @param string $view  The view file
-     * @param array $args  Associative array of data to display in the view (optional)
+     * @param array $args  Associative array of data to display from the front end
      *
      * @return void
      */

@@ -7,7 +7,7 @@
  */
 
 /**
- * Composer
+ * Composer autoloader for autoloading classes and require file
  */
 require '../vendor/autoload.php';
 
@@ -36,7 +36,10 @@ $router->add('{controller}/{action}');
 $router->add('{controller}/{id:\d+}/{action}');
 $router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
 
+/**
+ * @var array $reqData associative array of data which wouldnt send through the route parameter 
+ */
+
 $reqData = json_decode(file_get_contents('php://input'), true);
 
 $router->dispatch($_SERVER['QUERY_STRING'], $reqData);
-//$reqData[0]->route param, $reqData[1] -> data if there is
