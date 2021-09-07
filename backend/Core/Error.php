@@ -40,27 +40,23 @@ class Error
     {
         // Code is 404 (not found) or 500 (general error)
         $code = $exception->getCode();
-        $erCode = $code;
         if ($code != 404) {
             $code = 500;
         }
 
         if (\App\Config::SHOW_ERRORS) {
-
-            http_response_code(200);
-
-            $errResponse = "<h1>Error occur</h1>";
-            $errResponse .= "error code : " . $erCode . "\n";
+            $errResponse = "error code : " . $code . "\n";
             $errResponse .= "Uncaught exception: " . get_class($exception) . "\n";
             $errResponse .= "Message: " . $exception->getMessage() . "\n";
             $errResponse .= "Stack trace: " . $exception->getTraceAsString() . "\n";
             $errResponse .= "Thrown in " . $exception->getFile() . "' on line " . $exception->getLine();
-            echo json_encode(nl2br($errResponse));
+            http_response_code($code);
+            die(nl2br($errResponse));
         } else {
             $log = dirname(__DIR__) . '/logs/' . date('Y-m-d') . '.txt';
             ini_set('error_log', $log);
             $message = "Uncaught exception: '" . get_class($exception) . "'";
-            $message = "with error code : " . $erCode . "'";
+            $message = "with error code : " . $code . "'";
             $message .= " with message '" . $exception->getMessage() . "'";
             $message .= "\nStack trace: " . $exception->getTraceAsString();
             $message .= "\nThrown in '" . $exception->getFile() . "' on line " . $exception->getLine();
