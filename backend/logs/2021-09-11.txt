@@ -1,0 +1,4 @@
+[11-Sep-2021 00:53:26 Europe/Berlin] with error code : 404' with message 'No route matched.'
+Stack trace: #0 /opt/lampp/htdocs/aquaspace/backend/public/index.php(45): Core\Router->dispatch('wrongUrl', Array)
+#1 {main}
+Thrown in '/opt/lampp/htdocs/aquaspace/backend/Core/Router.php' on line 129

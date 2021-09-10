@@ -63,6 +63,7 @@ class Error
 
             error_log($message);
             http_response_code($code);
+            die();
         }
     }
 }
