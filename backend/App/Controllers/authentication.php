@@ -11,7 +11,7 @@ use Core\View;
  *
  * 
  */
-class Users extends \Core\Controller
+class authentication extends \Core\Controller
 {
 
     /**
@@ -74,9 +74,10 @@ class Users extends \Core\Controller
         }
     }
 
-    public function logoutAction()
+    public function requestLogoutAction()
     {
-        $this->execute($this->update('user_auth', ['access_token' => ""], 'id=' . $this->params['id']));
+        $secret = "i am a secrete" . time();
+        $this->execute($this->update('user_auth', ['access_token' => md5($secret)], 'id=' . $this->params['id']));
         setcookie("access_token", "", time() - 60 * 60 * 24 * 7, NULL, NULL, NULL, TRUE);
         //redirect to the login page
     }
