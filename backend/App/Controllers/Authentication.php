@@ -38,12 +38,22 @@ class authentication extends \Core\Controller
             switch ($result['user_status']) {
                 case '0':
                     //email not confirm redirect
+                    $res = array("status" => "0", "redirect" => "");
+                    View::response($res);
                     break;
                 case '1':
                     //temporially blocked login failed
+                    $res = array("status" => "1", "redirect" => "");
+                    View::response($res);
                     break;
                 case '2':
                     //temporially block due to the issue
+                    $res = array("status" => "2", "redirect" => "");
+                    View::response($res);
+                    break;
+                case '3':
+                    //peromenatly block due to the issue
+                    throw new \Exception("peromenatly blocked user", 403);
                     break;
 
                 default:
@@ -65,11 +75,15 @@ class authentication extends \Core\Controller
 
 
             if ($stmt->fetch()['attepmt'] < 5) {
-                $this->execute("UPDATE user_auth SET attempt = attempt + 1 WHERE email='{$this->data["userName"]}' OR mobile='{$this->data["userName"]}'");
-                View::response("url to the redirect login page with the count of attemps");
+                $time = time();
+                $this->execute("UPDATE user_auth SET attempt = attempt + 1 , attempt_time = {$time} WHERE email='{$this->data["userName"]}' OR mobile='{$this->data["userName"]}'");
+                $res = array("status" => "3", "redirect" => "");
+                View::response($res);
             } else {
-                $this->execute("UPDATE user_auth SET attempt = attempt + 1 user_statues = WHERE email='{$this->data["userName"]}' OR mobile='{$this->data["userName"]}'");
-                view::response("redirect to the tempory block state ");
+                $timeToEnd = time() - $stmt->fetch()['attemp_time'];
+                $this->execute("UPDATE user_auth SET attempt = attempt + 1 user_statues = 5 WHERE email='{$this->data["userName"]}' OR mobile='{$this->data["userName"]}'");
+                $res = array("status" => "4", "redirect" => "");
+                View::response($res);
             }
         }
     }
