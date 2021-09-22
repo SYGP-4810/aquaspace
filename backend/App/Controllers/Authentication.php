@@ -48,6 +48,10 @@ class authentication extends \Core\Controller
                     break;
                 case '2':
                     //temporially block due to the issue
+                    $timeToEnd = time() - $stmt->fetch()['attemp_time'];
+                    $cookie_name = "timeToEnd";
+                    $cookie_value = $timeToEnd;
+                    setcookie($cookie_name, $cookie_value, time() + $timeToEnd, "/");
                     $res = array("status" => "2", "redirect" => "");
                     View::response($res);
                     break;
@@ -68,6 +72,19 @@ class authentication extends \Core\Controller
             //reset access_attept to zero
             $this->execute("UPDATE user_auth SET attempt = 0 WHERE email='{$this->data["userName"]}' OR mobile='{$this->data["userName"]}'");
             //redirect to the user's  home here
+            switch ($result['type']) {
+                case '1':
+                    $red = "";
+                    break;
+                case '2':
+                    $red = "";
+                    break;
+                default:
+                    //No default
+                    break;
+            }
+            $res = array("status" => "4", "redirect" => $red);
+            View::response($res);
         } elseif ($stmt->rowCount() > 1) {
             throw new \Exception("database error duplicate user accounts", 500);
         } else {
@@ -77,12 +94,15 @@ class authentication extends \Core\Controller
             if ($stmt->fetch()['attepmt'] < 5) {
                 $time = time();
                 $this->execute("UPDATE user_auth SET attempt = attempt + 1 , attempt_time = {$time} WHERE email='{$this->data["userName"]}' OR mobile='{$this->data["userName"]}'");
-                $res = array("status" => "3", "redirect" => "");
+                $res = array("status" => "3", "redirect" => "", "numberOfAttemp" => $stmt->fetch()['attempt']);
                 View::response($res);
             } else {
                 $timeToEnd = time() - $stmt->fetch()['attemp_time'];
                 $this->execute("UPDATE user_auth SET attempt = attempt + 1 user_statues = 5 WHERE email='{$this->data["userName"]}' OR mobile='{$this->data["userName"]}'");
-                $res = array("status" => "4", "redirect" => "");
+                $cookie_name = "timeToEnd";
+                $cookie_value = $timeToEnd;
+                setcookie($cookie_name, $cookie_value, time() + $timeToEnd, "/");
+                $res = array("status" => "4", "redirect" => "127.0.0.1/aquaspace/error/timeout.html");
                 View::response($res);
             }
         }
@@ -94,5 +114,6 @@ class authentication extends \Core\Controller
         $this->execute($this->update('user_auth', ['access_token' => md5($secret)], 'id=' . $this->params['id']));
         setcookie("access_token", "", time() - 60 * 60 * 24 * 7, NULL, NULL, NULL, TRUE);
         //redirect to the login page
+
     }
 }
