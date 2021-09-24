@@ -74,10 +74,16 @@ class authentication extends \Core\Controller
             //redirect to the user's  home here
             switch ($result['type']) {
                 case '1':
-                    $red = "";
+                    $red = $_SERVER['SERVER_NAME'] . "/aquaspace/frontend/index.html";
                     break;
                 case '2':
-                    $red = "";
+                    $red = $_SERVER['SERVER_NAME'] . "/aquaspace/frontend/expert/expert-dashboard.html";
+                    break;
+                case '3':
+                    $red = $_SERVER['SERVER_NAME'] . "/aquaspace/frontend/store/store-dashboard.html";
+                    break;
+                case '4':
+                    $red = $_SERVER['SERVER_NAME'] . "/aquaspace/frontend/admin/admin-dashbord.html";
                     break;
                 default:
                     //No default
@@ -102,7 +108,7 @@ class authentication extends \Core\Controller
                 $cookie_name = "timeToEnd";
                 $cookie_value = $timeToEnd;
                 setcookie($cookie_name, $cookie_value, time() + $timeToEnd, "/");
-                $res = array("status" => "4", "redirect" => "127.0.0.1/aquaspace/error/timeout.html");
+                $res = array("status" => "4", "redirect" => $_SERVER['SERVER_NAME'] . "/aquaspace/src/error/timeout.html");
                 View::response($res);
             }
         }
@@ -115,5 +121,59 @@ class authentication extends \Core\Controller
         setcookie("access_token", "", time() - 60 * 60 * 24 * 7, NULL, NULL, NULL, TRUE);
         //redirect to the login page
 
+    }
+
+    public function signUpRegularUserAction()
+    {
+    }
+
+    public function signUpExpertAction()
+    {
+    }
+
+    public function signUpAdminAction()
+    {
+    }
+    public function emailVerificationTokenCreateAction()
+    {
+        $num_str = sprintf("%06d", mt_rand(1, 999999));
+        $email = $this->data['email'];
+        setcookie("emailToken", md5($num_str), time() + 60 * 5, NULL, NULL, NULL, TRUE);
+        $to = $email;
+        $subject = "email verification";
+
+        $message = "
+<html>
+<head>
+<title>verify aquaspace account</title>
+</head>
+<body>
+<div>Your verification code : " . $num_str . "</div>
+</body>
+</html>
+";
+
+        // Always set content-type when sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+        // More headers
+        // $headers .= 'From: <webmaster@example.com>' . "\r\n";
+        // $headers .= 'Cc: myboss@example.com' . "\r\n";
+
+        mail($to, $subject, $message, $headers);
+        View::response("check your inbox");
+    }
+    public function emailVerifyAction()
+    {
+        if (isset($_COOKIE['emailToken'])) {
+            if (md5($this->data['emailToken']) == $_COOKIE['emailToken']) {
+                View::response();
+            } else {
+                View::response();
+            }
+        } else {
+            View::response();
+        }
     }
 }
