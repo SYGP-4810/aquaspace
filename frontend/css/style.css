@@ -60,6 +60,8 @@ body{
 
 .breadcrumb-navigation > li {
   display: inline;
+  font-size: 12px;
+  color: #505f75;
 }
 
 .breadcrumb-navigation > li > a {
@@ -107,7 +109,7 @@ button{
 .cont button {
   margin-right: 62px;
 }
-.submit, .verify {
+.submit, .verify, .next {
   align-self: flex-end;
   margin-top: 40px;
   margin-bottom: 30px;
@@ -117,7 +119,7 @@ button{
   background: #ffac47;
 }
 
-.submit:hover, .verify:hover{
+.submit:hover, .verify:hover, .next:hover{
   background: #ff7b2e;
 }
 
@@ -217,7 +219,8 @@ input {
 
 input[type=file] {
   border-bottom: 0;
-  width: auto;
+  padding: 0;
+  margin: 0;
 }
 
 .account{
@@ -269,10 +272,20 @@ input[type=checkbox]{
   margin-top: 0;
 }
 
-.qualifications p{
+.checkbox p {
+  display: inline;
+  padding: 0;
+  font-size: 12px;
+}
+
+.qualifications {
+  padding-top: 10px;
+}
+
+.qualifications p {
   display: inline;
   font-size: 13px;
-  padding-left: 30px;
+  padding-left: 0;
 }
 
 .delivery p{
@@ -321,6 +334,15 @@ input[type=radio]{
 }
 
 .step.disabled {
-  pointer-events: none;
-  cursor: default;
+  color: #505f75;
+}
+
+.delivery {
+  padding-top: 20px;
+}
+
+.delivery p{
+  display: inline;
+  padding: 0;
+  font-size: 13px;
 }
