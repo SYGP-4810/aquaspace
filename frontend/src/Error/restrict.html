@@ -15,9 +15,55 @@
                 <img src="../../images/fish-hook.png" alt="Fish Hook" style="width:150px; height:180px;">
             </div>      
             <h1>whoops!</h1>
-            <span>we couldn't find the page you are looking for</span>
+            <span>Your Account has been temporarily blocked.<br>
+                This block will expire on ...</span>
+            <h2 id="time"></h2>
             <a href="#" class="button">Go Home!</a>
         </div>
     </div>
 </body>
+
+<script>
+    var countDownDate = new Date("Sep 27, 2021 15:37:25").getTime();
+    var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    document.getElementById("time").innerHTML = days + "Days " + hours + "Hours "+ minutes + "Minutes " + seconds + "Seconds ";
+    
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("time").innerHTML = "Welcome Back";
+    }
+    }, 1000);
+    
+    // function startTimer(duration, display) {
+    //     var timer = duration, minutes, seconds;
+    //     setInterval(function () {
+    //         minutes = parseInt(timer / 60, 10);
+    //         seconds = parseInt(timer % 60, 10);
+    
+    //         minutes = minutes < 10 ? "0" + minutes : minutes;
+    //         seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+    //         display.textContent = minutes + "Minutes  " + seconds + "Seconds";
+    
+    //         if (--timer < 0) {
+    //             timer = duration;
+    //         }
+    //     }, 1000);
+    // }
+    
+    // window.onload = function () {
+    //     var time = 60 * 1,
+    //     display = document.querySelector('#time');
+    //     startTimer(time, display);
+    // };
+
+</script>
 </html>
