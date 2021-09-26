@@ -30,7 +30,7 @@ class authentication extends \Core\Controller
      */
     public function requestLoginAction()
     {
-        $stmt = $this->execute($this->get('user_auth', 'email =' . $this->data["userName"] . " OR mobile =" . $this->data["userName"] . 'AND password =' . md5($this->data["password"])));
+        $stmt = $this->execute($this->get('user_auth', 'email =' . $this->data["email"] . 'AND password =' . md5($this->data["password"])));
         $rows = $stmt->rowCount();
         $result = $stmt->fetch();
         if ($rows == 1) {
@@ -43,15 +43,15 @@ class authentication extends \Core\Controller
                     break;
                 case '1':
                     //temporially blocked login failed
+                    $timeToEnd = time() - $stmt->fetch()['attemp_time'];
+                    $cookie_name = "timeToEnd";
+                    $cookie_value = $timeToEnd;
+                    setcookie($cookie_name, $cookie_value, time() + $timeToEnd, "/");
                     $res = array("status" => "1", "redirect" => "");
                     View::response($res);
                     break;
                 case '2':
                     //temporially block due to the issue
-                    $timeToEnd = time() - $stmt->fetch()['attemp_time'];
-                    $cookie_name = "timeToEnd";
-                    $cookie_value = $timeToEnd;
-                    setcookie($cookie_name, $cookie_value, time() + $timeToEnd, "/");
                     $res = array("status" => "2", "redirect" => "");
                     View::response($res);
                     break;

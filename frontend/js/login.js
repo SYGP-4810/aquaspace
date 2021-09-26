@@ -4,51 +4,57 @@ function isEmail(email) {
     return regex.test(email);
   }
 
-function isPassword(password, cpassword) {
-    if(password == cpassword){
-        var lower = /(?=.*[a-z])/;
-        if (!lower(passForm.passInput.value)) {
-            alert("Password must contain at least one lower case letter.");
-            passForm.passInput.focus();
-            return false;
-        }
-        else
-        //Validating length
-        if ((passForm.passInput.value).length < 8) {
-            alert("Your password has less than 8 characters.");
-            passForm.passInput.focus();
-            return false;
-        }
 
-        else
-        //Validating confirmation input
-        if (passForm.confirmPassInput.value == "") {
-            alert("Please confirm your password.");
-            passForm.passInput.focus();
-            return false;
-        }
-        else
-        //Validationg confirmation matches
-        if (passForm.confirmPassInput.value != passForm.passInput.value) {
-            alert("Your confirmation password does not match.");
-            passForm.passInput.focus();
-            return false;
-        }
-
-        return true;
-
-    }
-    else{
-        //show error
-        alert('password and confirm password are not matched')
-    }
-
+function isUpper(str) {
+    return !/[a-z]/.test(str) && /[A-Z]/.test(str);
 }
 
 //login script
 $("#signIn").click(function(){
     var pass = $("#password").val();
     var email = $("#email").val();
+    //email should be acording to the structure
+    if(isEmail(email)){
+        alert("Please enter a valid email address");
+        $("#email").focus();
+        return false;
+    }
+    //password should contains atleast one simple letter
+    var lower = /(?=.*[a-z])/;
+    if (!lower(pass)){
+        alert("Please enter a valid password");
+        $("#password").focus();
+        return false;
+    }
+    //password should contain atleast 8 characters
+    if(pass.length < 8) {
+        alert("Password must be at least 8 characters long");
+        $("#password").focus();
+        return false;
+    }
+
+    //password should contain atleast one capital letter
+    if(!isUpper(pass)){
+        alert("password should contain atleast one capital letter");
+        $("#password").focus();
+        return false;
+    }
+
+    //password should contain atleast one number digit
+    const regDig = /\d/;
+    if(!regDig.test(pass)){
+        alert("password should contain atleast one digit");
+        $("#password").focus();
+        return false;
+    }
+
+    //password should contain atleast one special character
+    var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    if(!format.test(string)){
+        alert("password should contain atleast one special character");
+        $("#password").focus();
+        return false;
+    }   
     $.ajax({
       url: "http://127.0.0.1/aquaspace/backend/public/index.php?/Authentication/requestLogin",
       data: {
@@ -56,7 +62,10 @@ $("#signIn").click(function(){
         password : pass
       },
       success: function( result ) {
-        $( "#weather-temp" ).html( "<strong>" + result + "</strong> degrees" );
+          const status = result.status;
+          if(status == 1){
+            window.location.replace("../src/Error/restrict.html");
+          }
       },
       fail: function(xhr, textStatus, errorThrown){
         alert('request failed');
