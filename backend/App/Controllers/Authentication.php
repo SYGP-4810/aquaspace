@@ -6,7 +6,7 @@ use Core\View;
 
 
 /**
- * login controller
+ * authintication controller
  * 
  *
  * 
@@ -57,7 +57,7 @@ class authentication extends \Core\Controller
                     break;
                 case '3':
                     //peromenatly block due to the issue
-                    throw new \Exception("peromenatly blocked user", 403);
+                    throw new \Exception("peromenatly blocked user", 404);
                     break;
 
                 default:
@@ -174,6 +174,72 @@ class authentication extends \Core\Controller
             }
         } else {
             View::response();
+        }
+    }
+
+    public function emailRecoveryAction()
+    {
+        $email = $this->data['email'];
+        if (isset($email)) {
+
+
+            $stmt = $this->execute($this->get('user_auth', 'email =' . $this->data['email']));
+            $rows = $stmt->rowCount();
+            $result = $stmt->fetch();
+            if ($rows == 1) {
+                if ($result['user_status'] == 4) {
+                    $id = $result['id'];
+                    $time = time();
+                    $secret = "i am a" . md5($time) . " secrete";
+                    $idForLink = base64_encode($id) . "." . md5($secret);
+                    $link = $_SERVER['name'] . "frontend/recoveraccount.html?id" . $idForLink;
+                    $link = "have to create";
+                    $to = $email;
+                    $subject = "email verification";
+
+                    $message = "
+<html>
+<head>
+<title>recover aquaspace account</title>
+</head>
+<body>
+<div><a href='" . $link . "'>click here to recover your aquspace account</a></div>
+</body>
+</html>
+";
+
+                    // Always set content-type when sending HTML email
+                    $headers = "MIME-Version: 1.0" . "\r\n";
+                    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+                    // More headers
+                    // $headers .= 'From: <webmaster@example.com>' . "\r\n";
+                    // $headers .= 'Cc: myboss@example.com' . "\r\n";
+
+                    mail($to, $subject, $message, $headers);
+                    View::response("check your inbox");
+                } else {
+                    View::response("can not recover at the moment");
+                }
+            } else {
+                View::response("could not found the account");
+            }
+        } else {
+            View::response("have to enter email");
+        }
+    }
+
+    public function recoverEmailVerificationAction()
+    {
+        $encryptedMsg = $this->data['id'];
+        $encryptedId = explode('.', $encryptedMsg);
+        $id = base64_decode($encryptedId[0]);
+        $stmt = $this->execute($this->get('user_auth', "id=" . $id));
+        if ($stmt->rowCount == 1) {
+            //update the password
+
+        } else {
+            //send unsuccefull response
         }
     }
 }
