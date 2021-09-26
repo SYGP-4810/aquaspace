@@ -43,19 +43,10 @@
     cursor: pointer;
   }
   
-  /* input {
+  input {
     -webkit-appearance: none;
-  } */
+  }
 
-[type=text] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 2px solid red;
-    border-radius: 4px;
-}
-  
   [type="checkbox"] {
     position: absolute;
     left: -9999px;
@@ -63,21 +54,21 @@
   
   /* label {
     cursor: pointer;
-  } */
+  }  */
   
-  /* button,
+  button,
   input {
     border: none;
-  } */
+  }
   
   body {
     font: 16px/1.5 "Gotham", sans-serif;
   }
   
-  /* span {
+  span {
     position: absolute;
     left: 43px;
-  } */
+  } 
   
   .logo-text {
     position: absolute;

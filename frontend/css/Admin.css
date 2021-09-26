@@ -69,11 +69,21 @@ h1{
     color: rgb(0, 0, 0);  
 }
 
-input[type=text] {
+form > input[type=text] {
     width: 100%;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin-bottom: 20px;
     box-sizing: border-box;
-    border: 2px solid red;
-    border-radius: 4px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 8px;
 }
+
+
+.add-admin > h2{
+    color: rgb(0, 0, 0);
+    margin-bottom: 20px;
+}
+
+form > label{
+    font-size: 1.3em;    
+} 
