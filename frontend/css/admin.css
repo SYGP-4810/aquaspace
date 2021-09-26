@@ -67,3 +67,9 @@ input.filter:hover {
   border: 2px solid #eb8108;
   color: white;
 }
+
+h3.title {
+  color: brown;
+  position: absolute;
+  left: 10px;
+}
