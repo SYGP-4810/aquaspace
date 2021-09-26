@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AquaSpace</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="reg-cont">
+    <div class="heading">
+        <h2>Create an account</h2>
+        <p>Already have an account? <a href="login.html">Sign In</a></p>
+        <ul class="breadcrumb-navigation">
+          <li class="step active">Step 1</li>
+          <li class="step">Step 2</li>
+          <li class="step">Step 3</li>
+        </ul>
+    </div>
+    <div class="tab">
+       <h4>Select Account Type</h4>
+      <div class="radio">
+        <input type="radio" name="selection" value="value-1"> 
+        <p>Regular User</p>
+      </div>
+      <div class="radio">
+        <input type="radio" name="selection" value="value-2"> 
+        <p>Verified Expert</p>
+      </div>
+      <div class="radio">
+        <input type="radio" name="selection" value="value-3"> 
+        <p>Store</p>
+      </div>
+      <div class="next-nav">
+        <button type="button" class="next">Next</button>
+      </div>
+    </div>
+    <div class="tab">
+      <form>
+        <h4>Verify Your Email</h4>
+        <label for="email">
+          <input type="email" id="email" placeholder="Email">
+          <span>Email</span>
+        </label> 
+    </form>
+    <div class="next-nav">
+      <button type="button" class="verify">Verify</button>
+    </div>
+    </div>
+    <div class="tab">
+      <form id="tab">
+        <h4>Regular Account</h4>
+        <label for="first name">
+          <input type="text" id="first name" placeholder="First Name">
+          <span>First Name</span>
+        </label>
+        <label for="last name">
+          <input type="text" id="last name" placeholder="Last Name">
+          <span>Last Name</span>
+        </label> 
+        <label for="address">
+          <input type="text" id="address" placeholder="Address">
+          <span>Address</span>
+        </label>
+        <label for="city">
+          <input type="text" id="city" placeholder="City">
+          <span>City</span>
+        </label> 
+        <label for="email">
+          <input type="email" id="email" placeholder="Email">
+          <span>Email</span>
+        </label> 
+        <label for="password">
+          <input type="password" id="password" placeholder="Password">
+          <span>Password</span>
+        </label>
+        <label for="confirm password">
+          <input type="password" id="confirm password" placeholder="Confirm Password">
+          <span>Confirm Password</span>
+        </label> 
+        <div class="checkbox">
+          <input type="checkbox" id="checkbox"> 
+          <p>I agree to all the <a href="#"><strong>Terms</strong></a> and <a href="#"><strong>Conditions</strong></a></p>
+        </div>
+        <button type="button" class="submit">Sign Up</button> 
+      </form>
+    </div>
+    <div class="tab">
+      <form id="tab">
+      <h4>Verified Expert</h4>
+      <label for="first name">
+        <input type="text" id="first name" placeholder="First Name">
+        <span>First Name</span>
+      </label>
+      <label for="last name">
+        <input type="text" id="last name" placeholder="Last Name">
+        <span>Last Name</span>
+      </label> 
+      <label for="address">
+        <input type="text" id="address" placeholder="Address">
+        <span>Address</span>
+      </label>
+      <label for="City">
+        <input type="text" id="city" placeholder="City">
+        <span>City</span>
+      </label> 
+      <label for="email">
+        <input type="email" id="email" placeholder="Email">
+        <span>Email</span>
+      </label> 
+      <div class="qualifications">
+        <p>Qualifications</p>
+        <input type="file" id="qualifications" name="qualifications">
+      </div>
+      <label for="password">
+        <input type="password" id="password" placeholder="Password">
+        <span>Password</span>
+      </label>
+      <label for="confirm password">
+        <input type="password" id="confirm password" placeholder="Confirm Password">
+        <span>Confirm Password</span>
+      </label> 
+      <div class="checkbox">
+        <input type="checkbox" id="checkbox">
+        <p>I agree to all the <a href="#"><strong>Terms</strong></a> and <a href="#"><strong>Conditions</strong></a></p>
+      </div>
+      <button type="button" class="submit">Sign Up</button>
+    </form>
+    </div>
+    <div class="tab">
+    <form id="tab">
+      <h4>Store Account</h4>
+      <label for="company name">
+        <input type="text" id="first name" placeholder="Company Name">
+        <span>Company Name</span>
+      </label>
+      <label for="reg No">
+        <input type="text" id="reg no" placeholder="Registration No">
+        <span>Registration No</span>
+      </label> 
+      <label for="telephone">
+        <input type="tel" id="telephone" placeholder="Telephone No">
+        <span>Telephone No</span>
+      </label>
+      <label for="address">
+        <input type="text" id="address" placeholder="Store Address">
+        <span>Store Address</span>
+      </label> 
+      <label for="manager name">
+        <input type="text" id="manager name" placeholder="Manager Name">
+        <span>Manager Name</span>
+      </label> 
+      <label for="manager NIC">
+        <input type="text" id="manager NIC" placeholder="Manager NIC">
+        <span>Manager NIC</span>
+      </label> 
+      <div class="delivery">
+        <p>Modes of Delivery</p><br>
+        <input type="checkbox" name="delivery" value="In-store-pickup"><p> In store Pick-up</p><br>
+        <input type="checkbox" name="delivery" value="In-store-delivery-service"><p> In Store Delivery Service</p><br>
+        <div class="form-delivery">
+        </div>
+        <input type="checkbox" name="delivery" value="Third-party-delivery-service"><p> Third Party Delivery Service</p>
+      </div>
+      <label for="password">
+        <input type="password" id="password" placeholder="Password">
+        <span>Password</span>
+      </label>
+      <label for="confirm password">
+        <input type="password" id="confirm password" placeholder="Confirm Password">
+        <span>Confirm Password</span>
+      </label> 
+      <div class="checkbox">
+          <input type="checkbox" id="checkbox">
+          <p>I agree to all the <a href="#"><strong>Terms</strong></a> and <a href="#"><strong>Conditions</strong></a></p>
+      </div>
+      <button type="button" class="submit">Sign Up</button> 
+    </form>
+    </div>  
+  </div> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="../js/signup.js"></script>
+</body>
+</html>
