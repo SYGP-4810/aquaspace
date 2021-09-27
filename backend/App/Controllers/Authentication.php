@@ -137,13 +137,21 @@ class authentication extends \Core\Controller
     }
     public function emailVerificationTokenCreateAction()
     {
-        $num_str = sprintf("%06d", mt_rand(1, 999999));
         $email = $this->data['email'];
-        setcookie("emailToken", md5($num_str), time() + 60 * 5, NULL, NULL, NULL, TRUE);
-        $to = $email;
-        $subject = "email verification";
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            View::response("invalid email");
+        } else {
+            $stmt = $this->execute($this->get('user_auth', 'email =' . $this->data["email"]));
+            if ($stmt->rowCount() > 0) {
+                View::response("email is taken");
+            }
+            $num_str = sprintf("%06d", mt_rand(1, 999999));
+            $email = $this->data['email'];
+            setcookie("emailToken", md5($num_str), time() + 60 * 5, NULL, NULL, NULL, TRUE);
+            $to = $email;
+            $subject = "email verification";
 
-        $message = "
+            $message = "
 <html>
 <head>
 <title>verify aquaspace account</title>
@@ -154,16 +162,17 @@ class authentication extends \Core\Controller
 </html>
 ";
 
-        // Always set content-type when sending HTML email
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+            // Always set content-type when sending HTML email
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-        // More headers
-        // $headers .= 'From: <webmaster@example.com>' . "\r\n";
-        // $headers .= 'Cc: myboss@example.com' . "\r\n";
+            // More headers
+            // $headers .= 'From: <webmaster@example.com>' . "\r\n";
+            // $headers .= 'Cc: myboss@example.com' . "\r\n";
 
-        mail($to, $subject, $message, $headers);
-        View::response("check your inbox");
+            mail($to, $subject, $message, $headers);
+            View::response("check your inbox");
+        }
     }
     public function emailVerifyAction()
     {
