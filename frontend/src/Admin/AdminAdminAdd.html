@@ -1,120 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
-    <link rel="stylesheet" href="../../css/dashboard-styles.css">
+	<title>Dashboard</title>
+	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
+	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Admin.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Admins</title>
 </head>
-
 <body>
-    <header class="page-header">
-        <nav>
-            <a href="#"class="logo">
-                <img src="../../images/logo.png">
-                <span class="logo-text">AquaSpace</span> 
-            </a>
-            <ul class="menu">
-                <li>
+	<input type="checkbox" id="checkbox">
+	<header class="header">
+		<div class="u-name">
+            <img src="../../images/logo.png"><span>AquaSpace</span>
+			<label for="checkbox">
+				<i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
+			</label>
+		</div>
+        <div class="icons">
+            <i class="fa fa-bell" aria-hidden="true"></i>
+            <i class="fa fa-user" aria-hidden="true"></i>
+        </div>
+	</header>
+	<div class="body">
+		<nav class="side-bar">
+			<ul>
+				<li>
                     <a href="#">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-home fa-xs" aria-hidden="true"></i>
                         <span>Home</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fas fa-user-circle"></i>
+                        <i class="fas fa-user-circle" aria-hidden="true"></i>
                         <span>Account Overview</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-edit" aria-hidden="true"></i>
                         <span>Edit Profile</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fas fa-unlock-alt"></i>
+                        <i class="fas fa-unlock-alt" aria-hidden="true"></i>
                         <span>Reset Password</span>
                     </a>
                 </li>
                 <li>
-                    <a href="../Admin/AdminAdmins.html">
-                        <i class="fas fa-user-cog"></i>
+                    <a href="#">
+                        <i class="fas fa-user-cog" aria-hidden="true"></i>
                         <span>Admins</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fas fa-check-double"></i>
+                        <i class="fas fa-check-double" aria-hidden="true"></i>
                         <span>Verify Requests</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fas fa-exclamation-circle"></i>
+                        <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
                         <span>Issues & Reports</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fas fa-clipboard"></i>
+                        <i class="fas fa-clipboard" aria-hidden="true"></i>
                         <span>Generate Reports</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fas fa-bell"></i>
-                        <span>Notification settings</span>
+                        <i class="fas fa-bell" aria-hidden="true"></i>
+                        <span>Notification Settings</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fas fa-award"></i>
+                        <i class="fas fa-award" aria-hidden="true"></i>
                         <span>Contribution</span>
                     </a>
                 </li>
+			</ul>
+		</nav>
+		<section class="section-1">
+			<div class="head-titles">
+                <h1>ADMINS</h1>
+            </div>
+            <div class="add-admin">
+                <h2>Enter Details</h2>
+                <form>
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="fname">
+                    <br>
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lname">
+                    <br>
+                    <label for="position">Position</label>
+                    <input type="text" id="position" name="position">
+                    <br>
+                    <input type="submit" class="button" value="Save">
+                </form>
+            </div>
+		</section>
+	</div>
 
-                <li>
-                    <button class="collapse-btn" aria-expanded="true" aria-label="collapse menu">
-                        <i class="fas fa-chevron-left"></i>
-                        <span>Collapse</span>
-                    </button>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <section class="page-content">
-        <div class="nav-head">
-            <!-- profile and notifiacation -->
-        </div>
-        <div class="head-titles">
-            <h1>ADMINS</h1>
-        </div>
-        <div class="add-admin">
-            <h2>Enter Details</h2>
-            <form>
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="fname">
-                <br>
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lname">
-                <br>
-                <label for="position">Position</label>
-                <input type="text" id="position" name="position">
-                <br>
-                <input type="submit" class="button" value="Save">
-            </form>
-        </div>
-    </section>
-
-    <script src="../../js/dashboard-app.js"></script>
 </body>
-
 </html>

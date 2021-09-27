@@ -60,10 +60,7 @@
   min-height: 100vh;
   overflow: auto;
 }
-.section-1 h1 {
-  color: rgb(19, 17, 44);
-  font-size: 60px;
-}
+
 
 .side-bar ul {
   margin-top: 90px;
