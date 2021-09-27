@@ -65,7 +65,7 @@
     font: 16px/1.5 "Gotham", sans-serif;
   }
   
-  span {
+  .page-header span {
     position: absolute;
     left: 43px;
   } 

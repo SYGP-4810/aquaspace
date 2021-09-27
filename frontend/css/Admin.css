@@ -63,7 +63,7 @@ h1{
     font-size: 1.4em;
 }
 
-.add-admin{
+.add-admin , .con-detatils{
     margin-top: 15px;
     margin-left: 60px;
     color: rgb(0, 0, 0);  
@@ -79,7 +79,7 @@ form > input[type=text] {
 }
 
 
-.add-admin > h2{
+.add-admin > h2 {
     color: rgb(0, 0, 0);
     margin-bottom: 20px;
 }
@@ -87,3 +87,25 @@ form > input[type=text] {
 form > label{
     font-size: 1.3em;    
 } 
+
+.con-detatils ul{
+    margin: 20px;
+}
+
+.con-detatils li{
+    margin: 15px;
+    font-weight: bold;
+    opacity: 90%;
+    text-decoration: underline rgb(87, 87, 87);
+}
+
+.con-detatils li .l-name{
+    font-size: 20px;
+}
+
+.con-detatils li .l-value{
+    font-size: 18px;
+    float: Right;
+    text-align: center;
+    padding-right: 25px;
+}
