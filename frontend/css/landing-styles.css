@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+section{
+  height: 100vh;
+  width: 100%;
+}
+/* -------------------navbar---------------------- */
+.nav
+{
+  background-color: rgba(2, 5, 36, 0.692);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh;
+  padding: 40px 100px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav ul {
+  list-style: none;
+}
+.nav ul li a {
+  text-decoration: none;
+}
+
+.logo
+{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 80px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.logo h2 {
+  color: rgb(255, 137, 116);
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.nav-links ul {
+  display: flex;
+  justify-content: space-around;
+  width: 37vw;
+  list-style: none;
+}
+.nav-links ul li {
+  font-size: 14px;
+  font-weight: 500;
+}
+.nav-links ul li a {
+  color: rgb(236, 236, 248);
+  text-decoration: none;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.active , .nav-links ul li a:hover {
+  color: rgb(140, 228, 255);
+}
+
+.sub-menu {
+  display: none;
+  /* margin-top: 10px; */
+}
+
+.nav-links ul li:hover .sub-menu {
+  display: block;
+  position: absolute;
+  background: rgb(255, 255, 255);
+  overflow: hidden;
+  /* margin-top: 15px; */
+}
+.nav-links ul li:hover .sub-menu-1{
+  width:110px;
+} 
+
+.nav-links ul li:hover .sub-menu-2{
+  width:80px;
+} 
+
+
+.nav-links ul li:hover .sub-menu li a{
+  color: rgb(10, 4, 39);
+  
+}
+
+.nav-links ul li:hover .sub-menu ul {
+  display: block;
+}
+.nav-links ul li:hover .sub-menu ul li {
+  width: 110px;
+  padding: 10px;
+  border-bottom: 1px dotted ;
+  background: transparent;
+  text-align: left;
+}
+.nav-links ul li:hover .sub-menu-1 ul li {
+  width: 110px;
+}
+.nav-links ul li:hover .sub-menu-2 ul li {
+  width: 80px;
+}
+.nav-links ul li:hover .sub-menu ul li:last-child {
+  border-bottom: none;
+}
+.nav-links ul li:hover .sub-menu ul li a:hover {
+  color: #e78849;
+}
+
+/*-------------------landing page carousel--------------------*/
+.showcase
+{
+  /* position: absolute; */
+  /* right: 100; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  transition: 0.5s;
+  z-index: 2;
+}
+
+.showcase.active
+{
+  right: 300px;
+}
+
+.showcase video
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+.overlay
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #515e6e;
+  mix-blend-mode: overlay;
+}
+.text
+{
+  position: relative;
+  z-index: 10;
+  width: 70vw;
+  height: 60vh;
+}
+
+.text h2
+{
+  font-size: 3em;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1em;
+  /* text-transform: uppercase; */
+}
+.text h3
+{
+  font-size: 2em;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1em;
+  /* text-transform: uppercase; */
+}
+.text p
+{
+  font-size: 1.1em;
+  color: #fff;
+  margin: 20px 0;
+  font-weight: 400;
+  max-width: 700px;
+}
+.text a
+{
+  display: inline-block;
+  font-size: 1em;
+  background: #fff;
+  padding: 10px 30px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 10px;
+  color: #111;
+  letter-spacing: 2px;
+  transition: 0.2s;
+}
+.text a:hover
+{
+  letter-spacing: 6px;
+}
+
+.msg-container {
+    width: 70vw;
+    height: 60vh;
+    position: absolute;
+    left: 10%;
+    top: 63%;
+    transform: translateY(-50%);
+    overflow: hidden;
+}
+
+#slider {
+    display: inline-flex; 
+    transition: 1s;
+}
+.controller{
+    width: 1px;
+    height: 320px;
+    display: block;
+    background: #c0c0c0;
+    position: absolute;
+    top: 55%;
+    right: 50px;
+    transform: translateY(-50%);
+}
+
+#line1, #line2, #line3, #line4 {
+    height: 80px;
+    width: 10px;
+    cursor: pointer;
+    transform: translateX(-50%);
+}
+
+#active {
+    width: 5px;
+    height: 80px;
+    border-radius: 10px;
+    background: #FFF;
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    transition: 0.5s all;
+}
+
+@media (max-width: 991px)
+{
+  .showcase,
+  .showcase header
+  {
+    padding: 40px;
+  }
+  .text h2
+  {
+    font-size: 3em;
+  }
+  .text h3
+  {
+    font-size: 2em;
+  }
+}
+
+
+
+/*---------------searchbar-----------------*/
+
+.search_box{
+  width: 300px;
+  background: #fff;
+  border-radius: 20px;
+  height: 40px;
+  display: flex;
+  padding: 10px;
+  box-shadow: 0 8px 6px -10px #b3c6ff;
+}
+
+ .search_box .dropdown{
+  width: 140px;
+  border-right: 2px solid #dde2f1;
+  color: #9fa3b1;
+  position: relative;
+  cursor: pointer;
+}
+
+ .search_box .dropdown .default_option{
+/*   text-transform: uppercase; */
+  padding: 3px 15px;
+  font-size: 14px;
+}
+
+ .search_box .dropdown ul{
+  position: absolute;
+  top: 70px;
+  left: -10px;
+  background: rgba(8, 13, 56, 0.911);
+  width: 130px;
+  border-radius: 5px;
+  padding: 20px;
+  display: none;
+  box-shadow: 8px 8px 6px -10px #b3c6ff;
+}
+ .search_box .dropdown ul li{
+  padding-bottom: 20px;
+}
+
+ .search_box .dropdown ul.active{
+  display: block;
+}
+
+
+ .search_box .dropdown ul li:last-child{
+  padding-bottom: 0;
+}
+
+ .search_box .dropdown ul li:hover{
+  color: #99fffa;
+  font-weight: 600;
+}
+
+ .search_box .dropdown:before{
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 4px;
+  border: 5px solid;
+  border-color: #131620bb transparent transparent transparent;
+}
+
+ .search_box .search_field{
+  width: 350px;
+  height: 100%;
+  position: relative;
+}
+
+ .search_box .search_field .input{
+  width: 100%;
+  height: 100%;
+  border: 0px;
+  font-size: 16px;
+  padding-left: 20px;
+  padding-right: 38px;
+  color: #6f768d;
+}
+
+ .search_box .search_field .fas{
+  position: absolute;
+  top: 3px;
+  right: 10px;
+  font-size: 15px;
+  color: #09122c6e;
+  cursor: pointer;
+}
+
+
+
+/* --------------------------featured items-------------------------- */
+
+
+.footer {
+  width: 100%;
+  height: 70px;
+  background-color: black;
+}
+
