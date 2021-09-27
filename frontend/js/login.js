@@ -1,4 +1,4 @@
-//email validated
+//email validat
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email);
@@ -66,9 +66,21 @@ $("#signIn").click(function(){
           if(status == 1){
             window.location.replace("../src/Error/restrict.html");
           }
+          else if(status == 2){
+
+          }else if(status == 4 || status == 3){
+            var redirect = result.redirect;
+            window.location.replace(redirect);
+          }else if(status == 5){
+            alert("invalid credintial");
+            $("#email").focus();
+            $("#password").focus();
+          }
       },
       fail: function(xhr, textStatus, errorThrown){
         alert('request failed');
+        var status = xhr.status;
+        window.location.replace("../src/Error/"+status+".html");
      }
     });
   });
