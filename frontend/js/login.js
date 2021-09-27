@@ -14,7 +14,7 @@ $("#signIn").click(function(){
     var pass = $("#password").val();
     var email = $("#email").val();
     //email should be acording to the structure
-    if(isEmail(email)){
+    if(!isEmail(email)){
         alert("Please enter a valid email address");
         $("#email").focus();
         return false;
