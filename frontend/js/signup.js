@@ -58,9 +58,67 @@ $(".verify").click(function(e){
 })
 
 // form submission
-$(".submit").click(function(e){
-    // insert what needs to happen
-    alert("Sign Up Complete");
+$("#submit1").click(function(e){
+    //regular user insert
+    var email = $("#email").val();
+    var password = $("#password1").val();
+    var cpassword = $("#cpassword1").val();
+    var fName = $("#fName1").val();
+    var lName = $("#lName1").val();
+    var city = $("#city1").val();
+    var address = $("#address1").val();
+    if(isEmail(email)){
+        alert("enter email with correct format");
+        return false;
+    }
+    if(password == ""){
+        alert("enter password");
+        $("#password1").focus();
+        return false;
+    }
+    if(cpassword == ""){
+        alert("enter confirm password");
+        $("#cPassword1").focus();
+        return false;
+    }
+     //password should contains atleast one simple letter
+     var lower = /(?=.*[a-z])/;
+     if (!lower(password)){
+         alert("Please enter a valid password");
+         $("#password1").focus();
+         return false;
+     }
+     //password should contain atleast 8 characters
+     if(password.length < 8) {
+         alert("Password must be at least 8 characters long");
+         $("#password1").focus();
+         return false;
+     }
+ 
+     //password should contain atleast one capital letter
+     if(!isUpper(password)){
+         alert("password should contain atleast one capital letter");
+         $("#password1").focus();
+         return false;
+     }
+ 
+     //password should contain atleast one number digit
+     const regDig = /\d/;
+     if(!regDig.test(password)){
+         alert("password should contain atleast one digit");
+         $("#password1").focus();
+         return false;
+     }
+ 
+     //password should contain atleast one special character
+     var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+     if(!format.test(password)){
+         alert("password should contain atleast one special character");
+         $("#password1").focus();
+         return false;
+     }
+
+    
 })
 
 // function validate()

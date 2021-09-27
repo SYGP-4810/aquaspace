@@ -50,7 +50,7 @@ $("#signIn").click(function(){
 
     //password should contain atleast one special character
     var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-    if(!format.test(string)){
+    if(!format.test(pass)){
         alert("password should contain atleast one special character");
         $("#password").focus();
         return false;

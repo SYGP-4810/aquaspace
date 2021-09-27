@@ -1,0 +1,20 @@
+[27-Sep-2021 16:04:18 Europe/Berlin] with error code : 404' with message 'No route matched.'
+Stack trace: #0 /opt/lampp/htdocs/aquaspace/backend/public/index.php(45): Core\Router->dispatch('/Authentication...', Array)
+#1 {main}
+Thrown in '/opt/lampp/htdocs/aquaspace/backend/Core/Router.php' on line 129
+[27-Sep-2021 16:11:39 Europe/Berlin] with error code : 404' with message 'No route matched.'
+Stack trace: #0 /opt/lampp/htdocs/aquaspace/backend/public/index.php(45): Core\Router->dispatch('/Authentication...', Array)
+#1 {main}
+Thrown in '/opt/lampp/htdocs/aquaspace/backend/Core/Router.php' on line 129
+[27-Sep-2021 16:13:06 Europe/Berlin] with error code : 404' with message 'No route matched.'
+Stack trace: #0 /opt/lampp/htdocs/aquaspace/backend/public/index.php(45): Core\Router->dispatch('/Authentication...', Array)
+#1 {main}
+Thrown in '/opt/lampp/htdocs/aquaspace/backend/Core/Router.php' on line 129
+[27-Sep-2021 16:13:17 Europe/Berlin] with error code : 404' with message 'No route matched.'
+Stack trace: #0 /opt/lampp/htdocs/aquaspace/backend/public/index.php(45): Core\Router->dispatch('/Authentication...', Array)
+#1 {main}
+Thrown in '/opt/lampp/htdocs/aquaspace/backend/Core/Router.php' on line 129
+[27-Sep-2021 16:19:51 Europe/Berlin] with error code : 404' with message 'No route matched.'
+Stack trace: #0 /opt/lampp/htdocs/aquaspace/backend/public/index.php(45): Core\Router->dispatch('/Authentication...', Array)
+#1 {main}
+Thrown in '/opt/lampp/htdocs/aquaspace/backend/Core/Router.php' on line 129
