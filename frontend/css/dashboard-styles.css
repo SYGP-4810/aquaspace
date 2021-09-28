@@ -8,6 +8,7 @@
 .header {
   position: fixed;
   width: 100%;
+  top: 0;
   height: 10vh;
   display: flex;
   justify-content: space-between;
@@ -40,24 +41,27 @@
 }
 
 .side-bar {
-  width: 250px;
+  width: 15vw;
   background: #313552;
-  min-height: 100vh;
+  min-height: 90vh;
   transition: 500ms width;
 }
+
 .body {
+  min-height: 90%;
   display: flex;
 }
 .section-1 {
-  width: 100%;
+  width: 100vw;
   background: #d7e9ec;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 100vh;
+  margin-top: 10vh;
+  /* background-size: cover; */
+  /* background-position: center; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* flex-direction: column; */
+  min-height: 90vh;
   overflow: auto;
 }
 
