@@ -67,6 +67,7 @@ $("#submit1").click(function(e){
     var lName = $("#lName1").val();
     var city = $("#city1").val();
     var address = $("#address1").val();
+    var emailToken = $("#code2").val();
     //validation criteria
     if($('#checkbox1').not(":checked")){
         alert("you have to agree to the term and conditions");
@@ -150,6 +151,11 @@ $("#submit1").click(function(e){
          $("#city1").focus();
          return false;
      }
+     if(emailToken == ""){
+         alert("email verification code is required");
+         $("#code1").focus();
+         return false;
+     }
      $.ajax({
         url: "http://127.0.0.1/aquaspace/backend/public/index.php?/Authentication/signUpRegularUser",
         data: {
@@ -159,7 +165,8 @@ $("#submit1").click(function(e){
           address : address,
           fName : fName,
           lName : lName,
-          city : city
+          city : city,
+          emailToken : token
 
         },
         success: function( result ) {
@@ -173,7 +180,7 @@ $("#submit1").click(function(e){
 
 });
 
-// form submission store
+// form submission expert
 $("#submit2").click(function(){
     var email = $("#email").val();
     var password = $("#password2").val();
@@ -182,6 +189,7 @@ $("#submit2").click(function(){
     var address = $("#address2").val();
     var fName = $("#fName2").val();
     var lName = $("#lName2").val();
+    var emailToken = $("#code2").val();
     if($('#checkbox1').not(":checked")){
         alert("you have to agree to the term and conditions");
         return false;
@@ -262,10 +270,41 @@ $("#submit2").click(function(){
          $("#city1").focus();
          return false;
      }
+     if(emailToken == ""){
+         alert("should enter the verification code");
+         $("#code2").focus();
+     }
      //file upload
+     var fd = new FormData();
+     var files = $("#qualifications")[0].files[0];
+     fd.append('qualifications',files);
+     $.ajax({
+        url: "http://127.0.0.1/aquaspace/backend/public/index.php?/Authentication/signUpExper",
+        data: {
+          fd,
+          address : address,
+          cPassword : cPassword,
+          password : password,
+          city : city,
+          fName : fName,
+          lName : lName,
+          emailToken : emailToken
+
+        },
+        contentType : false,
+        processData : false,
+        success: function( result ) {
+            
+        },
+        fail: function(xhr, textStatus, errorThrown){
+          alert('request failed');
+          var status = xhr.status;
+          window.location.replace("../src/Error/"+status+".html");
+       }
+});
+
 });
 
 
-//form submission expert
+//form submit store
 
-// function validate()

@@ -28,6 +28,8 @@ class authentication extends \Core\Controller
      *
      * @return void
      */
+
+
     public function requestLoginAction()
     {
         $stmt = $this->execute($this->get('user_auth', 'email =' . $this->data["email"] . 'AND password =' . md5($this->data["password"])));
@@ -130,6 +132,100 @@ class authentication extends \Core\Controller
 
     public function signUpExpertAction()
     {
+        $fName = $this->data['fname'];
+        $lName = $this->data['lName'];
+        $password = $this->data['password'];
+        $cPassword = $this->data['cPassword'];
+        $city = $this->data['city'];
+        $address = $this->data['address'];
+        $token = $this->data['emailToken'];
+        $errors = array();
+        $errFlag = 0;
+        $file_name = $_FILES['qualifications']['name'];
+        $file_size = $_FILES['qualifications']['size'];
+        $file_tmp = $_FILES['qualifications']['tmp_name'];
+        $file_type = $_FILES['qualifications']['type'];
+        $file_ext = strtolower(end(explode('.', $_FILES['qualifications']['name'])));
+        $newFileName = uniqid() . "." . $file_ext;
+
+        $extensions = array("jpeg", "jpg", "png");
+
+        if (in_array($file_ext, $extensions) === false) {
+            $errors[] = "extension not allowed, please choose a JPEG or PNG file.";
+            $errFlag++;
+        }
+
+        if ($file_size < 2097152) {
+            $errors[] = 'File size must be lesser than 2 MB';
+            $errFlag++;
+        }
+        $destinationFolder = $_SERVER['name'] . "/frontend/images/qualifications/";
+        if (empty($errors) == true) {
+            move_uploaded_file($file_tmp, $destinationFolder . $newFileName);
+        } else {
+            $errFlag++;
+        }
+        $email = $this->data['email'];
+        $password = $this->data['password'];
+        $cPassword = $this->data['cPassword'];
+        $city = $this->data['city'];
+        $address = $this->data['address'];
+        if (!(filter_var($email, FILTER_VALIDATE_EMAIL)
+            && preg_match('/@.+\./', $email))) {
+            $errFlag++;
+            $errors[] = "invalid email address";
+        }
+        if ($cPassword != $password) {
+            $errors[] = "password and confirm password are not same";
+        }
+        $containsLetter  = preg_match('/[a-zA-Z]/',    $password);
+        $containsDigit   = preg_match('/\d/',          $password);
+        $containsSpecial = preg_match('/[^a-zA-Z\d]/', $password);
+        if (!($containsSpecial && $containsDigit && $containsLetter)) {
+            $errors[] = "password should contain atleast one letter , one special character , one digit";
+            $errFlag++;
+        }
+        if (strlen($password) < 8) {
+            $errors[] = "password should contain atleast 8 characters";
+            $errFlag++;
+        }
+        if (empty($city)) {
+            $errors[] = "city is required";
+            $errFlag++;
+        }
+        if (empty($address)) {
+            $errors[] = "address is required";
+            $errFlag++;
+        }
+        if (empty($fName)) {
+            $errors[] = "first name is required";
+            $errFlag++;
+        }
+        if (empty($lName)) {
+            $errors[] = "last name is required";
+            $errFlag++;
+        }
+        if (md5($_COOKIE['emailToken']) != $token) {
+            $errors[] = "email is not verified";
+            $errFlag++;
+        }
+        if ($errFlag > 0) {
+            $res = array("status" => "0", "error" => $errors);
+            View::response($res);
+        } else {
+            $dataToInsert = [
+                "email" => $email,
+                "fName" => $fName,
+                "lName" => $lName,
+                "city" => $city,
+                "password" => md5($password),
+                "qualifications" => $newFileName,
+                "address" => $address
+            ];
+            $this->exec($this->save('expert', $dataToInsert));
+            $res = array("status" => "1", "msg" => "success");
+            View::response($res);
+        }
     }
 
     public function signUpAdminAction()
@@ -140,10 +236,12 @@ class authentication extends \Core\Controller
         $email = $this->data['email'];
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             View::response("invalid email");
+            return;
         } else {
             $stmt = $this->execute($this->get('user_auth', 'email =' . $this->data["email"]));
             if ($stmt->rowCount() > 0) {
                 View::response("email is taken");
+                return;
             }
             $num_str = sprintf("%06d", mt_rand(1, 999999));
             $email = $this->data['email'];
@@ -174,18 +272,7 @@ class authentication extends \Core\Controller
             View::response("check your inbox");
         }
     }
-    public function emailVerifyAction()
-    {
-        if (isset($_COOKIE['emailToken'])) {
-            if (md5($this->data['emailToken']) == $_COOKIE['emailToken']) {
-                View::response();
-            } else {
-                View::response();
-            }
-        } else {
-            View::response();
-        }
-    }
+
 
     public function emailRecoveryAction()
     {
