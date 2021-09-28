@@ -7,7 +7,7 @@ namespace Core;
  *
  * 
  */
-abstract class Controller
+abstract class Controller extends \Core\Token
 {
 
     /**

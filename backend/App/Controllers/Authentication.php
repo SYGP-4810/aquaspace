@@ -11,7 +11,7 @@ use Core\View;
  *
  * 
  */
-class authentication extends \Core\Controller
+class Authentication extends \Core\Controller
 {
 
     /**
