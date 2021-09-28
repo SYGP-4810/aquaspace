@@ -23,7 +23,8 @@ $(".verify").click(function(e){
     var email = $("#email").val();
     if(isEmail(email)){
         $.ajax({
-            url: "http://127.0.0.1/aquaspace/backend/public/index.php?/Authentication/emailVerificationTokenCreate",
+            url: "http://127.0.0.1/aquaspace/backend/public/index.php?Authentication/emailVerificationTokenCreate",
+            type:"POST",
             data: {
               email: email
             },
@@ -32,7 +33,7 @@ $(".verify").click(function(e){
             },
             fail: function(xhr, textStatus, errorThrown){
               alert('request failed');
-              var status = xhr.status;
+              var status = xhr.code;
               window.location.replace("../src/Error/"+status+".html");
            }
           });
@@ -279,7 +280,7 @@ $("#submit2").click(function(){
      var files = $("#qualifications")[0].files[0];
      fd.append('qualifications',files);
      $.ajax({
-        url: "http://127.0.0.1/aquaspace/backend/public/index.php?/Authentication/signUpExper",
+        url: "http://127.0.0.1/aquaspace/backend/public/index.php?Authentication/signUpExpert",
         data: {
           fd,
           address : address,

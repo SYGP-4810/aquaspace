@@ -9,6 +9,7 @@
         function samp(url,data=null){
             let home = "http://127.0.0.1/aquaspace/backend/public/index.php";
             let finalUrl = home + "?"+ url;
+            var data = {"name":"hello world"}
             var xhr = new XMLHttpRequest();
 			xhr.open("POST",finalUrl,false);
 			xhr.onload = function(){
@@ -17,7 +18,7 @@
                 document.getElementById("sample").innerHTML =  res.data1 + " " + res.data2;
                }else{
                 let urlError = "../Error/"+ this.status +".html";
-                window.location.replace(urlError);
+                //window.location.replace(urlError);
                }
                 
 			};
