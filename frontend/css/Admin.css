@@ -151,24 +151,23 @@ form > label{
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.con-list .block-list{
+.con-list, .block-list, .Verify-list{
     margin-left: 15px;
     margin-right: 15px;
     justify-content: center;
 }
-.con-list th{
+.con-list th, .Verify-list th{
     font-size: 1.2em;
     text-align: left;
     padding-right: 25px;
     padding-left: 25px;    
 }
 
-.con-list tr, .block-list tr{
+.con-list tr, .block-list tr, .Verify-list tr{
     text-align: center;
-
 }
 
-.con-list  a, .block-list a ,.iss-profile a,.block-post a,.block-post-details a{
+.con-list  a, .block-list a ,.iss-profile a,.block-post a, .block-post-details a, .Verify-list a,.verify-btn a{
     text-decoration: none;
     text-align: center;
     background-color: rgba(255, 250, 240, 0.575);
@@ -176,7 +175,7 @@ form > label{
     overflow: hidden;
 }
 
-.con-list .name, .block-list .name,.iss-profile .name,.block-post .name,.block-post-details .name {
+.con-list .name, .block-list .name,.iss-profile .name,.block-post .name,.block-post-details .name, .Verify-list .name {
     font-size: 1em;
     white-space: nowrap;
     overflow: hidden;
@@ -215,4 +214,25 @@ form > label{
 
 .block-post .admin > img, .block-post-details .admin > img{
     border-radius: 0%;
+}
+
+.Verify-list-details{
+    margin: 10px 60px 10px 60px;
+}
+
+.Verify-list-details td{
+    text-align: left;
+    font-size: 1.2rem;
+    padding-right: 50px;
+    padding-bottom: 8px;
+}
+
+.sub-title-user{
+    margin-left: 30px;
+}
+
+.verify-btn{
+    display: flex;
+    float: right;
+    margin-right: 40px;
 }
