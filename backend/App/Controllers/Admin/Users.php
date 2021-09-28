@@ -32,7 +32,7 @@ class Users extends \Core\Controller
      */
     public function indexAction()
     {
-        $data = array("data1" => $this->data['name'], "data2" => "this is data 2");
+        $data = array("data1" => $this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"), "data2" => "");
         View::response($data);
     }
 }

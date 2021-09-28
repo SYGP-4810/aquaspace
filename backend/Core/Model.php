@@ -13,7 +13,7 @@ class Model
 {
 
 
-    private $pdo = null;
+
     private $stmt = null;
 
     //connect to database
@@ -110,9 +110,8 @@ class Model
         // Set Conditon
         $condition = $condition === '' ? '' : ' WHERE ' . $condition;
 
-        if ($select === '*')
-            $sql = "SELECT * FROM " . $table . $condition . $limit;
-        else if (is_string($select))
+
+        if (is_string($select))
             $sql = "SELECT " . $select . " FROM " . $table . $condition . $limit;
         else
             $sql = "SELECT " . implode(', ', $select) . " FROM " . $table . $condition . $limit;

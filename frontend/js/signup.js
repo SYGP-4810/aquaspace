@@ -29,7 +29,7 @@ $(".verify").click(function(e){
 			xhr.onload = function(){
                 if (this.readyState == 4 && this.status == 200) {
 				res = JSON.parse(this.response);
-                alert(res);
+                alert(res.msg);
                }else{
                 console.log(this.response);
                 let urlError = "../src/Error/"+ this.status +".html";

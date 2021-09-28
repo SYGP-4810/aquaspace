@@ -238,7 +238,7 @@ class Authentication extends \Core\Controller
             View::response("invalid email");
             return;
         } else {
-            $stmt = $this->execute($this->get('user_auth', 'email =' . $this->data["email"]));
+            $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
             if ($stmt->rowCount() > 0) {
                 View::response("email is taken");
                 return;
@@ -269,7 +269,8 @@ class Authentication extends \Core\Controller
             // $headers .= 'Cc: myboss@example.com' . "\r\n";
 
             mail($to, $subject, $message, $headers);
-            View::response("check your inbox");
+            $res = array("status" => "1", "msg" => "check your email");
+            View::response($res);
         }
     }
 
