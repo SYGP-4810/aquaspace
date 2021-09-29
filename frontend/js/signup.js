@@ -33,7 +33,7 @@ $(".verify").click(function(e){
                }else{
                 console.log(this.response);
                 let urlError = "../src/Error/"+ this.status +".html";
-                //window.location.replace(urlError);
+                window.location.replace(urlError);
                }
                 
 			};
