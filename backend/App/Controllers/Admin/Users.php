@@ -35,4 +35,8 @@ class Users extends \Core\Controller
         $data = array("data1" => $this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"), "data2" => "");
         View::response($data);
     }
+    public function testAction()
+    {
+        View::response($this->data);
+    }
 }

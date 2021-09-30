@@ -22,22 +22,21 @@ function isEmail(email) {
 $(".verify").click(function(e){
     var email = $("#email").val();
     if(isEmail(email)){
-        let url = "http://127.0.0.1/aquaspace/backend/public/index.php?Authentication/emailVerificationTokenCreate";        
-            var data = {"email":email}
-            var xhr = new XMLHttpRequest();
-			xhr.open("POST",url,false);
-			xhr.onload = function(){
-                if (this.readyState == 4 && this.status == 200) {
-				res = JSON.parse(this.response);
-                alert(res.msg);
-               }else{
-                console.log(this.response);
-                let urlError = "../src/Error/"+ this.status +".html";
-                window.location.replace(urlError);
-               }
-                
-			};
-			xhr.send(JSON.stringify(data));
+            var req = {"email": email};
+            $.ajax({
+                type: "POST",
+                url: "http://127.0.0.1/aquaspace/backend/public/index.php?Authentication/emailVerificationTokenCreate",
+                // The key needs to match your method's input parameter (case-sensitive).
+                data: JSON.stringify(req),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data){
+                    alert(data.cookie);
+                },
+                error: function(errMsg) {
+                    window.location.replace("../src/Error/"+errMsg.status+".html");
+                }
+            });
         $(".tab").hide();
         if($("input[name='selection']:checked").val() == 'value-1') {
         $(".tab").eq(2).show();

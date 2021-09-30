@@ -248,7 +248,6 @@ class Authentication extends \Core\Controller
             setcookie("emailToken", md5($num_str), time() + 60 * 5, NULL, NULL, NULL, TRUE);
             $to = $email;
             $subject = "email verification";
-
             $message = "
 <html>
 <head>
@@ -259,16 +258,7 @@ class Authentication extends \Core\Controller
 </body>
 </html>
 ";
-
-            // Always set content-type when sending HTML email
-            $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-            // More headers
-            // $headers .= 'From: <webmaster@example.com>' . "\r\n";
-            // $headers .= 'Cc: myboss@example.com' . "\r\n";
-
-            mail($to, $subject, $message, $headers);
+            $this->sendMail($to, $subject, $message);
             $res = array("status" => "1", "msg" => "check your email");
             View::response($res);
         }
