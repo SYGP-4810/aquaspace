@@ -32,10 +32,10 @@
     margin-top: 15px;
     margin-left: 50px;
     color: rgb(0, 0, 0);
+    white-space: nowrap;
 }
 
 .admin{
-    height: 90px;
     padding: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -51,7 +51,8 @@
 }
 
 .text{
-    margin-top: 10px;
+    margin-top: 20px;
+    float: right;
 }
 
 .text > span{
@@ -60,6 +61,7 @@
 }
 
 .text > .name{
+    
     font-weight: bold;
     font-size: 1.4em;
 }
@@ -150,7 +152,9 @@ form > label{
     background-color: #f1967a;
 } 
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 .con-list, .block-list, .Verify-list{
     margin-left: 15px;
@@ -168,7 +172,7 @@ form > label{
     text-align: center;
 }
 
-.con-list  a, .block-list a ,.iss-profile a,.block-post a, .block-post-details a, .Verify-list a,.verify-btn a{
+.head-titles a, .con-list  a, .block-list a ,.iss-profile a,.block-post a, .block-post-details a, .Verify-list a,.verify-btn a{
     text-decoration: none;
     text-align: center;
     background-color: rgba(255, 250, 240, 0.575);
@@ -176,14 +180,14 @@ form > label{
     overflow: hidden;
 }
 
+.sub-title a{
+    text-decoration: none;
+}
+
 .con-list .name, .block-list .name,.iss-profile .name,.block-post .name,.block-post-details .name, .Verify-list .name {
     font-size: 1em;
     white-space: nowrap;
     overflow: hidden;
-}
-
-.admin{
-   width: 320px;
 }
 
 .sub-title{
