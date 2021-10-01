@@ -134,6 +134,12 @@
     overflow: hidden;
   }
   
+  .questions {
+    display: none;
+  }
+  .reviews , .questions {
+    margin-bottom: 100px;
+  }
   .review, .question {
     margin-bottom: 30px;
   }

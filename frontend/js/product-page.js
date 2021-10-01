@@ -15,4 +15,17 @@ SmallImg[3].onclick = function () {
 }    
 
 
-    
+$(document).ready(function(){
+
+    // jQuery methods go here...
+   
+      $("#reviews").click(function(){
+        $(".reviews").css("display", "block");
+        $(".questions").css("display", "none");
+      });
+      $("#questions").click(function(){
+        $(".questions").css("display", "block");
+        $(".reviews").css("display", "none");
+      });
+
+});    
