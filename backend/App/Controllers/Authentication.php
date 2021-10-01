@@ -128,6 +128,87 @@ class Authentication extends \Core\Controller
 
     public function signUpRegularUserAction()
     {
+
+        $fName = $this->data['fName'];
+        $lName = $this->data['lName'];
+        $password = $this->data['password'];
+        $cPassword = $this->data['cPassword'];
+        $city = $this->data['city'];
+        $address = $this->data['address'];
+        $token = $this->data['emailToken'];
+        $email = $this->data['email'];
+        $tp = $this->data['tp'];
+        $errFlag = 0;
+        if (!(filter_var($email, FILTER_VALIDATE_EMAIL)
+            && preg_match('/@.+\./', $email))) {
+            $errFlag++;
+            $errors[] = "invalid email address";
+        }
+        $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
+        if ($stmt->rowCount() > 0) {
+            $error[] = "email is taken";
+            $errFlag++;
+        }
+        if ($cPassword != $password) {
+            $errors[] = "password and confirm password are not same";
+            $errFlag++;
+        }
+        $containsLetter  = preg_match('/[a-zA-Z]/',    $password);
+        $containsDigit   = preg_match('/\d/',          $password);
+        $containsSpecial = preg_match('/[^a-zA-Z\d]/', $password);
+        if (!($containsSpecial && $containsDigit && $containsLetter)) {
+            $errors[] = "password should contain atleast one letter , one special character , one digit";
+            $errFlag++;
+        }
+        if (strlen($password) < 8) {
+            $errors[] = "password should contain atleast 8 characters";
+            $errFlag++;
+        }
+        if (empty($city)) {
+            $errors[] = "city is required";
+            $errFlag++;
+        }
+        if (empty($address)) {
+            $errors[] = "address is required";
+            $errFlag++;
+        }
+        if (empty($fName)) {
+            $errors[] = "first name is required";
+            $errFlag++;
+        }
+        if (empty($lName)) {
+            $errors[] = "last name is required";
+            $errFlag++;
+        }
+        // if (md5($_COOKIE['emailToken']) != $token) {
+        //     $errors[] = "email is not verified";
+        //     $errFlag++;
+        // }
+        if ($errFlag > 0) {
+            $res = array("status" => "0", "error" => $errors);
+            View::response($res);
+        } else {
+            $dataToInsertAuthTable = [
+                "email" => $email,
+                "tp" => $tp,
+                "password" => md5($password),
+                "user_type" => "1",
+                "user_status" => "1"
+            ];
+            $this->exec($this->save("user_auth", $dataToInsertAuthTable));
+            $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
+            $authId = $stmt->fetch()['id'];
+            $dataToInsertRegularTable = [
+                "first_name" => $fName,
+                "last_name" => $lName,
+                "city" => $city,
+                "address" => $address,
+                "auth_id" => $authId
+            ];
+            $this->exec($this->save('regular_user', $dataToInsertRegularTable));
+            $res = array("status" => "1", "msg" => "success");
+            View::response($res);
+        }
     }
 
     public function signUpExpertAction()
@@ -139,6 +220,7 @@ class Authentication extends \Core\Controller
         $city = $this->data['city'];
         $address = $this->data['address'];
         $token = $this->data['emailToken'];
+        $email = $this->data['email'];
         $errors = array();
         $errFlag = 0;
         $file_name = $_FILES['qualifications']['name'];
@@ -165,11 +247,6 @@ class Authentication extends \Core\Controller
         } else {
             $errFlag++;
         }
-        $email = $this->data['email'];
-        $password = $this->data['password'];
-        $cPassword = $this->data['cPassword'];
-        $city = $this->data['city'];
-        $address = $this->data['address'];
         if (!(filter_var($email, FILTER_VALIDATE_EMAIL)
             && preg_match('/@.+\./', $email))) {
             $errFlag++;
@@ -205,7 +282,7 @@ class Authentication extends \Core\Controller
             $errors[] = "last name is required";
             $errFlag++;
         }
-        if (md5($_COOKIE['emailToken']) != $token) {
+        if (md5($token) != $_COOKIE['emailToken']) {
             $errors[] = "email is not verified";
             $errFlag++;
         }
@@ -245,7 +322,7 @@ class Authentication extends \Core\Controller
             }
             $num_str = sprintf("%06d", mt_rand(1, 999999));
             $email = $this->data['email'];
-            setcookie("emailToken", md5($num_str), time() + 60 * 5, NULL, NULL, NULL, TRUE);
+            setcookie("emailToken", md5($num_str), time() + 60 * 60 * 24, NULL, NULL, NULL, TRUE);
             $to = $email;
             $subject = "email verification";
             $message = "

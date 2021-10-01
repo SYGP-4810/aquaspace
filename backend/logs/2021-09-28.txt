@@ -1,9 +1,0 @@
-[28-Sep-2021 18:27:32 Europe/Berlin] with error code : 500' with message 'sizeof(): Argument #1 ($value) must be of type Countable|array, string given'
-Stack trace: #0 /opt/lampp/htdocs/aquaspace/backend/Core/View.php(23): sizeof('check your inbo...')
-#1 /opt/lampp/htdocs/aquaspace/backend/App/Controllers/Authentication.php(272): Core\View::response('check your inbo...')
-#2 [internal function]: App\Controllers\Authentication->emailVerificationTokenCreateAction()
-#3 /opt/lampp/htdocs/aquaspace/backend/Core/Controller.php(50): call_user_func_array(Array, Array)
-#4 /opt/lampp/htdocs/aquaspace/backend/Core/Router.php(121): Core\Controller->__call('emailVerificati...', Array)
-#5 /opt/lampp/htdocs/aquaspace/backend/public/index.php(45): Core\Router->dispatch('Authentication/...', Array)
-#6 {main}
-Thrown in '/opt/lampp/htdocs/aquaspace/backend/Core/View.php' on line 23

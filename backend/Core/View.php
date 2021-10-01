@@ -18,12 +18,8 @@ class View
      * @return void
      */
 
-    public static function response($args = [])
+    public static function response($args)
     {
-        if (sizeof($args) != 0) {
-            echo json_encode($args);
-        } else {
-            //if no result then print something
-        }
+        echo json_encode($args);
     }
 }
