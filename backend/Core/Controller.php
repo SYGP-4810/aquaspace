@@ -49,6 +49,8 @@ abstract class Controller
             if ($this->before() !== false) {
                 call_user_func_array([$this, $method], $args);
                 $this->after();
+            } else {
+                throw new \Exception("authorization failed", 403);
             }
         } else {
             throw new \Exception("Method $name not found in controller " . get_class($this));

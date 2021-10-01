@@ -9,7 +9,7 @@ use PDO;
  * base model
  */
 
-class DB
+class Model
 {
 
 
@@ -49,7 +49,7 @@ class DB
     /**
      * sql execution if result neede (common uses : select)
      * @param string $sql sql for the execution
-     * @return string result of the execution
+     * @return object result of the execution
      */
 
     public function execute($sql)
@@ -59,7 +59,6 @@ class DB
         }
         $this->stmt = $this->pdo->prepare($sql);
         $this->stmt->execute();
-        $this->stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $this->stmt;
     }
 
