@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function samp(url,data=null){
+            let home = "http://127.0.0.1/aquaspace/backend/public/index.php";
+            let finalUrl = home + "?"+ url;
+            var data = {"email":"dilshansankaklpa@gmail.com"}
+            var xhr = new XMLHttpRequest();
+			xhr.open("POST",finalUrl,false);
+			xhr.onload = function(){
+                if (this.readyState == 4 && this.status == 200) {
+				res = JSON.parse(this.response);
+                document.getElementById("sample").innerHTML =  res.data1 + " " + res.data2;
+               }else{
+                let urlError = "../Error/"+ this.status +".html";
+                //window.location.replace(urlError);
+               }
+                
+			};
+			xhr.send(JSON.stringify(data));            
+        }
+                
+    </script>
+</head>
+<body">
+    <div id="sample"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    var markers = {"email":"dilshansankaklpa@gmail.com"};
+
+$.ajax({
+    type: "POST",
+    url: "http://127.0.0.1/aquaspace/backend/public/index.php?Admin/Users/test",
+    // The key needs to match your method's input parameter (case-sensitive).
+    data: JSON.stringify(markers),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(data){
+        alert(data.email);
+    },
+    error: function(errMsg) {
+        alert(errMsg);
+    }
+});
+</script>
+</body>
+</html>

@@ -1,5 +1,0 @@
-[07-Sep-2021 15:47:32 Europe/Berlin] with error code : 0' with message 'Method x not found in controller App\Controllers\Admin\Users'
-Stack trace: #0 /opt/lampp/htdocs/aquaspace/backend/Core/Router.php(121): Core\Controller->__call('x', Array)
-#1 /opt/lampp/htdocs/aquaspace/backend/public/index.php(45): Core\Router->dispatch('Admin/Users/x', Array)
-#2 {main}
-Thrown in '/opt/lampp/htdocs/aquaspace/backend/Core/Controller.php' on line 54

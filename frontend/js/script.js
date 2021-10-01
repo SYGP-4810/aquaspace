@@ -1,6 +1,12 @@
-document.querySelector('.img-btn').addEventListener('click', function()
-	{
-		document.querySelector('.cont').classList.toggle('s-signup')
-	}
-);
+$(document).ready(function() {
+	$(".select").click(function() {
+		$(".select").toggle('slow');
+		$("#form-content").toggle('slow');
+	});
+});
 
+// document.querySelector('.select').addEventListener('click', function()
+// 	{
+// 		document.getElementById("signup").style.display = "none"
+// 	}
+// );

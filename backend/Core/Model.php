@@ -13,13 +13,14 @@ class Model
 {
 
 
-    private $pdo = null;
+
     private $stmt = null;
 
     //connect to database
-    function __construct()
+    protected static function connect()
     {
-        $this->pdo = new PDO(
+
+        $connection = new PDO(
             "mysql:host =" . DB_HOST . ";dbname=" . DB_NAME,
             DB_USER,
             DB_PASSWORD,
@@ -31,19 +32,14 @@ class Model
         );
         // Throw an Exception when an error occurs
         //$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $connection;
     }
 
 
 
-    //close connection
-    function __destruct()
+    protected static function close($connection)
     {
-        if ($this->stmt !== null) {
-            $this->stmt = null;
-        }
-        if ($this->pdo !== null) {
-            $this->pdo = null;
-        }
+        $connection = null;
     }
 
     /**
@@ -54,10 +50,7 @@ class Model
 
     public function execute($sql)
     {
-        if ($this->stmt !== null) {
-            $this->stmt = null;
-        }
-        $this->stmt = $this->pdo->prepare($sql);
+        $this->stmt = self::connect()->prepare($sql);
         $this->stmt->execute();
         return $this->stmt;
     }
@@ -71,7 +64,7 @@ class Model
     //update and delete execution if there is no result to supply
     public function exec($sql)
     {
-        return $this->pdo->exec($sql);
+        return self::connect()->exec($sql);
     }
 
     //sql creating methods
@@ -109,13 +102,14 @@ class Model
      * @return string complete sql 
      */
 
-    public function get($table, $select = '*', $condition = '', $limit = '', $offset = 0)
+    public function get($table, $select = "*", $condition = '', $limit = '', $offset = 0)
     {
 
         // set limits
         $limit = is_int($limit) ? " LIMIT " . $offset . ", " . $limit : "";
         // Set Conditon
         $condition = $condition === '' ? '' : ' WHERE ' . $condition;
+
 
         if (is_string($select))
             $sql = "SELECT " . $select . " FROM " . $table . $condition . $limit;

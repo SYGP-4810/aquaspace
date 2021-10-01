@@ -35,6 +35,7 @@ $router = new Core\Router();
 $router->add('{controller}/{action}');
 $router->add('{controller}/{id:\d+}/{action}');
 $router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
+$router->add('expert/{controller}/{action}', ['namespace' => 'Expert']);
 
 /**
  * @var array $reqData associative array of data which wouldnt send through the route parameter 
