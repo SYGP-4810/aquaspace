@@ -1,0 +1,13 @@
+/* Title */
+.head-titles{
+    margin-top: 20px;
+    margin-left: 30px; 
+    height: 80px;
+}
+
+.head-titles h1{
+    font-size: 1.8em;
+    float: left;
+}
+
+/* Home */
