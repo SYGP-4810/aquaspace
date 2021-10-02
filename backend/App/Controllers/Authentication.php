@@ -213,7 +213,7 @@ class Authentication extends \Core\Controller
 
     public function signUpExpertAction()
     {
-        $fName = $this->data['fname'];
+        $fName = $this->data['fName'];
         $lName = $this->data['lName'];
         $password = $this->data['password'];
         $cPassword = $this->data['cPassword'];
@@ -221,30 +221,13 @@ class Authentication extends \Core\Controller
         $address = $this->data['address'];
         $token = $this->data['emailToken'];
         $email = $this->data['email'];
-        $errors = array();
+        $tp = $this->data['tp'];
+        $qualifications = $this->data['qualifications'];
+        $qualificationExtension = $this->data['qualificationExtension'];
         $errFlag = 0;
-        $file_name = $_FILES['qualifications']['name'];
-        $file_size = $_FILES['qualifications']['size'];
-        $file_tmp = $_FILES['qualifications']['tmp_name'];
-        $file_type = $_FILES['qualifications']['type'];
-        $file_ext = strtolower(end(explode('.', $_FILES['qualifications']['name'])));
-        $newFileName = uniqid() . "." . $file_ext;
-
-        $extensions = array("jpeg", "jpg", "png");
-
-        if (in_array($file_ext, $extensions) === false) {
-            $errors[] = "extension not allowed, please choose a JPEG or PNG file.";
-            $errFlag++;
-        }
-
-        if ($file_size < 2097152) {
-            $errors[] = 'File size must be lesser than 2 MB';
-            $errFlag++;
-        }
-        $destinationFolder = $_SERVER['name'] . "/frontend/images/qualifications/";
-        if (empty($errors) == true) {
-            move_uploaded_file($file_tmp, $destinationFolder . $newFileName);
-        } else {
+        $acceptingFileTypes = ["png", "jpeg", "jpg"];
+        if (!in_array($qualificationExtension, $acceptingFileTypes)) {
+            $errors[] = "file type is not accepted";
             $errFlag++;
         }
         if (!(filter_var($email, FILTER_VALIDATE_EMAIL)
@@ -252,8 +235,14 @@ class Authentication extends \Core\Controller
             $errFlag++;
             $errors[] = "invalid email address";
         }
+        $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
+        if ($stmt->rowCount() > 0) {
+            $error[] = "email is taken";
+            $errFlag++;
+        }
         if ($cPassword != $password) {
             $errors[] = "password and confirm password are not same";
+            $errFlag++;
         }
         $containsLetter  = preg_match('/[a-zA-Z]/',    $password);
         $containsDigit   = preg_match('/\d/',          $password);
@@ -282,29 +271,155 @@ class Authentication extends \Core\Controller
             $errors[] = "last name is required";
             $errFlag++;
         }
-        if (md5($token) != $_COOKIE['emailToken']) {
-            $errors[] = "email is not verified";
+        // if (md5($_COOKIE['emailToken']) != $token) {
+        //     $errors[] = "email is not verified";
+        //     $errFlag++;
+        // }
+        $qName = "";
+        if (strlen($qualifications) > 0) {
+            $qName = round(microtime(true) * 1000) . ".txt";
+            $qDir = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/qualifications/" . $qName;
+            $flag = file_put_contents($qDir, $qualifications);
+            if (!$flag) {
+                $errFlag++;
+                $errors[] = "qualification is not inserted";
+            }
+        } else {
+            $errors[] = "qualification did not come to backend";
             $errFlag++;
         }
         if ($errFlag > 0) {
             $res = array("status" => "0", "error" => $errors);
             View::response($res);
         } else {
-            $dataToInsert = [
+            $dataToInsertAuthTable = [
                 "email" => $email,
-                "fName" => $fName,
-                "lName" => $lName,
-                "city" => $city,
+                "tp" => $tp,
                 "password" => md5($password),
-                "qualifications" => $newFileName,
-                "address" => $address
+                "user_type" => "2",
+                "user_status" => "1"
             ];
-            $this->exec($this->save('expert', $dataToInsert));
+            $this->exec($this->save("user_auth", $dataToInsertAuthTable));
+            $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
+            $authId = $stmt->fetch()['id'];
+            $dataToInsertExpertTable = [
+                "first_name" => $fName,
+                "last_name" => $lName,
+                "city" => $city,
+                "address" => $address,
+                "auth_id" => $authId,
+                "qualification" => $qName
+            ];
+            $this->exec($this->save('expert', $dataToInsertExpertTable));
             $res = array("status" => "1", "msg" => "success");
             View::response($res);
         }
     }
 
+    public function signUpStoreAction()
+    {
+
+        $cName = $this->data['cName'];
+        $manName = $this->data['manName'];
+        $manNIC = $this->data['manNIC'];
+        $regNo = $this->data['regNo'];
+        $password = $this->data['password'];
+        $cPassword = $this->data['cPassword'];
+        $city = $this->data['city'];
+        $address = $this->data['address'];
+        $token = $this->data['emailToken'];
+        $email = $this->data['email'];
+        $tp = $this->data['tp'];
+        $delMode = $this->data['deliveryMethod'];
+        $errFlag = 0;
+        if (!(filter_var($email, FILTER_VALIDATE_EMAIL)
+            && preg_match('/@.+\./', $email))) {
+            $errFlag++;
+            $errors[] = "invalid email address";
+        }
+        $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
+        if ($stmt->rowCount() > 0) {
+            $error[] = "email is taken";
+            $errFlag++;
+        }
+        if ($cPassword != $password) {
+            $errors[] = "password and confirm password are not same";
+            $errFlag++;
+        }
+        $containsLetter  = preg_match('/[a-zA-Z]/',    $password);
+        $containsDigit   = preg_match('/\d/',          $password);
+        $containsSpecial = preg_match('/[^a-zA-Z\d]/', $password);
+        if (!($containsSpecial && $containsDigit && $containsLetter)) {
+            $errors[] = "password should contain atleast one letter , one special character , one digit";
+            $errFlag++;
+        }
+        if (strlen($password) < 8) {
+            $errors[] = "password should contain atleast 8 characters";
+            $errFlag++;
+        }
+        if (empty($city)) {
+            $errors[] = "city is required";
+            $errFlag++;
+        }
+        if (empty($address)) {
+            $errors[] = "address is required";
+            $errFlag++;
+        }
+        if (empty($cName)) {
+            $errors[] = "company name is required";
+            $errFlag++;
+        }
+        if (empty($manNIC)) {
+            $errors[] = "manager NIC is required";
+            $errFlag++;
+        }
+        if (empty($manName)) {
+            $errors[] = "manager name is required";
+            $errFlag++;
+        }
+        if (empty($regNo)) {
+            $errors[] = "registration number is required";
+            $errFlag++;
+        }
+        if (empty($delMode)) {
+            $errors[] = "atleast one of delivery method is required";
+            $errFlag++;
+        }
+
+        // if (md5($_COOKIE['emailToken']) != $token) {
+        //     $errors[] = "email is not verified";
+        //     $errFlag++;
+        // }
+        if ($errFlag > 0) {
+            $res = array("status" => "0", "error" => $errors);
+            View::response($res);
+        } else {
+            $dataToInsertAuthTable = [
+                "email" => $email,
+                "tp" => $tp,
+                "password" => md5($password),
+                "user_type" => "3",
+                "user_status" => "1"
+            ];
+            $this->exec($this->save("user_auth", $dataToInsertAuthTable));
+            $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
+            $authId = $stmt->fetch()['id'];
+            $dataToInsertStoreTable = [
+                "company_name" => $cName,
+                "city" => $city,
+                "address" => $address,
+                "auth_id" => $authId,
+                "man_name" => $manName,
+                "man_nic" => $manNIC,
+                "registration_num" => $regNo,
+                "del_mode" => $delMode
+
+            ];
+            $this->exec($this->save('store', $dataToInsertStoreTable));
+            $res = array("status" => "1", "msg" => "success");
+            View::response($res);
+        }
+    }
     public function signUpAdminAction()
     {
     }
