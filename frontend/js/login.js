@@ -1,3 +1,7 @@
+//api setter
+function setUrl(text){
+  return "/aquaspace/backend/public/index.php?"+text;
+}
 //email validat
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -5,82 +9,88 @@ function isEmail(email) {
   }
 
 
-function isUpper(str) {
-    return !/[a-z]/.test(str) && /[A-Z]/.test(str);
-}
+  
 
 //login script
 $("#signIn").click(function(){
-    var pass = $("#password").val();
+    var password = $("#password").val();
     var email = $("#email").val();
+    var errFlag = 0;
     //email should be acording to the structure
     if(!isEmail(email)){
         alert("Please enter a valid email address");
         $("#email").focus();
-        return false;
+        errFlag++;
     }
     //password should contains atleast one simple letter
     var lower = /(?=.*[a-z])/;
-    if (!lower(pass)){
+    if (!lower.test(password)){
         alert("Please enter a valid password");
         $("#password").focus();
-        return false;
+        errFlag++;
     }
     //password should contain atleast 8 characters
-    if(pass.length < 8) {
+    if(password.length < 8) {
         alert("Password must be at least 8 characters long");
         $("#password").focus();
-        return false;
+        errFlag++;
     }
 
     //password should contain atleast one capital letter
-    if(!isUpper(pass)){
-        alert("password should contain atleast one capital letter");
-        $("#password").focus();
-        return false;
-    }
+    var upper = /(?=.*[A-Z])/;
+  //password should contain atleast one capital letter
+  if(!upper.test(password)){
+      alert("password should contain atleast one capital letter");
+      $("#password").focus();
+      errFlag++;
+  }
 
     //password should contain atleast one number digit
     const regDig = /\d/;
-    if(!regDig.test(pass)){
+    if(!regDig.test(password)){
         alert("password should contain atleast one digit");
         $("#password").focus();
-        return false;
+        errFlag++;
     }
 
     //password should contain atleast one special character
     var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-    if(!format.test(pass)){
+    if(!format.test(password)){
         alert("password should contain atleast one special character");
         $("#password").focus();
-        return false;
+        errFlag++;
     }   
-    $.ajax({
-      url: "http://127.0.0.1/aquaspace/backend/public/index.php?/Authentication/requestLogin",
-      data: {
-        email: email,
-        password : pass
-      },
-      success: function( result ) {
-          const status = result.status;
-          if(status == 1){
-            window.location.replace("../src/Error/restrict.html");
-          }
-          else if(status == 2){
+    if(errFlag == 0){
+      var req = {
+        "email": email,
+        "password": password,
+    }
+  $.ajax({
+    type: "POST",
+    url:setUrl("Authentication/requestLogin"),
+    data: JSON.stringify(req),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(data){
+      var status = data.status;
+      if(status == 1 ||status == 2 || status == 3 || status == 4 || stauts == 6){
+        var redirect = data.redirect;
+        window.location.replace(redirect);
+      }else if(status == 5){
+        alert("invalid credintial \n you have "+5-data.attemp+"left");
+        $("#email").focus();
+        $("#password").focus();
+      }
 
-          }else if(status == 4 || status == 3){
-            var redirect = result.redirect;
-            window.location.replace(redirect);
-          }else if(status == 5){
-            alert("invalid credintial");
-            $("#email").focus();
-            $("#password").focus();
-          }
-      },
-      fail: function(xhr, textStatus, errorThrown){
-        alert('request failed');
-        var status = xhr.status;
-        window.location.replace("../src/Error/"+status+".html");
-     }
-    });
-  });
+    },
+    error: function(errMsg) {
+        //window.location.replace("../src/Error/"+errMsg.status+".html");
+        console.log(errMsg);
+    }
+});
+    
+}
+      
+});
+
+  

@@ -194,10 +194,11 @@ $("#signUp1").click(function(e){
             dataType: "json",
             success: function(data){
                 alert("please login");
+                window.location.replace("../src/login.html");
             },
             error: function(errMsg) {
-                //window.location.replace("../src/Error/"+errMsg.status+".html");
-                console.log(errMsg);
+                window.location.replace("../src/Error/"+errMsg.status+".html");
+                //console.log(errMsg);
             }
         });
      }
@@ -358,7 +359,6 @@ $("#signUp2").click(function(){
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data){
-                console.log(JSON.stringify(data));
                 window.location.replace("../src/login.html");
 
             },

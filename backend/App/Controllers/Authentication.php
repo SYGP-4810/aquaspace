@@ -32,86 +32,75 @@ class Authentication extends \Core\Controller
 
     public function requestLoginAction()
     {
-        $stmt = $this->execute($this->get('user_auth', 'email =' . $this->data["email"] . 'AND password =' . md5($this->data["password"])));
+        $email = $this->data['email'];
+        $password = $this->data['password'];
+        $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $email . "' AND password ='" . md5($password) . "'"));
         $rows = $stmt->rowCount();
         $result = $stmt->fetch();
         if ($rows == 1) {
             //Check wheather user able to login the system
-            switch ($result['user_status']) {
-                case '0':
-                    //email not confirm redirect
-                    $res = array("status" => "0", "redirect" => "");
-                    View::response($res);
-                    break;
-                case '1':
-                    //temporially blocked login failed
-                    $timeToEnd = time() - $stmt->fetch()['attemp_time'];
-                    $cookie_name = "timeToEnd";
-                    $cookie_value = $timeToEnd;
-                    setcookie($cookie_name, $cookie_value, time() + $timeToEnd, "/");
-                    $res = array("status" => "1", "redirect" => "");
-                    View::response($res);
-                    break;
-                case '2':
-                    //temporially block due to the issue
-                    $res = array("status" => "2", "redirect" => "");
-                    View::response($res);
-                    break;
-                case '3':
-                    //peromenatly block due to the issue
-                    throw new \Exception("peromenatly blocked user", 404);
-                    break;
+            if ($result['user_status'] == 1) {
+                //temporially blocked login failed
+                $timeToEnd = time() - $result['attempt_time'];
+                $cookie_name = "timeToEnd";
+                $cookie_value = $timeToEnd;
+                setcookie($cookie_name, $cookie_value, time() + $timeToEnd, "/");
+                $res = array("status" => "1", "redirect" => "/aquaspace/src/error/restrict.html");
+                View::response($res);
+            } elseif ($result['user_status'] == 2) {
+                //temporially block due to the issue
+                $res = array("status" => "2", "redirect" => "");
+                View::response($res);
+            } elseif ($result['user_status'] == 3) {
+                //peromenatly block due to the issue
+                throw new \Exception("peromenatly blocked user", 404);
+            } else {
 
-                default:
-                    //No default
-                    break;
+                $payload = "{id:" . $result['id'] . ",email:'" . $result['email'] . "'}";
+                //set token
+                $this->setToken($payload, $result['id']);
+                //reset access_attept to zero
+                $time = time();
+                $this->execute("UPDATE user_auth SET attempt = 0, attempt_time = {$time} WHERE email='{$email}'");
+                //redirect to the user's  home here
+                switch ($result['user_type']) {
+                    case '1':
+                        $red = "/aquaspace/frontend/src/Reg/";
+                        break;
+                    case '2':
+                        $red = "/aquaspace/frontend/src/expert/expert-dashboard.html";
+                        break;
+                    case '3':
+                        $red = "/aquaspace/frontend/src/store/store-dashboard.html";
+                        break;
+                    case '4':
+                        $red = "/aquaspace/frontend/src/admin/admin-dashbord.html";
+                        break;
+                    default:
+                        //No default
+                        break;
+                }
+                $res = array("status" => "3", "redirect" => $red);
+                View::response($res);
             }
-            $payload = "{id:" . $result['id'] . ",email:'" . $result['email'] . "'}";
-
-            //set token
-            $this->setToken($payload, $result['id']);
-
-            //reset access_attept to zero
-            $time = time();
-            $this->execute("UPDATE user_auth SET attempt = 0, attemp_time = {$time} WHERE email='{$this->data["email"]}'");
-            //redirect to the user's  home here
-            switch ($result['type']) {
-                case '1':
-                    $red = $_SERVER['SERVER_NAME'] . "/aquaspace/frontend/index.html";
-                    break;
-                case '2':
-                    $red = $_SERVER['SERVER_NAME'] . "/aquaspace/frontend/expert/expert-dashboard.html";
-                    break;
-                case '3':
-                    $red = $_SERVER['SERVER_NAME'] . "/aquaspace/frontend/store/store-dashboard.html";
-                    break;
-                case '4':
-                    $red = $_SERVER['SERVER_NAME'] . "/aquaspace/frontend/admin/admin-dashbord.html";
-                    break;
-                default:
-                    //No default
-                    break;
-            }
-            $res = array("status" => "3", "redirect" => $red);
-            View::response($res);
         } elseif ($stmt->rowCount() > 1) {
             throw new \Exception("database error duplicate user accounts", 500);
         } else {
-            $stmt = $this->execute($this->get('user_auth', 'email =' . $this->data["email"]));
+            $stmt = $this->execute($this->get('user_auth', "email ='" . $email . "'"));
 
 
             if ($stmt->fetch()['attepmt'] < 5) {
                 $time = time();
-                $this->execute("UPDATE user_auth SET attempt = attempt + 1 , attempt_time = {$time} WHERE email='{$this->data["email"]}' ");
-                $res = array("status" => "5", "redirect" => "", "numberOfAttemp" => $stmt->fetch()['attempt']);
+                $this->execute("UPDATE user_auth SET attempt = attempt + 1 , attempt_time = '{$time}' WHERE email='{$email}' ");
+                $res = array("status" => "5", "redirect" => "", "attempt" => $stmt->fetch()['attempt']);
                 View::response($res);
             } else {
-                $timeToEnd = time() - $stmt->fetch()['attemp_time'];
-                $this->execute("UPDATE user_auth SET attempt = attempt + 1 user_statues = 5 WHERE email='{$this->data["email"]}'");
+                $timeToEnd = time() - $stmt->fetch()['attempt_time'];
+                $this->execute("UPDATE user_auth SET attempt = attempt + 1 user_statues = 5 WHERE email='{$email}'");
                 $cookie_name = "timeToEnd";
                 $cookie_value = $timeToEnd;
                 setcookie($cookie_name, $cookie_value, time() + $timeToEnd, "/");
-                $res = array("status" => "3", "redirect" => $_SERVER['SERVER_NAME'] . "/aquaspace/src/error/restrict.html");
+                $res = array("status" => "6", "redirect" => "/aquaspace/src/error/restrict.html");
                 View::response($res);
             }
         }
@@ -193,7 +182,7 @@ class Authentication extends \Core\Controller
                 "tp" => $tp,
                 "password" => md5($password),
                 "user_type" => "1",
-                "user_status" => "1"
+                "user_status" => "4"
             ];
             $this->exec($this->save("user_auth", $dataToInsertAuthTable));
             $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
@@ -297,7 +286,7 @@ class Authentication extends \Core\Controller
                 "tp" => $tp,
                 "password" => md5($password),
                 "user_type" => "2",
-                "user_status" => "1"
+                "user_status" => "4"
             ];
             $this->exec($this->save("user_auth", $dataToInsertAuthTable));
             $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
@@ -399,7 +388,7 @@ class Authentication extends \Core\Controller
                 "tp" => $tp,
                 "password" => md5($password),
                 "user_type" => "3",
-                "user_status" => "1"
+                "user_status" => "4"
             ];
             $this->exec($this->save("user_auth", $dataToInsertAuthTable));
             $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
