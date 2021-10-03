@@ -7,26 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800&display=swap" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-    //login script
-    $(signIn).click(function(){
-      $.ajax({
-        url: "http://127.0.0.1/aquaspace/backend/public/index.php?/Authentication/requestLogin",
-        data: {
-          zipcode: 97201
-        },
-        success: function( result ) {
-          $( "#weather-temp" ).html( "<strong>" + result + "</strong> degrees" );
-        },
-        fail: function(xhr, textStatus, errorThrown){
-          alert('request failed');
-       }
-      });
-    });
-
-
-  </script>
 </head>
 <body>
   <div class="cont">
@@ -49,5 +29,7 @@
       <button class="submit" type="button">Sign In</button>
     </form>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src = "../js/login.js"></script>
 </body>
 </html>
