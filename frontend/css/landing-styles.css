@@ -63,6 +63,7 @@ ul {
 
 .nav-links ul {
   display: flex;
+  align-items: center;
   justify-content: space-around;
   width: 37vw;
   list-style: none;
@@ -633,3 +634,7 @@ ul {
 
 }
 
+.before  {
+  padding: 5px;
+  border: rgb(255, 137, 116) solid 2px;
+}
