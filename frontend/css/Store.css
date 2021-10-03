@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
 /* Title */
 .head-titles{
     margin-top: 20px;
@@ -121,5 +131,98 @@ form > label{
 
 .storefront{
     margin:0px 30px 00px 30px;
-    
+}
+
+.store-img{
+    width: 100%;
+    height: 50vh;
+}
+
+.store-img .cover{
+    width: 100%;
+    height: 40vh;
+}
+
+.store-img a{
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 4px 10px;
+    color: white;
+    border: 2px solid white;;
+    background-color: rgba(0, 0, 0, 0.651);
+}
+
+.store-img #cover-btn{
+    position: relative;
+    top: -50px;
+    left: 10px;
+}
+
+.store-img .button:hover{
+    color: #f5ac7c;
+    padding: 4px 10px;
+    border: 2px solid #f5ac7c;
+}
+
+.store-img .profile-img{
+    width: 140px;
+    height: 140px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    position: relative;
+    top: -90px;
+    left: 5%;
+}
+
+.store-img #profile-btn{
+    color: rgb(255, 14, 14);
+    position: relative;
+    top: 0px;
+    left: -70%;
+} 
+
+.store-title{
+    display: flex;
+    align-content: flex-start;
+}
+
+.store-title h3{
+    margin-left: 10px;
+    font-size: 1.6rem;
+}
+
+.store-title span{
+    font-size: 0.8rem;
+    margin-left: 10px;
+    margin-top: 15px;
+    color: rgba(0, 0, 0, 0.685);
+}
+
+.open-time span{
+    font-size: 0.8rem;
+    margin-left: 10px;
+    color: rgba(0, 0, 0, 0.685);
+}
+
+.address{
+    margin-left: 10px;
+}
+
+.about{
+    margin-top: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.39);
+    padding: 10px;
+    background-color: rgba(255, 255, 255);
+    border-radius: 5px;
+}
+
+.about span{
+    font-weight: bold;
+    margin: 10px;
+}
+
+.about p{
+    text-indent: 50px;
+    margin-top: 10px;
 }
