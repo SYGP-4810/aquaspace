@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/landing-styles.css">
+    <link rel="stylesheet" href="../../css/inquiry.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Inquiry</title>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">
+            <img src="../../images/logo.png" alt="">
+            <h2>AquaSpace</h2>
+        </div>
+        <div class="search_box">
+            <div class="dropdown">
+                <div class="default_option">All</div>
+                <ul>
+                    <li>All</li>
+                    <li>Fish</li>
+                    <li>Articles</li>
+                </ul>
+            </div>
+            <div class="search_field">
+                <input type="text" class="input" placeholder="Search">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Build Tank</a></li>
+                <li id="a_parent"><a href="#">Add Post</a>
+                    <div id="a_child" class="sub-menu sub-menu-1">
+                        <ul>
+                            <li><a href="#">Fish</a></li>
+                            <li><a href="#">Equipment</a></li>
+                            <li><a href="#">Plant</a></li>
+                            <li><a href="#">Medicine</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#"><i class="fa fa-shopping-cart fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-bell fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-user-circle fa-lg"></i></a>
+                    <div class="sub-menu sub-menu-2">
+                        <ul class="options">
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </div>
+            </ul>
+        </div>
+    </div>
+    <div class="small-container">
+        <form id="contact" action="" method="post">
+            <h3>Send Inquiry</h3>
+            <fieldset>
+              <input placeholder="Location" type="text" tabindex="1" required autofocus>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Pickup Location" type="text" tabindex="1" required autofocus>
+              </fieldset>
+            <!-- <fieldset>
+              <input placeholder="Your Email Address" type="email" tabindex="2" required>
+            </fieldset> -->
+            <fieldset>
+              <input placeholder="Your Phone Number (optional)" type="tel" tabindex="3" required>
+            </fieldset>
+            <!-- <fieldset>
+              <input placeholder="Your Web Site (optional)" type="url" tabindex="4" required>
+            </fieldset> -->
+            <fieldset>
+              <textarea placeholder="Other" tabindex="5" required></textarea>
+            </fieldset>
+            <h4>Select items that you can provide</h4>
+            <fieldset class="dd">
+                <div>
+                    <input id="checkbox-1" class="checkbox-custom" name="checkbox-1" type="checkbox" checked>
+                    <label for="checkbox-1" class="checkbox-custom-label">Item 1</label>
+                </div>
+                <div>
+                    <input id="checkbox-1" class="checkbox-custom" name="checkbox-2" type="checkbox" checked>
+                    <label for="checkbox-1" class="checkbox-custom-label">Item 2</label>
+                </div>
+                <div>
+                    <input id="checkbox-1" class="checkbox-custom" name="checkbox-3" type="checkbox" checked>
+                    <label for="checkbox-1" class="checkbox-custom-label">Item 3</label>
+                </div>
+                <div>
+                    <input id="checkbox-1" class="checkbox-custom" name="checkbox-3" type="checkbox" checked>
+                    <label for="checkbox-1" class="checkbox-custom-label">Item 4</label>
+                </div>
+            </fieldset>
+            <fieldset>
+              <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Inquire</button>
+            </fieldset>
+          </form>
+
+    </div>
+    
+    <footer class="footer-distributed">
+
+        <div class="footer-left">
+
+            <div class="logo">
+                <img src="../../images/logo.png" alt="">
+                <h2>AquaSpace</h2>
+            </div>
+
+            <p class="footer-links">
+                <a href="#" class="link-1">Home</a>
+
+                <a href="#">Blog</a>
+
+                <a href="#">Pricing</a>
+
+                <a href="#">About</a>
+
+                <a href="#">Faq</a>
+
+                <a href="#">Contact</a>
+            </p>
+
+            <p class="footer-company-name">Company Name © 2015</p>
+        </div>
+
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+94-123456789</p>
+            </div>
+
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:support@company.com">support@company.com</a></p>
+            </div>
+
+        </div>
+
+        <div class="footer-right">
+
+            <p class="footer-company-about">
+                <span>About AquaSpace</span>
+                Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus
+                vehicula sit amet.
+            </p>
+
+            <div class="footer-icons">
+
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-github"></i></a>
+
+            </div>
+
+        </div>
+
+
+    </footer>
+    
+</body>
+</html>
