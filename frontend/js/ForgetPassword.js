@@ -24,16 +24,15 @@ $("#submit").click(function() {
         dataType: "json",
         success: function(data){
             if(data.status == 1){
-                alert("you dont have account with this email");
-                $("#email").focus();
+                alert(data.msg);
             }else if(data.status == 2){
-                alert("check your email");
+                alert(data.msg)
+                $("#email").focus();
             }
 
         },
         error: function(errMsg) {
-            //window.location.replace("../src/Error/"+errMsg.status+".html");
-            console.log(errMsg);
+            window.location.replace("../src/Error/"+errMsg.status+".html");
         }
     });
     }

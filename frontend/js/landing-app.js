@@ -93,7 +93,7 @@ $(document).ready(function(){
 
   $("#logOut").click(function(){
     $.ajax({
-        type: "POST",
+        type: "GET",
         url:setUrl("Authentication/requestLogout"),
         contentType: "application/json; charset=utf-8",
         dataType: "json",

@@ -543,8 +543,9 @@ class Authentication extends \Core\Controller
         $stmt = $this->execute($this->get('user_auth', "*", "email='" . $email . "'"));
         $to = $email;
         $subject = "Aquaspace account recover";
+        $nRows = $stmt->rowCount();
 
-        if ($stmt->rowCount() == 1) {
+        if ($nRows == 1) {
             //update the password
             $time = time();
             $id = $stmt->fetch()['id'];
@@ -562,8 +563,10 @@ class Authentication extends \Core\Controller
 </html>
             
             ";
-            $res = ["status" => "1", "check your email"];
-        } else if ($stmt->rowCount() == 0) {
+            $res = ["status" => "1", "msg" => "check your email"];
+            $this->sendMail($to, $subject, $msg);
+            View::response($res);
+        } else if ($nRows == 0) {
             //send unsuccefull response
             $msg = "
             <html>
@@ -576,11 +579,32 @@ class Authentication extends \Core\Controller
 </body>
 </html>
             ";
-            $res = ["status" => "2", "msg" => "you not found"];
+            $res = ["status" => "2", "msg" => "you are not found"];
+            $this->sendMail($to, $subject, $msg);
+            View::response($res);
         } else {
             throw new \Exception("email repeat in authentication");
         }
-        $this->sendMail($to, $subject, $msg);
+    }
+
+    public function recoverAction()
+    {
+        $idEncrypted = explode(".", $this->data['id']);
+        $id = base64_decode($idEncrypted[0]);
+        $stmt = $this->execute($this->get('user_auth', "*", "id ='" . $id . "'"));
+        $nPassword = md5($this->data['password']);
+        if ($stmt->rowCount() == 0) {
+            $res = ["status" => "1", "msg" => "your link is broken try again with new link"];
+        } else if ($stmt->rowCount() == 1) {
+            if ($nPassword == $stmt->fetch()['password']) {
+                $res = ["status" => "2", "msg" => "your new password and old password are equal try new password"];
+            } else {
+                $this->exec($this->update('user_auth', ["password" => $nPassword], "id='" . $id . "'"));
+                $res = ["status" => "3", "msg" => "successfuly updated the password"];
+            }
+        } else {
+            throw new \Exception("id repeat in authentication");
+        }
         View::response($res);
     }
 
