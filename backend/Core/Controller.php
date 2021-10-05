@@ -117,24 +117,4 @@ class Controller extends \Core\Token
         $mail->Body    = $message;
         $mail->send();
     }
-
-    public function checkPermissions()
-    {
-        $userTypeAndId = [];
-        if (isset($_COOKIE['emailToken'])) {
-            $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['emailToken'] . "'"));
-            if ($stmt->rowCount() > 1) {
-                throw new \Exception("token repeat ");
-            } else if ($stmt->rowCount() == 0) {
-                $userTypeAndId['userType'] = 0;
-                $userTypeAndId['id'] = null;
-            } else {
-                $userTypeAndId['userType'] = $stmt->fetch()['user_type'];
-                $userTypeAndId['id'] = $stmt->fetch()['id'];
-            }
-        } else {
-            $userTypeAndId['userType'] = 0;
-            $userTypeAndId['id'] = null;
-        }
-    }
 }

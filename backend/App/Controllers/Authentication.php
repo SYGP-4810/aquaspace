@@ -77,23 +77,7 @@ class Authentication extends \Core\Controller
                     $time = time();
                     $this->execute("UPDATE user_auth SET attempt = 0, attempt_time = {$time} WHERE email='{$email}'");
                     //redirect to the user's  home here
-                    switch ($result['user_type']) {
-                        case '1':
-                            $red = "/aquaspace/frontend/src/Reg/";
-                            break;
-                        case '2':
-                            $red = "/aquaspace/frontend/src/expert/expert-dashboard.html";
-                            break;
-                        case '3':
-                            $red = "/aquaspace/frontend/src/store/store-dashboard.html";
-                            break;
-                        case '4':
-                            $red = "/aquaspace/frontend/src/admin/admin-dashbord.html";
-                            break;
-                        default:
-                            //No default
-                            break;
-                    }
+                    $red = "/aquaspace/frontend/src/";
                     $res = array("status" => "3", "redirect" => $red);
                     View::response($res);
                 }
@@ -123,11 +107,8 @@ class Authentication extends \Core\Controller
 
     public function requestLogoutAction()
     {
-        $secret = "i am a secrete" . time();
-        $this->execute($this->update('user_auth', ['access_token' => md5($secret)], "id='" . $this->params['id']) . "'");
         setcookie("access_token", "", time() - 60 * 60 * 24 * 7, NULL, NULL, NULL, TRUE);
-        //redirect to the login page
-        $res = ["redirect" => "/aquaspace/src/login.html"];
+        $res = ["status" => "1", "msg" => "You have been logged out"];
         View::response($res);
     }
 
@@ -601,5 +582,36 @@ class Authentication extends \Core\Controller
         }
         $this->sendMail($to, $subject, $msg);
         View::response($res);
+    }
+
+    public function userTypeIdentifyAction()
+    {
+        if (isset($_COOKIE['access_token'])) {
+            $stmt = $this->execute($this->get('user_auth', "*", "access_token='" . $_COOKIE['access_token'] . "'"));
+            if ($stmt->rowCount() == 1) {
+                $type = $stmt->fetch()['user_type'];
+                $row = $stmt->fetch();
+            } else if ($stmt->rowCount() == 0) {
+                $type = 0;
+            } else {
+                throw new \Exception("token repeat ");
+            }
+        } else {
+            $type = 0;
+        }
+        if ($type == 0) {
+            $res = [
+                "status" => "0",
+                "msg" => "user is not authenticated",
+            ];
+            View::response($res);
+        } else {
+            $res = [
+                "status" => "1",
+                "msg" => "user is authenticated",
+                "type" => $type
+            ];
+            View::response($res);
+        }
     }
 }
