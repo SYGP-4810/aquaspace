@@ -94,44 +94,43 @@
 		<section class="section-1">
             <div class="head-titles">
                 <h1>INVENTORY</h1>
-                <a href="../Store/StoreInventoryAdd.html" class="button">Add</a>
             </div>
-            <div class="invent-container">
-                <table class="invent">
+            <div class="invent-add-container">
+                <table class="invent-add">
                     <tr>
-                        <th></th>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Status</th>
-                        <th>Delivery</th>
-                        <th></th>
-                        <th></th>
+                        <td>Image</td>
+                        <td>
+                            <input type="file" id="inventory-img" name="inventory-img">
+                        </td>
                     </tr>
                     <tr>
-                        <td class="inv-img"><img src="../../images/profile.jpg"></td>
-                        <td>Fish</td>
-                        <td>$ 100.00 </td>
-                        <td>5</td>
-                        <td>Available</td>
-                        <td>Pickup</td>
-                        <td><a href="#" class="button">Edit</a></td>
-                        <td><input type="submit" class="button" value="DELETE"></td>
+                        <td>Product Name</td>
+                        <td><input type="text" id="productname" name="productname"></td>
                     </tr>
                     <tr>
-                        <td class="inv-img"><img src="../../images/profile.jpg"></td>
-                        <td>Fish</td>
-                        <td>$ 100.00 </td>
-                        <td>5</td>
-                        <td>Available</td>
-                        <td>Pickup</td>
-                        <td><a href="#" class="button">Edit</a></td>
-                        <td><input type="submit" class="button" value="DELETE"></td>
+                        <td>Price</td>
+                        <td><input type="text" id="price" name="price"></td>
+                    </tr>
+                    <tr>
+                        <td>Quantity</td>
+                        <td><input type="text" id="quantity" name="quantity"></td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td><input type="text" id="status" name="status"></td>
+                    </tr>
+                    <tr>
+                        <td>Delivery</td>
+                        <td><input type="text" id="delivery" name="delivery"></td>
                     </tr>
                 </table>
+                <div class="btn">
+                    <input type="submit" class="button" value="SAVE">
+                    <input type="submit" class="button" value="DELETE">
+                </div>
             </div>
 		</section>
 	</div>
-
 </body>
 </html>
+
