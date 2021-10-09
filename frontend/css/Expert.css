@@ -5,12 +5,6 @@ div.headerForPost {
   top: 5%;
 }
 
-table.contentTable {
-  position: relative;
-  top: 10%;
-  left: 5%;
-}
-
 /* Dropdown Button */
 button.dropbtn {
   background-color: #04aa6d;
@@ -69,4 +63,32 @@ div.subHeader {
 div.articleCreation {
   display: flex;
   flex-direction: column;
+}
+
+div.question-container {
+  display: flex;
+  position: relative;
+  left: 5%;
+  top: 10%;
+}
+
+div.questionItem {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+span.qTitle {
+}
+
+span.question {
+}
+
+span.answerForQuestion {
+}
+
+div.blogContainer {
+  position: absolute;
+  top: 10%;
+  left: 5%;
 }
