@@ -48,6 +48,14 @@ form > input[type=text] {
     box-sizing: border-box;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 8px;
+    font-size: 1.4rem;
+}
+
+textarea{
+    width: 100%;
+    resize: none;
+    padding: 10px;
+    font-size: 1.2rem;
 }
 
 form > label{
@@ -121,6 +129,30 @@ form > label{
     width: 120px;
     border: 2px solid #f1967a;
     border-radius: 50%;
+}
+
+.d-modes{
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+    font-size: 1.2rem;
+}
+ 
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.row p{
+    margin-left: 15px;
+}
+
+.d-modes [type="checkbox"]{  
+    height: 20px;
+    width: 20px;
 }
 
 /* reset */
@@ -269,9 +301,18 @@ form > label{
 
 /* invent add */
 
-/* table, th, td {
-    border: 1px solid black;
-  } */
+.invent-add   [type="checkbox"]{  
+    height: 20px;
+    width: 20px;
+}   
+
+.invent-add .row p{
+    font-size: 1rem;
+} 
+
+.invent-add span{
+    font-size: 0.9rem;
+}
 
 .invent-add{
     margin-left: 15%;
@@ -286,8 +327,15 @@ form > label{
 .invent-add  input[type=text] {
     width: 500px;
     padding: 10px 10px;
-    box-sizing: border-box;
     border: 1px solid rgb(0, 0, 0);
+    font-size: 1.2rem;
+}
+
+.invent-add #price, .invent-add #quantity  {
+    text-align: right;
+    padding: 10px 10px;
+    border: 1px solid rgb(0, 0, 0);
+    font-size: 1.2rem;
 }
 
 .invent-add  input[type=file] {
@@ -299,4 +347,39 @@ form > label{
     flex-direction: row;
     float: right;
     margin-right: 10%;
+    margin-bottom: 20px;
 }
+
+.btn a{
+    text-decoration: none;
+}
+
+/* orders */
+
+.topics {
+    display: flex;
+    align-items: center;
+  }
+  
+  .topics p {
+    margin-left: 25px;
+    margin-right: 25px;
+    font-size: 22px;
+    font-weight: 500;
+    color: #828283;
+    cursor: pointer;
+  }
+  
+  .topics p:first-child {
+    margin-left: 100px;
+    color: rgb(53, 53, 53);
+  }
+  
+  .topics i {
+    color: #828283;
+  }
+
+  .pending{
+      
+  } 
+

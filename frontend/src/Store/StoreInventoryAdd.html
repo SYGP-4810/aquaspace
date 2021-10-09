@@ -72,12 +72,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../Store/StorePromotion.html">
-                        <i class="fas fa-bullhorn" aria-hidden="true"></i>
-                        <span>Promotion</span>
-                    </a>
-                </li>
-                <li>
                     <a href="../Store/StoreReports.html">
                         <i class="fas fa-clipboard" aria-hidden="true"></i>
                         <span>Generate Reports</span>
@@ -100,7 +94,13 @@
                     <tr>
                         <td>Image</td>
                         <td>
-                            <input type="file" id="inventory-img" name="inventory-img">
+                            <span>Picture 1</span><input type="file" id="inventory-img1" name="inventory-img">
+                            <br>
+                            <span>Picture 2</span><input type="file" id="inventory-img2" name="inventory-img">
+                            <br>
+                            <span>Picture 3</span><input type="file" id="inventory-img3" name="inventory-img">
+                            <br>
+                            <span>Picture 4</span><input type="file" id="inventory-img4" name="inventory-img">
                         </td>
                     </tr>
                     <tr>
@@ -109,24 +109,35 @@
                     </tr>
                     <tr>
                         <td>Price</td>
-                        <td><input type="text" id="price" name="price"></td>
+                        <td><input type="number" id="price" name="price" min="0"></td>
                     </tr>
                     <tr>
                         <td>Quantity</td>
-                        <td><input type="text" id="quantity" name="quantity"></td>
+                        <td><input type="number" id="quantity" name="quantity" min="0"></td>
                     </tr>
                     <tr>
-                        <td>Status</td>
-                        <td><input type="text" id="status" name="status"></td>
+                        <td>Product Details</td>
+                        <td><textarea name="" id=""  rows="10"></textarea></td>
+                        
                     </tr>
                     <tr>
                         <td>Delivery</td>
-                        <td><input type="text" id="delivery" name="delivery"></td>
+                        <td>
+                            <div class="row">
+                                <input type="checkbox" name="delivery" id="inStorePickUp"><p>In Store Pick-up</p>
+                            </div>
+                            <div class="row">
+                                <input type="checkbox" name="delivery" id="inStoreDelivery"><p>In Store Delivery Service</p>
+                            </div>
+                            <div class="row">
+                                <input type="checkbox" name="delivery" id="thirdPartyDelivery"><p>Third Party Delivery Service</p>
+                            </div>
+                        </td>    
                     </tr>
                 </table>
                 <div class="btn">
                     <input type="submit" class="button" value="SAVE">
-                    <input type="submit" class="button" value="DELETE">
+                    <a href="../Store/StoreInventory.html" class="button">CANCEL</a>
                 </div>
             </div>
 		</section>
