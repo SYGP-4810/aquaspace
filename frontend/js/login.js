@@ -80,12 +80,13 @@ $("#signIn").click(function(){
         alert("invalid credintial \n you have "+5-data.attemp+"left");
         $("#email").focus();
         $("#password").focus();
+      }else if(status == 7){
+        alert(JSON.stringify(data.error));
       }
 
     },
     error: function(errMsg) {
-        //window.location.replace("../src/Error/"+errMsg.status+".html");
-        console.log(errMsg);
+        window.location.replace("../src/Error/"+errMsg.status+".html");
     }
 });
     

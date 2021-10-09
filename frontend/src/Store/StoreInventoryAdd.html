@@ -87,23 +87,59 @@
 		</nav>
 		<section class="section-1">
             <div class="head-titles">
-                <h1>ORDERS</h1>
+                <h1>INVENTORY</h1>
             </div>
-            <div class="orders">
-                <div class="topics">
-                    <p id="pending">PENDING ORDERS</p>
-                    <i class="fas fa-chevron-right"></i>
-                    <p id="accept">ACCEPT ORDERS</p>
-                    <i class="fas fa-chevron-right"></i>
-                    <p id="send">SEND ORDERS</p>
-                    <i class="fas fa-chevron-right"></i>
-                    <p id="past">PAST ORDERS</p>
-                </div>
-                <div class="pending">
-                    
+            <div class="invent-add-container">
+                <table class="invent-add">
+                    <tr>
+                        <td>Image</td>
+                        <td>
+                            <span>Picture 1</span><input type="file" id="inventory-img1" name="inventory-img">
+                            <br>
+                            <span>Picture 2</span><input type="file" id="inventory-img2" name="inventory-img">
+                            <br>
+                            <span>Picture 3</span><input type="file" id="inventory-img3" name="inventory-img">
+                            <br>
+                            <span>Picture 4</span><input type="file" id="inventory-img4" name="inventory-img">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Product Name</td>
+                        <td><input type="text" id="productname" name="productname"></td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td><input type="number" id="price" name="price" min="0"></td>
+                    </tr>
+                    <tr>
+                        <td>Quantity</td>
+                        <td><input type="number" id="quantity" name="quantity" min="0"></td>
+                    </tr>
+                    <tr>
+                        <td>Product Details</td>
+                        <td><textarea name="" id=""  rows="10"></textarea></td>
+                        
+                    </tr>
+                    <tr>
+                        <td>Delivery</td>
+                        <td>
+                            <div class="row">
+                                <input type="checkbox" name="delivery" id="inStorePickUp"><p>In Store Pick-up</p>
+                            </div>
+                            <div class="row">
+                                <input type="checkbox" name="delivery" id="inStoreDelivery"><p>In Store Delivery Service</p>
+                            </div>
+                            <div class="row">
+                                <input type="checkbox" name="delivery" id="thirdPartyDelivery"><p>Third Party Delivery Service</p>
+                            </div>
+                        </td>    
+                    </tr>
+                </table>
+                <div class="btn">
+                    <input type="submit" class="button" value="SAVE">
+                    <a href="../Store/StoreInventory.html" class="button">CANCEL</a>
                 </div>
             </div>
-                
 		</section>
 	</div>
 </body>
