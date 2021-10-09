@@ -313,6 +313,10 @@ input[type="checkbox"]{
     width: 25px;
 }
 
+.notifi td{
+    padding: 10px;
+}
+
 .reset-pass{
     margin-left: 10%;
     display: flex;
