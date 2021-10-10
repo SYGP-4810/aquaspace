@@ -33,19 +33,19 @@ $(".verify").click(function(e){
             
             // The key needs to match your method's input parameter (case-sensitive).
             var req = {"email": email};
-            // $.ajax({
-            //     type: "POST",
-            //     url: "http://127.0.0.1/aquaspace/backend/public/index.php?Authentication/emailVerificationTokenCreate",
-            //     data: JSON.stringify(req),
-            //     contentType: "application/json; charset=utf-8",
-            //     dataType: "json",
-            //     success: function(data){
-            //         alert(data.msg);
-            //     },
-            //     error: function(errMsg) {
-            //         window.location.replace("../src/Error/"+errMsg.status+".html");
-            //     }
-            // });
+            $.ajax({
+                type: "POST",
+                url: setUrl("Authentication/emailVerificationTokenCreate"),
+                data: JSON.stringify(req),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data){
+                    alert(data.msg);
+                },
+                error: function(errMsg) {
+                    window.location.replace("../src/Error/"+errMsg.status+".html");
+                }
+            });
         $(".tab").hide();
         if($("input[name='selection']:checked").val() == 'value-1') {
         $(".tab").eq(2).show();
@@ -193,11 +193,15 @@ $("#signUp1").click(function(e){
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data){
-                alert("please login");
-                window.location.replace("../src/login.html");
+                if(data.status ==1){
+                    alert("please login");
+                    window.location.replace("../src/login.html");
+                    }else{
+                        alert(JSON.stringify(data.error));
+                    }
             },
             error: function(errMsg) {
-                window.location.replace("../src/Error/"+errMsg.status+".html");
+                //window.location.replace("../src/Error/"+errMsg.status+".html");
                 //console.log(errMsg);
             }
         });
@@ -359,17 +363,28 @@ $("#signUp2").click(function(){
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data){
+                if(data.status ==1){
+                alert("please login");
                 window.location.replace("../src/login.html");
+                }else{
+                    if(data.stastus ==1){
+                        window.location.replace("../src/login.html");
+                        }else{
+                            alert(JSON.stringify(data.error));
+                        }
+                }
 
             },
             error: function(errMsg) {
-                window.location.replace("../src/Error/"+errMsg.status+".html");
+               window.location.replace("../src/Error/"+errMsg.status+".html");
             }
         });
         }
         reader.onerror = function (error) {
          //console.log('Error: ', error);
             alert(error);
+            //window.location.replace("../src/Error/"+errMsg.status+".html");
+
         }
         
      }
@@ -524,9 +539,12 @@ $("#signUp3").click(function(){
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data){
-                console.log(data);
-                alert("please login");
-                window.location.replace("../src/login.html");
+                if(data.status ==1){
+                    alert("please login");
+                    window.location.replace("../src/login.html");
+                    }else{
+                        alert(JSON.stringify(data.error));
+                    }
             },
             error: function(errMsg) {
                 window.location.replace("../src/Error/"+errMsg.status+".html");

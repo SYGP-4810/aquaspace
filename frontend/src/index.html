@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/fontawesome-free-5.15.4-web/css/all.css">
   <link rel="stylesheet" href="../css/landing-styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <title>Document</title>
+  <title>Homepage</title>
 </head>
 
 <body>
@@ -37,7 +37,7 @@
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">Blog</a></li>
           <li><a href="#">Build Tank</a></li>
-          <li id="a_parent"><a href="#">Add Post</a>
+          <li  class="after" id="a_parent"><a href="#">Add Post</a>
             <div class="sub-menu sub-menu-1">
               <ul>
                 <li><a href="#">Fish</a></li>
@@ -48,18 +48,18 @@
             </div>
           </li>
           
-          <li><a href="#"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
+          <li class="after"><a href="#"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
           <li class="after"><a href="#"><i class="fas fa-bell fa-lg"></i></a></li>
           <li class="after"><a href="#"><i class="fas fa-user-circle fa-lg"></i></a>
             <div class="sub-menu sub-menu-2">
               <ul class="options">
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Logout</a></li>
+                <li id="profile" style="cursor:pointer;">Profile</li>
+                <li id="logOut" style="cursor:pointer;">Logout</li>
               </ul>
             </div>  
           </li>
-          <li class="before"><a href="#">Login</a></li>
-          <li class="before"><a href="#">Sign up</a></li>    
+          <li class="before"><a href="login.html">Login</a></li>
+          <li class="before"><a href="signup.html">Sign up</a></li>    
         </ul>
       </div>
     </div>
@@ -416,9 +416,7 @@
   </footer>
     
     <script src="../js/landing-app.js"></script>
-    <script>
 
-    </script>
 </body>
 
 </html>

@@ -1,0 +1,23 @@
+.refund-form {
+    width: 90%;
+    margin: auto;
+}
+
+.table-responsive thead{
+    background:rgb(250, 250, 250);
+}
+
+form {
+    margin-top: 50px;
+    width: 1000px;
+    
+}
+
+form > div {
+    display: flex;
+}
+form label {
+    font-size: 18px;
+    font-weight: 400;
+    margin-right: 20px;
+}

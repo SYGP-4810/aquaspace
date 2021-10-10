@@ -1,0 +1,80 @@
+.topics {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.topics p {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 18vh;
+  font-size: 22px;
+  font-weight: 500;
+  color: #828283;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.topics p:first-child {
+  margin-left: 100px;
+  color: rgb(61, 61, 61);
+}
+
+.topics i {
+  color: #828283;
+  margin-top: 18vh;
+}
+
+.col-4:hover {
+  transform: none;
+}
+
+.selected {
+  border: 5px solid black;
+}
+
+.small-container {
+  cursor: pointer;
+  display: flex;
+}
+
+
+.col {
+  padding: 10px;
+  width: 25%;
+  margin-bottom: 50px;
+}
+
+.col img {
+  width: 100%;
+  height: 250px;
+}
+
+.options {
+  width: 75%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-left: 30px;
+}
+
+.options div {
+  margin: 50px;
+  flex-basis: 20%;
+}
+
+.options h3 {
+    margin-bottom: 30px;
+    width: 100%;
+    position: relative;
+    top: 10px;
+    left: 100px;
+    font-size: 20px;
+    font-weight: 400;
+    color: rgb(121, 121, 121);
+}
+.items, .fish{
+    display: none;
+}
