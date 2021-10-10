@@ -31,8 +31,9 @@ class Users extends \Core\Controller
      * @return void
      */
     public function indexAction()
-    {
-        $data = array("data1" => $this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"), "data2" => "");
+    { 
+        $stmt = $this->execute ($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
+        $data = array("data1" => $stmt->rowCount(), "data2" => "");
         View::response($data);
     }
     public function testAction()

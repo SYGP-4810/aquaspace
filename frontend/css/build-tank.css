@@ -75,6 +75,6 @@
     font-weight: 400;
     color: rgb(121, 121, 121);
 }
-.items{
+.items, .fish{
     display: none;
 }
