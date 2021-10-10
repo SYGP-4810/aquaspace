@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
+	<link rel="stylesheet" href="../../css/dashboard-styles.css">
+    <link rel="stylesheet" href="../../css/Store.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<input type="checkbox" id="checkbox">
+	<header class="header">
+		<div class="u-name">
+            <img src="../../images/logo.png"><span>AquaSpace</span>
+			<label for="checkbox">
+				<i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
+			</label>
+		</div>
+        <div class="icons">
+            <i class="fa fa-bell" aria-hidden="true"></i>
+            <i class="fa fa-user" aria-hidden="true"></i>
+        </div>
+	</header>
+	<div class="body">
+		<nav class="side-bar">
+			<ul>
+				<li>
+                    <a href="../Store/StoreHome.html">
+                        <i class="fas fa-home fa-xs" aria-hidden="true"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreEdit.html">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreReset.html">
+                        <i class="fas fa-unlock-alt" aria-hidden="true"></i>
+                        <span>Reset Password</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreStoreFront.html">
+                        <i class="fas fa-gifts" aria-hidden="true"></i>
+                        <span>Storefront</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreInventory.html">
+                        <i class="fas fa-tags" aria-hidden="true"></i>
+                        <span>Inventory</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreOrders.html">
+                        <i class="fas fa-shopping-basket" aria-hidden="true"></i>
+                        <span>Orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreReviews.html">
+                        <i class="fas fa-flag-checkered" aria-hidden="true"></i>
+                        <span>Reviews & Questions</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreRefunds.html">
+                        <i class="fas fa-money-check-alt" ria-hidden="true"></i>
+                        <span>Refunds</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreReports.html">
+                        <i class="fas fa-clipboard" aria-hidden="true"></i>
+                        <span>Generate Reports</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreNotifi.html">
+                        <i class="fas fa-bell" aria-hidden="true"></i>
+                        <span>Notification Settings</span>
+                    </a>
+                </li>
+			</ul>
+		</nav>
+		<section class="section-1">
+            <div class="head-titles">
+                <h1>ORDERS</h1>
+            </div>
+            <div class="orders">
+                <div class="topics">
+                    <p id="pending">PENDING ORDERS</p>
+                    <i class="fas fa-chevron-right"></i>
+                    <p id="accept">ACCEPT ORDERS</p>
+                    <i class="fas fa-chevron-right"></i>
+                    <p id="send">SEND ORDERS</p>
+                    <i class="fas fa-chevron-right"></i>
+                    <p id="past">PAST ORDERS</p>
+                </div>
+                <table class="pending">
+                    <tr style="outline: unset;">
+                        <th>Order No</th>
+                        <th>Order Description</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>1255</td>
+                        <td>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in la</td>
+                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>1255</td>
+                        <td>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in la</td>
+                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>1255</td>
+                        <td>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in la</td>
+                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
+                    </tr>
+                </table>
+                <table class="accept">
+                    <tr style="outline: unset;">
+                        <th>Order No</th>
+                        <th>Order Description</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>1255</td>
+                        <td>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in la</td>
+                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
+                        <td><input type="submit" class="button" value="Send Order"></td>
+                    </tr>
+                    <tr>
+                        <td>1255</td>
+                        <td>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in la</td>
+                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
+                        <td><input type="submit" class="button" value="Send Order"></td>
+                    </tr>
+                    <tr>
+                        <td>1255</td>
+                        <td>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in la</td>
+                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
+                        <td><input type="submit" class="button" value="Send Order"></td>
+                    </tr>
+                </table>
+                <table class="send">
+                    <tr style="outline: unset;">
+                        <th>Order No</th>
+                        <th>Order Description</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>1255</td>
+                        <td>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in la</td>
+                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
+                        <td><input type="submit" class="button" value="Done"></td>
+                    </tr>
+                    <tr>
+                        <td>1255</td>
+                        <td>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in la</td>
+                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
+                        <td><input type="submit" class="button" value="Done"></td>
+                    </tr>
+                    <tr>
+                        <td>1255</td>
+                        <td>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in la</td>
+                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
+                        <td><input type="submit" class="button" value="Done"></td>
+                    </tr>
+                </table>
+                <table class="past">
+                    <tr style="outline: unset;">
+                        <th>Order No</th>
+                        <th>Order Description</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>1255</td>
+                        <td>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in la</td>
+                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>1255</td>
+                        <td>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in la</td>
+                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>1255</td>
+                        <td>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in la</td>
+                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
+                    </tr>
+                </table>
+            </div>        
+		</section>
+	</div>
+    <script src="../../js/Store.js"></script>
+</body>
+</html>
+
