@@ -57,4 +57,22 @@ class Admin extends \Core\Controller
         $this->sendMail($to, $subject, $message);
         View::response("new admin was added");
     }
+
+    public function getAdminAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'"));
+        $result = $stmt->fetch();
+        $id = $result['id'];
+        $stmt = $this->execute($this->get('admin', "*", "auth_id ='" . $id . "'"));
+        $result2 = $stmt->fetch();
+        $res = [
+            "fName" => $result2['first_name'],
+            "lName" => $result2['last_name'],
+            "email" => $result['email'],
+            "Address" => $result2['address'],
+            "city" => $result2['city'],
+            "tp" => $result['tp']
+        ];
+        View::response($res);
+    }
 }
