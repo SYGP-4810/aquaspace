@@ -1,0 +1,18 @@
+.container .small-container{
+    max-width: 90%;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+ .container .small-container .col-4 {
+     flex-basis: 25%;
+ }
+
+ .container .small-container h3{
+    color: #555555;
+    font-weight: 600;
+
+  }

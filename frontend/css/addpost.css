@@ -1,0 +1,122 @@
+.container {
+  max-width: 90%;
+  margin: auto;
+  margin-top: 20vh;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+label , p{
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
+label span , p{
+  font-size: 13px;
+}
+
+label input {
+  margin-top: 13px;
+}
+
+label , p {
+  /* display: block; */
+  margin: 15px;
+}
+
+label > span , p{
+  float: left;
+  width: 25%;
+  margin-top: 12px;
+  padding-right: 10px;
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 40%;
+  height: 30px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #dadada;
+  color: #888;
+}
+
+textarea {
+  height: 150px;
+}
+
+.required {
+  color: rgb(255, 0, 64);
+}
+
+/* ------------------------------ */
+
+.imageWrapper {
+  border: 1px solid #888;
+  width: 100px;
+  /* padding-bottom: 70%; */
+  /* border-radius: 50%; */
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.imageWrapper img {
+  height: 105%;
+  width: initial;
+  max-height: 100%;
+  max-width: initial;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+  
+  /* .file-upload {
+    position: relative;
+    overflow: hidden;
+    /* margin: 10px; */
+  }
+
+.file-upload {
+  /* position: relative;
+    overflow: hidden; */
+  /* margin: 10px; */
+  /* width: 100%; */
+  /* max-width: 150px; */
+  text-align: center;
+  color: rgb(75, 74, 74);
+  font-size: 12px;
+  background: transparent;
+  border: 2px solid #888;
+  padding: 0.85em 1em;
+  display: inline;
+} */
+
+/* .file-upload input.file-input {
+  
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  height: 100%;
+} */
+
+label img{
+    height: 150px;
+    width: 150px;
+}
+
+.img-list {
+    display: flex;
+}
+
