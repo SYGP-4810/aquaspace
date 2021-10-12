@@ -1,24 +1,28 @@
- /* .content {
-    position: absolute;
-    top: 20vh;
-    margin-top: 13vh;
-} */
+.content {
+  display: flex;
+  /* position: relative;
+  top: 80px; */
+}
 
 .cards {
-    position: absolute;
-    left: 250px ;
-    top: 20vh;
+  margin-top: 80px;
+  width: 80%;
+    /* position: relative;
+    left: 20% ; */
     /* position: relative;
     left: 250px; */
 }
 
 .filter {
-  position: fixed;
-  top: 80px;
-  display: block;
-  margin: 0 auto;
-  width: 250px;
-  height: 100vh;
+  background-image: url("../images/bg.jpg");
+  margin-top: 80px;
+  /* position: fixed; */
+  /* top: 80px; */
+  /* display: block; */
+  /* margin: 0 auto; */
+  width: 20%;
+  height: auto;
+  /* height: 100vh; */
   background: #fff;
   color: #666;
   border-radius: 4px;
@@ -31,10 +35,17 @@
     margin-left: 54px;
     color: #194381;
 }
+
+.list {
+  position: relative;
+  left: 25px;
+  
+}
 .list li {
   position: absolte;
   font-size: 14px;
   left: 100px;
+  
 }
 
 .list li:hover:not(.heading) {
@@ -335,6 +346,9 @@
   }
 
 
+  .dropmedown {
+    margin-top: 30px;
+  }
   .dropmedown a,
   .dropmedown a:visited {
     color: #555;
