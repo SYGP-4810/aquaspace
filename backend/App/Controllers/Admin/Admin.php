@@ -60,10 +60,35 @@ class Admin extends \Core\Controller
 
     public function getAdminAction()
     {
-        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'"));
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " user_type='4'"));
         $result = $stmt->fetch();
         $id = $result['id'];
         $stmt = $this->execute($this->get('admin', "*", "auth_id ='" . $id . "'"));
+        $result2 = $stmt->fetch();
+        $res = [
+            "fName" => $result2['first_name'],
+            "lName" => $result2['last_name'],
+            "email" => $result['email'],
+            "address" => $result2['address'],
+            "city" => $result2['city'],
+            "tp" => $result['tp']
+        ];
+        View::response($res);
+    }
+
+    public function getAdminListAction()
+    {
+        $stmt = $this->execute($this->join("user_auth, admin", "email,tp,user_auth.id AS id,first_name,last_name", "user_auth.id = admin.auth_id"));
+        $nRows = $stmt->rowCount();
+        $result = $stmt->fetchAll();
+        View::response($result);
+    }
+
+    public function getAdminDetailsAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', "*", "id ='" . $this->data['id'] . "'"));
+        $result = $stmt->fetch();
+        $stmt = $this->execute($this->get('admin', "*", "auth_id ='" . $this->data['id'] . "'"));
         $result2 = $stmt->fetch();
         $res = [
             "fName" => $result2['first_name'],
