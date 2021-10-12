@@ -169,6 +169,7 @@ form > label{
 .store-img{
     width: 100%;
     height: 50vh;
+    z-index: 2;
 }
 
 .store-img .cover{
@@ -265,6 +266,64 @@ form > label{
     margin-bottom: 5px;
 }
 
+.item-title{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.items{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.644);
+    margin: 10px;
+}
+
+.item img{
+    width: 150px;
+    height: 150px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+} 
+
+/* storefrontFeatured */
+.storefrontFeatured{
+    margin: 0px 40px;
+}
+
+.storefrontFeatured .head .button{
+    float: right;
+    margin-top: -15px;
+}
+
+.storefrontFeatured .list-item{
+    margin-top: 60px;
+    align-items: center;
+}
+
+.storefrontFeatured .list-item img{
+    width: 80px;
+    height: 80px;
+}
+
+.storefrontFeatured .list-item td{
+    font-size: 1.3rem;
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+
+
+
 /* inventory */
 
 .head-titles a, .invent a{
@@ -359,27 +418,122 @@ form > label{
 .topics {
     display: flex;
     align-items: center;
-  }
+}
   
-  .topics p {
+.topics p {
     margin-left: 25px;
     margin-right: 25px;
     font-size: 22px;
     font-weight: 500;
     color: #828283;
     cursor: pointer;
-  }
+}
   
-  .topics p:first-child {
-    margin-left: 100px;
+.topics p:first-child {
+    margin-left: 40px;
     color: rgb(53, 53, 53);
-  }
+}
   
-  .topics i {
+.topics i {
     color: #828283;
-  }
+}
 
-  .pending{
-      
-  } 
+/* pending */
 
+.pending, .accept, .send, .past, .refunds{
+    margin: 30px 50px;
+    border-collapse:separate; 
+    border-spacing:1em;
+} 
+
+.pending a, .accept a, .send a, .past a, .refunds a{
+    text-decoration: none;
+    white-space: nowrap;
+}
+.pending th, .accept th, .send th, .past th, .refunds th{
+    font: 1.5em bold;
+}
+.pending tr, .accept tr, .send tr, .past tr, .refunds tr{
+    outline:  solid #828283;
+}
+.pending td, .accept td, .send td, .past td, .refunds td{
+    font-size: 1.3rem;
+    padding: 20px 30px;
+    /* white-space: nowrap; */
+}
+
+/* order details */
+
+.order-details{
+    margin: 30px 40px;
+}
+
+.o-detail{
+    margin: 20px;
+}
+
+.o-detail td{
+    font-size: 1.3rem;
+    padding: 10px 30px;
+    white-space: nowrap;
+}
+.order-details h3{
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.o-product{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 30px;
+}
+
+.p-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.644);
+    margin: 10px;
+}
+
+.p-card img{
+    width: 150px;
+    height: 150px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* accept */
+
+.accept, .send, .past{
+    display: none;
+}
+
+/* refunds */
+
+.reason{
+    white-space:pre-wrap;
+}
+
+/* notify */
+
+.notifi .button{
+    margin-right: 30%;
+}
+
+.notifi{
+    margin-left: 40px;
+    font-size: 1.3em;
+}
+.notifi td{
+    padding: 10px;
+}
+
+input[type="checkbox"]{  
+    height: 25px;
+    width: 25px;
+}

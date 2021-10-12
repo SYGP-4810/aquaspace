@@ -7,6 +7,54 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
+/* Home */
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 20px;
+    margin-right: 20px;
+    justify-content: space-evenly;
+}
+
+.container .card{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(228, 227, 227, 0.377);
+    width: 250px;
+    height: 200px;
+    border-style: outset;
+    border-radius: 4% ;
+    border-color: rgba(139, 139, 139, 0.555);
+    margin: 10px;
+}
+
+.container .card:hover{
+    background-color: #f1967a;
+}
+
+.container .card a:hover{
+    color: #fffefe;
+}
+
+.container .card a{
+    text-decoration: none;
+    text-align: center;
+    overflow: hidden;
+    color: rgb(0, 0, 0);
+    padding: 30px 60px 30px 60px;
+}
+
+.container .card a i{
+    font-size: 5.6em;
+}
+
+.container .card a span{
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
 
 /* admins */
 .head-titles{
@@ -263,6 +311,10 @@ form > label{
 input[type="checkbox"]{  
     height: 25px;
     width: 25px;
+}
+
+.notifi td{
+    padding: 10px;
 }
 
 .reset-pass{
