@@ -2,6 +2,11 @@
     color: black;
 } */
 
+
+ a:visited {
+    text-decoration: none;
+    color: #888888;
+  }
 .container {
     max-width: 90%;
     margin: auto;
@@ -58,4 +63,15 @@
    color: #555555;
    font-weight: 600;
 
+ }
+
+ .col-3 >div {
+     
+     display: flex;
+     width: 100%;
+     justify-content: space-between;
+ }
+
+ .col-3 > div h6{
+     font-weight: 400;
  }

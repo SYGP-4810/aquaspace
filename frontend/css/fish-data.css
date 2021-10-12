@@ -1,4 +1,9 @@
-.container .small-container{
+a:visited {
+    text-decoration: none;
+    color: #888888;
+  }
+
+  .container .small-container-1{
     max-width: 90%;
     margin: auto;
     padding-left: 25px;
@@ -7,12 +12,14 @@
     flex-wrap: wrap;
   }
 
- .container .small-container .col-4 {
+ .container .small-container-1 .col-4 {
      flex-basis: 25%;
  }
 
- .container .small-container h3{
+ .container .small-container-1 h3{
     color: #555555;
     font-weight: 600;
 
   }
+
+ 
