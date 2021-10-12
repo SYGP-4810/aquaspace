@@ -117,7 +117,7 @@ $("#profile").click(function(){
         window.location.replace("/aquaspace/frontend/src/Store/StoreDashboard.html");
     }
     else if(userType == 4){
-        window.location.replace("/aquaspace/frontend/src/Admin/AdminDashboard.html");
+        window.location.replace("/aquaspace/frontend/src/Admin/AdminHome.html");
     }
     else{
         window.location.replace("#");
