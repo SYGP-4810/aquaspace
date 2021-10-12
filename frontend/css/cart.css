@@ -1,0 +1,256 @@
+:root {
+    --main-color: #027581;
+    --color-dark: #29311d;
+    --text-grey: #8390A2;
+}
+
+.shopping-cart {
+    background: #fff;
+    border-radius: 7px;
+    width: 90%;
+    margin: auto;
+}
+
+#cart {
+  color: rgb(61, 61, 61);
+}
+
+.table-responsive table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-responsive thead {
+    background: #efefef;
+    text-align: left;
+}
+
+th, td {
+    font-size: .9rem;
+    padding: 1rem 1rem;
+    color: var(--color-dark);
+}
+
+td {
+    font-size: .8rem;
+}
+
+tbody tr:nth-child(even) {
+    background: #f9fafc;
+}
+
+.section-1 {
+    align-items: center;
+}
+
+.topics {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 30px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.topics p{
+    font-size:20px;
+    font-weight: 500;
+    color: #aaaaaa;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.topics i{
+    color: #828283;
+}
+
+.shopping-cart > button{
+    font-size: 17px;
+    font-weight: 600;
+    color: #8390A2;
+    margin-top: 30px;
+    margin-left: 83%;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+td button {
+    padding: 3px;
+}
+
+.checkout{
+    margin: auto;
+    display: none;
+}
+
+.checkout label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout label span {
+  font-size: 13px;
+}
+
+.checkout label input {
+  margin-top: 13px;
+}
+.d-flex{
+    display: flex;
+    flex-direction: row;
+    background: #f6f6f6;
+    border-radius: 0 0 5px 5px;
+    padding: 25px;
+  }  
+
+  form{
+    flex: 4;
+  }
+
+  .Yorder{
+    flex: 2;
+  }
+
+  .required{
+    color: red;
+  }
+  .checkout label, .checkout table{
+    /* display: block; */
+    margin: 15px;
+  }
+
+  .checkout label {
+      display: flex;
+      align-items: center;
+  }
+  .checkout label>span{
+    float: left;
+    width: 25%;
+    margin-top: 12px;
+    padding-right: 10px;
+  }
+
+  .checkout i {
+    font-size: 30px;
+  }
+  .checkout input[type="text"], .checkout select
+  {
+    width: 70%;
+    height: 30px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #dadada;
+    color: #888;
+  }
+  .checkout select{
+    width: 40%;
+    height: 30px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    margin-left: 85px;
+  }
+
+  .checkout input[type="radio"] {
+    position: relative;
+    left: -60px;
+  }
+
+  .checkout i {
+    position: relative;
+    left: -130px;
+    top: 5px;
+  }
+  
+  .Yorder{
+    margin-top: 15px;
+    height: 600px;
+    padding: 20px;
+    border: 1px solid #dadada;
+  }
+  .checkout table{
+    margin: 0;
+    padding: 0;
+  }
+  .checkout th{
+    border-bottom: 1px solid #dadada;
+    padding: 10px 0;
+  }
+  .checkout tr>td:nth-child(1){
+    text-align: left;
+    color: #2d2d2a;
+  }
+  .checkout tr>td:nth-child(2){
+    text-align: right;
+    color: #52ad9c;
+  }
+  .checkout td{
+    border-bottom: 1px solid #dadada;
+    padding: 25px 25px 25px 0;
+  }
+  
+  .checkout p{
+    display: block;
+    color: #888;
+    margin: 0;
+    padding-left: 25px;
+  }
+  .Yorder>div{
+    padding: 15px 0; 
+  }
+  
+  .checkout button{
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 30px;
+    background: rgb(255, 137, 116);
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .checkout button:hover{
+    cursor: pointer;
+    background: rgb(204, 99, 81);
+  }
+
+  .f {
+    display: flex;
+  }
+
+
+  .complete {
+    display: none;
+  }
+
+  .border {
+    border: 1px solid rgb(136, 136, 136);
+  }
+
+.complete .Yorder {
+  display: flex;
+  flex-direction: column;
+  border: none;
+margin: 50px;
+align-items: center;
+}
+
+.complete .Yorder i {
+  font-size: 70px;
+  color: #65db41;
+  padding: 10px;
+
+}
+
+.sub-container{
+  display: flex;
+}
+
+.list-item {
+  display: flex;
+}
+
+.list-item img{
+  height: 30px;
+}

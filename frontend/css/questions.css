@@ -1,0 +1,65 @@
+.questions {
+    width: 90%;
+    margin: auto;
+}
+
+.questions h4 {
+    font-weight: 500;
+}
+
+.questions > label {
+    font-weight: 500;
+}
+.heading {
+    margin: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.heading button {
+    margin-right: 5%;
+    height: 40px;
+    padding: 0 7px 0 7px;
+    border-radius: 10px;
+
+}
+
+.question {
+    width: 80%;
+    margin-left: 50px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(170, 170, 170, 0.521);
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.question h4 {
+    color: rgb(51, 51, 51);
+}
+
+.question p {
+    font-size: 15px;
+    color: rgb(87, 87, 87);
+}
+.experts {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.experts label {
+    margin-left: 40px;
+    padding: 2px;
+}
+
+button {
+
+    margin: auto;
+    padding: 3px;
+    width: 60px;
+    position: relative;
+    top: -10px;
+    left: 10px;
+    cursor: pointer;
+}
