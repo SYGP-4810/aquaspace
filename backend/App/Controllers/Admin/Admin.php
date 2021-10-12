@@ -69,7 +69,7 @@ class Admin extends \Core\Controller
             "fName" => $result2['first_name'],
             "lName" => $result2['last_name'],
             "email" => $result['email'],
-            "Address" => $result2['address'],
+            "address" => $result2['address'],
             "city" => $result2['city'],
             "tp" => $result['tp']
         ];
