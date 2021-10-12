@@ -1,0 +1,66 @@
+[0m2021.09.25 21:05:43 INFO  Started: Metals version 0.10.7 in workspace 'C:\wamp64\www\aquaspace' for client Visual Studio Code 1.60.1.[0m
+[0m2021.09.25 21:05:44 INFO  time: initialize in 1.12s[0m
+[0m2021.09.25 21:05:45 WARN  Build server is not auto-connectable.[0m
+[0m2021.09.25 21:05:45 WARN  no build tool detected in workspace 'C:\wamp64\www\aquaspace'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+Sep 25, 2021 9:17:44 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+[0m2021.09.25 22:14:41 INFO  shutting down Metals[0m
+[0m2021.09.27 20:39:23 INFO  Started: Metals version 0.10.7 in workspace 'C:\wamp64\www\aquaspace' for client Visual Studio Code 1.60.2.[0m
+[0m2021.09.27 20:39:24 INFO  time: initialize in 0.71s[0m
+[0m2021.09.27 20:39:27 WARN  Build server is not auto-connectable.[0m
+[0m2021.09.27 20:39:27 WARN  no build tool detected in workspace 'C:\wamp64\www\aquaspace'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.09.28 10:29:32 INFO  Started: Metals version 0.10.7 in workspace 'C:\wamp64\www\aquaspace' for client Visual Studio Code 1.60.2.[0m
+[0m2021.09.28 10:29:33 INFO  time: initialize in 0.83s[0m
+[0m2021.09.28 10:29:40 WARN  Build server is not auto-connectable.[0m
+[0m2021.09.28 10:29:40 WARN  no build tool detected in workspace 'C:\wamp64\www\aquaspace'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.09.28 11:21:09 INFO  shutting down Metals[0m
+[0m2021.09.29 19:00:34 INFO  Started: Metals version 0.10.7 in workspace 'C:\wamp64\www\aquaspace' for client Visual Studio Code 1.60.2.[0m
+[0m2021.09.29 19:00:34 INFO  time: initialize in 0.53s[0m
+[0m2021.09.29 19:00:36 WARN  Build server is not auto-connectable.[0m
+[0m2021.09.29 19:00:36 WARN  no build tool detected in workspace 'C:\wamp64\www\aquaspace'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.10.01 11:55:35 INFO  Started: Metals version 0.10.7 in workspace 'C:\wamp64\www\aquaspace' for client Visual Studio Code 1.60.2.[0m
+[0m2021.10.01 11:55:37 INFO  time: initialize in 2.54s[0m
+[0m2021.10.01 11:55:56 WARN  Build server is not auto-connectable.[0m
+[0m2021.10.01 11:55:56 WARN  no build tool detected in workspace 'C:\wamp64\www\aquaspace'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.10.02 01:15:03 INFO  Started: Metals version 0.10.7 in workspace 'C:\wamp64\www\aquaspace' for client Visual Studio Code 1.60.2.[0m
+[0m2021.10.02 01:15:04 INFO  time: initialize in 0.65s[0m
+[0m2021.10.02 01:15:12 WARN  Build server is not auto-connectable.[0m
+[0m2021.10.02 01:15:12 WARN  no build tool detected in workspace 'C:\wamp64\www\aquaspace'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.10.02 02:09:44 INFO  shutting down Metals[0m
+[0m2021.10.02 19:05:58 INFO  Started: Metals version 0.10.7 in workspace 'C:\wamp64\www\aquaspace' for client Visual Studio Code 1.60.2.[0m
+[0m2021.10.02 19:05:59 INFO  time: initialize in 0.9s[0m
+[0m2021.10.02 19:06:01 WARN  Build server is not auto-connectable.[0m
+[0m2021.10.02 19:06:01 WARN  no build tool detected in workspace 'C:\wamp64\www\aquaspace'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.10.05 19:00:03 INFO  Started: Metals version 0.10.7 in workspace 'C:\wamp64\www\aquaspace' for client Visual Studio Code 1.60.2.[0m
+[0m2021.10.05 19:00:04 INFO  time: initialize in 0.93s[0m
+[0m2021.10.05 19:00:09 WARN  Build server is not auto-connectable.[0m
+[0m2021.10.05 19:00:09 WARN  no build tool detected in workspace 'C:\wamp64\www\aquaspace'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.10.06 13:33:52 INFO  Started: Metals version 0.10.7 in workspace 'C:\wamp64\www\aquaspace' for client Visual Studio Code 1.60.2.[0m
+[0m2021.10.06 13:33:53 INFO  time: initialize in 1.12s[0m
+[0m2021.10.06 13:34:02 WARN  Build server is not auto-connectable.[0m
+[0m2021.10.06 13:34:02 WARN  no build tool detected in workspace 'C:\wamp64\www\aquaspace'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.10.08 11:30:36 INFO  Started: Metals version 0.10.7 in workspace 'C:\wamp64\www\aquaspace' for client Visual Studio Code 1.60.2.[0m
+[0m2021.10.08 11:30:37 INFO  time: initialize in 1.03s[0m
+[0m2021.10.08 11:30:43 WARN  Build server is not auto-connectable.[0m
+[0m2021.10.08 11:30:43 WARN  no build tool detected in workspace 'C:\wamp64\www\aquaspace'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.10.09 00:21:51 INFO  shutting down Metals[0m
+[0m2021.10.09 10:36:09 INFO  Started: Metals version 0.10.7 in workspace 'C:\wamp64\www\aquaspace' for client Visual Studio Code 1.61.0.[0m
+[0m2021.10.09 10:36:11 INFO  time: initialize in 1.65s[0m
+[0m2021.10.09 10:36:19 WARN  Build server is not auto-connectable.[0m
+[0m2021.10.09 10:36:19 WARN  no build tool detected in workspace 'C:\wamp64\www\aquaspace'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.10.09 16:39:20 INFO  Started: Metals version 0.10.7 in workspace 'C:\wamp64\www\aquaspace' for client Visual Studio Code 1.61.0.[0m
+[0m2021.10.09 16:39:21 INFO  time: initialize in 0.67s[0m
+[0m2021.10.09 16:39:28 WARN  Build server is not auto-connectable.[0m
+[0m2021.10.09 16:39:28 WARN  no build tool detected in workspace 'C:\wamp64\www\aquaspace'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.10.09 17:18:35 INFO  Started: Metals version 0.10.7 in workspace 'C:\wamp64\www\aquaspace' for client Visual Studio Code 1.61.0.[0m
+[0m2021.10.09 17:18:36 INFO  time: initialize in 0.69s[0m
+[0m2021.10.09 17:18:42 WARN  Build server is not auto-connectable.[0m
+[0m2021.10.09 17:18:42 WARN  no build tool detected in workspace 'C:\wamp64\www\aquaspace'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.10.10 09:35:50 INFO  Started: Metals version 0.10.7 in workspace 'C:\wamp64\www\aquaspace' for client Visual Studio Code 1.61.0.[0m
+[0m2021.10.10 09:35:51 INFO  time: initialize in 0.84s[0m
+[0m2021.10.10 09:36:01 WARN  Build server is not auto-connectable.[0m
+[0m2021.10.10 09:36:01 WARN  no build tool detected in workspace 'C:\wamp64\www\aquaspace'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.10.10 14:40:00 INFO  Started: Metals version 0.10.7 in workspace 'C:\wamp64\www\aquaspace' for client Visual Studio Code 1.61.0.[0m
+[0m2021.10.10 14:40:01 INFO  time: initialize in 1.23s[0m
+[0m2021.10.10 14:40:08 WARN  Build server is not auto-connectable.[0m
+[0m2021.10.10 14:40:08 WARN  no build tool detected in workspace 'C:\wamp64\www\aquaspace'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m

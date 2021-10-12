@@ -24,7 +24,7 @@ $(document).ready(function(){
       $("#complete").click(function(){
         $(".complete").css("display", "block");
         $("#complete").css("color", "rgb(61, 61, 61)");
-        $(".cart").css("display", "none");
+        $(".shopping-cart").css("display", "none");
         $("#cart").css("color", "#aaaaaa");
         $(".checkout").css("display", "none");
         $("#checkout").css("color", "#aaaaaa");

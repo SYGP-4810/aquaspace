@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
+  <link rel="stylesheet" href="../../css/addpost.css">
+  <link rel="stylesheet" href="../../css/landing-styles.css">
+  <title>Category Page</title>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="logo">
+      <img src="../../images/logo.png" alt="">
+      <h2>AquaSpace</h2>
+    </div>
+    <div class="search_box">
+      <div class="dropdown">
+        <div class="default_option">All</div>
+        <ul>
+          <li>All</li>
+          <li>Fish</li>
+          <li>Articles</li>
+        </ul>
+      </div>
+      <div class="search_field">
+        <input type="text" class="input" placeholder="Search">
+        <i class="fas fa-search"></i>
+      </div>
+    </div>
+    <div class="nav-links">
+      <ul>
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Build Tank</a></li>
+        <li id="a_parent"><a href="#">Add Post</a>
+          <div class="sub-menu sub-menu-1">
+            <ul>
+              <li><a href="#">Fish</a></li>
+              <li><a href="#">Equipment</a></li>
+              <li><a href="#">Plant</a></li>
+              <li><a href="#">Medicine</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li><a href="#"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
+        <li class="after"><a href="#"><i class="fas fa-bell fa-lg"></i></a></li>
+        <li class="after"><a href="#"><i class="fas fa-user-circle fa-lg"></i></a>
+          <div class="sub-menu sub-menu-2">
+            <ul class="options">
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="before"><a href="#">Login</a></li>
+        <li class="before"><a href="#">Sign up</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <form action="" method="">
+      <label>
+        <span>Upload your images<span class="required">*</span></span>
+      </label>
+      <div class="wrapper">
+        <div class="box">
+          <div class="js--image-preview"></div>
+          <div class="upload-options">
+            <label>
+              <input type="file" class="image-upload" accept="image/*" />
+            </label>
+          </div>
+        </div>
+        <div class="box">
+          <div class="js--image-preview"></div>
+          <div class="upload-options">
+            <label>
+              <input type="file" class="image-upload" accept="image/*" />
+            </label>
+          </div>
+        </div>
+        <div class="box">
+          <div class="js--image-preview"></div>
+          <div class="upload-options">
+            <label>
+              <input type="file" class="image-upload" accept="image/*" />
+            </label>
+          </div>
+        </div>
+        <div class="box">
+          <div class="js--image-preview"></div>
+          <div class="upload-options">
+            <label>
+              <input type="file" class="image-upload" accept="image/*" />
+            </label>
+          </div>
+        </div>
+      </div>
+      <!-- <label>
+        <span class="fname">First Name<span class="required">*</span></span>
+        <input type="text" name="fname">
+      </label> -->
+      <label>
+        <span>Product Name<span class="required">*</span></span>
+        <select name="selection">
+          <option selected hidden value="">Select </option>
+          <option value="jan">Januaru</option>
+          <option value="feb">February</option>
+          <option value="mar">March</option>
+          <option value="apr">April</option>
+          <option value="may">May</option>
+          <option value="june">June</option>
+          <option value="july">July</option>
+          <option value="aug">August</option>
+          <option value="sep">September</option>
+          <option value="oct">October</option>
+          <option value="nov">November</option>
+          <option value="dec">December</option>
+        </select>
+      </label>
+      <!-- <label>
+        <span class="lname">Category<span class="required">*</span></span>
+        <input type="text" name="lname">
+      </label> -->
+      <label>
+        <span>Post Duration<span class="required">*</span></span>
+        <select name="selection">
+          <option selected hidden value="">Select </option>
+          <option value="1w">1 week</option>
+          <option value="2w">2 weeks</option>
+          <option value="3w">3 weeks</option>
+          <option value="1m">1 month</option>
+          <option value="2m">2 months</option>
+          <option value="3m">3 months</option>
+          <option value="more">more than 3 months</option>
+        </select>
+      </label>
+      <label>
+        <span>Description<span class="required">*</span></span>
+        <textarea name="reason" rows="6" cols="100"></textarea>
+      </label>
+      <label>
+        <span>Price<span class="required">*</span></span>
+        <input type="text" name="price">
+      </label>
+      <label>
+        <span>Address<span class="required">*</span></span>
+        <input type="text" name="address">
+      </label>
+    </form>
+  </div>
+
+  <br>
+  <br>
+
+  <footer class="footer-distributed">
+
+    <div class="footer-left">
+
+      <div class="logo">
+        <img src="../../images/logo.png" alt="">
+        <h2>AquaSpace</h2>
+      </div>
+
+      <p class="footer-links">
+        <a href="#" class="link-1">Home</a>
+
+        <a href="#">Blog</a>
+
+        <a href="#">Pricing</a>
+
+        <a href="#">About</a>
+
+        <a href="#">Faq</a>
+
+        <a href="#">Contact</a>
+      </p>
+
+      <p class="footer-company-name">Company Name © 2015</p>
+    </div>
+
+    <div class="footer-center">
+      <div>
+        <i class="fa fa-phone"></i>
+        <p>+94-123456789</p>
+      </div>
+
+      <div>
+        <i class="fa fa-envelope"></i>
+        <p><a href="mailto:support@company.com">support@company.com</a></p>
+      </div>
+
+    </div>
+
+    <div class="footer-right">
+
+      <p class="footer-company-about">
+        <span>About AquaSpace</span>
+        Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus
+        vehicula sit amet.
+      </p>
+
+      <div class="footer-icons">
+
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-github"></i></a>
+
+      </div>
+
+    </div>
+
+  </footer>
+  <script src="../../js/addpost.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../../js/landing-app.js"></script>
+
+</body>
+
+</html>

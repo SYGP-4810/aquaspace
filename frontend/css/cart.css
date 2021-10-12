@@ -218,3 +218,39 @@ td button {
   .f {
     display: flex;
   }
+
+
+  .complete {
+    display: none;
+  }
+
+  .border {
+    border: 1px solid rgb(136, 136, 136);
+  }
+
+.complete .Yorder {
+  display: flex;
+  flex-direction: column;
+  border: none;
+margin: 50px;
+align-items: center;
+}
+
+.complete .Yorder i {
+  font-size: 70px;
+  color: #65db41;
+  padding: 10px;
+
+}
+
+.sub-container{
+  display: flex;
+}
+
+.list-item {
+  display: flex;
+}
+
+.list-item img{
+  height: 30px;
+}

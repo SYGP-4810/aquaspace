@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
+    <link rel="stylesheet" href="../../css/dashboard-styles.css">
+    <link rel="stylesheet" href="../../css/transactions.css">
+    <link rel="stylesheet" href="../../css/questions.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <input type="checkbox" id="checkbox">
+        <header class="header">
+            <div class="u-name">
+                <img src="../../images/logo.png"><span>AquaSpace</span>
+                <label for="checkbox">
+                    <i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
+                </label>
+            </div>
+            <div class="icons">
+                <i class="fa fa-bell" aria-hidden="true"></i>
+                <i class="fa fa-user" aria-hidden="true"></i>
+            </div>
+        </header>
+        <div class="body">
+            <nav class="side-bar">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-home fa-xs" aria-hidden="true"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Account Overview</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-edit" aria-hidden="true"></i>
+                            <span>Edit Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-unlock-alt" aria-hidden="true"></i>
+                            <span>Reset Password</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-bell" aria-hidden="true"></i>
+                            <span>Notification Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-money-check"></i>
+                            <span>Active Posts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Cart</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="wishlist.html">
+                            <i class="fas fa-heart"></i>
+                            <span>Wishlist</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="transactions.html">
+                            <i class="fas fa-dollar-sign" aria-hidden="true"></i>
+                            <span>Transactions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="questions.html">
+                            <i class="fas fa-question" aria-hidden="true"></i>
+                            <span>Questions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="coins.html">
+                            <i class="fas fa-coins" aria-hidden="true"></i>
+                            <span>Coins</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <section class="section-1">
+                <div class="heading">
+                    <h2>Questions</h2>
+                </div>
+                <div class="questions">
+                    <h4>Select an expert to ask you question</h4>
+                    <div class="experts">
+                        <label>
+                            <input type="radio" name="light" checked>
+                            <span class="text">Expert 1</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="light">
+                            <span class="text">Expert 2</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="light">
+                            <span class="text">Expert 3</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="light">
+                            <span class="text">Expert 4</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="light">
+                            <span class="text">Expert 5</span>
+                        </label>
+                    </div>
+                    <br>
+                    <label for="q">Ask Your Question</label><br>
+                    <textarea id="q" placeholder="Tpe your question here" tabindex="5" rows="10" cols="100"
+                        maxlength="500" required></textarea>
+
+                    <button>SEND</button>
+
+                </div>
+
+
+
+
+            </section>
+        </div>
+    </div>
+
+    <script src="../../js/reg-dashboard.js"></script>
+
+</body>
+
+</html>
