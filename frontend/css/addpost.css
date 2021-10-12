@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
 .container {
   max-width: 90%;
   margin: auto;
@@ -6,26 +8,26 @@
   padding-right: 25px;
 }
 
-label , p{
+.container label ,.container  p{
   display: flex;
   /* justify-content: space-between; */
   align-items: center;
 }
 
-label span , p{
+.container label span ,.container  p{
   font-size: 13px;
 }
 
-label input {
+.container label input {
   margin-top: 13px;
 }
 
-label , p {
+.container label , .container p {
   /* display: block; */
   margin: 15px;
 }
 
-label > span , p{
+.container label > span , .container  p{
   float: left;
   width: 25%;
   margin-top: 12px;
@@ -51,72 +53,135 @@ textarea {
   color: rgb(255, 0, 64);
 }
 
-/* ------------------------------ */
 
-.imageWrapper {
-  border: 1px solid #888;
-  width: 100px;
-  /* padding-bottom: 70%; */
-  /* border-radius: 50%; */
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+h1 {
+  font-family: inherit;
+  margin: 0 0 0.75em 0;
+  color: #728c8d;
+  text-align: center;
+}
+.box {
+  display: block;
+  min-width: 200px;
+  height: 200px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+}
+.upload-options {
+  position: relative;
+  height: 30px;
+  /* background-color: cadetblue; */
+  cursor: pointer;
+  /* overflow: hidden; */
+  text-align: center;
+  transition: background-color ease-in-out 150ms;
+}
+/* .upload-options:hover {
+  background-color: #7fb1b3;
+} */
+.upload-options input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
   overflow: hidden;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  z-index: -1;
 }
-
-.imageWrapper img {
-  height: 105%;
-  width: initial;
-  max-height: 100%;
-  max-width: initial;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-  
-  /* .file-upload {
-    position: relative;
-    overflow: hidden;
-    /* margin: 10px; */
-  }
-
-.file-upload {
-  /* position: relative;
-    overflow: hidden; */
-  /* margin: 10px; */
-  /* width: 100%; */
-  /* max-width: 150px; */
-  text-align: center;
-  color: rgb(75, 74, 74);
-  font-size: 12px;
-  background: transparent;
-  border: 2px solid #888;
-  padding: 0.85em 1em;
-  display: inline;
-} */
-
-/* .file-upload input.file-input {
-  
-  top: 0;
-  right: 0;
-  margin: 0;
-  padding: 0;
-  font-size: 20px;
-  cursor: pointer;
-  opacity: 0;
-  filter: alpha(opacity=0);
+.upload-options label {
+  display: flex;
+  align-items: center;
+  width: 100%;
   height: 100%;
-} */
-
-label img{
-    height: 150px;
-    width: 150px;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
 }
-
-.img-list {
-    display: flex;
+.upload-options label::after {
+  content: 'add';
+  font-family: 'Material Icons';
+  position: absolute;
+  font-size: 2rem;
+  color: rgb(95, 95, 95);
+  top: -12px;
+  left: 80px;
+  /* top: calc(50% - 2.5rem); */
+  /* left: calc(50% - 1.25rem); */
+  z-index: 0;
 }
-
+.upload-options label span {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+  text-align: center;
+}
+.upload-options label span:hover i.material-icons {
+  color: lightgray;
+}
+.js--image-preview {
+  height: 170px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-image: url('');
+  background-color: white;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.js--image-preview::after {
+  content: "photo_size_select_actual";
+  font-family: 'Material Icons';
+  position: relative;
+  font-size: 4.5em;
+  color: rgba(230, 230, 230, 1);
+  top: calc(50% - 3rem);
+  left: calc(50% - 2.25rem);
+  z-index: 0;
+}
+.js--image-preview.js--no-default::after {
+  display: none;
+}
+.js--image-preview:nth-child(2) {
+  background-image: url('http://bastianandre.at/giphy.gif');
+}
+i.material-icons {
+  transition: color 100ms ease-in-out;
+  font-size: 2.25em;
+  line-height: 55px;
+  color: white;
+  display: block;
+}
+.drop {
+  display: block;
+  position: absolute;
+  background: rgba(95, 158, 160, 0.2);
+  border-radius: 100%;
+  transform: scale(0);
+}
+.animate {
+  animation: ripple 0.4s linear;
+}
+@keyframes ripple {
+  100% {
+    opacity: 0;
+    transform: scale(2.5);
+ }
+}

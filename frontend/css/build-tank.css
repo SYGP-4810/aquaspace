@@ -36,7 +36,6 @@
 }
 
 .small-container {
-  cursor: pointer;
   display: flex;
 }
 
@@ -77,4 +76,9 @@
 }
 .items, .fish{
     display: none;
+}
+
+.items > .small-container {
+  display: flex;
+  flex-direction: row;
 }

@@ -383,6 +383,8 @@ ul {
   margin: auto;
   padding-left: 25px;
   padding-right: 25px;
+  display: flex;
+  flex-direction: column;
 }
 
 .col-3 {
@@ -439,6 +441,7 @@ ul {
 .small-container h3{
   color: #555555;
   font-weight: 600;
+  font-weight: px;
 }
 
 .col-4 p, .col-3 p{
