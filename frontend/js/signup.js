@@ -42,10 +42,19 @@ $(".verify").click(function(e){
                 dataType: "json",
                 success: function(data){
                     alert(data.msg);
-                    if(data.status == 1){
-                        location.reload();
-                    }else if(data.status == 2){
-                        location.reload();
+                    if(data.status == 3){
+                        $(".tab").hide();
+                        if($("input[name='selection']:checked").val() == 'value-1') {
+                        $(".tab").eq(2).show();
+                        } else if($("input[name='selection']:checked").val() == 'value-2') {
+                        $(".tab").eq(3).show();
+                        } else if($("input[name='selection']:checked").val() == 'value-3') {
+                        $(".tab").eq(4).show();
+                
+                    }
+                    var x = document.getElementsByClassName("step");
+                    x[1].className = x[1].className.replace(" active", " disabled");
+                    x[2].className += " active";
                     }
 
                 },
@@ -53,18 +62,7 @@ $(".verify").click(function(e){
                     window.location.replace("../src/Error/"+errMsg.status+".html");
                 }
             });
-        $(".tab").hide();
-        if($("input[name='selection']:checked").val() == 'value-1') {
-        $(".tab").eq(2).show();
-        } else if($("input[name='selection']:checked").val() == 'value-2') {
-        $(".tab").eq(3).show();
-        } else if($("input[name='selection']:checked").val() == 'value-3') {
-        $(".tab").eq(4).show();
 
-    }
-    var x = document.getElementsByClassName("step");
-    x[1].className = x[1].className.replace(" active", " disabled");
-    x[2].className += " active";
     }else{
         alert("enter email with correct format");
     }
@@ -365,6 +363,7 @@ $("#signUp2").click(function(){
                 "qualifications":file,
                 "qualificationExtension": qualificationExtension
             }
+            alert(JSON.stringify(req));
         
           $.ajax({
             type: "POST",
@@ -376,17 +375,11 @@ $("#signUp2").click(function(){
                 if(data.status ==1){
                 alert("wait until admin verify you may have email about confirm");
                 window.location.replace("/aquaspace/frontend/src/");
-                }else{
-                    if(data.stastus ==1){
-                        window.location.replace("../src/login.html");
-                        }else{
-                            alert(JSON.stringify(data.error));
-                        }
                 }
 
             },
             error: function(errMsg) {
-               window.location.replace("../src/Error/"+errMsg.status+".html");
+               //window.location.replace("../src/Error/"+errMsg.status+".html");
             }
         });
         }
