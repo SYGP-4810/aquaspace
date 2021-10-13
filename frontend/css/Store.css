@@ -8,6 +8,10 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.required {
+    color: rgb(255, 0, 64);
+  }
+  
 /* Title */
 .head-titles{
     margin-top: 20px;
@@ -90,7 +94,7 @@ form > label{
 }
 
 .container .card:hover{
-    background-color: #9b9b9b;
+    background-color: #f5ac7c;
 }
 
 .container .card a:hover{
