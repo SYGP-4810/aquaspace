@@ -108,13 +108,13 @@ $(document).ready(function(){
 
 $("#profile").click(function(){
     if(userType == 1){
-        window.location.replace("/aquaspace/frontend/src/Reg/RegularUserDashboard.html");
+        window.location.replace("/aquaspace/frontend/src/Reg/RegHome.html");
     }
     else if(userType == 2){
         window.location.replace("/aquaspace/frontend/src/Expert/ExpertDashboard.html");
     }
     else if(userType == 3){
-        window.location.replace("/aquaspace/frontend/src/Store/StoreDashboard.html");
+        window.location.replace("/aquaspace/frontend/src/Store/StoreHome.html");
     }
     else if(userType == 4){
         window.location.replace("/aquaspace/frontend/src/Admin/AdminHome.html");
