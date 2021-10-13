@@ -73,7 +73,7 @@ $("#signIn").click(function(){
     dataType: "json",
     success: function(data){
       var status = data.status;
-      if(status == 1 ||status == 2 || status == 3 || status == 4 || stauts == 6){
+      if(status == 1 ||status == 2 || status == 3 || status == 4 || status == 6 || status == 7){
         var redirect = data.redirect;
         window.location.replace(redirect);
       }else if(status == 5){
