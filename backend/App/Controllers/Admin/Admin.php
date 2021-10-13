@@ -100,4 +100,68 @@ class Admin extends \Core\Controller
         ];
         View::response($res);
     }
+
+    public function getAdminVerifyDetailsAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', " id,email,user_type,tp ", "user_status ='5'"));
+        View::response($stmt->fetchAll());
+    }
+
+    public function getAdminVerifyDetailsExpertAction()
+    {
+        $stmt = $this->execute($this->get('expert', "*", "auth_id ='" . $this->data['id'] . "'"));
+        View::response($stmt->fetch());
+    }
+
+    public function getAdminVerifyDetailsStoreAction()
+    {
+        $stmt = $this->execute($this->get('store', "*", "auth_id ='" . $this->data['id'] . "'"));
+        View::response($stmt->fetch());
+    }
+
+    public function getAdminVerifyDetailsAcceptAction()
+    {
+        $dataToUpdate = ["user_status" => "4"];
+        $this->exec($this->update('user_auth', $dataToUpdate, "id='" . $this->data['id'] . "'"));
+        $stmt = $this->execute($this->get('user_auth', "*", " id='" . $this->data['id'] . "'"));
+        $to = $stmt->fetch()['email'];
+        $subject = "about accepting your account in aquaspace";
+        $msg = "
+        <html>
+            <head><title>About accepting your account in aquaspace</title></head>
+            <body>
+                <p>your account has been accepted<p>
+                <a href='" . $_SERVER['HTTP_HOST'] . "/aquaspace/frontend/src/login.html" . "'>Click here to login</a>
+            </body>
+        </html>>
+        ";
+        $this->sendMail($to, $subject, $msg);
+        View::response("successfully confirm user");
+    }
+
+    public function getAdminVerifyDetailsRejectAction()
+    {
+        $dataToUpdate = ["user_status" => "3"];
+        $this->exec($this->update('user_auth', $dataToUpdate, "id='" . $this->data['id'] . "'"));
+        if ($this->data['type'] == 2) {
+            $this->exec($this->delete('expert', " auth_id='" . $this->data['id'] . "'"));
+        } else if ($this->data['type'] == 3) {
+            $this->exec($this->delete('store', " auth_id='" . $this->data['id'] . "'"));
+        }
+        $stmt = $this->execute($this->get('user_auth', "*", " id='" . $this->data['id'] . "'"));
+        $to = $stmt->fetch()['email'];
+        $subject = "about rejecting your account in aquaspace";
+        $msg = "
+        <html>
+            <head><title>About accepting your account in aquaspace</title></head>
+            <body>
+                <p>your account has been rejected<p>
+                <p>sorry for the troubles!</p>
+            </body>
+        </html>>
+        ";
+        $this->sendMail($to, $subject, $msg);
+
+        View::response("successfully Reject user");
+    }
 }

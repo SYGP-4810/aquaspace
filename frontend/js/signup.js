@@ -214,7 +214,7 @@ $("#signUp1").click(function(e){
          alert(JSON.stringify(errors));
      }
 });
-
+//get file extension and file
 var qualificationExtension;
 var qualificationFile;
 //get the file extension of qualifications
@@ -379,7 +379,7 @@ $("#signUp2").click(function(){
 
             },
             error: function(errMsg) {
-               //window.location.replace("../src/Error/"+errMsg.status+".html");
+               window.location.replace("../src/Error/"+errMsg.status+".html");
             }
         });
         }
