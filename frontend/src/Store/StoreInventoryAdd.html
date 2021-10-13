@@ -108,6 +108,17 @@
                         <td><input type="text" id="productname" name="productname"></td>
                     </tr>
                     <tr>
+                        <td>Product Category<span class="required">*</span></td>
+                        <td>
+                            <input type="text" id="productcategory" name="productcategory" list="category">
+                            <datalist id="category">
+                                <option>Fish Care</option>
+                                <option>Fish Food</option>
+                                <option>Accessories</option>
+                            </datalist>
+                        </td>
+                    </tr>
+                    <tr>
                         <td>Price<span class="required">*</span></td>
                         <td><input type="number" id="price" name="price" min="0"></td>
                     </tr>

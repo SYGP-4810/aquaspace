@@ -394,6 +394,11 @@ form > label{
     font-size: 1.2rem;
 }
 
+.invent-add  #productcategory {
+    width: 350px;
+}
+
+
 .invent-add #price, .invent-add #quantity  {
     text-align: right;
     padding: 10px 10px;
