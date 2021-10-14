@@ -19,9 +19,9 @@ $(document).ready(function(e){
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: JSON.stringify(req),
-            success: function(data){
+            success: function(data){                   
                     let name = data.first_name + " " + data.last_name;
-                    $("#list-table").append(`
+                    $("#Verify-list-details").append(`
                         <tr>
                             <td>User Name</td>
                             <td>${name}</td>
@@ -56,8 +56,7 @@ $(document).ready(function(e){
             dataType: "json",
             data: JSON.stringify(req),
             success: function(data){
-                    $("#list-table").html(`
-                    <tr>
+                    $("#Verify-list-details").html(`<tr>
                         <td>Company Name</td>
                         <td>${data.company_name}</td>
                     </tr>
@@ -84,8 +83,7 @@ $(document).ready(function(e){
                     <tr>
                         <td>City</td>
                         <td>${data.city}</td>
-                    </tr>
-                    `);
+                    </tr>`);
                     
                
             },
@@ -106,11 +104,12 @@ $("#acceptReq").click(function() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: JSON.stringify(req),
-            success: function(data){       
+            success: function(data){
+                window.location.replace("/aquaspace/frontend/src/Admin/AdminVerify.html")       
                
             },
             error: function(errMsg) {
-                //window.location.replace("../src/Error"+errMsg.status+".html");
+                window.location.replace("../src/Error"+errMsg.status+".html");
             }
         });
 
@@ -125,10 +124,10 @@ $("#rejReq").click(function() {
             dataType: "json",
             data: JSON.stringify(req),
             success: function(data){       
-               
+                window.location.replace("/aquaspace/frontend/src/Admin/AdminVerify.html")       
             },
             error: function(errMsg) {
-                //window.location.replace("../src/Error"+errMsg.status+".html");
+                window.location.replace("../src/Error"+errMsg.status+".html");
             }
         });
 });

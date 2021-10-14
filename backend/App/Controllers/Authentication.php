@@ -83,7 +83,7 @@ class Authentication extends \Core\Controller
                     View::response($res);
                 } else {
                     //have not admin confirm 
-                    $res = ["status" => "7", "redirect" => "/aquaspace/src/error/WaitUntilConfirm.html"];
+                    $res = ["status" => "7", "redirect" => "/aquaspace/frontend/src/error/WaitUntilConfirm.html"];
                     View::response($res);
                 }
             } elseif ($stmt->rowCount() > 1) {
