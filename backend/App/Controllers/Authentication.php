@@ -330,9 +330,9 @@ class Authentication extends \Core\Controller
             }
             $qName = "";
             if (strlen($qualifications) > 0) {
-                $qName = round(microtime(true) * 1000) . ".txt";
+                $qName = round(microtime(true) * 1000) . "." . $qualificationExtension;
                 $qDir = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/qualifications/" . $qName;
-                $flag = file_put_contents($qDir, $qualifications);
+                $flag = file_put_contents($qDir, base64_decode($qualifications));
                 if (!$flag) {
                     $errFlag++;
                     array_push($errors, "qualification is not inserted");
