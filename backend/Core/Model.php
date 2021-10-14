@@ -163,9 +163,9 @@ class Model
         $condition = $condition === '' ? '' :  $condition;
 
         if (is_string($select))
-            $sql = "SELECT " . $select . " FROM " . $table . " " . $condition . $limit;
+            $sql = "SELECT " . $select . " FROM " . $table . " WHERE " . $condition . $limit;
         else
-            $sql = "SELECT " . implode(', ', $select) . " FROM " . $table . " " . $condition . $limit;
+            $sql = "SELECT " . implode(', ', $select) . " FROM " . $table . " WHERE " . $condition . $limit;
 
         return $sql;
     }

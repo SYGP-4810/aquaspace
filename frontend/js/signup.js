@@ -37,27 +37,32 @@ $(".verify").click(function(e){
                 type: "POST",
                 url: setUrl("Authentication/emailVerificationTokenCreate"),
                 data: JSON.stringify(req),
+                acync:false, //check if keyword are correct
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data){
                     alert(data.msg);
+                    if(data.status == 3){
+                        $(".tab").hide();
+                        if($("input[name='selection']:checked").val() == 'value-1') {
+                        $(".tab").eq(2).show();
+                        } else if($("input[name='selection']:checked").val() == 'value-2') {
+                        $(".tab").eq(3).show();
+                        } else if($("input[name='selection']:checked").val() == 'value-3') {
+                        $(".tab").eq(4).show();
+                
+                    }
+                    var x = document.getElementsByClassName("step");
+                    x[1].className = x[1].className.replace(" active", " disabled");
+                    x[2].className += " active";
+                    }
+
                 },
                 error: function(errMsg) {
                     window.location.replace("../src/Error/"+errMsg.status+".html");
                 }
             });
-        $(".tab").hide();
-        if($("input[name='selection']:checked").val() == 'value-1') {
-        $(".tab").eq(2).show();
-        } else if($("input[name='selection']:checked").val() == 'value-2') {
-        $(".tab").eq(3).show();
-        } else if($("input[name='selection']:checked").val() == 'value-3') {
-        $(".tab").eq(4).show();
 
-    }
-    var x = document.getElementsByClassName("step");
-    x[1].className = x[1].className.replace(" active", " disabled");
-    x[2].className += " active";
     }else{
         alert("enter email with correct format");
     }
@@ -79,48 +84,49 @@ $("#signUp1").click(function(e){
     var emailToken = $("#code1").val();
     var tp = $("#tp1").val();
     var erFlag = 0;
+    var errors = [];
     //validation criteria
     if(tp == ""){
-        alert("telephone number is required");
+        errors.push("telephone number is required");
         $("#tp1").focus();
         erFlag++;
     }
     if(!($('#checkbox1').is(':checked'))){
-        alert("you have to agree to the term and conditions");
+        errors.push("you have to agree to the terms and conditions");
         $("#checkbox1").focus();
         erFlag ++;
     }
     if(!isEmail(email)){
-        alert("enter email with correct format");
+        errors.push("enter email with correct format");
         $("#email").focus();
         erFlag ++;
     }
     if(password != cPassword){
-        alert("password and confirm password shoud be equal");
+        errors.push("password and confirm password should be the same");
         $("#password1").focus();
         $("#cPassword1").focus();
         erFlag ++;
     }
     if(password == ""){
-        alert("enter password");
+        errors.push("enter the password");
         $("#password1").focus();
         erFlag ++;
     }
     if(cPassword == ""){
-        alert("enter confirm password");
+        errors.push("enter confirm password");
         $("#cPassword1").focus();
         erFlag ++;
     }
      //password should contains atleast one simple letter
      var lower = /(?=.*[a-z])/;
      if (!lower.test(password)){
-         alert("password should contain atlest one simple letter");
+         errors.push("password should contain atlest one simple letter");
          $("#password1").focus();
          erFlag ++;
      }
      //password should contain atleast 8 characters
      if(password.length < 8) {
-         alert("Password must be at least 8 characters long");
+         errors.push("Password must be at least 8 characters long");
          $("#password1").focus();
          erFlag ++;
      }
@@ -128,15 +134,14 @@ $("#signUp1").click(function(e){
      var upper = /(?=.*[A-Z])/;
      //password should contain atleast one capital letter
      if(!upper.test(password)){
-         alert("password should contain atleast one capital letter");
+         errors.push("password should contain atleast one capital letter");
          $("#password1").focus();
          erFlag ++;
      }
- 
-     //password should contain atleast one number digit
+      //password should contain atleast one number digit
      const regDig = /\d/;
      if(!regDig.test(password)){
-         alert("password should contain atleast one digit");
+         errors.push("password should contain atleast one digit");
          $("#password1").focus();
          erFlag ++;
      }
@@ -144,32 +149,32 @@ $("#signUp1").click(function(e){
      //password should contain atleast one special character
      var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
      if(!format.test(password)){
-         alert("password should contain atleast one special character");
+         errors.push("password should contain atleast one special character");
          $("#password1").focus();
          erFlag ++;
      }
      if(fName == ""){
-         alert("first name is required");
+         errors.push("first name is required");
          $("#fName1").focus();
          erFlag ++;
      }
      if(lName == ""){
-         alert("last name is required");
+         errors.push("last name is required");
          $("#lName1").focus();
          erFlag ++;
      }
      if(address == ""){
-         alert("address is required");
+         errors.push("address is required");
          $("#address1").focus();
          erFlag ++;
      }
      if(city == ""){
-         alert("city is required");
+         errors.push("city is required");
          $("#city1").focus();
          erFlag ++;
      }
      if(emailToken == ""){
-         alert("email verification code is required");
+         errors.push("email verification code is required");
          $("#code1").focus();
          erFlag ++;
      }
@@ -201,13 +206,15 @@ $("#signUp1").click(function(e){
                     }
             },
             error: function(errMsg) {
-                //window.location.replace("../src/Error/"+errMsg.status+".html");
+                window.location.replace("../src/Error/"+errMsg.status+".html");
                 //console.log(errMsg);
             }
         });
+     }else{
+         alert(JSON.stringify(errors));
      }
 });
-
+//get file extension and file
 var qualificationExtension;
 var qualificationFile;
 //get the file extension of qualifications
@@ -231,48 +238,49 @@ $("#signUp2").click(function(){
     var emailToken = $("#code2").val();
     var tp = $("#tp2").val();
     var erFlag = 0;
+    var errors = [];
     //validation criteria
     if(tp == ""){
-        alert("telephone number is required");
+        errors.push("telephone number is required");
         $("#tp2").focus();
         erFlag++;
     }
     if(!($('#checkbox2').is(':checked'))){
-        alert("you have to agree to the term and conditions");
+        errors.push("You have to agree to the terms and conditions");
         $("#checkbox2").focus();
         erFlag ++;
     }
     if(!isEmail(email)){
-        alert("enter email with correct format");
+        errors.push("Please enter a valid email address");
         $("#email").focus();
         erFlag ++;
     }
     if(password != cPassword){
-        alert("password and confirm password shoud be equal");
+        errors.push("password and confirm password shoud be equal");
         $("#password2").focus();
         $("#cPassword2").focus();
         erFlag ++;
     }
     if(password == ""){
-        alert("enter password");
+        errors.push("password is required");
         $("#password2").focus();
         erFlag ++;
     }
     if(cPassword == ""){
-        alert("enter confirm password");
+        errors.push("Confirm password password is required"); 
         $("#cPassword2").focus();
         erFlag ++;
     }
      //password should contains atleast one simple letter
      var lower = /(?=.*[a-z])/;
      if (!lower.test(password)){
-         alert("password should contain atlest one simple letter");
+         errors.push("password should contain atlest one simple letter");
          $("#password2").focus();
          erFlag ++;
      }
      //password should contain atleast 8 characters
      if(password.length < 8) {
-         alert("Password must be at least 8 characters long");
+         errors.push("password must contain at least 8 characters");
          $("#password2").focus();
          erFlag ++;
      }
@@ -280,7 +288,7 @@ $("#signUp2").click(function(){
      var upper = /(?=.*[A-Z])/;
      //password should contain atleast one capital letter
      if(!upper.test(password)){
-         alert("password should contain atleast one capital letter");
+         errors.push("password should contain at least one capital letter");
          $("#password2").focus();
          erFlag ++;
      }
@@ -288,7 +296,7 @@ $("#signUp2").click(function(){
      //password should contain atleast one number digit
      const regDig = /\d/;
      if(!regDig.test(password)){
-         alert("password should contain atleast one digit");
+         errors.push("password should contain at least one digit");
          $("#password2").focus();
          erFlag ++;
      }
@@ -296,32 +304,32 @@ $("#signUp2").click(function(){
      //password should contain atleast one special character
      var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
      if(!format.test(password)){
-         alert("password should contain atleast one special character");
+         errors.push("password should contain atleast one special character");
          $("#password2").focus();
          erFlag ++;
      }
      if(fName == ""){
-         alert("first name is required");
+         errors.push("first name is required");
          $("#fName2").focus();
          erFlag ++;
      }
      if(lName == ""){
-         alert("last name is required");
+         errors.push("last name is required");
          $("#lName2").focus();
          erFlag ++;
      }
      if(address == ""){
-         alert("address is required");
+         errors.push("address is required");
          $("#address2").focus();
          erFlag ++;
      }
      if(city == ""){
-         alert("city is required");
+         errors.push("city is required");
          $("#city2").focus();
          erFlag ++;
      }
      if(emailToken == ""){
-         alert("email verification code is required");
+         errors.push("email verification code is required");
          $("#code2").focus();
          erFlag ++;
      }
@@ -329,7 +337,7 @@ $("#signUp2").click(function(){
      //check if the file name is taken;
      const acceptedFileTypes = ["png", "jpg", "jpeg"];
      if(acceptedFileTypes.indexOf(qualificationExtension)===-1){
-         alert("qualification file type must be jpg ,jpeg or png");
+         errors.push("qualification file type must be jpg ,jpeg or png");
          $("#qualifications").focus();
          erFlag ++;
      }
@@ -355,6 +363,7 @@ $("#signUp2").click(function(){
                 "qualifications":file,
                 "qualificationExtension": qualificationExtension
             }
+            alert(JSON.stringify(req));
         
           $.ajax({
             type: "POST",
@@ -364,14 +373,8 @@ $("#signUp2").click(function(){
             dataType: "json",
             success: function(data){
                 if(data.status ==1){
-                alert("please login");
-                window.location.replace("../src/login.html");
-                }else{
-                    if(data.stastus ==1){
-                        window.location.replace("../src/login.html");
-                        }else{
-                            alert(JSON.stringify(data.error));
-                        }
+                alert("wait until admin verify you may have email about confirm");
+                window.location.replace("/aquaspace/frontend/src/");
                 }
 
             },
@@ -387,6 +390,8 @@ $("#signUp2").click(function(){
 
         }
         
+     }else{
+         alert(JSON.stringify(errors));
      }
 
 });
@@ -417,63 +422,69 @@ $("#signUp3").click(function(){
     }
 
     var erFlag = 0;
+    var errors = [];
     //validation criteria
     if(cName == ""){
-        alert("comapany name is requred");
+        errors.push("company name is required");
+        $("#cName").focus();
         erFlag ++;
     }
     if(manNIC == ""){
-        alert("manager NIC is required");
+        errors("manager NIC is required");
+        $("#manNIC").focus();
         erFlag ++;
     }
     if(mName == ""){
-        alert("manager name is required");
+        errors.push("manager name is required");
+        $("#manName").focus();
         erFlag ++;
     }
     if(regNo == ""){
-        alert("registration Number is required");
+        $("#regNo").focus();
+        errors.push("registration Number is required");
+        erFlag ++;
     }
     if(tp == ""){
-        alert("telephone number is required");
+        errors.push("telephone number is required");
         $("#tp3").focus();
         erFlag++;
     }
     if(!($('#checkbox3').is(':checked'))){
-        alert("you have to agree to the term and conditions");
+        errors.push("You have to agree to the terms and conditions");
         $("#checkbox3").focus();
         erFlag ++;
     }
     if(!isEmail(email)){
-        alert("enter email with correct format");
+        errors.push("enter email with correct format");
         $("#email").focus();
         erFlag ++;
     }
     if(password != cPassword){
-        alert("password and confirm password shoud be equal");
+        errors.push("password and confirm password shoud be equal");
         $("#password3").focus();
         $("#cPassword3").focus();
         erFlag ++;
     }
     if(password == ""){
-        alert("enter password");
+        errors.push("enter password");
         $("#password3").focus();
         erFlag ++;
     }
     if(cPassword == ""){
-        alert("enter confirm password");
+        errors.push("enter confirm password");
         $("#cPassword3").focus();
         erFlag ++;
     }
      //password should contains atleast one simple letter
      var lower = /(?=.*[a-z])/;
      if (!lower.test(password)){
-         alert("password should contain atlest one simple letter");
+         errors.push("password should contain atlest one simple letter");
          $("#password3").focus();
          erFlag ++;
      }
      //password should contain atleast 8 characters
      if(password.length < 8) {
-         alert("Password must be at least 8 characters long");
+        errors.push("password must contain at least 8 characters long");
          $("#password3").focus();
          erFlag ++;
      }
@@ -481,7 +492,7 @@ $("#signUp3").click(function(){
      var upper = /(?=.*[A-Z])/;
      //password should contain atleast one capital letter
      if(!upper.test(password)){
-         alert("password should contain atleast one capital letter");
+         errors.push("password should contain at least one capital letter");
          $("#password3").focus();
          erFlag ++;
      }
@@ -489,7 +500,7 @@ $("#signUp3").click(function(){
      //password should contain atleast one number digit
      const regDig = /\d/;
      if(!regDig.test(password)){
-         alert("password should contain atleast one digit");
+         errors.push("password should contain atleast one digit");
          $("#password3").focus();
          erFlag ++;
      }
@@ -497,22 +508,22 @@ $("#signUp3").click(function(){
      //password should contain atleast one special character
      var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
      if(!format.test(password)){
-         alert("password should contain atleast one special character");
+         errors.push("password should contain atleast one special character");
          $("#password3").focus();
          erFlag ++;
      }
      if(address == ""){
-         alert("address is required");
+         errors.push("address is required");
          $("#address3").focus();
          erFlag ++;
      }
      if(city == ""){
-         alert("city is required");
+         errors.push("city is required");
          $("#city3").focus();
          erFlag ++;
      }
      if(emailToken == ""){
-         alert("email verification code is required");
+         errors.push("email verification code is required");
          $("#code3").focus();
          erFlag ++;
      }
@@ -540,8 +551,8 @@ $("#signUp3").click(function(){
             dataType: "json",
             success: function(data){
                 if(data.status ==1){
-                    alert("please login");
-                    window.location.replace("../src/login.html");
+                    alert("wait until admin verify you may have email about confirm");
+                    window.location.replace("/aquaspace/frontend/src/");
                     }else{
                         alert(JSON.stringify(data.error));
                     }
@@ -550,6 +561,8 @@ $("#signUp3").click(function(){
                 window.location.replace("../src/Error/"+errMsg.status+".html");
             }
         });
+     }else{
+         alert(JSON.stringify(errors));
      }
 });
 

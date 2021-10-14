@@ -17,7 +17,7 @@ $("#save").click(function(){
     let city = $("#city").val();
     //validate process
     var errFlag = 0;
-    var errors = {};
+    var errors = [];
     if(fName ==''){
         errors.push("First Name required");
         errFlag++;

@@ -60,7 +60,7 @@ class Admin extends \Core\Controller
 
     public function getAdminAction()
     {
-        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'"));
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " user_type='4'"));
         $result = $stmt->fetch();
         $id = $result['id'];
         $stmt = $this->execute($this->get('admin', "*", "auth_id ='" . $id . "'"));
@@ -74,5 +74,94 @@ class Admin extends \Core\Controller
             "tp" => $result['tp']
         ];
         View::response($res);
+    }
+
+    public function getAdminListAction()
+    {
+        $stmt = $this->execute($this->join("user_auth, admin", "email,tp,user_auth.id AS id,first_name,last_name", "user_auth.id = admin.auth_id"));
+        $nRows = $stmt->rowCount();
+        $result = $stmt->fetchAll();
+        View::response($result);
+    }
+
+    public function getAdminDetailsAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', "*", "id ='" . $this->data['id'] . "'"));
+        $result = $stmt->fetch();
+        $stmt = $this->execute($this->get('admin', "*", "auth_id ='" . $this->data['id'] . "'"));
+        $result2 = $stmt->fetch();
+        $res = [
+            "fName" => $result2['first_name'],
+            "lName" => $result2['last_name'],
+            "email" => $result['email'],
+            "address" => $result2['address'],
+            "city" => $result2['city'],
+            "tp" => $result['tp']
+        ];
+        View::response($res);
+    }
+
+    public function getAdminVerifyDetailsAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', " id,email,user_type,tp ", "user_status ='5'"));
+        View::response($stmt->fetchAll());
+    }
+
+    public function getAdminVerifyDetailsExpertAction()
+    {
+        $stmt = $this->execute($this->get('expert', "*", "auth_id ='" . $this->data['id'] . "'"));
+        View::response($stmt->fetch());
+    }
+
+    public function getAdminVerifyDetailsStoreAction()
+    {
+        $stmt = $this->execute($this->get('store', "*", "auth_id ='" . $this->data['id'] . "'"));
+        View::response($stmt->fetch());
+    }
+
+    public function getAdminVerifyDetailsAcceptAction()
+    {
+        $dataToUpdate = ["user_status" => "4"];
+        $this->exec($this->update('user_auth', $dataToUpdate, "id='" . $this->data['id'] . "'"));
+        $stmt = $this->execute($this->get('user_auth', "*", " id='" . $this->data['id'] . "'"));
+        $to = $stmt->fetch()['email'];
+        $subject = "about accepting your account in aquaspace";
+        $msg = "
+        <html>
+            <head><title>About accepting your account in aquaspace</title></head>
+            <body>
+                <p>your account has been accepted<p>
+                <a href='" . $_SERVER['HTTP_HOST'] . "/aquaspace/frontend/src/login.html" . "'>Click here to login</a>
+            </body>
+        </html>>
+        ";
+        $this->sendMail($to, $subject, $msg);
+        View::response("successfully confirm user");
+    }
+
+    public function getAdminVerifyDetailsRejectAction()
+    {
+        $dataToUpdate = ["user_status" => "3"];
+        $this->exec($this->update('user_auth', $dataToUpdate, "id='" . $this->data['id'] . "'"));
+        if ($this->data['type'] == 2) {
+            $this->exec($this->delete('expert', " auth_id='" . $this->data['id'] . "'"));
+        } else if ($this->data['type'] == 3) {
+            $this->exec($this->delete('store', " auth_id='" . $this->data['id'] . "'"));
+        }
+        $stmt = $this->execute($this->get('user_auth', "*", " id='" . $this->data['id'] . "'"));
+        $to = $stmt->fetch()['email'];
+        $subject = "about rejecting your account in aquaspace";
+        $msg = "
+        <html>
+            <head><title>About accepting your account in aquaspace</title></head>
+            <body>
+                <p>your account has been rejected<p>
+                <p>sorry for the troubles!</p>
+            </body>
+        </html>>
+        ";
+        $this->sendMail($to, $subject, $msg);
+
+        View::response("successfully Reject user");
     }
 }
