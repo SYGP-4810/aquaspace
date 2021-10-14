@@ -74,9 +74,9 @@
     font-weight: 400;
     color: rgb(121, 121, 121);
 }
-.items, .fish{
+/* .items, .options{
     display: none;
-}
+} */
 
 .items > .small-container {
   display: flex;
