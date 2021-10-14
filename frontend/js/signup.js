@@ -349,7 +349,7 @@ $("#signUp2").click(function(){
         reader.onload = function () {
         //console.log(reader.result);//base64encoded string
             file = reader.result;
-            var strImage = file.replace(/^data:image\/[a-z]+;base64,/, "");
+            let strImage = file.replace(/^data:image\/[a-z]+;base64,/, "");
             // The key needs to match your method's input parameter (case-sensitive).
             var req = {
                 "email": email,

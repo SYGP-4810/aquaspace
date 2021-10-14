@@ -60,7 +60,7 @@ class Admin extends \Core\Controller
 
     public function getAdminAction()
     {
-        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " user_type='4'"));
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='4'"));
         $result = $stmt->fetch();
         $id = $result['id'];
         $stmt = $this->execute($this->get('admin', "*", "auth_id ='" . $id . "'"));
