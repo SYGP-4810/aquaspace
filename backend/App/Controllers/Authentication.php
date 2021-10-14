@@ -68,7 +68,8 @@ class Authentication extends \Core\Controller
                 } elseif ($result['user_status'] == 3) {
                     //peromenatly block due to the issue
                     throw new \Exception("peromenatly blocked user", 404);
-                } else {
+                } elseif ($result['user_status'] == 4) {
+                    //active user
 
                     $payload = "{id:" . $result['id'] . ",email:'" . $result['email'] . "'}";
                     //set token
@@ -79,6 +80,10 @@ class Authentication extends \Core\Controller
                     //redirect to the user's  home here
                     $red = "/aquaspace/frontend/src/";
                     $res = array("status" => "3", "redirect" => $red);
+                    View::response($res);
+                } else {
+                    //have not admin confirm 
+                    $res = ["status" => "7", "redirect" => "/aquaspace/src/error/WaitUntilConfirm.html"];
                     View::response($res);
                 }
             } elseif ($stmt->rowCount() > 1) {
@@ -345,7 +350,7 @@ class Authentication extends \Core\Controller
                     "tp" => $tp,
                     "password" => md5($password),
                     "user_type" => "2",
-                    "user_status" => "4"
+                    "user_status" => "5"
                 ];
                 $this->exec($this->save("user_auth", $dataToInsertAuthTable));
                 $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
@@ -477,7 +482,7 @@ class Authentication extends \Core\Controller
                     "tp" => $tp,
                     "password" => md5($password),
                     "user_type" => "3",
-                    "user_status" => "4"
+                    "user_status" => "5"
                 ];
                 $this->exec($this->save("user_auth", $dataToInsertAuthTable));
                 $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
@@ -506,12 +511,13 @@ class Authentication extends \Core\Controller
     {
         $email = $this->data['email'];
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            View::response("invalid email");
+            $res = ["status" => "1", "msg" => "invalid email address"];
+            View::response($res);
             return;
         } else {
             $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
             if ($stmt->rowCount() > 0) {
-                $res = ["msg" => "email is taken"];
+                $res = ["status" => "2", "msg" => "email is taken"];
                 View::response($res);
                 return;
             }
@@ -531,7 +537,7 @@ class Authentication extends \Core\Controller
 </html>
 ";
             $this->sendMail($to, $subject, $message);
-            $res = array("status" => "1", "msg" => "check your email");
+            $res = array("status" => "3", "msg" => "check your email");
             View::response($res);
         }
     }
