@@ -155,29 +155,28 @@ $("#InventorySave").click(function(){
                 "details" : details,
                 "deliveryMode" : deliveryMode,
                 "pic1" :imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
-                "pic2" :imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
-                "pic3" :imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
-                "pic4" :imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
+                "pic2" :imagebase64_2.replace(/^data:image\/[a-z]+;base64,/, ""),
+                "pic3" :imagebase64_3.replace(/^data:image\/[a-z]+;base64,/, ""),
+                "pic4" :imagebase64_4.replace(/^data:image\/[a-z]+;base64,/, ""),
                 "exen1" : imgExtension1,
                 "exen2" : imgExtension2,
                 "exen3" : imgExtension3,
                 "exen4" : imgExtension4
             }
 
-            // $.ajax({
-            //     type: "POST",
-            //     url:setUrl("Store/Store/addInventory"),
-            //     data: JSON.stringify(req),
-            //     contentType: "application/json; charset=utf-8",
-            //     dataType: "json",
-            //     success: function(data){
-            //         id.push(data.id);
-            //     },
-            //     error: function(errMsg) {
-            //         // window.location.replace("../src/Error"+errMsg.status+".html");
-            //     }
-            // });
-            console.log(req);
+            $.ajax({
+                type: "POST",
+                url:setUrl("Store/Store/addInventory"),
+                data: JSON.stringify(req),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data){
+                    console.log(data);
+                },
+                error: function(errMsg) {
+                    // window.location.replace("../src/Error"+errMsg.status+".html");
+                }
+            });
         }
     else{
         alert(JSON.stringify(errors));
