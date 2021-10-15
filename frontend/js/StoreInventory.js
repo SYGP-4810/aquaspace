@@ -3,41 +3,78 @@ function setUrl(text){
     return "/aquaspace/backend/public/index.php?"+text;
 }
 
-// create image and extention varibales
+// get extention varibales
 var imgExtension1, imgExtension2, imgExtension3, imgExtension4;
-var imgFile1, imgFile2, imgFile3, imgFile4;
-// get image
+
 $("#inventory-img1").change(function (e) {
     var fileName = e.target.files[0].name;
     fileExtension = fileName.split('.').pop();
     imgExtension1 = fileExtension;
-    imgFile1 = e.target.files[0];
-
  });
 
  $("#inventory-img2").change(function (e) {
     var fileName = e.target.files[0].name;
     fileExtension = fileName.split('.').pop();
     imgExtension2 = fileExtension;
-    imgFile2 = e.target.files[0];
-
  });
 
  $("#inventory-img3").change(function (e) {
     var fileName = e.target.files[0].name;
     fileExtension = fileName.split('.').pop();
     imgExtension3 = fileExtension;
-    imgFile3 = e.target.files[0];
-
  });
 
  $("#inventory-img4").change(function (e) {
     var fileName = e.target.files[0].name;
     fileExtension = fileName.split('.').pop();
     imgExtension4 = fileExtension;
-    imgFile4 = e.target.files[0];
-
  });
+
+
+ // get images
+var imagebase64_1 = "";
+var imagebase64_2 = "";
+var imagebase64_3 = "";
+var imagebase64_4 = "";
+    
+  
+function encodeImageFileAsURL1(element) {  
+    let file = element.files[0];  
+    let reader = new FileReader();  
+    reader.onloadend = function() {  
+        imagebase64_1 = reader.result;  
+    }  
+    reader.readAsDataURL(file);  
+}
+
+function encodeImageFileAsURL2(element) {  
+    let file = element.files[0];  
+    let reader = new FileReader();  
+    reader.onloadend = function() {  
+        imagebase64_2 = reader.result;  
+    }  
+    reader.readAsDataURL(file);  
+}
+
+function encodeImageFileAsURL3(element) {  
+    let file = element.files[0];  
+    let reader = new FileReader();  
+    reader.onloadend = function() {  
+        imagebase64_3 = reader.result;  
+    }  
+    reader.readAsDataURL(file);  
+}
+
+function encodeImageFileAsURL4(element) {  
+    let file = element.files[0];  
+    let reader = new FileReader();  
+    reader.onloadend = function() {  
+        imagebase64_4 = reader.result;  
+    }  
+    reader.readAsDataURL(file);  
+}
+
+
 
 $("#InventorySave").click(function(){
     let productName = $("#productname").val();
@@ -110,14 +147,6 @@ $("#InventorySave").click(function(){
     }
 
     if(errFlag == 0){
-        let file1 = "", file2 = "", file3 = "", file4 = "";
-        var id =[];
-        let imgId;
-        let reader1 = new FileReader();
-        reader1.readAsDataURL(imgFile1);
-        reader1.onload = function () {
-            file1 = reader1.result;
-
             var req = {
                 "productName" : productName,
                 "productCategory" : productCategory,
@@ -125,64 +154,31 @@ $("#InventorySave").click(function(){
                 "quantity" : quantity,
                 "details" : details,
                 "deliveryMode" : deliveryMode,
-                "pic1" :file1.replace(/^data:image\/[a-z]+;base64,/, ""),
-                "exen1" : imgExtension1
+                "pic1" :imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
+                "pic2" :imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
+                "pic3" :imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
+                "pic4" :imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
+                "exen1" : imgExtension1,
+                "exen2" : imgExtension2,
+                "exen3" : imgExtension3,
+                "exen4" : imgExtension4
             }
-
-            $.ajax({
-                type: "POST",
-                url:setUrl("Store/Store/addInventory"),
-                data: JSON.stringify(req),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function(data){
-                    id.push(data.id);
-                },
-                error: function(errMsg) {
-                    // window.location.replace("../src/Error"+errMsg.status+".html");
-                }
-            })
-        }
-
-        console.log(Object.values(id));
-        console.log(typeof(id));
-        
-        let reader2 = new FileReader();
-        reader2.readAsDataURL(imgFile2);
-        reader2.onload = function () {
-            file2 = reader2.result;
-            // var req = {
-            //     "id" : id,
-            //     "pic2" :file2.replace(/^data:image\/[a-z]+;base64,/, ""),
-            //     "exen2" : imgExtension2
-            // }
 
             // $.ajax({
             //     type: "POST",
-            //     url:setUrl("Store/Store/addInventoryPic"),
+            //     url:setUrl("Store/Store/addInventory"),
             //     data: JSON.stringify(req),
             //     contentType: "application/json; charset=utf-8",
             //     dataType: "json",
             //     success: function(data){
-            //         console.log(data);
+            //         id.push(data.id);
             //     },
             //     error: function(errMsg) {
             //         // window.location.replace("../src/Error"+errMsg.status+".html");
             //     }
-            // })
+            // });
+            console.log(req);
         }
-        let reader3 = new FileReader();
-        reader3.readAsDataURL(imgFile3);
-        reader3.onload = function () {
-            file3 = reader2.result;
-        }
-        let reader4 = new FileReader();
-        reader4.readAsDataURL(imgFile4);
-        reader4.onload = function () {
-            file4 = reader2.result;
-        }   
-
-    }
     else{
         alert(JSON.stringify(errors));
     }
