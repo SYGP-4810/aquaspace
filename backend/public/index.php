@@ -37,6 +37,7 @@ $router->add('{controller}/{id:\d+}/{action}');
 $router->add('Admin/{controller}/{action}', ['namespace' => 'Admin']);
 $router->add('Expert/{controller}/{action}', ['namespace' => 'Expert']);
 $router->add('Reg/{controller}/{action}', ['namespace' => 'Reg']);
+$router->add('Store/{controller}/{action}', ['namespace' => 'Store']);
 
 
 /**
