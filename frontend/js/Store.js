@@ -48,8 +48,5 @@ $(document).ready(function(){
         $(".accept").css("display", "none");
         $("#accept").css("color", "#aaaaaa");
 
-      });
-      
-
-      
+      });   
 }); 

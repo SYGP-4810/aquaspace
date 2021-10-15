@@ -8,6 +8,10 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.required {
+    color: rgb(255, 0, 64);
+  }
+  
 /* Title */
 .head-titles{
     margin-top: 20px;
@@ -90,7 +94,7 @@ form > label{
 }
 
 .container .card:hover{
-    background-color: #f1967a;
+    background-color: #f5ac7c;
 }
 
 .container .card a:hover{
@@ -390,6 +394,11 @@ form > label{
     font-size: 1.2rem;
 }
 
+.invent-add  #productcategory {
+    width: 350px;
+}
+
+
 .invent-add #price, .invent-add #quantity  {
     text-align: right;
     padding: 10px 10px;
@@ -536,4 +545,40 @@ form > label{
 input[type="checkbox"]{  
     height: 25px;
     width: 25px;
+}
+
+/* question */
+.questions {
+    width: 90%;
+    margin: auto;
+}
+
+.question {
+    width: 80%;
+    margin-left: 50px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(170, 170, 170, 0.521);
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.question h4, .questions h4, .questions h3 {
+    color: rgb(51, 51, 51);
+}
+
+.question p {
+    font-size: 15px;
+    color: rgb(87, 87, 87);
+}
+
+.questions button {
+    margin: auto;
+    padding: 3px;
+    width: 60px;
+    position: relative;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    margin-bottom: 40px;
 }

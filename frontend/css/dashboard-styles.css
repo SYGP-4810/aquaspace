@@ -55,10 +55,10 @@
 }
 
 .section-1 {
-    margin-top: 10vh;
+  margin-top: 10vh;
 	width: 100%;
-	/* background: #d7e9ec; */
-    min-height: 90vh;
+	background: #ffffff;
+  min-height: 90vh;
 	overflow: auto;
 
 }
