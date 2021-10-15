@@ -171,10 +171,10 @@ $("#InventorySave").click(function(){
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data){
-                    console.log(data);
+                    window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
                 },
                 error: function(errMsg) {
-                    // window.location.replace("../src/Error"+errMsg.status+".html");
+                    window.location.replace("../src/Error"+errMsg.status+".html");
                 }
             });
         }
