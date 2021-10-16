@@ -94,18 +94,29 @@
                     <tr>
                         <td>Images<span class="required">*</span></td>
                         <td>
-                            <span>Picture 1</span><input type="file" id="inventory-img1" name="inventory-img">
+                            <span>Picture 1</span><input type="file" id="inventory-img1" name="inventory-img" onchange="encodeImageFileAsURL1(this)">
                             <br>
-                            <span>Picture 2</span><input type="file" id="inventory-img2" name="inventory-img">
+                            <span>Picture 2</span><input type="file" id="inventory-img2" name="inventory-img" onchange="encodeImageFileAsURL2(this)">
                             <br>
-                            <span>Picture 3</span><input type="file" id="inventory-img3" name="inventory-img">
+                            <span>Picture 3</span><input type="file" id="inventory-img3" name="inventory-img" onchange="encodeImageFileAsURL3(this)">
                             <br>
-                            <span>Picture 4</span><input type="file" id="inventory-img4" name="inventory-img">
+                            <span>Picture 4</span><input type="file" id="inventory-img4" name="inventory-img" onchange="encodeImageFileAsURL4(this)">
                         </td>
                     </tr>
                     <tr>
                         <td>Product Name<span class="required">*</span></td>
-                        <td><input type="text" id="productname" name="productname"></td>
+                        <td><input type="text" id="productname" name="productName"></td>
+                    </tr>
+                    <tr>
+                        <td>Product Category<span class="required">*</span></td>
+                        <td>
+                            <input type="text" id="productcategory" name="productCategory" list="category">
+                            <datalist id="category">
+                                <option>Fish Care</option>
+                                <option>Fish Food</option>
+                                <option>Accessories</option>
+                            </datalist>
+                        </td>
                     </tr>
                     <tr>
                         <td>Price<span class="required">*</span></td>
@@ -117,7 +128,7 @@
                     </tr>
                     <tr>
                         <td>Product Details<span class="required">*</span></td>
-                        <td><textarea name="" id=""  rows="10"></textarea></td>
+                        <td><textarea  id="details"  rows="10"></textarea></td>
                         
                     </tr>
                     <tr>
@@ -136,12 +147,14 @@
                     </tr>
                 </table>
                 <div class="btn">
-                    <input type="submit" class="button" value="SAVE">
+                    <input type="submit" class="button" value="SAVE" id="InventorySave">
                     <a href="../Store/StoreInventory.html" class="button">CANCEL</a>
                 </div>
             </div>
 		</section>
 	</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src = "../../js/StoreInventory.js"></script>
 </body>
 </html>
 

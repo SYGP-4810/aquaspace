@@ -221,7 +221,7 @@ var qualificationFile;
 $("#qualifications").change(function (e) {
     var fileName = e.target.files[0].name;
     fileExtension = fileName.split('.').pop();
-    qualificationExtension = fileExtension.toLowerCase();
+    qualificationExtension = fileExtension;
     qualificationFile = e.target.files[0];
 
  });
@@ -336,7 +336,7 @@ $("#signUp2").click(function(){
     
      //check if the file name is taken;
      const acceptedFileTypes = ["png", "jpg", "jpeg"];
-     if(acceptedFileTypes.indexOf(qualificationExtension)===-1){
+     if(acceptedFileTypes.indexOf(qualificationExtension.toLowerCase())===-1){
          errors.push("qualification file type must be jpg ,jpeg or png");
          $("#qualifications").focus();
          erFlag ++;
@@ -349,6 +349,7 @@ $("#signUp2").click(function(){
         reader.onload = function () {
         //console.log(reader.result);//base64encoded string
             file = reader.result;
+            let strImage = file.replace(/^data:image\/[a-z]+;base64,/, "");
             // The key needs to match your method's input parameter (case-sensitive).
             var req = {
                 "email": email,
@@ -360,10 +361,9 @@ $("#signUp2").click(function(){
                 "city": city,
                 "emailToken": emailToken,
                 "tp":tp,
-                "qualifications":file,
+                "qualifications":strImage,
                 "qualificationExtension": qualificationExtension
             }
-            alert(JSON.stringify(req));
         
           $.ajax({
             type: "POST",
@@ -386,7 +386,7 @@ $("#signUp2").click(function(){
         reader.onerror = function (error) {
          //console.log('Error: ', error);
             alert(error);
-            //window.location.replace("../src/Error/"+errMsg.status+".html");
+            window.location.replace("../src/Error/"+errMsg.status+".html");
 
         }
         
