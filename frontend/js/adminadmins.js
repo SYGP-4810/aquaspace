@@ -2,9 +2,9 @@
 
 function setUrl(text){
     return "/aquaspace/backend/public/index.php?"+text;
-  }
+}
 
-  $( document ).ready(function() {
+$( document ).ready(function() {
     $.ajax({
         type: "GET",
         url:setUrl("Admin/Admin/getAdminList"),

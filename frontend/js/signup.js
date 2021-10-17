@@ -364,6 +364,7 @@ $("#signUp2").click(function(){
                 "qualifications":strImage,
                 "qualificationExtension": qualificationExtension
             }
+            // alert(JSON.stringify(req));
         
           $.ajax({
             type: "POST",

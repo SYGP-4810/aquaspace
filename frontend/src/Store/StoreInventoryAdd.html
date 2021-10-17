@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Store.css">
+    <link rel="stylesheet" href="../../css/store-inv-add.css">
 </head>
 <body>
 	<input type="checkbox" id="checkbox">
@@ -89,20 +90,46 @@
             <div class="head-titles">
                 <h1>INVENTORY</h1>
             </div>
+            
             <div class="invent-add-container">
-                <table class="invent-add">
-                    <tr>
-                        <td>Images<span class="required">*</span></td>
-                        <td>
-                            <span>Picture 1</span><input type="file" id="inventory-img1" name="inventory-img" onchange="encodeImageFileAsURL1(this)">
-                            <br>
-                            <span>Picture 2</span><input type="file" id="inventory-img2" name="inventory-img" onchange="encodeImageFileAsURL2(this)">
-                            <br>
-                            <span>Picture 3</span><input type="file" id="inventory-img3" name="inventory-img" onchange="encodeImageFileAsURL3(this)">
-                            <br>
-                            <span>Picture 4</span><input type="file" id="inventory-img4" name="inventory-img" onchange="encodeImageFileAsURL4(this)">
-                        </td>
-                    </tr>
+                <div class="wrapper">
+                    <div class="box">
+                      <div class="js--image-preview"></div>
+                      <div class="upload-options">
+                        <label>
+                            <input type="file" id="inventory-img1"  class="image-upload" onchange="encodeImageFileAsURL1(this)">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="box">
+                      <div class="js--image-preview"></div>
+                      <div class="upload-options">
+                        <label>
+                            <input type="file" id="inventory-img2"  class="image-upload"onchange="encodeImageFileAsURL2(this)">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="box">
+                      <div class="js--image-preview"></div>
+                      <div class="upload-options">
+                        <label>
+                            <input type="file" id="inventory-img3"  class="image-upload" onchange="encodeImageFileAsURL3(this)">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="box">
+                      <div class="js--image-preview"></div>
+                      <div class="upload-options">
+                        <label>
+                            <input type="file" id="inventory-img4"  class="image-upload" onchange="encodeImageFileAsURL3(this)">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                <table class="invent-add">       
                     <tr>
                         <td>Product Name<span class="required">*</span></td>
                         <td><input type="text" id="productname" name="productName"></td>
@@ -155,6 +182,7 @@
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src = "../../js/StoreInventory.js"></script>
+    <script src="../../js/image-upload.js"></script>
 </body>
 </html>
 

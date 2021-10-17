@@ -44,6 +44,23 @@
     border: 4px solid #f5ac7c;
 }
 
+.s-button{
+    float: right;
+    margin: 20px;
+    border-radius: 20px;
+    color: #050505;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 25px;
+    border: 2px solid #050505;
+    background-color: rgb(255, 255, 255);
+}
+
+.s-button:hover{
+    color: #f5ac7c;
+    border: solid #f5ac7c;
+}
+
 /* form */
 form > input[type=text] {
     width: 100%;
@@ -127,12 +144,18 @@ form > label{
 .edit-container .profile-pic{
     height: 120px;
     margin-bottom: 10px;
+    margin-left: 50px;
 }
 .edit-container .profile-pic img{
     float: left;
     width: 120px;
     border: 2px solid #f1967a;
     border-radius: 50%;
+}
+
+.edit{
+    margin-left: 50px;
+    width: 600px; 
 }
 
 .d-modes{
@@ -162,6 +185,7 @@ form > label{
 /* reset */
 .reset-container{
     margin:0px 30px 00px 30px;
+    width: 400px;
 } 
 
 /*Storefront  */
@@ -173,12 +197,61 @@ form > label{
 .store-img{
     width: 100%;
     height: 50vh;
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 .store-img .cover{
+    position: relative;
+}
+
+.cover #cover-pic{
     width: 100%;
     height: 40vh;
+    z-index: 10;
+}
+
+.cover-lable{
+    position: relative;
+    color: rgb(255, 255, 255);
+    font-size:2em;
+    z-index: 2;
+    float: right; 
+    margin-right: 20px;
+    margin-top: -50px;
+}
+
+.cover-lable:hover, .profile-lable:hover{
+    cursor: pointer;
+}
+
+#cover-img-u, #profile-img-u{
+    margin-right: -80px;
+    opacity: 0;
+}
+
+.profile{
+    position: relative;
+} 
+
+#profile-img{
+    width: 140px;
+    height: 140px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    position: relative;
+    top: -90px;
+    left: 5%; 
+ }
+
+.profile-lable{
+    position: absolute;
+    color: rgb(216, 2, 2);
+    font-size:2em;
+    z-index: 1;
+    width: 10px;
+    height: 10px;
+    margin-top: -30px;
+    margin-left: 30px;
 }
 
 .storefront a{
@@ -191,33 +264,11 @@ form > label{
     background-color: rgba(0, 0, 0, 0.651);
 }
 
-.store-img #cover-btn{
-    position: relative;
-    top: -50px;
-    left: 10px;
-}
-
 .storefront .button:hover{
     color: #f5ac7c;
     padding: 4px 10px;
     border: 2px solid #f5ac7c;
 }
-
-.store-img .profile-img{
-    width: 140px;
-    height: 140px;
-    border: 2px solid #ffffff;
-    border-radius: 50%;
-    position: relative;
-    top: -90px;
-    left: 5%;
-}
-
-.store-img #profile-btn{
-    position: relative;
-    top: 0px;
-    left: -70%;
-} 
 
 .store-title{
     display: flex;
@@ -581,4 +632,67 @@ input[type="checkbox"]{
     left: 10px;
     cursor: pointer;
     margin-bottom: 40px;
+}
+
+/* inventory */
+
+.small-carts{
+    display: flex;
+    /* flex-direction: row; */
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    margin:20px;
+}
+
+.s-box{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgba(102, 51, 153, 0.116);
+    width: 400px;
+    height: 150px;
+    margin:10px;
+}
+
+.s-box img{
+    width:90px;
+    height:90px;
+    float:left;
+    /* margin-right: -50px; */
+}
+.s-box span{
+    font-size: 0.8em;
+}
+.s-box h2{
+    font-size:2.5em;
+    color: rgb(58, 58, 58);
+}
+
+.big-cart{
+    margin: 40px;
+}
+
+.reson-orders{
+    margin: 60px;
+}
+
+.reson-orders h3{
+    font-size: 1.4em;
+    color: rgb(44, 44, 44);
+}
+
+.orders{
+    width: 100%;
+    margin: 10px;
+    align-items: center;
+    border-collapse: collapse;
+}
+
+.orders td,th{
+    padding: 20px 10px;
+    text-align:center;
+}
+
+.orders tr{
+    border-bottom: 2px solid #33d7ff;
 }

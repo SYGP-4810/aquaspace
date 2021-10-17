@@ -1,7 +1,5 @@
 $(document).ready(function(){
-
-    // jQuery methods go here...
-   
+    // jQuery methods go here...   
       $("#pending").click(function(){
         $(".pending").css("display", "block");
         $("#pending").css("color", "rgb(61, 61, 61)");
@@ -50,3 +48,5 @@ $(document).ready(function(){
 
       });   
 }); 
+
+
