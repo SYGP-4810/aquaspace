@@ -254,3 +254,32 @@ align-items: center;
 .list-item img{
   height: 30px;
 }
+
+
+.coins{
+  text-align: center;
+}
+
+.coins img {
+  height: 150px;
+  margin-top: 30px;
+}
+
+.coins div {
+  margin: auto;
+  width: 27%;
+  display: flex;
+  text-align: center;
+}
+ .coins div h1{
+   margin-left: 20px;
+ }
+
+ .coins h3{
+   margin-top: 80px;
+   color: #db6d41;
+ }
+ 
+ #coins {
+  color: rgb(61, 61, 61);
+ }

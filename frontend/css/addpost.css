@@ -29,11 +29,21 @@
 
 .container label > span , .container  p{
   float: left;
-  width: 25%;
-  margin-top: 12px;
+  width: 15%;
+  /* margin-top: 1px; */
   padding-right: 10px;
+  font-size: 15px;
 }
 
+.container .address-checkbox input{
+  margin-top: 0;
+}
+.container .address-checkbox span{
+  width: 100%;
+  margin-left: 10px;
+}
+
+.container
 input[type="text"],
 select,
 textarea {
@@ -42,7 +52,13 @@ textarea {
   padding: 5px 10px;
   margin-bottom: 10px;
   border: 1px solid #dadada;
-  color: #888;
+  color: rgb(70, 69, 69);
+  
+}
+input[type="text"]:focus,
+select:focus,
+textarea:focus{
+  outline: none;
 }
 
 textarea {
@@ -184,4 +200,50 @@ i.material-icons {
     opacity: 0;
     transform: scale(2.5);
  }
+}
+
+
+
+.ui-autocomplete { position: absolute; cursor: default; background:rgb(147, 174, 182) }   
+
+/* workarounds */
+html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+.ui-menu {
+  border: 1px rgb(110, 108, 108) solid;
+  /* border-radius: 5px; */
+    list-style:none;
+    padding: 2px;
+    margin: 0;
+    display:block;
+    float: left;
+}
+.ui-menu .ui-menu {
+    margin-top: -3px;
+}
+.ui-menu .ui-menu-item {
+    margin:0;
+    padding: 0;
+    zoom: 1;
+    float: left;
+    clear: left;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 300;
+    border-bottom: 1px rgb(68, 68, 68) solid;
+}
+
+.ui-menu-item:last-child{
+  border-bottom: none;
+}
+.ui-menu .ui-menu-item a {
+    text-decoration:none;
+    display:block;
+    padding:.2em .4em;
+    line-height:1.5;
+    zoom:1;
+}
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+    font-weight: normal;
+    margin: -1px;
 }
