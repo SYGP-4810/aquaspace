@@ -1,91 +1,241 @@
-function initImageUpload(box) {
-    let uploadField = box.querySelector('.image-upload');
-  
-    uploadField.addEventListener('change', getFile);
-  
-    function getFile(e){
-      let file = e.currentTarget.files[0];
-      checkType(file);
-    }
-    
-    function previewImage(file){
-      let thumb = box.querySelector('.js--image-preview'),
-          reader = new FileReader();
-  
-      reader.onload = function() {
-        thumb.style.backgroundImage = 'url(' + reader.result + ')';
-      }
-      reader.readAsDataURL(file);
-      thumb.className += ' js--no-default';
-    }
-  
-    function checkType(file){
-      let imageType = /image.*/;
-      if (!file.type.match(imageType)) {
-        throw 'Datei ist kein Bild';
-      } else if (!file){
-        throw 'Kein Bild gewählt';
-      } else {
-        previewImage(file);
-      }
-    }
-    
+$(document).ready(function() {
+
+  $.ajax({
+    type: "GET",
+    url:setUrl("Reg/Reg/getFishNames"),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(data){
+      var names = [];
+      data.forEach(element => {
+          names.push(element.name);
+      });
+      // console.log(names);
+      $("#auto").autocomplete({
+      source: names 
+  });
   }
+});
+
+
+$('#auto').change(function() {
+  let name = $("#auto").val();
   
-  // initialize box-scope
-  var boxes = document.querySelectorAll('.box');
-  
-  for (let i = 0; i < boxes.length; i++) {
-    let box = boxes[i];
-    initDropEffect(box);
-    initImageUpload(box);
+  var req = {"name" : name};
+
+  console.log(req);
+  $.ajax({
+    type: "POST",
+    url:setUrl("Reg/Reg/getFishDetails"),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: JSON.stringify(req),
+    success: function(data){
+      // console.log(data.description);
+      $("#description").val(data.description);
   }
+  });
+});
+
+
+  $('#chkBox').change(function () {
+    if ($('#chkBox').is(':checked')) {
+      $.ajax({
+              type: "GET",
+              url:setUrl("Reg/Reg/getAddress"),
+              contentType: "application/json; charset=utf-8",
+              dataType: "json",
+              success: function(data){
+                $("#address").val(data.address);   
+            }
+          });
+        }
+});
+
   
+//api setter
+function setUrl(text){
+  return "/aquaspace/backend/public/index.php?"+text;
+}
+
+// get extention varibales
+var imgExtension1, imgExtension2, imgExtension3, imgExtension4;
+
+$("#img1").change(function (e) {
+  var fileName = e.target.files[0].name;
+  fileExtension = fileName.split('.').pop();
+  imgExtension1 = fileExtension;
+});
+
+$("#img2").change(function (e) {
+  var fileName = e.target.files[0].name;
+  fileExtension = fileName.split('.').pop();
+  imgExtension2 = fileExtension;
+});
+
+$("#img3").change(function (e) {
+  var fileName = e.target.files[0].name;
+  fileExtension = fileName.split('.').pop();
+  imgExtension3 = fileExtension;
+});
+
+$("#img4").change(function (e) {
+  var fileName = e.target.files[0].name;
+  fileExtension = fileName.split('.').pop();
+  imgExtension4 = fileExtension;
+});
+
+
+// get images
+var imagebase64_1 = "";
+var imagebase64_2 = "";
+var imagebase64_3 = "";
+var imagebase64_4 = "";
   
-  
-  /// drop-effect
-  function initDropEffect(box){
-    let area, drop, areaWidth, areaHeight, maxDistance, dropWidth, dropHeight, x, y;
-    
-    // get clickable area for drop effect
-    area = box.querySelector('.js--image-preview');
-    area.addEventListener('click', fireRipple);
-    
-    function fireRipple(e){
-      area = e.currentTarget
-      // create drop
-      if(!drop){
-        drop = document.createElement('span');
-        drop.className = 'drop';
-        this.appendChild(drop);
-      }
-      // reset animate class
-      drop.className = 'drop';
-      
-      // calculate dimensions of area (longest side)
-      areaWidth = getComputedStyle(this, null).getPropertyValue("width");
-      areaHeight = getComputedStyle(this, null).getPropertyValue("height");
-      maxDistance = Math.max(parseInt(areaWidth, 10), parseInt(areaHeight, 10));
-  
-      // set drop dimensions to fill area
-      drop.style.width = maxDistance + 'px';
-      drop.style.height = maxDistance + 'px';
-      
-      // calculate dimensions of drop
-      dropWidth = getComputedStyle(this, null).getPropertyValue("width");
-      dropHeight = getComputedStyle(this, null).getPropertyValue("height");
-      
-      // calculate relative coordinates of click
-      // logic: click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center
-      x = e.pageX - this.offsetLeft - (parseInt(dropWidth, 10)/2);
-      y = e.pageY - this.offsetTop - (parseInt(dropHeight, 10)/2) - 30;
-      
-      // position drop and animate
-      drop.style.top = y + 'px';
-      drop.style.left = x + 'px';
-      drop.className += ' animate';
-      e.stopPropagation();
-      
+
+function encodeImageFileAsURL1(element) {  
+  let file = element.files[0];  
+  let reader = new FileReader();  
+  reader.onloadend = function() {  
+      imagebase64_1 = reader.result;  
+  }  
+  reader.readAsDataURL(file);  
+}
+
+function encodeImageFileAsURL2(element) {  
+  let file = element.files[0];  
+  let reader = new FileReader();  
+  reader.onloadend = function() {  
+      imagebase64_2 = reader.result;  
+  }  
+  reader.readAsDataURL(file);  
+}
+
+function encodeImageFileAsURL3(element) {  
+  let file = element.files[0];  
+  let reader = new FileReader();  
+  reader.onloadend = function() {  
+      imagebase64_3 = reader.result;  
+  }  
+  reader.readAsDataURL(file);  
+}
+
+function encodeImageFileAsURL4(element) {  
+  let file = element.files[0];  
+  let reader = new FileReader();  
+  reader.onloadend = function() {  
+      imagebase64_4 = reader.result;  
+  }  
+  reader.readAsDataURL(file);  
+}
+
+
+
+
+  $("#btn").click(function(){
+    let product = $("#product").val();
+    let duration = $("#duration").val();
+    let message = $("#message").val();
+    let quantity = $("#quantity").val();
+    let category = $("#category").val();
+    let price = $("#price").val();
+    let address = $("#address").val();
+    let erFlag = 0;
+    //validation criteria
+   
+    if(product == ""){
+        alert("enter product name");
+        $("#product").focus();
+        erFlag ++;
     }
+    if(duration == ""){
+        alert("enter post duration");
+        $("#duration").focus();
+        erFlag ++;
+    }
+     if(price == ""){
+         alert("enter price");
+         $("#price").focus();
+         erFlag ++;
+     }
+     if(category == ""){
+      alert("enter category");
+      $("#category").focus();
+      erFlag ++;
   }
-  
+     if(address == ""){
+         alert("enter address");
+         $("#address").focus();
+         erFlag ++;
+     }
+     if(quantity == ""){
+      alert("enter price");
+      $("#quantity").focus();
+      erFlag ++;
+  }
+ 
+
+  const acceptedFileTypes = ["png", "jpg", "jpeg"];
+  if(acceptedFileTypes.indexOf(imgExtension1.toLowerCase())===-1){
+      errors.push("Image 1 type must be jpg ,jpeg or png");
+      errFlag++;
+  }
+  if(acceptedFileTypes.indexOf(imgExtension2.toLowerCase())===-1){
+      errors.push("Image 2 type must be jpg ,jpeg or png");
+      errFlag++;
+  }
+  if(acceptedFileTypes.indexOf(imgExtension3.toLowerCase())===-1){
+      errors.push("Image 3 type must be jpg ,jpeg or png");
+      errFlag++;
+  }
+  if(acceptedFileTypes.indexOf(imgExtension3.toLowerCase())===-1){
+      errors.push("Image 4 type must be jpg ,jpeg or png");
+      errFlag++;
+  }
+
+  if(errFlag == 0){
+          var req = {
+            "product_name": product,
+            "duration": duration,
+            "message": message, 
+            "price":price ,
+            "category":category,
+            "address": address, 
+            "image":file,
+            "img1Extension": img1Extension,
+              "quantity" : quantity,
+              "img1" :imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
+              "img2" :imagebase64_2.replace(/^data:image\/[a-z]+;base64,/, ""),
+              "img3" :imagebase64_3.replace(/^data:image\/[a-z]+;base64,/, ""),
+              "img4" :imagebase64_4.replace(/^data:image\/[a-z]+;base64,/, ""),
+              "ex1" : imgExtension1,
+              "ex2" : imgExtension2,
+              "ex3" : imgExtension3,
+              "ex4" : imgExtension4
+          }
+
+          $.ajax({
+              type: "POST",
+              url:setUrl("Reg/Reg/addPost"),
+              data: JSON.stringify(req),
+              contentType: "application/json; charset=utf-8",
+              dataType: "json",
+              success: function(data){
+                  window.location.replace("/aquaspace/frontend/src/index.html")
+              },
+              error: function(errMsg) {
+                  window.location.replace("../src/Error"+errMsg.status+".html");
+              }
+          });
+      }
+  else{
+      alert(JSON.stringify(errors));
+  }
+
+});
+
+
+})
+
+
+// ------------------------------------------------

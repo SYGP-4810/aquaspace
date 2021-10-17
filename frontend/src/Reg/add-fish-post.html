@@ -14,61 +14,61 @@
 <body>
   <div class="nav">
     <div class="logo">
-        <img src="../../images/logo.png" alt="">
-        <h2>AquaSpace</h2>
+      <img src="../../images/logo.png" alt="">
+      <h2>AquaSpace</h2>
     </div>
     <div class="search_box">
-        <div class="dropdown">
-            <div class="default_option">All</div>
-            <ul>
-                <li>All</li>
-                <li>Fish</li>
-                <li>Articles</li>
-            </ul>
-        </div>
-        <div class="search_field">
-            <input type="text" class="input" placeholder="Search">
-            <i class="fas fa-search"></i>
-        </div>
+      <div class="dropdown">
+        <div class="default_option">All</div>
+        <ul>
+          <li>All</li>
+          <li>Fish</li>
+          <li>Articles</li>
+        </ul>
+      </div>
+      <div class="search_field">
+        <input type="text" class="input" placeholder="Search">
+        <i class="fas fa-search"></i>
+      </div>
     </div>
     <div class="nav-links">
-        <ul>
-            <li class="active"><a href="../index.html">Home</a></li>
-            <li><a href="articles.html">Blog</a></li>
-            <li><a href="build-tank.html">Build Tank</a></li>
-            <li id="a_parent"><a href="#">Add Post</a>
-                <div id="a_child" class="sub-menu sub-menu-1">
-                    <ul>
-                        <li><a href="add-fish-post.html">Fish</a></li>
-                        <li><a href="add-other-post.html">Equipment</a></li>
-                        <li><a href="add-other-post.html">Plant</a></li>
-                        <li><a href="add-other-post.html">Medicine</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
-            <li><a href="#"><i class="fas fa-bell fa-lg"></i></a></li>
-            <li><a href="#"><i class="fas fa-user-circle fa-lg"></i></a>
-                <div class="sub-menu sub-menu-2">
-                    <ul class="options">
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Logout</a></li>
-                    </ul>
-                </div>
-        </ul>
+      <ul>
+        <li class="active"><a href="../index.html">Home</a></li>
+        <li><a href="articles.html">Blog</a></li>
+        <li><a href="build-tank.html">Build Tank</a></li>
+        <li id="a_parent"><a href="#">Add Post</a>
+          <div id="a_child" class="sub-menu sub-menu-1">
+            <ul>
+              <li><a href="add-fish-post.html">Fish</a></li>
+              <li><a href="add-other-post.html">Equipment</a></li>
+              <li><a href="add-other-post.html">Plant</a></li>
+              <li><a href="add-other-post.html">Medicine</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
+        <li><a href="#"><i class="fas fa-bell fa-lg"></i></a></li>
+        <li><a href="#"><i class="fas fa-user-circle fa-lg"></i></a>
+          <div class="sub-menu sub-menu-2">
+            <ul class="options">
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </div>
+      </ul>
     </div>
-</div>
+  </div>
   <div class="container">
     <form action="" method="">
       <label>
-        <span>Upload your images<span class="required">*</span></span>
+        <span>Upload your images</span>
       </label>
       <div class="wrapper">
         <div class="box">
           <div class="js--image-preview"></div>
           <div class="upload-options">
             <label>
-              <input type="file" class="image-upload" accept="image/*" />
+              <input id="img1" type="file" class="image-upload" accept="image/*" />
             </label>
           </div>
         </div>
@@ -76,7 +76,7 @@
           <div class="js--image-preview"></div>
           <div class="upload-options">
             <label>
-              <input type="file" class="image-upload" accept="image/*" />
+              <input id="img2" type="file" class="image-upload" accept="image/*" />
             </label>
           </div>
         </div>
@@ -84,7 +84,7 @@
           <div class="js--image-preview"></div>
           <div class="upload-options">
             <label>
-              <input type="file" class="image-upload" accept="image/*" />
+              <input id="img3" type="file" class="image-upload" accept="image/*" />
             </label>
           </div>
         </div>
@@ -92,7 +92,7 @@
           <div class="js--image-preview"></div>
           <div class="upload-options">
             <label>
-              <input type="file" class="image-upload" accept="image/*" />
+              <input id="img4" type="file" class="image-upload" accept="image/*" />
             </label>
           </div>
         </div>
@@ -102,30 +102,32 @@
         <input type="text" name="fname">
       </label> -->
       <label>
-        <span>Product Name<span class="required">*</span></span>
-        <select name="selection">
+        <span class="category">Category<span class="required">*</span></span>
+        <select id="categoy" name="selection">
           <option selected hidden value="">Select </option>
-          <option value="jan">Januaru</option>
-          <option value="feb">February</option>
-          <option value="mar">March</option>
-          <option value="apr">April</option>
-          <option value="may">May</option>
-          <option value="june">June</option>
-          <option value="july">July</option>
-          <option value="aug">August</option>
-          <option value="sep">September</option>
-          <option value="oct">October</option>
-          <option value="nov">November</option>
-          <option value="dec">December</option>
+          <option value="1">Fish</option>
+          <option value="2">Plant</option>
         </select>
       </label>
-      <!-- <label>
-        <span class="lname">Category<span class="required">*</span></span>
-        <input type="text" name="lname">
-      </label> -->
+      <label>
+        <span>Name<span class="required">*</span></span>
+        <input type="text" id="auto" placeholder="enter your fish name" />
+      </label>
+      <label>
+        <span>Description<span class="required"></span></span>
+        <textarea id="description" name="reason" rows="5" cols="100" readonly></textarea>
+      </label>
+      <label class="address-checkbox">
+        <input type="checkbox" id="chkBox" name="HelpCheckbox" value="Help" />
+        <span>Use the address I gave you</span>
+      </label>
+      <label>
+        <span>Address<span class="required">*</span></span>
+        <input id="address" type="text" name="address">
+      </label>
       <label>
         <span>Post Duration<span class="required">*</span></span>
-        <select name="selection">
+        <select id="duration" name="selection">
           <option selected hidden value="">Select </option>
           <option value="1w">1 week</option>
           <option value="2w">2 weeks</option>
@@ -137,18 +139,15 @@
         </select>
       </label>
       <label>
-        <span>Description<span class="required">*</span></span>
-        <textarea name="reason" rows="6" cols="100"></textarea>
+        <span>Message<span class="required"></span></span>
+        <textarea id="message" name="reason" rows="5" cols="100"></textarea>
       </label>
       <label>
         <span>Price<span class="required">*</span></span>
-        <input type="text" name="price">
-      </label>
-      <label>
-        <span>Address<span class="required">*</span></span>
-        <input type="text" name="address">
+        <input id="price" type="text" name="price">
       </label>
     </form>
+    <button id="btn">post</button>
   </div>
 
   <br>
@@ -213,8 +212,13 @@
     </div>
 
   </footer>
+  <script src="https://code.jquery.com/jquery-1.12.4.js">
+  </script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
+  </script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script src="../../js/image-upload.js"></script>
   <script src="../../js/addpost.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="../../js/landing-app.js"></script>
 
 </body>
