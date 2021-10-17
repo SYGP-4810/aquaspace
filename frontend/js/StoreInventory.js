@@ -4,7 +4,7 @@ function setUrl(text){
 }
 
 // get extention varibales
-var imgExtension1, imgExtension2, imgExtension3, imgExtension4;
+var imgExtension1 = " ", imgExtension2 = " ", imgExtension3 = " ", imgExtension4 = " ";
 
 $("#inventory-img1").change(function (e) {
     var fileName = e.target.files[0].name;
@@ -163,20 +163,22 @@ $("#InventorySave").click(function(){
                 "exen3" : imgExtension3,
                 "exen4" : imgExtension4
             }
-            $.ajax({
-                type: "POST",
-                url:setUrl("Store/Store/addInventory"),
-                data: JSON.stringify(req),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function(data){
-                    console.log(data);
-                    //window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
-                },
-                error: function(errMsg) {
-                    //window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
-                }
-            });
+
+            console.log(req);
+            // $.ajax({
+            //     type: "POST",
+            //     url:setUrl("Store/Store/addInventory"),
+            //     data: JSON.stringify(req),
+            //     contentType: "application/json; charset=utf-8",
+            //     dataType: "json",
+            //     success: function(data){
+            //         console.log(data);
+            //         //window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
+            //     },
+            //     error: function(errMsg) {
+            //         //window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            //     }
+            // });
         }
     else{
         alert(JSON.stringify(errors));

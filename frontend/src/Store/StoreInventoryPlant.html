@@ -121,11 +121,13 @@
                       <div class="js--image-preview"></div>
                       <div class="upload-options">
                         <label>
-                            <input type="file" id="inventory-img4"  class="image-upload" onchange="encodeImageFileAsURL4(this)">
+                            <input type="file" id="inventory-img4"  class="image-upload" onchange="encodeImageFileAsURL3(this)">
                         </label>
                       </div>
                     </div>
                   </div>
+
+
 
                 <table class="invent-add">       
                     <tr>
@@ -135,13 +137,12 @@
                     <tr>
                         <td>Product Category<span class="required">*</span></td>
                         <td>
-                            <div class="select">
-                                <select name="category" id="productcategory">
-                                    <option class="val" value="Fish Care">Fish Care</option>
-                                    <option value="Fish Food">Fish Food</option>
-                                    <option value="Accessories">Accessories</option>
-                                </select>
-                            </div>
+                            <input type="text" id="productcategory" name="productCategory" list="category">
+                            <datalist id="category">
+                                <option>Fish Care</option>
+                                <option>Fish Food</option>
+                                <option>Accessories</option>
+                            </datalist>
                         </td>
                     </tr>
                     <tr>
