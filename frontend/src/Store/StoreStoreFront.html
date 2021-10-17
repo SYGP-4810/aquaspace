@@ -91,10 +91,20 @@
             </div>
             <div class="storefront">
                 <div class="store-img">
-                    <img src="../../images/cover.jpg" alt="cover" class="cover">
-                    <a href="#" class="button" id="cover-btn">Edit</a>
-                    <img src="../../images/profile.jpg" alt="profile" class="profile-img">
-                    <a href="#" class="button" id="profile-btn">Edit</a>
+                    <div class="cover">
+                        <img id="cover-pic" src="../../images/cover.jpg" alt="cover image" />
+                        <label class="cover-lable" >
+                            <input type='file' id="cover-img-u" accept="image/png, image/jpeg"/>
+                            +
+                        </label> 
+                    </div>
+                    <div class="profile">
+                        <img id="profile-img" src="../../images/profile.jpg" alt="profile image" />
+                        <label class="profile-lable" >
+                            <input type='file' id="profile-img-u" accept="image/png, image/jpeg"/>
+                            +
+                        </label>
+                    </div>
                 </div>
                 <div class="store-title">
                      <h3>Aqua Shop</h3>
@@ -109,9 +119,9 @@
                 </div>
                 <div class="about">
                     <span>About the store</span>
-                    <p>Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p contenteditable="true">write about your store</p>
                 </div>
-                <a href="#" class="button" id="about-btn">Edit</a>
+                <input type="submit" class="s-button" value="SAVE" id="">
                 <div class="item-list">
                     <div class="item-title">
                         <h3>Store Items</h3>
@@ -369,5 +379,6 @@
             </div>   
 		</section>
 	</div>
+    <script src="../../js/Storefront.js"></script>
 </body>
 </html>

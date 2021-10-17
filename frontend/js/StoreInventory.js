@@ -144,9 +144,9 @@ $("#InventorySave").click(function(){
             })
         }
 
-        console.log(Object.values(id));
+        console.log(Object.id);
         console.log(typeof(id));
-        
+
         let reader2 = new FileReader();
         reader2.readAsDataURL(imgFile2);
         reader2.onload = function () {

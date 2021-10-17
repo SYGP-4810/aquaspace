@@ -363,7 +363,7 @@ $("#signUp2").click(function(){
                 "qualifications":file,
                 "qualificationExtension": qualificationExtension
             }
-            alert(JSON.stringify(req));
+            // alert(JSON.stringify(req));
         
           $.ajax({
             type: "POST",
