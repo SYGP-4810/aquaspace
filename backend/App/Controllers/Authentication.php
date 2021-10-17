@@ -89,17 +89,19 @@ class Authentication extends \Core\Controller
             } elseif ($stmt->rowCount() > 1) {
                 throw new \Exception("database error duplicate user accounts", 500);
             } else {
-                $stmt = $this->execute($this->get('user_auth', "email ='" . $email . "'"));
+                $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $email . "'"));
+                $result = $stmt->fetch();
+                $attempt = $result['attempt'];
 
-
-                if ($stmt->fetch()['attepmt'] < 5) {
+                if ($attempt < 5) {
                     $time = time();
-                    $this->execute("UPDATE user_auth SET attempt = attempt + 1 , attempt_time = '{$time}' WHERE email='{$email}' ");
-                    $res = array("status" => "5", "redirect" => "", "attempt" => $stmt->fetch()['attempt']);
+                    $this->exec("UPDATE user_auth SET attempt = '{$attempt}' , attempt_time = '{$time}' WHERE email='{$email}' ");
+                    $res = array("status" => "5", "redirect" => "", "attempt" => $attempt + 1);
                     View::response($res);
                 } else {
-                    $timeToEnd = time() - $stmt->fetch()['attempt_time'];
-                    $this->execute("UPDATE user_auth SET attempt = attempt + 1 user_statues = 5 WHERE email='{$email}'");
+                    $timeToEnd = time() - $result['attempt_time'];
+                    $attempt++;
+                    $this->execute("UPDATE user_auth SET attempt = '{$attempt}' , user_status = '1' WHERE email='{$email}'");
                     $cookie_name = "timeToEnd";
                     $cookie_value = $timeToEnd;
                     setcookie($cookie_name, $cookie_value, time() + $timeToEnd, "/");
@@ -206,12 +208,14 @@ class Authentication extends \Core\Controller
                 $res = array("status" => "0", "error" => $errors);
                 View::response($res);
             } else {
+                $date = date('Y-m-d H:i:s');
                 $dataToInsertAuthTable = [
                     "email" => $email,
                     "tp" => $tp,
                     "password" => md5($password),
                     "user_type" => "1",
-                    "user_status" => "4"
+                    "user_status" => "4",
+                    "create_date" => $date
                 ];
                 $this->exec($this->save("user_auth", $dataToInsertAuthTable));
                 $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
@@ -330,9 +334,9 @@ class Authentication extends \Core\Controller
             }
             $qName = "";
             if (strlen($qualifications) > 0) {
-                $qName = round(microtime(true) * 1000) . ".txt";
+                $qName = round(microtime(true) * 1000) . "." . $qualificationExtension;
                 $qDir = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/qualifications/" . $qName;
-                $flag = file_put_contents($qDir, $qualifications);
+                $flag = file_put_contents($qDir, base64_decode($qualifications));
                 if (!$flag) {
                     $errFlag++;
                     array_push($errors, "qualification is not inserted");
@@ -345,12 +349,14 @@ class Authentication extends \Core\Controller
                 $res = array("status" => "0", "error" => $errors);
                 View::response($res);
             } else {
+                $date = date('Y-m-d H:i:s');
                 $dataToInsertAuthTable = [
                     "email" => $email,
                     "tp" => $tp,
                     "password" => md5($password),
                     "user_type" => "2",
-                    "user_status" => "5"
+                    "user_status" => "5",
+                    "create_date" => $date
                 ];
                 $this->exec($this->save("user_auth", $dataToInsertAuthTable));
                 $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
@@ -477,12 +483,14 @@ class Authentication extends \Core\Controller
                 $res = array("status" => "0", "error" => $errors);
                 View::response($res);
             } else {
+                $date = date('Y-m-d H:i:s');
                 $dataToInsertAuthTable = [
                     "email" => $email,
                     "tp" => $tp,
                     "password" => md5($password),
                     "user_type" => "3",
-                    "user_status" => "5"
+                    "user_status" => "5",
+                    "create_date" => $date
                 ];
                 $this->exec($this->save("user_auth", $dataToInsertAuthTable));
                 $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
@@ -496,7 +504,6 @@ class Authentication extends \Core\Controller
                     "man_nic" => $manNIC,
                     "registration_num" => $regNo,
                     "del_mode" => $delMode
-
                 ];
                 $this->exec($this->save('store', $dataToInsertStoreTable));
                 $res = array("status" => "1", "msg" => "success");

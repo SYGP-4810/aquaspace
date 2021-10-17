@@ -16,57 +16,75 @@ class Store extends \Core\Controller
 
     protected function before()
     {
-        // Make sure an admin user is logged in for example
-        // return false;
+        $stmt = $this->execute($this->get('user_auth', '*', "access_token='" . $_COOKIE['access_token']) . "' AND user_type='3'");
+        if ($stmt->rowCount == 1) {
+            $this->params['id'] = $stmt->fetch()['id'];
+            return true;
+        }
+        return false;
     }
 
     public function addInventoryAction()
     {
-        $stmt = $this->execute($this->get('user_auth', "*", "access_token = '". $_COOKIE['access_token'] ."' AND user_type='3'"));  
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "' AND user_type='3'"));
         $result = $stmt->fetch();
         $id = $result['id'];
-        
-        $qName = "";
-        $qName = round(microtime(true) * 1000) . "." . $this->data['exen1'];
-        $qDir = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/inventory/" . $qName;
-        $flag = file_put_contents($qDir, base64_decode($this->data['pic1']));
-        
-        if (!$flag){
+        $iName1 = "";
+        $iName1 = microtime(true) . "." . $this->data['exen1'];
+        $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/inventory/" . $iName1;
+        $flag1 = file_put_contents($iDir1, base64_decode($this->data['pic1']));
+
+        $iName2 = "";
+        $iName2 = microtime(true) . "." . $this->data['exen2'];
+        $iDir2 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/inventory/" . $iName2;
+        $flag2 = file_put_contents($iDir2, base64_decode($this->data['pic2']));
+
+        $iName3 = "";
+        $iName3 = microtime(true) . "." . $this->data['exen3'];
+        $iDir3 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/inventory/" . $iName3;
+        $flag3 = file_put_contents($iDir3, base64_decode($this->data['pic3']));
+
+        $iName4 = "";
+        $iName4 = microtime(true) . "." . $this->data['exen4'];
+        $iDir4 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/inventory/" . $iName4;
+        $flag4 = file_put_contents($iDir4, base64_decode($this->data['pic4']));
+
+        if (!$flag1) {
             throw new \Exception("file didn't come to backend");
-        }else {
-            $DataToInsert = [
-                "product_name" => $this->data['productName'],
-                "product_category" => $this->data['productCategory'],
-                "price" => $this->data['price'],
-                "quantity" => $this->data['quantity'],
-                "details" => $this->data['details'],
-                "delivery_mode" => $this->data['deliveryMode'],
-                "auth_id" => $id,
-                "pic1" => $qName
-            ];
-            $this->exec($this->save('inventory',$DataToInsert));
-            $stmt = $this->execute($this->get('inventory', "id", "pic1='" . $qName . "'"));
-            View::response($stmt->fetch());
         }
-    
-        
-    }  
-    
-    // public function addInventoryPicAction(){
-    //     View::response($this->data);
-    //     $qName = "";
-    //     $qName = round(microtime(true) * 1000) . "." . $this->data['exen2'];
-    //     $qDir = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/inventory/" . $qName;
-    //     $flag = file_put_contents($qDir, base64_decode($this->data['pic2']));
-        
-    //     if (!$flag){
-    //         throw new \Exception("file didn't come to backend");
-    //     }else {
-    //         $DataToUpdate = [
-    //             "pic2" => $qName
-    //         ];
-    //         // $this->exec($this->update('inventory', $DataToUpdate, "id='" . $this->data['id'] . "'"));
-            
-    //     }
-    // }
+        if (!$flag2) {
+            throw new \Exception("file didn't come to backend");
+        }
+        if (!$flag3) {
+            throw new \Exception("file didn't come to backend");
+        }
+        if (!$flag4) {
+            throw new \Exception("file didn't come to backend");
+        }
+
+        View::response(["id" => $id, "req" => $this->data]);
+        $DataToInsert = [
+            "product_name" => $this->data['productName'],
+            "product_category" => $this->data['productCategory'],
+            "price" => $this->data['price'],
+            "quantity" => $this->data['quantity'],
+            "details" => $this->data['details'],
+            "delivery_mode" => $this->data['deliveryMode'],
+            "auth_id" => $id,
+            "pic1" => $iName1,
+            "pic2" => $iName2,
+            "pic3" => $iName3,
+            "pic4" => $iName4
+        ];
+        $this->exec($this->save('inventory', $DataToInsert));
+    }
+
+    public function checkDeliveryOptionAction()
+    {
+        $this->params['id'];
+        $stmt = $this->execute($this->get('store', '*', 'auth_id=' . $this->params['id'] . "'"));
+        $result = $stmt->fetch();
+        $delMOd = $result['del_mod'];
+        //View::response();
+    }
 }
