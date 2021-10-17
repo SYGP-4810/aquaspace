@@ -26,7 +26,7 @@ class Store extends \Core\Controller
 
     public function addInventoryAction()
     {
-        $stmt = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "' AND user_type='3'"));
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token']) . "'");
         $result = $stmt->fetch();
         $id = $result['id'];
         $iName1 = "";

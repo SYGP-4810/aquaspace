@@ -28,7 +28,7 @@ $(document).ready(function(e){
                         <tr>
                         <tr>
                             <td>Qulification</td>
-                            <td><img src="${data.qualification}" alt="qualification"></td>
+                            <td><img src="/aquaspace/frontend/images/qualifications/${data.qualification}" alt="qualification"></td>
                         </tr>
                         <tr>
                             <td>City</td>

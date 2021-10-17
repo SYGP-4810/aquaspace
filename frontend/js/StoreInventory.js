@@ -163,7 +163,6 @@ $("#InventorySave").click(function(){
                 "exen3" : imgExtension3,
                 "exen4" : imgExtension4
             }
-
             $.ajax({
                 type: "POST",
                 url:setUrl("Store/Store/addInventory"),
@@ -171,10 +170,11 @@ $("#InventorySave").click(function(){
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data){
-                    window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
+                    console.log(data);
+                    //window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
                 },
                 error: function(errMsg) {
-                    window.location.replace("../src/Error"+errMsg.status+".html");
+                    //window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
                 }
             });
         }
