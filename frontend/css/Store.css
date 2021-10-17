@@ -144,12 +144,18 @@ form > label{
 .edit-container .profile-pic{
     height: 120px;
     margin-bottom: 10px;
+    margin-left: 50px;
 }
 .edit-container .profile-pic img{
     float: left;
     width: 120px;
     border: 2px solid #f1967a;
     border-radius: 50%;
+}
+
+.edit{
+    margin-left: 50px;
+    width: 600px; 
 }
 
 .d-modes{
@@ -179,6 +185,7 @@ form > label{
 /* reset */
 .reset-container{
     margin:0px 30px 00px 30px;
+    width: 400px;
 } 
 
 /*Storefront  */

@@ -9,7 +9,7 @@
 
 .header {
 	position: fixed;
-    top:0;
+  top:0;
 	width: 100%;
 	height: 10vh;
 	display: flex;
@@ -18,6 +18,7 @@
 	padding: 15px 0PX;
 	background: #313552;
 	color: #fff;
+  z-index: 10;
 }
 
 .u-name img {

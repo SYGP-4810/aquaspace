@@ -87,4 +87,23 @@ class Store extends \Core\Controller
         $delMOd = $result['del_mod'];
         //View::response();
     }
+
+    public function getStoreProfileAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'"));
+        $result1 = $stmt->fetch();
+        $id = $result1['id'];
+        $stmt = $this->execute($this->get('store', "*", "auth_id ='" . $id . "'"));
+        $result2 = $stmt->fetch();
+        $res = [
+            "SName" => $result2['company_name'],
+            "RegNo" => $result2['registration_num'],
+            "tp" => $result1['tp'],
+            "city" => $result2['city'],
+            "address" => $result2['address'],
+            "OwnerName" => $result2['man_name'],
+            "OwnerNIC" => $result2['man_nic'],
+        ];
+        View::response($res);
+    }
 }

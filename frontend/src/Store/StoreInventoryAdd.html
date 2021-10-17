@@ -90,13 +90,14 @@
             <div class="head-titles">
                 <h1>INVENTORY</h1>
             </div>
+            
             <div class="invent-add-container">
                 <div class="wrapper">
                     <div class="box">
                       <div class="js--image-preview"></div>
                       <div class="upload-options">
                         <label>
-                          <input id="img1" type="file" class="image-upload" accept="image/*" />
+                            <input type="file" id="inventory-img1"  class="image-upload" onchange="encodeImageFileAsURL1(this)">
                         </label>
                       </div>
                     </div>
@@ -104,7 +105,7 @@
                       <div class="js--image-preview"></div>
                       <div class="upload-options">
                         <label>
-                          <input id="img2" type="file" class="image-upload" accept="image/*" />
+                            <input type="file" id="inventory-img2"  class="image-upload"onchange="encodeImageFileAsURL2(this)">
                         </label>
                       </div>
                     </div>
@@ -112,7 +113,7 @@
                       <div class="js--image-preview"></div>
                       <div class="upload-options">
                         <label>
-                          <input id="img3" type="file" class="image-upload" accept="image/*" />
+                            <input type="file" id="inventory-img3"  class="image-upload" onchange="encodeImageFileAsURL3(this)">
                         </label>
                       </div>
                     </div>
@@ -120,7 +121,7 @@
                       <div class="js--image-preview"></div>
                       <div class="upload-options">
                         <label>
-                          <input id="img4" type="file" class="image-upload" accept="image/*" />
+                            <input type="file" id="inventory-img4"  class="image-upload" onchange="encodeImageFileAsURL3(this)">
                         </label>
                       </div>
                     </div>
@@ -128,19 +129,7 @@
 
 
 
-                <table class="invent-add">
-                    <!-- <tr>
-                        <td>Images<span class="required">*</span></td>
-                        <td>
-                            <span>Picture 1</span><input type="file" id="inventory-img1" name="inventory-img" onchange="encodeImageFileAsURL1(this)">
-                            <br>
-                            <span>Picture 2</span><input type="file" id="inventory-img2" name="inventory-img" onchange="encodeImageFileAsURL2(this)">
-                            <br>
-                            <span>Picture 3</span><input type="file" id="inventory-img3" name="inventory-img" onchange="encodeImageFileAsURL3(this)">
-                            <br>
-                            <span>Picture 4</span><input type="file" id="inventory-img4" name="inventory-img" onchange="encodeImageFileAsURL4(this)">
-                        </td>
-                    </tr> -->
+                <table class="invent-add">       
                     <tr>
                         <td>Product Name<span class="required">*</span></td>
                         <td><input type="text" id="productname" name="productName"></td>
