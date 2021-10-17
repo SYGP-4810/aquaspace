@@ -16,8 +16,12 @@ class Store extends \Core\Controller
 
     protected function before()
     {
-        // Make sure an admin user is logged in for example
-        // return false;
+        $stmt = $this->execute($this->get('user_auth', '*', "access_token='" . $_COOKIE['access_token']) . "' AND user_type='3'");
+        if ($stmt->rowCount == 1) {
+            $this->params['id'] = $stmt->fetch()['id'];
+            return true;
+        }
+        return false;
     }
 
     public function addInventoryAction()
@@ -73,5 +77,14 @@ class Store extends \Core\Controller
             "pic4" => $iName4
         ];
         $this->exec($this->save('inventory', $DataToInsert));
+    }
+
+    public function checkDeliveryOptionAction()
+    {
+        $this->params['id'];
+        $stmt = $this->execute($this->get('store', '*', 'auth_id=' . $this->params['id'] . "'"));
+        $result = $stmt->fetch();
+        $delMOd = $result['del_mod'];
+        //View::response();
     }
 }

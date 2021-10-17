@@ -183,3 +183,7 @@ $("#InventorySave").click(function(){
     }
 
 });
+
+$(document).ready(function() {
+
+});

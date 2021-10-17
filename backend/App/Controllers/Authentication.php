@@ -208,12 +208,14 @@ class Authentication extends \Core\Controller
                 $res = array("status" => "0", "error" => $errors);
                 View::response($res);
             } else {
+                $date = date('Y-m-d H:i:s');
                 $dataToInsertAuthTable = [
                     "email" => $email,
                     "tp" => $tp,
                     "password" => md5($password),
                     "user_type" => "1",
-                    "user_status" => "4"
+                    "user_status" => "4",
+                    "create_date" => $date
                 ];
                 $this->exec($this->save("user_auth", $dataToInsertAuthTable));
                 $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
@@ -347,12 +349,14 @@ class Authentication extends \Core\Controller
                 $res = array("status" => "0", "error" => $errors);
                 View::response($res);
             } else {
+                $date = date('Y-m-d H:i:s');
                 $dataToInsertAuthTable = [
                     "email" => $email,
                     "tp" => $tp,
                     "password" => md5($password),
                     "user_type" => "2",
-                    "user_status" => "5"
+                    "user_status" => "5",
+                    "create_date" => $date
                 ];
                 $this->exec($this->save("user_auth", $dataToInsertAuthTable));
                 $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
@@ -479,12 +483,14 @@ class Authentication extends \Core\Controller
                 $res = array("status" => "0", "error" => $errors);
                 View::response($res);
             } else {
+                $date = date('Y-m-d H:i:s');
                 $dataToInsertAuthTable = [
                     "email" => $email,
                     "tp" => $tp,
                     "password" => md5($password),
                     "user_type" => "3",
-                    "user_status" => "5"
+                    "user_status" => "5",
+                    "create_date" => $date
                 ];
                 $this->exec($this->save("user_auth", $dataToInsertAuthTable));
                 $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
@@ -498,7 +504,6 @@ class Authentication extends \Core\Controller
                     "man_nic" => $manNIC,
                     "registration_num" => $regNo,
                     "del_mode" => $delMode
-
                 ];
                 $this->exec($this->save('store', $dataToInsertStoreTable));
                 $res = array("status" => "1", "msg" => "success");

@@ -206,8 +206,8 @@ $("#signUp1").click(function(e){
                     }
             },
             error: function(errMsg) {
-                window.location.replace("../src/Error/"+errMsg.status+".html");
-                //console.log(errMsg);
+                //window.location.replace("../src/Error/"+errMsg.status+".html");
+                console.log(errMsg);
             }
         });
      }else{
@@ -379,7 +379,7 @@ $("#signUp2").click(function(){
 
             },
             error: function(errMsg) {
-               window.location.replace("../src/Error/"+errMsg.status+".html");
+            //    window.location.replace("../src/Error/"+errMsg.status+".html");
             }
         });
         }
@@ -558,7 +558,7 @@ $("#signUp3").click(function(){
                     }
             },
             error: function(errMsg) {
-                window.location.replace("../src/Error/"+errMsg.status+".html");
+                // window.location.replace("../src/Error/"+errMsg.status+".html");
             }
         });
      }else{
