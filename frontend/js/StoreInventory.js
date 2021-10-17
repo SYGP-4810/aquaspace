@@ -174,7 +174,7 @@ $("#InventorySave").click(function(){
                     window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
                 },
                 error: function(errMsg) {
-                    window.location.replace("../src/Error"+errMsg.status+".html");
+                    //window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
                 }
             });
         }
