@@ -79,6 +79,7 @@ $("#save").click(function(){
 });
 
 $("#updatePass").click(function(){
+    alert("hello world");
     let currentPassword = $("#cupass").val();
     let newPass = $("#newpass").val();
     let cPass = $("#conpass").val();
@@ -132,7 +133,31 @@ $("#updatePass").click(function(){
         errFlag++;
     }
     if(errFlag == 0){
-        //do the request
+        var req = {
+            "currentPassword" : currentPassword,
+            "newPassword" : newPass
+        }
+        $.ajax({
+            type: "POST",
+            url:setUrl("Admin/Admin/updatePassword"),
+            data: JSON.stringify(req),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data){
+                if(data.status == 1){
+                    alert(data.msg);
+                }
+                else if(data.status == 2){
+                    alert(data.msg);
+                }else if(data.status == 3){
+                    alert(data.msg);
+                }
+        
+            },
+            error: function(errMsg) {
+                //window.location.replace("../src/Error"+errMsg.status+".html");
+            }
+        });
 
     }else{
         alert(JSON.stringify(errors));
