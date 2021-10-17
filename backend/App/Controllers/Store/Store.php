@@ -16,12 +16,12 @@ class Store extends \Core\Controller
 
     protected function before()
     {
-        $stmt = $this->execute($this->get('user_auth', '*', "access_token='" . $_COOKIE['access_token']) . "' AND user_type='3'");
-        if ($stmt->rowCount == 1) {
-            $this->params['id'] = $stmt->fetch()['id'];
-            return true;
-        }
-        return false;
+        // $stmt = $this->execute($this->get('user_auth', '*', " access_token='" . $_COOKIE['access_token']) . "' AND user_type='3'");
+        // if ($stmt->rowCount == 1) {
+        //     $this->params['id'] = $stmt->fetch()['id'];
+        //     return true;
+        // }
+        // return false;
     }
 
     public function addInventoryAction()
