@@ -59,94 +59,111 @@
     </div>
   </div>
   <div class="container">
-    <form action="" method="">
-      <label>
-        <span>Upload your images</span>
-      </label>
-      <div class="wrapper">
-        <div class="box">
-          <div class="js--image-preview"></div>
-          <div class="upload-options">
-            <label>
-              <input id="img1" type="file" class="image-upload" accept="image/*" />
-            </label>
-          </div>
-        </div>
-        <div class="box">
-          <div class="js--image-preview"></div>
-          <div class="upload-options">
-            <label>
-              <input id="img2" type="file" class="image-upload" accept="image/*" />
-            </label>
-          </div>
-        </div>
-        <div class="box">
-          <div class="js--image-preview"></div>
-          <div class="upload-options">
-            <label>
-              <input id="img3" type="file" class="image-upload" accept="image/*" />
-            </label>
-          </div>
-        </div>
-        <div class="box">
-          <div class="js--image-preview"></div>
-          <div class="upload-options">
-            <label>
-              <input id="img4" type="file" class="image-upload" accept="image/*" />
-            </label>
-          </div>
+
+    <label>
+      <span>Upload your images</span>
+    </label>
+    <div class="wrapper">
+      <div class="box">
+        <div class="js--image-preview"></div>
+        <div class="upload-options">
+          <label>
+            <input id="img1" type="file" class="image-upload" onchange="encodeImageFileAsURL1(this)"/>
+          </label>
         </div>
       </div>
-      <!-- <label>
+      <div class="box">
+        <div class="js--image-preview"></div>
+        <div class="upload-options">
+          <label>
+            <input id="img2" type="file" class="image-upload"  onchange="encodeImageFileAsURL2(this)"/>
+          </label>
+        </div>
+      </div>
+      <div class="box">
+        <div class="js--image-preview"></div>
+        <div class="upload-options">
+          <label>
+            <input id="img3" type="file" class="image-upload"  onchange="encodeImageFileAsURL3(this)" />
+          </label>
+        </div>
+      </div>
+      <div class="box">
+        <div class="js--image-preview"></div>
+        <div class="upload-options">
+          <label>
+            <input id="img4" type="file" class="image-upload" onchange="encodeImageFileAsURL4(this)"/>
+          </label>
+        </div>
+      </div>
+    </div>
+    <!-- <label>
         <span class="fname">First Name<span class="required">*</span></span>
         <input type="text" name="fname">
       </label> -->
-      <label>
-        <span class="category">Category<span class="required">*</span></span>
-        <select id="categoy" name="selection">
-          <option selected hidden value="">Select </option>
-          <option value="1">Fish</option>
-          <option value="2">Plant</option>
-        </select>
-      </label>
-      <label>
-        <span>Name<span class="required">*</span></span>
-        <input type="text" id="auto" placeholder="enter your fish name" />
-      </label>
-      <label>
+    <label>
+      <span class="category">Category<span class="required">*</span></span>
+      <select id="category" name="selection" >
+        <option selected hidden value="">Select</option>
+        <option value="1">Fish</option>
+        <option value="2">Plant</option>
+      </select>
+    </label>
+    <label>
+      <span>Name<span class="required">*</span></span>
+      <input type="text" id="auto" placeholder="enter your fish name" autocomplete="off" />
+      <!-- <input class="typeahead form-control" type="text" placeholder="Search Film Name" autocomplete="off"> -->
+    </label>
+    <!-- <label>
         <span>Description<span class="required"></span></span>
         <textarea id="description" name="reason" rows="5" cols="100" readonly></textarea>
-      </label>
-      <label class="address-checkbox">
-        <input type="checkbox" id="chkBox" name="HelpCheckbox" value="Help" />
-        <span>Use the address I gave you</span>
-      </label>
-      <label>
-        <span>Address<span class="required">*</span></span>
-        <input id="address" type="text" name="address">
-      </label>
-      <label>
-        <span>Post Duration<span class="required">*</span></span>
-        <select id="duration" name="selection">
-          <option selected hidden value="">Select </option>
-          <option value="1w">1 week</option>
-          <option value="2w">2 weeks</option>
-          <option value="3w">3 weeks</option>
-          <option value="1m">1 month</option>
-          <option value="2m">2 months</option>
-          <option value="3m">3 months</option>
-          <option value="more">more than 3 months</option>
-        </select>
-      </label>
-      <label>
-        <span>Message<span class="required"></span></span>
-        <textarea id="message" name="reason" rows="5" cols="100"></textarea>
-      </label>
-      <label>
-        <span>Price<span class="required">*</span></span>
-        <input id="price" type="text" name="price">
-      </label>
-    </form>
+      </label> -->
+    <label id="img-question" class="img-question">
+      <span>Is this the fish you are looking for? (Proceed after answering the question)</span>
+      <img id="db-img" src="" width="250px">
+    </label>
+    <label id="radio" class="radio" required>
+      <input id="radio_1" type="radio" name="dbt" value="1"> Yes
+      <input id="radio_2" type="radio" name="dbt" value="2"> No
+    </label>
+    <label>
+      <span>Description<span class="required"></span></span>
+      <textarea id="description" name="reason" rows="5" cols="100"></textarea>
+    </label>
+    <label>
+      <span>Price<span class="required">*</span></span>
+      <input id="price" type="text" name="price">
+    </label>
+    <label>
+      <span>Post Duration<span class="required">*</span></span>
+      <select id="duration" name="selection">
+        <option selected hidden value="">Select </option>
+        <option value="1w">1 week</option>
+        <option value="2w">2 weeks</option>
+        <option value="3w">3 weeks</option>
+        <option value="1m">1 month</option>
+        <option value="2m">2 months</option>
+        <option value="3m">3 months</option>
+        <option value="more">more than 3 months</option>
+      </select>
+    </label>
+    <label class="address-checkbox">
+      <input type="checkbox" id="chkBox" name="HelpCheckbox" value="Help" />
+      <span>Use the address I gave you</span>
+    </label>
+    <label>
+      <span>Address<span class="required">*</span></span>
+      <input id="address" type="text" name="address">
+    </label>
+    <button id="location-btn">Take My Location</button>
+    <label>
+      <span>Latitude</span>
+      <input id="lat" type="text" name="location">
+    </label>
+    <label>
+      <span>Langitude</span>
+      <input id="lang" type="text" name="location">
+    </label>
     <button id="btn">post</button>
   </div>
 
@@ -212,6 +229,7 @@
     </div>
 
   </footer>
+
   <script src="https://code.jquery.com/jquery-1.12.4.js">
   </script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
