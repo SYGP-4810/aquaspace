@@ -8,7 +8,7 @@ function isEmail(email) {
     return regex.test(email);
   }
 
-$("#save").click(function(){
+$("#save123").click(function(){
     let fName = $("#fName").val();
     let lName = $("#lName").val();
     let email = $("#email").val();
@@ -56,6 +56,7 @@ $("#save").click(function(){
             "city" : city
 
         }
+        
         $.ajax({
             type: "POST",
             url:setUrl("Admin/Admin/addAdmin"),
@@ -63,11 +64,16 @@ $("#save").click(function(){
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data){
-            alert("addmin was added");
+                alert(data.msg);
+                if(data.status == 1){
+                    $("#email").focus();
+                }else if(data.status == 2){
+                    window.location.replace("/aquaspace/frontend/src/Admin/AdminAdmins.html");
+                }
         
             },
             error: function(errMsg) {
-                //window.location.replace("/aquaspace/frontend/src/Error"+errMsg.status+".html");
+                window.location.replace("/aquaspace/frontend/src/Error"+errMsg.status+".html");
             }
         });
 
@@ -79,7 +85,6 @@ $("#save").click(function(){
 });
 
 $("#updatePass").click(function(){
-    alert("hello world");
     let currentPassword = $("#cupass").val();
     let newPass = $("#newpass").val();
     let cPass = $("#conpass").val();

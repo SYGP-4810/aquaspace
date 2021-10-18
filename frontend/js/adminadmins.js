@@ -32,31 +32,8 @@ $( document ).ready(function() {
             
         },
         error: function(errMsg) {
-            //window.location.replace("../src/Error"+errMsg.status+".html");
+            window.location.replace("/aquaspace/frontend/src/Error"+errMsg.status+".html");
         }
     });
 });
-
-/*
-<tr>
-            <td class="title-text">Name</td>
-            <td>${name}</td>
-        </tr>
-        <tr>
-            <td class="title-text">Email</td>
-            <td>${data.email}</td>
-        </tr>
-        <tr>
-            <td class="title-text">Address</td>
-            <td>${data.address}</td>
-        </tr>
-        <tr>
-            <td class="title-text">Telephone No</td>
-            <td>${data.tp}</td>
-        </tr>
-        <tr>
-            <td class="title-text">City</td>
-            <td>${data.city}</td>
-        </tr>
-*/
 
