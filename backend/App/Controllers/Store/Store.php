@@ -84,7 +84,7 @@ class Store extends \Core\Controller
             "type" => $this->data['type'],
             "address" => $address,
         ];
-        
+        // View::response($DataToInsert);
         $this->exec($this->save('products', $DataToInsert));
         View::response("success");
     }
