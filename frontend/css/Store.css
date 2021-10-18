@@ -430,7 +430,7 @@ form > label{
 }
 
 .invent{
-    margin-left: 30px;
+    margin-left: 60px;
     margin-right: 30px;
 }
 
@@ -454,6 +454,10 @@ form > label{
 .invent .inv-img img{
     width: 100px;
     height: 100px;
+}
+
+.invent td a{
+    text-decoration: none;
 }
 
 /* invent add */

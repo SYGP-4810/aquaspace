@@ -164,21 +164,20 @@ $("#InventorySave").click(function(){
                 "exen4" : imgExtension4
             }
 
-            console.log(req);
-            // $.ajax({
-            //     type: "POST",
-            //     url:setUrl("Store/Store/addInventory"),
-            //     data: JSON.stringify(req),
-            //     contentType: "application/json; charset=utf-8",
-            //     dataType: "json",
-            //     success: function(data){
-            //         console.log(data);
-            //         //window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
-            //     },
-            //     error: function(errMsg) {
-            //         //window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
-            //     }
-            // });
+            $.ajax({
+                type: "POST",
+                url:setUrl("Store/Store/addInventoryEquipment"),
+                data: JSON.stringify(req),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data){
+                    a
+                    window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
+                },
+                error: function(errMsg) {
+                    // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+                }
+            });
         }
     else{
         alert(JSON.stringify(errors));

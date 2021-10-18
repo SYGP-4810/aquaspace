@@ -24,31 +24,31 @@ class Store extends \Core\Controller
         // return false;
     }
 
-    public function addInventoryAction()
+    public function addInventoryEquipmentAction()
     {
-        $stmt = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token']) . "'");
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
         $result = $stmt->fetch();
         $id = $result['id'];
         $iName1 = "";
         $iName1 = microtime(true) . "." . $this->data['exen1'];
-        $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/inventory/" . $iName1;
+        $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName1;
         $flag1 = file_put_contents($iDir1, base64_decode($this->data['pic1']));
 
         $iName2 = "";
         $iName2 = microtime(true) . "." . $this->data['exen2'];
-        $iDir2 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/inventory/" . $iName2;
+        $iDir2 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName2;
         $flag2 = file_put_contents($iDir2, base64_decode($this->data['pic2']));
 
         $iName3 = "";
         $iName3 = microtime(true) . "." . $this->data['exen3'];
-        $iDir3 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/inventory/" . $iName3;
+        $iDir3 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName3;
         $flag3 = file_put_contents($iDir3, base64_decode($this->data['pic3']));
 
         $iName4 = "";
         $iName4 = microtime(true) . "." . $this->data['exen4'];
-        $iDir4 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/inventory/" . $iName4;
+        $iDir4 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName4;
         $flag4 = file_put_contents($iDir4, base64_decode($this->data['pic4']));
-
+        
         if (!$flag1) {
             throw new \Exception("file didn't come to backend");
         }
@@ -62,21 +62,26 @@ class Store extends \Core\Controller
             throw new \Exception("file didn't come to backend");
         }
 
-        View::response(["id" => $id, "req" => $this->data]);
+        $date = date('Y-m-d H:i:s');
         $DataToInsert = [
             "product_name" => $this->data['productName'],
-            "product_category" => $this->data['productCategory'],
+            "category" => $this->data['productCategory'],
+            "type" => "3",
             "price" => $this->data['price'],
             "quantity" => $this->data['quantity'],
-            "details" => $this->data['details'],
-            "delivery_mode" => $this->data['deliveryMode'],
+            "description" => $this->data['details'],
+            "delivery" => $this->data['deliveryMode'],
             "auth_id" => $id,
-            "pic1" => $iName1,
-            "pic2" => $iName2,
-            "pic3" => $iName3,
-            "pic4" => $iName4
+            "img1" => $iName1,
+            "img2" => $iName2,
+            "img3" => $iName3,
+            "img4" => $iName4,
+            "created_date" => $date,
+            "status" => "1"
         ];
-        $this->exec($this->save('inventory', $DataToInsert));
+        
+        $this->exec($this->save('products', $DataToInsert));
+        View::response("success");
     }
 
     public function checkDeliveryOptionAction()
@@ -86,6 +91,16 @@ class Store extends \Core\Controller
         $result = $stmt->fetch();
         $delMOd = $result['del_mod'];
         //View::response();
+    }
+
+    public function getInventoryAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
+        $result = $stmt->fetch();
+        $id = $result['id'];
+        $stmt = $this->execute($this->get('productS', "*", "auth_id ='" . $id . "'"));
+        $result = $stmt->fetchAll();
+        View::response($result);
     }
 
     public function getStoreProfileAction()
@@ -106,4 +121,6 @@ class Store extends \Core\Controller
         ];
         View::response($res);
     }
+
+    
 }

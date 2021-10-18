@@ -121,7 +121,7 @@
                       <div class="js--image-preview"></div>
                       <div class="upload-options">
                         <label>
-                            <input type="file" id="inventory-img4"  class="image-upload" onchange="encodeImageFileAsURL3(this)">
+                            <input type="file" id="inventory-img4"  class="image-upload" onchange="encodeImageFileAsURL4(this)">
                         </label>
                       </div>
                     </div>
@@ -137,12 +137,14 @@
                     <tr>
                         <td>Product Category<span class="required">*</span></td>
                         <td>
-                            <input type="text" id="productcategory" name="productCategory" list="category">
-                            <datalist id="category">
-                                <option>Fish Care</option>
-                                <option>Fish Food</option>
-                                <option>Accessories</option>
-                            </datalist>
+                            <div class="select">
+                                <select name="category" id="productcategory">
+                                    <option value="" selected disabled hidden>Choose here...</option>
+                                    <option value="Fish Care">Fish Care</option>
+                                    <option value="Fish Food">Fish Food</option>
+                                    <option value="Accessories">Accessories</option>
+                                </select>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -181,7 +183,7 @@
 		</section>
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src = "../../js/StoreInventory.js"></script>
+    <script src = "../../js/Store/StoreInventoryEqu.js"></script>
     <script src="../../js/image-upload.js"></script>
 </body>
 </html>
