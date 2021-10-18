@@ -24,7 +24,7 @@ $( document ).ready(function() {
                     st = "";
                 }
 
-                let ty = element.status;
+                let ty = element.type;
                 if (ty == 1) {
                     type = "Fish";
                 } else if (ty== 2) {
@@ -40,7 +40,7 @@ $( document ).ready(function() {
                 <td class="inv-img"><img src="/aquaspace/frontend/images/product/${element.img1}"></td>
                 <td>${element.product_name}</td>
                 <td>${type}</td>
-                <td>Rs .${element.price}</td>
+                <td>Rs ${element.price}</td>
                 <td>${element.quantity}</td>
                 <td>${status}</td>
                 <td><a href="../Store/StoreInventoryEdit.html?id=${element.id}&type=${type}" class="button">Edit</a></td>

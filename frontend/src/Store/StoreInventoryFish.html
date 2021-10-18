@@ -90,7 +90,10 @@
             <div class="head-titles">
                 <h1>INVENTORY</h1>
             </div>
-            
+            <div class="section-title">
+                <h2>Add Fish</h2>
+                <a href="../Store/StoreInventory.html" class="button">Back</a>
+            </div>
             <div class="invent-add-container">
                 <div class="wrapper">
                     <div class="box">
@@ -131,18 +134,24 @@
 
                 <table class="invent-add">       
                     <tr>
-                        <td>Product Name<span class="required">*</span></td>
-                        <td><input type="text" id="productname" name="productName"></td>
+                        <td>Fish Name<span class="required">*</span></td>
+                        <td><input type="text" id="fishname" name="fishname"></td>
                     </tr>
                     <tr>
-                        <td>Product Category<span class="required">*</span></td>
+                        <td>Fish Category<span class="required">*</span></td>
                         <td>
                             <div class="select">
-                                <select name="category" id="productcategory">
+                                <select name="category" id="fishcategory">
                                     <option value="" selected disabled hidden>Choose here...</option>
-                                    <option value="Fish Care">Fish Care</option>
-                                    <option value="Fish Food">Fish Food</option>
-                                    <option value="Accessories">Accessories</option>
+                                    <option value="Betta Fish">Betta Fish</option>
+                                    <option value="Koi Fish">Koi Fish</option>
+                                    <option value="Oscar Fish">Oscar Fish</option>
+                                    <option value="Discus Fish">Discus Fish</option>
+                                    <option value="Angle Fish">Angle Fish</option>
+                                    <option value="Freshwater Fish">Freshwater Fish</option>
+                                    <option value="Butterfly Fish">Butterfly Fish</option>
+                                    <option value="Saltwater Fish">Saltwater Fish</option>
+                                    <option value="Invertebrates">Invertebrates</option>
                                 </select>
                             </div>
                         </td>
@@ -156,7 +165,7 @@
                         <td><input type="number" id="quantity" name="quantity" min="0"></td>
                     </tr>
                     <tr>
-                        <td>Product Details<span class="required">*</span></td>
+                        <td>Fish Details<span class="required">*</span></td>
                         <td><textarea  id="details"  rows="10"></textarea></td>
                         
                     </tr>
@@ -176,14 +185,14 @@
                     </tr>
                 </table>
                 <div class="btn">
-                    <input type="submit" class="button" value="SAVE" id="InventorySave">
+                    <input type="submit" class="button" value="SAVE" id="InventorySaveF">
                     <a href="../Store/StoreInventory.html" class="button">CANCEL</a>
                 </div>
             </div>
 		</section>
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src = "../../js/Store/StoreInventoryEqu.js"></script>
+    <script src = "../../js/Store/StoreInventoryAdd.js"></script>
     <script src="../../js/image-upload.js"></script>
 </body>
 </html>

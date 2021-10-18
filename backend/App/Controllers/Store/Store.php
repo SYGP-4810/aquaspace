@@ -24,11 +24,15 @@ class Store extends \Core\Controller
         // return false;
     }
 
-    public function addInventoryEquipmentAction()
+    public function addInventoryAction()
     {
         $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
         $result = $stmt->fetch();
         $id = $result['id'];
+        $stmt = $this->execute($this->get('store', "*", "auth_id ='" . $id . "'"));
+        $result = $stmt->fetch();
+        $address = $result['address'];
+        
         $iName1 = "";
         $iName1 = microtime(true) . "." . $this->data['exen1'];
         $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName1;
@@ -64,9 +68,8 @@ class Store extends \Core\Controller
 
         $date = date('Y-m-d H:i:s');
         $DataToInsert = [
-            "product_name" => $this->data['productName'],
-            "category" => $this->data['productCategory'],
-            "type" => "3",
+            "product_name" => $this->data['Name'],
+            "category" => $this->data['Category'],
             "price" => $this->data['price'],
             "quantity" => $this->data['quantity'],
             "description" => $this->data['details'],
@@ -77,7 +80,9 @@ class Store extends \Core\Controller
             "img3" => $iName3,
             "img4" => $iName4,
             "created_date" => $date,
-            "status" => "1"
+            "status" => "1",
+            "type" => $this->data['type'],
+            "address" => $address,
         ];
         
         $this->exec($this->save('products', $DataToInsert));
