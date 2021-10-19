@@ -12,7 +12,6 @@
     margin-top: 20px;
     margin-left: 30px; 
     height: 60px;
-    
 }
 
 .head-titles h2{
@@ -120,6 +119,14 @@ form > input[type=password] {
 }
 
 /* edit account */
+
+.js--image-preview {
+    background-image: url('../../images/g_profile.jpg');
+}
+
+.js--image-preview::after {
+    content: "";
+}
 
 .account-edit{
     margin-top: 85px;
