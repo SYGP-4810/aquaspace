@@ -35,12 +35,27 @@
   font-size: 15px;
 }
 
-.container .address-checkbox input{
-  margin-top: 0;
+.container .address-checkbox, .container .img-question {
+  margin-top: 50px;
 }
-.container .address-checkbox span{
+.container .address-checkbox input {
+  margin-top: 0;
+  margin-right: 20px;
+}
+.container .address-checkbox span, .container .img-question span{
+  width: 30%;
+  /* margin-left: 10px; */
+}
+.container .radio{
   width: 100%;
-  margin-left: 10px;
+
+}
+
+.container .img-question img{
+  margin-left: 0px;
+}
+#img-question, #radio{
+  display: none;
 }
 
 .container
@@ -59,6 +74,11 @@ input[type="text"]:focus,
 select:focus,
 textarea:focus{
   outline: none;
+}
+.container .radio span{
+  margin-left: 10px;
+  position: relative;
+  top: 6px;
 }
 
 textarea {
@@ -246,4 +266,42 @@ html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% i
 .ui-menu .ui-menu-item a.ui-state-active {
     font-weight: normal;
     margin: -1px;
+}
+
+
+#btn{
+  background-color: #4c6faf; /* Green */
+  width: 80px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin-top: 50px;
+  margin-left: 300px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+#btn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#location-btn{
+  background-color: #b6b5b5; /* Green */
+  width: 130px;
+  border: none;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin-top: 50px;
+  /* margin-left: 300px; */
+  cursor: pointer;
 }

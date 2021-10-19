@@ -34,6 +34,7 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  backdrop-filter: blur(5px);
 }
 .nav ul {
   list-style: none;
@@ -48,6 +49,7 @@ ul {
   display: flex;
   align-items: center;
 }
+
 
 .logo img {
   height: 80px;
@@ -648,3 +650,26 @@ ul {
   padding: 5px;
   border: rgb(255, 137, 116) solid 2px;
 }
+
+
+
+/* -----------------------slider----------------------- */
+/* 
+#slider > * {
+  
+} */
+
+/* #slider {
+  visibility: hidden; 
+  animation: 12s autoplay infinite;
+}
+
+@keyframes autoplay {
+  0% {visibility: visible}
+  25% {visibility: hidden}
+}
+
+#slider > *:nth-child(1) {animation-delay: 0s}
+#slider > *:nth-child(2) {animation-delay: 3s}
+#slider > *:nth-child(3) {animation-delay: 6s}
+#slider > *:nth-child(4) {animation-delay: 9s} */
