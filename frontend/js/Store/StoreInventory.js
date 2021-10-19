@@ -43,7 +43,7 @@ $( document ).ready(function() {
                 <td>Rs ${element.price}</td>
                 <td>${element.quantity}</td>
                 <td>${status}</td>
-                <td><a href="../Store/StoreInventoryEdit.html?id=${element.id}&type=${type}" class="button">Edit</a></td>
+                <td><a href="../Store/StoreInventoryEdit.html?id=${element.id}" class="button">Edit</a></td>
                 
             </tr>`);
                 
