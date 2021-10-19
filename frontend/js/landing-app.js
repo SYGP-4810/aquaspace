@@ -83,10 +83,10 @@ $(document).ready(function(){
 
 $("#profile").click(function(){
     if(userType == 1){
-        window.location.replace("/aquaspace/frontend/src/Reg/RegHome.html");
+        window.location.replace("/aquaspace/frontend/src/Reg/account-overview.html");
     }
     else if(userType == 2){
-        window.location.replace("/aquaspace/frontend/src/Expert/ExpertDashboard.html");
+        window.location.replace("/aquaspace/frontend/src/Expert/ExpertHome.html");
     }
     else if(userType == 3){
         window.location.replace("/aquaspace/frontend/src/Store/StoreHome.html");
