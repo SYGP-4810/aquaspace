@@ -42,13 +42,12 @@ form > input[type=text] {
 
 form > input[type=password] {
     width: 100%;
-    padding: 12px 20px;
+    padding: 8px 20px;
     margin-bottom: 20px;
     box-sizing: border-box;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 8px;
     font-size: 1.4rem;
-    font-weight: bold;
 }
 
 .button{
@@ -129,21 +128,6 @@ form > input[type=password] {
     color: rgb(0, 0, 0);
 }
 
-/* .box {
-    border-radius: 50px;
-} */
-
-/* .js--image-preview::after {
-    content: "photo_size_select_actual";
-    font-family: 'Material Icons';
-    position: relative;
-    font-size: 4.5em;
-    color: rgba(230, 230, 230, 1);
-    top: calc(50% - 3rem);
-    left: calc(50% - 2.25rem);
-    z-index: 0;
-} */
-
 .edit input{
     font-size: 1.1em;
 }
@@ -164,7 +148,7 @@ form > input[type=password] {
 /* reset password */
 
 .reset-container{
-    margin:0px 30px 00px 60px;
+    margin:0px 30px 00px 80px;
     width: 400px;
 } 
 
