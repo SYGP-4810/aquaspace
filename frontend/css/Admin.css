@@ -420,3 +420,67 @@ input[type="checkbox"] {
 .edit ::placeholder {
   font-size: 1.2em;
 }
+
+/* report */
+
+.small-carts {
+  display: flex;
+  /* flex-direction: row; */
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.s-box {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba(102, 51, 153, 0.116);
+  width: 400px;
+  height: 150px;
+  margin: 10px;
+}
+
+.s-box img {
+  width: 90px;
+  height: 90px;
+  float: left;
+  /* margin-right: -50px; */
+}
+.s-box span {
+  font-size: 0.8em;
+}
+.s-box h2 {
+  font-size: 2.5em;
+  color: rgb(58, 58, 58);
+}
+
+.big-cart {
+  margin: 40px;
+}
+
+.reson-orders {
+  margin: 60px;
+}
+
+.reson-orders h3 {
+  font-size: 1.4em;
+  color: rgb(44, 44, 44);
+}
+
+.orders {
+  width: 100%;
+  margin: 10px;
+  align-items: center;
+  border-collapse: collapse;
+}
+
+.orders td,
+th {
+  padding: 20px 10px;
+  text-align: center;
+}
+
+.orders tr {
+  border-bottom: 2px solid #33d7ff;
+}
