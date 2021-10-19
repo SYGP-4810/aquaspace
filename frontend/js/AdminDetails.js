@@ -2,7 +2,7 @@
 
 function setUrl(text){
     return "/aquaspace/backend/public/index.php?"+text;
-  }
+}
 $( document ).ready(function() {
     
 var url = new URL(window.location.href);
