@@ -23,16 +23,41 @@ class Reg extends \Core\Controller
         $stmt = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "' AND user_type='1'"));
         $result = $stmt->fetch();
         $id = $result['id'];
+        // $iName1 = "";
+        // if($this->data['exen1'] != "")
+        // {
+            
+        // $iName1 = microtime(true) . "." . $this->data['exen1'];
+        // $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/post/" . $iName1;
+        // $flag1 = file_put_contents($iDir1, base64_decode($this->data['img1']));
+        // if (!$flag1) {
+        //     throw new \Exception("file didn't come to backend");
+        // }
+        // else ($iName1=NULL);
+        // }
+        // $iName2 = "";
+        // if($this->data['exen2']!= "")
+        // {
+          
+        // $iName2 = microtime(true) . "." . $this->data['exen2'];
+        // $iDir2 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/post/" . $iName2;
+        // $flag2 = file_put_contents($iDir2, base64_decode($this->data['img2']));
+        // if (!$flag2) {
+        //     throw new \Exception("file didn't come to backend");
+        // }  
+        // }
+        // else($iName2 = NULL);
+
         $iName1 = "";
         $iName1 = microtime(true) . "." . $this->data['exen1'];
         $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/post/" . $iName1;
         $flag1 = file_put_contents($iDir1, base64_decode($this->data['img1']));
-
+        
         $iName2 = "";
         $iName2 = microtime(true) . "." . $this->data['exen2'];
         $iDir2 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/post/" . $iName2;
         $flag2 = file_put_contents($iDir2, base64_decode($this->data['img2']));
-
+        
         $iName3 = "";
         $iName3 = microtime(true) . "." . $this->data['exen3'];
         $iDir3 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/post/" . $iName3;
@@ -43,12 +68,13 @@ class Reg extends \Core\Controller
         $iDir4 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/post/" . $iName4;
         $flag4 = file_put_contents($iDir4, base64_decode($this->data['img4']));
 
+        
         if (!$flag1) {
             throw new \Exception("file didn't come to backend");
         }
         if (!$flag2) {
             throw new \Exception("file didn't come to backend");
-        }
+        } 
         if (!$flag3) {
             throw new \Exception("file didn't come to backend");
         }

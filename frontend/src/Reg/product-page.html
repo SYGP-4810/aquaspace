@@ -13,70 +13,98 @@
 </head>
 
 <body>
-    <div class="nav-links">
-        <ul>
-            <li class="active"><a href="../index.html">Home</a></li>
-            <li><a href="articles.html">Blog</a></li>
-            <li><a href="build-tank.html">Build Tank</a></li>
-            <li id="a_parent"><a href="#">Add Post</a>
-                <div id="a_child" class="sub-menu sub-menu-1">
-                    <ul>
-                        <li><a href="add-fish-post.html">Fish</a></li>
-                        <li><a href="add-other-post.html">Equipment</a></li>
-                        <li><a href="add-other-post.html">Plant</a></li>
-                        <li><a href="add-other-post.html">Medicine</a></li>
-                    </ul>
-                </div>
+    <div class="nav">
+        <div class="logo">
+          <img src="../images/logo.png" alt="">
+          <h2>AquaSpace</h2>
+        </div>
+        <div class="search_box">
+          <div class="dropdown">
+            <div class="default_option">All</div>
+            <ul>
+              <li>All</li>
+              <li>Fish</li>
+              <li>Articles</li>
+            </ul>
+          </div>
+          <div class="search_field">
+            <input type="text" class="input">
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+        <div class="nav-links">
+          <ul>
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="Reg/fish-data.html">Blog</a></li>
+            <li><a href="Reg/build-tank.html">Build Tank</a></li>
+            <li  class="after" id="a_parent"><a href="#">Add Post</a>
+              <div class="sub-menu sub-menu-1">
+                <ul>
+                  <li><a href="Reg/add-fish-post.html">Fish</a></li>
+                  <li><a href="Reg/add-other-post.html">Equipment</a></li>
+                  <li><a href="Reg/add-other-post.html">Plant</a></li>
+                  <li><a href="Reg/add-other-post.html">Medicine</a></li>
+                </ul>
+              </div>
             </li>
-            <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
-            <li><a href="#"><i class="fas fa-bell fa-lg"></i></a></li>
-            <li><a href="#"><i class="fas fa-user-circle fa-lg"></i></a>
-                <div class="sub-menu sub-menu-2">
-                    <ul class="options">
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Logout</a></li>
-                    </ul>
-                </div>
-        </ul>
-    </div>
+            
+            <li class="after"><a href="Reg/cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
+            <li class="after"><a href="#"><i class="fas fa-bell fa-lg"></i></a></li>
+            <li class="after"><a href="#"><i class="fas fa-user-circle fa-lg"></i></a>
+              <div class="sub-menu sub-menu-2">
+                <ul class="options">
+                  <li id="profile" style="cursor:pointer;">Profile</li>
+                  <li id="logOut" style="cursor:pointer;">Logout</li>
+                </ul>
+              </div>  
+            </li>
+            <!-- <li class="before"><a href="login.html">Login</a></li>
+            <li class="before"><a href="signup.html">Sign up</a></li>     -->
+          </ul>
+        </div>
+      </div>
     <div class="small-container single-product">
         <div class="row">
-            <div class="col-2">
-                <img src="../../images/download.png" alt="" width="100%" height="500px" id="ProductImg">
+            <div id="column_1" class="col-2">
+                <img src="../../images/bg.jpg" alt="" width="100%" height="500px" id="ProductImg">
 
                 <div class="small-img-row">
                     <div class="small-img-col">
-                        <img src="../../images/download.png" alt="" width="100%" class="small-img">
+                        <img id="img1" src="../../images/download.png" alt="" width="100%" class="small-img">
                     </div>
                     <div class="small-img-col">
-                        <img src="../../images/bg.jpg" alt="" width="100%" class="small-img">
+                        <img id="img2" src="../../images/download.png" alt="" width="100%" class="small-img">
                     </div>
                     <div class="small-img-col">
-                        <img src="../../images/download.png" alt="" width="100%" class="small-img">
+                        <img id="img3" src="../../images/bg.jpg" alt="" width="100%" class="small-img">
                     </div>
                     <div class="small-img-col">
-                        <img src="../../images/download.png" alt="" width="100%" class="small-img">
+                        <img id="img4" src="../../images/download.png" alt="" width="100%" class="small-img">
                     </div>
                 </div>
             </div>
-            <div class="col-2">
-                <h2>Lorem Ipsum Lorem Ipsum</h2>
-                <p>$Price</p>
-                <select>
+            <div id="column_2" class="col-2">
+                <h2 id="name">Lorem Ipsum Lorem Ipsum</h2>
+                <p id="price">$Price</p>
+                <!-- <select>
                     <option>Delivery Option</option>
                     <option>In Store Pick-up</option>
                     <option>In Store Delivery Service</option>
                     <option>Third Party Delivery Service</option>
-                </select>
-                <input type="number" value="1">
+                </select> -->
+                <input type="number" value="1"><span id="quantity">4</span><span>     </span><span>Available</span><br>
                 <a href="#" class="btn">Add to Cart</a>
                 <a href="#" class="btn">Wishlist</a>
                 <h3>Product Details</h3>
                 <br>
-                <p>Cleveland Cavaliers Nike Spotlight Men's NBA Hoodie PLAY WITH PRIDE. Cleveland Cavaliers Nike
+                <p id="description">Cleveland Cavaliers Nike Spotlight Men's NBA Hoodie PLAY WITH PRIDE. Cleveland Cavaliers Nike
                     Spotlight Men's NBA Hoodie keeps you feeling comfortable and agile on the practice court. Inspired
                     by the authentic, on-court NBA warm-up, this pullover is made from durable knit fabric that's
                     powered by sweat-wicking Dri-FIT technology.</p>
+                <br>
+                <h3>Address</h3>
+                <p id="address">No 30, Araliya Road, Kohuwala, Nugegoda</p>
+
             </div>
         </div>
 
@@ -89,6 +117,10 @@
         </div>
 
         <div class="reviews">
+            <!-- <div class="write-review">
+                <span>Description<span class="required"></span></span>
+      <textarea id="description" name="reason" rows="5" cols="100"></textarea>
+            </div> -->
             <div class="review">
                 <h4>Lorem Ipsum</h4>
                 <div class="rating">
@@ -264,7 +296,9 @@
         </div>
 
     </footer>
-    <script src="../../js/product-page.js"></script>
+    
+    <script src="../../js/getProduct.js"></script>
+    <!-- <script src="../../js/product-page.js"></script> -->
 </body>
 
 </html>

@@ -156,6 +156,7 @@ $("#img1").change(function (e) {
   var fileName = e.target.files[0].name;
   fileExtension = fileName.split('.').pop();
   imgExtension1 = fileExtension;
+  console.log(imgExtension1);
 });
 
 $("#img2").change(function (e) {
@@ -275,14 +276,20 @@ if(quantity == ''){
  
 
   const acceptedFileTypes = ["png", "jpg", "jpeg"];
-  if(acceptedFileTypes.indexOf(imgExtension1.toLowerCase())===-1){
-      errors.push("Image 1 type must be jpg ,jpeg or png");
+
+  // if(imgExtension1)
+  
+    if(acceptedFileTypes.indexOf(imgExtension1.toLowerCase())===-1){
+      errors.push("Image 1 type must be jpg ,jpeg or png"); 
       errFlag++;
   }
-  if(acceptedFileTypes.indexOf(imgExtension2.toLowerCase())===-1){
+  
+  
+    if(acceptedFileTypes.indexOf(imgExtension2.toLowerCase())===-1){
       errors.push("Image 2 type must be jpg ,jpeg or png");
       errFlag++;
   }
+  
   if(acceptedFileTypes.indexOf(imgExtension3.toLowerCase())===-1){
       errors.push("Image 3 type must be jpg ,jpeg or png");
       errFlag++;

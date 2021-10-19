@@ -269,3 +269,39 @@ html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% i
 }
 
 
+#btn{
+  background-color: #4c6faf; /* Green */
+  width: 80px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin-top: 50px;
+  margin-left: 300px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+#btn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#location-btn{
+  background-color: #b6b5b5; /* Green */
+  width: 130px;
+  border: none;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin-top: 50px;
+  /* margin-left: 300px; */
+  cursor: pointer;
+}
