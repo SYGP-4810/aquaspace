@@ -61,7 +61,7 @@ class Admin extends \Core\Controller
             </html>
             ";
             $this->sendMail($to, $subject, $message);
-            View::response(["status" => 2, "msg" => "successfully updated"]);
+            View::response(["status" => 2, "msg" => "successfully added the admin to the system"]);
         }
     }
 
@@ -177,17 +177,17 @@ class Admin extends \Core\Controller
         $stmt = $this->execute($this->get('user_auth', "*", "access_token='" . $_COOKIE['access_token'] . "'"));
         $result = $stmt->fetch();
         $errFlag = 0;
-        if ($result['password'] != $this->data['password']) {
+        if ($result['password'] != md5($this->data['currentPassword'])) {
             $res = ["status" => 1, "msg" => "Your current password does not match"];
             $errFlag++;
         }
-        if ($result['password'] == $this->data['newPassword']) {
+        if ($result['password'] == md5($this->data['newPassword'])) {
             $res = ["status" => 2, "msg" => "current password should not be matched to the new password"];
             $errFlag++;
         }
         if ($errFlag == 0) {
             $dataToUpdate = [
-                "password" => $this->data['newPassword']
+                "password" => md5($this->data['newPassword'])
             ];
             $this->exec($this->update('user_auth', $dataToUpdate, "access_token='" . $_COOKIE['access_token'] . "'"));
             $res = ["status" => 3, "msg" => "successfully updated your password"];

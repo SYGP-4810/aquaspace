@@ -90,7 +90,7 @@ $("#updatePass").click(function(){
     let cPass = $("#conpass").val();
     let errors = [];
     let errFlag = 0;
-    if(newPass == cuurentPassword) {
+    if(newPass == currentPassword) {
         $("#cupass").focus();
         $("#newpass").focus();
         errors.push("new password should not be equal to the current password");
@@ -138,7 +138,7 @@ $("#updatePass").click(function(){
         errFlag++;
     }
     if(errFlag == 0){
-        var req = {
+        let req = {
             "currentPassword" : currentPassword,
             "newPassword" : newPass
         }
@@ -149,6 +149,7 @@ $("#updatePass").click(function(){
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data){
+                //console.log(data);
                 if(data.status == 1){
                     alert(data.msg);
                 }
@@ -156,16 +157,17 @@ $("#updatePass").click(function(){
                     alert(data.msg);
                 }else if(data.status == 3){
                     alert(data.msg);
+                    window.location.replace("/aquaspace/frontend/src/Admin/AdminHome.html");
                 }
         
             },
             error: function(errMsg) {
-                //window.location.replace("../src/Error"+errMsg.status+".html");
+                window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
 
     }else{
-        alert(JSON.stringify(errors));
+        alert(errors);
     }
 
 
