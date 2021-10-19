@@ -288,42 +288,47 @@ $("#btn").click(function () {
   }
 
   if (errFlag == 0) {
-    var req = {
-      product_name: name,
-      duration: duration,
-      description: description,
-      price: price,
-      // "question":question,
-      category: category,
-      address: address,
-      lat: lat,
-      lan: lan,
-      quantity: quantity,
-      img1: imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
-      img2: imagebase64_2.replace(/^data:image\/[a-z]+;base64,/, ""),
-      img3: imagebase64_3.replace(/^data:image\/[a-z]+;base64,/, ""),
-      img4: imagebase64_4.replace(/^data:image\/[a-z]+;base64,/, ""),
-      exen1: imgExtension1,
-      exen2: imgExtension2,
-      exen3: imgExtension3,
-      exen4: imgExtension4,
-    };
-    console.log(req);
-    $.ajax({
-      type: "POST",
-      url: setUrl("Reg/Reg/addPost"),
-      data: JSON.stringify(req),
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: function (data) {
-        alert("Post sent for verification successfuly!");
-        window.location.replace(
-          "/aquaspace/frontend/src/Reg/post-payment.html"
-        );
-      },
-      error: function (errMsg) {
-        // window.location.replace("../src/Error"+errMsg.status+".html");
-      },
+    $(".post-details").css("display", "none");
+    $(".checkout").css("display", "block");
+
+    $("#order").click(function () {
+      var req = {
+        product_name: name,
+        duration: duration,
+        description: description,
+        price: price,
+        // "question":question,
+        category: category,
+        address: address,
+        lat: lat,
+        lan: lan,
+        quantity: quantity,
+        img1: imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
+        img2: imagebase64_2.replace(/^data:image\/[a-z]+;base64,/, ""),
+        img3: imagebase64_3.replace(/^data:image\/[a-z]+;base64,/, ""),
+        img4: imagebase64_4.replace(/^data:image\/[a-z]+;base64,/, ""),
+        exen1: imgExtension1,
+        exen2: imgExtension2,
+        exen3: imgExtension3,
+        exen4: imgExtension4,
+      };
+      console.log(req);
+      $.ajax({
+        type: "POST",
+        url: setUrl("Reg/Reg/addPost"),
+        data: JSON.stringify(req),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+          alert("Payment successful!");
+          window.location.replace(
+            "/aquaspace/frontend/src/index.html"
+          );
+        },
+        error: function (errMsg) {
+          // window.location.replace("../src/Error"+errMsg.status+".html");
+        },
+      });
     });
   } else {
     alert(JSON.stringify(errors));
