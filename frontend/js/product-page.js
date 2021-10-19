@@ -1,22 +1,27 @@
-var ProductImg = document.getElementById("ProductImg");
-var SmallImg = document.getElementsByClassName("small-img");
 
-SmallImg[0].onclick = function () {
-    ProductImg.src = SmallImg[0].src;
-}
-SmallImg[1].onclick = function () {
-    ProductImg.src = SmallImg[1].src;
-}
-SmallImg[2].onclick = function () {
-    ProductImg.src = SmallImg[2].src;
-}
-SmallImg[3].onclick = function () {
-    ProductImg.src = SmallImg[3].src;
-}    
+
+
 
 
 $(document).ready(function(){
+var ProductImg = document.getElementById("ProductImg");
+var img1 = document.getElementById("img1");
+var img2 = document.getElementById("img2");
+var img3 = document.getElementById("img3");
+var img4 = document.getElementById("img4");
 
+img1.onclick = function () {
+    ProductImg.src = img1.src;
+}
+img2.onclick = function () {
+    ProductImg.src = img2.src;
+}
+img3.onclick = function () {
+    ProductImg.src = img3.src;
+}
+img4.onclick = function () {
+    ProductImg.src = img4.src;
+}    
     // jQuery methods go here...
    
       $("#reviews").click(function(){

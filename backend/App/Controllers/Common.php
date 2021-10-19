@@ -19,4 +19,10 @@ class Common extends \Core\Controller
             "eqPost" => $stmtForeq->fetchAll()
         ]);
     }
+
+    public function getProductAction()
+    {
+        $stmt = $this->execute($this->get('products', "*", "id ='" . $this->data['id'] . "'"));
+        View::response($stmt->fetch());
+    }
 }
