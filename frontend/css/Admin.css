@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
 }
 /* Home */
 
@@ -56,10 +56,17 @@
 }
 
 /* admins */
+<<<<<<< HEAD
 .head-titles {
   margin-top: 20px;
   margin-left: 30px;
   height: 80px;
+=======
+.head-titles{
+    margin-top: 20px;
+    margin-left: 30px; 
+    height: 60px;
+>>>>>>> upstream/rashmika
 }
 
 .head-titles h1 {
