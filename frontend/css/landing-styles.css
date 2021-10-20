@@ -194,7 +194,7 @@ ul {
 .text a {
   display: inline-block;
   font-size: 1em;
-  background: #fff;
+  background: rgb(255, 137, 116);
   padding: 10px 30px;
   border-radius: 50px;
   text-transform: uppercase;
@@ -621,10 +621,6 @@ ul {
   }
 }
 
-.before {
-  padding: 5px;
-  border: rgb(255, 137, 116) solid 2px;
-}
 
 /* -----------------------slider----------------------- */
 /* 

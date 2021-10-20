@@ -1,0 +1,23 @@
+.small-container-mini {
+   
+    margin-bottom: 50px;
+}
+
+.small-container-mini label {
+    margin-left: 50px;
+}
+.small-container-mini select, input {
+    width: 200px;
+    font-size: 14px;
+    outline: none;
+    border: rgb(168, 168, 168) 1px solid;
+}
+
+.fish-list{
+    display: flex;
+}
+
+.fish-item h4 {
+    color: rgb(66, 66, 66);
+    font-weight: 500;
+}
