@@ -7,40 +7,68 @@ function setUrl(text){
 
 var userType = 0;
 
-let before = document.getElementsByClassName('before');
-let after = document.getElementsByClassName('after');
-let notReg = document.getElementsByClassName('notReg');
-function foo(loggedIn){
-  if(loggedIn){
-      for (var i=0;i<before.length;i+=1){
-          before[i].style.display = 'none';
-      }   
-      for (var i=0;i<after.length;i+=1){
-          after[i].style.display = 'block';
-      } 
-  }
-  else {
-      for (var i=0;i<before.length;i+=1){
-          before[i].style.display = 'block';
-      }   
-      for (var i=0;i<after.length;i+=1){
-          after[i].style.display = 'none';
-      } 
-  }
-  }
-function notRegAccount(){
-  for (var i=0;i<before.length;i+=1){
-    before[i].style.display = 'none';
-}   
-for (var i=0;i<after.length;i+=1){
-    after[i].style.display = 'block';
-}
-for(let i=0;i<notRegAccount.length;i+=1){
-    notReg[i].style.display = 'none';
-}
+// let before = document.getElementsByClassName('before');
+// let after = document.getElementsByClassName('after');
+// let notReg = document.getElementsByClassName('notReg');
+// function foo(loggedIn){
+//   if(loggedIn){
+//       for (var i=0;i<before.length;i+=1){
+//           before[i].style.display = 'none';
+//       }   
+//       for (var i=0;i<after.length;i+=1){
+//           after[i].style.display = 'block';
+//       } 
+//   }
+//   else {
+//       for (var i=0;i<before.length;i+=1){
+//           before[i].style.display = 'block';
+//       }   
+//       for (var i=0;i<after.length;i+=1){
+//           after[i].style.display = 'none';
+//       } 
+//   }
+//   }
+// function notRegAccount(){
+//   for (var i=0;i<before.length;i+=1){
+//     before[i].style.display = 'none';
+// }   
+// for (var i=0;i<after.length;i+=1){
+//   if(after[i].classList.contains('notReg') == 0){
+//     after[i].style.display = 'block';
+//   }
+    
+// }
+// for(let i=0;i<notRegAccount.length;i+=1){
+//     notReg[i].style.display = 'none';
+// }
 
-}
+
 $(document).ready(function(){
+  function foo(loggedIn) {
+    if(loggedIn) {
+      $('#login').css("display", "none");
+      $('#signup').css("display", "none");
+      $('#account').css("display", "block");
+      $('#bell').css("display", "block");
+      $('#post').css("display", "block");
+      $('#cart').css("display", "block");
+
+      
+    }
+  }
+
+  function notRegAccount(){
+    if(loggedIn) {
+      $('#login').css("display", "none");
+      $('#signup').css("display", "none");
+      $('#cart').css("display","none");
+      $('#post').css("display", "none");
+      $('#account').css("display", "block");
+      $('#bell').css("display", "block");
+
+    }
+  }
+  
 
     // jQuery methods go here...
     $.ajax({
@@ -55,9 +83,11 @@ $(document).ready(function(){
               userId = data.id;
               if(userType == 1){
                 foo(true);
+                
               }else{
                 notRegAccount();
               }
+              
               
 
           }else{

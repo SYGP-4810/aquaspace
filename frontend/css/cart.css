@@ -169,6 +169,7 @@ td button {
     border: 1px solid #dadada;
   }
   .checkout table{
+    width: 100%;
     margin: 0;
     padding: 0;
   }
@@ -269,15 +270,17 @@ align-items: center;
   margin: auto;
   width: 27%;
   display: flex;
+  align-items: center;
   text-align: center;
 }
  .coins div h1{
-   margin-left: 20px;
+   position: relative;
+   left: 21px;
  }
 
  .coins h3{
    margin-top: 80px;
-   color: #db6d41;
+   color: #666565;
  }
  
  #coins {

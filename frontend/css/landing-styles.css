@@ -172,7 +172,7 @@ ul {
 .text h2 {
   font-size: 3em;
   font-weight: 800;
-  color: rgb(255, 137, 116);
+  color: white;
   line-height: 1em;
   /* text-transform: uppercase; */
 }
@@ -647,6 +647,12 @@ ul {
 #slider > *:nth-child(3) {animation-delay: 6s}
 #slider > *:nth-child(4) {animation-delay: 9s} */
 
-.notReg {
+#login, #signup{
+  display: block;
+  padding: 5px;
+  border: rgb(255, 137, 116) solid 2px;
+}
+
+#cart , #bell, #account, #post{
   display: none;
 }
