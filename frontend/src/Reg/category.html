@@ -62,37 +62,43 @@
         <div class="filter">
             <h3>Filter Options</h3>
             <div class="divider"></div>
-            <h4 class="heading">Category</h4>
+            <h4 class="heading">Filter by delivery</h4>
             <ul class="list">
                 <li>
-                    <label>Checkbox 1
-                        <input type="checkbox" name="category[]" value="checkbox 1" checked /><span></span></label>
+                    <label>In-store Pickup
+                        <input type="checkbox" name="category[]" value="1" checked /><span></span></label>
                 </li>
                 <li>
-                    <label>Checkbox 2
-                        <input type="checkbox" name="category[]" value="checkbox 2" /><span></span></label>
+                    <label>Deliver
+                        <input type="checkbox" name="category[]" value="2" /><span></span></label>
+                </li>
+               
+                </li>
+            </ul>
+            <div class="divider"></div>
+            <h4 class="heading">Filter by Post Type</h4>
+            <ul class="list">
+                <li>
+                    <label>Adopt Fish
+                        <input type="radio" name="category[]" value="1" checked /><span></span></label>
                 </li>
                 <li>
-                    <label>Checkbox 3
-                        <input type="checkbox" name="category[]" value="checkbox 3" /><span></span></label>
+                    <label>Buy Fish
+                        <input type="radio" name="category[]" value="2" /><span></span></label>
                 </li>
                 <li>
-                    <label>Checkbox 4
-                        <input type="checkbox" name="category[]" value="checkbox 4" /><span></span></label>
+                    <label>Buy Plants
+                        <input type="radio" name="category[]" value="3" /><span></span></label>
                 </li>
                 <li>
-                    <label>Checkbox 5
-                        <input type="checkbox" name="category[]" value="checkbox 5" /><span></span></label>
-                </li>
-                <li>
-                    <label>Checkbox 6
-                        <input type="checkbox" name="category[]" value="checkbox 6" /><span></span></label>
+                    <label>Buy Equipments
+                        <input type="radio" name="category[]" value="4" /><span></span></label>
                 </li>
             </ul>
 
             <div class="divider"></div>
 
-            <h4 class="heading">Product Filter</h4>
+            <h4 class="heading">Filter by Price</h4>
             <div class="filter-price">
 
                 <div class="price-field">
@@ -117,7 +123,14 @@
                 </div>
             </div>
             <div class="divider"></div>
-            <div class="dropmedown">
+            <h4 class="heading">Filter by Distance</h4>
+            <div style="display: flex;">
+                <div class="filter-price"><input type="number" id="search-text" class="search-box">
+                </div><span class="km">km</span>
+            </div>
+
+
+            <!-- <div class="dropmedown">
                 <select class="dropdown-select">
                     <option> Search Category </option>
                     <option>
@@ -133,7 +146,7 @@
                         Medicine
                     </option>
                 </select>
-            </div>
+            </div> -->
         </div>
         <div class="cards">
             <div class="small-container">
@@ -262,29 +275,24 @@
             <p class="footer-links">
                 <a href="#" class="link-1">Home</a>
 
-                <a href="#">Blog</a>
+                <a href="Reg/articles.html">Blog</a>
 
-                <a href="#">Pricing</a>
+                <a href="#">Add Post</a>
 
-                <a href="#">About</a>
-
-                <a href="#">Faq</a>
-
-                <a href="#">Contact</a>
+                <a href="Reg/build-tank.html">Build Tank</a>
             </p>
-
-            <p class="footer-company-name">Company Name © 2015</p>
+            <p class="footer-company-name">AquaSpace © 2021</p>
         </div>
 
         <div class="footer-center">
             <div>
                 <i class="fa fa-phone"></i>
-                <p>+94-123456789</p>
+                <p>077-1234567</p>
             </div>
 
             <div>
                 <i class="fa fa-envelope"></i>
-                <p><a href="mailto:support@company.com">support@company.com</a></p>
+                <p><a href="mailto:support@company.com">aquaspace@gmail.com</a></p>
             </div>
 
         </div>
@@ -293,18 +301,16 @@
 
             <p class="footer-company-about">
                 <span>About AquaSpace</span>
-                Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus
-                vehicula sit amet.
+                AquaSpace is an online quarium marketplace which allows you to connect with community of
+                fish owners, fish enthusiasts and aquarium stores.
             </p>
 
-            <div class="footer-icons">
-
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-github"></i></a>
-
-            </div>
+            <!-- <div class="footer-icons">
+    
+            <a href="#"><i class="far fa-facebook"></i></a>
+            <a href="#"><i class="far fa-twitter"></i></a>
+    
+          </div> -->
 
         </div>
 

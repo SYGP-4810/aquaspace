@@ -20,7 +20,7 @@ class Config
      * Database name
      * @var string
      */
-    const DB_NAME = 'temp-aquaspace';
+    const DB_NAME = 'aquaspace';
 
     /**
      * Database user
@@ -38,5 +38,5 @@ class Config
      * Show or hide error messages on screen
      * @var boolean
      */
-    const SHOW_ERRORS = false;
+    const SHOW_ERRORS = true;
 }

@@ -14,9 +14,9 @@ $( document ).ready(function() {
         $(".reviews").css("display", "none");
       });
     
-// var url = new URL(window.location.href);
-// var id = url.searchParams.get("id");
-var id = 8;
+var url = new URL(window.location.href);
+var id = url.searchParams.get("id");
+
 var req = {"id":id};
     $.ajax({
         type: "POST",

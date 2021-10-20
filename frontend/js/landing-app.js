@@ -74,7 +74,7 @@ $(document).ready(function(){
             htmlToRating  += `</div>`;
 
            $("#newlyAddedFishContent").append(`<div class="col-4">
-           <a href="product-page.html?id=${element.id}">
+           <a href="Reg/product-page.html?id=${element.id}">
    
              <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
              <h3>${element.product_name}</h3>
@@ -99,7 +99,7 @@ $(document).ready(function(){
             htmlToRating  += `</div>`;
 
            $("#fishContent").append(`<div class="col-4">
-           <a href="product-page.html?id=${element.id}">
+           <a href="Reg/product-page.html?id=${element.id}">
    
              <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
              <h3>${element.product_name}</h3>
@@ -124,7 +124,7 @@ $(document).ready(function(){
             htmlToRating  += `</div>`;
 
            $("#plantContent").append(`<div class="col-4">
-           <a href="product-page.html?id=${element.id}">
+           <a href="Reg/product-page.html?id=${element.id}">
    
              <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
              <h3>${element.product_name}</h3>
@@ -148,7 +148,7 @@ $(document).ready(function(){
             htmlToRating  += `</div>`;
 
            $("#equipmentContent").append(`<div class="col-4">
-           <a href="product-page.html?id=${element.id}">
+           <a href="Reg/product-page.html?id=${element.id}">
    
              <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
              <h3>${element.product_name}</h3>
