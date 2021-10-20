@@ -412,6 +412,11 @@ $("#signUp3").click(function(){
     var regNo = $("#regNo").val();
     var city = $("#city3").val();
     var deliveryMethod = 0;
+    var erFlag = 0;
+    var errors = [];
+    let accountNo = $("#accountNo").val();
+    let bankName = $("#bankName").val();
+    let branchId = $("#branchId").val();
     if(($('#inStorePickUp').is(':checked'))){
         deliveryMethod+= 1;
     }
@@ -422,9 +427,20 @@ $("#signUp3").click(function(){
         deliveryMethod+= 4;
     }
 
-    var erFlag = 0;
-    var errors = [];
+    
     //validation criteria
+    if(accountNo == ''){
+        errors.push("enter your bank account number");
+        erFlag++;
+    }
+    if(bankName == ''){
+        errors.push("Enter your bank name");
+        erFlag++;
+    }
+    if(branchId == ''){
+        errors.push("enter branch id");
+        erFlag++;
+    }
     if(cName == ""){
         errors.push("company name is required");
         $("#cName").focus();
@@ -542,8 +558,12 @@ $("#signUp3").click(function(){
             "manNIC": manNIC,
             "manName":mName,
             "regNo": regNo,
-            "deliveryMethod": deliveryMethod
+            "deliveryMethod": deliveryMethod,
+            "bankName": bankName,
+            "branchId": branchId,
+            "accountNo": accountNo
         }
+        alert(JSON.stringify(req));
           $.ajax({
             type: "POST",
             url: setUrl("Authentication/signUpStore"),
@@ -555,7 +575,7 @@ $("#signUp3").click(function(){
                     alert("wait until admin verify you may have email about confirm");
                     window.location.replace("/aquaspace/frontend/src/");
                     }else{
-                        alert(JSON.stringify(data.error));
+                        alert(JSON.stringify(data));
                     }
             },
             error: function(errMsg) {

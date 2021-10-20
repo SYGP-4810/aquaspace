@@ -382,6 +382,7 @@ class Authentication extends \Core\Controller
 
         $errFlag = 0;
         $errors = [];
+        //View::response($this->data);
 
         if (!isset($this->data['deliveryMethod'])) {
             array_push($errors, "delevery method did not come to backend");
@@ -503,7 +504,10 @@ class Authentication extends \Core\Controller
                     "man_name" => $manName,
                     "man_nic" => $manNIC,
                     "registration_num" => $regNo,
-                    "del_mode" => $delMode
+                    "del_mode" => $delMode,
+                    "bank_name" => $this->data["bankName"],
+                    "branch_id" => $this->data["branchId"],
+                    "account_no" => $this->data["accountNo"],
                 ];
                 $this->exec($this->save('store', $dataToInsertStoreTable));
                 $res = array("status" => "1", "msg" => "success");

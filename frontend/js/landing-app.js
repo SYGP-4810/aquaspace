@@ -9,6 +9,7 @@ var userType = 0;
 
 let before = document.getElementsByClassName('before');
 let after = document.getElementsByClassName('after');
+let notReg = document.getElementsByClassName('notReg');
 function foo(loggedIn){
   if(loggedIn){
       for (var i=0;i<before.length;i+=1){
@@ -27,6 +28,18 @@ function foo(loggedIn){
       } 
   }
   }
+function notRegAccount(){
+  for (var i=0;i<before.length;i+=1){
+    before[i].style.display = 'none';
+}   
+for (var i=0;i<after.length;i+=1){
+    after[i].style.display = 'block';
+}
+for(let i=0;i<notRegAccount.length;i+=1){
+    notReg[i].style.display = 'none';
+}
+
+}
 $(document).ready(function(){
 
     // jQuery methods go here...
@@ -40,7 +53,12 @@ $(document).ready(function(){
               loggedIn = true;
               userType = data.type;
               userId = data.id;
-              foo(true);
+              if(userType == 1){
+                foo(true);
+              }else{
+                notRegAccount();
+              }
+              
 
           }else{
               foo(false);
@@ -74,7 +92,7 @@ $(document).ready(function(){
             htmlToRating  += `</div>`;
 
            $("#newlyAddedFishContent").append(`<div class="col-4">
-           <a href="Reg/product-page.html?id=${element.id}">
+           <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
    
              <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
              <h3>${element.product_name}</h3>
@@ -99,7 +117,7 @@ $(document).ready(function(){
             htmlToRating  += `</div>`;
 
            $("#fishContent").append(`<div class="col-4">
-           <a href="Reg/product-page.html?id=${element.id}">
+           <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
    
              <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
              <h3>${element.product_name}</h3>
@@ -124,7 +142,7 @@ $(document).ready(function(){
             htmlToRating  += `</div>`;
 
            $("#plantContent").append(`<div class="col-4">
-           <a href="Reg/product-page.html?id=${element.id}">
+           <a href="/aquaspace/frontend/Reg/product-page.html?id=${element.id}">
    
              <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
              <h3>${element.product_name}</h3>
@@ -148,7 +166,7 @@ $(document).ready(function(){
             htmlToRating  += `</div>`;
 
            $("#equipmentContent").append(`<div class="col-4">
-           <a href="Reg/product-page.html?id=${element.id}">
+           <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
    
              <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
              <h3>${element.product_name}</h3>
@@ -161,7 +179,7 @@ $(document).ready(function(){
 
         },
         error: function(errMsg) {
-            //window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
 

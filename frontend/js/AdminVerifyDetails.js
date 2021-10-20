@@ -81,9 +81,22 @@ $(document).ready(function(e){
                         <td>${data.man_nic}</td>
                     </tr>
                     <tr>
+                        <td>Bank Name</td>
+                        <td>${data.bank_name}</td>
+                    </tr>
+                    <tr>
+                        <td>Branch Id</td>
+                        <td>${data.branch_id}</td>
+                    </tr>
+                    <tr>
+                        <td>Account No</td>
+                        <td>${data.account_no}</td>
+                    </tr>
+                    <tr>
                         <td>City</td>
                         <td>${data.city}</td>
                     </tr>`);
+
                     
                
             },
