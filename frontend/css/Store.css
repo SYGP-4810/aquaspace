@@ -397,7 +397,6 @@ form > label{
 .dropdown {
     position: relative;
     display: inline-block;
-    float: right;
     margin-right: 80px;
     font-weight: bold;
 }
@@ -506,9 +505,9 @@ form > label{
     font-size: 0.9rem;
 }
 
-.invent-add{
+/* .invent-add{
     /* margin-left: 15%; */
-}  
+
 
 .invent-add td{
     font-size: 1.3rem;

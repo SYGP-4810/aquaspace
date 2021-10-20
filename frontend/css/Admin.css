@@ -56,17 +56,10 @@
 }
 
 /* admins */
-<<<<<<< HEAD
-.head-titles {
-  margin-top: 20px;
-  margin-left: 30px;
-  height: 80px;
-=======
 .head-titles{
     margin-top: 20px;
     margin-left: 30px; 
     height: 60px;
->>>>>>> upstream/rashmika
 }
 
 .head-titles h1 {
