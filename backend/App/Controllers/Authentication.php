@@ -382,6 +382,7 @@ class Authentication extends \Core\Controller
 
         $errFlag = 0;
         $errors = [];
+        //View::response($this->data);
 
         if (!isset($this->data['deliveryMethod'])) {
             array_push($errors, "delevery method did not come to backend");

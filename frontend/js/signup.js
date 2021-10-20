@@ -414,7 +414,7 @@ $("#signUp3").click(function(){
     var deliveryMethod = 0;
     var erFlag = 0;
     var errors = [];
-    let accontNo = $("#accountNo").val();
+    let accountNo = $("#accountNo").val();
     let bankName = $("#bankName").val();
     let branchId = $("#branchId").val();
     if(($('#inStorePickUp').is(':checked'))){
@@ -429,7 +429,7 @@ $("#signUp3").click(function(){
 
     
     //validation criteria
-    if(accontNo == ''){
+    if(accountNo == ''){
         errors.push("enter your bank account number");
         erFlag++;
     }
@@ -563,6 +563,7 @@ $("#signUp3").click(function(){
             "branchId": branchId,
             "accountNo": accountNo
         }
+        alert(JSON.stringify(req));
           $.ajax({
             type: "POST",
             url: setUrl("Authentication/signUpStore"),
@@ -574,7 +575,7 @@ $("#signUp3").click(function(){
                     alert("wait until admin verify you may have email about confirm");
                     window.location.replace("/aquaspace/frontend/src/");
                     }else{
-                        alert(JSON.stringify(data.error));
+                        alert(JSON.stringify(data));
                     }
             },
             error: function(errMsg) {
