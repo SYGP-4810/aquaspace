@@ -9,6 +9,7 @@ var userType = 0;
 
 let before = document.getElementsByClassName('before');
 let after = document.getElementsByClassName('after');
+let notReg = document.getElementsByClassName('notReg');
 function foo(loggedIn){
   if(loggedIn){
       for (var i=0;i<before.length;i+=1){
@@ -27,6 +28,18 @@ function foo(loggedIn){
       } 
   }
   }
+function notRegAccount(){
+  for (var i=0;i<before.length;i+=1){
+    before[i].style.display = 'none';
+}   
+for (var i=0;i<after.length;i+=1){
+    after[i].style.display = 'block';
+}
+for(let i=0;i<notRegAccount.length;i+=1){
+    notReg[i].style.display = 'none';
+}
+
+}
 $(document).ready(function(){
 
     // jQuery methods go here...
@@ -40,7 +53,12 @@ $(document).ready(function(){
               loggedIn = true;
               userType = data.type;
               userId = data.id;
-              foo(true);
+              if(userType == 1){
+                foo(true);
+              }else{
+                notRegAccount();
+              }
+              
 
           }else{
               foo(false);
