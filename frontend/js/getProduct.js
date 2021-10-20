@@ -14,9 +14,9 @@ $( document ).ready(function() {
         $(".reviews").css("display", "none");
       });
     
-// var url = new URL(window.location.href);
-// var id = url.searchParams.get("id");
-var id = 8;
+var url = new URL(window.location.href);
+var id = url.searchParams.get("id");
+
 var req = {"id":id};
     $.ajax({
         type: "POST",
@@ -27,20 +27,20 @@ var req = {"id":id};
         success: function(data){
     // console.log(JSON.stringify(data));
         $("#column_1").html(`
-           <img src="../../images/post/${data.img1}" alt="" width="100%" height="500px" id="ProductImg">
+           <img src="../../images/product/${data.img1}" alt="" width="100%" height="500px" id="ProductImg">
 
                 <div class="small-img-row">
                     <div class="small-img-col">
-                        <img id="img1" src="../../images/post/${data.img1}" alt="" width="100%" class="small-img">
+                        <img id="img1" src="../../images/product/${data.img1}" alt="" width="100%" class="small-img">
                     </div>
                     <div class="small-img-col">
-                        <img id="img2" src="../../images/post/${data.img2}" alt="" width="100%" class="small-img">
+                        <img id="img2" src="../../images/product/${data.img2}" alt="" width="100%" class="small-img">
                     </div>
                     <div class="small-img-col">
-                        <img id="img3" src="../../images/post/${data.img3}" alt="" width="100%" class="small-img">
+                        <img id="img3" src="../../images/product/${data.img3}" alt="" width="100%" class="small-img">
                     </div>
                     <div class="small-img-col">
-                        <img id="img4" src="../../images/post/${data.img4}" alt="" width="100%" class="small-img">
+                        <img id="img4" src="../../images/product/${data.img4}" alt="" width="100%" class="small-img">
                     </div>
                 </div>
            `)
@@ -75,8 +75,8 @@ if(data.type == 1 || data.type == 2 )
                     <option>Third Party Delivery Service</option>
                 </select> -->
                 <input type="number" value="1"><span id="quantity">${data.quantity}</span><span>     </span><span>Available</span><br>
-                <a href="#" class="btn">Add to Cart</a>
-                <a href="#" class="btn">Wishlist</a>
+                <a href="cart.html" class="btn">Add to Cart</a>
+                <a href="wishlist.html" class="btn">Wishlist</a>
                 <h3>Product Details</h3>
                 <br>
                 <p id="description">${data.description}</p>

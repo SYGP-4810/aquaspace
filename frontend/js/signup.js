@@ -412,6 +412,11 @@ $("#signUp3").click(function(){
     var regNo = $("#regNo").val();
     var city = $("#city3").val();
     var deliveryMethod = 0;
+    var erFlag = 0;
+    var errors = [];
+    let accontNo = $("#accountNo").val();
+    let bankName = $("#bankName").val();
+    let branchId = $("#branchId").val();
     if(($('#inStorePickUp').is(':checked'))){
         deliveryMethod+= 1;
     }
@@ -422,9 +427,20 @@ $("#signUp3").click(function(){
         deliveryMethod+= 4;
     }
 
-    var erFlag = 0;
-    var errors = [];
+    
     //validation criteria
+    if(accontNo == ''){
+        errors.push("enter your bank account number");
+        erFlag++;
+    }
+    if(bankName == ''){
+        errors.push("Enter your bank name");
+        erFlag++;
+    }
+    if(branchId == ''){
+        errors.push("enter branch id");
+        erFlag++;
+    }
     if(cName == ""){
         errors.push("company name is required");
         $("#cName").focus();
@@ -542,7 +558,10 @@ $("#signUp3").click(function(){
             "manNIC": manNIC,
             "manName":mName,
             "regNo": regNo,
-            "deliveryMethod": deliveryMethod
+            "deliveryMethod": deliveryMethod,
+            "bankName": bankName,
+            "branchId": branchId,
+            "accountNo": accountNo
         }
           $.ajax({
             type: "POST",

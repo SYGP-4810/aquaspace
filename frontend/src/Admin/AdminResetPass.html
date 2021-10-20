@@ -10,7 +10,11 @@
 	<input type="checkbox" id="checkbox">
 	<header class="header">
 		<div class="u-name">
-            <img class="logo" src="../../images/logo.png"><span class="logo" >AquaSpace</span>
+            
+                <img class="logo" src="../../images/logo.png">
+           
+                <span class="logo" >AquaSpace</span>
+           
 			<label for="checkbox">
 				<i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
 			</label>
@@ -90,22 +94,21 @@
                 <h1>RESET PASSWORD</h1>
             </div>
             <div class="reset-pass">
-                <form>
                     <label for="cupass">Current Password * </label>
-                    <input type="text" id="cupass" name="cupass">
+                    <input type="password" id="cupass" name="cupass">
                     <br>
                     <label for="newpass">New Password * </label>
-                    <input type="text" id="newpass" name="newpass">
+                    <input type="password" id="newpass" name="newpass">
                     <br>
                     <label for="conpass">Confirm Password * </label>
-                    <input type="text" id="conpass" name="conpass">
+                    <input type="password" id="conpass" name="conpass">
                     <br>
-                    <input type="submit" class="button" value="Reset Password" id="updatePass">
-                </form>
+                    <button id="updatePass" class="button">Reset passow</button>
             </div>
 		</section>
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src = "../../js/Admin.js"></script>
+    <script src="../../js/logo.js"></script>
 </body>
 </html>

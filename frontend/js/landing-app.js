@@ -47,7 +47,121 @@ $(document).ready(function(){
           }
         },
         error: function(errMsg) {
-            window.location.replace("../src/Error/"+errMsg.status+".html");
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+        }
+    });
+
+    //get product details
+    $.ajax({
+        type: "GET",
+        url:setUrl("Common/getLandingPagePost"),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+         console.log(data);
+         //append new posts
+         data.newPost.forEach(element => {
+            let sum = element.sumOfRating;
+            let count = element.countOfRating;
+            let htmlToRating = `<div class="rating">`;
+            let remainder = sum%count;
+            for(let i = 0; i< 5-remainder; i++) {
+               htmlToRating += `<i class="fa fa-star"></i>`;
+            }
+            for(let i = 0; i< remainder;i++) {
+                htmlToRating += `<i class="far fa-star"></i>`;
+            }
+            htmlToRating  += `</div>`;
+
+           $("#newlyAddedFishContent").append(`<div class="col-4">
+           <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+   
+             <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
+             <h3>${element.product_name}</h3>
+           </a>
+           ${htmlToRating}
+           <p>Price : ${element.price}</p>
+         </div>`);
+        });
+        //append fish post
+        
+        data.fishPost.forEach(element => {
+            let sum = element.sumOfRating;
+            let count = element.countOfRating;
+            let htmlToRating = `<div class="rating">`;
+            let remainder = sum%count;
+            for(let i = 0; i< 5-remainder; i++) {
+               htmlToRating += `<i class="fa fa-star"></i>`;
+            }
+            for(let i = 0; i< remainder;i++) {
+                htmlToRating += `<i class="far fa-star"></i>`;
+            }
+            htmlToRating  += `</div>`;
+
+           $("#fishContent").append(`<div class="col-4">
+           <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+   
+             <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
+             <h3>${element.product_name}</h3>
+           </a>
+           ${htmlToRating}
+           <p>Price : ${element.price}</p>
+         </div>`);
+        });
+
+        //append plant post
+        data.plantPost.forEach(element => {
+            let sum = element.sumOfRating;
+            let count = element.countOfRating;
+            let htmlToRating = `<div class="rating">`;
+            let remainder = sum%count;
+            for(let i = 0; i< 5-remainder; i++) {
+               htmlToRating += `<i class="fa fa-star"></i>`;
+            }
+            for(let i = 0; i< remainder;i++) {
+                htmlToRating += `<i class="far fa-star"></i>`;
+            }
+            htmlToRating  += `</div>`;
+
+           $("#plantContent").append(`<div class="col-4">
+           <a href="/aquaspace/frontend/Reg/product-page.html?id=${element.id}">
+   
+             <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
+             <h3>${element.product_name}</h3>
+           </a>
+           ${htmlToRating}
+           <p>Price : ${element.price}</p>
+         </div>`);
+        });
+        //append equipment post
+        data.eqPost.forEach(element => {
+            let sum = element.sumOfRating;
+            let count = element.countOfRating;
+            let htmlToRating = `<div class="rating">`;
+            let remainder = sum%count;
+            for(let i = 0; i< 5-remainder; i++) {
+               htmlToRating += `<i class="fa fa-star"></i>`;
+            }
+            for(let i = 0; i< remainder;i++) {
+                htmlToRating += `<i class="far fa-star"></i>`;
+            }
+            htmlToRating  += `</div>`;
+
+           $("#equipmentContent").append(`<div class="col-4">
+           <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+   
+             <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
+             <h3>${element.product_name}</h3>
+           </a>
+           ${htmlToRating}
+           <p>Price : ${element.price}</p>
+         </div>`);
+        });
+         
+
+        },
+        error: function(errMsg) {
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
 
