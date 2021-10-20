@@ -172,7 +172,7 @@ $(document).ready(function(){
             htmlToRating  += `</div>`;
 
            $("#plantContent").append(`<div class="col-4">
-           <a href="/aquaspace/frontend/Reg/product-page.html?id=${element.id}">
+           <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
    
              <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
              <h3>${element.product_name}</h3>
@@ -205,6 +205,19 @@ $(document).ready(function(){
            <p>Price : ${element.price}</p>
          </div>`);
         });
+
+        //append to the adopt post
+        data.adopt.forEach(element => {
+
+         $("#adopt").append(`<div class="col-4">
+         <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+ 
+           <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
+           <h3>${element.product_name}</h3>
+         </a>
+         <p>Price : ${element.price}</p>
+       </div>`);
+      });
          
 
         },
