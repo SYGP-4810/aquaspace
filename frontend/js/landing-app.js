@@ -7,13 +7,6 @@ function setUrl(text){
 
 var userType = 0;
 
-function foo(loggedIn) {
-  if(loggedIn) {
-    for (var i=0;i<before.length;i+=1){
-    $('.before').css("display", "none");
-  }
-}
-}
 // let before = document.getElementsByClassName('before');
 // let after = document.getElementsByClassName('after');
 // let notReg = document.getElementsByClassName('notReg');
