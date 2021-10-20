@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
 }
 
 .required {
@@ -15,7 +15,7 @@
 .head-titles {
   margin-top: 20px;
   margin-left: 30px;
-  height: 80px;
+  height: 60px;
 }
 
 .head-titles h1 {
@@ -183,8 +183,19 @@ form > label {
 
 /* reset */
 .reset-container {
-  margin: 0px 30px 00px 30px;
+  margin: 0px 30px 00px 60px;
   width: 400px;
+}
+
+.reset-container form > input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 8px;
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 
 /*Storefront  */
@@ -383,7 +394,6 @@ form > label {
 .dropdown {
   position: relative;
   display: inline-block;
-  float: right;
   margin-right: 80px;
   font-weight: bold;
 }
@@ -394,15 +404,16 @@ form > label {
   font-size: 16px;
   border: none;
   cursor: pointer;
-  width: 100px;
+  width: 140px;
   font-weight: bold;
 }
 
 .dropdown-content {
+  text-align: center;
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  width: 100px;
+  width: 140px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
@@ -469,7 +480,7 @@ form > label {
 .section-title {
   display: flex;
   justify-content: space-between;
-  margin: -30px 30px 20px 40px;
+  margin: 0px 30px 20px 60px;
   color: rgba(0, 0, 0, 0.774);
 }
 
@@ -486,9 +497,8 @@ form > label {
   font-size: 1rem;
 }
 
-.invent-add span {
-  font-size: 0.9rem;
-}
+/* .invent-add{
+    /* margin-left: 15%; */
 
 .invent-add {
   margin-left: 15%;
@@ -673,14 +683,15 @@ form > label {
 /* notify */
 
 .notifi .button {
-  margin-right: 30%;
+  margin-right: 80px;
 }
 
 .notifi {
-  margin-left: 40px;
-  font-size: 1.3em;
+  margin-left: 80px;
+  width: 500px;
 }
 .notifi td {
+  font-size: 1.5em;
   padding: 10px;
 }
 
