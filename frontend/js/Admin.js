@@ -1,7 +1,3 @@
-//api setter
-function setUrl(text){
-    return "/aquaspace/backend/public/index.php?"+text;
-  }
 //email validat
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -78,7 +74,7 @@ $("#save123").click(function(){
         });
 
     }else{
-        alert(errors);
+        errorShow(errors);
     }
 
 
