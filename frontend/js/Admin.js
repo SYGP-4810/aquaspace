@@ -60,11 +60,15 @@ $("#save123").click(function(){
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data){
-                alert(data.msg);
+               
                 if(data.status == 1){
                     $("#email").focus();
+                    errorShow([data.msg]);
                 }else if(data.status == 2){
-                    window.location.replace("/aquaspace/frontend/src/Admin/AdminAdmins.html");
+                    alertMsg([data.msg]);
+                    delay(function(){
+                        window.location.replace("/aquaspace/frontend/src/Admin/AdminAdmins.html");
+                    },5000);
                 }
         
             },
@@ -147,13 +151,16 @@ $("#updatePass").click(function(){
             success: function(data){
                 //console.log(data);
                 if(data.status == 1){
-                    alert(data.msg);
+                    errorShow([data.msg]);
                 }
                 else if(data.status == 2){
-                    alert(data.msg);
+                    errorShow([data.msg]);
                 }else if(data.status == 3){
-                    alert(data.msg);
-                    window.location.replace("/aquaspace/frontend/src/Admin/AdminHome.html");
+                    alertMsg([data.msg]);
+                    delay(function(){
+                        window.location.replace("/aquaspace/frontend/src/Admin/AdminHome.html");
+                    },5000);
+                   
                 }
         
             },
@@ -163,7 +170,7 @@ $("#updatePass").click(function(){
         });
 
     }else{
-        alert(errors);
+        errorShow(errors);
     }
 
 

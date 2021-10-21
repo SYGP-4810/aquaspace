@@ -3,6 +3,7 @@
   padding: 20px;
   background-color: #f44336;
   color: white;
+  font-size: 14px;
   width: 40%;
 }
 
@@ -19,4 +20,19 @@
 
 .closebtn:hover {
   color: black;
+}
+
+#alertDiv {
+  position: fixed;
+  top: 40%;
+  left: 40%;
+  width: 100%;
+}
+
+.alertMsg {
+  padding: 20px;
+  background-color: #4336f4;
+  color: white;
+  font-size: 14px;
+  width: 40%;
 }
