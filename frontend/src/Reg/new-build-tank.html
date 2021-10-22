@@ -71,7 +71,7 @@
         <div class="small-container">
             <div class="small-container-mini">
                 <label>Select a fish </label>
-                <select id="fish" name="selection">
+                <select id="fishtype" name="selection">
                     <option selected hidden value="">Select</option>
                     <option value="type1">Fish Type 1</option>
                     <option value="type2">Fish Type 2</option>
@@ -89,6 +89,15 @@
                 <button id="btn1">Add</button>
             </div>
             <div id="fish-list" class="small-container-mini">
+                <table style="width: 90%;" class="overview" id="profile-table">
+                    <tr  style="border-bottom: 1px rgb(153, 153, 153) solid; " >
+                        <td style="border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">Image</td>
+                        <td style="border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">Name</td>
+                        <td style="border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">Quantity</td>
+                    </tr>
+
+                    
+                </table>
                 
 
             </div>
@@ -169,8 +178,8 @@
 
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../../js/build-tank.js"></script>
-    <script src="../../js/autocomplete.js"></script>
+    <script src="../../js/Reg/build-tank.js"></script>
+    <script src="../../js/Reg/autocomplete.js"></script>
 </body>
 
 </html>
