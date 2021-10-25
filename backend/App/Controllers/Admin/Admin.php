@@ -104,7 +104,8 @@ class Admin extends \Core\Controller
             "email" => $result['email'],
             "address" => $result2['address'],
             "city" => $result2['city'],
-            "tp" => $result['tp']
+            "tp" => $result['tp'],
+            "profile_img" => $result['profile_img']
         ];
         View::response($res);
     }
@@ -211,7 +212,7 @@ class Admin extends \Core\Controller
         if (in_array($this->data['exen'], $ext)) {
             if (is_null($result['profile_img'])) {
                 $iName1 = "";
-                $iName1 = microtime(true) . "." . $this->data['exen'];
+                $iName1 =  round(microtime(true) * 1000) . "." . $this->data['exen'];
             } else {
                 $fileName = $result['profile_img'];
                 $iNameE = explode(".", "$fileName");
