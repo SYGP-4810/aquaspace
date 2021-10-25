@@ -78,7 +78,8 @@ class Admin extends \Core\Controller
             "email" => $result['email'],
             "address" => $result2['address'],
             "city" => $result2['city'],
-            "tp" => $result['tp']
+            "tp" => $result['tp'],
+            "profile_img" => $result['profile_img']
         ];
         View::response($res);
     }
@@ -193,5 +194,40 @@ class Admin extends \Core\Controller
             $res = ["status" => 3, "msg" => "successfully updated your password"];
         }
         View::response($res);
+    }
+
+    public function updateAdminAction()
+    {
+
+        $stmt = $this->execute($this->get('user_auth', '*', "access_token ='" . $_COOKIE['access_token'] . "'"));
+        $result = $stmt->fetch();
+        $updateData = [
+            "first_name" => $this->data['fName'],
+            "last_name" => $this->data['lName'],
+            "address" => $this->data['address'],
+            "city" => $this->data['city']
+        ];
+        $ext = array("jpg", "png", "jpeg");
+        if (in_array($this->data['exen'], $ext)) {
+            if (is_null($result['profile_img'])) {
+                $iName1 = "";
+                $iName1 = microtime(true) . "." . $this->data['exen'];
+            } else {
+                $fileName = $result['profile_pic'];
+                $iNameE = explode(".", "$fileName");
+                $iName1 = $iNameE[0];
+            }
+            $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/profile/" . $iName1;
+            $flag1 = file_put_contents($iDir1, base64_decode($this->data['pic']));
+            if (!$flag1) {
+                throw new \Exception("file did not come to the backend");
+            }
+            $this->exec($this->update('user_auth', ["tp" => $this->data['tp'], "profile_img" => $iName1], "id='" . $result['id'] . "'"));
+        }
+
+
+        $this->exec($this->update('admin', $updateData, "auth_id='" . $result['id'] . "'"));
+        $this->exec($this->update('user_auth', ["tp" => $this->data['tp']], "id='" . $result['id'] . "'"));
+        View::response("Successfully updated");
     }
 }
