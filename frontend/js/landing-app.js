@@ -109,25 +109,12 @@ $(document).ready(function(){
          console.log(data);
          //append new posts
          data.newPost.forEach(element => {
-            let sum = element.sumOfRating;
-            let count = element.countOfRating;
-            let htmlToRating = `<div class="rating">`;
-            let remainder = sum%count;
-            for(let i = 0; i< 5-remainder; i++) {
-               htmlToRating += `<i class="fa fa-star"></i>`;
-            }
-            for(let i = 0; i< remainder;i++) {
-                htmlToRating += `<i class="far fa-star"></i>`;
-            }
-            htmlToRating  += `</div>`;
-
            $("#newlyAddedFishContent").append(`<div class="col-4">
            <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
    
              <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
              <h3>${element.product_name}</h3>
            </a>
-           ${htmlToRating}
            <p>Price : ${element.price}</p>
          </div>`);
         });
@@ -172,7 +159,7 @@ $(document).ready(function(){
             htmlToRating  += `</div>`;
 
            $("#plantContent").append(`<div class="col-4">
-           <a href="/aquaspace/frontend/Reg/product-page.html?id=${element.id}">
+           <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
    
              <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
              <h3>${element.product_name}</h3>
@@ -205,6 +192,19 @@ $(document).ready(function(){
            <p>Price : ${element.price}</p>
          </div>`);
         });
+
+        //append to the adopt post
+        data.adopt.forEach(element => {
+
+         $("#adopt").append(`<div class="col-4">
+         <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+ 
+           <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
+           <h3>${element.product_name}</h3>
+         </a>
+         <p>Price : ${element.price}</p>
+       </div>`);
+      });
          
 
         },
