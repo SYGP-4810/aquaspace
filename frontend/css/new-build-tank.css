@@ -13,10 +13,14 @@
     border: rgb(168, 168, 168) 1px solid;
 }
 
-.fish-list{
+#fish-list{
     display: flex;
+    flex-direction: row;
 }
 
+.fish-item {
+    margin-top: 40px;
+}
 .fish-item h4 {
     color: rgb(66, 66, 66);
     font-weight: 500;
