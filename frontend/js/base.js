@@ -36,3 +36,13 @@ function alertMsg(er){
    });
    $("#alertDiv").focus();
 }
+
+// confrimation box
+
+var conf = document.getElementById('confirm');
+
+window.onclick = function(event) {
+  if (event.target == conf) {
+    conf.style.display = "none";
+  }
+}

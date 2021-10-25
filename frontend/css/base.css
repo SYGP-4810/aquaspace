@@ -1,38 +1,121 @@
+/* confirmation box */
+.cancelbtn, .deletebtn{
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.cancelbtn:hover,.deletebtn:hover {
+  opacity:1;
+}
+
+.cancelbtn, .deletebtn {
+  float: left;
+  width: 50%;
+}
+
+.cancelbtn {
+  background-color: #293241;
+  /* color: #293241; */
+}
+
+.deletebtn {
+  background-color: #ee6c4d;
+}
+
+.container {
+  padding: 16px;
+  text-align: center;
+}
+
+.confirm-box {
+  display: none; 
+  position: fixed; 
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto;
+  background-color: #e0fbfc56;
+  padding-top: 5%;
+}
+
+.container {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; 
+  border: 2px solid #3d5a80;
+  width: 60%;
+}
+ 
+.close {
+    margin-top: -10px;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    color: #293241;
+}
+
+.close:hover,
+.close:focus {
+    color: #ee6c4d;
+    cursor: pointer;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
 /* error showing css */
 .alert {
-  padding: 20px;
-  background-color: #f44336;
-  color: white;
-  font-size: 14px;
-  width: 40%;
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    font-size: 16px;
+    width: 60%;
 }
-
+  
 .closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
+    margin-left: 15px;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+    float: right;
+    /* line-height: 20px; */
+    cursor: pointer;
+    transition: 0.3s;
 }
-
+  
 .closebtn:hover {
-  color: black;
+    color: #293241;
+}
+  
+.alertContentList{
+    padding-left: 20px;
 }
 
 #alertDiv {
-  position: fixed;
-  top: 40%;
-  left: 40%;
-  width: 100%;
+    position: fixed;
+    top: 40%;
+    left: 40%;
+    width: 100%;
 }
-
+  
 .alertMsg {
-  padding: 20px;
-  background-color: #4336f4;
-  color: white;
-  font-size: 14px;
-  width: 40%;
+    padding: 20px;
+    background-color: #2196F3; 
+    /* background-color: #04AA6D;  */
+    color: white;
+    font-size: 14px;
+    width: 60%;
+}
+  
+.alertMsg p{
+    padding-left: 10px;
 }
