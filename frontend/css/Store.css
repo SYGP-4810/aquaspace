@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* font-family: 'Roboto', sans-serif; */
 }
 
 .required {
@@ -396,6 +395,7 @@ form > label {
   display: inline-block;
   margin-right: 80px;
   font-weight: bold;
+  float: right;
 }
 .dropbtn {
   background-color: #f5ac7c;
