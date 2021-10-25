@@ -10,7 +10,6 @@ $(document).ready(function () {
             $("#address").val(data.address);
             $("#city").val(data.city);
             $("#telNo").val(data.tp);
-            console.log(data);
             if (data.profile_img) {
                 $("#profilePic").css("background-image", `url(/aquaspace/frontend/images/profile/${data.profile_img})`);
             } else {
@@ -18,7 +17,7 @@ $(document).ready(function () {
             }
         },
         error: function (errMsg) {
-            //window.location.replace("/aquaspace/frontend/src/Error"+errMsg.status+".html");
+            window.location.replace("/aquaspace/frontend/src/Error"+errMsg.status+".html");
         }
     });
 });
@@ -111,7 +110,7 @@ $("#updateAdmin").click(function () {
                 }, 5000);
             },
             error: function (errMsg) {
-                window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+                // window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
             }
         });
 

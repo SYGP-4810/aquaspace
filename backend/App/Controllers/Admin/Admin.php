@@ -213,9 +213,9 @@ class Admin extends \Core\Controller
                 $iName1 = "";
                 $iName1 = microtime(true) . "." . $this->data['exen'];
             } else {
-                $fileName = $result['profile_pic'];
+                $fileName = $result['profile_img'];
                 $iNameE = explode(".", "$fileName");
-                $iName1 = $iNameE[0];
+                $iName1 = $iNameE[0] . "." . $this->data['exen'];
             }
             $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/profile/" . $iName1;
             $flag1 = file_put_contents($iDir1, base64_decode($this->data['pic']));
