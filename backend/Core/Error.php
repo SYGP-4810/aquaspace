@@ -55,7 +55,8 @@ class Error
         } else {
             $log = dirname(__DIR__) . '/logs/' . date('Y-m-d') . '.txt';
             //ini_set('error_log', $log);
-            $message = "Uncaught exception: '" . get_class($exception) . "'";
+            $message = "date " . date('Y-m-d') . "\n";
+            $message .= "Uncaught exception: '" . get_class($exception) . "'";
             $message .= "with error code : " . $code . "'";
             $message .= " with message '" . $exception->getMessage() . "'";
             $message .= "\nStack trace: " . $exception->getTraceAsString();
