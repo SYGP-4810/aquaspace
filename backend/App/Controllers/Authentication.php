@@ -367,7 +367,10 @@ class Authentication extends \Core\Controller
                     "city" => $city,
                     "address" => $address,
                     "auth_id" => $authId,
-                    "qualification" => $qName
+                    "qualification" => $qName,
+                    "bank_name" => $this->data['bankName'],
+                    "branch_id" => $this->data['branchId'],
+                    "account_no" => $this->data['accountNo']
                 ];
                 $this->exec($this->save('expert', $dataToInsertExpertTable));
                 $res = array("status" => "1", "msg" => "success");

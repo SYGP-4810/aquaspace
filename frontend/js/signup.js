@@ -237,9 +237,24 @@ $("#signUp2").click(function(){
     var address = $("#address2").val();
     var emailToken = $("#code2").val();
     var tp = $("#tp2").val();
+    let bankName = $("#bankNameE").val();
+    let branchId = $("#branchCodeE").val();
+    let accountNo = $("#accountNoE").val()
     var erFlag = 0;
     var errors = [];
     //validation criteria
+    if(accountNo == ""){
+        errors.push("account number is required");
+        erFlag++;
+    }
+    if(branchId == ""){
+        errors.push("branch ID is required");
+        erFlag++;
+    }
+    if(bankName == ""){
+        errors.push("bank name is required");
+        erFlag++;
+    }
     if(tp == ""){
         errors.push("telephone number is required");
         $("#tp2").focus();
@@ -362,7 +377,10 @@ $("#signUp2").click(function(){
                 "emailToken": emailToken,
                 "tp":tp,
                 "qualifications":strImage,
-                "qualificationExtension": qualificationExtension
+                "qualificationExtension": qualificationExtension,
+                "bankName":bankName,
+                "branchId": branchId,
+                "accountNo": accountNo
             }
             // alert(JSON.stringify(req));
         
