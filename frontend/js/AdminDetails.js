@@ -15,6 +15,9 @@ var req = {"id":id}
         dataType: "json",
         data: JSON.stringify(req),
         success: function(data){
+            if(data.profile_img != ""){
+                $("#profilePic").attr("src",`/aquaspace/frontend/images/profile/${data.profile_img}`);
+            }
             let name = data.fName + " " + data.lName;
             $("#profile-table").html(`
             <tr>
