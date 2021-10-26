@@ -1,43 +1,38 @@
-/* Modal Header */
-.modal-header {
-  padding: 2px 16px;
-  background-color: #5cb85c;
+/* error showing css */
+.alert {
+  padding: 20px;
+  background-color: #f44336;
   color: white;
+  font-size: 14px;
+  width: 40%;
 }
 
-/* Modal Body */
-.modal-body {
-  padding: 2px 16px;
-}
-
-/* Modal Footer */
-.modal-footer {
-  padding: 2px 16px;
-  background-color: #5cb85c;
+.closebtn {
+  margin-left: 15px;
   color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-/* Modal Content */
-.modal-content {
-  position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  border: 1px solid #888;
-  width: 80%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  animation-name: animatetop;
-  animation-duration: 0.4s;
+.closebtn:hover {
+  color: black;
 }
 
-/* Add Animation */
-@keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
+#alertDiv {
+  position: fixed;
+  top: 40%;
+  left: 40%;
+  width: 100%;
+}
+
+.alertMsg {
+  padding: 20px;
+  background-color: #4336f4;
+  color: white;
+  font-size: 14px;
+  width: 40%;
 }
