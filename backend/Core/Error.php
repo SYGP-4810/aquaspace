@@ -54,18 +54,17 @@ class Error
             die($errResponse);
         } else {
             $log = dirname(__DIR__) . '/logs/' . date('Y-m-d') . '.txt';
-            //ini_set('error_log', $log);
-            $message = "date " . date('Y-m-d') . "\n";
-            $message .= "Uncaught exception: '" . get_class($exception) . "'";
+            ini_set('error_log', $log);
+            $message = "Uncaught exception: '" . get_class($exception) . "'";
             $message .= "with error code : " . $code . "'";
             $message .= " with message '" . $exception->getMessage() . "'";
             $message .= "\nStack trace: " . $exception->getTraceAsString();
             $message .= "\nThrown in '" . $exception->getFile() . "' on line " . $exception->getLine() . "\n\n";
             //write errors to a txt file
             $errorFile = fopen($log, "a");
-            fwrite($errorFile, $message);
-            fclose($errorFile);
-            //error_log($message);
+            //fwrite($errorFile, $message);
+            //fclose($errorFile);
+            error_log($message);
             http_response_code($code);
             die();
         }
