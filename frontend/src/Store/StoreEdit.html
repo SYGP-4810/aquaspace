@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
+    <link rel="old stylesheet" href="../../css/store-inv-add.css">
     <link rel="stylesheet" href="../../css/Store.css">
     <title>Dashboard</title>
 </head>
@@ -90,11 +91,19 @@
 		</nav>
 		<section class="section-1">
             <div class="head-titles">
-                <h1>EDIT PROFILE</h1>
+                <h2>EDIT PROFILE</h2>
             </div>
             <div class="edit-container">
                 <div class="profile-pic">
-                    <img src="../../images/profile.jpg">
+                    <div class="box" style="border-radius: 50%;">
+                        <div class="js--image-preview" style=" background-image: url('../../images/storepic.jpg');"></div>
+                        <div class="upload-options">
+                            <label>
+                                <input id="img1" type="file" class="image-upload"
+                                    onchange="encodeImageFileAsURL1(this)" />
+                            </label>
+                        </div>
+                    </div>
                 </div>
                 <div class="edit">
                     <form class="edit-form">
@@ -132,7 +141,10 @@
                             </div>
                         </div>
                         <br>
-                        <input type="submit" class="button" value="Save">
+                        <div class="btn">
+                            <input type="submit" class="button" value="Save">
+                            <button type="reset" class="can-button" >Cancel</button>
+                        </div>
                     </form>
                 </div>
             </div>    
@@ -140,6 +152,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="../../js/StoreEdit.js"></script>
         <script src="../../js/logo.js"></script>
+        <script src="../../js/image-upload.js"></script>
 	</div>
 
 </body>
