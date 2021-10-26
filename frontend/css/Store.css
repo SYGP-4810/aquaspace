@@ -198,7 +198,13 @@ form > label {
 .edit-container .profile-pic .js--image-preview {
   height: 200px;
 }
+
+.edit-container .profile-pic .js--image-preview {
+  height: 200px;
+}
+
 .edit-container .profile-pic .upload-options {
+  margin-top: -15px;
   height: 0;
 }
 
@@ -279,6 +285,7 @@ form > label {
   height: 420px;
 }
 
+ 
 .store-bg-pic .box {
   display: block;
   min-width: 100%;
@@ -306,18 +313,18 @@ form > label {
   overflow: hidden;
 }
 
-.upload-options {
+.store-profile-pic .upload-options, .store-bg-pic .upload-options {
   position: relative;
   cursor: pointer;
   text-align: center;
   transition: background-color ease-in-out 150ms;
 }
 
-.upload-options:hover {
+.store-profile-pic .upload-options:hover,store-bg-pic .upload-options:hover{
   background-color: #7fb1b342;
 }
 
-.upload-options input {
+.store-profile-pic .upload-options input, .store-bg-pic .upload-options input{
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -326,7 +333,7 @@ form > label {
   z-index: -1;
 }
 
-.upload-options label {
+.store-profile-pic .upload-options label, .store-bg-pic .upload-options label{
   display: flex;
   align-items: center;
   width: 100%;
@@ -338,7 +345,7 @@ form > label {
   overflow: hidden;
 }
 
-.upload-options label::after {
+.store-profile-pic .upload-options label::after, .store-bg-pic .upload-options label::after  {
   content: 'add';
   font-family: 'Material Icons';
   position: absolute;
@@ -351,7 +358,7 @@ form > label {
   z-index: 0;
 }
 
-.upload-options label span {
+.store-profile-pic .upload-options label span, .store-bg-pic .upload-options label span {
   display: inline-block;
   width: 50%;
   height: 100%;
@@ -362,7 +369,7 @@ form > label {
   text-align: center;
 }
 
-.upload-options label span:hover i.material-icons {
+.store-profile-pic .upload-options label span:hover i.material-icons, .store-bg-pic .upload-options label span:hover i.material-icons {
   color: rgb(0, 0, 0);
 }
 
@@ -387,7 +394,7 @@ form > label {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.image-preview::after {
+.store-profile-pic .image-preview::after, .store-bg-pic .image-preview::after {
   content: "";
   font-family: 'Material Icons';
   position: relative;
@@ -398,12 +405,12 @@ form > label {
   z-index: 0;
 }
 
-.image-preview .image-preview-default::after {
+.store-profile-pic .image-preview .image-preview-default::after, .store-bg-pic .image-preview .image-preview-default::after {
   display: none;
 }
 
 
-i.material-icons {
+.store-pic i.material-icons {
   transition: color 100ms ease-in-out;
   font-size: 2.25em;
   line-height: 55px;
@@ -411,7 +418,7 @@ i.material-icons {
   display: block;
 }
 
-.drop {
+.store-pic .drop {
   display: block;
   position: absolute;
   background: rgba(95, 158, 160, 0.2);
@@ -419,7 +426,7 @@ i.material-icons {
   transform: scale(0);
 }
 
-.animate {
+.store-pic .animate {
   animation: ripple 0.4s linear;
 }
 
@@ -660,7 +667,7 @@ i.material-icons {
   width: 17px;
 }
 
-.invent-add .row p {
+.invent-add .row p,.invent-add .diam p {
   font-size: 1rem;
 }
 
@@ -687,6 +694,10 @@ i.material-icons {
 .invent-add #productcategory {
   width: 350px;
 }
+.invent-add .diam{
+  display: flex;
+  flex-direction: column;
+}
 
 .invent-add #price,
 .invent-add #quantity {
@@ -695,6 +706,14 @@ i.material-icons {
   border: 1px solid rgb(0, 0, 0);
   font-size: 1.2rem;
 }
+
+.invent-add #width, .invent-add #height, .invent-add #length{
+  padding: 5px 5px;
+  border: 1px solid rgb(0, 0, 0);
+  font-size: 1.2rem;
+  width: 250px
+}
+
 
 .invent-add input[type="file"] {
   padding: 0px 10px;

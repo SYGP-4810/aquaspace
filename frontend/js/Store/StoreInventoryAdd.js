@@ -1,7 +1,45 @@
-//api setter
+ //api setter
 function setUrl(text){
     return "/aquaspace/backend/public/index.php?"+text;
 }
+
+$( document ).ready(function() {
+    $.ajax({
+        type: "GET",
+        url:setUrl("Store/Store/checkDeliveryOption"),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            // console.log(data);
+            let mode =data.del_mode;
+            
+            if(mode >= 4){
+                $("#delivery-mode").append(`<div class="row">
+                <input type="checkbox" name="delivery" id="thirdPartyDelivery" checked><p>Third Party Delivery Service</p>
+            </div>`);
+                mode-=4;
+            }
+            if(mode >= 2){
+                $("#delivery-mode").append(`<div class="row">
+                <input type="checkbox" name="delivery" id="inStoreDelivery" checked><p>In Store Delivery Service</p>
+            </div>`);
+                mode-=2; 
+            }
+            if(mode >= 1){
+                $("#delivery-mode").append(`<div class="row">
+                <input type="checkbox" name="delivery" id="inStorePickUp" checked><p>In Store Pick-up</p>
+            </div>`); 
+            }
+
+        },
+        error: function(errMsg) {
+            //window.location.replace("../src/Error"+errMsg.status+".html");
+        }
+    });
+});
+
+
+
 
 // get extention varibales
 var imgExtension1 = " ", imgExtension2 = " ", imgExtension3 = " ", imgExtension4 = " ";
@@ -191,6 +229,9 @@ $("#InventorySaveF").click(function(){
     let price = $("#price").val();
     let quantity = $("#quantity").val();
     let details = $("#details").val();
+    let width = $("#width").val();
+    let height = $("#height").val();
+    let length = $("#length").val();
     let deliveryMode = 0;
     let errors = [];
     let errFlag = 0;
@@ -236,6 +277,18 @@ $("#InventorySaveF").click(function(){
         errors.push("deliveryMode required");
         errFlag++;
     }
+    if(width == 0){
+        errors.push("width required");
+        errFlag++;
+    }
+    if(height == 0){
+        errors.push("height required");
+        errFlag++;
+    }
+    if(length == 0){
+        errors.push("length required");
+        errFlag++;
+    }
 
     const acceptedFileTypes = ["png", "jpg", "jpeg"];
     if(acceptedFileTypes.indexOf(imgExtension1.toLowerCase())===-1){
@@ -263,6 +316,9 @@ $("#InventorySaveF").click(function(){
                 "quantity" : quantity,
                 "details" : details,
                 "deliveryMode" : deliveryMode,
+                "height" : height,
+                "width" : width,
+                "length" : length,
                 "pic1" :imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
                 "pic2" :imagebase64_2.replace(/^data:image\/[a-z]+;base64,/, ""),
                 "pic3" :imagebase64_3.replace(/^data:image\/[a-z]+;base64,/, ""),
@@ -282,15 +338,19 @@ $("#InventorySaveF").click(function(){
                 dataType: "json",
                 success: function(data){
                     // console.log(data);
+                    successMsg(["Added Inventory"]);
+                    delay(function(){
                     window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
+                    },50000);
                 },
                 error: function(errMsg) {
-                    // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+                    window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
                 }
             });
         }
     else{
-        alert(JSON.stringify(errors));
+        errorShow(errors);
+        // alert(JSON.stringify(errors));
     }
 });
 

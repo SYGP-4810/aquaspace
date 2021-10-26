@@ -108,7 +108,7 @@
     z-index: 0;
 }
 
-.js--image-preview .js--no-default::after {
+.js--image-preview.js--no-default::after {
     display: none;
 }
 
