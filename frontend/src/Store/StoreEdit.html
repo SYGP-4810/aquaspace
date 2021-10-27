@@ -122,6 +122,14 @@
                         <label for="address">Store Address</label>
                         <input type="text" id="address" name="address">
                         <br>
+                        <button  type="button" id="location-btn">Take My Location</button>
+                        <br>
+                        <label for="lat">Latitude</label>
+                        <input type="text" id="lat" name="lat">
+                        <br>
+                        <label for="lang">Langitude</label>
+                        <input type="text" id="lang" name="lang">
+                        <br>
                         <label for="oname" >Owner Name</label>
                         <input type="text" id="oname" name="oname">
                         <br>
@@ -138,6 +146,57 @@
                             </div>
                             <div class="row">
                                 <input type="checkbox" name="delivery" id="thirdPartyDelivery"><p>Third Party Delivery Service</p>
+                            </div>
+                        </div>
+                        <br>
+                        <label for="cost">Delivery Charges</label>
+                        <div class="cost">
+                            <div class="store">
+                                <span>In Store Delivery Service</span>
+                                <table class="store-table">
+                                    <tr>
+                                        <th>Range</th>
+                                        <th>&#60 10KM</th>
+                                        <th>10KM - 50KM</th>
+                                        <th>50KM &lt</th>
+                                    </tr>
+                                    <tr>
+                                        <td><b>1KG</b></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="110"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="150"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="150+"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>+ 1KG</b></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="+110"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="+150"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="+150+"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br>
+                            <div class="store">
+                                <span>Third Party Delivery Service</span>
+                                <table class="store-table">
+                                    <tr>
+                                        <th>Range</th>
+                                        <th>&#60 10KM</th>
+                                        <th>10KM - 50KM</th>
+                                        <th>50KM &lt</th>
+                                    </tr>
+                                    <tr>
+                                        <td><b>1KG</b></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="210"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="250"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="250+"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>+ 1KG</b></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="+210"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="+250"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="+250+"></td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                         <br>

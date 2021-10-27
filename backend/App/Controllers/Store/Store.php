@@ -77,6 +77,8 @@ class Store extends \Core\Controller
             "height" => $this->data['height'],
             "width" => $this->data['width'],
             "length" => $this->data['length'],
+            "weight" => $this->data['weight'],
+            "capacity" => $this->data['capacity'],
             "auth_id" => $id,
             "img1" => $iName1,
             "img2" => $iName2,
@@ -137,7 +139,9 @@ class Store extends \Core\Controller
             "OwnerName" => $result2['man_name'],
             "OwnerNIC" => $result2['man_nic'],
             "profilePic" => $result1['profile_img'],
-            "delMode" => $result2['del_mode']
+            "delMode" => $result2['del_mode'],
+            "lat"=>$result2['lat'],
+            "lan"=>$result2['lan']
         ];
         View::response($res);
     }
