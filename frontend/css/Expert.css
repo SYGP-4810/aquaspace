@@ -1,11 +1,10 @@
-div.headerForPost {
+/* div.headerForPost {
   display: flex;
   position: relative;
   left: 5%;
   top: 5%;
 }
 
-/* Dropdown Button */
 button.dropbtn {
   background-color: #04aa6d;
   color: white;
@@ -14,14 +13,13 @@ button.dropbtn {
   border: none;
 }
 
-/* The container <div> - needed to position the dropdown content */
 div.dropdown {
   position: relative;
   left: 50px;
   display: inline-block;
 }
 
-/* Dropdown Content (Hidden by Default) */
+
 div.dropdown-content {
   display: none;
   position: absolute;
@@ -31,7 +29,7 @@ div.dropdown-content {
   z-index: 1;
 }
 
-/* Links inside the dropdown */
+
 div.dropdown-content a {
   color: black;
   padding: 12px 16px;
@@ -39,17 +37,15 @@ div.dropdown-content a {
   display: block;
 }
 
-/* Change color of dropdown links on hover */
+
 div.dropdown-content a:hover {
   background-color: #ddd;
 }
 
-/* Show the dropdown menu on hover */
 div.dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
 div.dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
@@ -91,4 +87,35 @@ div.blogContainer {
   position: absolute;
   top: 10%;
   left: 5%;
+} */
+
+
+.topics {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.topics p {
+  margin-right: 25px;
+  font-size: 22px;
+  font-weight: 500;
+  color: #888888;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.topics p:first-child {
+  margin-left: 50px;
+  color: rgb(61, 61, 61);
+}
+
+.topics i {
+  color: #828283;
+  margin-top: 18vh;
+}
+
+#data {
+  display: none;
 }
