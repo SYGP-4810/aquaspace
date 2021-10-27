@@ -13,7 +13,7 @@ $( document ).ready(function() {
             let delivery = data.delMode;
             if(data.profilePic != null){
                 console.log(data);
-                $("#profile-pic").css("background-image", `url(/aquaspace/frontend/images/profile/${data.profilePic}.jpg)`);
+                $("#profile-pic").css("background-image", `url(/aquaspace/frontend/images/profile/${data.profilePic})`);
             }
             $("#sname").val(data.SName);
             $("#regno").val(data.RegNo);

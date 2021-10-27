@@ -142,5 +142,24 @@ class Store extends \Core\Controller
         View::response($res);
     }
 
+    public function getStoreFrontAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'"));
+        $result1 = $stmt->fetch();
+        $id = $result1['id'];
+        $stmt = $this->execute($this->get('store', "*", "auth_id ='" . $id . "'"));
+        $result2 = $stmt->fetch();
+        $res = [
+            "SName" => $result2['company_name'],
+            "address" => $result2['address'],
+            "profilePic" => $result1['profile_img'],
+            "coverPic" => $result2['cover_img'],
+            "date" => $result1['create_date'],  
+            "about" => $result2['about']    
+        ];
+        View::response($res);
+    }
+    
     
 }
+
