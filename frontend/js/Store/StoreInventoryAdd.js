@@ -120,6 +120,9 @@ $("#InventorySaveE").click(function(){
     let price = $("#price").val();
     let quantity = $("#quantity").val();
     let details = $("#details").val();
+    let width = $("#width").val();
+    let height = $("#height").val();
+    let length = $("#length").val();
     let deliveryMode = 0;
     let errors = [];
     let errFlag = 0;
@@ -165,6 +168,18 @@ $("#InventorySaveE").click(function(){
         errors.push("deliveryMode required");
         errFlag++;
     }
+    if(width == 0){
+        errors.push("width required");
+        errFlag++;
+    }
+    if(height == 0){
+        errors.push("height required");
+        errFlag++;
+    }
+    if(length == 0){
+        errors.push("length required");
+        errFlag++;
+    }
 
     const acceptedFileTypes = ["png", "jpg", "jpeg"];
     if(acceptedFileTypes.indexOf(imgExtension1.toLowerCase())===-1){
@@ -192,6 +207,9 @@ $("#InventorySaveE").click(function(){
                 "quantity" : quantity,
                 "details" : details,
                 "deliveryMode" : deliveryMode,
+                "height" : height,
+                "width" : width,
+                "length" : length,
                 "pic1" :imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
                 "pic2" :imagebase64_2.replace(/^data:image\/[a-z]+;base64,/, ""),
                 "pic3" :imagebase64_3.replace(/^data:image\/[a-z]+;base64,/, ""),
@@ -210,7 +228,10 @@ $("#InventorySaveE").click(function(){
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data){
+                    successMsg(["Added Inventory"]);
+                    delay(function(){
                     window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
+                    },5000)
                 },
                 error: function(errMsg) {
                     // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
@@ -218,7 +239,8 @@ $("#InventorySaveE").click(function(){
             });
         }
     else{
-        alert(JSON.stringify(errors));
+        errorShow(errors);
+        // alert(JSON.stringify(errors));
     }
 
 });
@@ -341,7 +363,7 @@ $("#InventorySaveF").click(function(){
                     successMsg(["Added Inventory"]);
                     delay(function(){
                     window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
-                    },50000);
+                    },5000);
                 },
                 error: function(errMsg) {
                     window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
@@ -360,6 +382,9 @@ $("#InventorySaveP").click(function(){
     let price = $("#price").val();
     let quantity = $("#quantity").val();
     let details = $("#details").val();
+    let width = $("#width").val();
+    let height = $("#height").val();
+    let length = $("#length").val();
     let deliveryMode = 0;
     let errors = [];
     let errFlag = 0;
@@ -405,6 +430,18 @@ $("#InventorySaveP").click(function(){
         errors.push("deliveryMode required");
         errFlag++;
     }
+    if(width == 0){
+        errors.push("width required");
+        errFlag++;
+    }
+    if(height == 0){
+        errors.push("height required");
+        errFlag++;
+    }
+    if(length == 0){
+        errors.push("length required");
+        errFlag++;
+    }
 
     const acceptedFileTypes = ["png", "jpg", "jpeg"];
     if(acceptedFileTypes.indexOf(imgExtension1.toLowerCase())===-1){
@@ -432,6 +469,9 @@ $("#InventorySaveP").click(function(){
                 "quantity" : quantity,
                 "details" : details,
                 "deliveryMode" : deliveryMode,
+                "height" : height,
+                "width" : width,
+                "length" : length,
                 "pic1" :imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
                 "pic2" :imagebase64_2.replace(/^data:image\/[a-z]+;base64,/, ""),
                 "pic3" :imagebase64_3.replace(/^data:image\/[a-z]+;base64,/, ""),
@@ -450,7 +490,10 @@ $("#InventorySaveP").click(function(){
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data){
+                    successMsg(["Added Inventory"]);
+                    delay(function(){
                     window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
+                    },5000);
                 },
                 error: function(errMsg) {
                     // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
@@ -458,7 +501,8 @@ $("#InventorySaveP").click(function(){
             });
         }
     else{
-        alert(JSON.stringify(errors));
+        errorShow(errors);
+        // alert(JSON.stringify(errors));
     }
 
 });

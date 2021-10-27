@@ -59,7 +59,7 @@ window.onclick = function(event) {
   }
 }
 
-{/* <button onclick="document.getElementById('confirm').style.display='block'">Open Modal</button>
+/* <button onclick="document.getElementById('confirm').style.display='block'">Open Modal</button>
     <div id="confirm" class="confirm-box">
         <div class="container">
             <span onclick="document.getElementById('confirm').style.display='none'" class="close" title="Close ">×</span>
@@ -70,4 +70,4 @@ window.onclick = function(event) {
                 <button type="button"class="deletebtn">Delete</button>
             </div>
         </div>
-    </div> */}
+    </div> */

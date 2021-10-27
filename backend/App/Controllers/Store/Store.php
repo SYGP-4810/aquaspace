@@ -112,6 +112,15 @@ class Store extends \Core\Controller
         View::response($result);
     }
 
+    public function editInventoryAction()
+    {
+        $stmt = $this->execute($this->get('productS', "*","id='" . $this->data['id'] . "'"));
+        $result = $stmt->fetch();
+
+        View::response($result);
+    }
+
+
     public function getStoreProfileAction()
     {
         $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'"));

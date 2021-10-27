@@ -619,16 +619,16 @@ form > label {
 .invent th {
   font-size: 1.2em;
   text-align: left;
-  padding-right: 30px;
-  padding-left: 30px;
+  padding-right: 20px;
+  padding-left: 20px;
   white-space: nowrap;
   padding-bottom: 35px;
   color: #000;
 }
 
 .invent td {
-  padding-right: 30px;
-  padding-left: 30px;
+  padding-right: 20px;
+  padding-left: 20px;
   white-space: nowrap;
   padding-bottom: 10px;
 }
@@ -717,6 +717,11 @@ form > label {
 
 .invent-add input[type="file"] {
   padding: 0px 10px;
+}
+
+.invent-update-container .js--image-preview::after {
+  content: "";
+  
 }
 
 .btn {
