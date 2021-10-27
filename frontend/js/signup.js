@@ -581,7 +581,6 @@ $("#signUp3").click(function(){
             "branchId": branchId,
             "accountNo": accountNo
         }
-        alert(JSON.stringify(req));
           $.ajax({
             type: "POST",
             url: setUrl("Authentication/signUpStore"),

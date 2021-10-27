@@ -119,7 +119,9 @@ class Admin extends \Core\Controller
     public function getAdminVerifyDetailsExpertAction()
     {
         $stmt = $this->execute($this->get('expert', "*", "auth_id ='" . $this->data['id'] . "'"));
-        View::response($stmt->fetch());
+        $res['expert'] = $stmt->fetch();
+        $res['user'] = $this->execute($this->get('user_auth', "tp,email", "id='" . $this->data['id'] . "'"))->fetch();
+        View::response($res);
     }
 
     public function getAdminVerifyDetailsStoreAction()
@@ -210,25 +212,23 @@ class Admin extends \Core\Controller
         ];
         $ext = array("jpg", "png", "jpeg");
         if (in_array($this->data['exen'], $ext)) {
-            if (is_null($result['profile_img'])) {
-                $iName1 = "";
-                $iName1 =  round(microtime(true) * 1000) . "." . $this->data['exen'];
-            } else {
-                $fileName = $result['profile_img'];
-                $iNameE = explode(".", "$fileName");
-                $iName1 = $iNameE[0] . "." . $this->data['exen'];
-            }
+            $iName1 = "";
+            $iName1 =  microtime(true) . "." . $this->data['exen'];
             $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/profile/" . $iName1;
             $flag1 = file_put_contents($iDir1, base64_decode($this->data['pic']));
             if (!$flag1) {
                 throw new \Exception("file did not come to the backend");
             }
+            if (file_exists("/aquaspace/frontend/images/profile/" . $result['profile_img'])) {
+                unlink("/aquaspace/frontend/images/profile/" . $result['profile_img']);
+            }
             $this->exec($this->update('user_auth', ["tp" => $this->data['tp'], "profile_img" => $iName1], "id='" . $result['id'] . "'"));
+        } else {
+            $this->exec($this->update('user_auth', ["tp" => $this->data['tp']], "id='" . $result['id'] . "'"));
         }
 
 
         $this->exec($this->update('admin', $updateData, "auth_id='" . $result['id'] . "'"));
-        $this->exec($this->update('user_auth', ["tp" => $this->data['tp']], "id='" . $result['id'] . "'"));
         View::response("Successfully updated");
     }
 }
