@@ -74,6 +74,9 @@ class Store extends \Core\Controller
             "quantity" => $this->data['quantity'],
             "description" => $this->data['details'],
             "delivery" => $this->data['deliveryMode'],
+            "height" => $this->data['height'],
+            "width" => $this->data['width'],
+            "length" => $this->data['length'],
             "auth_id" => $id,
             "img1" => $iName1,
             "img2" => $iName2,
@@ -91,11 +94,12 @@ class Store extends \Core\Controller
 
     public function checkDeliveryOptionAction()
     {
-        $this->params['id'];
-        $stmt = $this->execute($this->get('store', '*', 'auth_id=' . $this->params['id'] . "'"));
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
         $result = $stmt->fetch();
-        $delMOd = $result['del_mod'];
-        //View::response();
+        $id = $result['id'];
+        $stmt = $this->execute($this->get('store', 'del_mode', "auth_id='" . $id . "'"));
+        $delMOd = $stmt->fetch();
+        View::response($delMOd);
     }
 
     public function getInventoryAction()
@@ -107,6 +111,15 @@ class Store extends \Core\Controller
         $result = $stmt->fetchAll();
         View::response($result);
     }
+
+    public function editInventoryAction()
+    {
+        $stmt = $this->execute($this->get('productS', "*","id='" . $this->data['id'] . "'"));
+        $result = $stmt->fetch();
+
+        View::response($result);
+    }
+
 
     public function getStoreProfileAction()
     {
@@ -123,6 +136,8 @@ class Store extends \Core\Controller
             "address" => $result2['address'],
             "OwnerName" => $result2['man_name'],
             "OwnerNIC" => $result2['man_nic'],
+            "profilePic" => $result1['profile_img'],
+            "delMode" => $result2['del_mode']
         ];
         View::response($res);
     }

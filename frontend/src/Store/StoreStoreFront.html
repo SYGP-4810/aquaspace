@@ -90,23 +90,31 @@
 		</nav>
 		<section class="section-1">
             <div class="head-titles">
-                <h1>STOREFRONT</h1>
+                <h2>STOREFRONT</h2>
             </div>
             <div class="storefront">
-                <div class="store-img">
-                    <div class="cover">
-                        <img id="cover-pic" src="../../images/cover.jpg" alt="cover image" />
-                        <label class="cover-lable" >
-                            <input type='file' id="cover-img-u" accept="image/png, image/jpeg"/>
-                            +
-                        </label> 
+                <div class="store-pic">
+                    <div class="store-bg-pic">
+                        <div class="box" >
+                            <div class="image-preview" style=" background-image: url('../../images/storepic.jpg');"></div>
+                            <div class="upload-options">
+                                <label>
+                                    <input id="img1" type="file" class="image-upload"
+                                        onchange="encodeImageFileAsURL1(this)" />
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="profile">
-                        <img id="profile-img" src="../../images/profile.jpg" alt="profile image" />
-                        <label class="profile-lable" >
-                            <input type='file' id="profile-img-u" accept="image/png, image/jpeg"/>
-                            +
-                        </label>
+                    <div class="store-profile-pic">
+                        <div class="box">
+                            <div class="image-preview" style=" background-image: url('../../images/storepic.jpg');"></div>
+                            <div class="upload-options">
+                                <label>
+                                    <input id="img2" type="file" class="image-upload"
+                                        onchange="encodeImageFileAsURL2(this)" />
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="store-title">
@@ -124,11 +132,13 @@
                     <span>About the store</span>
                     <p contenteditable="true">write about your store</p>
                 </div>
-                <input type="submit" class="s-button" value="SAVE" id="">
+                <input type="submit" class="button" value="SAVE" id="">
+
+
                 <div class="item-list">
                     <div class="item-title">
                         <h3>Store Items</h3>
-                        <a href="../../src/Store/StoreStoreFrontItem.html" class="button" id="item-btn">Edit</a>                        
+                        <a href="../../src/Store/StoreStoreFrontItem.html" class="button">Edit</a>                        
                     </div>
                     <div class="items">
                         <div class="item">
@@ -384,6 +394,6 @@
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../../js/logo.js"></script>
-    <script src="../../js/Storefront.js"></script>
+    <script src="../../js/Store/StoreEdit.js"></script>
 </body>
 </html>

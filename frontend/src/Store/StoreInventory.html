@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Store.css">
+    <link rel="stylesheet" href="../../css/base.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -90,7 +91,7 @@
 		</nav>
 		<section class="section-1">
             <div class="head-titles">
-                <h1>INVENTORY</h1>
+                <h2>INVENTORY</h2>
                 <div class="dropdown">
                     <button class="dropbtn">Add</button>
                     <div class="dropdown-content">
@@ -110,13 +111,25 @@
                         <th>Quantity</th>
                         <th>Status</th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </table>
+            <div id="confirm" class="confirm-box">
+                <div class="confirm-box-container">
+                    <span onclick="document.getElementById('confirm').style.display='none'" class="close" title="Close ">×</span>
+                    <h1>Delete Inventory</h1>
+                    <p>Are you sure you want to delete this inventory?</p>
+                    <div class="clearfix">
+                        <button type="button" class="cancelbtn">Cancel</button>
+                        <button type="button"class="deletebtn">Delete</button>
+                    </div>
+                </div>
             </div>
 		</section>
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../../js/logo.js"></script>
     <script src = "../../js/Store/StoreInventory.js"></script>
+    <script src = "../../js/base.js"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Store.css">
     <link rel="stylesheet" href="../../css/store-inv-add.css">
+    <link rel="stylesheet" href="../../css/base.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -91,11 +92,11 @@
 		</nav>
 		<section class="section-1">
             <div class="head-titles">
-                <h1>INVENTORY</h1>
+                <h2>INVENTORY</2>
             </div>
             <div class="section-title">
-                <h2>Add Fish</h2>
-                <a href="../Store/StoreInventory.html" class="button">Back</a>
+                <h3>Add Fish</h3>
+                <a href="../Store/StoreInventory.html" class="nav-button">Back</a>
             </div>
             <div class="invent-add-container">
                 <div class="wrapper">
@@ -169,35 +170,37 @@
                     </tr>
                     <tr>
                         <td>Fish Details<span class="required">*</span></td>
-                        <td><textarea  id="details"  rows="10"></textarea></td>
-                        
+                        <td><textarea  id="details"  rows="10"></textarea></td> 
                     </tr>
                     <tr>
-                        <td>Delivery<span class="required">*</span></td>
+                        <td>Package Dimension<span class="required">*</span></td>
                         <td>
-                            <div class="row">
-                                <input type="checkbox" name="delivery" id="inStorePickUp"><p>In Store Pick-up</p>
+                            <div class="diam">
+                                <p>WIDTH (cm)<span class="required">* </span></p> <input type="number" id="width" name="width" min="0">
+                                <p>HEIGHT (cm)<span class="required">*  </span></p> <input type="number" id="height" name="height" min="0">
+                                <p>LENGTH (cm)<span class="required">*  </span></p> <input type="number" id="length" name="length" min="0">
                             </div>
-                            <div class="row">
-                                <input type="checkbox" name="delivery" id="inStoreDelivery"><p>In Store Delivery Service</p>
-                            </div>
-                            <div class="row">
-                                <input type="checkbox" name="delivery" id="thirdPartyDelivery"><p>Third Party Delivery Service</p>
-                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Delivery Options</td>
+                        <td id="delivery-mode">
                         </td>    
                     </tr>
                 </table>
                 <div class="btn">
                     <input type="submit" class="button" value="SAVE" id="InventorySaveF">
-                    <a href="../Store/StoreInventory.html" class="button">CANCEL</a>
+                    <a href="../Store/StoreInventory.html" class="can-button">CANCEL</a>
                 </div>
             </div>
+            <div id="alertDiv"></div>
 		</section>
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../../js/logo.js"></script>
     <script src = "../../js/Store/StoreInventoryAdd.js"></script>
     <script src="../../js/image-upload.js"></script>
+    <script src="../../js/base.js"></script>
 </body>
 </html>
 

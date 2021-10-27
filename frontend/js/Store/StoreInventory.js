@@ -15,12 +15,14 @@ $( document ).ready(function() {
             data.forEach(element => {
                 let st = element.status;
                 if (st == 1) {
-                    status = "Active";
+                    status = "Sell";
                 } else if (st== 2) {
-                    status = "Wait Verify";
+                    status = "Not Selling";
                 }else if (st== 3) {
-                status = "Block";
-                } else {
+                status = "Wait Until Verify";
+                }else if (st== 4) {
+                    status = "Block";
+                }else {
                     st = "";
                 }
 
@@ -44,7 +46,7 @@ $( document ).ready(function() {
                 <td>${element.quantity}</td>
                 <td>${status}</td>
                 <td><a href="../Store/StoreInventoryEdit.html?id=${element.id}" class="button">Edit</a></td>
-                
+                <td><button class="del-button" onclick="document.getElementById('confirm').style.display='block'">Delete</button></td>
             </tr>`);
                 
             });

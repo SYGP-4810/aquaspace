@@ -119,11 +119,6 @@ form > input[type=password] {
 }
 
 /* edit account */
-
-.js--image-preview {
-    background-image: url('../../images/g_profile.jpg');
-}
-
 .js--image-preview::after {
     content: "";
 }

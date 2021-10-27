@@ -36,3 +36,38 @@ function alertMsg(er){
    });
    $("#alertDiv").focus();
 }
+
+function successMsg(er){
+  $("#alertDiv").html(`<div class="successMsg">
+   <h2>Success!!</h2>
+   <ul id="alertContentList"></ul>
+   <p>wait 5 second before you redirect</p>
+ </div>`);
+ er.forEach((element)=>{
+      $("#alertContentList").append(`<li>${element}</li>`);
+ });
+ $("#alertDiv").focus();
+}
+// confrimation box
+
+
+var conf = document.getElementById('confirm');
+
+window.onclick = function(event) {
+  if (event.target == conf) {
+    conf.style.display = "none";
+  }
+}
+
+/* <button onclick="document.getElementById('confirm').style.display='block'">Open Modal</button>
+    <div id="confirm" class="confirm-box">
+        <div class="container">
+            <span onclick="document.getElementById('confirm').style.display='none'" class="close" title="Close ">×</span>
+            <h1>Delete Account</h1>
+            <p>Are you sure you want to delete your account?</p>
+            <div class="clearfix">
+                <button type="button" class="cancelbtn">Cancel</button>
+                <button type="button"class="deletebtn">Delete</button>
+            </div>
+        </div>
+    </div> */

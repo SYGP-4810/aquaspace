@@ -21,6 +21,7 @@ $(document).ready(function () {
         }
     });
 });
+
 var imgExtension1 = "";
 var imagebase64_1 = "";
 function encodeImageFileAsURL1(element) {
