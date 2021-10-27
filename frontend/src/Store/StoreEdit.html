@@ -96,39 +96,39 @@
             <div class="edit-container">
                 <div class="profile-pic">
                     <div class="box" style="border-radius: 50%;">
-                        <div class="js--image-preview" style=" background-image: url('../../images/storepic.jpg');"></div>
+                        <div class="js--image-preview" style=" background-image: url('../../images/storepic.jpg');" id="profile-pic"></div>
                         <div class="upload-options">
                             <label>
-                                <input id="img1" type="file" class="image-upload"
-                                    onchange="encodeImageFileAsURL1(this)" />
+                                <input id="profile_img" type="file" class="image-upload"
+                                    onchange="encodeImageFileAsURL(this)" />
                             </label>
                         </div>
                     </div>
                 </div>
                 <div class="edit">
                     <form class="edit-form">
-                        <label for="cname">Store Name</label>
-                        <input type="text" id="sname" name="sname" value = "">
+                        <label for="sname">Store Name</label>
+                        <input type="text" id="sname" name="sname">
                         <br>
                         <label for="regno">Registration No</label>
-                        <input type="text" id="regno" name="regno" value = "">
+                        <input type="text" id="regno" name="regno">
                         <br>
                         <label for="tp">Telephone No</label>
-                        <input type="text" id="tp" name="tp" value = "">
+                        <input type="text" id="tp" name="tp">
                         <br>
                         <label for="city">City</label>
-                        <input type="text" id="city" name="city" value = "">
+                        <input type="text" id="city" name="city">
                         <br>
                         <label for="address">Store Address</label>
-                        <input type="text" id="address" name="address" value = "">
+                        <input type="text" id="address" name="address">
                         <br>
                         <label for="oname" >Owner Name</label>
-                        <input type="text" id="mname" name="mname" value = "">
+                        <input type="text" id="oname" name="oname">
                         <br>
                         <label for="onic">Owner NIC</label>
-                        <input type="text" id="onic" name="onic" value = "">
+                        <input type="text" id="onic" name="onic">
                         <br>
-                        <label for="country">Modes of Delivery</label>
+                        <label for="delivery">Modes of Delivery</label>
                         <div class="d-modes">
                             <div class="row">
                                 <input type="checkbox" name="delivery" id="inStorePickUp"><p>In Store Pick-up</p>
@@ -150,7 +150,7 @@
             </div>    
 		</section>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="../../js/StoreEdit.js"></script>
+        <script src="../../js/Store/StoreEdit.js"></script>
         <script src="../../js/logo.js"></script>
         <script src="../../js/image-upload.js"></script>
 	</div>

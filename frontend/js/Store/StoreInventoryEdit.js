@@ -48,7 +48,6 @@ $(document).ready(function(){
             async: false,
             success: function(data){
                 let delivery = data.delivery;
-
                 $("#inventory-img1").css("background-image", `url(/aquaspace/frontend/images/product/${data.img1})`);
                 $("#inventory-img2").css("background-image", `url(/aquaspace/frontend/images/product/${data.img2})`);
                 $("#inventory-img3").css("background-image", `url(/aquaspace/frontend/images/product/${data.img3})`);
@@ -153,6 +152,8 @@ function encodeImageFileAsURL4(element) {
     }  
     reader.readAsDataURL(file);  
 }
+
+// update edit inventory not complete yet
 
 $("#invent-save").click(function(){
     let Name = $("#name").val();

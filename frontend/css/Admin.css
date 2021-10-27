@@ -497,3 +497,28 @@ th {
 .orders tr {
   border-bottom: 2px solid #33d7ff;
 }
+
+
+/* rates */
+
+.rates {
+  margin: 0px 60px 10px 60px;
+}
+
+.rates-table th {
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 20px;
+}
+
+.rates-table td {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.rates-table #type{
+  border: none;
+}

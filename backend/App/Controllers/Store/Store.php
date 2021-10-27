@@ -136,6 +136,8 @@ class Store extends \Core\Controller
             "address" => $result2['address'],
             "OwnerName" => $result2['man_name'],
             "OwnerNIC" => $result2['man_nic'],
+            "profilePic" => $result1['profile_img'],
+            "delMode" => $result2['del_mode']
         ];
         View::response($res);
     }
