@@ -32,7 +32,7 @@ class Store extends \Core\Controller
         $stmt = $this->execute($this->get('store', "*", "auth_id ='" . $id . "'"));
         $result = $stmt->fetch();
         $address = $result['address'];
-        
+
         $iName1 = "";
         $iName1 = microtime(true) . "." . $this->data['exen1'];
         $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName1;
@@ -52,7 +52,7 @@ class Store extends \Core\Controller
         $iName4 = microtime(true) . "." . $this->data['exen4'];
         $iDir4 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName4;
         $flag4 = file_put_contents($iDir4, base64_decode($this->data['pic4']));
-        
+
         if (!$flag1) {
             throw new \Exception("file didn't come to backend");
         }
@@ -116,7 +116,7 @@ class Store extends \Core\Controller
 
     public function editInventoryAction()
     {
-        $stmt = $this->execute($this->get('productS', "*","id='" . $this->data['id'] . "'"));
+        $stmt = $this->execute($this->get('productS', "*", "id='" . $this->data['id'] . "'"));
         $result = $stmt->fetch();
 
         View::response($result);
@@ -140,8 +140,8 @@ class Store extends \Core\Controller
             "OwnerNIC" => $result2['man_nic'],
             "profilePic" => $result1['profile_img'],
             "delMode" => $result2['del_mode'],
-            "lat"=>$result2['lat'],
-            "lan"=>$result2['lan']
+            "lat" => $result2['lat'],
+            "lan" => $result2['lan']
         ];
         View::response($res);
     }
@@ -158,12 +158,24 @@ class Store extends \Core\Controller
             "address" => $result2['address'],
             "profilePic" => $result1['profile_img'],
             "coverPic" => $result2['cover_img'],
-            "date" => $result1['create_date'],  
-            "about" => $result2['about']    
+            "date" => $result1['create_date'],
+            "about" => $result2['about']
         ];
         View::response($res);
     }
-    
-    
-}
 
+    public function deleteProductAction()
+    {
+        $result = $this->execute($this->get('products', '*', "id='" . $this->data['id'] . "'"));
+        if (file_exists("/aquaspace/frontend/images/product/" . $result['img1']))
+            unlink("/aquaspace/frontend/images/product/" . $result['img1']);
+        if (file_exists("/aquaspace/frontend/images/product/" . $result['img2']))
+            unlink("/aquaspace/frontend/images/product/" . $result['img2']);
+        if (file_exists("/aquaspace/frontend/images/product/" . $result['img3']))
+            unlink("/aquaspace/frontend/images/product/" . $result['img3']);
+        if (file_exists("/aquaspace/frontend/images/product/" . $result['img4']))
+            unlink("/aquaspace/frontend/images/product/" . $result['img4']);
+        $this->exec($this->delete('products', "id='" . $this->data['id'] . "'"));
+        View::response("successfully deleted product");
+    }
+}

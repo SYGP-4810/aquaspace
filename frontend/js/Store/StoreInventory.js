@@ -2,6 +2,37 @@ function setUrl(text){
     return "/aquaspace/backend/public/index.php?"+text;
 }
 
+function appendInformationTodelete(id){
+    $("#confirmation-btn").append(`<button type="button" class="cancelbtn">Cancel</button>
+    <button type="button"class="deletebtn" onclick="deleteProduct(${id})">Delete</button>`);
+    document.getElementById('confirm').style.display='block';
+
+}
+
+function deleteProduct(id){
+    let req = {"id":id}
+    $.ajax({
+        type: "POST",
+        url: setUrl("Store/Store/deleteProduct"),
+        data: JSON.stringify(req),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            successMsg([data]);
+            delay(function (){
+                location.reload();
+            },5000);
+            
+                
+        },
+        error: function(errMsg) {
+            // window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+        }
+    });
+ }
+
+
+
 $( document ).ready(function() {
     $.ajax({
         type: "GET",
@@ -46,7 +77,7 @@ $( document ).ready(function() {
                 <td>${element.quantity}</td>
                 <td>${status}</td>
                 <td><a href="../Store/StoreInventoryEdit.html?id=${element.id}" class="button">Edit</a></td>
-                <td><button class="del-button" onclick="document.getElementById('confirm').style.display='block'">Delete</button></td>
+                <td><button class="del-button" onclick="appendInformationTodelete(${element.id})">Delete</button></td>
             </tr>`);
                 
             });

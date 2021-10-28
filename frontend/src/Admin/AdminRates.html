@@ -100,54 +100,106 @@
                 <h1>RATES</h1>
             </div>
             <div class="rates">
+                <hr>
+                <h3>Store Rates</h3>
                 <table class="rates-table">
                     <tr>
                         <th>Price Range</th>
-                        <th>Type</th>
-                        <th>Percentage</th>
+                        <th>Presentage</th>
                     </tr>
                     <tr>
-                        <td>0 - 100</td>
+                        <td>0 - 1000</td>
                         <td>
-                            <select id="type">
-                            <option value="Fish">Fish</option>
-                            <option value="Plant">Plant</option>
-                            <option value="Equipment">Equipment</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input type="number" min="0" max="100" value="2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>100 - 1000</td>
-                        <td>
-                            <select id="type">
-                            <option value="Fish">Fish</option>
-                            <option value="Plant">Plant</option>
-                            <option value="Equipment">Equipment</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input type="number" min="0" max="100" value="2">
+                            <label for="rangeZeroToThousand">
+                            <input type="number" min="0" max="100" class="" id="rangeZeroTothousand">
+                            </label>
                         </td>
                     </tr>
                     <tr>
                         <td>1000 - 10000</td>
                         <td>
-                            <select id="type">
-                            <option value="Fish">Fish</option>
-                            <option value="Plant">Plant</option>
-                            <option value="Equipment">Equipment</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input type="number" min="0" max="100" value="2">
+                            <label for="rangeThousandToTenThousand">
+                            <input type="number" min="0" max="100" id="rangeThousandToTenThousand">
+                            </label>
                         </td>
                     </tr>
+                    <tr>
+                        <td>10000 - 50000</td>
+                        <td>
+                            <label for="rangeTenThousandToFiftyThousand">
+                            <input type="number" min="0" max="100" id="rangeTenThousandToFiftyThousand">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>50000 - 100000</td>
+                        <td>
+                            <label for="rangeFiftyThousandToLax">
+                            <input type="number" min="0" max="100" class="" id="rangeFiftyThousandToLax">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>100000 +</td>
+                        <td>
+                            <label for="rangeLaxOrMore">
+                            <input type="number" min="0" max="100" class="" id="rangeLaxOrMore">
+                            </label>
+                        </td>
+                    </tr>            
                 </table>
+                <hr>
+                <h3>Regular user Rates</h3>
+                <table class="rates-table">
+                    <tr>
+                        <th>Price Range</th>
+                        <th>Cost for the Post</th>
+                    </tr>
+                    <tr>
+                        <td>0 - 1000</td>
+                        <td>
+                            <label for="rangeZeroToThousandR">
+                            <input type="number" min="0" class="" id="rangeZeroTothousandR">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1000 - 10000</td>
+                        <td>
+                            <label for="rangeThousandToTenThousandR">
+                            <input type="number" min="0" class="" id="rangeThousandToTenThousandR">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10000 - 50000</td>
+                        <td>
+                            <label for="rangeTenThousandToFiftyThousandR">
+                            <input type="number" min="0" class="" id="rangeTenThousandToFiftyThousandR">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>50000 - 100000</td>
+                        <td>
+                            <label for="rangeFiftyThousandToLaxR">
+                            <input type="number" min="0" class="" id="rangeFiftyThousandToLaxR">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>100000 +</td>
+                        <td>
+                            <label for="rangeLaxOrMoreR">
+                            <input type="number" min="0" class="" id="rangeLaxOrMoreR">
+                            </label>
+                        </td>
+                    </tr>
+
+                </table>
+                <hr>
                 <div class="btn">
-                    <button id="save" type="button" class="button">Save</button>
+                    <button id="updateRates" type="button" class="button">Update</button>
                 </div>
             </div>
 		</section>

@@ -581,7 +581,6 @@ $("#signUp3").click(function(){
             "branchId": branchId,
             "accountNo": accountNo
         }
-        alert(JSON.stringify(req));
           $.ajax({
             type: "POST",
             url: setUrl("Authentication/signUpStore"),
@@ -597,7 +596,8 @@ $("#signUp3").click(function(){
                     }
             },
             error: function(errMsg) {
-                // window.location.replace("../src/Error/"+errMsg.status+".html");
+                // window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+
             }
         });
      }else{

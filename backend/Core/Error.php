@@ -61,7 +61,7 @@ class Error
             $message .= "\nStack trace: " . $exception->getTraceAsString();
             $message .= "\nThrown in '" . $exception->getFile() . "' on line " . $exception->getLine() . "\n\n";
             //write errors to a txt file
-            $errorFile = fopen($log, "a");
+            //$errorFile = fopen($log, "a");
             //fwrite($errorFile, $message);
             //fclose($errorFile);
             error_log($message);
