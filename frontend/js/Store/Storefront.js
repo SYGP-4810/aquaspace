@@ -41,8 +41,6 @@ function initImageUpload(box) {
     initImageUpload(box);
   }
   
-  
-  
   /// drop-effect
   function initDropEffect(box){
     let area, drop, areaWidth, areaHeight, maxDistance, dropWidth, dropHeight, x, y;
@@ -87,6 +85,62 @@ function initImageUpload(box) {
       e.stopPropagation();
       
     }
-
-    
   }
+
+
+function setUrl(text){
+    return "/aquaspace/backend/public/index.php?"+text;
+}
+
+$(document).ready(function() {
+    $.ajax({
+        type: "GET",
+        url:setUrl("Store/Store/getStoreFront"),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        success: function(data){
+            if(data.profilePic != null){
+                $("#profile-pic").css("background-image", `url(/aquaspace/frontend/images/profile/${data.profilePic})`);
+            }
+            if(data.coverPic != null){
+              $("#store-pic").css("background-image", `url(/aquaspace/frontend/images/profile/${data.coverPic})`);
+            }
+            $("#name").text(data['SName']);
+            $("#date").text('member since '+data['date']);
+            $("#address").text(data['address']);
+            $("#about").text(data['about']);
+
+        },
+        error: function(errMsg) {
+            // window.location.replace("../src/Error"+errMsg.status+".html");
+        }
+    });
+
+    $.ajax({
+      type: "GET",
+      url:setUrl("Store/Store/getInventory"),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data){
+        // console.log(data);
+          data.forEach(element => {
+              $("#stroe-item").append(`
+            <div class="item">
+              <img src="/aquaspace/frontend/images/product/${element.img1}">
+              <label for="text">
+                  <span style="font-weight: 600;">Name: -</span>
+                  <span>${element.product_name}</</span>
+              </label>
+              <label for="text">
+                  <span style="font-weight: 600;">Price: -</span>
+                  <span>Rs ${element.price}</span>
+              </label>
+          </div>`);
+          });
+      },
+      error: function(errMsg) {
+          //window.location.replace("../src/Error"+errMsg.status+".html");
+      }
+  });
+});

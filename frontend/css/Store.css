@@ -225,6 +225,22 @@ form > label {
   font-size: 1.2rem;
 }
 
+#location-btn{
+  background-color: #b6b5b5; /* Green */
+  width: 130px;
+  border: none;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  /* margin-top: 50px; */
+  /* margin-left: 300px; */
+  cursor: pointer;
+}
+
 .row {
   display: flex;
   flex-direction: row;
@@ -242,6 +258,34 @@ form > label {
 .d-modes [type="checkbox"] {
   width: 17px; 
   top: 4px;
+}
+
+.cost{
+  margin-left: 30px;
+}
+
+.store{
+  margin-top: 10px;
+}
+
+.store-table{
+  margin-left: 10px;
+}
+
+.store-table td{
+  text-align: right;
+
+}
+
+.store-table th{
+  opacity: 0.8;
+  font-weight: 400;
+}
+.store-table b{
+  white-space: nowrap ;
+  opacity: 0.8;
+  font-weight: 400;
+  margin-right: 10px;
 }
 
 /* reset */
@@ -700,7 +744,9 @@ form > label {
 }
 
 .invent-add #price,
-.invent-add #quantity {
+.invent-add #quantity,
+.invent-add #weight,
+.invent-add #capacity {
   text-align: right;
   padding: 10px 10px;
   border: 1px solid rgb(0, 0, 0);
@@ -984,7 +1030,7 @@ input[type="checkbox"] {
 }
 
 .orders td,
-th {
+.orders th {
   padding: 20px 10px;
   text-align: center;
 }

@@ -251,9 +251,7 @@ $("#InventorySaveF").click(function(){
     let price = $("#price").val();
     let quantity = $("#quantity").val();
     let details = $("#details").val();
-    let width = $("#width").val();
-    let height = $("#height").val();
-    let length = $("#length").val();
+    let weight = $("#weight").val();
     let deliveryMode = 0;
     let errors = [];
     let errFlag = 0;
@@ -296,19 +294,11 @@ $("#InventorySaveF").click(function(){
         errFlag++;
     }
     if(deliveryMode == 0){
-        errors.push("deliveryMode required");
+        errors.push("delivery Mode required");
         errFlag++;
     }
-    if(width == 0){
-        errors.push("width required");
-        errFlag++;
-    }
-    if(height == 0){
-        errors.push("height required");
-        errFlag++;
-    }
-    if(length == 0){
-        errors.push("length required");
+    if(weight == ''){
+        errors.push("weight required");
         errFlag++;
     }
 
@@ -329,7 +319,6 @@ $("#InventorySaveF").click(function(){
         errors.push("Image 4 type must be jpg ,jpeg or png");
         errFlag++;
     }
-
     if(errFlag == 0){
             var req = {
                 "Name" : fishName,
@@ -338,9 +327,11 @@ $("#InventorySaveF").click(function(){
                 "quantity" : quantity,
                 "details" : details,
                 "deliveryMode" : deliveryMode,
-                "height" : height,
-                "width" : width,
-                "length" : length,
+                "weight" : weight,
+                "height" : "0",
+                "width" : "0",
+                "length" : "0",
+                "capacity" :"0",
                 "pic1" :imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
                 "pic2" :imagebase64_2.replace(/^data:image\/[a-z]+;base64,/, ""),
                 "pic3" :imagebase64_3.replace(/^data:image\/[a-z]+;base64,/, ""),
@@ -351,7 +342,7 @@ $("#InventorySaveF").click(function(){
                 "exen4" : imgExtension4,
                 "type" : "1"
             }
-
+            console.log(req);
             $.ajax({
                 type: "POST",
                 url:setUrl("Store/Store/addInventory"),
@@ -382,9 +373,7 @@ $("#InventorySaveP").click(function(){
     let price = $("#price").val();
     let quantity = $("#quantity").val();
     let details = $("#details").val();
-    let width = $("#width").val();
-    let height = $("#height").val();
-    let length = $("#length").val();
+    let weight = $("#weight").val();
     let deliveryMode = 0;
     let errors = [];
     let errFlag = 0;
@@ -430,16 +419,8 @@ $("#InventorySaveP").click(function(){
         errors.push("deliveryMode required");
         errFlag++;
     }
-    if(width == 0){
-        errors.push("width required");
-        errFlag++;
-    }
-    if(height == 0){
-        errors.push("height required");
-        errFlag++;
-    }
-    if(length == 0){
-        errors.push("length required");
+    if(weight == ''){
+        errors.push("weight required");
         errFlag++;
     }
 
@@ -469,9 +450,11 @@ $("#InventorySaveP").click(function(){
                 "quantity" : quantity,
                 "details" : details,
                 "deliveryMode" : deliveryMode,
-                "height" : height,
-                "width" : width,
-                "length" : length,
+                "weight" : weight,
+                "height" : "0",
+                "width" : "0",
+                "length" : "0",
+                "capacity" :"0",
                 "pic1" :imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
                 "pic2" :imagebase64_2.replace(/^data:image\/[a-z]+;base64,/, ""),
                 "pic3" :imagebase64_3.replace(/^data:image\/[a-z]+;base64,/, ""),
@@ -496,7 +479,7 @@ $("#InventorySaveP").click(function(){
                     },5000);
                 },
                 error: function(errMsg) {
-                    // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+                    window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
                 }
             });
         }

@@ -77,6 +77,8 @@ class Store extends \Core\Controller
             "height" => $this->data['height'],
             "width" => $this->data['width'],
             "length" => $this->data['length'],
+            "weight" => $this->data['weight'],
+            "capacity" => $this->data['capacity'],
             "auth_id" => $id,
             "img1" => $iName1,
             "img2" => $iName2,
@@ -137,10 +139,31 @@ class Store extends \Core\Controller
             "OwnerName" => $result2['man_name'],
             "OwnerNIC" => $result2['man_nic'],
             "profilePic" => $result1['profile_img'],
-            "delMode" => $result2['del_mode']
+            "delMode" => $result2['del_mode'],
+            "lat"=>$result2['lat'],
+            "lan"=>$result2['lan']
         ];
         View::response($res);
     }
 
+    public function getStoreFrontAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'"));
+        $result1 = $stmt->fetch();
+        $id = $result1['id'];
+        $stmt = $this->execute($this->get('store', "*", "auth_id ='" . $id . "'"));
+        $result2 = $stmt->fetch();
+        $res = [
+            "SName" => $result2['company_name'],
+            "address" => $result2['address'],
+            "profilePic" => $result1['profile_img'],
+            "coverPic" => $result2['cover_img'],
+            "date" => $result1['create_date'],  
+            "about" => $result2['about']    
+        ];
+        View::response($res);
+    }
+    
     
 }
+
