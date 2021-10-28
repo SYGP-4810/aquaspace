@@ -166,7 +166,7 @@ class Store extends \Core\Controller
 
     public function deleteProductAction()
     {
-        $result = $this->execute($this->get('products', '*', "id='" . $this->data['id'] . "'"));
+        $result = $this->execute($this->get('products', '*', "id='" . $this->data['id'] . "'"))->fetch();
         if (file_exists("/aquaspace/frontend/images/product/" . $result['img1']))
             unlink("/aquaspace/frontend/images/product/" . $result['img1']);
         if (file_exists("/aquaspace/frontend/images/product/" . $result['img2']))

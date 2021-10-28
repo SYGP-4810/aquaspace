@@ -3,13 +3,14 @@ function setUrl(text){
 }
 
 function appendInformationTodelete(id){
-    $("#confirmation-btn").append(`<button type="button" class="cancelbtn">Cancel</button>
+    $("#confirmation-btn").html(`<button type="button" class="cancelbtn" onclick="document.getElementById('confirm').style.display='none'">Cancel</button>
     <button type="button"class="deletebtn" onclick="deleteProduct(${id})">Delete</button>`);
     document.getElementById('confirm').style.display='block';
 
 }
 
 function deleteProduct(id){
+    document.getElementById('confirm').style.display='none';
     let req = {"id":id}
     $.ajax({
         type: "POST",
@@ -18,11 +19,10 @@ function deleteProduct(id){
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
-            successMsg([data]);
+            successMsg(["successfully deleted product"]);
             delay(function (){
                 location.reload();
             },5000);
-            
                 
         },
         error: function(errMsg) {
