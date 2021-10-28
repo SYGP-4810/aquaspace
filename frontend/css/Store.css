@@ -799,7 +799,7 @@ form > label {
 .topics p {
   margin-left: 25px;
   margin-right: 25px;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 500;
   color: #828283;
   cursor: pointer;
@@ -840,6 +840,7 @@ form > label {
 .past th,
 .refunds th {
   font: 1.5em bold;
+  white-space: nowrap;
 }
 .pending tr,
 .accept tr,
@@ -848,6 +849,7 @@ form > label {
 .refunds tr {
   outline: solid #828283;
 }
+
 .pending td,
 .accept td,
 .send td,
@@ -858,24 +860,25 @@ form > label {
   /* white-space: nowrap; */
 }
 
+.pending .button, .accept .button, .send .button, .past .button{
+  width: 110px;
+}
+
 /* order details */
 
 .order-details {
-  margin: 30px 40px;
+  margin: 0px 40px;
 }
 
 .o-detail {
-  margin: 20px;
+  margin-left: 20px ;
+  text-align: left;
 }
 
 .o-detail td {
-  font-size: 1.3rem;
-  padding: 10px 30px;
+
+  padding: 0px 15px 5px 0px;
   white-space: nowrap;
-}
-.order-details h3 {
-  margin-left: 30px;
-  margin-bottom: 20px;
 }
 
 .o-product {
