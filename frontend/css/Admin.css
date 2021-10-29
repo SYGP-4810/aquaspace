@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* font-family: 'Roboto', sans-serif; */
 }
 
 .required {
@@ -66,27 +65,89 @@
   height: 60px;
 }
 
-.head-titles h1 {
-  font-size: 1.8em;
+.head-titles h2 {
   float: left;
+  color: #56595e;
+  font-weight: 500;
 }
 
 .button {
+  background-color: #4c6faf;
+  width: 80px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  margin-top: 20px;
+  cursor: pointer;
+  opacity: 0.9;
   float: right;
-  margin-right: 20px;
-  margin-left: 20px;
-  border-radius: 20px;
-  color: #050505;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 8px 25px;
-  border: 2px solid #050505;
+  margin-right: 15px;
 }
 
-.button:hover {
-  color: #f5ac7c;
-  padding: 6px 23px;
-  border: 4px solid #f5ac7c;
+.can-button{
+  background-color: #ffffff;
+  width: 80px;
+  border: none;
+  border-radius: 4px;
+  color: #212529;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  margin-top: 20px;
+  cursor: pointer;
+  opacity: 0.9;
+  border: 2px solid #495057;
+}
+
+.nav-button{
+  background-color: #4caf81;
+  width: 80px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  margin-top: 20px;
+  cursor: pointer;
+  opacity: 0.9;
+  float: right;
+  margin-right: 15px;
+}
+
+.del-button{
+  background-color: #ec7f71;
+  width: 80px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  margin-top: 20px;
+  cursor: pointer;
+  opacity: 0.9;
+  float: right;
+  margin-right: 15px;
+}
+
+.button:hover,.can-button:hover,.nav-button:hover {
+  opacity: 1;
+}
+
+/* admin */
+
+.head-titles #add-admin {
+  white-space: nowrap;
+  width:fit-content;
+  margin-right: 40px;;
 }
 
 .admin-list {
@@ -94,31 +155,29 @@
   margin-left: 50px;
   color: rgb(0, 0, 0);
   white-space: nowrap;
+
 }
 
 .admin {
   padding: 10px;
   margin-top: 15px;
   margin-bottom: 15px;
+  
 }
 
 .admin > img {
   margin-right: 10px;
   float: left;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border: 2px solid #ffffff;
   border-radius: 50%;
 }
 
 .text {
-  margin-top: 20px;
-  float: right;
-}
-
-.text > span {
-  all: unset;
-  font-size: 1em;
+  margin-top: 40px;
+  float: left;
+  color: #56595e;
 }
 
 .text > .name {
@@ -128,12 +187,15 @@
 
 .add-admin,
 .con-detatils,
-.reset-pass,
 .account {
   margin-top: 5px;
   margin-left: 60px;
   margin-right: 60px;
   color: rgb(0, 0, 0);
+}
+
+.con-detatils h2{
+  color: #56595e;
 }
 
 form > input[type="text"] {
@@ -144,14 +206,20 @@ form > input[type="text"] {
   border: 1px solid rgb(0, 0, 0);
   border-radius: 8px;
 }
+
 div > input[type="text"] {
   width: 100%;
-  padding: 12px 20px;
+  /* padding: 12px 20px; */
   margin-bottom: 20px;
+  margin-right: 30px;
   box-sizing: border-box;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 8px;
-}
+  font-size: 1.4rem;
+  font-size: 13px;
+  padding:0.4em;
+  outline: none;
+  border-radius: 0;
+  border: 1px solid #ccc;
+  color:#555;}
 
 div > input[type="password"] {
   width: 70%;
@@ -171,16 +239,17 @@ form > input[type="password"] {
   border-radius: 8px;
 }
 
-.add-admin > h2 {
-  color: rgb(0, 0, 0);
+.add-admin > h3 {
+  color: rgb(53, 53, 53);
   margin-bottom: 20px;
+  margin-top: -20px;
+}
+
+.add-form label{
+  font-size: 15px;
 }
 
 form > label {
-  font-size: 1.3em;
-}
-
-div > label {
   font-size: 1.3em;
 }
 
@@ -206,16 +275,28 @@ div > label {
   padding-right: 25px;
 }
 
+.con-list .button{
+width: fit-content;
+}
+
+.con-list #pay {
+  width: 60px;
+}
+
 .dbtn {
   float: right;
   margin-right: 10%;
 }
+
 .dropbtn {
-  background-color: #f1967a;
+  background-color: #233e58;
   color: white;
-  padding: 12px 66px;
+  padding: 16px;
   font-size: 16px;
   border: none;
+  cursor: pointer;
+  width: 140px;
+  font-weight: bold;
 }
 
 .dropdown {
@@ -227,21 +308,21 @@ div > label {
   text-align: center;
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
-  min-width: 150px;
+  background-color: #f9f9f9;
+  width: 140px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
 .dropdown-content a {
-  color: #f1967a;
-  padding: 12px 26px;
+  color: black;
+  padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
 .dropdown-content a:hover {
-  color: #ffffff;
-  background-color: #f1967a;
+  background-color: #3357a7;
 }
 
 .dropdown:hover .dropdown-content {
@@ -249,18 +330,27 @@ div > label {
 }
 
 .con-list,
-.block-list,
-.Verify-list {
+.block-list{
   margin-left: 15px;
   margin-right: 15px;
   justify-content: center;
 }
+
+
+.Verify-list {
+  margin-top: -20px;
+  margin-left: 15px;
+  margin-right: 15px;
+  justify-content: center;
+}
+
 .con-list th,
-.Verify-list th {
+.Verify-list th{
   font-size: 1.2em;
   text-align: left;
   padding-right: 25px;
   padding-left: 25px;
+  color: #56595e;
 }
 
 .con-list tr,
@@ -269,7 +359,6 @@ div > label {
   text-align: center;
 }
 
-.head-titles a,
 .con-list a,
 .block-list a,
 .iss-profile a,
@@ -279,9 +368,16 @@ div > label {
 .verify-btn a {
   text-decoration: none;
   text-align: center;
-  background-color: rgba(255, 250, 240, 0.575);
   white-space: nowrap;
   overflow: hidden;
+}
+
+.block-list .button, .block-post .button{
+  width:fit-content;
+}
+
+.Verify-list .button{
+  width: fit-content;
 }
 
 .sub-title a {
@@ -356,6 +452,9 @@ div > label {
   margin-right: 40px;
 }
 
+.verify-btn .button,.verify-btn .del-button{
+  width: fit-content;
+}
 .notifi .button {
   margin-right: 40%;
 }
@@ -373,20 +472,54 @@ input[type="checkbox"] {
   padding: 10px;
 }
 
-.reset-pass {
-  margin-left: 10%;
-  display: flex;
-  align-items: flex-start;
+
+/* reset */
+.reset-container {
+  margin: 0px 30px 00px 80px;
+  width: 400px;
 }
 
+.reset-container form > input[type="password"] {
+  width: 100%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  font-weight: bold;
+  font-size: 13px;
+  padding:0.4em;
+  outline: none;
+  border-radius: 0;
+  border: 1px solid #ccc;
+  color:#555;
+}
+
+.reset label {
+  font-size: 15px;
+}
+
+.reset-container .button{
+  width:150px
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  float: right;
+  margin-right: 5%;
+  margin-bottom: 40px;
+}
+
+.btn a {
+  text-decoration: none;
+}
 /* account overview */
 
 .profile-pic {
   height: 120px;
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   align-items: flex-end;
 }
+
 .profile-pic img {
   margin-right: 10px;
   float: left;
@@ -406,32 +539,52 @@ input[type="checkbox"] {
 .overview {
   margin-top: 15px;
   text-align: left;
+  width: 60%;
+  border-collapse: collapse;
 }
 
 .overview td {
-  width: 20%;
-  font-size: 1.2em;
-  border-bottom: 3px solid rgb(139, 139, 139);
+  border: none; 
+  font-size: 15px; 
+  font-weight: 500;
+  color: rgb(82, 82, 82);
+  padding-top: 10px;
+  padding-left: 5px;
 }
 
-.overview tr {
-  border: 4px lightcoral;
+.overview tr{
+  border-bottom: 1px rgb(153, 153, 153) solid; 
 }
 
 .overview .title-text {
-  opacity: 80%;
+  border: none;
+  font-size: 15px; 
+  color: black; 
+  font-weight: 600;
 }
 
-.edit input,
-.add-admin input {
-  font-size: 1.1em;
+.edit label{
+  font-size: 15px;
 }
+
+.edit #updateAdmin{
+  width: 130px;
+  white-space: nowrap ;
+}
+
+
 .edit,
 .add-admin {
+  width: 600px;
   margin-bottom: 100px;
 }
+
 .edit ::placeholder {
   font-size: 1.2em;
+}
+
+.account .profile-pic .js--image-preview::after {
+  content: "";
 }
 
 /* report */
@@ -508,6 +661,7 @@ th {
   padding-left: 30px;
   padding-right: 30px;
   font-size: 20px;
+  text-align: left;
 }
 
 .rates-table td {
@@ -516,6 +670,7 @@ th {
   padding-bottom: 10px;
   text-align: center;
   font-size: 18px;
+  text-align: left;
 }
 
 .rates-table #type {

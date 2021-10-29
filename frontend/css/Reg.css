@@ -49,25 +49,6 @@ form > input[type=password] {
     font-size: 1.4rem;
 }
 
-.button{
-    float: right;
-    margin-right: 20px;
-    margin-left: 20px;
-    border-radius: 20px;
-    color: #050505;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 8px 25px;
-    border: 2px solid #050505;
-    background-color: rgb(255, 255, 255);
-}
-
-.button:hover{
-    color: #f5ac7c;
-    padding: 6px 23px;
-    border: 4px solid #f5ac7c;
-}
-
 /* overview */
 
 .account{
@@ -114,9 +95,6 @@ form > input[type=password] {
     padding-left: 5px;
 }
 
-.overview .title-text{
-    opacity: 80%;
-}
 
 /* edit account */
 .js--image-preview::after {
