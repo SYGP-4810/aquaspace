@@ -1,54 +1,56 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Dashboard</title>
-	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
-	<link rel="stylesheet" href="../../css/dashboard-styles.css">
-    <link rel="stylesheet" href="../../css/Expert.css">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
+    <link rel="stylesheet" href="../../css/dashboard-styles.css">
+    <link rel="stylesheet" href="../../css/add-blog.css">
 </head>
+
 <body>
-	<input type="checkbox" id="checkbox">
-	<header class="header">
-		<div class="u-name">
+    <input type="checkbox" id="checkbox">
+    <header class="header">
+        <div class="u-name">
             <img src="../../images/logo.png"><span>AquaSpace</span>
-			<label for="checkbox">
-				<i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
-			</label>
-		</div>
+            <label for="checkbox">
+                <i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
+            </label>
+        </div>
         <div class="icons">
             <i class="fa fa-bell" aria-hidden="true"></i>
             <i class="fa fa-user" aria-hidden="true"></i>
         </div>
-	</header>
-	<div class="body">
-		<nav class="side-bar">
-			<ul>
-				<li>
+    </header>
+    <div class="body">
+        <nav class="side-bar">
+            <ul>
+                <li>
                     <a href="#">
                         <i class="fas fa-home fa-xs" aria-hidden="true"></i>
                         <span>Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="account-overview.html">
                         <i class="fas fa-user-circle"></i>
                         <span>Account Overview</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="edit-profile.html">
                         <i class="fas fa-edit" aria-hidden="true"></i>
                         <span>Edit Profile</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="reset-password.html">
                         <i class="fas fa-unlock-alt" aria-hidden="true"></i>
                         <span>Reset Password</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="notification.html">
                         <i class="fas fa-bell" aria-hidden="true"></i>
                         <span>Notification Settings</span>
                     </a>
@@ -77,57 +79,39 @@
                         <span>Contribution</span>
                     </a>
                 </li>
-			</ul>
-		</nav>
-		<section class="section-1">
-            <div class="headerForPost">
-                <span><b>Articles</b></span>
-                <h4>&nbsp|&nbsp</h4>
-                <span>Blog</span>
-                <div class="dropdown">
-                    <button class="dropbtn">add blog</button>
-                    <div class="dropdown-content">
-                      <a href="#">Fish</a>
-                      <a href="#">Plant</a>
-                      <a href="#">Blog</a>
-                    </div>
-                  </div>
-            </div>
-            <div class="subHeader">
-                <span>My Blogs</span>
-                <span><small>View all my blogs ></small></span>
-                <div class="mainContent">
-                    <div class="contentItem">
-                        <img src="../../images/clown-fish.png" alt="Article" height="70px" width="100px">
-                        <div class="contentItemDetails">
-                            <span class="articleType">Type : Fish</span>
-                            <span class="articleTitle">Title : clown fish</span>
-                            <span class="articleDate">Date : 2020/03/02 </span>
-                            <button class="editArticle">Edit</button>
-                        </div>    
-                    </div>
-                    <div class="contentItem">
-                        <img src="../../images/clown-fish.png" alt="Article" height="70px" width="100px">
-                        <div class="contentItemDetails">
-                            <span class="articleType">Type : Fish</span>
-                            <span class="articleTitle">Title : clown fish</span>
-                            <span class="articleDate">Date : 2020/03/02 </span>
-                            <button class="editArticle">Edit</button>
-                        </div>    
-                    </div>
-                    <div class="contentItem">
-                        <img src="../../images/clown-fish.png" alt="Article" height="70px" width="100px">
-                        <div class="contentItemDetails">
-                            <span class="articleType">Type : Fish</span>
-                            <span class="articleTitle">Title : clown fish</span>
-                            <span class="articleDate">Date : 2020/03/02 </span>
-                            <button class="editArticle">Edit</button>
-                        </div>    
-                    </div>
+            </ul>
+        </nav>
+        <section class="section-1">
+
+            <section class="blogs-section">
+                <div class="blog-card">
+                    <img src="../../images/bg.jpg" class="blog-image" alt="">
+                    <h4 class="blog-title">Lorem ipsum dolor sit amet consectetur.</h1>
+                    <p class="blog-overview">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt incidunt
+                        fugiat quos porro repellat harum. Adipisci tempora corporis rem cum.</p>
+                    <a href="/" class="btn dark">read</a>
                 </div>
-            </div>
-		</section>
-	</div>
+                <div class="blog-card">
+                    <img src="../../images/bg.jpg" class="blog-image" alt="">
+                    <h4 class="blog-title">Lorem ipsum dolor sit amet consectetur.</h1>
+                        <div class="preview">
+                            <p class="blog-overview">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt incidunt
+                        fugiat quos porro repellat harum. Adipisci tempora corporis rem cum.</p>
+                    <a href="/" class="btn dark">read</a>
+                        </div>
+                    
+                </div>
+                <div class="blog-card">
+                    <img src="../../images/bg.jpg" class="blog-image" alt="">
+                    <h4 class="blog-title">Lorem ipsum dolor sit amet consectetur.</h1>
+                    <p class="blog-overview">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt incidunt
+                        fugiat quos porro repellat harum. Adipisci tempora corporis rem cum.</p>
+                    <a href="/" class="btn dark">read</a>
+                </div>
+            </section>
+        </section>
+    </div>
 
 </body>
+
 </html>

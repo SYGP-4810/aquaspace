@@ -4,7 +4,7 @@
 	<title>Dashboard</title>
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
-    <link rel="stylesheet" href="../../css/Expert.css">
+    <link rel="stylesheet" href="../../css/add-blog.css">
 </head>
 <body>
 	<input type="checkbox" id="checkbox">
@@ -80,32 +80,18 @@
 			</ul>
 		</nav>
 		<section class="section-1">
-            <div class="headerForPost">
-                <span>Articles</span>
-                <h4>&nbsp|&nbsp</h4>
-                <span><b>Blog</b></span>
-                <div class="dropdown">
-                    <button class="dropbtn">add blog</button>
-                    <div class="dropdown-content">
-                      <a href="#">Fish</a>
-                      <a href="#">Plant</a>
-                      <a href="#">Blog</a>
-                    </div>
-                  </div>
+			<div class="banner">
+                <input type="file" accept="image/*" id="banner-upload" hidden>
+                <label for="banner-upload" class="banner-upload-btn"><img src="../../images/upload-removebg-preview.png" alt=""></label>
             </div>
-            <div class="subHeader">
-                <span>My Blogs</span>
-                <span><small>View all my blogs ></small></span>
+            <div class="blog">
+                <textarea type="text" class="title" placeholder="Blog title..."></textarea>
+                <textarea type="text" class="article" placeholder="Start writing here..."></textarea>
             </div>
-            <div class="blogContainer">
-                <div class="blogContainerItem">
-                    <img src="../../images/clown-fish.png" alt="blog post" width="70px" height="70px">
-                    <div class="blogItemDetails">
-                        <span>Title</span>
-                        <span>Date</span>
-                        <button>Edit</button>
-                    </div>
-                </div>
+            <div class="blog-options">
+                <button class="btn dark publish-btn">publish</button>
+                <!-- <input type="file" accept="image/*" id="image-upload" hidden>
+                <label for="image-upload" class="btn grey upload-btn">Upload Image</label> -->
             </div>
 		</section>
 	</div>
