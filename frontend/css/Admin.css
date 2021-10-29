@@ -66,9 +66,10 @@
     height: 60px;
 }
 
-.head-titles h1 {
-  font-size: 1.8em;
+.head-titles h2 {
   float: left;
+  color: #56595e;
+  font-weight: 500;
 }
 
 .button {
