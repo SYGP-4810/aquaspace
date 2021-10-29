@@ -10,7 +10,7 @@ $( document ).ready(function() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
-            console.log(data);
+            // console.log(data);
             if(data.profile_img != ""){
                 $("#profilePic").attr("src",`/aquaspace/frontend/images/profile/${data.profile_img}`);
             }

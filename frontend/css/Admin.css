@@ -73,21 +73,74 @@
 }
 
 .button {
+  background-color: #4c6faf;
+  width: 80px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  margin-top: 20px;
+  cursor: pointer;
+  opacity: 0.9;
   float: right;
-  margin-right: 20px;
-  margin-left: 20px;
-  border-radius: 20px;
-  color: #050505;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 8px 25px;
-  border: 2px solid #050505;
+  margin-right: 15px;
 }
 
-.button:hover {
-  color: #f5ac7c;
-  padding: 6px 23px;
-  border: 4px solid #f5ac7c;
+.can-button{
+  background-color: #ffffff;
+  width: 80px;
+  border: none;
+  border-radius: 4px;
+  color: #212529;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  margin-top: 20px;
+  cursor: pointer;
+  opacity: 0.9;
+  border: 2px solid #495057;
+}
+
+.nav-button{
+  background-color: #4caf81;
+  width: 80px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  margin-top: 20px;
+  cursor: pointer;
+  opacity: 0.9;
+  float: right;
+  margin-right: 15px;
+}
+
+.del-button{
+  background-color: #ec7f71;
+  width: 80px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  margin-top: 20px;
+  cursor: pointer;
+  opacity: 0.9;
+  float: right;
+  margin-right: 15px;
+}
+
+.button:hover,.can-button:hover,.nav-button:hover {
+  opacity: 1;
 }
 
 .admin-list {
@@ -145,14 +198,20 @@ form > input[type="text"] {
   border: 1px solid rgb(0, 0, 0);
   border-radius: 8px;
 }
+
 div > input[type="text"] {
   width: 100%;
-  padding: 12px 20px;
+  /* padding: 12px 20px; */
   margin-bottom: 20px;
+  margin-right: 30px;
   box-sizing: border-box;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 8px;
-}
+  font-size: 1.4rem;
+  font-size: 13px;
+  padding:0.4em;
+  outline: none;
+  border-radius: 0;
+  border: 1px solid #ccc;
+  color:#555;}
 
 div > input[type="password"] {
   width: 70%;
@@ -407,32 +466,53 @@ input[type="checkbox"] {
 .overview {
   margin-top: 15px;
   text-align: left;
+  width: 50%;
+  border-collapse: collapse;
 }
 
 .overview td {
-  width: 20%;
-  font-size: 1.2em;
-  border-bottom: 3px solid rgb(139, 139, 139);
+  border: none; 
+  font-size: 15px; 
+  font-weight: 500;
+  color: rgb(82, 82, 82);
+  padding-top: 10px;
+  padding-left: 5px;
 }
 
-.overview tr {
-  border: 4px lightcoral;
+.overview tr{
+  border-bottom: 1px rgb(153, 153, 153) solid; 
 }
 
 .overview .title-text {
-  opacity: 80%;
+  border: none;
+  font-size: 15px; 
+  color: black; 
+  font-weight: 600;
 }
 
-.edit input,
+.edit label{
+  font-size: 15px;
+}
+
+.edit #updateAdmin{
+  width: 130px;
+  white-space: nowrap ;
+}
+
 .add-admin input {
   font-size: 1.1em;
 }
 .edit,
 .add-admin {
+  width: 600px;
   margin-bottom: 100px;
 }
 .edit ::placeholder {
   font-size: 1.2em;
+}
+
+.account .profile-pic .js--image-preview::after {
+  content: "";
 }
 
 /* report */
