@@ -61,7 +61,7 @@
 .container
 input[type="text"],
 select,
-textarea {
+textarea{
   width: 40%;
   height: 30px;
   padding: 5px 10px;
@@ -86,7 +86,7 @@ textarea {
 }
 
 .required {
-  color: rgb(255, 0, 64);
+  color: rgb(194, 46, 46);
 }
 
 

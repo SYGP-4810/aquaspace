@@ -149,52 +149,69 @@
                 <h3>Regular user Rates</h3>
                 <table class="rates-table">
                     <tr>
-                        <th>Price Range</th>
-                        <th>Cost for the Post</th>
+                        <th rowspan="2">Price Range</th>
+                        <th colspan="6">Duration</th>
                     </tr>
                     <tr>
-                        <td>0 - 1000</td>
-                        <td>
-                            <label for="rangeZeroToThousandR">
-                            <input type="number" min="0" class="" id="rangeZeroTothousandR">
-                            </label>
-                        </td>
+                        
+                        <th>1 week</th>
+                        <th>2 week</th>
+                        <th>3 week</th>
+                        <th>month</th>
+                        <th>2 month</th>
+                        <th>3 month</th>
                     </tr>
                     <tr>
-                        <td>1000 - 10000</td>
-                        <td>
-                            <label for="rangeThousandToTenThousandR">
-                            <input type="number" min="0" class="" id="rangeThousandToTenThousandR">
-                            </label>
-                        </td>
+                        <td>0-1000</td>
+                        <td><input type="number" id="ToThousand1Week"></td>
+                        <td><input type="number" id="ToThousand2Week"></td>
+                        <td><input type="number" id="ToThousand3Week"></td>
+                        <td><input type="number" id="ToThousand1Month"></td>
+                        <td><input type="number" id="ToThousand2Month"></td>
+                        <td><input type="number" id="ToThousand3Month"></td>
                     </tr>
                     <tr>
-                        <td>10000 - 50000</td>
-                        <td>
-                            <label for="rangeTenThousandToFiftyThousandR">
-                            <input type="number" min="0" class="" id="rangeTenThousandToFiftyThousandR">
-                            </label>
-                        </td>
+                        <td>1000-10000</td>
+                        <td><input type="number" id="ToTenThousand1Week"></td>
+                        <td><input type="number" id="ToTenThousand2Week"></td>
+                        <td><input type="number" id="ToTenThousand3Week"></td>
+                        <td><input type="number" id="ToTenThousand1Month"></td>
+                        <td><input type="number" id="ToTenThousand2Month"></td>
+                        <td><input type="number" id="ToTenThousand3Month"></td>
                     </tr>
                     <tr>
-                        <td>50000 - 100000</td>
-                        <td>
-                            <label for="rangeFiftyThousandToLaxR">
-                            <input type="number" min="0" class="" id="rangeFiftyThousandToLaxR">
-                            </label>
-                        </td>
+                        <td>10000-50000</td>
+                        <td><input type="number" id="ToFiftyThousand1Week"></td>
+                        <td><input type="number" id="ToFiftyThousand2Week"></td>
+                        <td><input type="number" id="ToFiftyThousand3Week"></td>
+                        <td><input type="number" id="ToFiftyThousand1Month"></td>
+                        <td><input type="number" id="ToFiftyThousand2Month"></td>
+                        <td><input type="number" id="ToFiftyThousand3Month"></td>
                     </tr>
                     <tr>
-                        <td>100000 +</td>
-                        <td>
-                            <label for="rangeLaxOrMoreR">
-                            <input type="number" min="0" class="" id="rangeLaxOrMoreR">
-                            </label>
-                        </td>
+                        <td>50000-100000</td>
+                        <td><input type="number" id="ToOneLax1Week"></td>
+                        <td><input type="number" id="ToOneLax2Week"></td>
+                        <td><input type="number" id="ToOneLax3Week"></td>
+                        <td><input type="number" id="ToOneLax1Month"></td>
+                        <td><input type="number" id="ToOneLax2Month"></td>
+                        <td><input type="number" id="ToOneLax3Month"></td>
                     </tr>
-
+                    <tr>
+                        <td>100000+</td>
+                        <td><input type="number" id="MoreThanOneLax1Week"></td>
+                        <td><input type="number" id="MoreThanOneLax2Week"></td>
+                        <td><input type="number" id="MoreThanOneLax3Week"></td>
+                        <td><input type="number" id="MoreThanOneLax1Month"></td>
+                        <td><input type="number" id="MoreThanOneLax2Month"></td>
+                        <td><input type="number" id="MoreThanOneLax3Month"></td>
+                    </tr>
                 </table>
                 <hr>
+                <label for="coinPrice">
+                    <span>coin price</span>
+                    <input type="number" id="coinPrice">
+                </label>
                 <div class="btn">
                     <button id="updateRates" type="button" class="button">Update</button>
                 </div>

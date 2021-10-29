@@ -59,10 +59,10 @@
 }
 
 /* admins */
-.head-titles{
-    margin-top: 20px;
-    margin-left: 30px; 
-    height: 60px;
+.head-titles {
+  margin-top: 20px;
+  margin-left: 30px;
+  height: 60px;
 }
 
 .head-titles h2 {
@@ -661,7 +661,6 @@ th {
   border-bottom: 2px solid #33d7ff;
 }
 
-
 /* rates */
 
 .rates {
@@ -684,6 +683,6 @@ th {
   text-align: left;
 }
 
-.rates-table #type{
+.rates-table #type {
   border: none;
 }

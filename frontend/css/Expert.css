@@ -1,4 +1,73 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+/* div.headerForPost {
+  display: flex;
+  position: relative;
+  left: 5%;
+  top: 5%;
+}
+
+button.dropbtn {
+  background-color: #04aa6d;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+div.dropdown {
+  position: relative;
+  left: 50px;
+  display: inline-block;
+}
+
+
+div.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+
+div.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+div.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+div.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+div.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+div.subHeader {
+  position: relative;
+  top: 10%;
+  left: 5%;
+}
+
+div.articleCreation {
+  display: flex;
+  flex-direction: column;
+}
+
+div.question-container {
+  display: flex;
+  position: relative;
+  left: 5%;
+  top: 10%;
+}
 
 * {
   margin: 0;
@@ -133,3 +202,39 @@
     font-weight: bold;
     padding-bottom: 10px;
   }
+div.blogContainer {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+} */
+
+
+.topics {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.topics p {
+  margin-right: 25px;
+  font-size: 22px;
+  font-weight: 500;
+  color: #888888;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.topics p:first-child {
+  margin-left: 50px;
+  color: rgb(61, 61, 61);
+}
+
+.topics i {
+  color: #828283;
+  margin-top: 18vh;
+}
+
+#data {
+  display: none;
+}
