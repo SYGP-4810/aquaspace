@@ -78,10 +78,10 @@
     display: none;
 } */
 
-.items > .small-container {
+/* .items > .small-container {
   display: flex;
   flex-direction: row;
-}
+} */
 
 .search-box {
   float:left;

@@ -23,3 +23,28 @@ a:visited {
   }
 
  
+  .topics {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .topics p {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 18vh;
+    font-size: 22px;
+    font-weight: 500;
+    color: #888888;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  
+  /* .topics i {
+    color: #828283;
+    border: 1px solid #828283;
+    padding: 12px;
+    
+  } */
