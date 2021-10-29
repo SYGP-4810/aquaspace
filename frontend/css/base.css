@@ -75,6 +75,10 @@
   width: 60%;
 }
 
+li{
+  margin-left: 10px;
+}
+
 .alert {
     padding: 20px;
     background-color: #f44336;
