@@ -413,9 +413,13 @@ width: fit-content;
 
 .block-list,
 .block-post,
-.block-post-details,
-.notifi {
+.block-post-details
+ {
   margin: 0px 0px 60px 60px;
+}
+
+.notifi{
+  margin: 0px 0px 60px 30px;
 }
 
 .iss-profile {
@@ -460,12 +464,13 @@ width: fit-content;
 }
 
 .notifi {
-  font-size: 1.3em;
+  font-size: 1.1em;
+  
 }
 
 input[type="checkbox"] {
-  height: 25px;
-  width: 25px;
+  height: 18px;
+  width: 18px;
 }
 
 .notifi td {
@@ -529,6 +534,10 @@ input[type="checkbox"] {
   border-radius: 50%;
 }
 
+.account .profile-pic{
+  margin-top: 80px;
+}
+
 .profile-pic a {
   text-decoration: none;
   text-align: center;
@@ -585,6 +594,7 @@ input[type="checkbox"] {
 
 .account .profile-pic .js--image-preview::after {
   content: "";
+
 }
 
 /* report */
