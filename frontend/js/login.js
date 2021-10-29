@@ -1,7 +1,4 @@
-//api setter
-function setUrl(text){
-  return "/aquaspace/backend/public/index.php?"+text;
-}
+
 //email validat
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -75,25 +72,24 @@ $("#signIn").click(function(){
       var status = data.status;
       if(status == 1 ||status == 2 || status == 3 || status == 4 || status == 6 || status == 7){
         var redirect = data.redirect;
-        console.log(data);
         window.location.replace(redirect);
       }else if(status == 5){
-        console.log(data);
-        alert(5-data.attempt+" attempts left");
+        errorShow(["invalid credintial"]);
         $("#email").focus();
         $("#password").focus();
       }else if(status == 7){
-        alert(JSON.stringify(data.error));
+        errorShow([data.error]);
+
       }
 
     },
     error: function(errMsg) {
-        window.location.replace("../src/Error/"+errMsg.status+".html");
+        window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
     }
 });
     
 }else{
-  alert(JSON.stringify(errors));
+  errorShow(errors);
 }
       
 });

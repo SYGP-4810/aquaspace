@@ -1,7 +1,3 @@
-//api setter
-function setUrl(text){
-    return "/aquaspace/backend/public/index.php?"+text;
-}
 
 $(".tab:not(:first)").hide();
 $(".form-delivery").hide();
@@ -64,7 +60,7 @@ $(".verify").click(function(e){
             });
 
     }else{
-        alert("enter email with correct format");
+        errorShow(["enter email with correct format"]);
     }
 
 });
@@ -202,20 +198,19 @@ $("#signUp1").click(function(e){
                     alert("please login");
                     window.location.replace("../src/login.html");
                     }else{
-                        alert(JSON.stringify(data.error));
+                        errorShow([data.error])
                     }
             },
             error: function(errMsg) {
-                //window.location.replace("../src/Error/"+errMsg.status+".html");
-                console.log(errMsg);
+                window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
      }else{
-         alert(JSON.stringify(errors));
+         errorShow(errors);
      }
 });
 //get file extension and file
-var qualificationExtension;
+var qualificationExtension = "Aqua";
 var qualificationFile;
 //get the file extension of qualifications
 $("#qualifications").change(function (e) {
@@ -382,7 +377,6 @@ $("#signUp2").click(function(){
                 "branchId": branchId,
                 "accountNo": accountNo
             }
-            // alert(JSON.stringify(req));
         
           $.ajax({
             type: "POST",
@@ -398,19 +392,18 @@ $("#signUp2").click(function(){
 
             },
             error: function(errMsg) {
-            //    window.location.replace("../src/Error/"+errMsg.status+".html");
+                window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
         }
         reader.onerror = function (error) {
-         //console.log('Error: ', error);
-            alert(error);
+            errorShow([error]);
             window.location.replace("../src/Error/"+errMsg.status+".html");
 
         }
         
      }else{
-         alert(JSON.stringify(errors));
+         errorShow(errors);
      }
 
 });
@@ -596,12 +589,12 @@ $("#signUp3").click(function(){
                     }
             },
             error: function(errMsg) {
-                // window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+                window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
 
             }
         });
      }else{
-         alert(JSON.stringify(errors));
+         errorShow(errors);
      }
 });
 
