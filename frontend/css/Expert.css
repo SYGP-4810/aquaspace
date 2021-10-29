@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
-=======
 /* div.headerForPost {
   display: flex;
   position: relative;
@@ -70,7 +68,6 @@ div.question-container {
   left: 5%;
   top: 10%;
 }
->>>>>>> kalsha-new
 
 * {
   margin: 0;
@@ -159,7 +156,6 @@ div.question-container {
 
   /* Home */
 
-<<<<<<< HEAD
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -206,7 +202,6 @@ div.question-container {
     font-weight: bold;
     padding-bottom: 10px;
   }
-=======
 div.blogContainer {
   position: absolute;
   top: 10%;
@@ -243,4 +238,3 @@ div.blogContainer {
 #data {
   display: none;
 }
->>>>>>> kalsha-new
