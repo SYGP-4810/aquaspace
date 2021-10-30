@@ -414,9 +414,13 @@ form > label {
 
 .block-list,
 .block-post,
-.block-post-details,
-.notifi {
+.block-post-details
+ {
   margin: 0px 0px 60px 60px;
+}
+
+.notifi{
+  margin: 0px 0px 60px 30px;
 }
 
 .iss-profile {
@@ -462,12 +466,13 @@ form > label {
 }
 
 .notifi {
-  font-size: 1.3em;
+  font-size: 1.1em;
+  
 }
 
 input[type="checkbox"] {
-  height: 25px;
-  width: 25px;
+  height: 18px;
+  width: 18px;
 }
 
 .notifi td {
@@ -530,6 +535,10 @@ input[type="checkbox"] {
   border-radius: 50%;
 }
 
+.account .profile-pic{
+  margin-top: 80px;
+}
+
 .profile-pic a {
   text-decoration: none;
   text-align: center;
@@ -585,6 +594,7 @@ input[type="checkbox"] {
 
 .account .profile-pic .js--image-preview::after {
   content: "";
+
 }
 
 /* report */
@@ -657,22 +667,37 @@ th {
   margin: 0px 60px 10px 60px;
 }
 
-.rates-table th {
+.s-rates-table th,.r-rates-table th {
   padding-left: 30px;
   padding-right: 30px;
   font-size: 20px;
   text-align: left;
+  white-space: nowrap ;
 }
 
-.rates-table td {
+.s-rates-table td,.r-rates-table td{
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 10px;
   text-align: center;
   font-size: 18px;
   text-align: left;
+  white-space: nowrap ;
 }
 
 .rates-table #type {
   border: none;
+}
+
+.r-rates-table input{
+  width: 100px;
+}
+
+.coin{
+  margin-top: 10px;
+}
+
+.coin span {
+  font-weight: bold;
+  margin-right: 10px;
 }

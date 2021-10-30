@@ -36,10 +36,6 @@ $(document).ready(function(e){
                             <td>${data.user.tp}</td>
                         </tr>
                         <tr>
-                            <td>Qulification</td>
-                            <td><img src="/aquaspace/frontend/images/qualifications/${data.expert.qualification}" alt="qualification"></td>
-                        </tr>
-                        <tr>
                             <td>City</td>
                             <td>${data.expert.city}</td>
                         </tr>
@@ -58,6 +54,10 @@ $(document).ready(function(e){
                         <tr>
                             <td>Account number</td>
                             <td>${data.expert.account_no}</td>
+                        </tr>
+                        <tr>
+                            <td>Qulification</td>
+                            <td><img src="/aquaspace/frontend/images/qualifications/${data.expert.qualification}" alt="qualification" style="width:60%"></td>
                         </tr>
                     `);
                     

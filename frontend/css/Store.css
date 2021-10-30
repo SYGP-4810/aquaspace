@@ -678,7 +678,7 @@ form > label {
 }
 
 .invent tr {
-  text-align: center;
+  /* text-align: center; */
   font-size: 1.1rem;
   font-weight: 600;
   color: rgb(36, 35, 35);
@@ -719,7 +719,7 @@ form > label {
     /* margin-left: 15%; */
 
 .invent-add {
-  margin-left: 15%;
+  margin-left: 5%;
 }
 
 .invent-add td {
@@ -735,8 +735,8 @@ form > label {
   font-size: 1.2rem;
 }
 
-.invent-add #productcategory {
-  width: 350px;
+.invent-add #productcategory,.invent-add #plantcategory,.invent-add #fishcategory{
+  width: 500px;
 }
 .invent-add .diam{
   display: flex;
@@ -747,17 +747,16 @@ form > label {
 .invent-add #quantity,
 .invent-add #weight,
 .invent-add #capacity {
-  text-align: right;
   padding: 10px 10px;
   border: 1px solid rgb(0, 0, 0);
   font-size: 1.2rem;
+  width: 500px;
 }
 
 .invent-add #width, .invent-add #height, .invent-add #length{
-  padding: 5px 5px;
+  padding: 10px 10px;
   border: 1px solid rgb(0, 0, 0);
   font-size: 1.2rem;
-  width: 250px
 }
 
 
@@ -783,7 +782,7 @@ form > label {
 }
 
 .select select {
-  padding: 12px 20px;
+  padding: 10px 20px;
   border: 1px solid rgb(0, 0, 0);
   font-size: 1.4rem;
   text-align: center;

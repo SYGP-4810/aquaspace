@@ -120,13 +120,14 @@ $("#InventorySaveE").click(function(){
     let price = $("#price").val();
     let quantity = $("#quantity").val();
     let details = $("#details").val();
-    let width = $("#width").val();
-    let height = $("#height").val();
-    let length = $("#length").val();
+    let weight = $("#weight").val();
     let deliveryMode = 0;
     let errors = [];
     let errFlag = 0;
-
+    let width = $("#width").val();
+    let height = $("#height").val();
+    let length = $("#length").val();
+    let capacity = $("#capacity").val();
 
     if (document.getElementById('inStorePickUp')) {
         if($('#inStorePickUp').is(':checked')){
@@ -168,18 +169,10 @@ $("#InventorySaveE").click(function(){
         errors.push("deliveryMode required");
         errFlag++;
     }
-    if(width == 0){
-        errors.push("width required");
+    if(weight == 0){
+        errors.push("weight required");
         errFlag++;
-    }
-    if(height == 0){
-        errors.push("height required");
-        errFlag++;
-    }
-    if(length == 0){
-        errors.push("length required");
-        errFlag++;
-    }
+    }    
 
     const acceptedFileTypes = ["png", "jpg", "jpeg"];
     if(acceptedFileTypes.indexOf(imgExtension1.toLowerCase())===-1){
@@ -207,6 +200,8 @@ $("#InventorySaveE").click(function(){
                 "quantity" : quantity,
                 "details" : details,
                 "deliveryMode" : deliveryMode,
+                "weight" :weight,
+                "capacity" : capacity,
                 "height" : height,
                 "width" : width,
                 "length" : length,
@@ -220,7 +215,7 @@ $("#InventorySaveE").click(function(){
                 "exen4" : imgExtension4,
                 "type" : "3"
             }
-
+            // console.log(req);
             $.ajax({
                 type: "POST",
                 url:setUrl("Store/Store/addInventory"),
@@ -228,13 +223,14 @@ $("#InventorySaveE").click(function(){
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data){
+                    console.log(data);
                     successMsg(["Added Inventory"]);
                     delay(function(){
                     window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
                     },5000)
                 },
                 error: function(errMsg) {
-                    // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+                    window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
                 }
             });
         }
@@ -473,6 +469,7 @@ $("#InventorySaveP").click(function(){
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data){
+                    // console.log(data);
                     successMsg(["Added Inventory"]);
                     delay(function(){
                     window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
