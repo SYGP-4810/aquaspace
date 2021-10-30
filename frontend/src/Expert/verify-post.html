@@ -84,46 +84,60 @@
             </ul>
         </nav>
         <section class="section-1">
-            <div class="topics">
-                <p id="blog-topic">Verify Posts</p>
-                <p>|</p>
-                <p id="fish-topic">Claimed</p>
+            <div style="margin-top: 30px;" class="topics">
+                <p id="blog-topic">Verify Post</p>
             </div>
-            <div id="verify" style="margin-bottom: 60px;">
-                <div style="margin-left: 50px;"><button id="claim">verify</button>
-                    <div style="display: flex; width: 400px;" class="question">
-                        <img style="width: 150px; margin-right: 20px;" src="../../images/tank/type1.jpg" alt="">
-                        <div><h4>Sender's Name</h4>
-                        <h4>Fish Name :</h4>
-                        <h4 style="font-weight: 400;">Lorem Ipsum</h4>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div  style="margin-left: 50px;"><button id="claim">verify</button>
-                    <div style="display: flex; width: 400px;" class="question">
-                        <img style="width: 150px; margin-right: 20px;" src="../../images/tank/type1.jpg" alt="">
-                        <div><h4>Sender's Name</h4>
-                        <h4>Fish Name :</h4>
-                        <h4 style="font-weight: 400;">Lorem Ipsum</h4>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div id="claimed">
+            <div style="margin-left: 90px; margin-top: 50px; margin-right: 400px;">
+                <img style="width: 200px;" src="../../images/tank/type1.jpg" alt="">
+                <br>
+                <label for="uname" style="font-size: 15px;">Fish Name</label><br>
+                <input style="font-size: 13px;
+                            padding:0.4em;
+                            outline: none;
+                            border-radius: 0;
+                            border: 1px solid #ccc;
+                            color:#555;" type="text" id="uname" name="uname" placeholder="User entered name">
+                <br>
+                <div><input style="background-color: #ec7f71; /* Green */
+                        width: 80px;
+                        border: none;
+                        border-radius: 4px;
+                        color: white;
+                        padding: 4px;
+                        text-align: center;
+                        text-decoration: none;
+                        display: inline-block;
+                        font-size: 15px;
+                        margin-top: 20px;
+                        cursor: pointer;" type="submit" class="button" value="REJECT">
+                <input style="background-color: #688aca; /* Green */
+                            width: 80px;
+                            border: none;
+                            border-radius: 4px;
+                            color: white;
+                            padding: 4px;
+                            text-align: center;
+                            text-decoration: none;
+                            display: inline-block;
+                            font-size: 15px;
+                            margin-top: 20px;
+                          
+                            cursor: pointer;" type="submit" class="button" value="ACCEPT"></div>
+                
+
+
+
 
             </div>
-            
 
-            
+
+
         </section>
 
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../../js/expert/requests.js"></script>
-    <!-- <script src="../../js/expert/questions.js"></script> -->
 </body>
 
 </html>
