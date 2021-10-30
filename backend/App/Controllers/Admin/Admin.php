@@ -86,7 +86,7 @@ class Admin extends \Core\Controller
 
     public function getAdminListAction()
     {
-        $stmt = $this->execute($this->join("user_auth, admin", "email,tp,user_auth.id AS id,first_name,last_name", "user_auth.id = admin.auth_id"));
+        $stmt = $this->execute($this->join("user_auth, admin", "email,tp,user_auth.id AS id,first_name,last_name,profile_img", "user_auth.id = admin.auth_id"));
         $nRows = $stmt->rowCount();
         $result = $stmt->fetchAll();
         View::response($result);
