@@ -32,6 +32,8 @@ class Store extends \Core\Controller
         $stmt = $this->execute($this->get('store', "*", "auth_id ='" . $id . "'"));
         $result = $stmt->fetch();
         $address = $result['address'];
+        $lat = $result['lat'];
+        $lang = $result['lan'];
 
         $iName1 = "";
         $iName1 = microtime(true) . "." . $this->data['exen1'];
@@ -88,6 +90,8 @@ class Store extends \Core\Controller
             "status" => "1",
             "type" => $this->data['type'],
             "address" => $address,
+            "lat" => $lat,
+            "lan" => $lang
         ];
         // View::response($DataToInsert);
         $this->exec($this->save('products', $DataToInsert));
@@ -114,14 +118,70 @@ class Store extends \Core\Controller
         View::response($result);
     }
 
-    public function editInventoryAction()
+    
+    public function getEditInventoryAction()
     {
         $stmt = $this->execute($this->get('productS', "*", "id='" . $this->data['id'] . "'"));
         $result = $stmt->fetch();
-
         View::response($result);
     }
 
+    public function editInventoryAction()
+    {
+        $iName1 = "";
+        $iName1 = microtime(true) . "." . $this->data['exen1'];
+        $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName1;
+        $flag1 = file_put_contents($iDir1, base64_decode($this->data['pic1']));
+
+        $iName2 = "";
+        $iName2 = microtime(true) . "." . $this->data['exen2'];
+        $iDir2 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName2;
+        $flag2 = file_put_contents($iDir2, base64_decode($this->data['pic2']));
+
+        $iName3 = "";
+        $iName3 = microtime(true) . "." . $this->data['exen3'];
+        $iDir3 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName3;
+        $flag3 = file_put_contents($iDir3, base64_decode($this->data['pic3']));
+
+        $iName4 = "";
+        $iName4 = microtime(true) . "." . $this->data['exen4'];
+        $iDir4 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName4;
+        $flag4 = file_put_contents($iDir4, base64_decode($this->data['pic4']));
+
+        if (!$flag1) {
+            throw new \Exception("file didn't come to backend");
+        }
+        if (!$flag2) {
+            throw new \Exception("file didn't come to backend");
+        }
+        if (!$flag3) {
+            throw new \Exception("file didn't come to backend");
+        }
+        if (!$flag4) {
+            throw new \Exception("file didn't come to backend");
+        }
+
+        $updateData = [
+            "product_name" => $this->data['Name'],
+            "price" => $this->data['price'],
+            "quantity" => $this->data['quantity'],
+            "description" => $this->data['details'],
+            "delivery" => $this->data['deliveryMode'],
+            "height" => $this->data['height'],
+            "width" => $this->data['width'],
+            "length" => $this->data['length'],
+            "weight" => $this->data['weight'],
+            "capacity" => $this->data['capacity'],
+            "img1" => $iName1,
+            "img2" => $iName2,
+            "img3" => $iName3,
+            "img4" => $iName4,
+            "status" => $this->data['status']
+        ];
+        
+            $this->exec($this->update('products', $updateData, "id='" . $this->data['id'] . "'"));        
+            View::response("success");
+    }
 
     public function getStoreProfileAction()
     {

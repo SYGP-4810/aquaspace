@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
-	<link rel="stylesheet" href="../../css/dashboard-styles.css">
+    <link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
+    <link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Store.css">
     <link rel="stylesheet" href="../../css/store-inv-add.css">
     <link rel="stylesheet" href="../../css/base.css">
     <title>Dashboard</title>
 </head>
+
 <body>
-	<input type="checkbox" id="checkbox">
-	<header class="header">
-		<div class="u-name">
-            <img class="logo" src="../../images/logo.png"><span class="logo" >AquaSpace</span>
-			<label for="checkbox">
-				<i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
-			</label>
-		</div>
+    <input type="checkbox" id="checkbox">
+    <header class="header">
+        <div class="u-name">
+            <img class="logo" src="../../images/logo.png"><span class="logo">AquaSpace</span>
+            <label for="checkbox">
+                <i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
+            </label>
+        </div>
         <div class="icons">
             <i class="fa fa-bell" aria-hidden="true"></i>
             <i class="fa fa-user" aria-hidden="true"></i>
         </div>
-	</header>
-	<div class="body">
-		<nav class="side-bar">
-			<ul>
-				<li>
+    </header>
+    <div class="body">
+        <nav class="side-bar">
+            <ul>
+                <li>
                     <a href="../Store/StoreHome.html">
                         <i class="fas fa-home fa-xs" aria-hidden="true"></i>
                         <span>Home</span>
@@ -88,9 +90,9 @@
                         <span>Notification Settings</span>
                     </a>
                 </li>
-			</ul>
-		</nav>
-		<section class="section-1">
+            </ul>
+        </nav>
+        <section class="section-1">
             <div class="head-titles">
                 <h2>INVENTORY</h2>
             </div>
@@ -104,7 +106,8 @@
                         <div class="js--image-preview"></div>
                         <div class="upload-options">
                             <label>
-                                <input type="file" id="inventory-img1"  class="image-upload" onchange="encodeImageFileAsURL1(this)">
+                                <input type="file" id="inventory-img1" class="image-upload"
+                                    onchange="encodeImageFileAsURL1(this)">
                             </label>
                         </div>
                     </div>
@@ -112,7 +115,8 @@
                         <div class="js--image-preview"></div>
                         <div class="upload-options">
                             <label>
-                                <input type="file" id="inventory-img2"  class="image-upload"onchange="encodeImageFileAsURL2(this)">
+                                <input type="file" id="inventory-img2" class="image-upload"
+                                    onchange="encodeImageFileAsURL2(this)">
                             </label>
                         </div>
                     </div>
@@ -120,7 +124,8 @@
                         <div class="js--image-preview"></div>
                         <div class="upload-options">
                             <label>
-                                <input type="file" id="inventory-img3"  class="image-upload" onchange="encodeImageFileAsURL3(this)">
+                                <input type="file" id="inventory-img3" class="image-upload"
+                                    onchange="encodeImageFileAsURL3(this)">
                             </label>
                         </div>
                     </div>
@@ -128,13 +133,14 @@
                         <div class="js--image-preview"></div>
                         <div class="upload-options">
                             <label>
-                                <input type="file" id="inventory-img4"  class="image-upload" onchange="encodeImageFileAsURL4(this)">
+                                <input type="file" id="inventory-img4" class="image-upload"
+                                    onchange="encodeImageFileAsURL4(this)">
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <table class="invent-add">       
+                <table class="invent-add">
                     <tr>
                         <td>Product Name<span class="required">*</span></td>
                         <td><input type="text" id="productname" name="productName"></td>
@@ -161,21 +167,21 @@
                         <td><input type="number" id="quantity" name="quantity" min="0"></td>
                     </tr>
                     <tr>
-                        <td>Product Details<span class="required">*</span></td>
-                        <td><textarea  id="details"  rows="10"></textarea></td>
-                        
+                        <td>Product Description<span class="required">*</span></td>
+                        <td><textarea id="details" rows="10"></textarea></td>
+
                     </tr>
                     <tr>
-                        <td>Product Weight<span class="required">*</span></td>
+                        <td>Product Weight(kg)<span class="required">*</span></td>
                         <td><input type="number" id="weight" name="weight" min="1"></td>
                     </tr>
                     <tr>
-                        <td>Product Dimension<span class="required">*</span></td>
+                        <td>Product Dimension</td>
                         <td>
                             <div class="diam">
-                                <p>WIDTH (cm)<span class="required">* </span></p> <input type="number" id="width" name="width" min="0">
-                                <p>HEIGHT (cm)<span class="required">*  </span></p> <input type="number" id="height" name="height" min="0">
-                                <p>LENGTH (cm)<span class="required">*  </span></p> <input type="number" id="length" name="length" min="0">
+                                <p>WIDTH (cm)</p> <input type="number" id="width" name="width" min="0">
+                                <p>HEIGHT (cm)</p> <input type="number" id="height" name="height" min="0">
+                                <p>LENGTH (cm)</p> <input type="number" id="length" name="length" min="0">
                             </div>
                         </td>
                     </tr>
@@ -187,7 +193,7 @@
                         <td>Delivery<span class="required">*</span></td>
                         <td id="delivery-mode">
 
-                        </td>    
+                        </td>
                     </tr>
                 </table>
                 <div class="btn">
@@ -196,13 +202,13 @@
                 </div>
             </div>
             <div id="alertDiv"></div>
-		</section>
-	</div>
+        </section>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../../js/logo.js"></script>
-    <script src = "../../js/Store/StoreInventoryAdd.js"></script>
+    <script src="../../js/Store/StoreInventoryAdd.js"></script>
     <script src="../../js/image-upload.js"></script>
     <script src="../../js/base.js"></script>
 </body>
-</html>
 
+</html>

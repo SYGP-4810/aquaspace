@@ -6,6 +6,7 @@ $(document).ready(function(){
     var url = new URL(window.location.href);
     var id = url.searchParams.get("id");
     var req = {"id":id}
+        // get delivery
         $.ajax({
             type: "GET",
             url:setUrl("Store/Store/checkDeliveryOption"),
@@ -41,7 +42,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "POST",
-            url:setUrl("Store/Store/editInventory"),
+            url:setUrl("Store/Store/getEditInventory"),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: JSON.stringify(req),
@@ -59,9 +60,22 @@ $(document).ready(function(){
                     $('#status').prop('checked', true);
                 }
                 $("#details").val(data.description);
-                $("#width").val(data.width);
-                $("#height").val(data.height);
-                $("#length").val(data.length);
+                $('#weight').val(data.weight);
+
+                if(data.type == 3){
+                    $("#dime").append(`<td>Package Dimension</td>
+                    <td>
+                        <div class="diam">
+                            <p>WIDTH (cm)</p> <input type="number" id="width" name="width" min="0" value=${data.width}>
+                            <p>HEIGHT (cm)</p> <input type="number" id="height" name="height" min="0" value=${data.height}>
+                            <p>LENGTH (cm)</p> <input type="number" id="length" name="length" min="0" value=${data.length}>
+                        </div>
+                    </td>`);
+                    $("#cap").append(`<td>Capacity</td>
+                    <td><input type="number" id="capacity" name="capacity" min="0" value=${data.capacity}></td>
+                            `);
+
+                }
 
                 if(delivery >= 4){
                     $('#thirdPartyDelivery').prop('checked', true);
@@ -82,6 +96,8 @@ $(document).ready(function(){
         });
         
 })
+
+// edit save not complete
 
 var imgExtension1 = " ", imgExtension2 = " ", imgExtension3 = " ", imgExtension4 = " ";
 
@@ -156,16 +172,38 @@ function encodeImageFileAsURL4(element) {
 // update edit inventory not complete yet
 
 $("#invent-save").click(function(){
+    var url = new URL(window.location.href);
+    let id = url.searchParams.get("id");
+
     let Name = $("#name").val();
     let price = $("#price").val();
     let quantity = $("#quantity").val();
     let details = $("#details").val();
-    let width = $("#width").val();
-    let height = $("#height").val();
-    let length = $("#length").val();
+    let weight = $("#weight").val();
     let deliveryMode = 0;
     let errors = [];
     let errFlag = 0;
+    let status,width = 0,height =0,length = 0,capacity = 0;
+
+    if($('#status').is(':checked')){
+        status =1;
+    }
+    else{
+        status =2;
+    }
+
+    if (document.getElementById('width')) {
+            let width = $("#width").val();
+    }
+    if (document.getElementById('height')) {
+            let height = $("#height").val();
+    }
+    if (document.getElementById('length')) {
+            let length = $("#length").val();
+    }
+    if (document.getElementById('capacity')) {
+            let capacity = $("#capacity").val();
+    }
 
 
     if (document.getElementById('inStorePickUp')) {
@@ -206,14 +244,13 @@ $("#invent-save").click(function(){
 
     if(errFlag == 0){
             var req = {
+                "id" :id,
                 "Name" : Name,
                 "price" : price,
                 "quantity" : quantity,
                 "details" : details,
                 "deliveryMode" : deliveryMode,
-                "height" : height,
-                "width" : width,
-                "length" : length,
+                "weight" : weight,
                 "pic1" :imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
                 "pic2" :imagebase64_2.replace(/^data:image\/[a-z]+;base64,/, ""),
                 "pic3" :imagebase64_3.replace(/^data:image\/[a-z]+;base64,/, ""),
@@ -221,12 +258,17 @@ $("#invent-save").click(function(){
                 "exen1" : imgExtension1,
                 "exen2" : imgExtension2,
                 "exen3" : imgExtension3,
-                "exen4" : imgExtension4
+                "exen4" : imgExtension4,
+                "status" :status,  
+                "height" : height,
+                "width" : width,
+                "length" : length,
+                "capacity" :capacity,
             }
 
             $.ajax({
                 type: "POST",
-                url:setUrl("Store/Store/addInventory"),
+                url:setUrl("Store/Store/editInventory"),
                 data: JSON.stringify(req),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
