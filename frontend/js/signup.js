@@ -394,7 +394,7 @@ $("#signUp2").click(function(){
 
             },
             error: function(errMsg) {
-                window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+                // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
         }
@@ -589,11 +589,11 @@ $("#signUp3").click(function(){
                     window.location.replace("/aquaspace/frontend/src/");
                 },5000);
                     }else{
-                        alert(JSON.stringify(data));
+                        alert(data);
                     }
             },
             error: function(errMsg) {
-                //window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+                // window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
 
             }
         });
