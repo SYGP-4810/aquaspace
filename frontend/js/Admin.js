@@ -149,7 +149,6 @@ $("#updatePass").click(function(){
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data){
-                //console.log(data);
                 if(data.status == 1){
                     errorShow([data.msg]);
                 }
@@ -169,7 +168,8 @@ $("#updatePass").click(function(){
             }
         });
 
-    }else{
+    }
+    else{
         errorShow(errors);
     }
 

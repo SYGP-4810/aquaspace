@@ -11,6 +11,7 @@ $( document ).ready(function() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
+            console.log(data);
             var name = '';
             data.forEach(element => {
                 name = element.first_name + " " + element.last_name;
