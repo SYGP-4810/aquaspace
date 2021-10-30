@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 plugins: {
                   title: {
                     display: true,
-                    text: 'Money monthly eraned'
+                    text: ''
                   },
                 },
                 interaction: {
