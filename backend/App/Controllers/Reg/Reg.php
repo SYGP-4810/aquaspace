@@ -220,10 +220,4 @@ class Reg extends \Core\Controller
         $this->exec($this->save('expert_quetion', $dataToInsert));
         View::response("successfully inserted");
     }
-    public function getExpertQuestionsAction()
-    {
-        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
-        $result = $this->execute("SELECT * FROM `expert_quetion` ORDER BY id DESC")->fetchAll();
-        View::response($result);
-    }
 }
