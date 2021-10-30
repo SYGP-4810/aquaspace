@@ -21,7 +21,25 @@ $(document).ready(function(){
         $("#build").css("color", "#aaaaaa");
       });
 
+      $(".proceed-1").click(function(){
+        $(".items").css("display", "block");
+        $("#items").css("color", "rgb(61, 61, 61)");
+        $(".fish").css("display", "none");
+        $("#fish").css("color", "#aaaaaa");
+        $(".build").css("display", "none");
+        $("#build").css("color", "#aaaaaa");
+      });
+
       $("#build").click(function(){
+        $(".build").css("display", "block");
+        $("#build").css("color", "rgb(61, 61, 61)");
+        $(".fish").css("display", "none");
+        $("#fish").css("color", "#aaaaaa");
+        $(".items").css("display", "none");
+        $("#items").css("color", "#aaaaaa");
+      });
+
+      $(".proceed-2").click(function(){
         $(".build").css("display", "block");
         $("#build").css("color", "rgb(61, 61, 61)");
         $(".fish").css("display", "none");
