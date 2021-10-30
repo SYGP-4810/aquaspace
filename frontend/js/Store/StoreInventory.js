@@ -2,6 +2,37 @@ function setUrl(text){
     return "/aquaspace/backend/public/index.php?"+text;
 }
 
+function appendInformationTodelete(id){
+    $("#confirmation-btn").html(`<button type="button" class="cancelbtn" onclick="document.getElementById('confirm').style.display='none'">Cancel</button>
+    <button type="button"class="deletebtn" onclick="deleteProduct(${id})">Delete</button>`);
+    document.getElementById('confirm').style.display='block';
+
+}
+
+function deleteProduct(id){
+    document.getElementById('confirm').style.display='none';
+    let req = {"id":id}
+    $.ajax({
+        type: "POST",
+        url: setUrl("Store/Store/deleteProduct"),
+        data: JSON.stringify(req),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            successMsg(["successfully deleted product"]);
+            delay(function (){
+                location.reload();
+            },5000);
+                
+        },
+        error: function(errMsg) {
+            // window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+        }
+    });
+ }
+
+
+
 $( document ).ready(function() {
     $.ajax({
         type: "GET",
@@ -15,12 +46,14 @@ $( document ).ready(function() {
             data.forEach(element => {
                 let st = element.status;
                 if (st == 1) {
-                    status = "Active";
+                    status = "Sell";
                 } else if (st== 2) {
-                    status = "Wait Verify";
+                    status = "Not Selling";
                 }else if (st== 3) {
-                status = "Block";
-                } else {
+                status = "Wait Until Verify";
+                }else if (st== 4) {
+                    status = "Block";
+                }else {
                     st = "";
                 }
 
@@ -44,7 +77,7 @@ $( document ).ready(function() {
                 <td>${element.quantity}</td>
                 <td>${status}</td>
                 <td><a href="../Store/StoreInventoryEdit.html?id=${element.id}" class="button">Edit</a></td>
-                
+                <td><button class="del-button" onclick="appendInformationTodelete(${element.id})">Delete</button></td>
             </tr>`);
                 
             });

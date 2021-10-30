@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
 
 * {
   padding: 0;
@@ -8,16 +8,16 @@
 }
 
 .header {
-	position: fixed;
-  top:0;
-	width: 100%;
-	height: 10vh;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 15px 0PX;
-	background: #313552;
-	color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0px;
+  background: #313552;
+  color: #fff;
   z-index: 10;
 }
 .u-name .logo {
@@ -47,30 +47,28 @@
 }
 
 .side-bar {
-	width: 15vw;
-	background: #2d3149;
-	transition: 500ms width;
+  width: 15vw;
+  background: #2d3149;
+  transition: 500ms width;
 }
 
 .body {
-	display: flex;
-	min-height: 90vh;
+  display: flex;
+  min-height: 90vh;
 }
 
 .section-1 {
   margin-top: 10vh;
-	width: 100%;
-	background: #ffffff;
+  width: 100%;
+  background: #ffffff;
   min-height: 90vh;
-	overflow: auto;
-
+  overflow: auto;
 }
 
 .section-1 h1 {
-	color: rgb(19, 17, 44);
-	font-size: 60px;
+  color: rgb(19, 17, 44);
+  font-size: 60px;
 }
-
 
 .side-bar ul {
   margin-top: 90px;
@@ -126,20 +124,20 @@
   width: 60px;
 }
 
-#checkbox:checked ~ .body .side-bar .user-p{
-	visibility: hidden;
+#checkbox:checked ~ .body .side-bar .user-p {
+  visibility: hidden;
 }
 
-#checkbox:checked ~ .body .side-bar a span{
-	display: none;
+#checkbox:checked ~ .body .side-bar a span {
+  display: none;
 }
 
 .icons {
-	font-size: 20px;
-	margin-right: 15px;
-	width: 100px;
-	display: flex;
-	justify-content: space-around;
+  font-size: 20px;
+  margin-right: 15px;
+  width: 100px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .box {
@@ -148,4 +146,3 @@
   width: 100px;
   background: #151031;
 }
-

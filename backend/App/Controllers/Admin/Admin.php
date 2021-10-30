@@ -78,15 +78,15 @@ class Admin extends \Core\Controller
             "email" => $result['email'],
             "address" => $result2['address'],
             "city" => $result2['city'],
-            "tp" => $result['tp']
+            "tp" => $result['tp'],
+            "profile_img" => $result['profile_img']
         ];
         View::response($res);
     }
 
     public function getAdminListAction()
     {
-        $stmt = $this->execute($this->join("user_auth, admin", "email,tp,user_auth.id AS id,first_name,last_name", "user_auth.id = admin.auth_id"));
-        $nRows = $stmt->rowCount();
+        $stmt = $this->execute($this->join("user_auth, admin", "email,tp,user_auth.id AS id,first_name,last_name,profile_img", "user_auth.id = admin.auth_id"));
         $result = $stmt->fetchAll();
         View::response($result);
     }
@@ -103,7 +103,8 @@ class Admin extends \Core\Controller
             "email" => $result['email'],
             "address" => $result2['address'],
             "city" => $result2['city'],
-            "tp" => $result['tp']
+            "tp" => $result['tp'],
+            "profile_img" => $result['profile_img']
         ];
         View::response($res);
     }
@@ -117,7 +118,9 @@ class Admin extends \Core\Controller
     public function getAdminVerifyDetailsExpertAction()
     {
         $stmt = $this->execute($this->get('expert', "*", "auth_id ='" . $this->data['id'] . "'"));
-        View::response($stmt->fetch());
+        $res['expert'] = $stmt->fetch();
+        $res['user'] = $this->execute($this->get('user_auth', "tp,email", "id='" . $this->data['id'] . "'"))->fetch();
+        View::response($res);
     }
 
     public function getAdminVerifyDetailsStoreAction()
@@ -193,5 +196,38 @@ class Admin extends \Core\Controller
             $res = ["status" => 3, "msg" => "successfully updated your password"];
         }
         View::response($res);
+    }
+
+    public function updateAdminAction()
+    {
+
+        $stmt = $this->execute($this->get('user_auth', '*', "access_token ='" . $_COOKIE['access_token'] . "'"));
+        $result = $stmt->fetch();
+        $updateData = [
+            "first_name" => $this->data['fName'],
+            "last_name" => $this->data['lName'],
+            "address" => $this->data['address'],
+            "city" => $this->data['city']
+        ];
+        $ext = array("jpg", "png", "jpeg");
+        if (in_array($this->data['exen'], $ext)) {
+            $iName1 = "";
+            $iName1 =  microtime(true) . "." . $this->data['exen'];
+            $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/profile/" . $iName1;
+            $flag1 = file_put_contents($iDir1, base64_decode($this->data['pic']));
+            if (!$flag1) {
+                throw new \Exception("file did not come to the backend");
+            }
+            if (file_exists("/aquaspace/frontend/images/profile/" . $result['profile_img'])) {
+                unlink("/aquaspace/frontend/images/profile/" . $result['profile_img']);
+            }
+            $this->exec($this->update('user_auth', ["tp" => $this->data['tp'], "profile_img" => $iName1], "id='" . $result['id'] . "'"));
+        } else {
+            $this->exec($this->update('user_auth', ["tp" => $this->data['tp']], "id='" . $result['id'] . "'"));
+        }
+
+
+        $this->exec($this->update('admin', $updateData, "auth_id='" . $result['id'] . "'"));
+        View::response("Successfully updated");
     }
 }

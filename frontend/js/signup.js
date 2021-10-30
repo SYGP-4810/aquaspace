@@ -1,7 +1,3 @@
-//api setter
-function setUrl(text){
-    return "/aquaspace/backend/public/index.php?"+text;
-}
 
 $(".tab:not(:first)").hide();
 $(".form-delivery").hide();
@@ -64,7 +60,7 @@ $(".verify").click(function(e){
             });
 
     }else{
-        alert("enter email with correct format");
+        errorShow(["enter email with correct format"]);
     }
 
 });
@@ -202,20 +198,19 @@ $("#signUp1").click(function(e){
                     alert("please login");
                     window.location.replace("../src/login.html");
                     }else{
-                        alert(JSON.stringify(data.error));
+                        errorShow([data.error])
                     }
             },
             error: function(errMsg) {
-                //window.location.replace("../src/Error/"+errMsg.status+".html");
-                console.log(errMsg);
+                window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
      }else{
-         alert(JSON.stringify(errors));
+         errorShow(errors);
      }
 });
 //get file extension and file
-var qualificationExtension;
+var qualificationExtension = "Aqua";
 var qualificationFile;
 //get the file extension of qualifications
 $("#qualifications").change(function (e) {
@@ -237,9 +232,24 @@ $("#signUp2").click(function(){
     var address = $("#address2").val();
     var emailToken = $("#code2").val();
     var tp = $("#tp2").val();
+    let bankName = $("#bankNameE").val();
+    let branchId = $("#branchCodeE").val();
+    let accountNo = $("#accountNoE").val()
     var erFlag = 0;
     var errors = [];
     //validation criteria
+    if(accountNo == ""){
+        errors.push("account number is required");
+        erFlag++;
+    }
+    if(branchId == ""){
+        errors.push("branch ID is required");
+        erFlag++;
+    }
+    if(bankName == ""){
+        errors.push("bank name is required");
+        erFlag++;
+    }
     if(tp == ""){
         errors.push("telephone number is required");
         $("#tp2").focus();
@@ -362,9 +372,11 @@ $("#signUp2").click(function(){
                 "emailToken": emailToken,
                 "tp":tp,
                 "qualifications":strImage,
-                "qualificationExtension": qualificationExtension
+                "qualificationExtension": qualificationExtension,
+                "bankName":bankName,
+                "branchId": branchId,
+                "accountNo": accountNo
             }
-            // alert(JSON.stringify(req));
         
           $.ajax({
             type: "POST",
@@ -374,25 +386,26 @@ $("#signUp2").click(function(){
             dataType: "json",
             success: function(data){
                 if(data.status ==1){
-                alert("wait until admin verify you may have email about confirm");
+                alertMsg(["wait until admin verify you may have email about confirm"]);
+                delay(function(){
                 window.location.replace("/aquaspace/frontend/src/");
-                }
+                },5000);
+            }
 
             },
             error: function(errMsg) {
-            //    window.location.replace("../src/Error/"+errMsg.status+".html");
+                window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
         }
         reader.onerror = function (error) {
-         //console.log('Error: ', error);
-            alert(error);
-            window.location.replace("../src/Error/"+errMsg.status+".html");
+            errorShow([error]);
+            //window.location.replace("../src/Error/"+errMsg.status+".html");
 
         }
         
      }else{
-         alert(JSON.stringify(errors));
+         errorShow(errors);
      }
 
 });
@@ -563,7 +576,6 @@ $("#signUp3").click(function(){
             "branchId": branchId,
             "accountNo": accountNo
         }
-        alert(JSON.stringify(req));
           $.ajax({
             type: "POST",
             url: setUrl("Authentication/signUpStore"),
@@ -572,18 +584,21 @@ $("#signUp3").click(function(){
             dataType: "json",
             success: function(data){
                 if(data.status ==1){
-                    alert("wait until admin verify you may have email about confirm");
+                    alertMsg(["wait until admin verify you may have email about confirm"]);
+                    delay(function(){
                     window.location.replace("/aquaspace/frontend/src/");
+                },5000);
                     }else{
                         alert(JSON.stringify(data));
                     }
             },
             error: function(errMsg) {
-                // window.location.replace("../src/Error/"+errMsg.status+".html");
+                //window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+
             }
         });
      }else{
-         alert(JSON.stringify(errors));
+         errorShow(errors);
      }
 });
 

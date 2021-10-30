@@ -19,31 +19,52 @@ $(document).ready(function(e){
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: JSON.stringify(req),
-            success: function(data){                   
-                    let name = data.first_name + " " + data.last_name;
+            success: function(data){
+                    console.log(data);                   
+                    let name = data.expert.first_name + " " + data.expert.last_name;
                     $("#Verify-list-details").append(`
                         <tr>
                             <td>User Name</td>
                             <td>${name}</td>
                         <tr>
                         <tr>
-                            <td>Qulification</td>
-                            <td><img src="/aquaspace/frontend/images/qualifications/${data.qualification}" alt="qualification"></td>
+                            <td>Email</td>
+                            <td>${data.user.email}</td>
+                        </tr>
+                        <tr>
+                            <td>Telephone</td>
+                            <td>${data.user.tp}</td>
                         </tr>
                         <tr>
                             <td>City</td>
-                            <td>${data.city}</td>
+                            <td>${data.expert.city}</td>
                         </tr>
                         <tr>
                             <td>Address</td>
-                            <td>${data.address}</td>
+                            <td>${data.expert.address}</td>
+                        </tr>
+                        <tr>
+                            <td>Bank Name</td>
+                            <td>${data.expert.bank_name}</td>
+                        </tr>
+                        <tr>
+                            <td>Branch Code</td>
+                            <td>${data.expert.branch_id}</td>
+                        </tr>
+                        <tr>
+                            <td>Account number</td>
+                            <td>${data.expert.account_no}</td>
+                        </tr>
+                        <tr>
+                            <td>Qulification</td>
+                            <td><img src="/aquaspace/frontend/images/qualifications/${data.expert.qualification}" alt="qualification" style="width:60%"></td>
                         </tr>
                     `);
                     
                
             },
             error: function(errMsg) {
-                //window.location.replace("../src/Error"+errMsg.status+".html");
+                window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
 

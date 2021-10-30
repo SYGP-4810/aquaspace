@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/transactions.css">
     <link rel="stylesheet" href="../../css/questions.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../css/base.css">
 </head>
-
 <body>
     <div class="container">
         <input type="checkbox" id="checkbox">
@@ -119,10 +118,10 @@
                         </label>
                     </div> -->
                     <div class="block"><label style="font-weight: 500; color: rgb(63, 63, 63);" for="q">Ask Your Question</label><br>
-                    <textarea style="outline:none; border:1px solid rgb(175, 174, 174);" id="q" placeholder="Tpe your question here" tabindex="5" rows="10" cols="100"
+                    <textarea style="outline:none; border:1px solid rgb(175, 174, 174);" id="q" placeholder="Type your question here" tabindex="5" rows="10" cols="100"
                         maxlength="500" required></textarea>
 
-                    <button>SEND</button>
+                    <button id="sendQuestion">SEND</button>
                 </div>
                     
 
@@ -130,13 +129,15 @@
 
 
 
-
+            <div id="alertDiv"></div>
             </section>
         </div>
     </div>
-
-    <script src="../../js/reg-dashboard.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="../../js/reg-dashboard.js"></script> -->
+    <script src="../../js/base.js"></script>
     <script src="../../js/logo.js"></script>
+    <script src="../../js/Reg/ask-question.js"></script>
 
 </body>
 

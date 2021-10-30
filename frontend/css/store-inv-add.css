@@ -112,9 +112,9 @@
     display: none;
 }
 
-.js--image-preview:nth-child(2) {
+/* .js--image-preview:nth-child(2) {
     background-image: url('http://bastianandre.at/giphy.gif');
-}
+} */
 
 i.material-icons {
     transition: color 100ms ease-in-out;

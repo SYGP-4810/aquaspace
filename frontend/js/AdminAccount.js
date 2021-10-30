@@ -10,6 +10,10 @@ $( document ).ready(function() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
+            // console.log(data);
+            if(data.profile_img != ""){
+                $("#profilePic").attr("src",`/aquaspace/frontend/images/profile/${data.profile_img}`);
+            }
             let name = data.fName + " " + data.lName;
             $("#profile-table").html(`
             <tr>
@@ -35,7 +39,7 @@ $( document ).ready(function() {
             `);
         },
         error: function(errMsg) {
-            window.location.replace("../src/Error"+errMsg.status+".html");
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
 });

@@ -2,50 +2,72 @@
 function setUrl(text){
     return "/aquaspace/backend/public/index.php?"+text;
   }
-
-
-function modal(divName,errors, header){
-    $(divName).html(`<div class="modal-content">
-      <div class="modal-header">
-        <span class="close">&times;</span>
-        <h2>${header}</h2>
-      </div>
-      <div class="modal-body" id="modal-body">
-        <p>Some text in the Modal Body</p>
-        <p>Some other text...</p>
-      </div>
-    </div>`);
-    errors.forEach((row) => {
-        $("#modal-body").append(`<p>${row}</p>`);
-        
-    }
-    
-    );
-
-    // Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
+//error showing function first create div with id alertDiv 
+function errorShow(er){
+    $("#alertDiv").html(`<div class="alert">
+     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+     <h2>Error!!</h2>
+     <ul id="alertContentList"></ul>
+   </div>`);
+   er.forEach((element)=>{
+        $("#alertContentList").append(`<li>${element}</li>`);
+   });
+   $("#alertDiv").focus();
 }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+//wait some time before go to next line
+
+var delay = ( function() {
+    var timer = 0;
+    return function(callback, ms) {
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+    };
+})();
+
+function alertMsg(er){
+    $("#alertDiv").html(`<div class="alertMsg">
+     <h2>Msg!!</h2>
+     <ul id="alertContentList"></ul>
+     <p>wait 5 second before you redirect</p>
+   </div>`);
+   er.forEach((element)=>{
+        $("#alertContentList").append(`<li>${element}</li>`);
+   });
+   $("#alertDiv").focus();
 }
 
-// When the user clicks anywhere outside of the modal, close it
+function successMsg(er){
+  $("#alertDiv").html(`<div class="successMsg">
+   <h2>Success!!</h2>
+   <ul id="alertContentList"></ul>
+   <p>wait 5 second before you redirect</p>
+ </div>`);
+ er.forEach((element)=>{
+      $("#alertContentList").append(`<li>${element}</li>`);
+ });
+ $("#alertDiv").focus();
+}
+// confrimation box
+
+
+var conf = document.getElementById('confirm');
+
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == conf) {
+    conf.style.display = "none";
   }
 }
 
-}
+/* <button onclick="document.getElementById('confirm').style.display='block'">Open Modal</button>
+    <div id="confirm" class="confirm-box">
+        <div class="container">
+            <span onclick="document.getElementById('confirm').style.display='none'" class="close" title="Close ">×</span>
+            <h1>Delete Account</h1>
+            <p>Are you sure you want to delete your account?</p>
+            <div class="clearfix">
+                <button type="button" class="cancelbtn">Cancel</button>
+                <button type="button"class="deletebtn">Delete</button>
+            </div>
+        </div>
+    </div> */

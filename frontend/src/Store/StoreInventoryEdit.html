@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
-    <link rel="stylesheet" href="../../css/Store.css">
     <link rel="stylesheet" href="../../css/store-inv-add.css">
+    <link rel="stylesheet" href="../../css/Store.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -91,16 +91,16 @@
 		</nav>
 		<section class="section-1">
             <div class="head-titles">
-                <h1>INVENTORY</h1>
+                <h2>INVENTORY</h2>
             </div>
             <div class="section-title">
                 <h2>EDIT</h2>
-                <a href="../Store/StoreInventory.html" class="button">Back</a>
+                <a href="../Store/StoreInventory.html" class="nav-button">Back</a>
             </div>
-            <div class="invent-add-container">
+            <div class="invent-update-container">
                 <div class="wrapper">
                     <div class="box">
-                      <div class="js--image-preview"></div>
+                      <div class="js--image-preview" id="inventory-img1"></div>
                       <div class="upload-options">
                         <label>
                             <input type="file" id="inventory-img1"  class="image-upload" onchange="encodeImageFileAsURL1(this)">
@@ -108,7 +108,7 @@
                       </div>
                     </div>
                     <div class="box">
-                      <div class="js--image-preview"></div>
+                      <div class="js--image-preview" id="inventory-img2"></div>
                       <div class="upload-options">
                         <label>
                             <input type="file" id="inventory-img2"  class="image-upload"onchange="encodeImageFileAsURL2(this)">
@@ -116,7 +116,7 @@
                       </div>
                     </div>
                     <div class="box">
-                      <div class="js--image-preview"></div>
+                      <div class="js--image-preview" id="inventory-img3"></div>
                       <div class="upload-options">
                         <label>
                             <input type="file" id="inventory-img3"  class="image-upload" onchange="encodeImageFileAsURL3(this)">
@@ -124,7 +124,7 @@
                       </div>
                     </div>
                     <div class="box">
-                      <div class="js--image-preview"></div>
+                      <div class="js--image-preview" id="inventory-img4"></div>
                       <div class="upload-options">
                         <label>
                             <input type="file" id="inventory-img4"  class="image-upload" onchange="encodeImageFileAsURL4(this)">
@@ -135,42 +135,44 @@
             <div class="invent-add-container">
                 <table class="invent-add">
                     <tr>
-                        <td>Product Name</td>
-                        <td><input type="text" id="productname" name="productname"></td>
+                        <td>Name<span class="required">*</span></td>
+                        <td><input type="text" id="name" name="name"></td>
                     </tr>
                     <tr>
-                        <td>Price</td>
+                        <td>Price<span class="required">*</span></td>
                         <td><input type="number" id="price" name="price" min="0"></td>
                     </tr>
                     <tr>
-                        <td>Quantity</td>
+                        <td>Quantity<span class="required">*</span></td>
                         <td><input type="number" id="quantity" name="quantity" min="0"></td>
                     </tr>
                     <tr>
-                        <td>Status</td>
-                        <td><input type="checkbox" id="status" name="status" checked >Available</td>
+                        <td>Available For Selling<span class="required">*</span></td>
+                        <td><input type="checkbox" id="status" name="status" ></td>
                     </tr>
                     <tr>
-                        <td>Product Details</td>
-                        <td><textarea name="" id=""  rows="10" ></textarea></td>
+                        <td>Description<span class="required">*</span></td>
+                        <td><textarea name="details" id="details"  rows="10" ></textarea></td>
                     </tr>
                     <tr>
-                        <td>Delivery</td>
-                        <td>
-                            <div class="row">
-                                <input type="checkbox" name="delivery" id="inStorePickUp" checked><p>In Store Pick-up</p>
-                            </div>
-                            <div class="row">
-                                <input type="checkbox" name="delivery" id="inStoreDelivery"><p>In Store Delivery Service</p>
-                            </div>
-                            <div class="row">
-                                <input type="checkbox" name="delivery" id="thirdPartyDelivery"><p>Third Party Delivery Service</p>
-                            </div>
+                        <td>Weight(kg)<span class="required">*</span></td>
+                        <td><input type="number" id="weight" name="weight" min="1"></td>
+                    </tr>
+                    <tr id="dime">
+                        
+                    </tr>
+                    <tr id="cap">
+                        
+                    </tr>
+                    <tr>
+                        <td>Delivery<span class="required">*</span></td>
+                        <td id="delivery-mode">
+                            
                         </td>    
                     </tr>
                 </table>
                 <div class="btn">
-                    <input type="submit" class="button" value="SAVE">
+                    <input type="submit" class="button" value="SAVE" id="invent-save">
                     <a href="../Store/StoreInventory.html" class="button">CANCEL</a>
                 </div>
             </div>

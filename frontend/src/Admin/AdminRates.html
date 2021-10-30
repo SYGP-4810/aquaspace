@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
+	<link rel="stylesheet" href="../../css/dashboard-styles.css">
+    <link rel="stylesheet" href="../../css/Admin.css">
+</head>
+<body>
+	<input type="checkbox" id="checkbox">
+	<header class="header">
+		<div class="u-name">
+                <img class="logo" src="../../images/logo.png">
+                <span class="logo" >AquaSpace</span>
+			<label for="checkbox">
+				<i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
+			</label>
+		</div>
+        <div class="icons">
+            <i class="fa fa-bell" aria-hidden="true"></i>
+            <i class="fa fa-user" aria-hidden="true"></i>
+        </div>
+	</header>
+	<div class="body">
+		<nav class="side-bar">
+			<ul>
+				<li>
+                    <a href="../Admin/AdminHome.html">
+                        <i class="fas fa-home fa-xs" aria-hidden="true"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Admin/AdminAccount.html">
+                        <i class="fas fa-user-circle" aria-hidden="true"></i>
+                        <span>Account Overview</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Admin/AdminAccountEdit.html">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Admin/AdminResetPass.html">
+                        <i class="fas fa-unlock-alt" aria-hidden="true"></i>
+                        <span>Reset Password</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Admin/AdminAdmins.html">
+                        <i class="fas fa-user-cog" aria-hidden="true"></i>
+                        <span>Admins</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Admin/AdminVerify.html">
+                        <i class="fas fa-check-double" aria-hidden="true"></i>
+                        <span>Verify Requests</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Admin/AdminIssuesUser.html">
+                        <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+                        <span>Issues & Reports</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Admin/AdminRates.html">
+                        <i class="fas fa-trophy" aria-hidden="true"></i>
+                        <span>Rates</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Admin/AdminReport.html">
+                        <i class="fas fa-clipboard" aria-hidden="true"></i>
+                        <span>Generate Reports</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Admin/AdminNotification.html">
+                        <i class="fas fa-bell" aria-hidden="true"></i>
+                        <span>Notification Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Admin/AdminContribution.html">
+                        <i class="fas fa-award" aria-hidden="true"></i>
+                        <span>Contribution</span>
+                    </a>
+                </li>
+			</ul>
+		</nav>
+		<section class="section-1">
+			<div class="head-titles">
+                <h2>RATES</h>
+            </div>
+            <div class="rates">
+                <hr>
+                <h3>Store Rates</h3>
+                <table class="s-rates-table">
+                    <tr>
+                        <th>Price Range</th>
+                        <th>Precentage</th>
+                    </tr>
+                    <tr>
+                        <td>0 - 1000</td>
+                        <td>
+                            <label for="rangeZeroToThousand">
+                            <input type="number" min="0" max="100" class="" id="rangeZeroTothousand">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1000 - 10000</td>
+                        <td>
+                            <label for="rangeThousandToTenThousand">
+                            <input type="number" min="0" max="100" id="rangeThousandToTenThousand">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10000 - 50000</td>
+                        <td>
+                            <label for="rangeTenThousandToFiftyThousand">
+                            <input type="number" min="0" max="100" id="rangeTenThousandToFiftyThousand">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>50000 - 100000</td>
+                        <td>
+                            <label for="rangeFiftyThousandToLax">
+                            <input type="number" min="0" max="100" class="" id="rangeFiftyThousandToLax">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>100000 +</td>
+                        <td>
+                            <label for="rangeLaxOrMore">
+                            <input type="number" min="0" max="100" class="" id="rangeLaxOrMore">
+                            </label>
+                        </td>
+                    </tr>            
+                </table>
+                <hr>
+                <br>
+                <h3>Regular user Rates</h3>
+                <table class="r-rates-table">
+                    <tr>
+                        <th rowspan="2">Price Range</th>
+                    </tr>
+                    <tr>
+                        
+                        <th>1 week</th>
+                        <th>2 week</th>
+                        <th>3 week</th>
+                        <th>month</th>
+                        <th>2 month</th>
+                        <th>3 month</th>
+                    </tr>
+                    <tr>
+                        <td>0-1000</td>
+                        <td><input type="number" id="ToThousand1Week"></td>
+                        <td><input type="number" id="ToThousand2Week"></td>
+                        <td><input type="number" id="ToThousand3Week"></td>
+                        <td><input type="number" id="ToThousand1Month"></td>
+                        <td><input type="number" id="ToThousand2Month"></td>
+                        <td><input type="number" id="ToThousand3Month"></td>
+                    </tr>
+                    <tr>
+                        <td>1000-10000</td>
+                        <td><input type="number" id="ToTenThousand1Week"></td>
+                        <td><input type="number" id="ToTenThousand2Week"></td>
+                        <td><input type="number" id="ToTenThousand3Week"></td>
+                        <td><input type="number" id="ToTenThousand1Month"></td>
+                        <td><input type="number" id="ToTenThousand2Month"></td>
+                        <td><input type="number" id="ToTenThousand3Month"></td>
+                    </tr>
+                    <tr>
+                        <td>10000-50000</td>
+                        <td><input type="number" id="ToFiftyThousand1Week"></td>
+                        <td><input type="number" id="ToFiftyThousand2Week"></td>
+                        <td><input type="number" id="ToFiftyThousand3Week"></td>
+                        <td><input type="number" id="ToFiftyThousand1Month"></td>
+                        <td><input type="number" id="ToFiftyThousand2Month"></td>
+                        <td><input type="number" id="ToFiftyThousand3Month"></td>
+                    </tr>
+                    <tr>
+                        <td>50000-100000</td>
+                        <td><input type="number" id="ToOneLax1Week"></td>
+                        <td><input type="number" id="ToOneLax2Week"></td>
+                        <td><input type="number" id="ToOneLax3Week"></td>
+                        <td><input type="number" id="ToOneLax1Month"></td>
+                        <td><input type="number" id="ToOneLax2Month"></td>
+                        <td><input type="number" id="ToOneLax3Month"></td>
+                    </tr>
+                    <tr>
+                        <td>100000+</td>
+                        <td><input type="number" id="MoreThanOneLax1Week"></td>
+                        <td><input type="number" id="MoreThanOneLax2Week"></td>
+                        <td><input type="number" id="MoreThanOneLax3Week"></td>
+                        <td><input type="number" id="MoreThanOneLax1Month"></td>
+                        <td><input type="number" id="MoreThanOneLax2Month"></td>
+                        <td><input type="number" id="MoreThanOneLax3Month"></td>
+                    </tr>
+                </table>
+                <hr>
+                <div class="coin">
+                    <label for="coinPrice">
+                        <span>Coin Price</span>
+                        <input type="number" id="coinPrice">
+                    </label>
+                </div>
+                <br>
+                <hr>
+                <div class="coin">
+                    <label for="Experts Precentage">
+                        <span>Expert Precentage</span>
+                        <input type="number" id="expertPrecentage" min="0" max="100">
+                    </label>
+                </div>
+                <div class="btn">
+                    <button id="updateRates" type="button" class="button">Update</button>
+                </div>
+            </div>
+		</section>
+	</div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/logo.js"></script>
+</body>
+</html>

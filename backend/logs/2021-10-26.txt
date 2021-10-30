@@ -1,0 +1,30 @@
+[26-Oct-2021 18:11:28 Europe/Berlin] Uncaught exception: 'ErrorException'with error code : 500' with message 'Trying to access array offset on value of type bool'
+Stack trace: #0 C:\xampp\htdocs\aquaspace\backend\App\Controllers\Admin\Admin.php(102): Core\Error::errorHandler(2, 'Trying to acces...', 'C:\\xampp\\htdocs...', 102)
+#1 [internal function]: App\Controllers\Admin\Admin->getAdminDetailsAction()
+#2 C:\xampp\htdocs\aquaspace\backend\Core\Controller.php(55): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\aquaspace\backend\Core\Router.php(121): Core\Controller->__call('getAdminDetails', Array)
+#4 C:\xampp\htdocs\aquaspace\backend\public\index.php(49): Core\Router->dispatch('Admin/Admin/get...', Array)
+#5 {main}
+Thrown in 'C:\xampp\htdocs\aquaspace\backend\App\Controllers\Admin\Admin.php' on line 102
+
+
+[26-Oct-2021 18:11:29 Europe/Berlin] Uncaught exception: 'ErrorException'with error code : 500' with message 'Trying to access array offset on value of type bool'
+Stack trace: #0 C:\xampp\htdocs\aquaspace\backend\App\Controllers\Admin\Admin.php(102): Core\Error::errorHandler(2, 'Trying to acces...', 'C:\\xampp\\htdocs...', 102)
+#1 [internal function]: App\Controllers\Admin\Admin->getAdminDetailsAction()
+#2 C:\xampp\htdocs\aquaspace\backend\Core\Controller.php(55): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\aquaspace\backend\Core\Router.php(121): Core\Controller->__call('getAdminDetails', Array)
+#4 C:\xampp\htdocs\aquaspace\backend\public\index.php(49): Core\Router->dispatch('Admin/Admin/get...', Array)
+#5 {main}
+Thrown in 'C:\xampp\htdocs\aquaspace\backend\App\Controllers\Admin\Admin.php' on line 102
+
+
+[26-Oct-2021 18:11:58 Europe/Berlin] Uncaught exception: 'ErrorException'with error code : 500' with message 'Trying to access array offset on value of type null'
+Stack trace: #0 C:\xampp\htdocs\aquaspace\backend\App\Controllers\Admin\Admin.php(97): Core\Error::errorHandler(2, 'Trying to acces...', 'C:\\xampp\\htdocs...', 97)
+#1 [internal function]: App\Controllers\Admin\Admin->getAdminDetailsAction()
+#2 C:\xampp\htdocs\aquaspace\backend\Core\Controller.php(55): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\aquaspace\backend\Core\Router.php(121): Core\Controller->__call('getAdminDetails', Array)
+#4 C:\xampp\htdocs\aquaspace\backend\public\index.php(49): Core\Router->dispatch('Admin/Admin/get...', NULL)
+#5 {main}
+Thrown in 'C:\xampp\htdocs\aquaspace\backend\App\Controllers\Admin\Admin.php' on line 97
+
+
