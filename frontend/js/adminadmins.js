@@ -18,7 +18,7 @@ $( document ).ready(function() {
             <td>
                 <a href="AdminDetails.html?id=${element.id}">
                     <div class="admin">
-                    <img src="../../images/profile.jpg">                                
+                    <img src="../../images/profile/${element.profile_img}">                                
                     <div class="text">
                     <span class="name">${name}</span>
                     </div>
@@ -32,7 +32,7 @@ $( document ).ready(function() {
             
         },
         error: function(errMsg) {
-            window.location.replace("/aquaspace/frontend/src/Error"+errMsg.status+".html");
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
 });
