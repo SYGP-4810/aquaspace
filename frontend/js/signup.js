@@ -386,9 +386,11 @@ $("#signUp2").click(function(){
             dataType: "json",
             success: function(data){
                 if(data.status ==1){
-                alert("wait until admin verify you may have email about confirm");
+                alertMsg(["wait until admin verify you may have email about confirm"]);
+                delay(function(){
                 window.location.replace("/aquaspace/frontend/src/");
-                }
+                },5000);
+            }
 
             },
             error: function(errMsg) {
@@ -398,7 +400,7 @@ $("#signUp2").click(function(){
         }
         reader.onerror = function (error) {
             errorShow([error]);
-            window.location.replace("../src/Error/"+errMsg.status+".html");
+            //window.location.replace("../src/Error/"+errMsg.status+".html");
 
         }
         
@@ -582,14 +584,16 @@ $("#signUp3").click(function(){
             dataType: "json",
             success: function(data){
                 if(data.status ==1){
-                    alert("wait until admin verify you may have email about confirm");
+                    alertMsg(["wait until admin verify you may have email about confirm"]);
+                    delay(function(){
                     window.location.replace("/aquaspace/frontend/src/");
+                },5000);
                     }else{
                         alert(JSON.stringify(data));
                     }
             },
             error: function(errMsg) {
-                window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+                //window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
 
             }
         });
