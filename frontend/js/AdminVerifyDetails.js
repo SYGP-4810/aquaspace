@@ -122,7 +122,7 @@ $(document).ready(function(e){
                
             },
             error: function(errMsg) {
-                //window.location.replace("../src/Error"+errMsg.status+".html");
+                window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
 
@@ -139,11 +139,14 @@ $("#acceptReq").click(function() {
             dataType: "json",
             data: JSON.stringify(req),
             success: function(data){
+                successMsg(["successfully inserted"]);
+                delay(function(){
                 window.location.replace("/aquaspace/frontend/src/Admin/AdminVerify.html")       
+                },5000);
                
             },
             error: function(errMsg) {
-                window.location.replace("../src/Error"+errMsg.status+".html");
+                window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
 
@@ -157,11 +160,14 @@ $("#rejReq").click(function() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: JSON.stringify(req),
-            success: function(data){       
+            success: function(data){ 
+                successMsg(["successfully rejected"]);
+                delay(function(){
                 window.location.replace("/aquaspace/frontend/src/Admin/AdminVerify.html")       
+                },5000);      
             },
             error: function(errMsg) {
-                window.location.replace("../src/Error"+errMsg.status+".html");
+                window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
 });
