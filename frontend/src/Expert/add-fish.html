@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
+    <link rel="stylesheet" href="../../css/dashboard-styles.css">
+    <link rel="stylesheet" href="../../css/add-blog.css">
+    <!-- <link rel="stylesheet" href="../../css/cart.css"> -->
+</head>
+
+<body>
+    <input type="checkbox" id="checkbox">
+    <header class="header">
+        <div class="u-name">
+            <img src="../../images/logo.png"><span>AquaSpace</span>
+            <label for="checkbox">
+                <i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
+            </label>
+        </div>
+        <div class="icons">
+            <i class="fa fa-bell" aria-hidden="true"></i>
+            <i class="fa fa-user" aria-hidden="true"></i>
+        </div>
+    </header>
+    <div class="body">
+        <nav class="side-bar">
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-home fa-xs" aria-hidden="true"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Account Overview</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-unlock-alt" aria-hidden="true"></i>
+                        <span>Reset Password</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-bell" aria-hidden="true"></i>
+                        <span>Notification Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-newspaper" aria-hidden="true"></i>
+                        <span>Articles</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-user-check" aria-hidden="true"></i>
+                        <span>Requests</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-question" aria-hidden="true"></i>
+                        <span>Questions</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-award" aria-hidden="true"></i>
+                        <span>Contribution</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <section class="section-1">
+
+            <div class="wrapper">
+                <div class="box">
+                    <div class="js--image-preview"></div>
+                    <div class="upload-options">
+                        <label>
+                            <input type="file" id="inventory-img1" class="image-upload"
+                                onchange="encodeImageFileAsURL1(this)">
+                        </label>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="js--image-preview"></div>
+                    <div class="upload-options">
+                        <label>
+                            <input type="file" id="inventory-img2" class="image-upload"
+                                onchange="encodeImageFileAsURL2(this)">
+                        </label>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="js--image-preview"></div>
+                    <div class="upload-options">
+                        <label>
+                            <input type="file" id="inventory-img3" class="image-upload"
+                                onchange="encodeImageFileAsURL3(this)">
+                        </label>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="js--image-preview"></div>
+                    <div class="upload-options">
+                        <label>
+                            <input type="file" id="inventory-img4" class="image-upload"
+                                onchange="encodeImageFileAsURL4(this)">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="add-data">
+                <div class="form">
+
+                    <label>
+                        <span class="fname">Fish Name</span>
+                        <input type="text" name="fname">
+                    </label>
+                    <label>
+                        <span class="fname">Other Names</span>
+                        <input type="text" name="fname">
+                    </label>
+
+                    <label>
+                        <span class="lname">Description</span>
+                        <textarea id="description" name="reason" rows="5" cols="100"></textarea>
+                    </label>
+                    <label>
+                        <span>Max water Temp</span>
+                        <input type="text" name="houseadd" prequired>
+                    </label>
+                    <label>
+                        <span>Pet Max Length</span>
+                        <input type="text" name="city">
+                    </label>
+                    <label>
+                        <span>Water Parameters-PH Max</span>
+                        <input type="text" name="city">
+                    </label>
+                    <label>
+                        <span>Special Diet</span>
+                        <input type="text" name="city">
+                    </label>
+                    <label>
+                        <span>Water Parameters-PH Min</span>
+                        <input type="text" name="city">
+                    </label>
+                    <label>
+                        <span>Min Water Temp</span>
+                        <input type="text" name="city">
+                    </label>
+                    <label>
+                        <span>Environment</span>
+                        <input type="text" name="city">
+                    </label>
+                    <label>
+                        <span>Native To</span>
+                        <input type="text" name="city">
+                    </label>
+                    <label>
+                        <span>Temperament</span>
+                        <input type="text" name="city">
+                    </label>
+                    <label>
+                        <span>Care Level</span>
+                        <input type="text" name="city">
+                    </label>
+                    <label>
+                        <span>Tank Size</span>
+                        <input type="text" name="city">
+                    </label>
+                    <label>
+                        <span>Compatible Fish</span>
+                        <select id="com-fish" name="selection">
+                            <option selected hidden value="">Select</option>
+                            <option value="fish1">Fish 1</option>
+                            <option value="fish2">Fish 2</option>
+                            <option value="fish3">Fish 3</option>
+                            <option value="fish4">Fish 4</option>
+                            <option value="fish5">Fish 5</option>
+                        </select>
+                        <button id="add">add</button>
+                    </label>
+                    <div class="compatible-fish-list">
+                       
+                    </div>
+
+                    <button id="save">SAVE</button>
+
+
+
+
+                </div>
+            </div>
+
+
+        </section>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/image-upload.js"></script>
+    <script src="../../js/expert/compatible-fish.js"></script>
+    
+</body>
+
+</html>

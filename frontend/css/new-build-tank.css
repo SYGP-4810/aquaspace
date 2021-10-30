@@ -38,9 +38,11 @@ input[text] {
   color: rgb(66, 66, 66);
   font-weight: 500;
 }
-
-.proceed {
-  background-color: #ec7f71;
+.items, .build{
+    display: none;
+}
+.proceed-1, .proceed-2 {
+  background-color: #4c6faf;
   width: 80px;
   border: none;
   border-radius: 4px;
@@ -54,4 +56,28 @@ input[text] {
   margin-left: 700px;
   cursor: pointer;
   margin-bottom: 50px;
+}
+
+.proceed{
+  background-color: #4caf81;
+  width: 80px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin-top: 20px;
+  cursor: pointer;
+  margin-bottom: 50px;
+}
+
+.build p {
+  font-weight: 400;
+}
+
+a{
+  color: white;
 }
