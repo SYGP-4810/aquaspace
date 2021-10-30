@@ -1,0 +1,307 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+.container {
+  max-width: 90%;
+  margin: auto;
+  margin-top: 20vh;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.container label ,.container  p{
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
+.container label span ,.container  p{
+  font-size: 13px;
+}
+
+.container label input {
+  margin-top: 13px;
+}
+
+.container label , .container p {
+  /* display: block; */
+  margin: 15px;
+}
+
+.container label > span , .container  p{
+  float: left;
+  width: 15%;
+  /* margin-top: 1px; */
+  padding-right: 10px;
+  font-size: 15px;
+}
+
+.container .address-checkbox, .container .img-question {
+  margin-top: 50px;
+}
+.container .address-checkbox input {
+  margin-top: 0;
+  margin-right: 20px;
+}
+.container .address-checkbox span, .container .img-question span{
+  width: 30%;
+  /* margin-left: 10px; */
+}
+.container .radio{
+  width: 100%;
+
+}
+
+.container .img-question img{
+  margin-left: 0px;
+}
+#img-question, #radio{
+  display: none;
+}
+
+.container
+input[type="text"],
+select,
+textarea{
+  width: 40%;
+  height: 30px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #dadada;
+  color: rgb(70, 69, 69);
+  
+}
+input[type="text"]:focus,
+select:focus,
+textarea:focus{
+  outline: none;
+}
+.container .radio span{
+  margin-left: 10px;
+  position: relative;
+  top: 6px;
+}
+
+textarea {
+  height: 150px;
+}
+
+.required {
+  color: rgb(194, 46, 46);
+}
+
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+h1 {
+  font-family: inherit;
+  margin: 0 0 0.75em 0;
+  color: #728c8d;
+  text-align: center;
+}
+.box {
+  display: block;
+  min-width: 200px;
+  height: 200px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+}
+.upload-options {
+  position: relative;
+  height: 30px;
+  /* background-color: cadetblue; */
+  cursor: pointer;
+  /* overflow: hidden; */
+  text-align: center;
+  transition: background-color ease-in-out 150ms;
+}
+/* .upload-options:hover {
+  background-color: #7fb1b3;
+} */
+.upload-options input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.upload-options label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+}
+.upload-options label::after {
+  content: 'add';
+  font-family: 'Material Icons';
+  position: absolute;
+  font-size: 2rem;
+  color: rgb(95, 95, 95);
+  top: -12px;
+  left: 80px;
+  /* top: calc(50% - 2.5rem); */
+  /* left: calc(50% - 1.25rem); */
+  z-index: 0;
+}
+.upload-options label span {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+  text-align: center;
+}
+.upload-options label span:hover i.material-icons {
+  color: lightgray;
+}
+.js--image-preview {
+  height: 170px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-image: url('');
+  background-color: white;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.js--image-preview::after {
+  content: "photo_size_select_actual";
+  font-family: 'Material Icons';
+  position: relative;
+  font-size: 4.5em;
+  color: rgba(230, 230, 230, 1);
+  top: calc(50% - 3rem);
+  left: calc(50% - 2.25rem);
+  z-index: 0;
+}
+.js--image-preview.js--no-default::after {
+  display: none;
+}
+.js--image-preview:nth-child(2) {
+  background-image: url('http://bastianandre.at/giphy.gif');
+}
+i.material-icons {
+  transition: color 100ms ease-in-out;
+  font-size: 2.25em;
+  line-height: 55px;
+  color: white;
+  display: block;
+}
+.drop {
+  display: block;
+  position: absolute;
+  background: rgba(95, 158, 160, 0.2);
+  border-radius: 100%;
+  transform: scale(0);
+}
+.animate {
+  animation: ripple 0.4s linear;
+}
+@keyframes ripple {
+  100% {
+    opacity: 0;
+    transform: scale(2.5);
+ }
+}
+
+
+
+.ui-autocomplete { position: absolute; cursor: default; background:rgb(147, 174, 182) }   
+
+/* workarounds */
+html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+.ui-menu {
+  border: 1px rgb(110, 108, 108) solid;
+  /* border-radius: 5px; */
+    list-style:none;
+    padding: 2px;
+    margin: 0;
+    display:block;
+    float: left;
+}
+.ui-menu .ui-menu {
+    margin-top: -3px;
+}
+.ui-menu .ui-menu-item {
+    margin:0;
+    padding: 0;
+    zoom: 1;
+    float: left;
+    clear: left;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 300;
+    border-bottom: 1px rgb(68, 68, 68) solid;
+}
+
+.ui-menu-item:last-child{
+  border-bottom: none;
+}
+.ui-menu .ui-menu-item a {
+    text-decoration:none;
+    display:block;
+    padding:.2em .4em;
+    line-height:1.5;
+    zoom:1;
+}
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+    font-weight: normal;
+    margin: -1px;
+}
+
+
+#btn{
+  background-color: #4c6faf; /* Green */
+  width: 80px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin-top: 50px;
+  margin-left: 300px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+#btn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#location-btn{
+  background-color: #b6b5b5; /* Green */
+  width: 130px;
+  border: none;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin-top: 50px;
+  /* margin-left: 300px; */
+  cursor: pointer;
+}

@@ -1,0 +1,50 @@
+a:visited {
+    text-decoration: none;
+    color: #888888;
+  }
+
+  .container .small-container-1{
+    max-width: 90%;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+ .container .small-container-1 .col-4 {
+     flex-basis: 25%;
+ }
+
+ .container .small-container-1 h3{
+    color: #555555;
+    font-weight: 600;
+
+  }
+
+ 
+  .topics {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .topics p {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 18vh;
+    font-size: 22px;
+    font-weight: 500;
+    color: #888888;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  
+  /* .topics i {
+    color: #828283;
+    border: 1px solid #828283;
+    padding: 12px;
+    
+  } */

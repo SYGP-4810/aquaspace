@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/fontawesome-free-5.15.4-web/css/all.css">
+  <link rel="stylesheet" href="../css/landing-styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Homepage</title>
+</head>
+<!-- hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh -->
+
+<body>
+  <div class="container">
+    <div class="nav">
+      <div class="logo">
+        <img src="../images/logo.png" alt="">
+        <h2>AquaSpace</h2>
+      </div>
+      <div class="search_box">
+        <div class="dropdown">
+          <div class="default_option">All</div>
+          <ul>
+            <li>All</li>
+            <li>Fish</li>
+            <li>Articles</li>
+          </ul>
+        </div>
+        <div class="search_field">
+          <input type="text" class="input">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+      <div class="nav-links">
+        <ul>
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="Reg/fish-data.html">Blog</a></li>
+          <li id="tank"><a href="Reg/build-tank.html">Build Tank</a></li>
+          <li id="post"><a href="#">Add Post</a>
+            <div class="sub-menu sub-menu-1">
+              <ul>
+                <li><a href="Reg/add-fish-post.html">Fish</a></li>
+                <li><a href="Reg/add-other-post.html">Equipment</a></li>
+                <li><a href="Reg/add-other-post.html">Plant</a></li>
+                <li><a href="Reg/add-adopt-post.html">Adopt</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li id="cart"><a href="Reg/cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
+          <div class="notifications">
+            <li id="bell">
+              <a href="#">
+                <i class="fas fa-bell fa-lg"></i></a>
+            </li>
+            <div class="notification_dd">
+              <ul class="notification_ul">
+                <li>
+                  <div class="notify_icon">
+                    <img src="../images/download.png" alt="">
+                  </div>
+                  <div class="notify_data">
+                    <div class="titlee">
+                      Lorem, ipsum dolor.
+                    </div>
+                    <div class="sub_title">
+                      Lorem ipsum dolor sit amet consectetur.
+                    </div>
+                  </div>
+                </li>
+              
+                <li>
+                  <div class="notify_icon">
+                    <img src="../images/download.png" alt="">
+                  </div>
+                  <div class="notify_data">
+                    <div class="titlee">
+                      Lorem, ipsum dolor.
+                    </div>
+                    <div class="sub_title">
+                      Lorem ipsum dolor sit amet consectetur.
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="notify_icon">
+                    <img src="../images/download.png" alt="">
+                  </div>
+                  <div class="notify_data">
+                    <div class="titlee">
+                      Lorem, ipsum dolor.
+                    </div>
+                    <div class="sub_title">
+                      Lorem ipsum dolor sit amet consectetur.
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="notify_icon">
+                    <img src="../images/download.png" alt="">
+                  </div>
+                  <div class="notify_data">
+                    <div class="titlee">
+                      Lorem, ipsum dolor.
+                    </div>
+                    <div class="sub_title">
+                      Lorem ipsum dolor sit amet consectetur.
+                    </div>
+                  </div>
+                </li> 
+                <li class="show_all">
+                  <p class="link">Show All Activities</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <li id="account"><a href="#"><i class="fas fa-user-circle fa-lg"></i></a>
+            <div class="sub-menu sub-menu-2">
+              <ul class="options">
+                <li id="profile" style="cursor:pointer;">Profile</li>
+                <li id="logOut" style="cursor:pointer;">Logout</li>
+              </ul>
+            </div>
+          </li>
+          <li id="login"><a href="login.html">Login</a></li>
+          <li id="signup"><a href="signup.html">Sign up</a></li>
+        </ul>
+      </div>
+    </div>
+    <section class="showcase">
+      <video src="../images/landing.mp4" muted loop autoplay></video>
+      <div class="overlay"></div>
+
+      <div class="msg-container">
+        <div id="slider">
+          <div class="text">
+            <h2>Welcome to AquaSpace!</h2>
+            <p style="font-size:20px;">An online marketplace specifically dedicated to
+              all fish owners, store owners and fish enthusiasts spread across the country. If you
+              are a fish lover, this is where you can get your
+              hands on anything and everything fish.
+            </p>
+            <a href="Reg/category.html">SHOP</a>
+          </div>
+          <div class="text">
+            <h2>Location based marketplace</h2>
+            <!-- <h3>Lorem Ipsum</h3> -->
+            <p>Lets you find buyers and sellers near you based on your Location.
+              Find aquarium stores all around the country to buy all your fish
+              and equipments needed to build your tank.
+            </p>
+            <a href="Reg/category.html">SHOP</a>
+          </div>
+          <div class="text">
+            <h2>Read Our Aquapedia</h2>
+            <!-- <h4>Read articles and expand your knowledge <br>about your favorite fish</h4> -->
+            <p>CentralizedYou have access to the exclusive fish database
+              that is maintained by the experts in the field. Read articles
+              and expand your knowledge about your favorite fish.
+            </p>
+            <a href="Reg/articles.html">VIEW</a>
+          </div>
+          <div class="text">
+            <h2>Put up your fish up for adoption</h2>
+            <!-- <h3>Lorem Ipsum</h3> -->
+            <p>You can put up your fish for adoption and give a fellow fish lover
+              an opportunity to have a beautiful experience giving a home to your fish.
+              Add a fish post under adoption.
+            </p>
+            <a href="Reg/add-adopt-post.html">Add Adopt Post</a>
+          </div>
+        </div>
+      </div>
+      <div class="controller">
+        <div id="line1"></div>
+        <div id="line2"></div>
+        <div id="line3"></div>
+        <div id="line4"></div>
+        <div id="active"></div>
+      </div>
+    </section>
+  </div>
+  <div id="sections" class="small-container">
+    <h2 class="title"><a href="Reg/category.html">Newly Added</a></h2>
+    <div class="row" id="newlyAddedFishContent">
+    </div>
+  </div>
+  <div class="small-container">
+    <h2 class="title"><a href="Reg/category.html">Fish</a></h2>
+    <div class="row" id="fishContent">
+    </div>
+  </div>
+  <div class="small-container">
+    <h2 class="title"><a href="Reg/category.html">Plants</a></h2>
+    <div class="row" id="plantContent">
+    </div>
+  </div>
+  </div>
+  <div class="small-container">
+    <h2 class="title"><a href="#">Equipment</a></h2>
+    <div class="row" id="equipmentContent">
+    </div>
+  </div>
+
+  
+  <footer class="footer-distributed">
+
+    <div class="footer-left">
+
+      <div class="logo">
+        <img src="../images/logo.png" alt="">
+        <h2>AquaSpace</h2>
+      </div>
+
+      <p class="footer-links">
+        <a href="#" class="link-1">Home</a>
+
+        <a href="Reg/articles.html">Blog</a>
+
+        <a href="#">Add Post</a>
+
+        <a href="Reg/build-tank.html">Build Tank</a>
+      </p>
+      <p class="footer-company-name">AquaSpace © 2021</p>
+    </div>
+
+    <div class="footer-center">
+      <div>
+        <i class="fa fa-phone"></i>
+        <p>077-1234567</p>
+      </div>
+
+      <div>
+        <i class="fa fa-envelope"></i>
+        <p><a href="mailto:support@company.com">aquaspace@gmail.com</a></p>
+      </div>
+
+    </div>
+
+    <div class="footer-right">
+
+      <p class="footer-company-about">
+        <span>About AquaSpace</span>
+        AquaSpace is an online quarium marketplace which allows you to connect with community of
+        fish owners, fish enthusiasts and aquarium stores.
+      </p>
+
+      <!-- <div class="footer-icons">
+
+        <a href="#"><i class="far fa-facebook"></i></a>
+        <a href="#"><i class="far fa-twitter"></i></a>
+
+      </div> -->
+
+    </div>
+
+  </footer>
+
+  <script src="../js/landing-app.js"></script>
+  <script src="../js/landing-ani.js"></script>
+  <script src="../js/notif.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+.small-container-mini {
+  margin-bottom: 50px;
+}
+
+input{
+    outline: none;
+}
+
+.small-container-mini label {
+  margin-left: 50px;
+}
+.small-container-mini select,
+input[text] {
+  width: 200px;
+  font-size: 14px;
+  outline: none;
+  border: rgb(168, 168, 168) 1px solid;
+}
+
+.q{
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.q label{
+    margin-left: 10px;
+}
+
+#fish-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.fish-item {
+  margin-top: 40px;
+}
+.fish-item h4 {
+  color: rgb(66, 66, 66);
+  font-weight: 500;
+}
+.items, .build{
+    display: none;
+}
+.proceed-1, .proceed-2 {
+  background-color: #4c6faf;
+  width: 80px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin-top: 20px;
+  margin-left: 700px;
+  cursor: pointer;
+  margin-bottom: 50px;
+}
+
+.proceed{
+  background-color: #4caf81;
+  width: 80px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin-top: 20px;
+  cursor: pointer;
+  margin-bottom: 50px;
+}
+
+.build p {
+  font-weight: 400;
+}
+
+a{
+  color: white;
+}

@@ -43,29 +43,37 @@
         <label for="email">
           <input type="email" id="email" placeholder="Email">
           <span>Email</span>
-        </label> 
+        </label>
     </form>
     <div class="next-nav">
       <button type="button" class="verify">Verify</button>
     </div>
     </div>
     <div class="tab">
-      <form id="tab">
+      <form id="tab1">
         <h4>Regular Account</h4>
+        <label for="code">
+          <input type="text" name="code" id="code1" placeholder="verification code" >
+            <span>verify code</span>
+        </label>
         <label for="first name">
-          <input type="text" id="first name" placeholder="First Name">
+          <input type="text" id="fName1" placeholder="First Name">
           <span>First Name</span>
         </label>
         <label for="last name">
-          <input type="text" id="last name" placeholder="Last Name">
+          <input type="text" id="lName1" placeholder="Last Name">
           <span>Last Name</span>
+        </label>
+        <label for="tp">
+          <input type="text" id="tp1" placeholder="telephone number">
+          <span>Telephone number</span>
         </label> 
         <label for="address">
-          <input type="text" id="address" placeholder="Address">
+          <input type="text" id="address1" placeholder="Address">
           <span>Address</span>
         </label>
         <label for="city">
-          <input type="text" id="city" placeholder="City">
+          <input type="text" id="city1" placeholder="City">
           <span>City</span>
         </label> 
         <!-- <label for="email">
@@ -73,110 +81,138 @@
           <span>Email</span>
         </label>  -->
         <label for="password">
-          <input type="password" id="password" placeholder="Password">
+          <input type="password" id="password1" placeholder="Password">
           <span>Password</span>
         </label>
         <label for="confirm password">
-          <input type="password" id="confirm password" placeholder="Confirm Password">
+          <input type="password" id="cPassword1" placeholder="Confirm Password">
           <span>Confirm Password</span>
         </label> 
         <div class="checkbox">
-          <input type="checkbox" id="checkbox"> 
+          <input type="checkbox" id="checkbox1"> 
           <p>I agree to all the <a href="#"><strong>Terms</strong></a> and <a href="#"><strong>Conditions</strong></a></p>
         </div>
-        <button type="button" class="submit">Sign Up</button> 
+        <button type="button" class="submit" id="signUp1">Sign Up</button> 
       </form>
     </div>
     <div class="tab">
-      <form id="tab">
+      <form id="tab2" name="verifiedExpert" enctype="multipart/form-data">
       <h4>Verified Expert</h4>
+      <label for="code">
+        <input type="text" name="code" id="code2" placeholder="verify code" >
+          <span>verification code</span>
+      </label>
       <label for="first name">
-        <input type="text" id="first name" placeholder="First Name">
+        <input type="text" id="fName2" placeholder="First Name">
         <span>First Name</span>
       </label>
       <label for="last name">
-        <input type="text" id="last name" placeholder="Last Name">
+        <input type="text" id="lName2" placeholder="Last Name">
         <span>Last Name</span>
+      </label>
+      <label for="tp">
+        <input type="text" id="tp2" placeholder="telephone number">
+        <span>Telephone number</span>
       </label> 
       <label for="address">
-        <input type="text" id="address" placeholder="Address">
+        <input type="text" id="address2" placeholder="Address">
         <span>Address</span>
       </label>
       <label for="City">
-        <input type="text" id="city" placeholder="City">
+        <input type="text" id="city2" placeholder="City">
         <span>City</span>
       </label> 
       <!-- <label for="email">
-        <input type="email" id="email" placeholder="Email">
+        <input type="email" id="email2" placeholder="Email">
         <span>Email</span>
       </label>  -->
       <div class="qualifications">
         <p>Qualifications</p>
-        <input type="file" id="qualifications" name="qualifications">
+        <input type="file" id="qualifications" name="qualifications" accept=".jpg, .jpeg, .png">
       </div>
       <label for="password">
-        <input type="password" id="password" placeholder="Password">
+        <input type="password" id="password2" placeholder="Password">
         <span>Password</span>
       </label>
       <label for="confirm password">
-        <input type="password" id="confirm password" placeholder="Confirm Password">
+        <input type="password" id="cPassword2" placeholder="Confirm Password">
         <span>Confirm Password</span>
       </label> 
       <div class="checkbox">
-        <input type="checkbox" id="checkbox">
+        <input type="checkbox" id="checkbox2">
         <p>I agree to all the <a href="#"><strong>Terms</strong></a> and <a href="#"><strong>Conditions</strong></a></p>
       </div>
-      <button type="button" class="submit">Sign Up</button>
+      <button type="button" class="submit" id="signUp2">Sign Up</button>
     </form>
     </div>
     <div class="tab">
-    <form id="tab">
+    <form id="tab3">
       <h4>Store Account</h4>
+      <label for="code">
+        <input type="text" id="code3" name="code" placeholder="verify code" >
+          <span>verify code</span>
+      </label>
       <label for="company name">
-        <input type="text" id="first name" placeholder="Company Name">
+        <input type="text" id="cName" placeholder="Company Name">
         <span>Company Name</span>
       </label>
       <label for="reg No">
-        <input type="text" id="reg no" placeholder="Registration No">
+        <input type="text" id="regNo" placeholder="Registration No">
         <span>Registration No</span>
       </label> 
       <label for="telephone">
-        <input type="tel" id="telephone" placeholder="Telephone No">
+        <input type="tel" id="tp3" placeholder="Telephone No">
         <span>Telephone No</span>
       </label>
+      <label for="city">
+        <input type="text" id="city3" placeholder="city">
+        <span>city</span>
+      </label>
       <label for="address">
-        <input type="text" id="address" placeholder="Store Address">
+        <input type="text" id="address3" placeholder="Store Address">
         <span>Store Address</span>
       </label> 
       <label for="manager name">
-        <input type="text" id="manager name" placeholder="Manager Name">
+        <input type="text" id="manName" placeholder="Manager Name">
         <span>Manager Name</span>
       </label> 
       <label for="manager NIC">
-        <input type="text" id="manager NIC" placeholder="Manager NIC">
+        <input type="text" id="manNIC" placeholder="Manager NIC">
         <span>Manager NIC</span>
-      </label> 
+      </label>
+      <label for="bank name">
+        <input type="text" id="bankName" placeholder="Bank No">
+        <span>Bank name</span>
+      </label>
+      <label for="Branch id">
+        <input type="text" id="branchId" placeholder="Branch Id">
+        <span>Branch Id</span>
+      </label>
+      <label for="Account No">
+        <input type="text" id="accountNo" placeholder="Account No">
+        <span>Account No</span>
+      </label>  
       <div class="delivery">
         <p>Modes of Delivery</p><br>
-        <input type="checkbox" name="delivery" value="In-store-pickup"><p> In store Pick-up</p><br>
-        <input type="checkbox" name="delivery" value="In-store-delivery-service"><p> In Store Delivery Service</p><br>
+        <input type="checkbox" name="delivery" id="inStorePickUp"><p> In store Pick-up</p><br>
+        <input type="checkbox" name="delivery" id="inStoreDelivery"><p> In Store Delivery Service</p><br>
         <div class="form-delivery">
         </div>
-        <input type="checkbox" name="delivery" value="Third-party-delivery-service"><p> Third Party Delivery Service</p>
+        <input type="checkbox" name="delivery" id="thirdPartyDelivery"><p> Third Party Delivery Service</p>
       </div>
       <label for="password">
-        <input type="password" id="password" placeholder="Password">
+        <input type="password" id="password3" placeholder="Password">
         <span>Password</span>
       </label>
       <label for="confirm password">
-        <input type="password" id="confirm password" placeholder="Confirm Password">
+        <input type="password" id="cPassword3" placeholder="Confirm Password">
         <span>Confirm Password</span>
       </label> 
       <div class="checkbox">
-          <input type="checkbox" id="checkbox">
+          <input type="checkbox" id="checkbox3">
           <p>I agree to all the <a href="#"><strong>Terms</strong></a> and <a href="#"><strong>Conditions</strong></a></p>
       </div>
-      <button type="button" class="submit">Sign Up</button> 
+      <button type="button" class="submit" id="signUp3">Sign Up</button> 
     </form>
     </div>  
   </div> 

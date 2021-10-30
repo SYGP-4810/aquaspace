@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
+	<link rel="stylesheet" href="../../css/dashboard-styles.css">
+    <link rel="stylesheet" href="../../css/Store.css">
+    <title>Dashboard</title>
+</head>
+<body>
+	<input type="checkbox" id="checkbox">
+	<header class="header" style="z-index: 1;">
+		<div class="u-name">
+            <img class="logo" src="../../images/logo.png"><span class="logo" >AquaSpace</span>
+			<label for="checkbox">
+				<i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
+			</label>
+		</div>
+        <div class="icons">
+            <i class="fa fa-bell" aria-hidden="true"></i>
+            <i class="fa fa-user" aria-hidden="true"></i>
+        </div>
+	</header>
+	<div class="body">
+		<nav class="side-bar">
+			<ul>
+				<li>
+                    <a href="../Store/StoreHome.html">
+                        <i class="fas fa-home fa-xs" aria-hidden="true"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreEdit.html">
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreReset.html">
+                        <i class="fas fa-unlock-alt" aria-hidden="true"></i>
+                        <span>Reset Password</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreStoreFront.html">
+                        <i class="fas fa-gifts" aria-hidden="true"></i>
+                        <span>Storefront</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreInventory.html">
+                        <i class="fas fa-tags" aria-hidden="true"></i>
+                        <span>Inventory</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreOrders.html">
+                        <i class="fas fa-shopping-basket" aria-hidden="true"></i>
+                        <span>Orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreReviews.html">
+                        <i class="fas fa-flag-checkered" aria-hidden="true"></i>
+                        <span>Reviews & Questions</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreRefunds.html">
+                        <i class="fas fa-money-check-alt" ria-hidden="true"></i>
+                        <span>Refunds</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreReports.html">
+                        <i class="fas fa-clipboard" aria-hidden="true"></i>
+                        <span>Generate Reports</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Store/StoreNotifi.html">
+                        <i class="fas fa-bell" aria-hidden="true"></i>
+                        <span>Notification Settings</span>
+                    </a>
+                </li>
+			</ul>
+		</nav>
+		<section class="section-1">
+            <div class="head-titles">
+                <h1>STOREFRONT</h1>
+            </div>
+            <div class="storefront">
+                <div class="store-img">
+                    <div class="cover">
+                        <img id="cover-pic" src="../../images/cover.jpg" alt="cover image" />
+                        <label class="cover-lable" >
+                            <input type='file' id="cover-img-u" accept="image/png, image/jpeg"/>
+                            +
+                        </label> 
+                    </div>
+                    <div class="profile">
+                        <img id="profile-img" src="../../images/profile.jpg" alt="profile image" />
+                        <label class="profile-lable" >
+                            <input type='file' id="profile-img-u" accept="image/png, image/jpeg"/>
+                            +
+                        </label>
+                    </div>
+                </div>
+                <div class="store-title">
+                     <h3>Aqua Shop</h3>
+                     <span>member since 20/12/2021</span>
+                </div>
+                <!-- <div class="open-time">
+                    <span>Closed Opens 9:00 am Monday</span>
+                </div> -->
+                <div class="address">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>No 23, Jaya Mw, Kohuwala, Nugegoda</span>
+                </div>
+                <div class="about">
+                    <span>About the store</span>
+                    <p contenteditable="true">write about your store</p>
+                </div>
+                <input type="submit" class="s-button" value="SAVE" id="">
+                <div class="item-list">
+                    <div class="item-title">
+                        <h3>Store Items</h3>
+                        <a href="../../src/Store/StoreStoreFrontItem.html" class="button" id="item-btn">Edit</a>                        
+                    </div>
+                    <div class="items">
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list">
+                    <div class="item-title">
+                        <h3>New Items</h3>
+                        <a href="#" class="button" id="item-btn">Edit</a>                        
+                    </div>
+                    <div class="items">
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list">
+                    <div class="item-title">
+                        <h3>Best Sellers</h3>                       
+                    </div>
+                    <div class="items">
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <img src="../../images/fish-hook.png" alt="">
+                            <label for="text">
+                                <span style="font-weight: 600;">Name: -</span>
+                                <span>Fish hook</span>
+                            </label>
+                            <label for="text">
+                                <span style="font-weight: 600;">Price: -</span>
+                                <span>Rs 250.00</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+		</section>
+	</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/logo.js"></script>
+    <script src="../../js/Storefront.js"></script>
+</body>
+</html>

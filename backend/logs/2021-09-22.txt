@@ -1,8 +1,0 @@
-[22-Sep-2021 09:48:25 Europe/Berlin] with error code : 404' with message 'No route matched.'
-Stack trace: #0 C:\xampp\htdocs\aquaspace\backend\public\index.php(45): Core\Router->dispatch('', Array)
-#1 {main}
-Thrown in 'C:\xampp\htdocs\aquaspace\backend\Core\Router.php' on line 129
-[22-Sep-2021 16:42:09 Europe/Berlin] with error code : 404' with message 'No route matched.'
-Stack trace: #0 C:\xampp\htdocs\aquaspace\backend\public\index.php(45): Core\Router->dispatch('wrongUrl', Array)
-#1 {main}
-Thrown in 'C:\xampp\htdocs\aquaspace\backend\Core\Router.php' on line 129

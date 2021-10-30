@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
+  <link rel="stylesheet" href="../../css/addpost.css">
+  <link rel="stylesheet" href="../../css/landing-styles.css">
+  <link rel="stylesheet" href="../../css/post-payment.css">
+  <title>Category Page</title>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="logo">
+      <img src="../../images/logo.png" alt="">
+      <h2>AquaSpace</h2>
+    </div>
+    <div class="search_box">
+      <div class="dropdown">
+        <div class="default_option">All</div>
+        <ul>
+          <li>All</li>
+          <li>Fish</li>
+          <li>Articles</li>
+        </ul>
+      </div>
+      <div class="search_field">
+        <input type="text" class="input" placeholder="Search">
+        <i class="fas fa-search"></i>
+      </div>
+    </div>
+    <div class="nav-links">
+      <ul>
+        <li class="active"><a href="../index.html">Home</a></li>
+        <li><a href="articles.html">Blog</a></li>
+        <li><a href="build-tank.html">Build Tank</a></li>
+        <li id="a_parent"><a href="#">Add Post</a>
+            <div id="a_child" class="sub-menu sub-menu-1">
+                <ul>
+                    <li><a href="add-fish-post.html">Fish</a></li>
+                    <li><a href="add-other-post.html">Equipment</a></li>
+                    <li><a href="add-fish-post.html">Plant</a></li>
+                    <li><a href="add-adopt-post.html">Adopt</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
+        <li><a href="#"><i class="fas fa-bell fa-lg"></i></a></li>
+        <li><a href="#"><i class="fas fa-user-circle fa-lg"></i></a>
+            <div class="sub-menu sub-menu-2">
+                <ul class="options">
+                    <li><a href="account-overview.html">Profile</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </div>
+    </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="post-details"><label>
+        <span>Upload your images</span>
+      </label>
+      <div class="wrapper">
+        <div class="box">
+          <div class="js--image-preview"></div>
+          <div class="upload-options">
+            <label>
+              <input id="img1" type="file" class="image-upload" onchange="encodeImageFileAsURL1(this)" />
+            </label>
+          </div>
+        </div>
+        <div class="box">
+          <div class="js--image-preview"></div>
+          <div class="upload-options">
+            <label>
+              <input id="img2" type="file" class="image-upload" onchange="encodeImageFileAsURL2(this)" />
+            </label>
+          </div>
+        </div>
+        <div class="box">
+          <div class="js--image-preview"></div>
+          <div class="upload-options">
+            <label>
+              <input id="img3" type="file" class="image-upload" onchange="encodeImageFileAsURL3(this)" />
+            </label>
+          </div>
+        </div>
+        <div class="box">
+          <div class="js--image-preview"></div>
+          <div class="upload-options">
+            <label>
+              <input id="img4" type="file" class="image-upload" onchange="encodeImageFileAsURL4(this)" />
+            </label>
+          </div>
+        </div>
+      </div>
+      <!-- <label>
+        <span class="fname">First Name<span class="required">*</span></span>
+        <input type="text" name="fname">
+      </label> -->
+      <label>
+        <span class="category">Category<span class="required">*</span></span>
+        <select id="category" name="selection">
+          <option selected hidden value="">Select</option>
+          <option value="1">Fish</option>
+          <option value="2">Plant</option>
+        </select>
+      </label>
+      <label>
+        <span>Name<span class="required">*</span></span>
+        <input type="text" id="auto" placeholder="enter fish/plant name" autocomplete="off" />
+        <!-- <input class="typeahead form-control" type="text" placeholder="Search Film Name" autocomplete="off"> -->
+      </label>
+      <!-- <label>
+        <span>Description<span class="required"></span></span>
+        <textarea id="description" name="reason" rows="5" cols="100" readonly></textarea>
+      </label> -->
+      <label id="img-question" class="img-question">
+        <span>Is this the fish you are looking for? (Proceed after answering the question)</span>
+        <img id="db-img" src="" width="250px">
+      </label>
+      <label id="radio" class="radio" required>
+        <input id="radio_1" type="radio" name="dbt" value="1"> Yes
+        <input id="radio_2" type="radio" name="dbt" value="2"> No
+      </label>
+      <label>
+        <span>Description<span class="required"></span></span>
+        <textarea id="description" name="reason" rows="5" cols="100"></textarea>
+      </label>
+      <label>
+        <span>Quantity<span class="required"></span></span>
+        <input id="quantity" type="text" name="quantity">
+      </label>
+      <label>
+        <span>Price<span class="required">*</span></span>
+        <input id="price" type="text" name="price">
+      </label>
+      <label>
+        <span>Post Duration<span class="required">*</span></span>
+        <select id="duration" name="selection">
+          <option selected hidden value="">Select </option>
+          <option value="1">1 week</option>
+          <option value="2">2 weeks</option>
+          <option value="3">3 weeks</option>
+          <option value="4">1 month</option>
+          <option value="5">2 months</option>
+          <option value="6">3 months</option>
+          <option value="7">more than 3 months</option>
+        </select>
+      </label>
+      <label class="address-checkbox">
+        <input type="checkbox" id="chkBox" name="HelpCheckbox" value="Help" />
+        <span>Use the address I gave you</span>
+      </label>
+      <label>
+        <span>Address<span class="required">*</span></span>
+        <input id="address" type="text" name="address">
+      </label>
+      <button id="location-btn">Take My Location</button>
+      <label>
+        <span>Latitude</span>
+        <input id="lat" type="text" name="location">
+      </label>
+      <label>
+        <span>Langitude</span>
+        <input id="lang" type="text" name="location">
+      </label>
+
+      <button id="btn">next</button>
+    </div>
+
+    <div class="checkout">
+      <div class="d-flex">
+        <form>
+          <label>
+            <span class="fname">First Name<span class="required">*</span></span>
+            <input type="text" name="fname">
+          </label>
+          <label>
+            <span class="lname">Last Name <span class="required">*</span></span>
+            <input type="text" name="lname">
+          </label>
+          <label>
+            <span>Address<span class="required">*</span></span>
+            <input type="text" name="houseadd" prequired>
+          </label>
+          <label>
+            <span>Card Type<span class="required">*</span></span>
+            <input type="radio" name="dbt" value="dbt" checked><i class="fab fa-cc-visa ms"></i>
+            <input type="radio" name="dbt" value="dbt" checked><i class="fab fa-cc-mastercard"></i>
+          </label>
+          <label>
+            <span>Card Number <span class="required">*</span></span>
+            <input type="text" name="city">
+          </label>
+          <div class="f"><label>
+              <span>Expiration Month <span class="required">*</span></span>
+              <select name="selection">
+                <option value="select">Select </option>
+                <option value="AFG">Januaru</option>
+                <option value="ALA">February</option>
+                <option value="select">March</option>
+                <option value="AFG">April</option>
+                <option value="ALA">May</option>
+                <option value="select">June</option>
+                <option value="AFG">July</option>
+                <option value="ALA">August</option>
+                <option value="select">September</option>
+                <option value="AFG">October</option>
+                <option value="ALA">November</option>
+                <option value="ALA">December</option>
+              </select>
+            </label>
+            <label>
+              <span>Expiration Year <span class="required">*</span></span>
+              <select name="selection">
+                <option value="select">Select </option>
+                <option value="AFG">2021</option>
+                <option value="ALA">2022</option>
+                <option value="select">2023</option>
+                <option value="AFG">2024</option>
+                <option value="ALA">2025</option>
+                <option value="select">2026</option>
+                <option value="AFG">2027</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            <span>CVN<span class="required">*</span></span>
+            <input type="text" name="city">
+          </label>
+
+        </form>
+
+        <div class="Yorder">
+          <table>
+            <tr>
+              <th colspan="2">Your Payment</th>
+            </tr>
+            <tr>
+              <td>Duration</td>
+              <td>2 weeks</td>
+            </tr>
+            <tr>
+              <td>Subtotal</td>
+              <td>$20.00</td>
+            </tr>
+          </table><br>
+          <button id="order" type="button">PAY</button>
+        </div><!-- Yorder -->
+      </div>
+    </div>
+
+  </div>
+
+
+  <br>
+  <br>
+
+  <footer class="footer-distributed">
+
+    <div class="footer-left">
+
+      <div class="logo">
+        <img src="../../images/logo.png" alt="">
+        <h2>AquaSpace</h2>
+      </div>
+
+      <p class="footer-links">
+        <a href="#" class="link-1">Home</a>
+        
+        <a href="Reg/articles.html">Blog</a>
+      
+        <a href="#">Add Post</a>
+        
+        <a href="Reg/build-tank.html">Build Tank</a>
+      </p>
+      <p class="footer-company-name">AquaSpace © 2021</p>
+    </div>
+
+    <div class="footer-center">
+      <div>
+        <i class="fa fa-phone"></i>
+        <p>077-1234567</p>
+      </div>
+
+      <div>
+        <i class="fa fa-envelope"></i>
+        <p><a href="mailto:support@company.com">aquaspace@gmail.com</a></p>
+      </div>
+
+    </div>
+
+    <div class="footer-right">
+
+      <p class="footer-company-about">
+        <span>About AquaSpace</span>
+        AquaSpace is an online quarium marketplace which allows you to connect with community of
+        fish owners, fish enthusiasts and aquarium stores.
+      </p>
+
+      <!-- <div class="footer-icons">
+
+        <a href="#"><i class="far fa-facebook"></i></a>
+        <a href="#"><i class="far fa-twitter"></i></a>
+
+      </div> -->
+
+    </div>
+
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js">
+  </script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
+  </script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script src="../../js/image-upload.js"></script>
+  <!-- <script src="../../js/add-fish-post.js"></script> -->
+  <script src="../../js/landing-app.js"></script>
+  <script src="../../js/Reg/new-add-fish-post.js"></script>
+
+</body>
+
+</html>

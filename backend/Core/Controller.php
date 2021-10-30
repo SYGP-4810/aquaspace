@@ -1,13 +1,18 @@
 <?php
 
 namespace Core;
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 /**
  * Base controller
  *
  * 
  */
-abstract class Controller
+class Controller extends \Core\Token
 {
 
     /**
@@ -73,5 +78,43 @@ abstract class Controller
      */
     protected function after()
     {
+    }
+
+    /**
+     * send email 
+     * @param string $to : to whom you are sending the email
+     * @param string $subject : subject of the email
+     * @param string $message : message of the email
+     */
+
+    public function sendMail($to, $subject, $message)
+    {
+
+
+
+
+
+        //Create an instance; passing `true` enables exceptions
+        $mail = new PHPMailer(true);
+
+        //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'ssl://smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'aquaspaceg48@gmail.com'; //                     //SMTP username
+        $mail->Password   = 'Aqua#2019';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+        //Recipients
+        $mail->setFrom('aquaspaceg48@gmail.com', 'Admin');
+        //Add a recipient
+        $mail->addAddress($to);               //Name is optional
+
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = $subject;
+        $mail->Body    = $message;
+        $mail->send();
     }
 }
