@@ -667,22 +667,37 @@ th {
   margin: 0px 60px 10px 60px;
 }
 
-.rates-table th {
+.s-rates-table th,.r-rates-table th {
   padding-left: 30px;
   padding-right: 30px;
   font-size: 20px;
   text-align: left;
+  white-space: nowrap ;
 }
 
-.rates-table td {
+.s-rates-table td,.r-rates-table td{
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 10px;
   text-align: center;
   font-size: 18px;
   text-align: left;
+  white-space: nowrap ;
 }
 
 .rates-table #type {
   border: none;
+}
+
+.r-rates-table input{
+  width: 100px;
+}
+
+.coin{
+  margin-top: 10px;
+}
+
+.coin span {
+  font-weight: bold;
+  margin-right: 10px;
 }

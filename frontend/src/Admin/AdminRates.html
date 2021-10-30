@@ -99,7 +99,7 @@
             <div class="rates">
                 <hr>
                 <h3>Store Rates</h3>
-                <table class="rates-table">
+                <table class="s-rates-table">
                     <tr>
                         <th>Price Range</th>
                         <th>Presentage</th>
@@ -147,10 +147,9 @@
                 </table>
                 <hr>
                 <h3>Regular user Rates</h3>
-                <table class="rates-table">
+                <table class="r-rates-table">
                     <tr>
                         <th rowspan="2">Price Range</th>
-                        <th colspan="6">Duration</th>
                     </tr>
                     <tr>
                         
@@ -208,10 +207,12 @@
                     </tr>
                 </table>
                 <hr>
-                <label for="coinPrice">
-                    <span>coin price</span>
-                    <input type="number" id="coinPrice">
-                </label>
+                <div class="coin">
+                    <label for="coinPrice">
+                        <span>Coin Price</span>
+                        <input type="number" id="coinPrice">
+                    </label>
+                </div>
                 <div class="btn">
                     <button id="updateRates" type="button" class="button">Update</button>
                 </div>
