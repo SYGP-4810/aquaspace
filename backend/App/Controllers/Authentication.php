@@ -215,7 +215,7 @@ class Authentication extends \Core\Controller
                     "password" => md5($password),
                     "user_type" => "1",
                     "user_status" => "4",
-                    "create_date" => $date
+                    "created_date" => $date
                 ];
                 $this->exec($this->save("user_auth", $dataToInsertAuthTable));
                 $stmt = $this->execute($this->get('user_auth', "*", "email ='" . $this->data["email"] . "'"));
