@@ -107,36 +107,36 @@
                 </div>
                 <div class="edit">
                     <form class="edit-form">
-                        <label for="sname">Store Name</label>
+                        <label for="sname">Store Name<span class="required">*</span></label>
                         <input type="text" id="sname" name="sname">
                         <br>
-                        <label for="regno">Registration No</label>
+                        <label for="regno">Registration No<span class="required">*</span></label>
                         <input type="text" id="regno" name="regno">
                         <br>
-                        <label for="tp">Telephone No</label>
+                        <label for="tp">Telephone No<span class="required">*</span></label>
                         <input type="text" id="tp" name="tp">
                         <br>
-                        <label for="city">City</label>
+                        <label for="city">City<span class="required">*</span></label>
                         <input type="text" id="city" name="city">
                         <br>
-                        <label for="address">Store Address</label>
+                        <label for="address">Store Address<span class="required">*</span></label>
                         <input type="text" id="address" name="address">
                         <br>
                         <button  type="button" id="location-btn">Take My Location</button>
                         <br>
-                        <label for="lat">Latitude</label>
+                        <label for="lat">Latitude<span class="required">*</span></label>
                         <input type="text" id="lat" name="lat">
                         <br>
-                        <label for="lang">Langitude</label>
+                        <label for="lang">Langitude<span class="required">*</span></label>
                         <input type="text" id="lang" name="lang">
                         <br>
-                        <label for="oname" >Owner Name</label>
+                        <label for="oname" >Owner Name<span class="required">*</span></label>
                         <input type="text" id="oname" name="oname">
                         <br>
-                        <label for="onic">Owner NIC</label>
+                        <label for="onic">Owner NIC<span class="required">*</span></label>
                         <input type="text" id="onic" name="onic">
                         <br>
-                        <label for="delivery">Modes of Delivery</label>
+                        <label for="delivery">Modes of Delivery<span class="required">*</span></label>
                         <div class="d-modes">
                             <div class="row">
                                 <input type="checkbox" name="delivery" id="inStorePickUp"><p>In Store Pick-up</p>
@@ -149,7 +149,7 @@
                             </div>
                         </div>
                         <br>
-                        <label for="cost">Delivery Charges</label>
+                        <label for="cost">Delivery Charges<span class="required">*</span></label>
                         <div class="cost">
                             <div class="store">
                                 <span>In Store Delivery Service</span>
@@ -162,15 +162,15 @@
                                     </tr>
                                     <tr>
                                         <td><b>1KG</b></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="110"></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="150"></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="150+"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="110" value="100" /></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="150" value="150"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="150+" value="200"></td>
                                     </tr>
                                     <tr>
                                         <td><b>+ 1KG</b></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="+110"></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="+150"></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="+150+"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="+110" value="10"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="+150" value="20"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="+150+" value="30"></td>
                                     </tr>
                                 </table>
                             </div>
@@ -186,15 +186,15 @@
                                     </tr>
                                     <tr>
                                         <td><b>1KG</b></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="210"></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="250"></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="250+"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="210" value="120"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="250" value="150"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="250+" value="170"></td>
                                     </tr>
                                     <tr>
                                         <td><b>+ 1KG</b></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="+210"></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="+250"></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="+250+"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="+210" value="15"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="+250" value="20"></td>
+                                        <td><input type="number" id="" min="0.00" step=".01" id="+250+" value="23"></td>
                                     </tr>
                                 </table>
                             </div>

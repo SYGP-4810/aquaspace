@@ -93,7 +93,7 @@ $("#auto").keyup(function () {
     dataType: "json",
     data: JSON.stringify(req),
     success: function (data) {
-      console.log(data);
+      // console.log(data);
       // if($('#radio_1').is(':checked')){
       //   console.log($('#radio_1').val());
       // }
@@ -153,7 +153,7 @@ $("#img1").change(function (e) {
   var fileName = e.target.files[0].name;
   fileExtension = fileName.split(".").pop();
   imgExtension1 = fileExtension;
-  console.log(imgExtension1);
+  // console.log(imgExtension1);
 });
 
 $("#img2").change(function (e) {
@@ -229,6 +229,7 @@ $("#btn").click(function () {
   let question = 0;
   let errors = [];
   let errFlag = 0;
+  let status = 1; //this soud be change acoding tothe auto data
   //validation criteria
 
   if ($("#radio_1").is(":checked")) {
@@ -255,14 +256,18 @@ $("#btn").click(function () {
     errors.push("Quantity is required");
     errFlag++;
   }
-  // if(description == ''){
-  //   errors.push("details required");
-  //   errFlag++;
-  // }
-  // if(question == 0){
-  //   errors.push("deliveryMode required");
-  //   errFlag++;
-  // }
+  if(description == ''){
+    errors.push("details required");
+    errFlag++;
+  }
+  if(duration == ""){
+    errors.push("duration required");
+    errFlag++;
+  }
+  if(address == ""){
+    errors.push("address required");
+    errFlag++;
+  }
 
   const acceptedFileTypes = ["png", "jpg", "jpeg"];
 
@@ -291,7 +296,7 @@ $("#btn").click(function () {
     $(".post-details").css("display", "none");
     $(".checkout").css("display", "block");
 
-    $("#order").click(function () {
+    $("#f-order").click(function () {
       var req = {
         product_name: name,
         duration: duration,
@@ -311,8 +316,10 @@ $("#btn").click(function () {
         exen2: imgExtension2,
         exen3: imgExtension3,
         exen4: imgExtension4,
+        type: 1,
+        status: status
       };
-      console.log(req);
+      
       $.ajax({
         type: "POST",
         url: setUrl("Reg/Reg/addPost"),
@@ -320,10 +327,11 @@ $("#btn").click(function () {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-          alert("Payment successful!");
-          window.location.replace(
-            "/aquaspace/frontend/src/index.html"
-          );
+          // console.log(data);
+          successMsg(["Added Fish"]);
+          delay(function(){
+          window.location.replace("/aquaspace/frontend/src/Reg/add-fish-post.html")
+          },5000)
         },
         error: function (errMsg) {
           // window.location.replace("../src/Error"+errMsg.status+".html");

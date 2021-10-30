@@ -144,10 +144,15 @@ class Reg extends \Core\Controller
 
         $date = date('Y-m-d H:i:s');
 
+<<<<<<< HEAD
         View::response(["id" => $id, "req" => $this->data]);
+=======
+        
+>>>>>>> rashmika
         $dataToInsert = [
             "product_name" => $this->data['product_name'],
-            "type" => $this->data['category'],
+            "type" => $this->data['type'],
+            "catagory" => $this->data['catagory'],
             "price" => $this->data['price'],
             "description" => $this->data['description'],
             "duration" => $this->data['duration'],
@@ -160,10 +165,12 @@ class Reg extends \Core\Controller
             "img3" => $iName3,
             "img4" => $iName4,
             "auth_id" => $id,
-            "created_date" => $date
+            "created_date" => $date,
+            "status" => $this->data['status']
         ];
-
+        // View::response($dataToInsert);
         $this->exec($this->save('products', $dataToInsert));
+        View::response("success");
     }
     // "product_name": product,
     // "duration": duration,

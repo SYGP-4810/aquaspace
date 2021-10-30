@@ -701,3 +701,15 @@ th {
   font-weight: bold;
   margin-right: 10px;
 }
+
+.time{
+  display: flex;
+  flex-direction: row;
+  float: right;
+  margin-right: 15px;
+}
+
+.time span{
+  font-weight: 500;
+  font-size: 1.2em;
+}
