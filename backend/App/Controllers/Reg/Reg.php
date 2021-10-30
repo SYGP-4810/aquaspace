@@ -6,7 +6,7 @@ use Core\View;
 
 
 /**
- * admin controller
+ * Regular user controller
  *
  * 
  */
@@ -27,12 +27,12 @@ class Reg extends \Core\Controller
         $iName1 = microtime(true) . "." . $this->data['exen1'];
         $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName1;
         $flag1 = file_put_contents($iDir1, base64_decode($this->data['img1']));
-        
+
         $iName2 = "";
         $iName2 = microtime(true) . "." . $this->data['exen2'];
         $iDir2 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName2;
         $flag2 = file_put_contents($iDir2, base64_decode($this->data['img2']));
-        
+
         $iName3 = "";
         $iName3 = microtime(true) . "." . $this->data['exen3'];
         $iDir3 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName3;
@@ -43,13 +43,13 @@ class Reg extends \Core\Controller
         $iDir4 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName4;
         $flag4 = file_put_contents($iDir4, base64_decode($this->data['img4']));
 
-        
+
         if (!$flag1) {
             throw new \Exception("file didn't come to backend");
         }
         if (!$flag2) {
             throw new \Exception("file didn't come to backend");
-        } 
+        }
         if (!$flag3) {
             throw new \Exception("file didn't come to backend");
         }
@@ -58,7 +58,7 @@ class Reg extends \Core\Controller
         }
 
         $date = date('Y-m-d H:i:s');
-        View::response(["id"=> $id, "req"=>$this->data]);
+        View::response(["id" => $id, "req" => $this->data]);
         $dataToInsert = [
             "product_name" => $this->data['product_name'],
             "type" => $this->data['category'],
@@ -86,7 +86,7 @@ class Reg extends \Core\Controller
         // $iName1 = "";
         // if($this->data['exen1'] != "")
         // {
-            
+
         // $iName1 = microtime(true) . "." . $this->data['exen1'];
         // $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/post/" . $iName1;
         // $flag1 = file_put_contents($iDir1, base64_decode($this->data['img1']));
@@ -98,7 +98,7 @@ class Reg extends \Core\Controller
         // $iName2 = "";
         // if($this->data['exen2']!= "")
         // {
-          
+
         // $iName2 = microtime(true) . "." . $this->data['exen2'];
         // $iDir2 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/post/" . $iName2;
         // $flag2 = file_put_contents($iDir2, base64_decode($this->data['img2']));
@@ -112,12 +112,12 @@ class Reg extends \Core\Controller
         $iName1 = microtime(true) . "." . $this->data['exen1'];
         $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName1;
         $flag1 = file_put_contents($iDir1, base64_decode($this->data['img1']));
-        
+
         $iName2 = "";
         $iName2 = microtime(true) . "." . $this->data['exen2'];
         $iDir2 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName2;
         $flag2 = file_put_contents($iDir2, base64_decode($this->data['img2']));
-        
+
         $iName3 = "";
         $iName3 = microtime(true) . "." . $this->data['exen3'];
         $iDir3 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName3;
@@ -128,13 +128,13 @@ class Reg extends \Core\Controller
         $iDir4 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName4;
         $flag4 = file_put_contents($iDir4, base64_decode($this->data['img4']));
 
-        
+
         if (!$flag1) {
             throw new \Exception("file didn't come to backend");
         }
         if (!$flag2) {
             throw new \Exception("file didn't come to backend");
-        } 
+        }
         if (!$flag3) {
             throw new \Exception("file didn't come to backend");
         }
@@ -144,7 +144,7 @@ class Reg extends \Core\Controller
 
         $date = date('Y-m-d H:i:s');
 
-        View::response(["id"=> $id, "req"=>$this->data]);
+        View::response(["id" => $id, "req" => $this->data]);
         $dataToInsert = [
             "product_name" => $this->data['product_name'],
             "type" => $this->data['category'],
@@ -173,11 +173,10 @@ class Reg extends \Core\Controller
     // "image":file,
     // "img1Extension": img1Extension
 
-    public function getPostsAction() 
+    public function getPostsAction()
     {
         $stmt = $this->execute($this->get('products', "id, product_name, description, price, quantity,address"));
         View::response($stmt->fetchAll());
-
     }
 
     public function getFishNamesAction()
@@ -194,7 +193,6 @@ class Reg extends \Core\Controller
         // }
 
         View::response($stmt->fetchAll());
-        
     }
 
     public function getFishImageAction()
@@ -208,7 +206,14 @@ class Reg extends \Core\Controller
         $stmt = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "' AND user_type='1'"));
         $result = $stmt->fetch();
         $id = $result['id'];
-        $stmt = $this->execute($this->get('regular_user', "address",  "auth_id='" . $id. "'"));
+        $stmt = $this->execute($this->get('regular_user', "address",  "auth_id='" . $id . "'"));
         View::response($stmt->fetch());
+    }
+
+    public function postQuestionForExpertAction()
+    {
+        $dataToInsert = ["question" => $this->data['question']];
+        $this->exec($this->insert('question_expert', $dataToInsert));
+        View::response("successfully inserted");
     }
 }
