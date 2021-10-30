@@ -559,7 +559,7 @@ $("#signUp3").click(function(){
      }
      if(erFlag == 0){
          
-        var req = {
+        let req = {
             "email": email,
             "password": password,
             "cPassword":cPassword ,
@@ -576,6 +576,7 @@ $("#signUp3").click(function(){
             "branchId": branchId,
             "accountNo": accountNo
         }
+        console.log(req);
           $.ajax({
             type: "POST",
             url: setUrl("Authentication/signUpStore"),
