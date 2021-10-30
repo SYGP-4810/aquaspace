@@ -71,7 +71,7 @@ $(document).ready(function(){
                             <p>LENGTH (cm)</p> <input type="number" id="length" name="length" min="0" value=${data.length}>
                         </div>
                     </td>`);
-                    $("#cap").append(`<td>Capacity</td>
+                    $("#cap").append(`<td>Capacity(Liter)</td>
                     <td><input type="number" id="capacity" name="capacity" min="0" value=${data.capacity}></td>
                             `);
 

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../../css/addpost.css">
   <link rel="stylesheet" href="../../css/landing-styles.css">
   <link rel="stylesheet" href="../../css/post-payment.css">
+  <link rel="stylesheet" href="../../css/base.css">
   <title>Category Page</title>
 </head>
 
@@ -40,10 +41,10 @@
         <li id="a_parent"><a href="#">Add Post</a>
             <div id="a_child" class="sub-menu sub-menu-1">
                 <ul>
-                    <li><a href="add-fish-post.html">Fish</a></li>
-                    <li><a href="add-other-post.html">Equipment</a></li>
-                    <li><a href="add-fish-post.html">Plant</a></li>
-                    <li><a href="add-adopt-post.html">Adopt</a></li>
+                  <li><a href="add-fish-post.html">Fish</a></li>
+                  <li><a href="add-plant-post.html">Plant</a></li>
+                  <li><a href="add-other-post.html">Equipment</a></li>
+                  <li><a href="add-adopt-post.html">Adopt</a></li>
                 </ul>
             </div>
         </li>
@@ -61,7 +62,7 @@
   </div>
   <div class="container">
     <div class="post-details"><label>
-        <span>Upload your images</span>
+        <span>Upload your images<span class="required">*</span></span>
       </label>
       <div class="wrapper">
         <div class="box">
@@ -105,8 +106,15 @@
         <span class="category">Category<span class="required">*</span></span>
         <select id="category" name="selection">
           <option selected hidden value="">Select</option>
-          <option value="1">Fish</option>
-          <option value="2">Plant</option>
+          <option value="Betta Fish">Betta Fish</option>
+          <option value="Koi Fish">Koi Fish</option>
+          <option value="Oscar Fish">Oscar Fish</option>
+          <option value="Discus Fish">Discus Fish</option>
+          <option value="Angle Fish">Angle Fish</option>
+          <option value="Freshwater Fish">Freshwater Fish</option>
+          <option value="Butterfly Fish">Butterfly Fish</option>
+          <option value="Saltwater Fish">Saltwater Fish</option>
+          <option value="Invertebrates">Invertebrates</option>
         </select>
       </label>
       <label>
@@ -127,11 +135,11 @@
         <input id="radio_2" type="radio" name="dbt" value="2"> No
       </label>
       <label>
-        <span>Description<span class="required"></span></span>
+        <span>Description<span class="required">*</span></span>
         <textarea id="description" name="reason" rows="5" cols="100"></textarea>
       </label>
       <label>
-        <span>Quantity<span class="required"></span></span>
+        <span>Quantity<span class="required">*</span></span>
         <input id="quantity" type="text" name="quantity">
       </label>
       <label>
@@ -141,7 +149,7 @@
       <label>
         <span>Post Duration<span class="required">*</span></span>
         <select id="duration" name="selection">
-          <option selected hidden value="">Select </option>
+          <option orderselected hidden value="">Select </option>
           <option value="1">1 week</option>
           <option value="2">2 weeks</option>
           <option value="3">3 weeks</option>
@@ -170,6 +178,7 @@
       </label>
 
       <button id="btn">next</button>
+      <div id="alertDiv"></div>
     </div>
 
     <div class="checkout">
@@ -249,7 +258,7 @@
               <td>$20.00</td>
             </tr>
           </table><br>
-          <button id="order" type="button">PAY</button>
+          <button id="f-order" type="button">PAY</button>
         </div><!-- Yorder -->
       </div>
     </div>
@@ -322,7 +331,7 @@
   <!-- <script src="../../js/add-fish-post.js"></script> -->
   <script src="../../js/landing-app.js"></script>
   <script src="../../js/Reg/new-add-fish-post.js"></script>
-
+  <script src="../../js/base.js"></script>
 </body>
 
 </html>
