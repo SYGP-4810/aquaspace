@@ -212,8 +212,12 @@ class Reg extends \Core\Controller
 
     public function postQuestionForExpertAction()
     {
-        $dataToInsert = ["question" => $this->data['question']];
-        $this->exec($this->insert('question_expert', $dataToInsert));
+        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $dataToInsert = [
+            "question" => $this->data['question'],
+            "sender_id" => $id
+        ];
+        $this->exec($this->save('expert_quetion', $dataToInsert));
         View::response("successfully inserted");
     }
 }

@@ -1,4 +1,5 @@
 $("#sendQuestion").click(function(){
+    
     let question = $("#q").val();
     let errors = [];
     let errFlag = 0;
@@ -15,11 +16,17 @@ $("#sendQuestion").click(function(){
             dataType: "json",
             data: JSON.stringify(req),
             success: function(data){
+                successMsg(["successfully added question"]);
+                delay(function(){
+                    window.location.replace("/aquaspace/frontend/src/Reg/questions.html");
+                },5000);
                 
             },
             error: function(errMsg) {
                 window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
+    }else{
+        errorShow(errors);
     }
 });
