@@ -223,10 +223,7 @@ $("#InventorySaveE").click(function(){
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data){
-<<<<<<< HEAD
-=======
                     // console.log(data);
->>>>>>> rashmika
                     successMsg(["Added Inventory"]);
                     delay(function(){
                     window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
