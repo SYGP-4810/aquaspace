@@ -58,7 +58,7 @@ class Reg extends \Core\Controller
         }
 
 
-        if ($this->data['question'] == 0 || $this->data['question'] == 2){
+        if ($this->data['question'] == 0 || $this->data['question'] == 2) {
             $status = 0;
         }
         if ($this->data['question'] == 1) {
@@ -155,14 +155,6 @@ class Reg extends \Core\Controller
 
         $date = date('Y-m-d H:i:s');
 
-<<<<<<< HEAD
-
-=======
-        // idkkk
-
-        View::response(["id" => $id, "req" => $this->data]);
-        
->>>>>>> kalsha-new
         $dataToInsert = [
             "product_name" => $this->data['product_name'],
             "type" => $this->data['type'],
