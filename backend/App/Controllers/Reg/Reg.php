@@ -144,11 +144,7 @@ class Reg extends \Core\Controller
 
         $date = date('Y-m-d H:i:s');
 
-<<<<<<< HEAD
-        View::response(["id" => $id, "req" => $this->data]);
-=======
-        
->>>>>>> rashmika
+
         $dataToInsert = [
             "product_name" => $this->data['product_name'],
             "type" => $this->data['type'],
@@ -226,5 +222,10 @@ class Reg extends \Core\Controller
         ];
         $this->exec($this->save('expert_quetion', $dataToInsert));
         View::response("successfully inserted");
+    }
+
+    public function getQuestionForExpertAction()
+    {
+        View::response($this->execute("SELECT * FROM expert_quetion ORDER BY id DESC")->fetchAll());
     }
 }
