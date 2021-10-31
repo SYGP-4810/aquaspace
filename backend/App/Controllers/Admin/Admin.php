@@ -230,4 +230,9 @@ class Admin extends \Core\Controller
         $this->exec($this->update('admin', $updateData, "auth_id='" . $result['id'] . "'"));
         View::response("Successfully updated");
     }
+
+    public function getRateAction()
+    {
+        View::response($this->execute($this->getAll('rate', '*'))->fetchAll());
+    }
 }
