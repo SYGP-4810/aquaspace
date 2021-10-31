@@ -56,7 +56,7 @@ $(document).ready(function(e){
                             <td>${data.expert.account_no}</td>
                         </tr>
                         <tr>
-                            <td>Qulification</td>
+                            <td>Qualification</td>
                             <td><img src="/aquaspace/frontend/images/qualifications/${data.expert.qualification}" alt="qualification" style="width:60%"></td>
                         </tr>
                     `);
