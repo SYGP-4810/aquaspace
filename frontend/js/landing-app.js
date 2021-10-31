@@ -248,7 +248,7 @@ $("#profile").click(function(){
         window.location.replace("/aquaspace/frontend/src/Reg/account-overview.html");
     }
     else if(userType == 2){
-        window.location.replace("/aquaspace/frontend/src/Expert/ExpertHome.html");
+        window.location.replace("/aquaspace/frontend/src/Expert/home.html");
     }
     else if(userType == 3){
         window.location.replace("/aquaspace/frontend/src/Store/StoreHome.html");
