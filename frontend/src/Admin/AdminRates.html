@@ -98,7 +98,7 @@
             </div>
             <div class="rates">
                 <hr>
-                <h3>Store Rates</h3>
+                <h3>Store Charging Rates</h3>
                 <table class="s-rates-table">
                     <tr>
                         <th>Price Range</th>
@@ -147,7 +147,7 @@
                 </table>
                 <hr>
                 <br>
-                <h3>Regular user Rates</h3>
+                <h3>Regular user Charging Rates</h3>
                 <table class="r-rates-table">
                     <tr>
                         <th rowspan="2">Price Range</th>
@@ -217,19 +217,22 @@
                 <br>
                 <hr>
                 <div class="coin">
-                    <label for="Experts Precentage">
-                        <span>Expert Precentage</span>
-                        <input type="number" id="expertPrecentage" min="0" max="100">
+                    <label for="Expert Share">
+                        <span>Expert share</span>
+                        <input type="number" id="ExpertShare" min="0" max="100">
                     </label>
                 </div>
                 <div class="btn">
                     <button id="updateRates" type="button" class="button">Update</button>
                 </div>
+                
             </div>
 		</section>
 	</div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/Admin/AdminRates.js"></script>
     <script src="../../js/logo.js"></script>
 </body>
 </html>

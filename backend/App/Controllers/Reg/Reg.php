@@ -58,7 +58,7 @@ class Reg extends \Core\Controller
         }
 
 
-        if ($this->data['question'] == 0 || $this->data['question'] == 2){
+        if ($this->data['question'] == 0 || $this->data['question'] == 2) {
             $status = 0;
         }
         if ($this->data['question'] == 1) {
@@ -155,10 +155,6 @@ class Reg extends \Core\Controller
 
         $date = date('Y-m-d H:i:s');
 
-        // idkkk
-
-        View::response(["id" => $id, "req" => $this->data]);
-        
         $dataToInsert = [
             "product_name" => $this->data['product_name'],
             "type" => $this->data['type'],
@@ -236,5 +232,10 @@ class Reg extends \Core\Controller
         ];
         $this->exec($this->save('expert_quetion', $dataToInsert));
         View::response("successfully inserted");
+    }
+
+    public function getQuestionForExpertAction()
+    {
+        View::response($this->execute("SELECT * FROM expert_quetion ORDER BY id DESC")->fetchAll());
     }
 }

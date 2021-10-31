@@ -18,7 +18,7 @@ $("#sendQuestion").click(function(){
             success: function(data){
                 successMsg(["successfully added question"]);
                 delay(function(){
-                    window.location.replace("/aquaspace/frontend/src/Reg/questions.html");
+                    location.replace("/aquaspace/frontend/src/Reg/questions.html");
                 },5000);
                 
             },
