@@ -57,8 +57,17 @@ class Reg extends \Core\Controller
             throw new \Exception("file didn't come to backend");
         }
 
+
+        if ($this->data['question'] == 0 || $this->data['question'] == 2){
+            $status = 0;
+        }
+        if ($this->data['question'] == 1) {
+            $status = 1;
+        }
+
+
+
         $date = date('Y-m-d H:i:s');
-        View::response(["id" => $id, "req" => $this->data]);
         $dataToInsert = [
             "product_name" => $this->data['product_name'],
             "type" => $this->data['category'],
@@ -73,10 +82,12 @@ class Reg extends \Core\Controller
             "img3" => $iName3,
             "img4" => $iName4,
             "auth_id" => $id,
-            "created_date" => $date
+            "created_date" => $date,
+            "status" => $status
         ];
 
         $this->exec($this->save('products', $dataToInsert));
+        View::response("success");
     }
     public function addPostAction()
     {
@@ -144,11 +155,10 @@ class Reg extends \Core\Controller
 
         $date = date('Y-m-d H:i:s');
 
-<<<<<<< HEAD
+        // idkkk
+
         View::response(["id" => $id, "req" => $this->data]);
-=======
         
->>>>>>> rashmika
         $dataToInsert = [
             "product_name" => $this->data['product_name'],
             "type" => $this->data['type'],
