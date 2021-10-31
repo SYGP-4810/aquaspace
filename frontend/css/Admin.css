@@ -193,6 +193,9 @@
   margin-right: 60px;
   color: rgb(0, 0, 0);
 }
+.con-detatils{
+  width: 700px;
+}
 
 .con-detatils h2 {
   color: #56595e;
@@ -262,7 +265,7 @@ form > label {
   margin: 15px;
   font-weight: bold;
   opacity: 90%;
-  text-decoration: underline rgb(87, 87, 87);
+  text-decoration: rgb(87, 87, 87);
 }
 
 .con-detatils li .l-name {
