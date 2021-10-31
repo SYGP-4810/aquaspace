@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
     <link rel="stylesheet" href="../../css/landing-styles.css">
     <link rel="stylesheet" href="../../css/product-page.css">
+    <link rel="stylesheet" href="../../css/adopt-page.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Product Dettails</title>
 </head>
@@ -15,22 +16,22 @@
 <body>
     <div class="nav">
         <div class="logo">
-          <img src="../../images/logo.png" alt="">
-          <h2>AquaSpace</h2>
+            <img src="../../images/logo.png" alt="">
+            <h2>AquaSpace</h2>
         </div>
         <div class="search_box">
-          <div class="dropdown">
-            <div class="default_option">All</div>
-            <ul>
-              <li>All</li>
-              <li>Fish</li>
-              <li>Articles</li>
-            </ul>
-          </div>
-          <div class="search_field">
-            <input type="text" class="input">
-            <i class="fas fa-search"></i>
-          </div>
+            <div class="dropdown">
+                <div class="default_option">All</div>
+                <ul>
+                    <li>All</li>
+                    <li>Fish</li>
+                    <li>Articles</li>
+                </ul>
+            </div>
+            <div class="search_field">
+                <input type="text" class="input">
+                <i class="fas fa-search"></i>
+            </div>
         </div>
         <div class="nav-links">
             <ul>
@@ -58,11 +59,12 @@
                     </div>
             </ul>
         </div>
-      </div>
+    </div>
     <div class="small-container single-product">
         <div class="row">
+        
             <div id="column_1" class="col-2">
-                <img src="../../images/bg.jpg" alt="" width="100%" height="500px" id="ProductImg">
+                <!-- <img src="../../images/bg.jpg" alt="" width="100%" height="500px" id="ProductImg">
 
                 <div class="small-img-row">
                     <div class="small-img-col">
@@ -77,35 +79,47 @@
                     <div class="small-img-col">
                         <img id="img4" src="../../images/download.png" alt="" width="100%" class="small-img">
                     </div>
-                </div>
+                </div> -->
             </div>
             <div id="column_2" class="col-2">
-                <h2 id="name">Lorem Ipsum Lorem Ipsum</h2>
+                <!-- <h2 id="name">Lorem Ipsum Lorem Ipsum</h2>
                 <p id="price">$Price</p>
-                <!-- <select>
-                    <option>Delivery Option</option>
-                    <option>In Store Pick-up</option>
-                    <option>In Store Delivery Service</option>
-                    <option>Third Party Delivery Service</option>
-                </select> -->
-                <input type="number" value="1"><span id="quantity">4</span><span>     </span><span>Available</span><br>
+
+                <input type="number" value="1"><span id="quantity">4</span><span> </span><span>Available</span><br>
                 <a href="cart.html" class="btn">Add to Cart</a>
                 <a href="wishlist.html" class="btn">Wishlist</a>
                 <h3>Product Details</h3>
                 <br>
-                <p id="description">Cleveland Cavaliers Nike Spotlight Men's NBA Hoodie PLAY WITH PRIDE. Cleveland Cavaliers Nike
+                <p id="description">Cleveland Cavaliers Nike Spotlight Men's NBA Hoodie PLAY WITH PRIDE. Cleveland
+                    Cavaliers Nike
                     Spotlight Men's NBA Hoodie keeps you feeling comfortable and agile on the practice court. Inspired
                     by the authentic, on-court NBA warm-up, this pullover is made from durable knit fabric that's
                     powered by sweat-wicking Dri-FIT technology.</p>
                 <br>
                 <h3>Address</h3>
-                <p id="address">No 30, Araliya Road, Kohuwala, Nugegoda</p>
+                <p id="address">No 30, Araliya Road, Kohuwala, Nugegoda</p> -->
 
-            </div>
+            </div> 
+            <!-- <div id="column_2" class="col-2">
+                <h2>Lorem Ipsum Lorem Ipsum</h2>
+                <p>Location</p>
+                <a href="#" class="btn">Inquire</a>
+                <h3>Product Details</h3>
+                <p>Cleveland Cavaliers Nike Spotlight Men's NBA Hoodie PLAY WITH PRIDE. Cleveland Cavaliers Nike
+                    Spotlight Men's NBA Hoodie keeps you feeling comfortable and agile on the practice court. Inspired
+                    by the authentic, on-court NBA warm-up, this pullover is made from durable knit fabric that's
+                    powered by sweat-wicking Dri-FIT technology.</p>
+
+                <div class="tags">
+                    <div class="tag">tag 1</div>
+                    <div class="tag">tag 2</div>
+                    <div class="tag">tag 3</div>
+                </div> 
+            </div> -->
         </div>
 
     </div>
-    <div class="small-container">
+    <div id="qr" class="small-container">
         <div class="sects">
             <p id="reviews">Reviews</p>
             <p>|</p>
@@ -113,12 +127,8 @@
         </div>
 
         <div class="reviews">
-            <!-- <div class="write-review">
-                <span>Description<span class="required"></span></span>
-      <textarea id="description" name="reason" rows="5" cols="100"></textarea>
-            </div> -->
             <div class="review">
-                <h4>Randy orton</h4>
+                <h4>K.P Darmaratne</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
@@ -126,11 +136,12 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star-o"></i>
                 </div>
-                <p>good product
+                <p>I highly recommend the seller. I have bought multiple fish from this fellow and i can gurauntee
+                    that they will not dissppoint.
                 </p>
             </div>
             <div class="review">
-                <h4>Shemus</h4>
+                <h4>P.A Samarajeewa</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
@@ -138,11 +149,11 @@
                     <i class="fa fa-star-o"></i>
                     <i class="fa fa-star-o"></i>
                 </div>
-                <p>came on time
+                <p>I am absolutely not satisfied with the product. Delivery was messed up. 
                 </p>
             </div>
             <div class="review">
-                <h4>Batista</h4>
+                <h4>Joel Peter</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
@@ -150,39 +161,54 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star-o"></i>
                 </div>
-                <p>package broken
+                <p>I hv bought from this seller once. Eventhough the delivery took some time, it was sent to us in a good condition.
+                    Highly recomment the seller. 
                 </p>
             </div>
 
         </div>
         <div class="questions">
-                <div>
-                    <textarea name="question" id="" cols="60" rows="5"></textarea>
-                    <button class="btn">ask</button>
-                </div>
-                <div class="question">
-                    <h4>Jhon cena</h4> 
-                    <p> is this available ?
-                    </p>   
-                </div>
-                <div class="question">
-                    <h4>Great Khali</h4> 
-                    <p> is this original ?
-                    </p>   
-                </div>
+          
+                
+                <textarea style="box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.24),
+            0 17px 50px 0 rgba(0, 0, 0, 0.19); border: 1px solid rgb(202, 202, 202); outline:none; padding: 10px;"
+                    id="description" name="reason" rows="5" cols="100" placeholder="Ask your question"></textarea>
+                <button style="background-color: #688aca;
+            width: 80px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 4px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            margin-top: 20px;
+            cursor: pointer; position: relative ;top:-10px;">ASK</button>
+            
+            <div style="margin-top: 40px;" class="question">
+                <h4>Ama Perera</h4>
+                <p>Is this fish available to buy?
+                </p>
             </div>
+            <div class="question">
+                <h4>Joel Peter</h4>
+                <p>Does the age of the fish matters when it comes to buying a suitable tank?
+                </p>
+            </div>
+        </div>
     </div>
-    <div class="small-container">
+    <div style="margin-bottom: 50px;" class="small-container">
         <div class="row row-2">
-            <h2>More item from the store</h2
-            <a href="store.html"><p>View More</p></a>
+            <h2>More items from the store</h2>
+            <p><a href="store.html">View More</a> </p>
         </div>
     </div>
     <div class="small-container">
         <div class="row">
             <div class="col-4">
-                <img src="../../images/download.png" alt="" />
-                <h4>Lorem Ipsum</h4>
+                <img src="../../images/gappiya.jpg" alt="" />
+                <h4>Gappi Fish</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
@@ -190,11 +216,11 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star-o"></i>
                 </div>
-                <p>$Price</p>
+                <p>Price: Rs1000.00</p>
             </div>
             <div class="col-4">
-                <img src="../../images/download.png" alt="" />
-                <h4>Lorem Ipsum</h4>
+                <img src="../../images/product/arawana1.jpg" alt="" />
+                <h4>Arawana Fish</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
@@ -202,10 +228,10 @@
                     <i class="fa fa-star-o"></i>
                     <i class="fa fa-star-o"></i>
                 </div>
-                <p>$Price</p>
+                <p>Price: Rs2300.00</p>
             </div>
             <div class="col-4">
-                <img src="../../images/download.png" alt="" />
+                <img src="../../images/product/angel2.jpg" alt="" />
                 <h4>Lorem Ipsum</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
@@ -214,11 +240,11 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star-o"></i>
                 </div>
-                <p>$Price</p>
+                <p>Price: Rs1000.00</p>
             </div>
             <div class="col-4">
-                <img src="../../images/download.png" alt="" />
-                <h4>Lorem Ipsum</h4>
+                <img src="../../images/fantail-goldfish.jpg" alt="" />
+                <h4>Gold fish</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
@@ -226,7 +252,7 @@
                     <i class="fa fa-star-o"></i>
                     <i class="fa fa-star-o"></i>
                 </div>
-                <p>$Price</p>
+                <p>Price: Rs2000.00</p>
             </div>
         </div>
     </div>
@@ -273,7 +299,8 @@
 
             <p class="footer-company-about">
                 <span>About AquaSpace</span>
-                AquaSpace is an online quarium marketplace which allows you to connect with community of fish owners, fish enthusiasts and aquarium stores.
+                AquaSpace is an online quarium marketplace which allows you to connect with community of fish owners,
+                fish enthusiasts and aquarium stores.
             </p>
 
             <div class="footer-icons">
@@ -288,7 +315,7 @@
         </div>
 
     </footer>
-    
+
     <script src="../../js/getProduct.js"></script>
     <!-- <script src="../../js/product-page.js"></script> -->
 </body>

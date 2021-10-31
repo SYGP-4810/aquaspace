@@ -108,12 +108,24 @@ if(data.type == 1 || data.type == 2 )
 
         `)
     }
+   else if(data.type == 4){
+    $("#column_2").html(
+        `<h2>${data.product_name}</h2>
+        <p>${data.address}</p>
+        <a href="inquiry.html" class="btn">Inquire</a>
+        <h3>Product Details</h3>
+        <p>${data.description}</p>
+
+        <div class="tags">
+            <div class="tag">tag 1</div>
+            <div class="tag">tag 2</div>
+            <div class="tag">tag 3</div>
+        </div> 
+        `
+    )
+   }
+
    
-    // jQuery methods go here...
-   
-      
-    
-           
         },
         error: function(errMsg) {
             window.location.replace("../src/Error"+errMsg.status+".html");
