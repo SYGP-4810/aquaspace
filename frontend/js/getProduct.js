@@ -108,7 +108,103 @@ if(data.type == 1 || data.type == 2 )
 
         `)
     }
-   
+   else if(data.type == 4){
+    $("#column_2").html(
+        `<h2>${data.product_name}</h2>
+        <p>${data.address}</p>
+        <a href="inquiry.html" class="btn">Inquire</a>
+        <h3>Product Details</h3>
+        <p>${data.description}</p>
+
+        <div class="tags">
+            <div class="tag">tag 1</div>
+            <div class="tag">tag 2</div>
+            <div class="tag">tag 3</div>
+        </div> 
+        `
+    )
+   }
+
+   if (data.type != 4){
+       $('#qr').html(`
+       <div class="sects">
+            <p id="reviews">Reviews</p>
+            <p>|</p>
+            <p id="questions">Questions</p>
+        </div>
+
+        <div class="reviews">
+            <div class="review">
+                <h4>K.P Darmaratne</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>I highly recommend the seller. I have bought multiple fish from this fellow and i can gurauntee
+                    that they will not dissppoint.
+                </p>
+            </div>
+            <div class="review">
+                <h4>P.A Samarajeewa</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>I am absolutely not satisfied with the product. Delivery was messed up. 
+                </p>
+            </div>
+            <div class="review">
+                <h4>Joel Peter</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>I hv bought from this seller once. Eventhough the delivery took some time, it was sent to us in a good condition.
+                    Highly recomment the seller. 
+                </p>
+            </div>
+
+        </div>
+        <div class="questions">
+          
+                
+                <textarea style="box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.24),
+            0 17px 50px 0 rgba(0, 0, 0, 0.19); border: 1px solid rgb(202, 202, 202); outline:none; padding: 10px;"
+                    id="description" name="reason" rows="5" cols="100" placeholder="Ask your question"></textarea>
+                <button style="background-color: #688aca;
+            width: 80px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 4px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            margin-top: 20px;
+            cursor: pointer; position: relative ;top:-10px;">ASK</button>
+            
+            <div class="question">
+                <h4>Ama Perera</h4>
+                <p>Is this fish available to buy?
+                </p>
+            </div>
+            <div class="question">
+                <h4>Joel Peter</h4>
+                <p>Does the age of the fish matters when it comes to buying a suitable tank?
+                </p>
+            </div>
+        </div>`)
+   }
     // jQuery methods go here...
    
       
