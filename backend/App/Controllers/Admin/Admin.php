@@ -12,6 +12,8 @@ use Core\View;
  */
 class Admin extends \Core\Controller
 {
+   
+   
     protected function before()
     {
         // Make sure an admin user is logged in for example

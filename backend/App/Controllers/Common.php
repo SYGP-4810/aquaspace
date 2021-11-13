@@ -4,6 +4,9 @@ namespace App\Controllers;
 
 use Core\View;
 
+/***
+ * common controller for all users
+ */
 class Common extends \Core\Controller
 {
     //get product details which shows in landing page
