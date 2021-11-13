@@ -18,6 +18,7 @@ class Admin extends \Core\Controller
         // return false;
     }
 
+    //add new admins to the system
     public function addAdminAction()
     {
         $num_str = sprintf("%06d", mt_rand(1, 999999));
@@ -65,6 +66,7 @@ class Admin extends \Core\Controller
         }
     }
 
+    //get logged in admins details
     public function getAdminAction()
     {
         $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='4'"));
@@ -84,6 +86,7 @@ class Admin extends \Core\Controller
         View::response($res);
     }
 
+    //get all admins details
     public function getAdminListAction()
     {
         $stmt = $this->execute($this->join("user_auth, admin", "email,tp,user_auth.id AS id,first_name,last_name,profile_img", "user_auth.id = admin.auth_id"));
@@ -91,6 +94,7 @@ class Admin extends \Core\Controller
         View::response($result);
     }
 
+    //get individual profile of admin by using id
     public function getAdminDetailsAction()
     {
         $stmt = $this->execute($this->get('user_auth', "*", "id ='" . $this->data['id'] . "'"));
@@ -109,12 +113,14 @@ class Admin extends \Core\Controller
         View::response($res);
     }
 
+    //get store,expert accounts which are not verified yet
     public function getAdminVerifyDetailsAction()
     {
         $stmt = $this->execute($this->get('user_auth', " id,email,user_type,tp ", "user_status ='5'"));
         View::response($stmt->fetchAll());
     }
 
+    //get expert details to verify 
     public function getAdminVerifyDetailsExpertAction()
     {
         $stmt = $this->execute($this->get('expert', "*", "auth_id ='" . $this->data['id'] . "'"));
@@ -123,12 +129,14 @@ class Admin extends \Core\Controller
         View::response($res);
     }
 
+    //get expert details to verify
     public function getAdminVerifyDetailsStoreAction()
     {
         $stmt = $this->execute($this->get('store', "*", "auth_id ='" . $this->data['id'] . "'"));
         View::response($stmt->fetch());
     }
 
+    //update new expert,store account as verified accounts
     public function getAdminVerifyDetailsAcceptAction()
     {
         $dataToUpdate = ["user_status" => "4"];
@@ -149,6 +157,7 @@ class Admin extends \Core\Controller
         View::response("successfully confirm user");
     }
 
+    //reject new store,expert accounts 
     public function getAdminVerifyDetailsRejectAction()
     {
         $dataToUpdate = ["user_status" => "3"];
@@ -175,6 +184,7 @@ class Admin extends \Core\Controller
         View::response("successfully Reject user");
     }
 
+    //logged in admin password reset 
     public function updatePasswordAction()
     {
         $stmt = $this->execute($this->get('user_auth', "*", "access_token='" . $_COOKIE['access_token'] . "'"));
@@ -198,6 +208,7 @@ class Admin extends \Core\Controller
         View::response($res);
     }
 
+    //update logged in admins's details
     public function updateAdminAction()
     {
 
@@ -219,6 +230,7 @@ class Admin extends \Core\Controller
                 throw new \Exception("file did not come to the backend");
             }
             if (file_exists("/aquaspace/frontend/images/profile/" . $result['profile_img'])) {
+                //delete photo from the directory
                 unlink("/aquaspace/frontend/images/profile/" . $result['profile_img']);
             }
             $this->exec($this->update('user_auth', ["tp" => $this->data['tp'], "profile_img" => $iName1], "id='" . $result['id'] . "'"));
@@ -231,8 +243,19 @@ class Admin extends \Core\Controller
         View::response("Successfully updated");
     }
 
+    //get the list of charges 
     public function getRateAction()
     {
         View::response($this->execute($this->getAll('rate', '*'))->fetchAll());
+    }
+
+    //update the list of charges
+    public function updateRateAction(){
+        $i = 0;
+        while($i < count($this->data)){
+            $this->exec($this->update("rate", ["rate"=>$this->data[$i]], "id='" . ++$i . "'"));
+        }
+        view::response("successfully updated");
+
     }
 }
