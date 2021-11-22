@@ -16,13 +16,13 @@
 // $('#send').click(function(){
 //     window.location.href = "claimed-questions.html"; 
 //  })
- $('#blog-topic').click(function(){
-    window.location.href = "questions.html"; 
-})
+//  $('#blog-topic').click(function(){
+//     window.location.href = "questions.html"; 
+// })
 
-$('#fish-topic').click(function(){
-    window.location.href = "claimed-questions.html"; 
-})
+// $('#fish-topic').click(function(){
+//     window.location.href = "claimed-questions.html"; 
+// })
 var url = new URL(window.location.href);
 var id = url.searchParams.get("id");
 
