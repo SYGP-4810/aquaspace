@@ -74,8 +74,9 @@ if(data.type == 1 || data.type == 2 )
                     <option>In Store Delivery Service</option>
                     <option>Third Party Delivery Service</option>
                 </select> -->
-                <input type="number" value="1"><span id="quantity">${data.quantity}</span><span>     </span><span>Available</span><br>
-                <a href="cart.html" class="btn">Add to Cart</a>
+            
+                <input type="number" id="item-qty" min="1" max=${data.quantity} value="1"><span id="quantity">${data.quantity}</span><span>     </span><span>Available</span><br>
+                <a href="#" class="btn" onclick="addToCart()">Add to Cart</a>
                 <a href="wishlist.html" class="btn">Wishlist</a>
                 <h3>Product Details</h3>
                 <br>
@@ -83,6 +84,18 @@ if(data.type == 1 || data.type == 2 )
                 <br>
                 <h3>Address</h3>
                 <p id="address">${data.address}</p>
+                <button style="background-color: #ec7f71;
+                width: 80px;
+                border: none;
+                border-radius: 4px;
+                color: white;
+                padding: 4px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 15px;
+                margin-top: 20px;
+                cursor: pointer;" >REPORT</button>
 
         `)
     }
@@ -96,8 +109,8 @@ if(data.type == 1 || data.type == 2 )
                     <option>In Store Delivery Service</option>
                     <option>Third Party Delivery Service</option>
                 </select> 
-                <input type="number" value="1"><span id="quantity">${data.quantity}</span><span>     </span><span>Available</span><br>
-                <a href="#" class="btn">Add to Cart</a>
+                <input  id="item-qty"  type="number" min="1" max=${data.quantity} value="1"><span id="quantity">${data.quantity}</span><span>     </span><span>Available</span><br>
+                <a href="#" class="btn" onclick="addToCart()>Add to Cart</a>
                 <a href="#" class="btn">Wishlist</a>
                 <h3>Product Details</h3>
                 <br>
