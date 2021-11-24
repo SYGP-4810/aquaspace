@@ -238,4 +238,32 @@ class Reg extends \Core\Controller
     {
         View::response($this->execute("SELECT * FROM expert_quetion ORDER BY id DESC")->fetchAll());
     }
+
+    public function addToCartAction()
+    {
+        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $dataToInsert = [
+            "user_id" => $id,
+            "product_id" => $this->data['id'],
+            "quantity" => $this->data['quantity']
+        ];
+        $this->exec($this->save('shopping_cart', $dataToInsert));
+        View::response("Added to Your Cart!");
+
+    }
+
+    public function showCartAction()
+    {
+        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $stmt = $this->execute("
+        SELECT shopping_cart.product_id, shopping_cart.quantity ,  products.product_name, products.price
+        FROM shopping_cart
+        INNER JOIN products ON shopping_cart.product_id=products.id
+        ") ;
+
+        $result = $stmt->fetchAll();
+        View::response($result);
+
+    }
+
 }
