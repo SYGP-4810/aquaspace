@@ -230,12 +230,12 @@ class Reg extends \Core\Controller
             "question" => $this->data['question'],
             "sender_id" => $id
         ];
-        $this->exec($this->save('expert_quetion', $dataToInsert));
+        $this->exec($this->save('expert_question', $dataToInsert));
         View::response("successfully inserted");
     }
 
     public function getQuestionForExpertAction()
     {
-        View::response($this->execute("SELECT * FROM expert_quetion ORDER BY id DESC")->fetchAll());
+        View::response($this->execute("SELECT * FROM expert_question ORDER BY id DESC")->fetchAll());
     }
 }

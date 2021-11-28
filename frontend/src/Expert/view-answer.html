@@ -93,16 +93,8 @@
                 <div class="chat">
                     <!-- <img src="../../images/bg.jpg" alt=""> -->
                     <div class="question">
-                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                        Lorem Ipsum Lorem Ipsum
                     </div>
-                    <div class="answer">Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                        Lorem Ipsum Lorem Ipsum
+                    <div class="answer">
                     </div>
 
 
@@ -116,7 +108,14 @@
         </div>
     </div>
 
-    <script src="../../js/expert/answer-question.js"></script>
+    <script>
+        let url = new URL(window.location.href);
+        let question = url.searchParams.get("question");
+        let reply = url.searchParams.get("reply");
+        // console.log(reply);
+        $(".answer").html(reply);
+        $(".question").html(question);
+    </script>
     <script src="../../js/logo.js"></script>
 
 </body>
