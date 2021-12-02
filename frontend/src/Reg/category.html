@@ -58,21 +58,27 @@
             </ul>
         </div>
     </div>
+
+
     <div class="content">
         <div class="filter">
-            <h3>Filter Options</h3>
-            <div class="divider"></div>
+            <!-- <h3>Filter Options</h3>
+            <div class="divider"></div> -->
             <h4 class="heading">Filter by delivery</h4>
             <ul class="list">
                 <li>
+                    <label>All
+                        <input type="radio" name="delivery" id="delivery1" value="0" checked /><span></span></label>
+                </li>
+                <li>
                     <label>In-store Pickup
-                        <input type="checkbox" name="category[]" value="1" checked /><span></span></label>
+                        <input type="radio" name="delivery" id="delivery2" value="1" /><span></span></label>
                 </li>
                 <li>
                     <label>Deliver
-                        <input type="checkbox" name="category[]" value="2" checked/><span></span></label>
+                        <input type="radio" name="delivery" id="delivery3" value="2" /><span></span></label>
                 </li>
-               
+
                 </li>
             </ul>
             <div class="divider"></div>
@@ -80,23 +86,23 @@
             <ul class="list">
                 <li>
                     <label>All
-                        <input type="radio" name="category[]" value="1" checked /><span></span></label>
+                        <input type="radio" name="post-type" id="post-type1" value="1" checked /><span></span></label>
                 </li>
                 <li>
                     <label>Adopt Fish
-                        <input type="radio" name="category[]" value="1" /><span></span></label>
+                        <input type="radio" name="post-type" id="post-type2" value="2" /><span></span></label>
                 </li>
                 <li>
                     <label>Buy Fish
-                        <input type="radio" name="category[]" value="2" /><span></span></label>
+                        <input type="radio" name="post-type" id="post-type3" value="3" /><span></span></label>
                 </li>
                 <li>
                     <label>Buy Plants
-                        <input type="radio" name="category[]" value="3" /><span></span></label>
+                        <input type="radio" name="post-type" id="post-type4" value="4" /><span></span></label>
                 </li>
                 <li>
                     <label>Buy Equipments
-                        <input type="radio" name="category[]" value="4" /><span></span></label>
+                        <input type="radio" name="post-type" id="post-type5" value="5" /><span></span></label>
                 </li>
             </ul>
 
@@ -106,20 +112,20 @@
             <div class="filter-price">
 
                 <div class="price-field">
-                    <input type="range" min="100" max="500" value="135" id="lower">
-                    <input type="range" min="100" max="500" value="500" id="upper">
+                    <input type="range" min="0" max="1000000" value="0" id="lower">
+                    <input type="range" min="20" max="1000000" value="1000000" id="upper">
                 </div>
                 <div class="price-wrap">
                     <!-- <button class="price-title">FILTER</button> -->
                     <div class="price-container">
                         <div class="price-wrap-1">
 
-                            <label for="one">RS</label>
+                            <label for="one">Rs.</label>
                             <input id="one">
                         </div>
                         <div class="price-wrap_line">-</div>
                         <div class="price-wrap-2">
-                            <label for="two">RS</label>
+                            <label for="two">Rs.</label>
                             <input id="two">
 
                         </div>
@@ -127,9 +133,11 @@
                 </div>
             </div>
             <div class="divider"></div>
-            <h4 class="heading">Filter by Distance</h4>
+            <h4 class="heading">Filter by 
+                
+            </h4>
             <div style="display: flex;">
-                <div class="filter-price"><input type="number" id="search-text" class="search-box">
+                <div class="filter-price"><input type="number" id="distance" class="search-box">
                 </div><span class="km">km</span>
             </div>
 
@@ -151,10 +159,31 @@
                     </option>
                 </select>
             </div> -->
+           
         </div>
         <div class="cards">
             <div class="small-container">
-                <div class="row">
+                <div class="row" id="row">
+                     <!-- 
+                    <div class="category-col-3">
+                        <div class="img-wrapper">
+                            <div class="ribbon-wrapper-red">
+                                <div class="ribbon-red">ADOPT</div>
+                            </div>
+                            <img src=".../../../../images/cover-photo.jpg"  alt="" />
+                        </div>
+
+                        <h4>Discus Fish</h4>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <p>Rs1000</p>
+                    </div>
+                    
                     <div class="col-3">
                         <img src=".../../../../images/cover-photo.jpg" alt="" />
                         <h4>Discus Fish</h4>
@@ -250,19 +279,7 @@
                             <i class="fa fa-star-o"></i>
                         </div>
                         <p>Rs1000</p>
-                    </div>
-                    <div class="col-3">
-                        <img src=".../../../../images/cover-photo.jpg" alt="" />
-                        <h4>Discus Fish</h4>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <p>Rs1000</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -319,9 +336,14 @@
         </div>
 
     </footer>
+    
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../../js/landing-app.js"></script>
     <script src="../../js/Reg/category.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSmzq86uUiJERkmaTeVryt4pEu8pU8xo0&callback=initMap">
+    
+    </script> 
 </body>
 
 </html>
