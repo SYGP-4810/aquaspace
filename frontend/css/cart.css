@@ -18,26 +18,35 @@
 .table-responsive table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 100px;
 }
 
 .table-responsive thead {
-    background: #efefef;
+    background: #f9fafc;
     text-align: left;
 }
 
 th, td {
-    font-size: .9rem;
+    font-size: 17px;
     padding: 1rem 1rem;
-    color: var(--color-dark);
+    font-weight: 500;
+    color: #464545;
 }
 
 td {
-    font-size: .8rem;
+    font-size: .9rem;
+    font-weight: 300;
+    color: #333333;
 }
 
+tbody tr:not(:last-child){
+  border-bottom: 1px rgb(230, 230, 230) solid;
+
+}
+/* 
 tbody tr:nth-child(even) {
     background: #f9fafc;
-}
+} */
 
 .section-1 {
     align-items: center;
