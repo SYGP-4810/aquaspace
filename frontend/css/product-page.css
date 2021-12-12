@@ -1,165 +1,253 @@
+.single-product {
+  margin-top: 80px;
+}
 
-.single-product{
-    margin-top: 80px;
-  }
-  
-  .single-product .col-2 img{
-    padding: 0;
-  }
-  
-  .single-product .col-2{
-    padding: 20px;
-  
-  }
-  
-  .single-product h4{
-    margin: 20px 0;
-    font-size: 22px;
-    font-weight: bold;
-  }
-  
-  .single-product select{
-    display: block;
-    padding: 10px;
-    margin-top: 20px;
-  }
-  
-  .single-product input{
-    width: 50px;
-    height: 40px;
-    padding-left: 10px;
-    font-size: 20px;
-    margin-right: 10px;
-    border: 1px solid coral;
-  }
-  
-  input:focus{
-    outline: none;
-  }
-  
-  
-  .single-product .fa{
-    color: #f1607d;
-    margin-left: 10px;
-  }
-  
-  .small-img-row{
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .small-img-col{
-    flex-basis: 24%;
-    cursor: pointer;
-  }
-  
-  .row{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  
-  .col-2{
-    flex-basis: 50%;
-    min-width: 200px;
-    /* height: 100px; */
-  }
-  
-  .col-2 img{
-    max-width: 100%;
-    padding: 50px 0;
-  }
-  
-  .col-2 h1{
-    font-size: 50px;
-    line-height: 60px;
-    margin: 25px 0;
-  }
-  
-  select{
-    border: 1px solid coral;
-    padding: 5px;
-  }
-  
-  select:focus{
-    outline: none;
-  }
-  
-  .btn{
-    display: inline-block;
-    background: #448ac4;
-    color: white;
-    padding: 5px 5px;
-    margin: 30px 0;
-    border-radius: 5px;
-    font-size: 13px;
-  }
-  
-  .btn:hover{
-    background: rgba(8, 29, 75, 0.856);
-  }
-  
-  .small-img {
-    height: 130px;
-  }
-  
-  .sects {
-    display: flex;
-    font-size: 17px;
-    padding: 20px;
-    top: 900px;
-  }
-  
-  .sects p:first-child, .sects p:last-child {
-    border-bottom: rgb(94, 100, 148) solid 2px;
-    cursor: pointer;
-  }
-  
-  .sects p:first-child {
-    margin-right: 15px;
-  }
-  
-  .sects p:last-child{
-    margin-left: 15px;
-  }
-  
-  /* .reviews {
+.single-product .col-2 img {
+  padding: 0;
+}
+
+.single-product .col-2 {
+  padding: 20px;
+}
+
+.single-product h4 {
+  margin: 20px 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.single-product select {
+  display: block;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.single-product input {
+  width: 50px;
+  height: 30px;
+  /* padding: 5px; */
+  font-size: 15px;
+  margin-right: 10px;
+  margin-top: 10px;
+  border: 1px solid coral;
+  text-align: center;
+}
+
+input:focus {
+  outline: none;
+}
+
+.single-product .fa {
+  color: #f1607d;
+  margin-left: 10px;
+}
+
+.small-img-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.small-img-col {
+  flex-basis: 24%;
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.col-2 {
+  flex-basis: 50%;
+  min-width: 200px;
+  /* height: 100px; */
+}
+
+.col-2 img {
+  max-width: 100%;
+  padding: 50px 0;
+}
+
+.col-2 h2 {
+  font-size: 35px;
+}
+
+.col-2 h1 {
+  font-size: 50px;
+  line-height: 60px;
+  margin: 25px 0;
+}
+
+select {
+  border: 1px solid coral;
+  padding: 5px;
+}
+
+select:focus {
+  outline: none;
+}
+
+.btn {
+  display: inline-block;
+  background: #448ac4;
+  color: white;
+  padding: 5px 5px;
+  margin: 30px 0;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.btn:hover {
+  background: rgba(8, 29, 75, 0.856);
+}
+
+.small-img {
+  height: 130px;
+}
+
+.sects {
+  display: flex;
+  font-size: 17px;
+  padding: 20px;
+  top: 900px;
+}
+
+.sects p:first-child,
+.sects p:last-child {
+  border-bottom: rgb(94, 100, 148) solid 2px;
+  cursor: pointer;
+}
+
+.sects p:first-child {
+  margin-right: 15px;
+}
+
+.sects p:last-child {
+  margin-left: 15px;
+}
+
+/* .reviews {
     display: none;
   } */
-  
-  .reviews p, .questions p {
-    width: 70%;
-    font-size: 15px;
-    overflow: hidden;
-  }
-  
-  .questions {
-    display: none;
-  }
-  .reviews , .questions {
-    margin-bottom: 100px;
-  }
-  .review, .question {
-    margin-bottom: 30px;
-  }
 
- .stars-box {
-    -ms-flex-item-align: center;
-    align-self: center;
-    margin-bottom: 15px;
-  }
-  
- .stars-box .star {
-    color: #ccc;
-    cursor: pointer;
-  }
-  
- .stars-box .star.hover {
-    color: #ff5a49;
-  }
-  
- .stars-box .star.selected {
-    color: #ff5a49;
-  }
-  
+.reviews p,
+.questions p {
+  width: 70%;
+  font-size: 15px;
+  overflow: hidden;
+}
+
+.questions {
+  display: none;
+}
+.reviews,
+.questions {
+  margin-bottom: 100px;
+}
+.review,
+.question {
+  margin-bottom: 30px;
+}
+
+.stars-box {
+  -ms-flex-item-align: center;
+  align-self: center;
+  margin-bottom: 15px;
+}
+
+.stars-box .star {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.stars-box .star.hover {
+  color: #ff5a49;
+}
+
+.stars-box .star.selected {
+  color: #ff5a49;
+}
+
+.report-box {
+  /* display: none;  */
+  position: absolute;
+  /* z-index: 1; */
+  left: 100px;
+  top: 0px;
+  width: 300px;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.report-box ul {
+  color: #06041d;
+}
+
+.report-box:before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  right: 299px;
+  border: 10px solid;
+  border-color: transparent #ffffff transparent transparent;
+}
+
+.report-btn {
+  background-color: #ec7f71;
+  width: 80px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin-top: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.col-2 p{
+  font-size: 14px;
+}
+
+.dd {
+  font-size: 13px;
+  text-align: left;
+}
+.dd div {
+  align-items: center;
+  display: flex; 
+  align-items: center;
+  color: black;
+}
+
+.dd div label {
+  color: black;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.dd div input{
+  width: 15px;
+  margin-left: 20px;
+}
+
+.dd button{
+  color: black;
+}
+.dd .btn {
+  height: 30px;
+  color: white;
+  font-size: 16px;
+  width: 150px;
+  margin-left: 60px;
+  padding-left: 13px;
+  /* 0771112448 */
+
+}
