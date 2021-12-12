@@ -26,7 +26,7 @@
 
 // });
 $('.report-btn').click(function(){
-  $('#report').toggleClass("active");
+  $('.report-box').toggleClass("active");
 })
 
 function addToCart(){
