@@ -25,6 +25,9 @@
 // });
 
 // });
+$('.report-btn').click(function(){
+  $('#report').toggleClass("active");
+})
 
 function addToCart(){
     console.log("fuck");
