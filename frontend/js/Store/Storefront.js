@@ -113,7 +113,7 @@ $(document).ready(function() {
 
         },
         error: function(errMsg) {
-            // window.location.replace("../src/Error"+errMsg.status+".html");
+             window.location.replace("../src/Error"+errMsg.status+".html");
         }
     });
 
@@ -140,7 +140,116 @@ $(document).ready(function() {
           });
       },
       error: function(errMsg) {
-          //window.location.replace("../src/Error"+errMsg.status+".html");
+          window.location.replace("../src/Error"+errMsg.status+".html");
       }
   });
+});
+
+var imgExtension1 = " ", imgExtension2 = " ";
+let profileImgFlag = 0;
+let bgImgFlag = 0;
+
+$("#img1").change(function (e) {
+  var fileName = e.target.files[0].name;
+  fileExtension = fileName.split('.').pop();
+  imgExtension1 = fileExtension;
+  bgImgFlag++;
+});
+
+$("#img2").change(function (e) {
+  var fileName = e.target.files[0].name;
+  fileExtension = fileName.split('.').pop();
+  imgExtension2 = fileExtension;
+  profileImgFlag++;
+});
+
+var imagebase64_1 = "";
+var imagebase64_2 = "";
+
+function encodeImageFileAsURL1(element) {  
+  let file = element.files[0];  
+  let reader = new FileReader();  
+  reader.onloadend = function() {  
+      imagebase64_1 = reader.result;  
+  }  
+  reader.readAsDataURL(file);  
+}
+
+function encodeImageFileAsURL2(element) {  
+  let file = element.files[0];  
+  let reader = new FileReader();  
+  reader.onloadend = function() {  
+      imagebase64_2 = reader.result;  
+  }  
+  reader.readAsDataURL(file);  
+}
+
+$("#store-save").click(function(){
+    
+  let about = $("#about").text();
+  let errors = [];
+  let errFlag = 0;
+  if(about == "") {
+    errors.push("About is required");
+    errFlag++;
+  }
+  
+  const acceptedFileTypes = ["png", "jpg", "jpeg"];
+  
+  var req = {
+    "about": about,
+  }
+
+  if(bgImgFlag > 0){
+    if(acceptedFileTypes.indexOf(imgExtension1.toLowerCase())===-1){ //bg image
+      errors.push("BackGround Image type must be jpg ,jpeg or png");
+      errFlag++;
+    }
+    
+    req["bgImgFlag"] = 1;
+    req["bgImage"] = imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, "");
+    req["extn1"] = imgExtension1;
+      
+  }else if(bgImgFlag == 0){
+      req["bgImgFlag"] = 0;
+
+  }
+  if(profileImgFlag > 0){
+    if(acceptedFileTypes.indexOf(imgExtension2.toLowerCase())===-1){  //profileimage
+      errors.push("Profile Image type must be jpg ,jpeg or png"); 
+      errFlag++;
+    }
+
+    req["profileImgFlag"] = 1;
+    req["profileImage"] = imagebase64_2.replace(/^data:image\/[a-z]+;base64,/, "");
+    req["extn2"] = imgExtension2;
+
+  }else if(profileImgFlag == 0){
+      
+    req["profileImgFlag"] = 0;
+  }
+
+  if(errFlag == 0){
+          $.ajax({
+              type: "POST",
+              url:setUrl("Store/Store/editStoreFront"),
+              data: JSON.stringify(req),
+              contentType: "application/json; charset=utf-8",
+              dataType: "json",
+              success: function(data){         
+                  successMsg(["Save Changes"]);
+                  delay(function(){
+                  window.location.replace("/aquaspace/frontend/src/Store/StoreStoreFront.html")
+                  },5000);
+              },
+              error: function(errMsg) {
+                  window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+              }
+          });
+      }
+  else{
+      errorShow(errors);
+      alert(JSON.stringify(errors));
+  }
+
 });

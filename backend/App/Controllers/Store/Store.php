@@ -427,6 +427,58 @@ class Store extends \Core\Controller
         View::response($res);
     }
 
+    //sotre front edit
+    public function editStoreFrontAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'"));
+        $result1 = $stmt->fetch();
+        $id = $result1['id'];
+        
+        $updateData = [
+            "about" => $this->data['about']
+        ];
+
+        $this->exec($this->update('store', $updateData, "auth_id ='" . $id . "'"));  
+
+        if($this->data['bgImgFlag'] == 1){
+            $iName = "";
+            $iName = microtime(true) . "." . $this->data['extn1'];
+            $iDir = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/profile/" . $iName;
+            $flag = file_put_contents($iDir, base64_decode($this->data['bgImage']));
+
+            if (!$flag) {
+                new \Exception("file didn't come to backend");
+            }
+
+            $updateData = [
+                "cover_img" => $iName
+            ];        
+            $this->exec($this->update('store' , $updateData , "auth_id ='" . $id . "'"));
+        }
+
+        if($this->data['profileImgFlag'] == 1){
+            
+            $iName = "";
+            $iName = microtime(true) . "." . $this->data['extn2'];
+            $iDir = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/profile/" . $iName;
+            $flag = file_put_contents($iDir, base64_decode($this->data['profileImage']));
+
+            if (!$flag) {
+                new \Exception("file didn't come to backend");
+            }
+
+            $updateData = [
+                "profile_img" => $iName
+            ];
+              
+            $this->exec($this->update('user_auth' , $updateData , "id ='" . $id . "'"));
+        }
+
+              
+        View::response("success");
+    }
+
+
     //delete inventory items -not
     public function deleteProductAction()
     {
