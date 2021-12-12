@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Store.css">
+    <link rel="stylesheet" href="../../css/base.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -94,32 +95,25 @@
             </div>              
             <div class="questions">
                 <h3>You have qustion about this product :-</h3>
-                <a style="text-decoration: none;" href="../Store/StoreQuestionAnswer.html">
-                    <div class="p-card" >
-                        <img src="../../images/tank.jpg" alt="">
-                        <label for="text">
-                            <span style="font-weight: 600;">Name: -</span>
-                            <span>Fish tank</span>
-                        </label>
-                        <label for="text">
-                            <span style="font-weight: 600;">Price: -</span>
-                            <span>Rs 250.00</span>
-                        </label>
+                    <div class="p-card" id="p-card">
+                        
                     </div>
-                </a>
                 
-                <h4>How long this item work?</h4>
+                <h4 id="question"></h4>
                 <br>
-                <textarea id="q" placeholder="Type your answer here" tabindex="5" rows="10" cols="100"
+                <textarea id="answer" placeholder="Type your answer here" tabindex="5" rows="10" cols="100"
                     maxlength="500" required>
                 </textarea>
 
-                <button class="button" >SEND</button>
+                <button class="button" id="send" >SEND</button>
 
             </div>
 		</section>
+        <div id="alertDiv"></div>
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/Store/StoreQuestion.js"></script>
     <script src="../../js/logo.js"></script>
 </body>
 </html>
