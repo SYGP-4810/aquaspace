@@ -29,6 +29,13 @@ $('.report-btn').click(function(){
   $('.report-box').toggleClass("active");
 })
 
+$('#submit-report').click(function(){
+  $('.confirm-report').css("display","block")
+})
+$('#btn1,#btn2').click(function(){
+  $('.confirm-report').css("display","none");
+  $('.report-box').css("display","none")
+})
 function addToCart(){
     console.log("fuck");
   var url = new URL(window.location.href);
