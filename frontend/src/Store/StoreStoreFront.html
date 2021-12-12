@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Store.css">
+    <link rel="stylesheet" href="../../css/base.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -63,9 +64,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../Store/StoreReviews.html">
+                    <a href="../Store/StoreQuestion.html">
                         <i class="fas fa-flag-checkered" aria-hidden="true"></i>
-                        <span>Reviews & Questions</span>
+                        <span>Questions</span>
                     </a>
                 </li>
                 <li>
@@ -78,12 +79,6 @@
                     <a href="../Store/StoreReports.html">
                         <i class="fas fa-clipboard" aria-hidden="true"></i>
                         <span>Generate Reports</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../Store/StoreNotifi.html">
-                        <i class="fas fa-bell" aria-hidden="true"></i>
-                        <span>Notification Settings</span>
                     </a>
                 </li>
 			</ul>
@@ -118,15 +113,12 @@
                     </div>
                 </div>
                 <div class="store-title">
-                     <h3 id="name">Aqua Shop</h3>
-                     <span id="date">member since 20/12/2021</span>
+                     <h3 id="name"></h3>
+                     <span id="date"></span>
                 </div>
-                <!-- <div class="open-time">
-                    <span>Closed Opens 9:00 am Monday</span>
-                </div> -->
                 <div class="address">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span id="address">No 23, Jaya Mw, Kohuwala, Nugegoda</span>
+                    <span id="address"></span>
                 </div>
                 <div class="about">
                     <span>About the store</span>
@@ -181,10 +173,12 @@
                         </div>
                     </div>
                 </div> -->
+                <div id="alertDiv"></div>
             </div>   
 		</section>
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/base.js"></script>
     <script src="../../js/logo.js"></script>
     <script src="../../js/Store/Storefront.js"></script>
 </body>
