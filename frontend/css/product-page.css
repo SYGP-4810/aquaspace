@@ -170,12 +170,14 @@ select:focus {
   color: #ff5a49;
 }
 
+#report{
+  position: relative;
+}
 .report-box {
   display: none; 
   position: absolute;
-  /* z-index: 1; */
   left: 100px;
-  top: 0px;
+  top: 15px;
   width: 300px;
   background-color: #ffffff;
   padding: 10px;
@@ -207,7 +209,7 @@ select:focus {
   font-size: 15px;
   margin-top: 20px;
   cursor: pointer;
-  position: relative;
+  
 }
 
 .col-2 p{
