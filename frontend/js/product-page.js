@@ -34,7 +34,6 @@ $('#submit-report').click(function(){
 })
 $('#btn1,#btn2').click(function(){
   $('.confirm-report').css("display","none");
-  $('.report-box').css("display","none")
 })
 function addToCart(){
     console.log("fuck");
