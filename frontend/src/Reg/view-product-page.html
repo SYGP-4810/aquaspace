@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
+    <link rel="stylesheet" href="../../css/landing-styles.css">
+    <link rel="stylesheet" href="../../css/product-page.css">
+    <link rel="stylesheet" href="../../css/adopt-page.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/getProduct.js"></script>
+    <script src="../../js/product-page.js"></script>
+    <title>Product Dettails</title>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="logo">
+            <img src="../../images/logo.png" alt="">
+            <h2>AquaSpace</h2>
+        </div>
+        <div class="search_box">
+            <div class="dropdown">
+                <div class="default_option">All</div>
+                <ul>
+                    <li>All</li>
+                    <li>Fish</li>
+                    <li>Articles</li>
+                </ul>
+            </div>
+            <div class="search_field">
+                <input type="text" class="input">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li class="active"><a href="../index.html">Home</a></li>
+                <li><a href="articles.html">Blog</a></li>
+                <li><a href="build-tank.html">Build Tank</a></li>
+                <li id="a_parent"><a href="#">Add Post</a>
+                    <div id="a_child" class="sub-menu sub-menu-1">
+                        <ul>
+                            <li><a href="add-fish-post.html">Fish</a></li>
+                            <li><a href="add-other-post.html">Equipment</a></li>
+                            <li><a href="add-fish-post.html">Plant</a></li>
+                            <li><a href="add-adopt-post.html">Adopt</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
+                <li><a href="#"><i class="fas fa-bell fa-lg"></i></a></li>
+                <li><a href="#"><i class="fas fa-user-circle fa-lg"></i></a>
+                    <div class="sub-menu sub-menu-2">
+                        <ul class="options">
+                            <li><a href="account-overview.html">Profile</a></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </div>
+            </ul>
+        </div>
+    </div>
+    <div class="small-container single-product">
+        <div class="row">
+
+            <div id="column_1" class="col-2">
+
+            </div>
+            <div id="column_2" class="col-2">
+            </div>
+
+        </div>
+
+
+
+    </div>
+    <div id="qr" class="small-container">
+        <div class="sects">
+            <p id="reviews">Reviews</p>
+            <p>|</p>
+            <p id="questions">Questions</p>
+        </div>
+
+        <div class="reviews">
+            <div class="review">
+                <h4>K.P Darmaratne</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>I highly recommend the seller. I have bought multiple fish from this fellow and i can gurauntee
+                    that they will not dissppoint.
+                </p>
+            </div>
+            <div class="review">
+                <h4>P.A Samarajeewa</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>I am absolutely not satisfied with the product. Delivery was messed up.
+                </p>
+            </div>
+            <div class="review">
+                <h4>Joel Peter</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>I hv bought from this seller once. Eventhough the delivery took some time, it was sent to us in a
+                    good condition.
+                    Highly recomment the seller.
+                </p>
+            </div>
+
+        </div>
+        <div class="questions">
+
+
+            <textarea style="box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.24),
+            0 17px 50px 0 rgba(0, 0, 0, 0.19); border: 1px solid rgb(202, 202, 202); outline:none; padding: 10px;"
+                id="description" name="reason" rows="5" cols="100" placeholder="Ask your question"></textarea>
+            <button style="background-color: #688aca;
+            width: 80px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 4px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            margin-top: 20px;
+            cursor: pointer; position: relative ;top:-10px;">ASK</button>
+
+            <div style="margin-top: 40px;" class="question">
+                <h4>Ama Perera</h4>
+                <p>Is this fish available to buy?
+                </p>
+            </div>
+            <div class="question">
+                <h4>Joel Peter</h4>
+                <p>Does the age of the fish matters when it comes to buying a suitable tank?
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="small-container">
+        <svg style="display: inline-block;
+    position: absolute;
+    top: -50px;
+    z-index: -1;
+    background-color: #fff8f8;
+    left: 0;" viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
+            <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z" style="stroke: none; fill:rgb(196, 212, 230);">
+            </path>
+        </svg>
+
+    </div>
+    <footer class="footer-distributed">
+
+        <div class="footer-left">
+
+            <div class="logo">
+                <img src="../../images/logo.png" alt="">
+                <h2>AquaSpace</h2>
+            </div>
+
+            <p class="footer-links">
+                <a href="#" class="link-1">Home</a>
+
+                <a href="#">Blog</a>
+
+                <a href="#">Pricing</a>
+
+                <a href="#">About</a>
+
+                <a href="#">Faq</a>
+
+                <a href="#">Contact</a>
+            </p>
+
+            <p class="footer-company-name">Company Name © 2015</p>
+        </div>
+
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+94-123456789</p>
+            </div>
+
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:support@company.com">support@company.com</a></p>
+            </div>
+
+        </div>
+
+        <div class="footer-right">
+
+            <p class="footer-company-about">
+                <span>About AquaSpace</span>
+                AquaSpace is an online quarium marketplace which allows you to connect with community of fish owners,
+                fish enthusiasts and aquarium stores.
+            </p>
+
+            <div class="footer-icons">
+
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-github"></i></a>
+
+            </div>
+
+        </div>
+
+
+
+    </footer>
+    <script src="../../js/view-getProduct.js"></script>
+
+</body>
+
+</html>
