@@ -716,3 +716,12 @@ th {
   font-weight: 500;
   font-size: 1.2em;
 }
+
+.small-container {
+  max-width: 100%;
+  margin: auto;
+  padding-left: 80px;
+  padding-right: 80px;
+  display: flex;
+  flex-direction: column;
+}
