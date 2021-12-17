@@ -79,11 +79,11 @@ $(document).ready(function () {
           $("#column_2").html(`
         <h2 id="name">${data.product_name}</h2>
                 <p id="price">Rs. ${data.price}</p>
-                <!-- <select>
-                    <option>Delivery Option</option>
-                    <option>In Store Pick-up</option>
-                    <option>In Store Delivery Service</option>
-                    <option>Third Party Delivery Service</option>
+                <!-- <select id="delivery_method">
+                    <option orderselected hidden value="">Delivery Option</option>
+                    <option value="0">In Store Pick-up</option>
+                    <option value="1">In Store Delivery Service</option>
+                    <option value="2">Third Party Delivery Service</option>
                 </select> -->
             
                 <input type="number" id="item-qty" min="1" max=${data.quantity} value="1"><span id="quantity">${data.quantity}</span><span>     </span><span>Available</span><br>
@@ -143,9 +143,9 @@ $(document).ready(function () {
           $("#column_2").html(`
         <h2 id="name">${data.product_name}</h2>
                 <p id="price">Rs. ${data.price}</p>
-                <select>
-                    <option>Delivery Option</option>
-                    <option>In Store Pick-up</option>
+                <select id="delivery_method">
+                    <option orderselected hidden value="">Delivery Option</option>
+                    <option value="0">In Store Pick-up</option>
                 </select>
             
                 <input type="number" id="item-qty" min="1" max=${data.quantity} value="1"><span id="quantity">${data.quantity}</span><span>     </span><span>Available</span><br>
@@ -204,10 +204,10 @@ $(document).ready(function () {
         } else if (data.delivery == 2) {
           $("#column_2").html(`
         <h2 id="name">${data.product_name}</h2>
-                <p id="price">Rssss. ${data.price}</p>
-                <select>
-                    <option>Delivery Option</option>
-                    <option>In Store Delivery Service</option>
+                <p id="price">Rs. ${data.price}</p>
+                <select id="delivery_method">
+                    <option orderselected hidden value="">Delivery Option</option>
+                    <option value="1">In Store Delivery Service</option>
                 </select>
             
                 <input type="number" id="item-qty" min="1" max=${data.quantity} value="1"><span id="quantity">${data.quantity}</span><span>     </span><span>Available</span><br>
@@ -267,10 +267,10 @@ $(document).ready(function () {
           $("#column_2").html(`
         <h2 id="name">${data.product_name}</h2>
                 <p id="price">Rs. ${data.price}</p>
-                <select>
-                    <option>Delivery Option</option>
-                    <option>In Store Pick-up</option>
-                    <option>In Store Delivery Service</option>
+                <select id="delivery_method">
+                    <option orderselected hidden value="">Delivery Option</option>
+                    <option value="0">In Store Pick-up</option>
+                    <option value="1">In Store Delivery Service</option>
                 </select>
             
                 <input type="number" id="item-qty" min="1" max=${data.quantity} value="1"><span id="quantity">${data.quantity}</span><span>     </span><span>Available</span><br>
@@ -330,9 +330,9 @@ $(document).ready(function () {
           $("#column_2").html(`
         <h2 id="name">${data.product_name}</h2>
                 <p id="price">Rs. ${data.price}</p>
-                <select>
-                    <option>Delivery Option</option>
-                    <option>Third Party Delivery Service</option>
+                <select id="delivery_method">
+                    <option orderselected hidden value="">Delivery Option</option>
+                    <option value="2">Third Party Delivery Service</option>
                 </select>
             
                 <input type="number" id="item-qty" min="1" max=${data.quantity} value="1"><span id="quantity">${data.quantity}</span><span>     </span><span>Available</span><br>
@@ -392,10 +392,10 @@ $(document).ready(function () {
           $("#column_2").html(`
         <h2 id="name">${data.product_name}</h2>
                 <p id="price">Rs. ${data.price}</p>
-                <select>
-                    <option>Delivery Option</option>
-                    <option>In Store Pick-up</option>
-                    <option>Third Party Delivery Service</option>
+                <select id="delivery_method">
+                    <option orderselected hidden value="">Delivery Option</option>
+                    <option value="0">In Store Pick-up</option>
+                    <option value="2">Third Party Delivery Service</option>
                 </select>
             
                 <input type="number" id="item-qty" min="1" max=${data.quantity} value="1"><span id="quantity">${data.quantity}</span><span>     </span><span>Available</span><br>
@@ -455,10 +455,10 @@ $(document).ready(function () {
           $("#column_2").html(`
         <h2 id="name">${data.product_name}</h2>
                 <p id="price">Rs. ${data.price}</p>
-                <select>
-                    <option>Delivery Option</option>
-                    <option>In Store Delivery Service</option>
-                    <option>Third Party Delivery Service</option>
+                <select id="delivery_method">
+                    <option orderselected hidden value="">Delivery Option</option>
+                    <option value="1">In Store Delivery Service</option>
+                    <option value="2">Third Party Delivery Service</option>
                 </select>
             
                 <input type="number" id="item-qty" min="1" max=${data.quantity} value="1"><span id="quantity">${data.quantity}</span><span>     </span><span>Available</span><br>
@@ -518,11 +518,11 @@ $(document).ready(function () {
           $("#column_2").html(`
         <h2 id="name">${data.product_name}</h2>
                 <p id="price">Rs. ${data.price}</p>
-                <select>
-                    <option>Delivery Option</option>
-                    <option>In Store Pick-up</option>
-                    <option>In Store Delivery Service</option>
-                    <option>Third Party Delivery Service</option>
+                <select id="delivery_method">
+                    <option orderselected hidden value="">Delivery Option</option>
+                    <option value="0">In Store Pick-up</option>
+                    <option value="1">In Store Delivery Service</option>
+                    <option value="2">Third Party Delivery Service</option>
                 </select>
             
                 <input type="number" id="item-qty" min="1" max=${data.quantity} value="1"><span id="quantity">${data.quantity}</span><span>     </span><span>Available</span><br>
@@ -584,11 +584,11 @@ $(document).ready(function () {
       //     $("#column_2").html(`
       //     <h2 id="name">${data.product_name}</h2>
       //             <p id="price">Rs. ${data.price}</p>
-      //             <!-- <select>
-      //                 <option>Delivery Option</option>
-      //                 <option>In Store Pick-up</option>
-      //                 <option>In Store Delivery Service</option>
-      //                 <option>Third Party Delivery Service</option>
+      //             <!-- <select id="delivery_method">
+      //                 <option orderselected hidden value="">Delivery Option</option>
+      //                 <option value="0">In Store Pick-up</option>
+      //                 <option value="1">In Store Delivery Service</option>
+      //                 <option value="2">Third Party Delivery Service</option>
       //             </select> -->
 
       //             <input  id="item-qty"  type="number" min="1" max=${data.quantity} value="1"><span id="quantity">${data.quantity}</span><span>     </span><span>Available</span><br>
