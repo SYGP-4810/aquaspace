@@ -299,4 +299,47 @@ class Reg extends \Core\Controller
         View::response($stmt->fetch());
     }
 
+    public function getAmountAction(){
+
+    }
+
+    public function makeOrderAction()
+    {
+        $data = json_encode($this->data);
+        $obj = json_decode($data);
+
+        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        for ($i = 0; $i < sizeof($obj); $i++)
+        {
+            $dataToInsert1 = [
+                "seller_auth_id" => $obj[$i]->auth_id,
+                "buyer_auth_id"  => $id,
+            ];
+
+            $this->exec($this->save('selling_order', $dataToInsert1));
+            $max_id = $this->execute("SELECT MAX(id) FROM selling_order")->fetch();
+            
+            
+            for($x = 0; $x < sizeof($obj[$i]->product_id); $x++){
+            
+                $dataToInsert2 = [
+                    "selling_order_id" => $max_id['MAX(id)'],
+                    "product_id" => $obj[$i]->product_id[$x],
+                    
+                ];
+
+                $this->exec($this->save('product_order', $dataToInsert2));
+            }
+            View::response($max_id['MAX(id)']);
+
+
+
+        }
+
+        /*-------View::response($this->data[0]->auth_id); why doesnt this work???------- */
+   
+    
+
+    }
+
 }

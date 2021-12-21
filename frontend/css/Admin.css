@@ -414,12 +414,11 @@ form > label {
 
 .block-list,
 .block-post,
-.block-post-details
- {
+.block-post-details {
   margin: 0px 0px 60px 60px;
 }
 
-.notifi{
+.notifi {
   margin: 0px 0px 60px 30px;
 }
 
@@ -467,7 +466,6 @@ form > label {
 
 .notifi {
   font-size: 1.1em;
-  
 }
 
 input[type="checkbox"] {
@@ -535,7 +533,7 @@ input[type="checkbox"] {
   border-radius: 50%;
 }
 
-.account .profile-pic{
+.account .profile-pic {
   margin-top: 80px;
 }
 
@@ -594,7 +592,6 @@ input[type="checkbox"] {
 
 .account .profile-pic .js--image-preview::after {
   content: "";
-
 }
 
 /* report */
@@ -667,33 +664,35 @@ th {
   margin: 0px 60px 10px 60px;
 }
 
-.s-rates-table th,.r-rates-table th {
+.s-rates-table th,
+.r-rates-table th {
   padding-left: 30px;
   padding-right: 30px;
   font-size: 20px;
   text-align: left;
-  white-space: nowrap ;
+  white-space: nowrap;
 }
 
-.s-rates-table td,.r-rates-table td{
+.s-rates-table td,
+.r-rates-table td {
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 10px;
   text-align: center;
   font-size: 18px;
   text-align: left;
-  white-space: nowrap ;
+  white-space: nowrap;
 }
 
 .rates-table #type {
   border: none;
 }
 
-.r-rates-table input{
+.r-rates-table input {
   width: 100px;
 }
 
-.coin{
+.coin {
   margin-top: 10px;
 }
 
@@ -702,14 +701,121 @@ th {
   margin-right: 10px;
 }
 
-.time{
+.time {
   display: flex;
   flex-direction: row;
   float: right;
   margin-right: 15px;
 }
 
-.time span{
+.time span {
   font-weight: 500;
   font-size: 1.2em;
 }
+
+/* css for the card in admin home page */
+
+.first-row{
+  display: flex;
+  justify-content: space-around;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 0;
+}
+
+.first-row:first-child{
+  padding-top: 15px;
+}
+
+.home-card{
+  height: 200px;
+  width: 520px;
+  margin: 30px;
+  border-radius: 25px;
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 10px 0 rgba(170, 166, 221, 0.596),
+    0 17px 50px 0 rgba(170, 166, 221, 0.596);
+  padding: 20px;
+  position: relative;
+
+} 
+.home-cardd{
+  height: 200px;
+  width: 300px;
+  margin: 30px;
+  border-radius: 25px;
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 10px 0 rgba(170, 166, 221, 0.596),
+    0 17px 50px 0 rgba(170, 166, 221, 0.596);
+  padding: 20px;
+  position: relative;
+
+} 
+
+#gg{
+  display: flex;
+}
+
+.home-card #card-row-1 .account-type {
+  position: absolute;
+  font-size: 50px;
+  top: 53px;
+  left: 100px;
+  color: #696c83d5;
+  margin-left: 20px;
+}
+
+.home-card .count {
+  font-size: 80px;
+  color: rgba(50, 47, 70, 0.788);
+  font-weight: 400;
+}
+
+.card-title{
+  font-size: 20px;
+  color: #9595b3d0;
+  position: absolute;
+  top: 130px;
+  left: 25px;
+ 
+}
+
+.home-card #card-row-1 .account-type2 {
+  position: absolute;
+  font-size: 30px;
+  top: 30px;
+  left: 100px;
+  color: #696c83d5;
+  margin-left: 20px;
+}
+/* .first-row {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px;
+}
+
+.home-card-row1 {
+  height: 230px;
+  width: 100%;
+  
+}
+.home-card-row1:first-child{
+  margin-right: 40px;
+}
+.home-card-row2 {
+  
+  height: 230px;
+  margin-left: 40px;
+  width: 500px;
+  margin-bottom: 40px;
+}
+
+.home-card {
+  border-radius: 25px;
+  background-color: #eceaea;
+  box-shadow: 0 2px 10px 0 rgba(59, 56, 100, 0.24),
+    0 17px 50px 0 rgba(59, 56, 100, 0.24);
+  padding-top: 20px;
+  padding-left: 30px;
+
+} */
