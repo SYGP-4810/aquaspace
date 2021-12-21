@@ -23,6 +23,7 @@ $(document).ready(function () {
     url: setUrl("Common/getProduct"),
     contentType: "application/json; charset=utf-8",
     dataType: "json",
+    async: false,
     data: JSON.stringify(req),
     success: function (data) {
       // console.log(JSON.stringify(data));
@@ -625,4 +626,19 @@ $(document).ready(function () {
       window.location.replace("../src/Error" + errMsg.status + ".html");
     },
   });
+
+  /*when the report button is clicked, the user selects the reason and confirm the report */
+  $(".report-btn").click(function () {
+    $(".report-box").toggleClass("active");
+    console.log("akdjsdk");
+  });
+
+  $("#submit-report").click(function () {
+    $(".confirm-report").css("display", "block");
+  });
+  $("#btn1,#btn2").click(function () {
+    $(".confirm-report").css("display", "none");
+  });
+
+  
 });

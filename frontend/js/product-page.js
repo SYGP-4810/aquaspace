@@ -24,17 +24,6 @@
 
 // });
 
-/*when the report button is clicked, the user selects the reason and confirm the report */
-$(".report-btn").click(function () {
-  $(".report-box").toggleClass("active");
-});
-
-$("#submit-report").click(function () {
-  $(".confirm-report").css("display", "block");
-});
-$("#btn1,#btn2").click(function () {
-  $(".confirm-report").css("display", "none");
-});
 
 /* function to be called when add to cart button is clicked */
 function addToCart() {
