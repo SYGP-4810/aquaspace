@@ -293,6 +293,7 @@ class Reg extends \Core\Controller
                 "status" => 4
             ];
             $this->exec($this->update('report', $dataToUpdate,"id='" . $this->data['productId'] . "'"));
+            //send an email with a link to send appeal for unblock this product
             //check number of blocked product of the user to block the user_auth
         $stmt = $this->execute($this->get('product','*',"auth_id='" .$sellerId."'"));
         if($stmt->rowsCount() > 10){
@@ -300,6 +301,7 @@ class Reg extends \Core\Controller
                 "user_status" => 3 
             ];
             $this->exec($this->update('user_auth',$dataToUpdate,'auth_id=\''.$sellerId."'"));
+            //send a email with a link to unblock the user as well as prodocts
         }
         }
         $res = [

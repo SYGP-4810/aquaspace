@@ -260,4 +260,40 @@ class Admin extends \Core\Controller
         view::response("successfully updated");
 
     }
+
+    //get the appeals for individual posts
+    public function getAppealAction(){
+        $needToBeExtract = "appeal.appeal , appeal.product_id, products.product_name, products.img1";
+        $tablesWhichDataContains = "appeal , products";
+        $condition = "appeal.product_id = products.id AND products.status = '4'";
+        $sql = $this->join($tablesWhichDataContains,$needToBeExtract,$condition);
+        View::response($this->execute($sql)->fetchAll());
+    }
+
+    //get reasons for the appeals of individual posts
+    public function getReasonsAppealAction(){
+        View::response($this->execute($this->get("report","*","product_id='". $this->data['productId'] . "'"))->fetchAll());
+    }
+
+    //unblock the blocked product 
+    public function unblockProductAction(){
+        $dataToBeUpdate = [
+            "status" => "1"
+        ];
+        $this->exec($this->update("products",$dataToBeUpdate,"id='". $this->data['productId'] . "'"));
+        View::response("successfully updated");
+    }
+
+    //get the users who sent appeals to unblock account
+    public function getUserAppealAction(){
+        $dataColumn = "user_auth.email, user_auth.profile_img,user_auth.user_type, user_appeal.appeal";
+        $tables = "user_appeals, user_auth";
+        $condition = "user_auth.id=user_appeal.auth_id AND user_auth.user_status='3'";
+        $sql = $this->join($tables,$dataColumn,$condition);
+        View::response($sql);
+        // View::response($this->execute($sql)->fetchAll());
+    } 
+    
+
+
 }
