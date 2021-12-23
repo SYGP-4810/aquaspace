@@ -284,6 +284,15 @@ class Admin extends \Core\Controller
         View::response("successfully updated");
     }
 
+    //decline the appeal for a product
+    public function declineAppealAction(){
+        $result = $this->execute($this->get('products','*',"id='". $this->data['productId']."'"))->fetch();
+        $id = $result['auth_id'];
+        $this->exec($this->update("products",["status" => '5'],"id='".$this->data['productId']. "'"));
+        $this->notifyOther($id,"your appeal declined");
+        View::response("successfully decline the appeal for the product ".$result['product_name']);
+    }
+
     //get the users who sent appeals to unblock account
     public function getUserAppealAction(){
         $dataColumn = "user_auth.email, user_auth.profile_img,user_auth.user_type, user_appeal.appeal";

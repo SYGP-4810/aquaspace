@@ -4,8 +4,14 @@ $(document).ready(function(){
     let url = new URL(url_string);
     let productId = url.searchParams.get("id");
     let appeal = url.searchParams.get("appeal");
+    let productImg = url.searchParams.get("img");
+    let productName = url.searchParams.get("productName");
+    console.log(productImg);
     $("#appeal").html(`${appeal}`);
     req["productId"] = productId;
+    $("#linkOf").attr("href", `http://127.0.0.1/aquaspace/frontend/src/reg/view-product-page.html?id=${productId}`);
+    $("#productName").html(`${productName}`);
+    $("#productImg").html(`<img id="productImg" style="height: 135px;" src="aquaspace/frontend/images/${productImg}" alt=${productName} />`);
     $.ajax({
         type: "POST",
         url:setUrl("Admin/Admin/getReasonsAppeal"),
@@ -47,6 +53,26 @@ $("#unblock-btn").click(function(){
         success: function(data){
             console.log(data);
            successMsg(["successfully unblock the product"]);
+           delay(function(){
+                window.location.replace("/aquaspace/frontend/src/Admin/AdminIssuesPosts.html");
+           },3000);
+    
+        },
+        error: function(errMsg) {
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+        }
+    });
+});
+
+$("#decline-btn").click(function(){
+    $.ajax({
+        type: "POST",
+        url:setUrl("Admin/Admin/declineAppeal"),
+        data: JSON.stringify(req),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+           successMsg(["successfully decline the appeal"]);
            delay(function(){
                 window.location.replace("/aquaspace/frontend/src/Admin/AdminIssuesPosts.html");
            },3000);

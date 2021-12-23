@@ -19,7 +19,7 @@ $(document).ready(function(){
                         </div>
                     </td>   
                     <td>
-                        <a href="../Admin/AdminIssuesPostsDetails.html?id=${element.product_id}&appeal=${element.appeal}" class="button">View appeal</a>
+                        <a href="../Admin/AdminIssuesPostsDetails.html?id=${element.product_id}&appeal=${element.appeal}&img=${element.img1}&productName=${element.product_name}" class="button">View appeal</a>
                     </td>
                 </tr>
             `);    
