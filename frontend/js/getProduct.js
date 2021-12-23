@@ -99,44 +99,44 @@ function setUrl(text) {
                   <h3>Telephone No</h3>
                   <p>0771234567</p>
                   <div id="report"><button class="report-btn">REPORT</button>
-                      <div class="report-box">
-                          <div class="dd">
-                              <div>
-                                  <input type="radio" name="options" value="1" checked>
-                                  <label>Reason 1</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="2">
-                                  <label>Reason 2</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="3">
-                                  <label>Reason 3</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="4">
-                                  <label>Reason 4</label>
-                              </div>
-                              <div class="btn" id="submit-report">SUBMIT REPORT</div>
-  
-  
-                          </div>
-  
-  
-  
-                      </div>
-  
-                  </div>
-  
-                  <div class="confirm-report">
-                       Are you sure you want to report this item?
-                       <div class="buttons">
-                           <button id="btn1">confirm</button>
-                           <button id="btn2">cancel</button>
-  
-                       </div>
-                      
-                  </div>
+                    <div class="report-box">
+                        <div class="dd">
+                            <div>
+                                <input type="radio" name="reportOptions" value="1" checked>
+                                <label>False informations</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="2">
+                                <label>Illegal Selling</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="3">
+                                <label>Should not be in aquaspace</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="4">
+                                <label>Other</label>
+                            </div>
+                            <div class="btn" id="submit-report">SUBMIT REPORT</div>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="confirm-report">
+                     Are you sure you want to report this item?
+                     <div class="buttons">
+                         <button id="confirmReport">confirm</button>
+                         <button id="btn2">cancel</button>
+
+                     </div>
+                    
+                </div>
   
   
           `);
@@ -161,44 +161,44 @@ function setUrl(text) {
                   <h3>Telephone No</h3>
                   <p>0771234567</p>
                   <div id="report"><button class="report-btn">REPORT</button>
-                      <div class="report-box">
-                          <div class="dd">
-                              <div>
-                                  <input type="radio" name="options" value="1" checked>
-                                  <label>Reason 1</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="2">
-                                  <label>Reason 2</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="3">
-                                  <label>Reason 3</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="4">
-                                  <label>Reason 4</label>
-                              </div>
-                              <div class="btn" id="submit-report">SUBMIT REPORT</div>
-  
-  
-                          </div>
-  
-  
-  
-                      </div>
-  
-                  </div>
-  
-                  <div class="confirm-report">
-                       Are you sure you want to report this item?
-                       <div class="buttons">
-                           <button id="btn1">confirm</button>
-                           <button id="btn2">cancel</button>
-  
-                       </div>
-                      
-                  </div>
+                    <div class="report-box">
+                        <div class="dd">
+                            <div>
+                                <input type="radio" name="reportOptions" value="1" checked>
+                                <label>False informations</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="2">
+                                <label>Illegal Selling</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="3">
+                                <label>Should not be in aquaspace</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="4">
+                                <label>Other</label>
+                            </div>
+                            <div class="btn" id="submit-report">SUBMIT REPORT</div>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="confirm-report">
+                     Are you sure you want to report this item?
+                     <div class="buttons">
+                         <button id="confirmReport">confirm</button>
+                         <button id="btn2">cancel</button>
+
+                     </div>
+                    
+                </div>
   
   
           `);
@@ -223,44 +223,44 @@ function setUrl(text) {
                   <h3>Telephone No</h3>
                   <p>0771234567</p>
                   <div id="report"><button class="report-btn">REPORT</button>
-                      <div class="report-box">
-                          <div class="dd">
-                              <div>
-                                  <input type="radio" name="options" value="1" checked>
-                                  <label>Reason 1</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="2">
-                                  <label>Reason 2</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="3">
-                                  <label>Reason 3</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="4">
-                                  <label>Reason 4</label>
-                              </div>
-                              <div class="btn" id="submit-report">SUBMIT REPORT</div>
-  
-  
-                          </div>
-  
-  
-  
-                      </div>
-  
-                  </div>
-  
-                  <div class="confirm-report">
-                       Are you sure you want to report this item?
-                       <div class="buttons">
-                           <button id="btn1">confirm</button>
-                           <button id="btn2">cancel</button>
-  
-                       </div>
-                      
-                  </div>
+                    <div class="report-box">
+                        <div class="dd">
+                            <div>
+                                <input type="radio" name="reportOptions" value="1" checked>
+                                <label>False informations</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="2">
+                                <label>Illegal Selling</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="3">
+                                <label>Should not be in aquaspace</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="4">
+                                <label>Other</label>
+                            </div>
+                            <div class="btn" id="submit-report">SUBMIT REPORT</div>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="confirm-report">
+                     Are you sure you want to report this item?
+                     <div class="buttons">
+                         <button id="confirmReport">confirm</button>
+                         <button id="btn2">cancel</button>
+
+                     </div>
+                    
+                </div>
   
   
           `);
@@ -286,44 +286,44 @@ function setUrl(text) {
                   <h3>Telephone No</h3>
                   <p>0771234567</p>
                   <div id="report"><button class="report-btn">REPORT</button>
-                      <div class="report-box">
-                          <div class="dd">
-                              <div>
-                                  <input type="radio" name="options" value="1" checked>
-                                  <label>Reason 1</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="2">
-                                  <label>Reason 2</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="3">
-                                  <label>Reason 3</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="4">
-                                  <label>Reason 4</label>
-                              </div>
-                              <div class="btn" id="submit-report">SUBMIT REPORT</div>
-  
-  
-                          </div>
-  
-  
-  
-                      </div>
-  
-                  </div>
-  
-                  <div class="confirm-report">
-                       Are you sure you want to report this item?
-                       <div class="buttons">
-                           <button id="btn1">confirm</button>
-                           <button id="btn2">cancel</button>
-  
-                       </div>
-                      
-                  </div>
+                    <div class="report-box">
+                        <div class="dd">
+                            <div>
+                                <input type="radio" name="reportOptions" value="1" checked>
+                                <label>False informations</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="2">
+                                <label>Illegal Selling</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="3">
+                                <label>Should not be in aquaspace</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="4">
+                                <label>Other</label>
+                            </div>
+                            <div class="btn" id="submit-report">SUBMIT REPORT</div>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="confirm-report">
+                     Are you sure you want to report this item?
+                     <div class="buttons">
+                         <button id="confirmReport">confirm</button>
+                         <button id="btn2">cancel</button>
+
+                     </div>
+                    
+                </div>
   
   
           `);
@@ -348,44 +348,44 @@ function setUrl(text) {
                   <h3>Telephone No</h3>
                   <p>0771234567</p>
                   <div id="report"><button class="report-btn">REPORT</button>
-                      <div class="report-box">
-                          <div class="dd">
-                              <div>
-                                  <input type="radio" name="options" value="1" checked>
-                                  <label>Reason 1</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="2">
-                                  <label>Reason 2</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="3">
-                                  <label>Reason 3</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="4">
-                                  <label>Reason 4</label>
-                              </div>
-                              <div class="btn" id="submit-report">SUBMIT REPORT</div>
-  
-  
-                          </div>
-  
-  
-  
-                      </div>
-  
-                  </div>
-  
-                  <div class="confirm-report">
-                       Are you sure you want to report this item?
-                       <div class="buttons">
-                           <button id="btn1">confirm</button>
-                           <button id="btn2">cancel</button>
-  
-                       </div>
-                      
-                  </div>
+                    <div class="report-box">
+                        <div class="dd">
+                            <div>
+                                <input type="radio" name="reportOptions" value="1" checked>
+                                <label>False informations</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="2">
+                                <label>Illegal Selling</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="3">
+                                <label>Should not be in aquaspace</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="4">
+                                <label>Other</label>
+                            </div>
+                            <div class="btn" id="submit-report">SUBMIT REPORT</div>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="confirm-report">
+                     Are you sure you want to report this item?
+                     <div class="buttons">
+                         <button id="confirmReport">confirm</button>
+                         <button id="btn2">cancel</button>
+
+                     </div>
+                    
+                </div>
   
   
           `);
@@ -411,44 +411,44 @@ function setUrl(text) {
                   <h3>Telephone No</h3>
                   <p>0771234567</p>
                   <div id="report"><button class="report-btn">REPORT</button>
-                      <div class="report-box">
-                          <div class="dd">
-                              <div>
-                                  <input type="radio" name="options" value="1" checked>
-                                  <label>Reason 1</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="2">
-                                  <label>Reason 2</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="3">
-                                  <label>Reason 3</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="4">
-                                  <label>Reason 4</label>
-                              </div>
-                              <div class="btn" id="submit-report">SUBMIT REPORT</div>
-  
-  
-                          </div>
-  
-  
-  
-                      </div>
-  
-                  </div>
-  
-                  <div class="confirm-report">
-                       Are you sure you want to report this item?
-                       <div class="buttons">
-                           <button id="btn1">confirm</button>
-                           <button id="btn2">cancel</button>
-  
-                       </div>
-                      
-                  </div>
+                    <div class="report-box">
+                        <div class="dd">
+                            <div>
+                                <input type="radio" name="reportOptions" value="1" checked>
+                                <label>False informations</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="2">
+                                <label>Illegal Selling</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="3">
+                                <label>Should not be in aquaspace</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="4">
+                                <label>Other</label>
+                            </div>
+                            <div class="btn" id="submit-report">SUBMIT REPORT</div>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="confirm-report">
+                     Are you sure you want to report this item?
+                     <div class="buttons">
+                         <button id="confirmReport">confirm</button>
+                         <button id="btn2">cancel</button>
+
+                     </div>
+                    
+                </div>
   
   
           `);
@@ -474,44 +474,44 @@ function setUrl(text) {
                   <h3>Telephone No</h3>
                   <p>0771234567</p>
                   <div id="report"><button class="report-btn">REPORT</button>
-                      <div class="report-box">
-                          <div class="dd">
-                              <div>
-                                  <input type="radio" name="options" value="1" checked>
-                                  <label>Reason 1</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="2">
-                                  <label>Reason 2</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="3">
-                                  <label>Reason 3</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="4">
-                                  <label>Reason 4</label>
-                              </div>
-                              <div class="btn" id="submit-report">SUBMIT REPORT</div>
-  
-  
-                          </div>
-  
-  
-  
-                      </div>
-  
-                  </div>
-  
-                  <div class="confirm-report">
-                       Are you sure you want to report this item?
-                       <div class="buttons">
-                           <button id="btn1">confirm</button>
-                           <button id="btn2">cancel</button>
-  
-                       </div>
-                      
-                  </div>
+                    <div class="report-box">
+                        <div class="dd">
+                            <div>
+                                <input type="radio" name="reportOptions" value="1" checked>
+                                <label>False informations</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="2">
+                                <label>Illegal Selling</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="3">
+                                <label>Should not be in aquaspace</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="4">
+                                <label>Other</label>
+                            </div>
+                            <div class="btn" id="submit-report">SUBMIT REPORT</div>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="confirm-report">
+                     Are you sure you want to report this item?
+                     <div class="buttons">
+                         <button id="confirmReport">confirm</button>
+                         <button id="btn2">cancel</button>
+
+                     </div>
+                    
+                </div>
   
   
           `);
@@ -538,44 +538,44 @@ function setUrl(text) {
                   <h3>Telephone No</h3>
                   <p>0771234567</p>
                   <div id="report"><button class="report-btn">REPORT</button>
-                      <div class="report-box">
-                          <div class="dd">
-                              <div>
-                                  <input type="radio" name="options" value="1" checked>
-                                  <label>Reason 1</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="2">
-                                  <label>Reason 2</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="3">
-                                  <label>Reason 3</label>
-                              </div>
-                              <div>
-                                  <input type="radio" name="options" value="4">
-                                  <label>Reason 4</label>
-                              </div>
-                              <div class="btn" id="submit-report">SUBMIT REPORT</div>
-  
-  
-                          </div>
-  
-  
-  
-                      </div>
-  
-                  </div>
-  
-                  <div class="confirm-report">
-                       Are you sure you want to report this item?
-                       <div class="buttons">
-                           <button id="btn1">confirm</button>
-                           <button id="btn2">cancel</button>
-  
-                       </div>
-                      
-                  </div>
+                    <div class="report-box">
+                        <div class="dd">
+                            <div>
+                                <input type="radio" name="reportOptions" value="1" checked>
+                                <label>False informations</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="2">
+                                <label>Illegal Selling</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="3">
+                                <label>Should not be in aquaspace</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="reportOptions" value="4">
+                                <label>Other</label>
+                            </div>
+                            <div class="btn" id="submit-report">SUBMIT REPORT</div>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="confirm-report">
+                     Are you sure you want to report this item?
+                     <div class="buttons">
+                         <button id="confirmReport">confirm</button>
+                         <button id="btn2">cancel</button>
+
+                     </div>
+                    
+                </div>
   
   
           `);
