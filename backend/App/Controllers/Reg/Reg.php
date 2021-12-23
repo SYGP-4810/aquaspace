@@ -242,23 +242,31 @@ class Reg extends \Core\Controller
     public function addToCartAction()
     {
         $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $product_id = $this->data['id'];
         $dataToInsert = [
             "user_id" => $id,
             "product_id" => $this->data['id'],
-            "quantity" => $this->data['quantity']
+            "quantity" => $this->data['quantity'],
+            "delivery" => $this->data['delivery'],
         ];
-        $this->exec($this->save('shopping_cart', $dataToInsert));
-        View::response("Added to Your Cart!");
+        $stmt = $this->execute("SELECT id FROM shopping_cart WHERE user_id=$id AND product_id=$product_id");
+        if(!$stmt->fetch()){
+            $this->exec($this->save('shopping_cart', $dataToInsert));
+            View::response("Added to Your Cart!");
 
+        }
+        else View::response("Item is already in your cart!");
+        
     }
 
     public function showCartAction()
     {
         $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
         $stmt = $this->execute("
-        SELECT shopping_cart.product_id, shopping_cart.quantity ,  products.product_name, products.price
-        FROM shopping_cart
+        SELECT shopping_cart.id, shopping_cart.product_id, shopping_cart.quantity, products.product_name, products.price
+        FROM shopping_cart 
         INNER JOIN products ON shopping_cart.product_id=products.id
+        WHERE shopping_cart.user_id = $id
         ") ;
 
         $result = $stmt->fetchAll();
@@ -310,7 +318,76 @@ class Reg extends \Core\Controller
         ];
         View::response($res);
 
-    }
+    
 
 }
 
+    public function checkoutAction(){
+        $merchant_id         = $this->data['merchant_id'];
+        $order_id             = $this->data['order_id'];
+        $payhere_amount     = $this->data['payhere_amount'];
+        $payhere_currency    = $this->data['payhere_currency'];
+        $status_code         = $this->data['status_code'];
+        $md5sig                = $this->data['md5sig'];
+
+        $merchant_secret = '8bSu7smGYku8X3pnJGmB0b4UrBHGhEWa149Z5kvwmt2B'; // Replace with your Merchant Secret (Can be found on your PayHere account's Settings page)
+
+        $local_md5sig = strtoupper (md5 ( $merchant_id . $order_id . $payhere_amount . $payhere_currency . $status_code . strtoupper(md5($merchant_secret)) ) );
+
+        if (($local_md5sig === $md5sig) AND ($status_code == 2) ){
+
+            
+                //TODO: Update your database as payment success
+        }
+    }
+
+    public function getProductAction()
+    {
+        $stmt = $this->execute($this->get('products', "*", "id ='" . $this->data['id'] . "'"));
+        View::response($stmt->fetch());
+    }
+
+    public function getAmountAction(){
+
+    }
+
+    public function makeOrderAction()
+    {
+        $data = json_encode($this->data);
+        $obj = json_decode($data);
+
+        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        for ($i = 0; $i < sizeof($obj); $i++)
+        {
+            $dataToInsert1 = [
+                "seller_auth_id" => $obj[$i]->auth_id,
+                "buyer_auth_id"  => $id,
+            ];
+
+            $this->exec($this->save('selling_order', $dataToInsert1));
+            $max_id = $this->execute("SELECT MAX(id) FROM selling_order")->fetch();
+            
+            
+            for($x = 0; $x < sizeof($obj[$i]->product_id); $x++){
+            
+                $dataToInsert2 = [
+                    "selling_order_id" => $max_id['MAX(id)'],
+                    "product_id" => $obj[$i]->product_id[$x],
+                    
+                ];
+
+                $this->exec($this->save('product_order', $dataToInsert2));
+            }
+            View::response($max_id['MAX(id)']);
+
+
+
+        }
+
+        /*-------View::response($this->data[0]->auth_id); why doesnt this work???------- */
+   
+    
+
+    }
+
+}
