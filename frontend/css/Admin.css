@@ -716,6 +716,14 @@ th {
   font-size: 1.2em;
 }
 
+.small-container {
+  max-width: 100%;
+  margin: auto;
+  padding-left: 80px;
+  padding-right: 80px;
+  display: flex;
+  flex-direction: column;
+}
 /* css for the card in admin home page */
 
 .first-row{

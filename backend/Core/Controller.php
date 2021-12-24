@@ -117,4 +117,37 @@ class Controller extends \Core\Token
         $mail->Body    = $message;
         $mail->send();
     }
+
+    /***
+     * create notifications to show to the logged in user
+     * @param string $message : Message to be sent
+     * 
+     *  @return void 
+     */
+    public function notifyHimself($message){
+        $id = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $dataToInsert = [
+            "auth_id" => $id,
+            "msg" => $message
+        ];
+        $this->exec($this->save('notification',$dataToInsert));
+        
+        
+    }
+
+    /**
+     * notify user which is not the logged in user
+     *  @param string $id : id of the user
+     *  @param string $message : notification message
+     *  @return void
+     */
+    public function notifyOther($id,$message){
+        $dataToInsert = [
+            "auth_id" => $id,
+            "msg" => $message
+        ];
+        $this->save('notification',$dataToInsert);
+        $this->exec($this->save('notification',$dataToInsert));
+    }
+
 }

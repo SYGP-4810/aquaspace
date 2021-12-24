@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Admin.css">
+    <link rel="stylesheet" href="../../css/base.css">
 </head>
 <body>
 	<input type="checkbox" id="checkbox">
@@ -95,7 +96,7 @@
 		<section class="section-1">
             <div class="head-titles">
                 <h2>ISSUES & REPORTS</h2>
-                <div class="dbtn">
+                <!-- <div class="dbtn">
                     <div class="dropdown">
                         <button class="dropbtn">All</button>
                         <div class="dropdown-content">
@@ -103,7 +104,7 @@
                           <a href="../Admin/AdminIssuesPosts.html">Posts</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="sub-title">
                 <div class="sub-title-user">
@@ -114,20 +115,44 @@
                     <a href="../Admin/AdminIssuesPosts.html">Posts</a>
                 </div>
             </div>
+            <div id="alertDiv"></div>
+
             <div class="block-post-details">
-                <div class="admin">
+                <!-- <div class="admin">
                     <img src="../../images/profile.jpg">
                     <div class="text">
                         <span class="name">W.Rashmika Lakshan</span>
                     </div>
-                </div>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                <a href="#" class="button">UNBLOCK</a>
+                </div> -->
+                <br>
+                <br>
+                <p id="appeal"></p>
             </div>
+            <div class="small-container" style="height: 1000px; margin-top: 100px; margin-bottom: 70px; ">                 
+                <div style="margin-top: 50px;">
+                  <h3 style="color: rgb(78, 78, 78);">Product Blocked</h2>
+                </div>
+            
+                <div style="display: flex; margin-top: 30px;">
+                  <div style="width: 250px;" id="productImg"></div>
+                  
+                  <div style="margin-left: 20px; font-size: 17px; font-weight: 500;">Product Name : <span id="productName"
+                      style="font-size: 15px; font-weight: 400;"> </span> <a id="linkOf"
+                      style="font-size: 15px; font-weight: 400; text-decoration: underline;" target="_blank">link</a> <br>
+                    <ul id="reasons">
+
+                    </ul>
+                </div>
+                </div>
+                <div>
+                    <button class="button" id="unblock-btn">Unblock</button>
+                    <button class="button" id="decline-btn" style="background-color: #8B0000;">Decline</button>                    
+                </div>
         </section>
 	</div>
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/Admin/postAppealDetails.js"></script>
     <script src="../../js/logo.js"></script>
 </body>
 </html>
