@@ -125,7 +125,8 @@ $(document).ready(function() {
       success: function(data){
         // console.log(data);
           data.forEach(element => {
-              $("#stroe-item").append(`
+                if(element.status == 1){
+                  $("#stroe-item").append(`
             <div class="item">
               <img src="/aquaspace/frontend/images/product/${element.img1}">
               <label for="text">
@@ -137,6 +138,8 @@ $(document).ready(function() {
                   <span>Rs ${element.price}</span>
               </label>
           </div>`);
+                }
+              
           });
       },
       error: function(errMsg) {

@@ -9,6 +9,7 @@ $(document).ready(function() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
+            // console.log(data);
             let delivery = data.delMode;
             if(data.profilePic != null){
                 $("#profile-pic").css("background-image", `url(/aquaspace/frontend/images/profile/${data.profilePic})`);
@@ -24,10 +25,27 @@ $(document).ready(function() {
             $("#onic").val(data.OwnerNIC);
 
             if(data.subscriptionFlag == 1){
-                $(".sub").html(`<label>End of the Subscription  </label><p class="date">${data.dateTo}</p>`);  
+                let subscription;
+                if(data.subType == 1){
+                    subscription = 100;
+                }else if(data.subType == 2){
+                    subscription = 200;
+                }else if(data.subType == 3){
+                    subscription = 500;
+                }else if(data.subType == 4){
+                    subscription = 1000;
+                }else if(data.subType == 5){
+                    subscription = 5000;
+                }else{
+                    subscription = "";
+                }
+
+                $(".sub").html(`<label>End of the Subscription :-  </label><p class="date">${data.dateTo}</p>
+                <br> <label>Subscription Package is :-  </label><p class="date">${subscription}</p>`);
+                  
             }
             else{
-                $(".sub").html(`<label>Please Update Your Subscription ! </label>`);
+                $(".sub").html(`<label style="color:rgba(255, 0, 0, 0.822); font-weight:bold">Please Update Your Subscription ! </label>`);
             }
 
             if(delivery >= 4){

@@ -193,7 +193,7 @@ class Store extends \Core\Controller
         $stmt = $this->execute($this->get('store', "*", "auth_id ='" . $id . "'"));
         $result2 = $stmt->fetch();
         $today=date("Y-m-d");
-        $stmt = $this->execute($this->get('subscription', "*", "auth_id ='" . $id . "' AND date_to >= " . $today . " ORDER BY id DESC",1));
+        $stmt = $this->execute($this->get('subscription', "*", "auth_id ='" . $id . "' AND date_to >= CURDATE() ORDER BY id DESC",1));
         $result3 = $stmt->fetch();
         $stmt = $this->execute($this->get('delivery_cost', "*", "auth_id ='" . $id . "'"));
         $result4 = $stmt->fetch();
@@ -290,8 +290,10 @@ class Store extends \Core\Controller
                 "lat" => $result2['lat'],
                 "lan" => $result2['lan'],
                 "subscriptionFlag" => 1,
+                "subType" => $result3['sub_type'],
                 "dateTo" => $result3['date_to'],
                 "delivery" => $result4,
+                
             ] ;
         } else{
             $res = [
@@ -478,20 +480,29 @@ class Store extends \Core\Controller
         View::response("success");
     }
 
+    public function disableStoreFrontAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'"));
+        $result1 = $stmt->fetch();
+        $id = $result1['id'];
+        
+        $updateData = [
+            "status" => 2
+        ];
+
+        $this->exec($this->update('products', $updateData, "auth_id ='" . $id . "' AND status = 1"  ));  
+              
+        View::response("success");
+    }
+
 
     //delete inventory items -not
     public function deleteProductAction()
     {
-        $result = $this->execute($this->get('products', '*', "id='" . $this->data['id'] . "'"))->fetch();
-        if (file_exists("/aquaspace/frontend/images/product/" . $result['img1']))
-            unlink("/aquaspace/frontend/images/product/" . $result['img1']);
-        if (file_exists("/aquaspace/frontend/images/product/" . $result['img2']))
-            unlink("/aquaspace/frontend/images/product/" . $result['img2']);
-        if (file_exists("/aquaspace/frontend/images/product/" . $result['img3']))
-            unlink("/aquaspace/frontend/images/product/" . $result['img3']);
-        if (file_exists("/aquaspace/frontend/images/product/" . $result['img4']))
-            unlink("/aquaspace/frontend/images/product/" . $result['img4']);
-        $this->exec($this->delete('products', "id='" . $this->data['id'] . "'"));
+        $updateData = [
+            "status" => 5
+        ];
+        $this->exec($this->update('products', $updateData, "id ='" . $this->data['id'] . "' "  ));
         View::response("successfully deleted product");
     }
 
