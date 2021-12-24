@@ -14,7 +14,7 @@
         <input type="checkbox" id="checkbox">
         <header class="header">
             <div class="u-name">
-                <img class="logo" src="../../images/logo.png"><span class="logo" >AquaSpace</span>
+                <img class="logo" src="../../images/logo.png"><span class="logo">AquaSpace</span>
                 <label for="checkbox">
                     <i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
                 </label>
@@ -135,8 +135,8 @@
                                     <td>Rs6060</td>
                                     <td><i class="far fa-trash-alt"></i></td>
                                 </tr> -->
-                                
-                                
+
+
                             </tbody>
                         </table>
                     </div>
@@ -144,25 +144,46 @@
                             class="fas fa-chevron-right"></i></button>
                 </div>
                 <div class="checkout">
+                    <div>Order 1</div>
+                    
                     <div class="d-flex">
-                        <form action="" method="">
+                        <form method="post" action="https://sandbox.payhere.lk/pay/checkout">
+                            <input type="hidden" name="merchant_id" value="1219322"> <!-- Replace your Merchant ID -->
+                            <input type="hidden" name="return_url" value="http://localhost/aquaspace/frontend/src/index.html">
+                            <input type="hidden" name="cancel_url" value="http://localhost/aquaspace/frontend/src/Reg/cart.html">
+                            <input type="hidden" name="notify_url" value="http://localhost/aquaspace/frontend/src/index.html">
+                            <input type="text" name="items" value="Door bell wireless" hidden>
+                            <input type="hidden" name="currency" value="LKR">
+                            <input type="number" name="amount" hidden value="15000">  
+                            <input type="text" name="order_id" value="ItemNo12345" hidden>
                             <label>
                                 <span class="fname">First Name<span class="required">*</span></span>
-                                <input type="text" name="fname">
+                                <input type="text" name="first_name">
                             </label>
                             <label>
                                 <span class="lname">Last Name <span class="required">*</span></span>
-                                <input type="text" name="lname">
+                                <input type="text" name="last_name">
                             </label>
                             <label>
-                                <span>Address Line 1 <span class="required">*</span></span>
-                                <input type="text" name="houseadd" prequired>
+                                <span>Email<span class="required">*</span></span>
+                                <input type="text" name="email">
                             </label>
                             <label>
-                                <span>Address Line 2 <span class="required">*</span></span>
-                                <input type="text" name="city">
+                                <span>Tel No<span class="required">*</span></span>
+                                <input type="text" name="phone">
                             </label>
                             <label>
+                                <span>Address<span class="required">*</span></span>
+                                <input type="text" name="address" prequired>
+                            </label>
+                            <label>
+                                <span>City<span class="required">*</span></span>
+                                <input type="text" name="city" prequired>
+                            </label>
+                            <input type="hidden" name="country" value="Sri Lanka">
+                            <input type="submit" value="pay">
+
+                            <!-- <label>
                                 <span>Card Type<span class="required">*</span></span>
                                 <input type="radio" name="dbt" value="dbt" checked><i class="fab fa-cc-visa ms"></i>
                                 <input type="radio" name="dbt" value="dbt" checked><i class="fab fa-cc-mastercard"></i>
@@ -206,7 +227,7 @@
                             <label>
                                 <span>CVN<span class="required">*</span></span>
                                 <input type="text" name="city">
-                            </label>
+                            </label> -->
 
                         </form>
 
@@ -216,16 +237,16 @@
                                     <th colspan="2">Your order</th>
                                 </tr>
                                 <tr>
-                                    <td>Product Name x 2(Qty)</td>
-                                    <td>$80.00</td>
+                                    <td>Goldfish x 1(Qty)</td>
+                                    <td>3500.00</td>
                                 </tr>
                                 <tr>
-                                    <td>Product Name x 1(Qty)</td>
-                                    <td>$20.00</td>
+                                    <td>Asian Arowana x 1(Qty)</td>
+                                    <td>3000.00</td>
                                 </tr>
                                 <tr>
                                     <td>Subtotal</td>
-                                    <td>$100.00</td>
+                                    <td>6500.00</td>
                                 </tr>
                                 <tr>
                                     <td>Shipping</td>
@@ -239,31 +260,31 @@
 
                 <div class="complete">
                     <!-- <div class="sub-container"> -->
-                        <div class="Yorder add-margin">
-                            <i class="far fa-check-circle"></i>
-                            <table class="border">
-                                <tr>
-                                    <th colspan="2">Order Completed!</th>
-                                </tr>
-                                <tr>
-                                    <td>Product Name x 2(Qty)</td>
-                                    <td>$80.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Product Name x 1(Qty)</td>
-                                    <td>$20.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Subtotal</td>
-                                    <td>$100.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Shipping</td>
-                                    <td>Free shipping</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <!-- <div class="product-list">
+                    <div class="Yorder add-margin">
+                        <i class="far fa-check-circle"></i>
+                        <table class="border">
+                            <tr>
+                                <th colspan="2">Order Completed!</th>
+                            </tr>
+                            <tr>
+                                <td>Goldfish x 1(Qty)</td>
+                                <td>3500.00</td>
+                            </tr>
+                            <tr>
+                                <td>Asian Arowana x 1(Qty)</td>
+                                <td>3000.00</td>
+                            </tr>
+                            <tr>
+                                <td>Subtotal</td>
+                                <td>6500.00</td>
+                            </tr>
+                            <tr>
+                                <td>Shipping</td>
+                                <td>Free shipping</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- <div class="product-list">
                             <div class="list-item">
                                 <img src="../../images/download.png" alt="">
                                 <h5>Lorem Ipsum 1</h5>

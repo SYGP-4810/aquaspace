@@ -16,7 +16,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 0px;
-  background: #313552;
+  background: #202442;
   color: #fff;
   z-index: 10;
 }
@@ -47,8 +47,8 @@
 }
 
 .side-bar {
-  width: 15vw;
-  background: #2d3149;
+  width: 20vw;
+  background: #202442;
   transition: 500ms width;
 }
 
@@ -72,7 +72,7 @@
 
 .side-bar ul {
   margin-top: 90px;
-  margin-right: 15px;
+  /* margin-right: 15px; */
   list-style: none;
 }
 
@@ -88,6 +88,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  border-bottom: 1px rgba(15, 10, 31, 0.521) solid;
 }
 
 .side-bar ul li:hover {
@@ -96,7 +97,7 @@
 
 .side-bar ul li a {
   text-decoration: none;
-  color: #eee;
+  color: rgb(219, 219, 219);
   cursor: pointer;
   letter-spacing: 1px;
 }

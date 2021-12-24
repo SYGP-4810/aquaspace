@@ -24,10 +24,11 @@ $('#tanktype').change(function(){
   let tank = $('#tanktype').val();
   $('#show-tank').html(`
   <td style="width:200px;"><img style="width:250px;" src="../../images/tank/${tank}.jpg"></td>
-                        <td style="padding:20px; border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">Price: Rs.10,000 <br> Description: <p style="font-size:15px; font-weight:400;">Lorem ipsum lorem ipsum
-                        Lorem ipsum lorem ipsumLorem ipsum lorem ipsumLorem ipsum lorem ipsumLorem ipsum lorem ipsumLorem ipsum lorem ipsum
-                        psum lorem ipsumLorem ipsum lorem ipsumLorem ipsum lorem ipsumLorem ipsum lorem ipsumpsum lorem ipsumLorem ipsum lorem ipsum
-                        Lorem ipsum lorem ipsumLorem ipsum lorem ipsumpsum lorem ipsumLorem ipsum lorem ipsumLorem ipsum lorem ipsumLorem ipsum lorem ipsum
+                        <td style="padding:20px; border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">Price: Rs.10,000 <br> Description: <p style="font-size:15px; font-weight:400;">The standard glass aquarium is made with care to assure that it can stand up to almost any application. Suitable for freshwater or marine inhabitants.
+                        Designed to perfectly fit 15, 20 high, 25, 30 x-high Aqueon aquariums. Provides excellent lighting and greatly reduces water evaporation. Full length door, rear cut out sections for installation of accessories. Instant start.
+                        Designed to perfectly fit 15, 20 high, 25, 30 x-high Aqueon aquariums. Provides excellent lighting and greatly reduces water evaporation. Full length door, rear cut out sections for installation of accessories. Instant start.
+                        
+                        
                         </p>
                         <button>view product</button></td> `
   )
@@ -46,9 +47,10 @@ $('#filtertype').change(function(){
   let filter = $('#filtertype').val();
   $('#show-filter').html(`
   <td style="width:200px;"><img style="width:250px;" src="../../images/tank/${filter}.jpg"></td>
-                        <td style="padding:20px; border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">Price: Rs.10,000 <br> Description: <p style="font-size:15px; font-weight:400;">Lorem ipsum lorem ipsum
-                        Lorem ipsum lorem ipsumLorem ipsum lorem ipsumLorem ipsum lorem ipsumLorem ipsum lorem ipsumLorem ipsum lorem ipsum
-                        psum lorem ipsumLorem ipsum lorem lorem ipsumpsum lorem ipsumLorem ipsum lorem ipsumLorem ipsum lorem ipsumLorem ipsum lorem ipsum
+                        <td style="padding:20px; border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">Price: Rs.10,000 <br> Description: <p style="font-size:15px; font-weight:400;">
+                        This phosphate adsorbing cartridge is for use with the Fluval G6 Advanced Filter and will rapidly remove up to 3900 mg of phosphate ion from marine or fresh water aquaria.
+                        This phosphate adsorbing cartridge is for use with the Fluval G6 Advanced Filter and will rapidly remove up to 3900 mg of phosphate ion from marine or fresh water aquaria.
+                        
                         </p>
                         <button>view product</button></td> `
   )
@@ -67,9 +69,8 @@ $('#lighttype').change(function(){
   let light = $('#lighttype').val();
   $('#show-light').html(`
   <td style="width:200px;"><img style="width:250px;" src="../../images/tank/${light}.jpg"></td>
-                        <td style="padding:20px; border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">Price: Rs.10,000 <br> Description: <p style="font-size:15px; font-weight:400;">Lorem ipsum lorem ipsum
-                        Lorem ipsum lorem ipsumLorem ipsum lorem ipsumLorem ipsum lorem ipsumLorem ipsum lorem ipsumLorem ipsum lorem ipsum
-                        psum lorem ipsumLorem ipsum lorem ipsumLorem ipsum lorem ipsumLorem 
+                        <td style="padding:20px; border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">Price: Rs.10,000 <br> Description: <p style="font-size:15px; font-weight:400;">
+                        Designed to perfectly fit 15, 20 high, 25, 30 x-high Aqueon aquariums. Provides excellent lighting and greatly reduces water evaporation. Full length door, rear cut out sections for installation of accessories. Instant start.
                         </p>
                         <button>view product</button></td> `
   )

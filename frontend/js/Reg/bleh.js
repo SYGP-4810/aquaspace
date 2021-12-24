@@ -168,12 +168,14 @@ function searchbleh() {
   $("#fish_list").show();
   searchFish();
 }
-$.ajax({
+
+  $.ajax({
   type: "GET",
   url: setUrl("Reg/Reg/getFishNames"),
   contentType: "application/json; charset=utf-8",
   dataType: "json",
   success: function (data) {
+    console.log(data)
     var names = [];
     data.forEach((element) => {
       $("#fish_list").append(`
@@ -181,6 +183,7 @@ $.ajax({
     });
   },
 });
+
 
 
 

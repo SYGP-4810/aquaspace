@@ -1,0 +1,66 @@
+<html>
+
+<body>
+
+  <button id="btn" type="submit">Pay</button>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      var req = {
+        merchant_id: "1219322",
+        return_url: "http://aquaspace/frontend/src/index.html",
+        cancel_url: "http://aquaspace/frontend/src/Reg/category.html",
+        notify_url: "",
+        order_id: "item123",
+        items: "Door bell wireless",
+        currency: "LKR",
+        amount: "1000",
+        first_name: "Saman",
+        last_name: "Perera",
+        email: "samanp@gmail.com",
+        phone: "0771234567",
+        address: "No.1, Galle Road",
+        city: "Colombo",
+        country: "Sri Lanka"
+
+      };
+
+
+
+      $("#btn").click(function () {
+        $.post("https://sandbox.payhere.lk/pay/checkout",
+          {
+            merchant_id: "1219322",
+            return_url: "http://localhost/aquaspace/frontend/src/index.html",
+            cancel_url: "",
+            notify_url: "",
+            order_id: "item123",
+            items: "Door bell wireless",
+            currency: "LKR",
+            amount: "1000",
+            first_name: "Saman",
+            last_name: "Perera",
+            email: "samanp@gmail.com",
+            phone: "0771234567",
+            address: "No.1, Galle Road",
+            city: "Colombo",
+            country: "Sri Lanka"
+          },
+          function (data, status) {
+            console.log("Data: " + data + "\nStatus: " + status);
+          });
+      });
+
+    });
+
+
+  </script>
+</body>
+
+</html>
+
+
+
+

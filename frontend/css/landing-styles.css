@@ -461,7 +461,7 @@ ul {
 
 .rating .fa,
 .far {
-  color: #ffb08b;
+  color: #d47463;
 }
 .row {
   display: flex;
@@ -852,4 +852,17 @@ ul {
   overflow: hidden;
   text-overflow: ellipsis;
   margin-top: 5px;
+}
+
+.notification_dd li .close_btn{
+  position: relative;
+}
+
+.notification_dd li .close_btn img{
+	width: 17px;
+	height: 17px;
+  position: absolute;
+  left: 30px;
+  top: -8px;
+
 }
