@@ -9,7 +9,7 @@ $(document).ready(function(){
     console.log(productImg);
     $("#appeal").html(`${appeal}`);
     req["productId"] = productId;
-    $("#linkOf").attr("href", `http://127.0.0.1/aquaspace/frontend/src/reg/view-product-page.html?id=${productId}`);
+    $("#linkOf").attr("href", `/aquaspace/frontend/src/reg/view-product-page.html?id=${productId}`);
     $("#productName").html(`${productName}`);
     $("#productImg").html(`<img id="productImg" style="height: 135px;" src="aquaspace/frontend/images/${productImg}" alt=${productName} />`);
     $.ajax({

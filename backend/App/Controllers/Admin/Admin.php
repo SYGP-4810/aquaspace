@@ -277,10 +277,14 @@ class Admin extends \Core\Controller
 
     //unblock the blocked product 
     public function unblockProductAction(){
+        $result = $this->execute($this->get('products','*',"id='". $this->data['productId']."'"))->fetch();
+        $id = $result['auth_id'];
+        $this->notifyOther($id,"your appeal declined");
         $dataToBeUpdate = [
             "status" => "1"
         ];
         $this->exec($this->update("products",$dataToBeUpdate,"id='". $this->data['productId'] . "'"));
+        //send an email about product unblock
         View::response("successfully updated");
     }
 
@@ -290,18 +294,76 @@ class Admin extends \Core\Controller
         $id = $result['auth_id'];
         $this->exec($this->update("products",["status" => '5'],"id='".$this->data['productId']. "'"));
         $this->notifyOther($id,"your appeal declined");
+        //send an email about decline unblocking the product
         View::response("successfully decline the appeal for the product ".$result['product_name']);
     }
 
     //get the users who sent appeals to unblock account
     public function getUserAppealAction(){
-        $dataColumn = "user_auth.email, user_auth.profile_img,user_auth.user_type, user_appeal.appeal";
-        $tables = "user_appeals, user_auth";
-        $condition = "user_auth.id=user_appeal.auth_id AND user_auth.user_status='3'";
+        $dataColumn = "user_auth.email, user_auth.profile_img,user_auth.user_type, user_appeal.appeal,user_appeal.auth_id";
+        $tables = "user_appeal, user_auth";
+        $condition = "user_auth.id=user_appeal.auth_id AND user_auth.user_status='3' AND user_appeal.status='1'";
         $sql = $this->join($tables,$dataColumn,$condition);
-        View::response($sql);
-        // View::response($this->execute($sql)->fetchAll());
-    } 
+        // View::response($sql);
+        View::response($this->execute($sql)->fetchAll());
+    }
+    
+    //get products which are blocked when user is blocked
+    public function getProductsBlockedAction(){
+        $id = $this->execute($this->get('user_auth','id',"email='" . $this->data['email']."'"))->fetch()['id'];
+        View::response($this->execute($this->get('products','*',"status='4' AND auth_id='".$id."'"))->fetchAll());
+    }
+
+    //unblock the account according to the appeal
+    public function unblockAccountForAppealAction(){
+        $data = [
+            "user_status" => "4"
+        ];
+        $email = $this->data['email'];
+        $condition = "email='" . $this->data['email'] . "'";
+        $this->exec($this->update('user_auth',$data,$condition));
+        $id = $this->execute($this->get('user_auth','id',"email='" . $this->data['email'] . "'"))->fetch()['id'];
+        $dataProduct = [
+            "status" => "2"
+        ];
+        $conditionProduct = "auth_id='" . $id."'";
+        $this->exec($this->update('products',$dataProduct,$conditionProduct));
+        $this->exec($this->update('user_appeal',$dataProduct,$conditionProduct));
+        $this->notifyOther($this->data['userId'],"now you can work as normal you have been unblocked");
+        $msg = "
+            <html>
+                </head>
+                    <title>Aquaspace</title>
+                </head>
+                <body>
+                <p>You have been unblocked successfully . thank you for been a user of aquaspace</p>
+                </body>
+            </html>
+            ";
+        $this->sendMail($email,"about unblocking your aquaspace account",$msg);
+        View::response("successfully unblock the account");
+    }
+
+    //decline the appeal for the account accourding to the appeal account
+    public function declineAccountForAppealAction(){
+        $id = $this->execute($this->get('user_auth','id',"email='" . $this->data['email'] . "'"))->fetch()['id'];
+        $data = [
+            "status" => "2"
+        ];
+        $this->exec($this->update('user_appeal',$data,"auth_id='" . $id . "'"));
+        $msg = "
+            <html>
+                </head></head>
+                <body>
+                <p>Your appeal for the account has been declined. thank you for been a user of aquaspace</p>
+                </body>
+            </html>
+            ";
+        $email = $this->data['email'];
+        // $this->sendMail($email,"about Your aquaspace account appeal ",$msg);
+        // View::response("successfully decline the account");
+        View::response($email);
+    }
     
 
 
