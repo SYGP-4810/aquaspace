@@ -360,9 +360,8 @@ class Admin extends \Core\Controller
             </html>
             ";
         $email = $this->data['email'];
-        // $this->sendMail($email,"about Your aquaspace account appeal ",$msg);
-        // View::response("successfully decline the account");
-        View::response($email);
+        $this->sendMail($email,"about Your aquaspace account appeal ",$msg);
+        View::response("successfully decline the account");
     }
     
 
