@@ -106,12 +106,21 @@
                     </div>
                 </div> -->
             </div>
+            <div style="position:relative; left:50px;">
+                <label for="lastPaidDate">
+                    <span>Last paid date : </span>
+                    <input type="date" id="lastPaidDate">
+                </label>
+                <button id="payNow" class="button" style="position:absolute; left:500px; background: rgb(14, 135, 5);">pay now </button>
+            </div>
+            <br>
+            <br>
             <table class="con-list">
                 <tr>
                     <th>Name</th>
                     <th>Percentage</th>
                     <th>Details</th>
-                    <th>Q pay</th>
+                    <!-- <th>Q pay</th> -->
                 </tr>
                 <tr>
                     <td>
@@ -129,9 +138,9 @@
                     <td>
                         <a href="../Admin/AdminContributionDetails.html" class="button">Contribution Details</a>
                     </td>
-                    <td>
+                    <!-- <td>
                         <input type="submit" class="button" id="pay" value="Pay">
-                    </td>
+                    </td> -->
                 </tr>
                 <tr>
                     <td>
@@ -149,15 +158,20 @@
                     <td>
                         <a href="#" class="button">Contribution Details</a>
                     </td>
-                    <td>
+                    <!-- <td>
                         <input type="submit" class="button" id="pay" value="Pay">
-                    </td>
+                    </td> -->
                 </tr>
             </table> 
 		</section>
 	</div>
+    <div id="loadingIcon" class="loading">
+        
+    </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/Admin/expertContribution.js"></script>
     <script src="../../js/logo.js"></script>
 </body>
 </html>

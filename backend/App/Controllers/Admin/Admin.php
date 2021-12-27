@@ -363,6 +363,23 @@ class Admin extends \Core\Controller
         $this->sendMail($email,"about Your aquaspace account appeal ",$msg);
         View::response("successfully decline the account");
     }
+
+    //get total number of article expert write
+    public function tNumberOfArticleAction(){
+        $sql = "SELECT COUNT(id) AS tNumOfArtcle FROM fish_article";
+        View::response($this->execute($sql)->fetch()['tNumOfArtcle']);
+    }
+
+    //get total number of question expert answered
+    public function tNumQuestionAction(){
+        $sql = "SELECT COUNT(id) AS tNumOfQuestion FROM expert_question WHERE replyer_id IS NOT NULL";
+        View::response($this->execute($sql)->fetch()['tNumOfQuestion']);
+    }
+    
+    public function tNumPostAction(){
+        $sql = "SELECT COUNT(id) AS tNumOfPost FROM products WHERE verifier_id IS NOT NULL";
+        View::response($this->execute($sql)->fetch()['tNumOfPost']);
+    }
     
 
 
