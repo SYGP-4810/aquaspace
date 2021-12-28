@@ -365,21 +365,64 @@ class Admin extends \Core\Controller
     }
 
     //get total number of article expert write
-    public function tNumberOfArticleAction(){
+    public function tNumArticle(){
         $sql = "SELECT COUNT(id) AS tNumOfArtcle FROM fish_article";
-        View::response($this->execute($sql)->fetch()['tNumOfArtcle']);
+        // View::response($this->execute($sql)->fetch()['tNumOfArtcle']);
+        return $this->execute($sql)->fetch()['tNumOfArtcle'];
     }
 
     //get total number of question expert answered
-    public function tNumQuestionAction(){
+    public function tNumQuestion(){
         $sql = "SELECT COUNT(id) AS tNumOfQuestion FROM expert_question WHERE replyer_id IS NOT NULL";
-        View::response($this->execute($sql)->fetch()['tNumOfQuestion']);
+        // View::response($this->execute($sql)->fetch()['tNumOfQuestion']);
+        return $this->execute($sql)->fetch()['tNumOfQuestion'];
     }
     
-    public function tNumPostAction(){
+    //get total number of posts verified by experts
+    public function tNumPost(){
         $sql = "SELECT COUNT(id) AS tNumOfPost FROM products WHERE verifier_id IS NOT NULL";
-        View::response($this->execute($sql)->fetch()['tNumOfPost']);
+        // View::response($this->execute($sql)->fetch()['tNumOfPost']);
+        return $this->execute($sql)->fetch()['tNumOfPost'];
     }
+    
+    //get the total value for contribution
+    public function countTotalContributionAction(){
+        $tPost = $this->tNumPost();
+        $tNumQuestion = $this->tNumQuestion();
+        $tArticle = $this->tNumArticle();
+        View::response($tPost*2+$tNumQuestion*3+$tArticle*10);
+        
+
+    }
+
+    //get contribution of experts
+    public function getContributionAction(){
+        $expertIds = $this->execute($this->get('user_auth','id',"user_type='2'"))->fetch();
+        $i = 0;
+        foreach($expertIds as $expertId){
+            $sqlProduct = "SELECT COUNT(id) AS pCount FROM products WHERE verifier_id='".$expertId."'";
+            $sqlArticle = "SELECT COUNT(id) AS aCount FROM fish_article WHERE auth_id='".$expertId."'";
+            $sqlQuestion = "SELECT COUNT(id) AS qCount FROM expert_question WHERE replyer_id='".$expertId."'";
+            $reExpert = $this->execute($this->get('expert','*',"auth_id='".$expertId."'"))->fetch(); 
+            $res[$i] = [
+                "productCount" => $this->execute($sqlProduct)->fetch()['pCount'],
+                "articleCount" => $this->execute($sqlArticle)->fetch()['aCount'],
+                "questionCount" => $this->execute($sqlQuestion)->fetch()['qCount'],
+                "auth_id" => $expertId,
+                "profile_img" => $this->execute($this->get('user_auth','*',"id='".$expertId."'"))->fetch()['profile_img'],
+                "first_name" => $reExpert['first_name'],
+                "last_name" => $reExpert['last_name']
+            ];
+            $i++;
+        }
+        View::response($res);
+    }
+
+    public function getLastExpertPaidDateAction(){
+        $sql = "SELECT * FROM `expert_whole_payment` ORDER BY id DESC LIMIT 1";
+        View::response($this->execute($sql)->fetch());
+    }
+
     
 
 
