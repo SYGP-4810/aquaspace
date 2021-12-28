@@ -347,9 +347,6 @@ class Reg extends \Core\Controller
         View::response($stmt->fetch());
     }
 
-    public function getAmountAction(){
-
-    }
 
     public function makeOrderAction()
     {
@@ -389,5 +386,105 @@ class Reg extends \Core\Controller
     
 
     }
+
+
+    public function getProductFromCartAction(){
+
+        $id = $this->data['id'];
+
+        $stmt = $this->execute("
+            SELECT shopping_cart.product_id, shopping_cart.quantity, shopping_cart.delivery, products.product_name, products.auth_id, products.price, products.lat, products.lan, products.weight
+            FROM shopping_cart 
+            INNER JOIN products ON shopping_cart.product_id=products.id
+            WHERE shopping_cart.id = $id
+        ");
+
+        $result = $stmt->fetch();
+        View::response($result);
+
+    }
+
+    public function getShippingAction(){
+
+        // let req3 = {
+        //     product_id: data.product_id,
+        //     delivery: data.delivery,
+        //     quantity: data.quantity,
+        //     weight: data.weight,
+        //     distance : actual_distance,
+        //     seller : data.auth_id,
+        //   };
+
+        $seller = $this->data['seller'];
+        $weight = $this->data['weight'];
+        $distance = $this->data['distance'];
+        $shipping = 0;
+    
+
+        if($distance <= 10){
+            $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 1 AND auth_id='" . $seller ."'"))->fetch();
+            if($weight > 1) {
+                $shipping = $stmt['one_kg'] + ($weight - 1)*$stmt['additional_one_kg'];
+            }
+            else {
+                $shipping = $stmt['one_kg'];
+            }
+            View::response($shipping);
+        }
+        else if($distance <=50){
+            $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 1 AND auth_id='" . $seller ."'"))->fetch();
+            if($weight > 1) {
+                $shipping = $stmt['one_kg'] + ($weight - 1)*$stmt['additional_one_kg'];
+            }
+            else {
+                $shipping = $stmt['one_kg'];
+            }
+            View::response($shipping);
+        }
+        else if($distance <=150){
+            $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 1 AND auth_id='" . $seller ."'"))->fetch();
+            if($weight > 1) {
+                $shipping = $stmt['one_kg'] + ($weight - 1)*$stmt['additional_one_kg'];
+            }
+            else {
+                $shipping = $stmt['one_kg'];
+            }
+            View::response($shipping);
+        }
+        else{
+            $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 1 AND auth_id='" . $seller ."'"))->fetch();
+            if($weight > 1) {
+                $shipping = $stmt['one_kg'] + ($weight - 1)*$stmt['additional_one_kg'];
+            }
+            else {
+                $shipping = $stmt['one_kg'];
+            }
+            View::response($shipping);
+        }
+
+    }
+
+    public function getNotifsAction(){
+        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $stmt = $this->execute($this->get('notification' , "*" , "auth_id = '" . $id . "' AND status = 1" ));
+        View::response($stmt->fetchAll());
+
+    }
+
+    public function readAllAction(){
+        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $dataToUpdate = ["status" => "2"];
+        $this->exec($this->update('notification', $dataToUpdate, "auth_id='" . $id . "'"));
+        View::response("success");  
+    }
+
+    public function hideNotifAction(){
+        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $dataToUpdate = ["status" => "2"];
+        $this->exec($this->update('notification', $dataToUpdate, "auth_id='" . $id . "' AND id = '" . $this->data['id'] ."'"));
+        View::response("success");  
+    }
+
+  
 
 }
