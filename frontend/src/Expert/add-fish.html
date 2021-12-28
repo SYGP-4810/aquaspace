@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/add-blog.css">
     <!-- <link rel="stylesheet" href="../../css/cart.css"> -->
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/bleh.css">
 </head>
 
 <body>
@@ -33,49 +35,49 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="account-overview.html">
                         <i class="fas fa-user-circle"></i>
                         <span>Account Overview</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="edit-profile.html">
                         <i class="fas fa-edit" aria-hidden="true"></i>
                         <span>Edit Profile</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="reset-password.html">
                         <i class="fas fa-unlock-alt" aria-hidden="true"></i>
                         <span>Reset Password</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="notification.html">
                         <i class="fas fa-bell" aria-hidden="true"></i>
                         <span>Notification Settings</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="articles.html">
                         <i class="fas fa-newspaper" aria-hidden="true"></i>
                         <span>Articles</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="requests.html">
                         <i class="fas fa-user-check" aria-hidden="true"></i>
                         <span>Requests</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="questions.html">
                         <i class="fas fa-question" aria-hidden="true"></i>
                         <span>Questions</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="contribution.html">
                         <i class="fas fa-award" aria-hidden="true"></i>
                         <span>Contribution</span>
                     </a>
@@ -127,76 +129,96 @@
 
                     <label>
                         <span class="fname">Fish Name</span>
-                        <input type="text" name="fname">
+                        <input type="text" id="fishName">
                     </label>
                     <label>
                         <span class="fname">Other Names</span>
-                        <input type="text" name="fname">
+                        <input type="text" id="otherName">
                     </label>
-
+                    <button id ="addOtherFishName">add</button>
+                    <div id="otherFishNames" class="compatible-fish-list"></div>
                     <label>
                         <span class="lname">Description</span>
                         <textarea id="description" name="reason" rows="5" cols="100"></textarea>
                     </label>
+                    
                     <label>
-                        <span>Max water Temp</span>
-                        <input type="text" name="houseadd" prequired>
+                        <span>Pet Max Length <small>(cm)</small></span>
+                        <input type="number" id="petMaxLength" min="0">
                     </label>
+                    
                     <label>
-                        <span>Pet Max Length</span>
-                        <input type="text" name="city">
-                    </label>
-                    <label>
-                        <span>Water Parameters-PH Max</span>
-                        <input type="text" name="city">
-                    </label>
-                    <label>
-                        <span>Special Diet</span>
-                        <input type="text" name="city">
+                        <span>Diet</span>
+                        <select name="diet" id="diet">
+                            <option value="1">Herbivores</option>
+                            <option value="2">Omnivores</option>
+                            <option value="3">Carnivore</option>
+                        </select>
                     </label>
                     <label>
                         <span>Water Parameters-PH Min</span>
-                        <input type="text" name="city">
+                        <input type="number" min="0" max="14" id="minPh">
                     </label>
                     <label>
+                        <label>
+                            <span>Water Parameters-PH Max</span>
+                            <input type="number" id="maxPh" min="0" max="14">
+                        </label>
                         <span>Min Water Temp</span>
-                        <input type="text" name="city">
+                        <input type="number" min="20" max="40" id="minWaterTemp">
+                    </label>
+                    <label>
+                        <span>Max water Temp</span>
+                        <input type="number" id="maxWaterTemp" min="20" max="40">
                     </label>
                     <label>
                         <span>Environment</span>
-                        <input type="text" name="city">
+                        <select name="environment" id="environment">
+                            <option value="1">Fresh Water</option>
+                            <option value="2">Black Water</option>
+                            <option value="3">Green Water</option>
+                            <option value="4">Salt Water</option>
+                        </select>
                     </label>
                     <label>
                         <span>Native To</span>
-                        <input type="text" name="city">
+                        <input type="text" id="nativeTo">
                     </label>
-                    <label>
-                        <span>Temperament</span>
-                        <input type="text" name="city">
-                    </label>
+                    <button id="nativeToBtn">Add</button>
+                    <div id="nativeToDiv"></div>
                     <label>
                         <span>Care Level</span>
-                        <input type="text" name="city">
+                        <select name="careLevel" id="careLevel">
+                            <option value="1">Easy</option>
+                            <option value="2">Medium</option>
+                            <option value="3">Hard</option>
+                        </select>
                     </label>
                     <label>
-                        <span>Tank Size</span>
-                        <input type="text" name="city">
+                        <span>Tank Capacity <small>(gallon)</small></span>
+                        <input type="number" id="tankCapacity">
                     </label>
                     <label>
                         <span>Compatible Fish</span>
-                        <select id="com-fish" name="selection">
-                            <option selected hidden value="">Select</option>
-                            <option value="fish1">Fish 1</option>
-                            <option value="fish2">Fish 2</option>
-                            <option value="fish3">Fish 3</option>
-                            <option value="fish4">Fish 4</option>
-                            <option value="fish5">Fish 5</option>
-                        </select>
+                        <div>
+                            <input type="text" id="auto" placeholder="enter fish name" autocomplete="off" onkeyup="searchFish()" />
+                            <ul id="fish_list">
+                        </div>
+        
+                        </ul>
                         <button id="add">add</button>
                     </label>
-                    <div class="compatible-fish-list">
-
+                    <div class="compatible-fish-list" id="compatible-fish-list">
+                       
                     </div>
+                    <label for="abilityToSell">
+                        <span>Ability to Sell</span>
+                        <input type="checkbox" id="abilityToSell">
+                    </label>
+                    <label for="abilityToRelease">
+                        <span>Ability to release</span>
+                        <input type="checkbox" id="abilityToRelease">
+                    </label>
 
                     <button id="save">SAVE</button>
 
@@ -206,11 +228,14 @@
                 </div>
             </div>
 
-
+            <div id="alertDiv"></div>
         </section>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/base.js"></script>
     <script src="../../js/image-upload.js"></script>
+    <script src="../../js/expert/add-fish.js"></script>
+    
     <script src="../../js/expert/compatible-fish.js"></script>
 
 </body>

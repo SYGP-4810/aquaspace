@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="old stylesheet" href="../../css/store-inv-add.css">
     <link rel="stylesheet" href="../../css/Store.css">
+    <link rel="stylesheet" href="../../css/base.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -64,9 +65,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../Store/StoreReviews.html">
+                    <a href="../Store/StoreQuestion.html">
                         <i class="fas fa-flag-checkered" aria-hidden="true"></i>
-                        <span>Reviews & Questions</span>
+                        <span>Questions</span>
                     </a>
                 </li>
                 <li>
@@ -79,12 +80,6 @@
                     <a href="../Store/StoreReports.html">
                         <i class="fas fa-clipboard" aria-hidden="true"></i>
                         <span>Generate Reports</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../Store/StoreNotifi.html">
-                        <i class="fas fa-bell" aria-hidden="true"></i>
-                        <span>Notification Settings</span>
                     </a>
                 </li>
 			</ul>
@@ -106,7 +101,7 @@
                     </div>
                 </div>
                 <div class="edit">
-                    <form class="edit-form">
+                    <div class="edit-form">
                         <label for="sname">Store Name<span class="required">*</span></label>
                         <input type="text" id="sname" name="sname">
                         <br>
@@ -136,6 +131,23 @@
                         <label for="onic">Owner NIC<span class="required">*</span></label>
                         <input type="text" id="onic" name="onic">
                         <br>
+                        <br>
+                        <div class="sub">
+                            
+                        </div>
+                        <br>
+                        <div class="payment">
+                            <label for="sub">Update Subscription <small>(anual inventory item)</small>  </label>
+                            <select  id="package-size">
+                                <option value="100">100</option>
+                                <option value="200">200</option>
+                                <option value="500">500</option>
+                                <option value="1000">1000</option>
+                                <option value="5000">5000</option>
+                            </select>
+                            <a href="" class="nav-button" style="float: none; margin-left:10px">Pay</a>
+                        </div>
+                        <br>
                         <label for="delivery">Modes of Delivery<span class="required">*</span></label>
                         <div class="d-modes">
                             <div class="row">
@@ -158,19 +170,22 @@
                                         <th>Range</th>
                                         <th>&#60 10KM</th>
                                         <th>10KM - 50KM</th>
-                                        <th>50KM &lt</th>
+                                        <th>50KM - 150KM</th>
+                                        <th>150KM &#60</th>
                                     </tr>
                                     <tr>
                                         <td><b>1KG</b></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="110" value="100" /></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="150" value="150"></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="150+" value="200"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inOne"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inTwo"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inThree"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inFour"></td>
                                     </tr>
                                     <tr>
                                         <td><b>+ 1KG</b></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="+110" value="10"></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="+150" value="20"></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="+150+" value="30"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inOneAdd"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="inTwoAdd"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inThreeAdd"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inFourAdd"></td>
                                     </tr>
                                 </table>
                             </div>
@@ -182,36 +197,42 @@
                                         <th>Range</th>
                                         <th>&#60 10KM</th>
                                         <th>10KM - 50KM</th>
-                                        <th>50KM &lt</th>
+                                        <th>50KM - 150KM</th>
+                                        <th>150KM &#60</th>
                                     </tr>
                                     <tr>
                                         <td><b>1KG</b></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="210" value="120"></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="250" value="150"></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="250+" value="170"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outOne"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outTwo"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outThree"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outFour"></td>
                                     </tr>
                                     <tr>
                                         <td><b>+ 1KG</b></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="+210" value="15"></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="+250" value="20"></td>
-                                        <td><input type="number" id="" min="0.00" step=".01" id="+250+" value="23"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outOneAdd"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="outTwoAdd"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="outThreeAdd"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outFourAdd"></td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
                         <br>
-                        <div class="btn">
-                            <input type="submit" class="button" value="Save">
+                        <div class="btn" style="margin-right: -28%;">
+                            <button class="button" id="storeEdit" >Save</button>
                             <button type="reset" class="can-button" >Cancel</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
+                <div id="alertDiv"></div>
             </div>    
 		</section>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="../../js/base.js"></script>
         <script src="../../js/Store/StoreEdit.js"></script>
         <script src="../../js/logo.js"></script>
         <script src="../../js/image-upload.js"></script>
+        
 	</div>
 
 </body>

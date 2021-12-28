@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
 	<title>Dashboard</title>
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Admin.css">
+    <link rel="stylesheet" href="../../css/base.css">
 </head>
 <body>
 	<input type="checkbox" id="checkbox">
@@ -78,12 +79,12 @@
                         <span>Generate Reports</span>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="../Admin/AdminNotification.html">
                         <i class="fas fa-bell" aria-hidden="true"></i>
                         <span>Notification Settings</span>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a href="../Admin/AdminContribution.html">
                         <i class="fas fa-award" aria-hidden="true"></i>
@@ -101,48 +102,28 @@
                 <h3>Store Charging Rates</h3>
                 <table class="s-rates-table">
                     <tr>
-                        <th>Price Range</th>
-                        <th>Precentage</th>
+                        <th>Maximum Item Range</th>
+                        <th>Price for package <br><small>(annual)</small></th>
                     </tr>
                     <tr>
-                        <td>0 - 1000</td>
-                        <td>
-                            <label for="rangeZeroToThousand">
-                            <input type="number" min="0" max="100" class="" id="rangeZeroTothousand">
-                            </label>
-                        </td>
+                        <td>100</td>
+                        <td><input type="number" id="upto100Items"></td>
                     </tr>
                     <tr>
-                        <td>1000 - 10000</td>
-                        <td>
-                            <label for="rangeThousandToTenThousand">
-                            <input type="number" min="0" max="100" id="rangeThousandToTenThousand">
-                            </label>
-                        </td>
+                        <td>200</td>
+                        <td><input type="number" id="upto200Items"></td>
                     </tr>
                     <tr>
-                        <td>10000 - 50000</td>
-                        <td>
-                            <label for="rangeTenThousandToFiftyThousand">
-                            <input type="number" min="0" max="100" id="rangeTenThousandToFiftyThousand">
-                            </label>
-                        </td>
+                        <td>500</td>
+                        <td><input type="number" id="upto500Items"></td>
                     </tr>
                     <tr>
-                        <td>50000 - 100000</td>
-                        <td>
-                            <label for="rangeFiftyThousandToLax">
-                            <input type="number" min="0" max="100" class="" id="rangeFiftyThousandToLax">
-                            </label>
-                        </td>
+                        <td>1000</td>
+                        <td><input type="number" id="upto1000Items"></td>
                     </tr>
                     <tr>
-                        <td>100000 +</td>
-                        <td>
-                            <label for="rangeLaxOrMore">
-                            <input type="number" min="0" max="100" class="" id="rangeLaxOrMore">
-                            </label>
-                        </td>
+                        <td>5000</td>
+                        <td><input type="number" id="upto5000Items"></td>
                     </tr>            
                 </table>
                 <hr>
@@ -227,6 +208,7 @@
                 </div>
                 
             </div>
+            <div id="alertDiv"></div>
 		</section>
 	</div>
     

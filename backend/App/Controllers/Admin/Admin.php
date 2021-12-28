@@ -12,12 +12,15 @@ use Core\View;
  */
 class Admin extends \Core\Controller
 {
+   
+   
     protected function before()
     {
         // Make sure an admin user is logged in for example
         // return false;
     }
 
+    //add new admins to the system
     public function addAdminAction()
     {
         $num_str = sprintf("%06d", mt_rand(1, 999999));
@@ -65,6 +68,7 @@ class Admin extends \Core\Controller
         }
     }
 
+    //get logged in admins details
     public function getAdminAction()
     {
         $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='4'"));
@@ -84,6 +88,7 @@ class Admin extends \Core\Controller
         View::response($res);
     }
 
+    //get all admins details
     public function getAdminListAction()
     {
         $stmt = $this->execute($this->join("user_auth, admin", "email,tp,user_auth.id AS id,first_name,last_name,profile_img", "user_auth.id = admin.auth_id"));
@@ -91,6 +96,7 @@ class Admin extends \Core\Controller
         View::response($result);
     }
 
+    //get individual profile of admin by using id
     public function getAdminDetailsAction()
     {
         $stmt = $this->execute($this->get('user_auth', "*", "id ='" . $this->data['id'] . "'"));
@@ -109,12 +115,14 @@ class Admin extends \Core\Controller
         View::response($res);
     }
 
+    //get store,expert accounts which are not verified yet
     public function getAdminVerifyDetailsAction()
     {
         $stmt = $this->execute($this->get('user_auth', " id,email,user_type,tp ", "user_status ='5'"));
         View::response($stmt->fetchAll());
     }
 
+    //get expert details to verify 
     public function getAdminVerifyDetailsExpertAction()
     {
         $stmt = $this->execute($this->get('expert', "*", "auth_id ='" . $this->data['id'] . "'"));
@@ -123,12 +131,14 @@ class Admin extends \Core\Controller
         View::response($res);
     }
 
+    //get expert details to verify
     public function getAdminVerifyDetailsStoreAction()
     {
         $stmt = $this->execute($this->get('store', "*", "auth_id ='" . $this->data['id'] . "'"));
         View::response($stmt->fetch());
     }
 
+    //update new expert,store account as verified accounts
     public function getAdminVerifyDetailsAcceptAction()
     {
         $dataToUpdate = ["user_status" => "4"];
@@ -149,6 +159,7 @@ class Admin extends \Core\Controller
         View::response("successfully confirm user");
     }
 
+    //reject new store,expert accounts 
     public function getAdminVerifyDetailsRejectAction()
     {
         $dataToUpdate = ["user_status" => "3"];
@@ -175,6 +186,7 @@ class Admin extends \Core\Controller
         View::response("successfully Reject user");
     }
 
+    //logged in admin password reset 
     public function updatePasswordAction()
     {
         $stmt = $this->execute($this->get('user_auth', "*", "access_token='" . $_COOKIE['access_token'] . "'"));
@@ -198,6 +210,7 @@ class Admin extends \Core\Controller
         View::response($res);
     }
 
+    //update logged in admins's details
     public function updateAdminAction()
     {
 
@@ -219,6 +232,7 @@ class Admin extends \Core\Controller
                 throw new \Exception("file did not come to the backend");
             }
             if (file_exists("/aquaspace/frontend/images/profile/" . $result['profile_img'])) {
+                //delete photo from the directory
                 unlink("/aquaspace/frontend/images/profile/" . $result['profile_img']);
             }
             $this->exec($this->update('user_auth', ["tp" => $this->data['tp'], "profile_img" => $iName1], "id='" . $result['id'] . "'"));
@@ -231,8 +245,185 @@ class Admin extends \Core\Controller
         View::response("Successfully updated");
     }
 
+    //get the list of charges 
     public function getRateAction()
     {
         View::response($this->execute($this->getAll('rate', '*'))->fetchAll());
     }
+
+    //update the list of charges
+    public function updateRateAction(){
+        $i = 0;
+        while($i < count($this->data)){
+            $this->exec($this->update("rate", ["rate"=>$this->data[$i]], "id='" . ++$i . "'"));
+        }
+        view::response("successfully updated");
+
+    }
+
+    //get the appeals for individual posts
+    public function getAppealAction(){
+        $needToBeExtract = "appeal.appeal , appeal.product_id, products.product_name, products.img1";
+        $tablesWhichDataContains = "appeal , products";
+        $condition = "appeal.product_id = products.id AND products.status = '4'";
+        $sql = $this->join($tablesWhichDataContains,$needToBeExtract,$condition);
+        View::response($this->execute($sql)->fetchAll());
+    }
+
+    //get reasons for the appeals of individual posts
+    public function getReasonsAppealAction(){
+        View::response($this->execute($this->get("report","*","product_id='". $this->data['productId'] . "'"))->fetchAll());
+    }
+
+    //unblock the blocked product 
+    public function unblockProductAction(){
+        $result = $this->execute($this->get('products','*',"id='". $this->data['productId']."'"))->fetch();
+        $id = $result['auth_id'];
+        $this->notifyOther($id,"your appeal declined");
+        $dataToBeUpdate = [
+            "status" => "1"
+        ];
+        $this->exec($this->update("products",$dataToBeUpdate,"id='". $this->data['productId'] . "'"));
+        //send an email about product unblock
+        View::response("successfully updated");
+    }
+
+    //decline the appeal for a product
+    public function declineAppealAction(){
+        $result = $this->execute($this->get('products','*',"id='". $this->data['productId']."'"))->fetch();
+        $id = $result['auth_id'];
+        $this->exec($this->update("products",["status" => '5'],"id='".$this->data['productId']. "'"));
+        $this->notifyOther($id,"your appeal declined");
+        //send an email about decline unblocking the product
+        View::response("successfully decline the appeal for the product ".$result['product_name']);
+    }
+
+    //get the users who sent appeals to unblock account
+    public function getUserAppealAction(){
+        $dataColumn = "user_auth.email, user_auth.profile_img,user_auth.user_type, user_appeal.appeal,user_appeal.auth_id";
+        $tables = "user_appeal, user_auth";
+        $condition = "user_auth.id=user_appeal.auth_id AND user_auth.user_status='3' AND user_appeal.status='1'";
+        $sql = $this->join($tables,$dataColumn,$condition);
+        // View::response($sql);
+        View::response($this->execute($sql)->fetchAll());
+    }
+    
+    //get products which are blocked when user is blocked
+    public function getProductsBlockedAction(){
+        $id = $this->execute($this->get('user_auth','id',"email='" . $this->data['email']."'"))->fetch()['id'];
+        View::response($this->execute($this->get('products','*',"status='4' AND auth_id='".$id."'"))->fetchAll());
+    }
+
+    //unblock the account according to the appeal
+    public function unblockAccountForAppealAction(){
+        $data = [
+            "user_status" => "4"
+        ];
+        $email = $this->data['email'];
+        $condition = "email='" . $this->data['email'] . "'";
+        $this->exec($this->update('user_auth',$data,$condition));
+        $id = $this->execute($this->get('user_auth','id',"email='" . $this->data['email'] . "'"))->fetch()['id'];
+        $dataProduct = [
+            "status" => "2"
+        ];
+        $conditionProduct = "auth_id='" . $id."'";
+        $this->exec($this->update('products',$dataProduct,$conditionProduct));
+        $this->exec($this->update('user_appeal',$dataProduct,$conditionProduct));
+        $this->notifyOther($this->data['userId'],"now you can work as normal you have been unblocked");
+        $msg = "
+            <html>
+                </head>
+                    <title>Aquaspace</title>
+                </head>
+                <body>
+                <p>You have been unblocked successfully . thank you for been a user of aquaspace</p>
+                </body>
+            </html>
+            ";
+        $this->sendMail($email,"about unblocking your aquaspace account",$msg);
+        View::response("successfully unblock the account");
+    }
+
+    //decline the appeal for the account accourding to the appeal account
+    public function declineAccountForAppealAction(){
+        $id = $this->execute($this->get('user_auth','id',"email='" . $this->data['email'] . "'"))->fetch()['id'];
+        $data = [
+            "status" => "2"
+        ];
+        $this->exec($this->update('user_appeal',$data,"auth_id='" . $id . "'"));
+        $msg = "
+            <html>
+                </head></head>
+                <body>
+                <p>Your appeal for the account has been declined. thank you for been a user of aquaspace</p>
+                </body>
+            </html>
+            ";
+        $email = $this->data['email'];
+        $this->sendMail($email,"about Your aquaspace account appeal ",$msg);
+        View::response("successfully decline the account");
+    }
+
+    //get total number of article expert write
+    public function tNumArticle(){
+        $sql = "SELECT COUNT(id) AS tNumOfArtcle FROM fish_article";
+        // View::response($this->execute($sql)->fetch()['tNumOfArtcle']);
+        return $this->execute($sql)->fetch()['tNumOfArtcle'];
+    }
+
+    //get total number of question expert answered
+    public function tNumQuestion(){
+        $sql = "SELECT COUNT(id) AS tNumOfQuestion FROM expert_question WHERE replyer_id IS NOT NULL";
+        // View::response($this->execute($sql)->fetch()['tNumOfQuestion']);
+        return $this->execute($sql)->fetch()['tNumOfQuestion'];
+    }
+    
+    //get total number of posts verified by experts
+    public function tNumPost(){
+        $sql = "SELECT COUNT(id) AS tNumOfPost FROM products WHERE verifier_id IS NOT NULL";
+        // View::response($this->execute($sql)->fetch()['tNumOfPost']);
+        return $this->execute($sql)->fetch()['tNumOfPost'];
+    }
+    
+    //get the total value for contribution
+    public function countTotalContributionAction(){
+        $tPost = $this->tNumPost();
+        $tNumQuestion = $this->tNumQuestion();
+        $tArticle = $this->tNumArticle();
+        View::response($tPost*2+$tNumQuestion*3+$tArticle*10);
+        
+
+    }
+
+    //get contribution of experts
+    public function getContributionAction(){
+        $expertIds = $this->execute($this->get('user_auth','id',"user_type='2'"))->fetch();
+        $i = 0;
+        foreach($expertIds as $expertId){
+            $sqlProduct = "SELECT COUNT(id) AS pCount FROM products WHERE verifier_id='".$expertId."'";
+            $sqlArticle = "SELECT COUNT(id) AS aCount FROM fish_article WHERE auth_id='".$expertId."'";
+            $sqlQuestion = "SELECT COUNT(id) AS qCount FROM expert_question WHERE replyer_id='".$expertId."'";
+            $reExpert = $this->execute($this->get('expert','*',"auth_id='".$expertId."'"))->fetch(); 
+            $res[$i] = [
+                "productCount" => $this->execute($sqlProduct)->fetch()['pCount'],
+                "articleCount" => $this->execute($sqlArticle)->fetch()['aCount'],
+                "questionCount" => $this->execute($sqlQuestion)->fetch()['qCount'],
+                "auth_id" => $expertId,
+                "profile_img" => $this->execute($this->get('user_auth','*',"id='".$expertId."'"))->fetch()['profile_img'],
+                "first_name" => $reExpert['first_name'],
+                "last_name" => $reExpert['last_name']
+            ];
+            $i++;
+        }
+        View::response($res);
+    }
+
+    public function getLastExpertPaidDateAction(){
+        $sql = "SELECT * FROM `expert_whole_payment` ORDER BY id DESC LIMIT 1";
+        View::response($this->execute($sql)->fetch());
+    }
+
+    
+
+
 }

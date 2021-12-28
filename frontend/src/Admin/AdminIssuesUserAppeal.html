@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Admin.css">
+    <link rel="stylesheet" href="../../css/base.css">
 </head>
 <body>
 	<input type="checkbox" id="checkbox">
@@ -78,12 +79,12 @@
                         <span>Generate Reports</span>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="../Admin/AdminNotification.html">
                         <i class="fas fa-bell" aria-hidden="true"></i>
                         <span>Notification Settings</span>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a href="../Admin/AdminContribution.html">
                         <i class="fas fa-award" aria-hidden="true"></i>
@@ -96,13 +97,13 @@
             <div class="head-titles">
                 <h2>ISSUES & REPORTS</h2>
                 <div class="dbtn">
-                    <div class="dropdown">
+                    <!-- <div class="dropdown">
                         <button class="dropbtn">All</button>
                         <div class="dropdown-content">
                           <a href="../Admin/AdminIssuesUser.html">Users</a>
                           <a href="../Admin/AdminIssuesPosts.html">Posts</a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="sub-title">
@@ -115,25 +116,45 @@
                 </div>
             </div>
             <div class="iss-profile">
-                <div class="admin">
-                    <img src="../../images/profile.jpg">
-                    <div class="text">
-                        <span class="name">W.Rashmika Lakshan</span>
-                        <br>
-                        <span>Regular user</span>
-                    </div>
-                </div>
+                
                 <br>
                 <br>
-                <br>                
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                <a href="#" class="button">UNBLOCK</a>
+                <br>
+                <p id="appeal"></p>                
             </div>
+            <div class="small-container" style="height: 1000px; margin-top: 100px; margin-bottom: 70px; ">                 
+                <div style="margin-top: 50px;">
+                  <h3 style="color: rgb(78, 78, 78);">Products Blocked</h2>
+                </div>
+            
+                <div id="product-list"></div>
+            
+                
+            
+                <!-- <div style="display: flex; margin-top: 30px;">
+                  <div style="width: 250px;"><img style="height: 135px;" src="../../images/product/filter1.jpg" alt=""></div>
+                  
+                  <div style="margin-left: 20px; font-size: 17px; font-weight: 500;">Product Name : <span
+                      style="font-size: 15px; font-weight: 400;">Filter</span> <a
+                      style="font-size: 15px; font-weight: 400; text-decoration: underline;" href="#">link</a> <br>
+                    This product was reported under "reason A" and "reason B".</div>
+                    <div style="position:relative; left: 40px;">
+                        <button class="button">Unblock</button>
+                        <button class="button" style="background-color: #8B0000;">Decline</button>                    
+                    </div>
+                </div> -->
+                <div>
+                    <button class="button" id="unblockAccount">Unblock Account</button>
+                    <button class="button" style="background-color: #8B0000;" id="declineAccount">Decline Request</button>                    
+                </div>
+
             
 		</section>
 	</div>
-    
+    <div id="alertDiv"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/Admin/userAppealDetails.js"></script>
     <script src="../../js/logo.js"></script>
 </body>
 </html>

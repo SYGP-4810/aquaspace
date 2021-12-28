@@ -4,8 +4,12 @@ namespace App\Controllers;
 
 use Core\View;
 
+/***
+ * common controller for all users
+ */
 class Common extends \Core\Controller
 {
+    //get product details which shows in landing page
     public function getLandingPagePostAction()
     {
         $stmtForNewPost = $this->execute("SELECT * FROM products WHERE status='1' ORDER BY id DESC LIMIT 4");
@@ -22,6 +26,7 @@ class Common extends \Core\Controller
         ]);
     }
 
+    //get product details
     public function getProductAction()
     {
         $stmt = $this->execute($this->get('products', "*", "id ='" . $this->data['id'] . "'"));

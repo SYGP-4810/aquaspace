@@ -388,7 +388,7 @@ $("#signUp2").click(function(){
                 if(data.status ==1){
                 alertMsg(["wait until admin verify you may have email about confirm"]);
                 delay(function(){
-                window.location.replace("/aquaspace/frontend/src/");
+                window.location.replace("/aquaspace/frontend/src/Error/WaitUntilConfirm.html");
                 },5000);
             }
 
@@ -587,7 +587,7 @@ $("#signUp3").click(function(){
                 if(data.status ==1){
                     alertMsg(["wait until admin verify you may have email about confirm"]);
                     delay(function(){
-                    window.location.replace("/aquaspace/frontend/src/");
+                    window.location.replace("/aquaspace/frontend/src/Error/WaitUntilConfirm.html");
                 },5000);
                     }else{
                         alert(data);

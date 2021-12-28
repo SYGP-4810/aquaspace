@@ -230,13 +230,13 @@ class Reg extends \Core\Controller
             "question" => $this->data['question'],
             "sender_id" => $id
         ];
-        $this->exec($this->save('expert_quetion', $dataToInsert));
+        $this->exec($this->save('expert_question', $dataToInsert));
         View::response("successfully inserted");
     }
 
     public function getQuestionForExpertAction()
     {
-        View::response($this->execute("SELECT * FROM expert_quetion ORDER BY id DESC")->fetchAll());
+        View::response($this->execute("SELECT * FROM expert_question ORDER BY id DESC")->fetchAll());
     }
 
     public function addToCartAction()
@@ -273,6 +273,54 @@ class Reg extends \Core\Controller
         View::response($result);
 
     }
+
+    //insert report about products
+    public function reportProductAction() {
+        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        //check if there is a report to this product before from the same user
+        $stmt = $this->execute($this->get('report','*',"auth_id='" . $id . "' AND product_id='" . $this->data['productId']."'"));
+        if($stmt->rowsCount() > 0){
+            $res = [
+                "flag" => 1,
+                "msg" => "You have previously reported this product"
+            ];
+            View::response($res);
+            return;
+        }
+        $dataToInsert = [
+            "auth_id" => $id,
+            "report" => $this->data['report'],
+            "product_id" => $this->data['productId'],
+        ];
+        $this->exec($this->save('report', $dataToInsert));
+        //check number of report for the same product to block the product
+        $stmt = $this->execute($this->get('report','*',"product_id='". $this->data['productId'] . "'"));
+        if($stmt->rowCount() > 10){
+            $sellerId = $stmt->fetchAll()[0]['auth_id'];
+            $dataToUpdate = [
+                "status" => 4
+            ];
+            $this->exec($this->update('report', $dataToUpdate,"id='" . $this->data['productId'] . "'"));
+            //send an email with a link to send appeal for unblock this product
+            //check number of blocked product of the user to block the user_auth
+        $stmt = $this->execute($this->get('product','*',"auth_id='" .$sellerId."'"));
+        if($stmt->rowsCount() > 10){
+            $dataToUpdate = [
+                "user_status" => 3 
+            ];
+            $this->exec($this->update('user_auth',$dataToUpdate,'auth_id=\''.$sellerId."'"));
+            //send a email with a link to unblock the user as well as prodocts
+        }
+        }
+        $res = [
+            "flag" => 2,
+            "msg" => "this product is reported"
+        ];
+        View::response($res);
+
+    
+
+}
 
     public function checkoutAction(){
         $merchant_id         = $this->data['merchant_id'];
@@ -338,6 +386,7 @@ class Reg extends \Core\Controller
     
 
     }
+
 
     public function getProductFromCartAction(){
 

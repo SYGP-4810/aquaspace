@@ -102,7 +102,7 @@ nav ntn green #4caf81 */
 
 
 /* form */
-form > input[type="text"] {
+div > input[type="text"] {
   width: 100%;
   /* padding: 12px 20px; */
   margin-bottom: 20px;
@@ -124,7 +124,7 @@ textarea {
   font-size: 1.2rem;
 }
 
-form > label {
+div > label {
   font-size: 1.3em;
 }
 
@@ -288,13 +288,22 @@ form > label {
   margin-right: 10px;
 }
 
+
+.payment{
+  margin-top: -15px;
+}
+.date{
+  display: inline;
+  font-weight: bold;
+}
+
 /* reset */
 .reset-container {
   margin: 0px 30px 00px 80px;
   width: 400px;
 }
 
-.reset-container form > input[type="password"] {
+.reset-container div > input[type="password"] {
   width: 100%;
   margin-bottom: 20px;
   box-sizing: border-box;
@@ -889,11 +898,11 @@ form > label {
 
 .p-card {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  /* justify-content: center; */
   align-items: center;
-  height: 300px;
-  width: 250px;
+  /* height: 300px; */
+  /* width: 250px; */
   background-color: rgba(255, 255, 255, 0.644);
   margin: 10px;
 }
@@ -903,6 +912,12 @@ form > label {
   height: 150px;
   margin-top: 5px;
   margin-bottom: 10px;
+}
+
+.textbox{
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
 }
 
 /* accept */

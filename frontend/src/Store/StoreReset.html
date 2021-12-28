@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Store.css">
+    <link rel="stylesheet" href="../../css/base.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -63,9 +64,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../Store/StoreReviews.html">
+                    <a href="../Store/StoreQuestion.html">
                         <i class="fas fa-flag-checkered" aria-hidden="true"></i>
-                        <span>Reviews & Questions</span>
+                        <span>Questions</span>
                     </a>
                 </li>
                 <li>
@@ -80,12 +81,6 @@
                         <span>Generate Reports</span>
                     </a>
                 </li>
-                <li>
-                    <a href="../Store/StoreNotifi.html">
-                        <i class="fas fa-bell" aria-hidden="true"></i>
-                        <span>Notification Settings</span>
-                    </a>
-                </li>
 			</ul>
 		</nav>
 		<section class="section-1">
@@ -93,7 +88,7 @@
                 <h2>RESET PASSWORD</h2>
             </div>
             <div class="reset-container">
-                <form class="reset">
+                <div class="reset">
                     <label for="cupass">Current Password <span class="required">*</span> </label>
                     <input type="password" id="cupass" name="cupass">
                     <br>
@@ -104,14 +99,19 @@
                     <input type="password" id="conpass" name="conpass">
                     <br>
                     <div class="btn">
-                            <input type="submit" class="button" value="Reset Password">
+                            <input type="submit" class="button" id="updatePass" value="Reset Password">
                             <button type="reset" class="can-button" >Cancel</button>
-                        </div>
-                </form>
+                    </div>
+                </div>
+                <div id="alertDiv"></div>
             </div>    
 		</section>
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src = "../../js/Store/StorePass.js"></script>
     <script src="../../js/logo.js"></script>
+    
+    
 </body>
 </html>
