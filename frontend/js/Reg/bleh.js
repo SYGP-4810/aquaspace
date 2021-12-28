@@ -1,78 +1,3 @@
-// function filterFunction(that, event) {
-//     let container, input, filter, li, input_val;
-//     container = $(that).closest("#name_list");
-//     input_val = container.find("input").val().toUpperCase();
-
-//     if (["ArrowDown", "ArrowUp", "Enter"].indexOf(event.key) != -1) {
-//         keyControl(event, container)
-//     } else {
-//         li = container.find("#fish_list li");
-//         li.each(function (i, obj) {
-//             if ($(this).text().toUpperCase().indexOf(input_val) > -1) {
-//                 $(this).show();
-//             } else {
-//                 $(this).hide();
-//             }
-//         });
-
-//         container.find("#fish_list li").removeClass("selected");
-//         setTimeout(function () {
-//             container.find("#fish_list li:visible").first().addClass("selected");
-//         }, 100)
-//     }
-// }
-// function keyControl(e, container) {
-//     if (e.key == "ArrowDown") {
-
-//         if (container.find("#fish_list li").hasClass("selected")) {
-//             if (container.find("#fish_list li:visible").index(container.find("#fish_list li.selected")) + 1 < container.find("#fish_list li:visible").length) {
-//                 container.find("#fish_list li.selected").removeClass("selected").nextAll().not('[style*="display: none"]').first().addClass("selected");
-//             }
-
-//         } else {
-//             container.find("#fish_list li:first-child").addClass("selected");
-//         }
-
-//     } else if (e.key == "ArrowUp") {
-
-//         if (container.find("#fish_list li:visible").index(container.find("#fish_list li.selected")) > 0) {
-//             container.find("#fish_list li.selected").removeClass("selected").prevAll().not('[style*="display: none"]').first().addClass("selected");
-//         }
-//     } else if (e.key == "Enter") {
-//         container.find("input").val(container.find("#fish_list li.selected").text()).blur();
-//         onSelect(container.find("#fish_list li.selected").text())
-//     }
-
-//     container.find("#fish_list li.selected")[0].scrollIntoView({
-//         behavior: "smooth",
-//     });
-// }
-
-// function onSelect(val) {
-
-// }
-
-// $("#name_list input").focus(function () {
-//     $(this).closest("#name_list").find("ul").show();
-//     $(this).closest("#name_list").find("#fish_list li").show();
-// });
-// $("#name_list input").blur(function () {
-//     let that = this;
-//     setTimeout(function () {
-//         $(that).closest("#name_list").find("ul").hide();
-//     }, 300);
-// });
-
-// $(document).on('click', '#name_list #fish_list li', function () {
-//     $(this).closest("#name_list").find("input").val($(this).text()).blur();
-//     onSelect($(this).text())
-// });
-
-// $("#name_list #fish_list li").hover(function () {
-//     $(this).closest("#name_list").find("#fish_list li.selected").removeClass("selected");
-//     $(this).addClass("selected");
-// });
-
 function blah(data) {
   $("#auto").val($(data).html());
   $('#fish_list').hide();
@@ -183,9 +108,6 @@ function searchbleh() {
     });
   },
 });
-
-
-
 
 $("#chkBox").change(function () {
   if ($("#chkBox").is(":checked")) {

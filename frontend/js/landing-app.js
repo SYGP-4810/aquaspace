@@ -430,19 +430,16 @@ function hideNotif(data){
                     </li>`)
           }
           
-        
-      
-          
         },
-        // error: function (errMsg) {
-        //   window.location.replace("../src/Error/" + errMsg.status + ".html");
-        // },
+        error: function (errMsg) {
+          window.location.replace("../src/Error/" + errMsg.status + ".html");
+        },
       });
 
     },
-    // error: function (errMsg) {
-    //   window.location.replace("../src/Error/" + errMsg.status + ".html");
-    // },
+    error: function (errMsg) {
+      window.location.replace("../src/Error/" + errMsg.status + ".html");
+    },
   });
 }
 
