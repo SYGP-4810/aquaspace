@@ -347,7 +347,7 @@ class Reg extends \Core\Controller
             "flag" => 2,
             "msg" => "this product is reported"
         ];
-        View::response($email);
+        View::response($res);
 
     
 
