@@ -129,3 +129,11 @@ li{
 .alertMsg p, .successMsg p{
     padding-left: 10px;
 }
+
+.loading > img{
+  position:fixed;
+     left: 50%;
+     top:  50%;
+     width : 50%;
+     height : 50%;
+}

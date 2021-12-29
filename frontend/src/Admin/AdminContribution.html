@@ -78,12 +78,12 @@
                         <span>Generate Reports</span>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="../Admin/AdminNotification.html">
                         <i class="fas fa-bell" aria-hidden="true"></i>
                         <span>Notification Settings</span>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a href="../Admin/AdminContribution.html">
                         <i class="fas fa-award" aria-hidden="true"></i>
@@ -106,58 +106,30 @@
                     </div>
                 </div> -->
             </div>
+            <div style="position:relative; left:50px;">
+                    <span>Last paid date : </span>
+                    <span id="lastPaidDate"></span>
+                <button id="payNow" class="button" style="position:absolute; left:500px; background: rgb(14, 135, 5);">pay now </button>
+            </div>
+            <br>
+            <br>
             <table class="con-list">
                 <tr>
                     <th>Name</th>
                     <th>Percentage</th>
                     <th>Details</th>
-                    <th>Q pay</th>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="admin">
-                            <img src="../../images/profile.jpg">
-                            <div class="text">
-                                <span class="name">W.Rashmika Lakshan</span>
-                                <br>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        15%
-                    </td>
-                    <td>
-                        <a href="../Admin/AdminContributionDetails.html" class="button">Contribution Details</a>
-                    </td>
-                    <td>
-                        <input type="submit" class="button" id="pay" value="Pay">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="admin">
-                            <img src="../../images/profile.jpg">
-                            <div class="text">
-                                <span class="name">W.Rashmika Lakshan</span>
-                                <br>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        15%
-                    </td>
-                    <td>
-                        <a href="#" class="button">Contribution Details</a>
-                    </td>
-                    <td>
-                        <input type="submit" class="button" id="pay" value="Pay">
-                    </td>
+                    <!-- <th>Q pay</th> -->
                 </tr>
             </table> 
 		</section>
 	</div>
+    <div id="loadingIcon" class="loading">
+        
+    </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/Admin/expertContribution.js"></script>
     <script src="../../js/logo.js"></script>
 </body>
 </html>

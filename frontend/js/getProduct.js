@@ -27,7 +27,7 @@ function setUrl(text) {
       data: JSON.stringify(req),
       success: function (data) {
         // console.log(JSON.stringify(data));
-        console.log(data.delivery);
+        // console.log(data.delivery);
         $("#column_1").html(`
              <img src="../../images/product/${data.img1}" alt="" width="100%" height="500px" id="ProductImg">
   
@@ -630,46 +630,51 @@ function setUrl(text) {
     /*when the report button is clicked, the user selects the reason and confirm the report */
     $(".report-btn").click(function () {
       $(".report-box").toggleClass("active");
-      console.log("akdjsdk");
+    //   console.log("akdjsdk");
     });
   
     $("#submit-report").click(function () {
       $(".confirm-report").css("display", "block");
+      $(".report-box").css("display", "none");
+
     });
     $("#btn1,#btn2").click(function () {
       $(".confirm-report").css("display", "none");
     });
-  
+    
+    $("#confirmReport").click(function () {
+        $(".confirm-report").css("display", "none");
+        let report = $('input:radio[name=reportOptions]:checked').val();
+        let url_string = window.location.href;
+        let url = new URL(url_string);
+        let productId = url.searchParams.get("id");
+        let req = {"report" : report,
+                    "productId" : productId
+                }
+        $.ajax({
+            type: "POST",
+            url:setUrl("reg/reg/reportProduct"),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(req),
+            success: function(data){
+                console.log(data);
+                if(data.flag ==1){
+                    errorShow([data.msg],"returning to home page");
+                }else if(data.flag ==2){
+                    successMsg([data.msg,"returning to home page"]);
+                }
+                delay(function(){
+                    window.location.replace("/aquaspace/frontend/src/");
+                },5000);
+                
+            },
+            error: function(errMsg) {
+                // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+                    }
+            });      
+        
+    });
     
   });
-  $("#confirmReport").click(()=> {
-    let report = $('input:radio[name=]:checked').val();
-    let url_string = window.location.href;
-    let url = new URL(url_string);
-    let productId = url.searchParams.get("id");
-    let req = {"report" : report,
-                "productId" : productId
-            }
-    $.ajax({
-        type: "POST",
-        url:setUrl("reg/reg/reportProduct"),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        data: JSON.stringify(req),
-        success: function(data){
-            if(data.flag ==1){
-                errorShow([data.msg],"returning to home page");
-            }else if(data.flag ==2){
-                successMsg([data.msg,"returning to home page"]);
-            }
-            delay(function(){
-                window.replace("aquaspace/frontend/src/");
-            },5000);
-            
-        },
-        error: function(errMsg) {
-            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
-                }
-        });      
-    
-});
+  

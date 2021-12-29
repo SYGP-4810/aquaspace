@@ -279,7 +279,7 @@ class Reg extends \Core\Controller
         $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
         //check if there is a report to this product before from the same user
         $stmt = $this->execute($this->get('report','*',"auth_id='" . $id . "' AND product_id='" . $this->data['productId']."'"));
-        if($stmt->rowsCount() > 0){
+        if($stmt->rowCount() > 0){
             $res = [
                 "flag" => 1,
                 "msg" => "You have previously reported this product"
@@ -293,30 +293,61 @@ class Reg extends \Core\Controller
             "product_id" => $this->data['productId'],
         ];
         $this->exec($this->save('report', $dataToInsert));
+        $sellerId = $this->execute($this->get('products','*',"id='".$this->data['productId']."'"))->fetch()['auth_id'];
+        $email = $this->execute($this->get('user_auth','*',"id='".$sellerId."'"))->fetch()['email'];
         //check number of report for the same product to block the product
         $stmt = $this->execute($this->get('report','*',"product_id='". $this->data['productId'] . "'"));
-        if($stmt->rowCount() > 10){
-            $sellerId = $stmt->fetchAll()[0]['auth_id'];
+        if($stmt->rowCount() >= 10){
+            return;
             $dataToUpdate = [
                 "status" => 4
             ];
-            $this->exec($this->update('report', $dataToUpdate,"id='" . $this->data['productId'] . "'"));
+            $this->exec($this->update('products', $dataToUpdate,"id='" . $this->data['productId'] . "'"));
+            $this->notifyOther($sellerId,"your product has been blocked check your email");
             //send an email with a link to send appeal for unblock this product
+            $subject = "your product has been blocked";
+            $linkToSend = $_SERVER['name']. "/aquaspace/frontend/src/appeal.html?productId=".$this->data['productId'];
+            $msg = "
+                <html>
+                    <head>
+                    <title>your product has been blocked</title>
+                    </head>
+                    <body>
+                        <p>your product has been blocked . send a appeal to unblock your product using the following link</p>
+                        <p><a href='".$linkToSend."' target='_blank'></a></p>
+                    </body>
+                </html>
+            ";
+            $this->sendMail($email,$subject,$msg);
             //check number of blocked product of the user to block the user_auth
-        $stmt = $this->execute($this->get('product','*',"auth_id='" .$sellerId."'"));
-        if($stmt->rowsCount() > 10){
+        $stmt = $this->execute($this->get('product','*',"status='4' AND auth_id='" .$sellerId."'"));
+        if($stmt->rowCount() >= 10){
             $dataToUpdate = [
                 "user_status" => 3 
             ];
             $this->exec($this->update('user_auth',$dataToUpdate,'auth_id=\''.$sellerId."'"));
             //send a email with a link to unblock the user as well as prodocts
+            $subject = "your product has been blocked";
+            $linkToSend = $_SERVER['name']. "/aquaspace/frontend/src/appeal-account.html?authId=".$sellerId;
+            $msg = "
+                <html>
+                    <head>
+                    <title>your account has been blocked</title>
+                    </head>
+                    <body>
+                        <p>your account has been blocked from aquaspace . send a appeal to unblock your product using the following link</p>
+                        <p><a href='".$linkToSend."' target='_blank'></a></p>
+                    </body>
+                </html>
+            ";
+            $this->sendMail($email,$subject,$msg);
         }
         }
         $res = [
             "flag" => 2,
             "msg" => "this product is reported"
         ];
-        View::response($res);
+        View::response($email);
 
     
 
@@ -347,9 +378,6 @@ class Reg extends \Core\Controller
         View::response($stmt->fetch());
     }
 
-    public function getAmountAction(){
-
-    }
 
     public function makeOrderAction()
     {
@@ -389,5 +417,105 @@ class Reg extends \Core\Controller
     
 
     }
+
+
+    public function getProductFromCartAction(){
+
+        $id = $this->data['id'];
+
+        $stmt = $this->execute("
+            SELECT shopping_cart.product_id, shopping_cart.quantity, shopping_cart.delivery, products.product_name, products.auth_id, products.price, products.lat, products.lan, products.weight
+            FROM shopping_cart 
+            INNER JOIN products ON shopping_cart.product_id=products.id
+            WHERE shopping_cart.id = $id
+        ");
+
+        $result = $stmt->fetch();
+        View::response($result);
+
+    }
+
+    public function getShippingAction(){
+
+        // let req3 = {
+        //     product_id: data.product_id,
+        //     delivery: data.delivery,
+        //     quantity: data.quantity,
+        //     weight: data.weight,
+        //     distance : actual_distance,
+        //     seller : data.auth_id,
+        //   };
+
+        $seller = $this->data['seller'];
+        $weight = $this->data['weight'];
+        $distance = $this->data['distance'];
+        $shipping = 0;
+    
+
+        if($distance <= 10){
+            $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 1 AND auth_id='" . $seller ."'"))->fetch();
+            if($weight > 1) {
+                $shipping = $stmt['one_kg'] + ($weight - 1)*$stmt['additional_one_kg'];
+            }
+            else {
+                $shipping = $stmt['one_kg'];
+            }
+            View::response($shipping);
+        }
+        else if($distance <=50){
+            $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 1 AND auth_id='" . $seller ."'"))->fetch();
+            if($weight > 1) {
+                $shipping = $stmt['one_kg'] + ($weight - 1)*$stmt['additional_one_kg'];
+            }
+            else {
+                $shipping = $stmt['one_kg'];
+            }
+            View::response($shipping);
+        }
+        else if($distance <=150){
+            $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 1 AND auth_id='" . $seller ."'"))->fetch();
+            if($weight > 1) {
+                $shipping = $stmt['one_kg'] + ($weight - 1)*$stmt['additional_one_kg'];
+            }
+            else {
+                $shipping = $stmt['one_kg'];
+            }
+            View::response($shipping);
+        }
+        else{
+            $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 1 AND auth_id='" . $seller ."'"))->fetch();
+            if($weight > 1) {
+                $shipping = $stmt['one_kg'] + ($weight - 1)*$stmt['additional_one_kg'];
+            }
+            else {
+                $shipping = $stmt['one_kg'];
+            }
+            View::response($shipping);
+        }
+
+    }
+
+    public function getNotifsAction(){
+        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $stmt = $this->execute($this->get('notification' , "*" , "auth_id = '" . $id . "' AND status = 1" ));
+        View::response($stmt->fetchAll());
+
+    }
+
+    public function readAllAction(){
+        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $dataToUpdate = ["status" => "2"];
+        $this->exec($this->update('notification', $dataToUpdate, "auth_id='" . $id . "'"));
+        View::response("success");  
+    }
+
+    public function hideNotifAction(){
+        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $dataToUpdate = ["status" => "2"];
+        $this->exec($this->update('notification', $dataToUpdate, "auth_id='" . $id . "' AND id = '" . $this->data['id'] ."'"));
+        View::response("success");  
+    }
+
+  
 
 }
