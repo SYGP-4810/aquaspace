@@ -320,7 +320,7 @@ class Reg extends \Core\Controller
             ";
             $this->sendMail($email,$subject,$msg);
             //check number of blocked product of the user to block the user_auth
-        $stmt = $this->execute($this->get('product','*',"status='4' AND auth_id='" .$sellerId."'"));
+        $stmt = $this->execute($this->get('products','*',"status='4' AND auth_id='" .$sellerId."'"));
         if($stmt->rowCount() >= 10){
             $dataToUpdate = [
                 "user_status" => 3 
