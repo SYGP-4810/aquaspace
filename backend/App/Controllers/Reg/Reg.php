@@ -155,6 +155,12 @@ class Reg extends \Core\Controller
 
         $date = date('Y-m-d H:i:s');
 
+        $question = $this->data['question'];
+
+        if($question == 0 || $question == 2){
+            
+        }
+
         $dataToInsert = [
             "product_name" => $this->data['product_name'],
             "type" => $this->data['type'],

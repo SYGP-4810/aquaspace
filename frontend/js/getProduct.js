@@ -639,37 +639,72 @@ function setUrl(text) {
     $("#btn1,#btn2").click(function () {
       $(".confirm-report").css("display", "none");
     });
+
+    // $('#confirmReport').click(function(){
+    //     console.log("hallo")
+    //     let report = $('input:radio[name=]:checked').val();
+    //     let url_string = window.location.href;
+    //     let url = new URL(url_string);
+    //     let productId = url.searchParams.get("id");
+    //     let req = {"report" : report,
+    //                 "productId" : productId
+    //             }
+    //     $.ajax({
+    //         type: "POST",
+    //         url:setUrl("reg/reg/reportProduct"),
+    //         contentType: "application/json; charset=utf-8",
+    //         dataType: "json",
+    //         data: JSON.stringify(req),
+    //         success: function(data){
+    //             if(data.flag ==1){
+    //                 errorShow([data.msg],"returning to home page");
+    //             }else if(data.flag ==2){
+    //                 successMsg([data.msg,"returning to home page"]);
+    //             }
+    //             delay(function(){
+    //                 window.replace("aquaspace/frontend/src/");
+    //             },5000);
+                
+    //         },
+    //         error: function(errMsg) {
+    //             window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+    //                 }
+    //         }); 
+    
+    // })
+    $("#confirmReport").click(()=> {
+        let report = $('input:radio[name=]:checked').val();
+        let url_string = window.location.href;
+        let url = new URL(url_string);
+        let productId = url.searchParams.get("id");
+        let req = {"report" : report,
+                    "productId" : productId
+                }
+        $.ajax({
+            type: "POST",
+            url:setUrl("reg/reg/reportProduct"),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(req),
+            success: function(data){
+                if(data.flag ==1){
+                    errorShow([data.msg],"returning to home page");
+                }else if(data.flag ==2){
+                    successMsg([data.msg,"returning to home page"]);
+                }
+                delay(function(){
+                    window.replace("aquaspace/frontend/src/");
+                },5000);
+                
+            },
+            error: function(errMsg) {
+                window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+                    }
+            });      
+        
+    });
   
     
   });
-  $("#confirmReport").click(()=> {
-    let report = $('input:radio[name=]:checked').val();
-    let url_string = window.location.href;
-    let url = new URL(url_string);
-    let productId = url.searchParams.get("id");
-    let req = {"report" : report,
-                "productId" : productId
-            }
-    $.ajax({
-        type: "POST",
-        url:setUrl("reg/reg/reportProduct"),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        data: JSON.stringify(req),
-        success: function(data){
-            if(data.flag ==1){
-                errorShow([data.msg],"returning to home page");
-            }else if(data.flag ==2){
-                successMsg([data.msg,"returning to home page"]);
-            }
-            delay(function(){
-                window.replace("aquaspace/frontend/src/");
-            },5000);
-            
-        },
-        error: function(errMsg) {
-            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
-                }
-        });      
-    
-});
+
+
