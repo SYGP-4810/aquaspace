@@ -79,7 +79,6 @@ $(document).ready(function () {
     // },
   });
 
-
   /*--------- when proceed button is clicked, this function would take all the ids and push it into
   an array for all the checked items in the shopping cart---------- */
   $("#proceed").click(function () {
@@ -87,8 +86,8 @@ $(document).ready(function () {
     $("input[type=checkbox]").each(function () {
       if (this.checked) {
         // array.push($(this).attr("id"));
-        var req = { id: $(this).attr("value") };
-        var item_id = $(this).attr("id") ;
+        var req1 = { id: $(this).attr("value") };
+        var item_id = $(this).attr("id");
 
         $.ajax({
           type: "POST",
@@ -96,12 +95,12 @@ $(document).ready(function () {
           url: setUrl("Reg/Reg/getProduct"),
           contentType: "application/json; charset=utf-8",
           dataType: "json",
-          data: JSON.stringify(req),
+          data: JSON.stringify(req1),
           success: function (data) {
             let id = item_id;
-            let product_id = req.id;
+            let product_id = req1.id;
             let auth_id = data.auth_id;
-            let result = { id,product_id,auth_id};
+            let result = { id, product_id, auth_id };
 
             array.push(result);
           },
@@ -112,7 +111,8 @@ $(document).ready(function () {
       }
     });
 
-    /*-------------- take the array with the ids of the shopping cart items in the json form and group 
+    console.log(array);
+    /*-------------- take the array with the ids of the shopping cart items in the json form and group
     them by the sellers id-------------*/
 
     var o = {};
@@ -131,10 +131,142 @@ $(document).ready(function () {
     }, []);
 
     console.log(map);
-    console.log(map[0]);
+
+
     let i;
-    for (i = 0; i < map[0].id.length; i++) {
-      console.log(map[0].id[i]);
+    for (i = 0; i < map.length; i++) {
+      $("#order-list").append(`
+        <tr>
+            <th colspan="2">Order ${i + 1}</th>
+        </tr>
+      `);
+      let shipping = 0;
+      let amount = 0;
+      let j;
+      let l = map[i].id.length;
+      for (j = 0; j < map[i].id.length; j++) {
+        let req2 = {
+          id: map[i].id[j],
+        };
+        $.ajax({
+          type: "POST",
+          async: false,
+          url: setUrl("Reg/Reg/getProductFromCart"),
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          data: JSON.stringify(req2),
+          success: function (data) {
+            console.log(data);
+            $("#order-list").append(`
+              <tr>
+                <td>${data.product_name} x ${data.quantity}(Qty)</td>
+                <td>${data.quantity * data.price}</td>
+              </tr>
+
+           `);
+            amount = amount + data.quantity * data.price;
+
+            function getDistance(callback) {
+              if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                  let user_lat = position.coords.latitude;
+                  let user_lng = position.coords.longitude;
+
+                  let product_lat = parseFloat(data.lat);
+                  let product_lng = parseFloat(data.lan);
+                  const user_location = {
+                    lat: user_lat,
+                    lng: user_lng,
+                  };
+                  const product_location = {
+                    lat: product_lat,
+                    lng: product_lng,
+                  };
+
+                  let directionsService = new google.maps.DirectionsService();
+                  let directionsRenderer = new google.maps.DirectionsRenderer();
+                  // Create route from existing points used for markers
+                  const route = {
+                    origin: user_location,
+                    destination: product_location,
+                    travelMode: "DRIVING",
+                  };
+
+                  directionsService.route(route, function (response, status) {
+                    // anonymous function to capture directions
+                    if (status !== "OK") {
+                      window.alert(
+                        "Directions request failed due to " + status
+                      );
+                      return;
+                    } else {
+                      directionsRenderer.setDirections(response); // Add route to the map
+                      var directionsData = response.routes[0].legs[0]; // Get data about the mapped route
+                      if (!directionsData) {
+                        window.alert("Directions request failed");
+                        return;
+                      } else {
+                        callback(directionsData.distance.value / 1000);
+                      }
+                    }
+                  });
+                });
+              }
+            }
+
+            if (data.delivery != 0) {
+              getDistance(function (distance) {
+                console.log(distance);
+                let req3 = {
+                  product_id: data.product_id,
+                  delivery: data.delivery,
+                  quantity: data.quantity,
+                  weight: data.weight,
+                  distance: distance,
+                  seller: data.auth_id,
+                };
+
+                console.log(req3);
+                $.ajax({
+                  type: "POST",
+                  url: setUrl("Reg/Reg/getShipping"),
+                  async: false,
+                  contentType: "application/json; charset=utf-8",
+                  dataType: "json",
+                  data: JSON.stringify(req3),
+                  success: function (data) {
+                    // console.log(data);
+                    shipping = shipping + data;
+                    console.log(shipping);
+                  },
+                  error: function (errMsg) {
+                    window.location.replace(
+                      "../src/Error" + errMsg.status + ".html"
+                    );
+                  },
+                });
+              });
+            }
+          },
+          error: function (errMsg) {
+            window.location.replace("../src/Error" + errMsg.status + ".html");
+          },
+        });
+      }
+      $("#order-list").append(`
+      <tr>
+            <td>Subtotal</td>
+            <td>${amount}</td>
+      </tr>
+                            `);
+      $("#order-list").append(`
+      <tr>
+            <td>Shipping</td>
+            <td>${shipping}</td>
+      </tr>
+                            `);
+
+      console.log(shipping);
     }
 
     /*----------- $.ajax({
@@ -147,16 +279,14 @@ $(document).ready(function () {
       success: function (data) {
 
         console.log("ys yes")
+
         console.log(data);
-        
+
       },
       // error: function (errMsg) {
       //   window.location.replace("../src/Error" + errMsg.status + ".html");
       // },
     });
     -------------*/
-
-
-
   });
 });

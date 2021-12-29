@@ -1,86 +1,30 @@
-// $(document).ready(function() {
+function blah(data) {
+  $("#auto").val($(data).html());
+  $('#fish_list').hide();
+  // console.log($("#auto").val());
 
-//   $.ajax({
-//     type: "GET",
-//     url:setUrl("Reg/Reg/getFishNames"),
-//     contentType: "application/json; charset=utf-8",
-//     dataType: "json",
-//     success: function(data){
-//       console.log(data);
-//       $("#auto").autocomplete({
-//       source: data ,
-//       minLength: 1,
-//       select: function(event, ui)
-//       {
-//         $('#auto').val(ui.item.value);
-//       }
-//   }).data('ui-autocomplete')._renderItem = function(ul, item)
-//   {
-//     return $("<li class='ui-autocomplete-row'></li>")
-//     .data("item.autocomplete", item)
-//     .append(item.label)
-//     .appendTo(ul);
-//   }
+  let name = $("#auto").val();
+  var req = { name: name };
 
-//   }
-// });
+  $.ajax({
+    type: "POST",
+    url: setUrl("Reg/Reg/getFishImage"),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: JSON.stringify(req),
+    success: function (data) {
+      if (data != false) {
+        $("#img-question").css("display", "block");
+        $("#radio").css("display", "block");
+        $("#db-img").attr("src", "../../images/" + data.image);
+      } else {
+        $("#img-question").css("display", "none");
+        $("#radio").css("display", "none");
+      }
+    },
+  });
+}
 
-// $.ajax({
-//   type: "GET",
-//   url:setUrl("Reg/Reg/getFishNames"),
-//   contentType: "application/json; charset=utf-8",
-//   dataType: "json",
-//   success: function(data){
-//     var names = [];
-//     // var images = [];
-//     data.forEach(element => {
-//         names.push(element.name);
-//         // images.push(element.image);
-//     });
-//     // console.log(names);
-//     $("#auto").autocomplete({
-//     source: names
-//     // function autocompleteMatch(input) {
-//     //   if (input == '') {
-//     //     return [];
-//     //   }
-//     //   var reg = new RegExp(input)
-//     //   return names.filter(function(term) {
-//     //     if (term.match(reg)) {
-//     //       return term;
-//     //     }
-//     //   });
-//     // }
-//     // function showResults(val) {
-//     //   res = document.getElementById("result");
-//     //   res.innerHTML = '';
-//     //   let list = '';
-//     //   let terms = autocompleteMatch(val);
-//     //   for (i=0; i<terms.length; i++) {
-//     //     list += '<li>' + terms[i] + '</li>';
-//     //   }
-//     //   res.innerHTML = '<ul>' + list + '</ul>';
-//     // }
-//   }
-// }
-// });
-
-$.ajax({
-  type: "GET",
-  url: setUrl("Reg/Reg/getFishNames"),
-  contentType: "application/json; charset=utf-8",
-  dataType: "json",
-  success: function (data) {
-    var names = [];
-    data.forEach((element) => {
-      names.push(element.name);
-    });
-    // console.log(names);
-    $("#auto").autocomplete({
-      source: names,
-    });
-  },
-});
 
 $("#auto").keyup(function () {
   let name = $("#auto").val();
@@ -93,14 +37,6 @@ $("#auto").keyup(function () {
     dataType: "json",
     data: JSON.stringify(req),
     success: function (data) {
-      // console.log(data);
-      // if($('#radio_1').is(':checked')){
-      //   console.log($('#radio_1').val());
-      // }
-      // if($('#radio_2').is(':checked')){
-      //   console.log($('#radio_2').val());
-      // }
-
       if (data != false) {
         $("#img-question").css("display", "block");
         $("#radio").css("display", "block");
@@ -111,6 +47,41 @@ $("#auto").keyup(function () {
       }
     },
   });
+});
+
+function searchFish() {
+  $("#fish_list").show();
+  let keyword = $("#auto").val().toLowerCase();
+  let list = $("#fish_list li");
+  // console.log(list[0]);
+  for (let i = 0; i < list.length; i++) {
+    let td = list[i].innerText.toLowerCase();
+    if (td.includes(keyword)) {
+      list.eq(i).show();
+    } else {
+      list.eq(i).hide();
+    }
+  }
+}
+
+function searchbleh() {
+  $("#fish_list").show();
+  searchFish();
+}
+
+$.ajax({
+  type: "GET",
+  url: setUrl("Reg/Reg/getFishNames"),
+  contentType: "application/json; charset=utf-8",
+  dataType: "json",
+  success: function (data) {
+    console.log(data)
+    var names = [];
+    data.forEach((element) => {
+      $("#fish_list").append(`
+        <li onclick="blah(this)">${element.name}</li>`);
+    });
+  },
 });
 
 $("#chkBox").change(function () {

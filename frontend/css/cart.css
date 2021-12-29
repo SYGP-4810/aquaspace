@@ -173,7 +173,6 @@ td button {
   
   .Yorder{
     margin-top: 15px;
-    height: 600px;
     padding: 20px;
     border: 1px solid #dadada;
   }
@@ -196,7 +195,7 @@ td button {
   }
   .checkout td{
     border-bottom: 1px solid #dadada;
-    padding: 25px 25px 25px 0;
+    padding: 10px 0px 10px 0;
   }
   
   .checkout p{
@@ -224,7 +223,22 @@ td button {
     cursor: pointer;
     background: rgb(204, 99, 81);
   }
+  /* .checkout form {
+    text-align: center;
+  } */
 
+  .checkout form input[type='submit']{
+    width: 30%;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 30px;
+    background: rgb(255, 137, 116);
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    
+  }
   .f {
     display: flex;
   }

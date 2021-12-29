@@ -499,7 +499,6 @@ class Reg extends \Core\Controller
         $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
         $stmt = $this->execute($this->get('notification' , "*" , "auth_id = '" . $id . "' AND status = 1" ));
         View::response($stmt->fetchAll());
-
     }
 
     public function readAllAction(){
