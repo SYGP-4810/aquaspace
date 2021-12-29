@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../../css/addpost.css">
   <link rel="stylesheet" href="../../css/landing-styles.css">
   <link rel="stylesheet" href="../../css/post-payment.css">
-  <link rel="stylesheet" href="../../css/base.css">
+  <!-- <link rel="stylesheet" href="../../css/base.css"> -->
   <title>Category Page</title>
 </head>
 
@@ -39,25 +39,25 @@
         <li><a href="articles.html">Blog</a></li>
         <li><a href="build-tank.html">Build Tank</a></li>
         <li id="a_parent"><a href="#">Add Post</a>
-            <div id="a_child" class="sub-menu sub-menu-1">
-                <ul>
-                  <li><a href="add-fish-post.html">Fish</a></li>
-                  <li><a href="add-plant-post.html">Plant</a></li>
-                  <li><a href="add-other-post.html">Equipment</a></li>
-                  <li><a href="add-adopt-post.html">Adopt</a></li>
-                </ul>
-            </div>
+          <div id="a_child" class="sub-menu sub-menu-1">
+            <ul>
+              <li><a href="add-fish-post.html">Fish</a></li>
+              <li><a href="add-plant-post.html">Plant</a></li>
+              <li><a href="add-other-post.html">Equipment</a></li>
+              <li><a href="add-adopt-post.html">Adopt</a></li>
+            </ul>
+          </div>
         </li>
         <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
         <li><a href="#"><i class="fas fa-bell fa-lg"></i></a></li>
         <li><a href="#"><i class="fas fa-user-circle fa-lg"></i></a>
-            <div class="sub-menu sub-menu-2">
-                <ul class="options">
-                    <li><a href="account-overview.html">Profile</a></li>
-                    <li><a href="#">Logout</a></li>
-                </ul>
-            </div>
-    </ul>
+          <div class="sub-menu sub-menu-2">
+            <ul class="options">
+              <li><a href="account-overview.html">Profile</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </div>
+      </ul>
     </div>
   </div>
   <div class="container">
@@ -117,15 +117,20 @@
           <option value="Invertebrates">Invertebrates</option>
         </select>
       </label>
-      <label>
+      <!-- <label>
         <span>Name<span class="required">*</span></span>
         <input type="text" id="auto" placeholder="enter fish/plant name" autocomplete="off" />
-        <!-- <input class="typeahead form-control" type="text" placeholder="Search Film Name" autocomplete="off"> -->
-      </label>
-      <!-- <label>
-        <span>Description<span class="required"></span></span>
-        <textarea id="description" name="reason" rows="5" cols="100" readonly></textarea>
       </label> -->
+      <label id="name_list">
+        <span>Name<span class="required">*</span></span>
+        <div>
+          <input type="text" id="auto" placeholder="enter fish/plant name" autocomplete="off" onkeyup="searchFish()" />
+          <ul id="fish_list">
+        </div>
+
+        </ul>
+      </label>
+
       <label id="img-question" class="img-question">
         <span>Is this the fish you are looking for? (Proceed after answering the question)</span>
         <img id="db-img" src="" width="250px">
@@ -258,7 +263,7 @@
               <td>$20.00</td>
             </tr>
           </table><br>
-          <button id="f-order" type="button">PAY</button>
+          <button id="order" type="button">PAY</button>
         </div><!-- Yorder -->
       </div>
     </div>
@@ -280,11 +285,11 @@
 
       <p class="footer-links">
         <a href="#" class="link-1">Home</a>
-        
+
         <a href="Reg/articles.html">Blog</a>
-      
+
         <a href="#">Add Post</a>
-        
+
         <a href="Reg/build-tank.html">Build Tank</a>
       </p>
       <p class="footer-company-name">AquaSpace © 2021</p>
