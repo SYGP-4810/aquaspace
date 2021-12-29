@@ -285,7 +285,7 @@ class Reg extends \Core\Controller
         $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
         //check if there is a report to this product before from the same user
         $stmt = $this->execute($this->get('report','*',"auth_id='" . $id . "' AND product_id='" . $this->data['productId']."'"));
-        if($stmt->rowsCount() > 0){
+        if($stmt->rowCount() > 0){
             $res = [
                 "flag" => 1,
                 "msg" => "You have previously reported this product"
@@ -299,23 +299,54 @@ class Reg extends \Core\Controller
             "product_id" => $this->data['productId'],
         ];
         $this->exec($this->save('report', $dataToInsert));
+        $sellerId = $this->execute($this->get('products','*',"id='".$this->data['productId']."'"))->fetch()['auth_id'];
+        $email = $this->execute($this->get('user_auth','*',"id='".$sellerId."'"))->fetch()['email'];
         //check number of report for the same product to block the product
         $stmt = $this->execute($this->get('report','*',"product_id='". $this->data['productId'] . "'"));
-        if($stmt->rowCount() > 10){
-            $sellerId = $stmt->fetchAll()[0]['auth_id'];
+        if($stmt->rowCount() >= 10){
+            return;
             $dataToUpdate = [
                 "status" => 4
             ];
-            $this->exec($this->update('report', $dataToUpdate,"id='" . $this->data['productId'] . "'"));
+            $this->exec($this->update('products', $dataToUpdate,"id='" . $this->data['productId'] . "'"));
+            $this->notifyOther($sellerId,"your product has been blocked check your email");
             //send an email with a link to send appeal for unblock this product
+            $subject = "your product has been blocked";
+            $linkToSend = $_SERVER['name']. "/aquaspace/frontend/src/appeal.html?productId=".$this->data['productId'];
+            $msg = "
+                <html>
+                    <head>
+                    <title>your product has been blocked</title>
+                    </head>
+                    <body>
+                        <p>your product has been blocked . send a appeal to unblock your product using the following link</p>
+                        <p><a href='".$linkToSend."' target='_blank'></a></p>
+                    </body>
+                </html>
+            ";
+            $this->sendMail($email,$subject,$msg);
             //check number of blocked product of the user to block the user_auth
-        $stmt = $this->execute($this->get('product','*',"auth_id='" .$sellerId."'"));
-        if($stmt->rowsCount() > 10){
+        $stmt = $this->execute($this->get('products','*',"status='4' AND auth_id='" .$sellerId."'"));
+        if($stmt->rowCount() >= 10){
             $dataToUpdate = [
                 "user_status" => 3 
             ];
             $this->exec($this->update('user_auth',$dataToUpdate,'auth_id=\''.$sellerId."'"));
             //send a email with a link to unblock the user as well as prodocts
+            $subject = "your product has been blocked";
+            $linkToSend = $_SERVER['name']. "/aquaspace/frontend/src/appeal-account.html?authId=".$sellerId;
+            $msg = "
+                <html>
+                    <head>
+                    <title>your account has been blocked</title>
+                    </head>
+                    <body>
+                        <p>your account has been blocked from aquaspace . send a appeal to unblock your product using the following link</p>
+                        <p><a href='".$linkToSend."' target='_blank'></a></p>
+                    </body>
+                </html>
+            ";
+            $this->sendMail($email,$subject,$msg);
         }
         }
         $res = [
