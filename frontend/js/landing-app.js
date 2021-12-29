@@ -5,42 +5,7 @@ function setUrl(text) {
 
 var userType = 0;
 
-// let before = document.getElementsByClassName('before');
-// let after = document.getElementsByClassName('after');
-// let notReg = document.getElementsByClassName('notReg');
-// function foo(loggedIn){
-//   if(loggedIn){
-//       for (var i=0;i<before.length;i+=1){
-//           before[i].style.display = 'none';
-//       }
-//       for (var i=0;i<after.length;i+=1){
-//           after[i].style.display = 'block';
-//       }
-//   }
-//   else {
-//       for (var i=0;i<before.length;i+=1){
-//           before[i].style.display = 'block';
-//       }
-//       for (var i=0;i<after.length;i+=1){
-//           after[i].style.display = 'none';
-//       }
-//   }
-//   }
-// function notRegAccount(){
-//   for (var i=0;i<before.length;i+=1){
-//     before[i].style.display = 'none';
-// }
-// for (var i=0;i<after.length;i+=1){
-//   if(after[i].classList.contains('notReg') == 0){
-//     after[i].style.display = 'block';
-//   }
 
-// }
-// for(let i=0;i<notRegAccount.length;i+=1){
-//     notReg[i].style.display = 'none';
-// }
-
-$(document).ready(function () {
   function foo(loggedIn) {
     if (loggedIn) {
       $("#login").css("display", "none");
@@ -76,6 +41,7 @@ $(document).ready(function () {
         userId = data.id;
         if (userType == 1) {
           foo(true);
+          getNotification(true);
         } else {
           notRegAccount();
         }
@@ -202,7 +168,7 @@ $(document).ready(function () {
       );
     },
   });
-});
+
 
 $(".default_option").click(function () {
   $(".dropdown ul").addClass("active");
@@ -245,62 +211,68 @@ $("#profile").click(function () {
   }
 });
 
-
-
-  $.ajax({
-    type: "GET",
-    url: setUrl("Reg/Reg/getNotifs"),
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    success: function (data) {
-
-      $('#notifs').html(``);
-      console.log(data);
+function getNotification(loggedIn){
+  if(loggedIn == 1){
+    $.ajax({
+      type: "GET",
+      url: setUrl("Reg/Reg/getNotifs"),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (data) {
   
-      let count = 0;
-      if(data.length == 0){
-        $("#notifs").append(`
-      <li class="show_all" >
-                  <p class="link">You have no notifications</p>
-                </li>`)
-      }
-      else{
-        data.forEach((element) => {
-        count++;
-        $("#notifs").append(`
-            <li onmouseover=popup(this) onmouseleave=closepopup()>
-            <div class="notify_icon">
-              <img src="../images/notif${count}.png" alt="">
-            </div>
-            <div class="notify_data">
-              <div class="sub_title">
-                ${element.msg}
+        $('#notifs').html(``);
+        console.log(data);
+    
+        let count = 0;
+        if(data.length == 0){
+          $("#notifs").append(`
+        <li class="show_all" >
+                    <p class="link">You have no notifications</p>
+                  </li>`)
+        }
+        else{
+          data.forEach((element) => {
+          count++;
+          $("#notifs").append(`
+              <li onmouseover=popup(this) onmouseleave=closepopup()>
+              <div class="notify_icon">
+                <img src="../images/notif${count}.png" alt="">
               </div>
-             
-            </div>
-           <div class="close_btn" value="${element.id}"  onclick=hideNotif(this.getAttribute("value"))>
-                      <img src="../images/cross.png" alt="">
-                    </div>
-          </li>
-            `);
-      });
+              <div class="notify_data">
+                <div class="sub_title">
+                  ${element.msg}
+                </div>
+               
+              </div>
+             <div class="close_btn" value="${element.id}"  onclick=hideNotif(this.getAttribute("value"))>
+                        <img src="../images/cross.png" alt="">
+                      </div>
+            </li>
+              `);
+        });
+    
+        $("#notifs").append(`
+        <li class="show_all" onclick=readAll()>
+                    <p class="link">Read All</p>
+                  </li>`)
+        }
+        
+      },
+    //   complete: function (data) {
+    //     // Schedule the next
+    //     setTimeout(doAjax, interval);
+    // },
+      // error: function (errMsg) {
+      //   window.location.replace("../src/Error/" + errMsg.status + ".html");
+      // },
+    });
   
-      $("#notifs").append(`
-      <li class="show_all" onclick=readAll()>
-                  <p class="link">Read All</p>
-                </li>`)
-      }
-      
-    },
-  //   complete: function (data) {
-  //     // Schedule the next
-  //     setTimeout(doAjax, interval);
-  // },
-    error: function (errMsg) {
-      window.location.replace("../src/Error/" + errMsg.status + ".html");
-    },
-  });
 
+  }
+
+}
+
+ 
 
 
 function readAll(){
