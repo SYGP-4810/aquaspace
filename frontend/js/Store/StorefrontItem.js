@@ -1,6 +1,4 @@
-function setUrl(text){
-    return "/aquaspace/backend/public/index.php?"+text;
-}
+var product_id = [];
 
 $(document).ready(function() {
     $.ajax({
@@ -9,8 +7,7 @@ $(document).ready(function() {
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function(data){
-        console.log(data);
-          data.forEach(element => {
+          data.forEach(element => {  
             let st = element.status;
             let status;
             if(st == 1){
@@ -20,9 +17,10 @@ $(document).ready(function() {
                 status = "unchecked";
             }
             if(element.status == 1 || element.status == 2){
+                product_id.push(element.id);
                 $(".list-item").append(`
               <tr>
-                        <td><input type="checkbox" ${status} /></td>
+                        <td><input type="checkbox" ${status} id="product${element.id}" /></td>
                         <td><img src="/aquaspace/frontend/images/product/${element.img1}"></td>
                         <td>
                             <span>${element.product_name}</span>
@@ -36,7 +34,7 @@ $(document).ready(function() {
           });
       },
       error: function(errMsg) {
-          window.location.replace("../src/Error"+errMsg.status+".html");
+        window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
       }
   });
 });
@@ -57,4 +55,38 @@ $("#disable").click(function() {
             window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
+});
+
+$("#save").click(function() {  
+    let active = [], deactive = [];
+    product_id.forEach(element =>{
+        let id = "#product"+ element;
+        if($(id).is(':checked')){
+            active.push(element);            
+        }
+        else{
+            deactive.push(element);
+        }
+    })
+
+    let req = {"active":active,
+               "deactive":deactive
+            }
+            console.log(req);
+    // $.ajax({
+    //     type: "POST",
+    //     url:setUrl("Store/Store/saveStoreFront"),
+    //     contentType: "application/json; charset=utf-8",
+    //     data: JSON.stringify(req),
+    //     dataType: "json",
+    //     success: function(data){         
+    //         successMsg(["Save Changes"]);
+    //         delay(function(){
+    //         window.location.replace("/aquaspace/frontend/src/Store/StoreStoreFront.html")
+    //         },5000);
+    //     },
+    //     error: function(errMsg) {
+    //         window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+    //     }
+    // });
 });

@@ -93,9 +93,46 @@ class Store extends \Core\Controller
             "lat" => $lat,
             "lan" => $lang
         ];
-        // View::response($DataToInsert);
-        $this->exec($this->save('products', $DataToInsert));
-        View::response("success");
+
+        $sql = "SELECT COUNT(products.id) AS ads FROM products,subscription WHERE products.auth_id=" .$id. " AND subscription.auth_id=products.auth_id AND subscription.date_from <= products.created_date AND subscription.date_to >= products.created_date";
+        $stmt = $this->execute($sql);
+        $result2 = $stmt->fetch();
+        $countAds = $result2['ads'];
+
+        $stmt = $this->execute($this->get('subscription', "*", "auth_id ='" . $id . "' AND date_to >= CURDATE() ORDER BY id DESC",1));
+        $result3 = $stmt->fetch();
+        $maxAds = 0;
+        $maxAdsNum =  $result3['sub_type'];
+        if ($maxAdsNum == 1){
+            $maxAds = 100;
+        }else if($maxAdsNum == 2){
+            $maxAds = 200;
+        }
+        else if($maxAdsNum == 3){
+            $maxAds = 500;
+        }
+        else if($maxAdsNum == 4){
+            $maxAds = 1000;
+        }
+        else if($maxAdsNum == 5){
+            $maxAds = 5000;
+        }else{
+            $responce = ["flag" => 1,
+                        "msg" => "haven't valide subscription"];
+                        //havent validate subscription 
+            View::response($responce);
+            return;
+        }
+
+        if($countAds < $maxAds){
+            $this->exec($this->save('products', $DataToInsert));
+            $responce = ["flag" => 0,
+                        "msg" => "success"];
+        }else{
+            $responce = ["flag" => 2,
+                        "msg" => "haven't valide subscription"];
+        }
+        View::response($responce);
     }
 
     public function checkDeliveryOptionAction()
@@ -121,47 +158,15 @@ class Store extends \Core\Controller
     
     public function getEditInventoryAction()
     {
-        $stmt = $this->execute($this->get('productS', "*", "id='" . $this->data['id'] . "'"));
+        $stmt = $this->execute($this->get('products', "*", "id='" . $this->data['id'] . "'"));
         $result = $stmt->fetch();
+
         View::response($result);
     }
 
     //edit inventory items
     public function editInventoryAction()
     {
-        $iName1 = "";
-        $iName1 = microtime(true) . "." . $this->data['exen1'];
-        $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName1;
-        $flag1 = file_put_contents($iDir1, base64_decode($this->data['pic1']));
-
-        $iName2 = "";
-        $iName2 = microtime(true) . "." . $this->data['exen2'];
-        $iDir2 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName2;
-        $flag2 = file_put_contents($iDir2, base64_decode($this->data['pic2']));
-
-        $iName3 = "";
-        $iName3 = microtime(true) . "." . $this->data['exen3'];
-        $iDir3 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName3;
-        $flag3 = file_put_contents($iDir3, base64_decode($this->data['pic3']));
-
-        $iName4 = "";
-        $iName4 = microtime(true) . "." . $this->data['exen4'];
-        $iDir4 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName4;
-        $flag4 = file_put_contents($iDir4, base64_decode($this->data['pic4']));
-
-        if (!$flag1) {
-            throw new \Exception("file didn't come to backend");
-        }
-        if (!$flag2) {
-            throw new \Exception("file didn't come to backend");
-        }
-        if (!$flag3) {
-            throw new \Exception("file didn't come to backend");
-        }
-        if (!$flag4) {
-            throw new \Exception("file didn't come to backend");
-        }
-
         $updateData = [
             "product_name" => $this->data['Name'],
             "price" => $this->data['price'],
@@ -173,12 +178,49 @@ class Store extends \Core\Controller
             "length" => $this->data['length'],
             "weight" => $this->data['weight'],
             "capacity" => $this->data['capacity'],
-            "img1" => $iName1,
-            "img2" => $iName2,
-            "img3" => $iName3,
-            "img4" => $iName4,
             "status" => $this->data['status']
         ];
+
+        if($this->data['flag1'] == true){
+            $iName1 = "";
+            $iName1 = microtime(true) . "." . $this->data['exen1'];
+            $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName1;
+            $flag1 = file_put_contents($iDir1, base64_decode($this->data['pic1']));
+            if (!$flag1) {
+                throw new \Exception("file didn't come to backend");
+            }
+            $updateData["img1"] = $iName1;
+        }
+        if($this->data['flag2'] == true){
+            $iName2 = "";
+            $iName2 = microtime(true) . "." . $this->data['exen2'];
+            $iDir2 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName2;
+            $flag2 = file_put_contents($iDir2, base64_decode($this->data['pic2']));
+            if (!$flag2) {
+                throw new \Exception("file didn't come to backend");
+            }
+            $updateData["img2"] = $iName2;
+        }
+        if($this->data['flag3'] == true){
+            $iName3 = "";
+            $iName3 = microtime(true) . "." . $this->data['exen3'];
+            $iDir3 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName3;
+            $flag3 = file_put_contents($iDir3, base64_decode($this->data['pic3']));
+            if (!$flag3) {
+                throw new \Exception("file didn't come to backend");
+            }
+            $updateData["img3"] = $iName3;
+        }
+        if($this->data['flag4'] == true){
+            $iName4 = "";
+            $iName4 = microtime(true) . "." . $this->data['exen4'];
+            $iDir4 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName4;
+            $flag4 = file_put_contents($iDir4, base64_decode($this->data['pic4']));
+            if (!$flag4) {
+                throw new \Exception("file didn't come to backend");
+            }
+            $updateData["img4"] = $iName4;
+        }
         
             $this->exec($this->update('products', $updateData, "id='" . $this->data['id'] . "'"));        
             View::response("success");
@@ -192,7 +234,6 @@ class Store extends \Core\Controller
         $id = $result1['id'];
         $stmt = $this->execute($this->get('store', "*", "auth_id ='" . $id . "'"));
         $result2 = $stmt->fetch();
-        $today=date("Y-m-d");
         $stmt = $this->execute($this->get('subscription', "*", "auth_id ='" . $id . "' AND date_to >= CURDATE() ORDER BY id DESC",1));
         $result3 = $stmt->fetch();
         $stmt = $this->execute($this->get('delivery_cost', "*", "auth_id ='" . $id . "'"));
@@ -429,6 +470,16 @@ class Store extends \Core\Controller
         View::response($res);
     }
 
+    //save store item sell or not
+    public function saveStoreFrontAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'"));
+        $result1 = $stmt->fetch();
+        $id = $result1['id'];
+        
+        View::response("success");
+    }
+
     //sotre front edit
     public function editStoreFrontAction()
     {
@@ -480,6 +531,7 @@ class Store extends \Core\Controller
         View::response("success");
     }
 
+    //disabe all the items from store
     public function disableStoreFrontAction()
     {
         $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'"));
@@ -557,5 +609,62 @@ class Store extends \Core\Controller
         View::response("success");
         
     }
+
+    public function getOrdersAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'"));
+        $result1 = $stmt->fetch();
+        $id = $result1['id'];
+        $stmt = $this->execute($this->get('selling_order', "*", "seller_auth_id ='" . $id . "'"));
+        $result2 = $stmt->fetchAll();
+        $stmt = $this->execute($this->join('selling_order, product_order,products','selling_order.id, selling_order.status, products.product_name'
+        ,"selling_order.id = product_order.selling_order_id AND product_order.product_id=products.id AND selling_order.seller_auth_id = '".$id."'"));
+        $result2 = $stmt->fetchAll();
+        View::response($result2);
+    }
+
+    public function getOrderDetailsAction()
+    {
+        $id = $this->data['id'];
+        $stmt = $this->execute($this->get('selling_order', "buyer_auth_id", "id ='" . $id . "'"));
+        $result1 = $stmt->fetch();
+        $buyerid = $result1['buyer_auth_id'];
+        $stmt = $this->execute($this->join("user_auth,regular_user", "user_auth.tp, regular_user.first_name, regular_user.last_name, regular_user.address", "user_auth.id ='" . $buyerid . "' AND regular_user.auth_id ='" . $buyerid . "'"));
+        $result2 = $stmt->fetch();
+        $stmt = $this->execute($this->join("product_order,products", "products.product_name, products.img1, products.price, product_order.quantity, product_order.delivery", "product_order.selling_order_id='" . $id . "' AND  product_order.	product_id = products.id"));
+        $result3 = $stmt->fetchAll();
+        
+        View::response($result2);
+    }
+
+    public function getOrderProductDetailsAction()
+    {
+        $id = $this->data['id'];
+        $stmt = $this->execute($this->join("product_order,products", "products.product_name, products.img1, products.price, product_order.quantity, product_order.delivery", "product_order.selling_order_id='" . $id . "' AND  product_order.	product_id = products.id"));
+        $result3 = $stmt->fetchAll();
+        
+        View::response($result3);
+    }
     
+    public function AcceptOrderAction()
+    {
+        $updateData = [
+            "status" => 2
+        ];
+    
+        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));        
+        View::response("success");
+        
+    }
+
+    public function RejectOrderAction()
+    {
+        $updateData = [
+            "status" => 5
+        ];
+    
+        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));        
+        View::response("success");
+        
+    }
 }

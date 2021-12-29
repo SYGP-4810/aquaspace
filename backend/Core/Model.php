@@ -222,7 +222,7 @@ class Model
 
         foreach ($columns as $key => $value) {
             if (is_int($value))
-                $sql .= $key . "= " . $value . " ";
+                $sql .= $key . "= " . $value . " ,";
             else
                 $sql .= $key . "= '" . $value . "', ";
         }

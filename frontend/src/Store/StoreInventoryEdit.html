@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/store-inv-add.css">
     <link rel="stylesheet" href="../../css/Store.css">
+    <link rel="stylesheet" href="../../css/base.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -97,7 +98,7 @@
                       <div class="js--image-preview" id="inventory-img1"></div>
                       <div class="upload-options">
                         <label>
-                            <input type="file" id="inventory-img1"  class="image-upload" onchange="encodeImageFileAsURL1(this)">
+                            <input type="file" id="inventoryimg1"  class="image-upload" onchange="encodeImageFileAsURL1(this)">
                         </label>
                       </div>
                     </div>
@@ -105,7 +106,7 @@
                       <div class="js--image-preview" id="inventory-img2"></div>
                       <div class="upload-options">
                         <label>
-                            <input type="file" id="inventory-img2"  class="image-upload"onchange="encodeImageFileAsURL2(this)">
+                            <input type="file" id="inventoryimg2"  class="image-upload"onchange="encodeImageFileAsURL2(this)">
                         </label>
                       </div>
                     </div>
@@ -113,7 +114,7 @@
                       <div class="js--image-preview" id="inventory-img3"></div>
                       <div class="upload-options">
                         <label>
-                            <input type="file" id="inventory-img3"  class="image-upload" onchange="encodeImageFileAsURL3(this)">
+                            <input type="file" id="inventoryimg3"  class="image-upload" onchange="encodeImageFileAsURL3(this)">
                         </label>
                       </div>
                     </div>
@@ -121,7 +122,7 @@
                       <div class="js--image-preview" id="inventory-img4"></div>
                       <div class="upload-options">
                         <label>
-                            <input type="file" id="inventory-img4"  class="image-upload" onchange="encodeImageFileAsURL4(this)">
+                            <input type="file" id="inventoryimg4"  class="image-upload" onchange="encodeImageFileAsURL4(this)">
                         </label>
                       </div>
                     </div>
@@ -169,10 +170,12 @@
                     <input type="submit" class="button" value="SAVE" id="invent-save">
                     <a href="../Store/StoreInventory.html" class="can-button">CANCEL</a>
                 </div>
+                <div id="alertDiv"></div>
             </div>
 		</section>
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/base.js"></script>
     <script src="../../js/logo.js"></script>
     <script src = "../../js/Store/StoreInventoryEdit.js"></script>
     <script src="../../js/image-upload.js"></script>

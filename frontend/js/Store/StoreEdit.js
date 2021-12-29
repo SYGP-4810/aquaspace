@@ -41,7 +41,7 @@ $(document).ready(function() {
                 }
 
                 $(".sub").html(`<label>End of the Subscription :-  </label><p class="date">${data.dateTo}</p>
-                <br> <label>Subscription Package is :-  </label><p class="date">${subscription}</p>`);
+                <br> <label>Subscription Package is :-  </label><p class="date">${subscription} Items</p>`);
                   
             }
             else{

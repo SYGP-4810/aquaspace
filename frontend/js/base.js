@@ -2,6 +2,7 @@
 function setUrl(text){
     return "/aquaspace/backend/public/index.php?"+text;
   }
+  
 //error showing function first create div with id alertDiv 
 function errorShow(er){
     $("#alertDiv").html(`<div class="alert">
