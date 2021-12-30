@@ -3,7 +3,6 @@ function setUrl(text) {
 }
 
 $(document).ready(function () {
-  const shipping = 0;
   // jQuery methods go here...
 
   $("#cart").click(function () {
@@ -106,7 +105,9 @@ $(document).ready(function () {
             array.push(result);
           },
           error: function (errMsg) {
-            window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+            // window.location.replace(
+            //   "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
+            // );
           },
         });
       }
@@ -133,7 +134,6 @@ $(document).ready(function () {
 
     console.log(map);
 
-
     let i;
     for (i = 0; i < map.length; i++) {
       $("#order-list").append(`
@@ -141,7 +141,8 @@ $(document).ready(function () {
             <th colspan="2">Order ${i + 1}</th>
         </tr>
       `);
-      
+
+      let shipping = 0;
       let amount = 0;
       let j;
       let l = map[i].id.length;
@@ -219,6 +220,7 @@ $(document).ready(function () {
               getDistance(function (distance) {
                 console.log(distance);
                 let req3 = {
+                  id: req2.id,
                   product_id: data.product_id,
                   delivery: data.delivery,
                   quantity: data.quantity,
@@ -241,25 +243,37 @@ $(document).ready(function () {
                     console.log(shipping);
                   },
                   error: function (errMsg) {
-                    window.location.replace(
-                      "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
-                    );
+                    // window.location.replace(
+                    //   "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
+                    // );
                   },
                 });
               });
             }
           },
           error: function (errMsg) {
-            window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+            window.location.replace(
+              "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
+            );
           },
         });
       }
-      
+      $("#order-list").append(`
+      <tr>
+            <td>Subtotal</td>
+            <td>${amount}</td>
+      </tr>
+                            `);
+      $("#order-list").append(`
+      <tr>
+            <td>Shipping</td>
+            <td>${shipping}</td>
+      </tr>
+                            `);
 
       console.log(shipping);
     }
-
-    /*----------- $.ajax({
+    $.ajax({
       type: "POST",
       async: false,
       url: setUrl("Reg/Reg/makeOrder"),
@@ -267,16 +281,31 @@ $(document).ready(function () {
       dataType: "json",
       data: JSON.stringify(map),
       success: function (data) {
-
-        console.log("ys yes")
+        console.log("ys yes");
 
         console.log(data);
-
       },
       // error: function (errMsg) {
       //   window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
       // },
     });
-    -------------*/
   });
+  // function payhere() {
+  //   $.ajax({
+  //     type: "POST",
+  //     async: false,
+  //     url: setUrl("Reg/Reg/makeOrder"),
+  //     contentType: "application/json; charset=utf-8",
+  //     dataType: "json",
+  //     data: JSON.stringify(map),
+  //     success: function (data) {
+  //       console.log("ys yes");
+
+  //       console.log(data);
+  //     },
+  //     // error: function (errMsg) {
+  //     //   window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+  //     // },
+  //   });
+  // };
 });
