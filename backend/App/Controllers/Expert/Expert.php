@@ -145,6 +145,30 @@ class Expert extends \Core\Controller
         View::response("successfully added");
     }
 
+    //get contribution of the expert
+    public function getContributionAction(){
+        $allQuestion = $this->execute("SELECT COUNT(id) AS qCount FROM expert_question WHERE replyer_id IS NOT NULL")->fetch()['qCount'];
+        $allArticle = $this->execute("SELECT COUNT(id) AS aCount FROM fish_article")->fetch()['aCount'];
+        $allPost = $this->execute("SELECT COUNT(id) AS pCount FROM products WHERE verifier_id IS NOT NULL")->fetch()['pCount'];
+        $expertId = $this->execute($this->get('user_auth','id',"access_token ='" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $sqlProduct = "SELECT COUNT(id) AS pCount FROM products WHERE verifier_id='".$expertId."'";
+        $sqlArticle = "SELECT COUNT(id) AS aCount FROM fish_article WHERE auth_id='".$expertId."'";
+        $sqlQuestion = "SELECT COUNT(id) AS qCount FROM expert_question WHERE replyer_id='".$expertId."'";
+        $reExpert = $this->execute($this->get('expert','*',"auth_id='".$expertId."'"))->fetch(); 
+        $res = [
+            "productCount" => $this->execute($sqlProduct)->fetch()['pCount'],
+            "articleCount" => $this->execute($sqlArticle)->fetch()['aCount'],
+            "questionCount" => $this->execute($sqlQuestion)->fetch()['qCount'],
+            "auth_id" => $expertId,
+            "profile_img" => $this->execute($this->get('user_auth','*',"id='".$expertId."'"))->fetch()['profile_img'],
+            "first_name" => $reExpert['first_name'],
+            "last_name" => $reExpert['last_name'],
+            "allQuestion" => $allQuestion,
+            "allArticle" => $allArticle,
+            "allPost" => $allPost
+        ];
+        View::response($res);
+    }
 
 
     
