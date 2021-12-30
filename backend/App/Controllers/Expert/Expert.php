@@ -108,41 +108,41 @@ class Expert extends \Core\Controller
             'img_3' => $iName3,
             'img_4' => $iName4
         ];
-        //$this->exec($this->save('fish_article',$dataToInsertToFishArticleTable));
-        View::response($this->save('fish_article',$dataToInsertToFishArticleTable));
-        // $id = $this->execute($this->get('fish_article','id',"name ='".$this->data['name']. "'"))->fetch()['id'];//id of the fish that jst inserted
-        // $dataToInsertOtherFishName = [
-        //     'fish_article_id' => $id,
-        //     'name' => $this->data['name']
-        // ];
-        // $this->exec($this->save('other_names_of_fish',$dataToInsertOtherFishName));
-        // $numberOfOtherNames  = count($this->data['otherNames']);
-        // for($i=0;$i<$numberOfOtherNames;$i++){
-        //     $dataToInsertOtherFishName = [
-        //         'fish_article_id' => $id,
-        //         'name' => $this->data['otherNames'][$i]
-        //     ];
-        //     $this->exec($this->save('other_names_of_fish',$dataToInsertOtherFishName));
-        // }
-        // if(isset($this->data['compatibleFishes'])){
-        //     $numberOfCompatibleFish = count($this->data['compatibleFishes']);
-        //     for($i=0;$i<$numberOfCompatibleFish;$i++){
-        //         $dataToInsertOtherCompatibleFishTable = [
-        //             'fish_article_id' => $id,
-        //             'compatible_fish_id' => $this->data['compatibleFishes'][$i]
-        //         ];
-        //     $this->exec($this->save('compatible_fish',$dataToInsertOtherCompatibleFishTable));
-        // }
-        // }
-        // $numberOfNative = count($this->data['nativeTo']);
-        // for($i = 0; $i < $numberOfNative; $i++){
-        //     $dataToInsertNativeToTable = [
-        //         'fish_article_id' => $id,
-        //         'country' => $this->data['country'][$i]
-        //     ];
-        //     $this->exec($this->save('native_to',$dataToInsertNativeToTable));
-        // }
-        // View::response("successfully added");
+        $this->exec($this->save('fish_article',$dataToInsertToFishArticleTable));
+        $id = $this->execute($this->get('fish_article','id',"name ='".$this->data['name']. "'"))->fetch()['id'];//id of the fish that jst inserted
+        $dataToInsertOtherFishName = [
+            'fish_article_id' => $id,
+            'name' => $this->data['name']
+        ];
+        $this->exec($this->save('other_names_of_fish',$dataToInsertOtherFishName));
+        $numberOfOtherNames  = count($this->data['otherNames']);
+        for($i=0;$i<$numberOfOtherNames;$i++){
+            $dataToInsertOtherFishName = [
+                'fish_article_id' => $id,
+                'name' => $this->data['otherNames'][$i]
+            ];
+            $this->exec($this->save('other_names_of_fish',$dataToInsertOtherFishName));
+        }
+        if(isset($this->data['compatibleFishes'])){
+            $numberOfCompatibleFish = count($this->data['compatibleFishes']);
+            for($i=0;$i<$numberOfCompatibleFish;$i++){
+                $dataToInsertOtherCompatibleFishTable = [
+                    'fish_article_id' => $id,
+                    'compatible_fish_id' => $this->data['compatibleFishes'][$i]
+                ];
+            $this->exec($this->save('compatible_fish',$dataToInsertOtherCompatibleFishTable));
+        }
+        }
+        $numberOfNative = count($this->data['nativeTo']);
+        for($i = 0; $i < $numberOfNative; $i++){
+            $dataToInsertNativeToTable = [
+                'fish_article_id' => $id,
+                'country' => $this->data['nativeTo'][$i]
+            ];
+            $this->exec($this->save('native_to',$dataToInsertNativeToTable));
+        }
+        $this->notifyHimself("successfully add new fish ".$this->data['name']);
+        View::response("successfully added");
     }
 
 

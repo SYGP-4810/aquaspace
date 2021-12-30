@@ -253,7 +253,18 @@ $(document).ready(function () {
           },
         });
       }
-      
+      $("#order-list").append(`
+      <tr>
+            <td>Subtotal</td>
+            <td>${amount}</td>
+      </tr>
+                            `);
+      $("#order-list").append(`
+      <tr>
+            <td>Shipping</td>
+            <td>${shipping}</td>
+      </tr>
+                            `);
 
       console.log(shipping);
     }
