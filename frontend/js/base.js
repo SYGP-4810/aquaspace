@@ -74,8 +74,11 @@ window.onclick = function(event) {
     </div> */
 
 function loading(){
-  $("#loadingIcon").html(`<img src="/aquaspace/frontend/images/loading.gif" alt="loading the request">
-  <span>Loading</span>`);
+  $("#loadingIcon").html(`<div id="loadingIcon">
+  <img src="/aquaspace/frontend/images/loading.gif" alt="loading the request">
+  <span class="loading">Loading ..</span>
+</div>`);
+  
 }
 
 function loadingFinish(){
