@@ -305,3 +305,45 @@ html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% i
   /* margin-left: 300px; */
   cursor: pointer;
 }
+
+
+#name_list ul {
+  display: none;
+  list-style-type: none;
+  background-color: #fff;
+  border-radius: 0 0 5px 5px;
+  border: 1px solid #e1e1e1;
+  border-top: none;
+  max-height: 180px;
+  margin-top: -10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0;
+  width: 47%;
+}
+#name_list input {
+  width: 47%;
+}
+#name_list ul li {
+  font-size: 13px;
+  padding: 7px 9px;
+  border-bottom: 1px solid #e1e1e1;
+  cursor: pointer;
+  color: #6e6e6e;
+}
+
+#name_list ul li:hover {
+  background-color: #cac9c9;
+  color: rgb(75, 75, 75);
+}
+
+#name_list ul li.selected {
+  background-color: #e8e8e8;
+  color: #333;
+}
+
+#name_list div  {
+  /* padding: 5px 10px; */
+  width: 100%;
+  margin-left: 25px;
+}

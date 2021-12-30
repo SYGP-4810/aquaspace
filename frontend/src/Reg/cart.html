@@ -144,8 +144,6 @@
                             class="fas fa-chevron-right"></i></button>
                 </div>
                 <div class="checkout">
-                    <div>Order 1</div>
-                    
                     <div class="d-flex">
                         <form method="post" action="https://sandbox.payhere.lk/pay/checkout">
                             <input type="hidden" name="merchant_id" value="1219322"> <!-- Replace your Merchant ID -->
@@ -183,58 +181,11 @@
                             <input type="hidden" name="country" value="Sri Lanka">
                             <input type="submit" value="pay">
 
-                            <!-- <label>
-                                <span>Card Type<span class="required">*</span></span>
-                                <input type="radio" name="dbt" value="dbt" checked><i class="fab fa-cc-visa ms"></i>
-                                <input type="radio" name="dbt" value="dbt" checked><i class="fab fa-cc-mastercard"></i>
-                            </label>
-                            <label>
-                                <span>Card Number <span class="required">*</span></span>
-                                <input type="text" name="city">
-                            </label>
-                            <div class="f"><label>
-                                    <span>Expiration Month <span class="required">*</span></span>
-                                    <select name="selection">
-                                        <option value="select">Select </option>
-                                        <option value="AFG">Januaru</option>
-                                        <option value="ALA">February</option>
-                                        <option value="select">March</option>
-                                        <option value="AFG">April</option>
-                                        <option value="ALA">May</option>
-                                        <option value="select">June</option>
-                                        <option value="AFG">July</option>
-                                        <option value="ALA">August</option>
-                                        <option value="select">September</option>
-                                        <option value="AFG">October</option>
-                                        <option value="ALA">November</option>
-                                        <option value="ALA">December</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Expiration Year <span class="required">*</span></span>
-                                    <select name="selection">
-                                        <option value="select">Select </option>
-                                        <option value="AFG">2021</option>
-                                        <option value="ALA">2022</option>
-                                        <option value="select">2023</option>
-                                        <option value="AFG">2024</option>
-                                        <option value="ALA">2025</option>
-                                        <option value="select">2026</option>
-                                        <option value="AFG">2027</option>
-                                    </select>
-                                </label>
-                            </div>
-                            <label>
-                                <span>CVN<span class="required">*</span></span>
-                                <input type="text" name="city">
-                            </label> -->
-
                         </form>
-
                         <div class="Yorder">
-                            <table>
-                                <tr>
-                                    <th colspan="2">Your order</th>
+                            <table id="order-list">
+                                <!---<tr>
+                                    <th colspan="2">Order 1</th>
                                 </tr>
                                 <tr>
                                     <td>Goldfish x 1(Qty)</td>
@@ -252,8 +203,45 @@
                                     <td>Shipping</td>
                                     <td>Free shipping</td>
                                 </tr>
-                            </table><br>
-                            <button id="order" type="button">Place Order</button>
+                                <tr>
+                                    <th colspan="2">Order 2</th>
+                                </tr>
+                                <tr>
+                                    <td>Goldfish x 1(Qty)</td>
+                                    <td>3500.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Asian Arowana x 1(Qty)</td>
+                                    <td>3000.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Subtotal</td>
+                                    <td>6500.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Shipping</td>
+                                    <td>Free shipping</td>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Order 2</th>
+                                </tr>
+                                <tr>
+                                    <td>Goldfish x 1(Qty)</td>
+                                    <td>3500.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Asian Arowana x 1(Qty)</td>
+                                    <td>3000.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Subtotal</td>
+                                    <td>6500.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Shipping</td>
+                                    <td>Free shipping</td>
+                                </tr> ---->
+                            </table>
                         </div><!-- Yorder -->
                     </div>
                 </div>
@@ -266,6 +254,7 @@
                             <tr>
                                 <th colspan="2">Order Completed!</th>
                             </tr>
+                        <div id="gg">
                             <tr>
                                 <td>Goldfish x 1(Qty)</td>
                                 <td>3500.00</td>
@@ -274,6 +263,8 @@
                                 <td>Asian Arowana x 1(Qty)</td>
                                 <td>3000.00</td>
                             </tr>
+                        </div>
+                            
                             <tr>
                                 <td>Subtotal</td>
                                 <td>6500.00</td>
@@ -302,7 +293,8 @@
             </section>
         </div>
     </div>
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSmzq86uUiJERkmaTeVryt4pEu8pU8xo0&callback=initMap">
+    </script>
     <script src="../../js/Reg/cart.js"></script>
     <script src="../../js/logo.js"></script>
 

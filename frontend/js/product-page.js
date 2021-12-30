@@ -31,9 +31,15 @@ function addToCart() {
   var id = url.searchParams.get("id");
   var qty = $("#item-qty").val();
   var delivery = $("#delivery_method").val();
+  var max =document.getElementById("item-qty").max;
+  var min =document.getElementById("item-qty").min;
   if(delivery==""){
-    alert("Please select the delivey method");
+    alert("Please select the delivey method!");
     return
+  }
+  if(qty <= 0 ||  qty > max || qty < min){
+    alert("Please select the correct quantity!");
+    return;
   }
   else {
     var req = {
