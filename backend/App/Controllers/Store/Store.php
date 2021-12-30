@@ -667,4 +667,26 @@ class Store extends \Core\Controller
         View::response("success");
         
     }
+
+    public function SendOrderAction()
+    {
+        $updateData = [
+            "status" => 3
+        ];
+    
+        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));        
+        View::response("success");
+        
+    }
+
+    public function DoneOrderAction()
+    {
+        $updateData = [
+            "status" => 4
+        ];
+    
+        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));        
+        View::response("success");
+        
+    }
 }

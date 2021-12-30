@@ -7,11 +7,55 @@ function SendOrderConfirm(id){
 }
 
 function sendOrder(id){
+  document.getElementById('confirm').style.display='none';
+    let req = {"id":id}
+    $.ajax({
+        type: "POST",
+        url: setUrl("Store/Store/SendOrder"),
+        data: JSON.stringify(req),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            successMsg(["successfully Send Order"]);
+            delay(function (){
+                window.location.replace("/aquaspace/frontend/src/Store/StoreOrders.html")
+            },3000);
+                
+        },
+        error: function(errMsg) {
+            window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+        }
+    });
+}
+
+function DoneOrderConfirm(id){ 
+  $("#Send-confirmation-btn").html(`<button type="button" class="acceptbtn" onclick="doneOrder(${id})">Done</button>
+  <button type="button" class="cancelbtn" onclick="document.getElementById('done').style.display='none'">Cancel</button>
+  `);
+  document.getElementById('done').style.display='block';
 
 }
 
-function DoneOrder(id){
-
+function doneOrder(id){
+  document.getElementById('done').style.display='none';
+    let req = {"id":id}
+    $.ajax({
+        type: "POST",
+        url: setUrl("Store/Store/DoneOrder"),
+        data: JSON.stringify(req),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            successMsg(["successfully Done Order"]);
+            delay(function (){
+                window.location.replace("/aquaspace/frontend/src/Store/StoreOrders.html")
+            },3000);
+                
+        },
+        error: function(errMsg) {
+            window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+        }
+    });
 }
 
 $(document).ready(function(){
@@ -112,7 +156,7 @@ $(document).ready(function(){
             <td>${element.id}</td>
             <td id="Anames${element.id}">${element.product_name}</td>
             <td><a href="../Store/StoreOdersDetails.html?id=${element.id}" class="button">Order Details</a></td>
-            <td><button class="button" onclick= "sendOrder($element.id)">Send Order</button></td>
+            <td><button class="button" onclick= "SendOrderConfirm(${element.id})">Send Order</button></td>
         </tr>
           `);
           AcceptorderIdSet.add(element.id);
@@ -123,7 +167,7 @@ $(document).ready(function(){
                       <td>${element.id}</td>
                       <td id="Snames${element.id}">${element.product_name}</td>
                       <td><a href="../Store/StoreOdersDetails.html?id=${element.id}" class="button">Order Details</a></td>
-                      <td><button class="button" onclick= "DoneOrder($element.id)">Done</button></td>
+                      <td><button class="button" onclick= "DoneOrderConfirm(${element.id})">Done</button></td>
                   </tr>
           `);
           SendorderIdSet.add(element.id);

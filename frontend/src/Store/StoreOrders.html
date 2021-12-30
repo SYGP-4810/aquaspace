@@ -111,7 +111,15 @@
                         <th></th>
                         <th></th>
                     </tr>
-                    
+                    <div id="confirm" class="confirm-box">
+                        <div class="confirm-box-container">
+                            <span onclick="document.getElementById('confirm').style.display='none'" class="close" title="Close ">×</span>
+                            <h1>Send Order</h1>
+                            <p>Are you sure you send this Order?</p>
+                            <div class="clearfix" id="confirmation-btn">
+                            </div>
+                        </div>
+                    </div>
                 </table>
                 <table class="send" id="send_orders">
                     <tr style="outline: unset;">
@@ -120,7 +128,15 @@
                         <th></th>
                         <th></th>
                     </tr>
-                    
+                    <div id="done" class="confirm-box">
+                        <div class="confirm-box-container">
+                            <span onclick="document.getElementById('done').style.display='none'" class="close" title="Close ">×</span>
+                            <h1>Done Order</h1>
+                            <p>Are you sure you Done this Order?</p>
+                            <div class="clearfix" id="Send-confirmation-btn">
+                            </div>
+                        </div>
+                    </div>
                 </table>
                 <table class="past" id="past_orders">
                     <tr style="outline: unset;">
@@ -132,15 +148,7 @@
                     
                 </table>
                 <div id="alertDiv"></div>
-                <div id="confirm" class="confirm-box">
-                    <div class="confirm-box-container">
-                        <span onclick="document.getElementById('confirm').style.display='none'" class="close" title="Close ">×</span>
-                        <h1>Accept Order</h1>
-                        <p>Are you sure you want to Accept this Order?</p>
-                        <div class="clearfix" id="confirmation-btn">
-                        </div>
-                    </div>
-                </div>
+                
             </div>        
 		</section>
 	</div>

@@ -255,7 +255,6 @@ $("#profile").click(function () {
     success: function (data) {
 
       $('#notifs').html(``);
-      console.log(data);
   
       let count = 0;
       if(data.length == 0){
@@ -297,7 +296,7 @@ $("#profile").click(function () {
   //     setTimeout(doAjax, interval);
   // },
     error: function (errMsg) {
-      window.location.replace("../src/Error/" + errMsg.status + ".html");
+      // window.location.replace("../src/Error/" + errMsg.status + ".html");
     },
   });
 
