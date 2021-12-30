@@ -65,8 +65,6 @@ class Reg extends \Core\Controller
             $status = 1;
         }
 
-
-
         $date = date('Y-m-d H:i:s');
         $dataToInsert = [
             "product_name" => $this->data['product_name'],
@@ -257,7 +255,8 @@ class Reg extends \Core\Controller
         ];
         $stmt = $this->execute("SELECT id FROM shopping_cart WHERE user_id=$id AND product_id=$product_id");
         if(!$stmt->fetch()){
-            $this->exec($this->save('shopping_cart', $dataToInsert));
+            
+            $this->exec($this->save("shopping_cart", $dataToInsert));
             View::response("Added to Your Cart!");
 
         }
@@ -355,28 +354,7 @@ class Reg extends \Core\Controller
         ];
         View::response($res);
 
-    
-
 }
-
-    public function checkoutAction(){
-        $merchant_id         = $this->data['merchant_id'];
-        $order_id             = $this->data['order_id'];
-        $payhere_amount     = $this->data['payhere_amount'];
-        $payhere_currency    = $this->data['payhere_currency'];
-        $status_code         = $this->data['status_code'];
-        $md5sig                = $this->data['md5sig'];
-
-        $merchant_secret = '8bSu7smGYku8X3pnJGmB0b4UrBHGhEWa149Z5kvwmt2B'; // Replace with your Merchant Secret (Can be found on your PayHere account's Settings page)
-
-        $local_md5sig = strtoupper (md5 ( $merchant_id . $order_id . $payhere_amount . $payhere_currency . $status_code . strtoupper(md5($merchant_secret)) ) );
-
-        if (($local_md5sig === $md5sig) AND ($status_code == 2) ){
-
-            
-                //TODO: Update your database as payment success
-        }
-    }
 
     public function getProductAction()
     {
@@ -393,33 +371,107 @@ class Reg extends \Core\Controller
         $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
         for ($i = 0; $i < sizeof($obj); $i++)
         {
+            $t_amount = 0;
+            // $t_shipping = 0;
+            
+            for($x = 0; $x < sizeof($obj[$i]->product_id); $x++){
+                
+                $r1 = $this->execute($this->get('shopping_cart', "quantity, delivery , distance",  "id = '" . $obj[$i]->id[$x] . "'"))->fetch();
+                $r2 = $this->execute($this->get('products', "price , weight , auth_id", "id = '" . $obj[$i]->product_id[$x] . "'"))->fetch();
+
+                $t = $r1['quantity']*$r2['price'];
+                $t_amount = $t_amount + $t;
+                
+            }
+            
             $dataToInsert1 = [
                 "seller_auth_id" => $obj[$i]->auth_id,
                 "buyer_auth_id"  => $id,
+                "amount" => $t_amount,
             ];
+           
 
             $this->exec($this->save('selling_order', $dataToInsert1));
             $max_id = $this->execute("SELECT MAX(id) FROM selling_order")->fetch();
+             
+             $t_shipping = 0;
             
-            
-            for($x = 0; $x < sizeof($obj[$i]->product_id); $x++){
-            
+            for($y = 0; $y < sizeof($obj[$i]->product_id); $y++){
+               $shipping = 0;
+
+                $r1 = $this->execute($this->get('shopping_cart', "quantity, delivery ,distance",  "id = '" . $obj[$i]->id[$y] . "'"))->fetch();
+                $r2 = $this->execute($this->get('products', "price , weight , auth_id", "id = '" . $obj[$i]->product_id[$y] . "'"))->fetch();
+
+                $t = $r1['quantity']*$r2['price'];
+
+                if($r1['delivery'] != 0){
+                    if($r1['distance'] <= 10){
+                        $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 1 AND auth_id='" . $r2['auth_id'] ."'"))->fetch();
+                        if($r2['weight'] > 1) {
+                            $shipping = $stmt['one_kg'] + ($r2['weight'] - 1)*$stmt['additional_one_kg'];
+                        }
+                        else {
+                            $shipping = $stmt['one_kg'];
+                        }
+                    
+                    }
+                    else if($r1['distance'] <=50){
+                        $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 2 AND auth_id='" . $r2['auth_id'] ."'"))->fetch();
+                        if($r2['weight'] > 1) {
+                            $shipping = $stmt['one_kg'] + ($r2['weight'] - 1)*$stmt['additional_one_kg'];
+                        }
+                        else {
+                            $shipping = $stmt['one_kg'];
+                        }
+                    
+                    }
+                    else if($r1['distance'] <=150){
+                        $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 3 AND auth_id='" . $r2['auth_id'] ."'"))->fetch();
+                        if($r2['weight'] > 1) {
+                            $shipping = $stmt['one_kg'] + ($r2['weight'] - 1)*$stmt['additional_one_kg'];
+                        }
+                        else {
+                            $shipping = $stmt['one_kg'];
+                        }
+                    
+                    }
+                    else{
+                        $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 4 AND auth_id='" . $r2['auth_id'] ."'"))->fetch();
+                        if($r2['weight'] > 1) {
+                            $shipping = $stmt['one_kg'] + ($r2['weight'] - 1)*$stmt['additional_one_kg'];
+                        }
+                        else {
+                            $shipping = $stmt['one_kg'];
+                        }
+                    
+                    }
+
+                    $t_shipping = $t_shipping + $shipping;
+                }
+
                 $dataToInsert2 = [
                     "selling_order_id" => $max_id['MAX(id)'],
-                    "product_id" => $obj[$i]->product_id[$x],
-                    
+                    "product_id" => $obj[$i]->product_id[$y],
+                    "delivery" => $r1['delivery'],
+                    "amount" => $t,
+                    "delivery_fee" => $shipping,
                 ];
 
                 $this->exec($this->save('product_order', $dataToInsert2));
+
             }
-            View::response($max_id['MAX(id)']);
 
+            $total_amount = $t_amount + $t_shipping;
 
+            $dataToUpdate = ["amount" => $total_amount];
+    
+
+        $this->exec($this->update('selling_order', $dataToUpdate, "id='" . $max_id['MAX(id)'] . "'"));
 
         }
 
         /*-------View::response($this->data[0]->auth_id); why doesnt this work???------- */
-   
+   View::response("success");
     
 
     }
@@ -456,8 +508,10 @@ class Reg extends \Core\Controller
         $weight = $this->data['weight'];
         $distance = $this->data['distance'];
         $shipping = 0;
+        $dataToUpdate = ["distance" => $distance];
     
 
+        $this->exec($this->update('shopping_cart', $dataToUpdate, "id='" . $this->data['id'] . "'"));
         if($distance <= 10){
             $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 1 AND auth_id='" . $seller ."'"))->fetch();
             if($weight > 1) {
@@ -469,7 +523,7 @@ class Reg extends \Core\Controller
             View::response($shipping);
         }
         else if($distance <=50){
-            $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 1 AND auth_id='" . $seller ."'"))->fetch();
+            $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 2 AND auth_id='" . $seller ."'"))->fetch();
             if($weight > 1) {
                 $shipping = $stmt['one_kg'] + ($weight - 1)*$stmt['additional_one_kg'];
             }
@@ -479,7 +533,7 @@ class Reg extends \Core\Controller
             View::response($shipping);
         }
         else if($distance <=150){
-            $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 1 AND auth_id='" . $seller ."'"))->fetch();
+            $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 3 AND auth_id='" . $seller ."'"))->fetch();
             if($weight > 1) {
                 $shipping = $stmt['one_kg'] + ($weight - 1)*$stmt['additional_one_kg'];
             }
@@ -489,7 +543,7 @@ class Reg extends \Core\Controller
             View::response($shipping);
         }
         else{
-            $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 1 AND auth_id='" . $seller ."'"))->fetch();
+            $stmt = $this->execute($this->get('delivery_cost', "one_kg, additional_one_kg", "range_km = 4 AND auth_id='" . $seller ."'"))->fetch();
             if($weight > 1) {
                 $shipping = $stmt['one_kg'] + ($weight - 1)*$stmt['additional_one_kg'];
             }
@@ -521,6 +575,28 @@ class Reg extends \Core\Controller
         View::response("success");  
     }
 
+    public function getTransactionsAction(){
+        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $stmt = $this->execute($this->get('selling_order', "*", "buyer_auth_id = '" . $id . "'"))->fetchAll();
+        
+        $array = array();
+        for($x=0 ; $x < sizeof($stmt) ; $x++){
+            $res = array();
+            $stmt2 = $this->execute($this->get('product_order', "*", "selling_order_id = '" . $stmt[$x]['id'] . "'"))->fetch();
+            $stmt3 = $this->execute($this->get('products', "product_name", "id = '" . $stmt2['product_id'] . "'"))->fetch();
+            $total = $stmt2['amount'] + $stmt2['delivery_fee'];
+            $res = array("order_id" => $stmt2['selling_order_id'] , "product_name" => $stmt3['product_name'], "amount" => $total , "date" => $stmt[$x]['date'], "status" => $stmt[$x]['status']);
+            array_push($array,$res);
+        }
+ 
+        $res = array("status" => "1", "msg" => "success");
+
+        View::response($array);
+
+
+
+
+    }
   
 
 }
