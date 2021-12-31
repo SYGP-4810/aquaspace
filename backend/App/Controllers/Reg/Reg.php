@@ -271,7 +271,7 @@ class Reg extends \Core\Controller
         SELECT shopping_cart.id, shopping_cart.product_id, shopping_cart.quantity, products.product_name, products.price
         FROM shopping_cart 
         INNER JOIN products ON shopping_cart.product_id=products.id
-        WHERE shopping_cart.user_id = $id
+        WHERE shopping_cart.user_id = $id AND shopping_cart.status = 1
         ") ;
 
         $result = $stmt->fetchAll();
@@ -367,12 +367,18 @@ class Reg extends \Core\Controller
     {
         $data = json_encode($this->data);
         $obj = json_decode($data);
-
         $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
         for ($i = 0; $i < sizeof($obj); $i++)
         {
             $t_amount = 0;
             // $t_shipping = 0;
+            for($x = 0; $x < sizeof($obj[$i]->id); $x++){
+                $dataToUpdate = [
+                    "status" => 0
+                ];
+                $this->exec($this->update("shopping_cart", $dataToUpdate,"id = '" . $obj[$i]->id[$x]. "'"));
+
+            }
             
             for($x = 0; $x < sizeof($obj[$i]->product_id); $x++){
                 
@@ -470,8 +476,7 @@ class Reg extends \Core\Controller
 
         }
 
-        /*-------View::response($this->data[0]->auth_id); why doesnt this work???------- */
-   View::response("success");
+        View::response("success");
     
 
     }
@@ -585,17 +590,59 @@ class Reg extends \Core\Controller
             $stmt2 = $this->execute($this->get('product_order', "*", "selling_order_id = '" . $stmt[$x]['id'] . "'"))->fetch();
             $stmt3 = $this->execute($this->get('products', "product_name", "id = '" . $stmt2['product_id'] . "'"))->fetch();
             $total = $stmt2['amount'] + $stmt2['delivery_fee'];
-            $res = array("order_id" => $stmt2['selling_order_id'] , "product_name" => $stmt3['product_name'], "amount" => $total , "date" => $stmt[$x]['date'], "status" => $stmt[$x]['status']);
+            $res = array("id" => $stmt2['id'] ,"order_id" => $stmt2['selling_order_id'] , "product_name" => $stmt3['product_name'], "amount" => $total , "date" => $stmt[$x]['date'], "status" => $stmt[$x]['status']);
             array_push($array,$res);
         }
  
-        $res = array("status" => "1", "msg" => "success");
-
         View::response($array);
 
+    }
 
+    public function refundAction(){
+        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "' AND user_type='1'"))->fetch()['id'];
 
+        $iName1 = "";
+        $iName1 = microtime(true) . "." . $this->data['exen1'];
+        $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName1;
+        $flag1 = file_put_contents($iDir1, base64_decode($this->data['img1']));
 
+        $iName2 = "";
+        $iName2 = microtime(true) . "." . $this->data['exen2'];
+        $iDir2 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName2;
+        $flag2 = file_put_contents($iDir2, base64_decode($this->data['img2']));
+
+        $iName3 = "";
+        $iName3 = microtime(true) . "." . $this->data['exen3'];
+        $iDir3 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/product/" . $iName3;
+        $flag3 = file_put_contents($iDir3, base64_decode($this->data['img3']));
+
+        if (!$flag1) {
+            throw new \Exception("file didn't come to backend");
+        }
+        if (!$flag2) {
+            throw new \Exception("file didn't come to backend");
+        }
+        if (!$flag3) {
+            throw new \Exception("file didn't come to backend");
+        }
+
+        $dataToInsert = [
+            "user_id" => $id,
+            "product_order_id" => $this->data['product_order_id'],
+            "reason" => $this->data['reason'],
+            "deliver_status" => $this->data['deliver_status'],
+            "img1" => $iName1,
+            "img2" => $iName2,
+            "img3" => $iName3,
+        ];
+
+        
+        // $this->exec($this->save('products', $dataToInsert));
+        $this->exec($this->save('refund', $dataToInsert ));
+
+        View::response("success");
+      
+         
     }
   
 

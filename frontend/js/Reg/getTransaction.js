@@ -20,12 +20,12 @@ function setUrl(text) {
                   <tr>
               <td>#${element.order_id}</td>
                                     <td>${element.product_name}</td>
-                                    <td>${element.data}</td>
+                                    <td>${element.date}</td>
                                     <td>RS ${element.amount}.00</td>
                                     <td>${order_status}</td>
                                     <td>
-                                        <button id=${element.order_id}><a style="text-decoration: none; color: rgb(5, 5, 5);"
-                                                href="refund.html">Refund</a> </button>
+                                        <button><a style="text-decoration: none; color: rgb(5, 5, 5);"
+                                                href="/aquaspace/frontend/src/Reg/refund.html?id=${element.id}&order=${element.order_id}&name=${element.product_name}&date=${element.date}&status=${order_status}&amount=${element.amount}"">Refund</a></button>
                                     </td>
                                     </tr>
               `)
@@ -39,5 +39,7 @@ function setUrl(text) {
           window.location.replace("../src/Error"+errMsg.status+".html");
         },
       });
+
+
 
   });
