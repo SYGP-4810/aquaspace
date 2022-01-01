@@ -2,7 +2,7 @@ function setUrl(text) {
   return "/aquaspace/backend/public/index.php?" + text;
 }
 
-$(document).ready(function () {
+// $(document).ready(function () {
   // jQuery methods go here...
 
   $("#cart").click(function () {
@@ -79,6 +79,7 @@ $(document).ready(function () {
     // },
   });
 
+  let map;
   /*--------- when proceed button is clicked, this function would take all the ids and push it into
   an array for all the checked items in the shopping cart---------- */
   $("#proceed").click(function () {
@@ -118,7 +119,7 @@ $(document).ready(function () {
     them by the sellers id-------------*/
 
     var o = {};
-    var map = array.reduce(function (r, el) {
+    map = array.reduce(function (r, el) {
       if (!o[el.auth_id]) {
         o[el.auth_id] = {
           auth_id: el.auth_id,
@@ -145,7 +146,7 @@ $(document).ready(function () {
       let shipping = 0;
       let amount = 0;
       let j;
-      let l = map[i].id.length;
+      // let l = map[i].id.length;
       for (j = 0; j < map[i].id.length; j++) {
         let req2 = {
           id: map[i].id[j],
@@ -273,6 +274,24 @@ $(document).ready(function () {
 
       console.log(shipping);
     }
+    // $.ajax({
+    //   type: "POST",
+    //   async: false,
+    //   url: setUrl("Reg/Reg/makeOrder"),
+    //   contentType: "application/json; charset=utf-8",
+    //   dataType: "json",
+    //   data: JSON.stringify(map),
+    //   success: function (data) {
+    //     console.log("ys yes");
+
+    //     console.log(data);
+    //   },
+    //   // error: function (errMsg) {
+    //   //   window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+    //   // },
+    // });
+  });
+  function payhere() {
     $.ajax({
       type: "POST",
       async: false,
@@ -289,23 +308,5 @@ $(document).ready(function () {
       //   window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
       // },
     });
-  });
-  // function payhere() {
-  //   $.ajax({
-  //     type: "POST",
-  //     async: false,
-  //     url: setUrl("Reg/Reg/makeOrder"),
-  //     contentType: "application/json; charset=utf-8",
-  //     dataType: "json",
-  //     data: JSON.stringify(map),
-  //     success: function (data) {
-  //       console.log("ys yes");
+  };
 
-  //       console.log(data);
-  //     },
-  //     // error: function (errMsg) {
-  //     //   window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
-  //     // },
-  //   });
-  // };
-});
