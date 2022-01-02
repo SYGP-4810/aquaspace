@@ -145,6 +145,7 @@
                 </div>
                 <div class="checkout">
                     <div class="d-flex">
+                        
                         <form method="post" action="https://sandbox.payhere.lk/pay/checkout" >
                             <input type="hidden" name="merchant_id" value="1219322"> <!-- Replace your Merchant ID -->
                             <input type="hidden" name="return_url" value="http://localhost/aquaspace/frontend/src/index.html">
@@ -180,8 +181,8 @@
                             </label>
                             <input type="hidden" name="country" value="Sri Lanka">
                             <input type="submit" value="pay" onclick="payhere()">
-
-                        </form>
+                            
+                        </form> 
                         <div class="Yorder">
                             <table id="order-list">
                                 <!---<tr>

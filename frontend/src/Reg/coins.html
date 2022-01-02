@@ -90,7 +90,119 @@
                 </ul>
             </nav>
             <section class="section-1">
-                <div class="topics">
+                <div class="checkout">
+                    <div class="d-flex">
+                        
+                        <form method="post" action="https://sandbox.payhere.lk/pay/checkout" >
+                            <input type="hidden" name="merchant_id" value="1219322"> <!-- Replace your Merchant ID -->
+                            <input type="hidden" name="return_url" value="http://localhost/aquaspace/frontend/src/Reg/questions.html">
+                            <input type="hidden" name="cancel_url" value="http://localhost/aquaspace/frontend/src/Reg/cart.html">
+                            <input type="hidden" name="notify_url" value="http://localhost/aquaspace/frontend/src/index.html">
+                            <input type="text" name="items" value="Coins" hidden>
+                            <input type="hidden" name="currency" value="LKR">
+                            <input type="number" name="amount" hidden id="form-amount">  
+                            <input type="text" name="order_id" value="ItemNo12345" hidden>
+                            <label>
+                                <span class="fname">First Name<span class="required">*</span></span>
+                                <input type="text" name="first_name">
+                            </label>
+                            <label>
+                                <span class="lname">Last Name <span class="required">*</span></span>
+                                <input type="text" name="last_name">
+                            </label>
+                            <label>
+                                <span>Email<span class="required">*</span></span>
+                                <input type="text" name="email">
+                            </label>
+                            <label>
+                                <span>Tel No<span class="required">*</span></span>
+                                <input type="text" name="phone">
+                            </label>
+                            <label>
+                                <span>Address<span class="required">*</span></span>
+                                <input type="text" name="address" prequired>
+                            </label>
+                            <label>
+                                <span>City<span class="required">*</span></span>
+                                <input type="text" name="city" prequired>
+                            </label>
+                            <input type="hidden" name="country" value="Sri Lanka">
+                            <input type="submit" value="pay" onclick="addCoins()">
+                            
+                        </form> 
+                        <div class="Yorder">
+                            <table id="order-list">
+                                <tr>
+                                    <th colspan="2">Payment</th>
+                                </tr>
+                                <tr id="coin-amount">
+                                   
+                                </tr>
+                                <tr id="coin-rate">
+                                   
+                                </tr>
+                                <tr id="total">
+                                    
+                                </tr>
+                              <!---- <tr>
+                                    <td>Goldfish x 1(Qty)</td>
+                                    <td>3500.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Asian Arowana x 1(Qty)</td>
+                                    <td>3000.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Subtotal</td>
+                                    <td>6500.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Shipping</td>
+                                    <td>Free shipping</td>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Order 2</th>
+                                </tr>
+                                <tr>
+                                    <td>Goldfish x 1(Qty)</td>
+                                    <td>3500.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Asian Arowana x 1(Qty)</td>
+                                    <td>3000.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Subtotal</td>
+                                    <td>6500.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Shipping</td>
+                                    <td>Free shipping</td>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Order 2</th>
+                                </tr>
+                                <tr>
+                                    <td>Goldfish x 1(Qty)</td>
+                                    <td>3500.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Asian Arowana x 1(Qty)</td>
+                                    <td>3000.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Subtotal</td>
+                                    <td>6500.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Shipping</td>
+                                    <td>Free shipping</td>
+                                </tr> ---->
+                            </table>
+                        </div><!-- Yorder -->
+                    </div>
+                </div>
+                <!-- <div class="topics">
                     <p id="coins">Coins</p>
                     <i class="fas fa-chevron-right"></i>
                     <p id="checkout">Buy Coins</p>
@@ -193,49 +305,11 @@
                                 </tr>
                             </table><br>
                             <button id="order" type="button">Buy Coins</button>
-                        </div><!-- Yorder -->
+                        </div>-->
                     </div>
                 </div>
 
-                <div class="complete">
-                    <!-- <div class="sub-container"> -->
-                        <div class="Yorder add-margin">
-                            <i class="far fa-check-circle"></i>
-                            <table class="border">
-                                <tr>
-                                    <th colspan="2">Order Completed!</th>
-                                </tr>
-                                <tr>
-                                    <td>Product Name x 2(Qty)</td>
-                                    <td>$80.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Product Name x 1(Qty)</td>
-                                    <td>$20.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Subtotal</td>
-                                    <td>$100.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Shipping</td>
-                                    <td>Free shipping</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <!-- <div class="product-list">
-                            <div class="list-item">
-                                <img src="../../images/download.png" alt="">
-                                <h5>Lorem Ipsum 1</h5>
-                            </div>
-                            <div class="list-item">
-                                <img src="../../images/download.png" alt="">
-                                <h5>Lorem Ipsum 2</h5>
-                            </div>
-                        </div> -->
-                    <!-- </div> -->
-
-                </div>
+              
 
 
             </section>

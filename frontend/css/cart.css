@@ -89,7 +89,7 @@ td button {
 
 .checkout{
     margin: auto;
-    display: none;
+    /* display: none; */
 }
 
 .checkout label {
