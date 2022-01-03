@@ -41,30 +41,29 @@ $.ajax({
 
         $('.small-container').append(`
 
-                        <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
                         <div class="product">
                             <img src="../../images/product/${element.img1}" alt="" />
                             <div class="product-info">
                                 <h4 class="title">${element.product_name}</h4>
                                 <p class="price">Rs ${element.price}</p>
-                                <div class="date-info">
+                                <div class="info">
                                     <span>Created Date : </span>
                                     <p class="date">${element.created_date}</p>
                                 </div>
-                                <div class="date-info">
+                                <div class="info">
                                     <span>Status : </span>
                                     <p class="date">${post_status}</p>
                                 </div>
-                                <div class="date-info">
+                                <div class="info">
                                     <span>Duration : </span>
                                     <p class="date">${duration}</p>
+                                </div>
+                                <div class="info">
+                                    <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">View post</a>
                                 </div>
                                 <button id="${element.id}">Remove</button>
                             </div>
                         </div>
-                    </a>
-
-
                         
     `)
     });

@@ -34,21 +34,25 @@
   font-size: 17px;
 }
 
-.date-info{
+.info{
   display: flex;
 }
 
-.date-info span{
+.info span{
   margin-right: 10px;
   font-size: 14px;
   color: rgb(73, 73, 73);
 }
 
-.date-info p{
+.info p{
   font-size: 14px;
   color: rgb(116, 115, 115);
 }
 
+.info a{
+  font-size: 13px;
+  color: rgb(50, 50, 189);
+}
 .product-info button{
   margin-top: 15px;
   background-color: rgb(236, 159, 124);
@@ -58,9 +62,5 @@
   height: 25px;
   padding: 0 2px 0 2px;
   border-radius: 5px;
-
-}
-
-.small-container a {
-  text-decoration: none;
+  cursor: pointer;
 }
