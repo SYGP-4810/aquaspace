@@ -170,6 +170,27 @@ class Expert extends \Core\Controller
         View::response($res);
     }
 
+    public function addArticleAction(){
+        $authId = $this->execute($this->get('user_auth','*',"access_token ='" . $_COOKIE['access_token'] . "'"))->fetch()['id'] ;
+        $dataToSaveArcticle = [
+            "auth_id" => $authId,
+            "article" => $this->data['article']
+        ];
+        $this->exec($this->save('article',$dataToSaveArcticle));
+        $condition = "auth_id='".$authId."' AND article='".$this->data['article']."'";
+        $articleId = $this->execute($this->get('article','*',$condition))->fetch()['id'];
+        $fishCount = $this->data['countFish'];
+        for($i=0;$i< $fishCount ;$i++){
+            $dataToInsertRelevantFish = [
+                "artcle_id" => $articleId,
+                "fish_article_id" => $this->data['relaventFishes'][$i]
+            ];
+            $this->exec($this->save('relevant_fish_for_article',$dataToInsertRelevantFish));
+        }
+        View::response($this->data);
+        
 
+
+    }
     
 }

@@ -86,6 +86,7 @@
   opacity: 0.9;
   float: right;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .can-button {
