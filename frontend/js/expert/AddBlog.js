@@ -26,9 +26,8 @@ var quill = new Quill('#editor', {
     theme: 'snow'
   });
 
-var compatibleFishes = new Set()
-compatibleFishes.add("1");
-compatibleFishes.add("2");
+var compatibleFishes = new Set();
+
 $("#saveBlog").click(function(){
     let editor = document.querySelector('.ql-editor');
     let req = {
@@ -36,7 +35,7 @@ $("#saveBlog").click(function(){
       "article" : editor.innerHTML,
       "countFish" : compatibleFishes.size
     }
-    console.log(req);
+    console.log("req"+req);
     loading();
     $.ajax({
       type: "POST",
@@ -46,23 +45,23 @@ $("#saveBlog").click(function(){
       dataType: "json",
       success: function(data){
           loadingFinish();
-          console.log(data);
+          successMsg(["successfully added article"]);
+          delay(function(){
+            window.location.replace("/aquaspace/frontend/src/exepert/articles.html");
+          },3000);
           
       },
       error: function(errMsg) {
           loadingFinish();
-          // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+          window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
       }
   });  
-})
+});
 
 function getValuesOfFish(data) {
   $("#auto").val($(data).html());
   $('#fish_list').hide();
   // console.log($("#auto").val());
-
-  
-  
 }
 
 
@@ -94,7 +93,9 @@ function searchbleh() {
       var names = [];
       data.forEach((element) => {
         $("#fish_list").append(`
-          <li onclick="getValuesOfFish(this)">${element.name}</li>`);
+          <li onclick="getValuesOfFish(this)">${element.name}</li>
+          <input type="hidden" value="${element.id}" id="id${element.name}" />
+          `);
       });
     },
   });
@@ -103,10 +104,13 @@ $("#add").click(function () {
   let name = $("#auto").val();
   $("#auto").val('');
   if(name != ''){
-    compatibleFishes.push(name);
   $('.compatible-fish-list').append(`
     <div class="compatible-fish-list-item">
                             ${name}
                         </div>`);
   }
+  let idName = "#id"+ name;
+  let id = $(idName).val();
+  compatibleFishes.add(id);
+  // console.log(compatibleFishes);
 })

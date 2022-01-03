@@ -48,7 +48,7 @@ class Expert extends \Core\Controller
 
     //get compatible fish to enter fish artcle
     public function getCompatibleFishAction(){
-        View::response($this->execute($this->getAll('fish_article','name'))->fetchAll());
+        View::response($this->execute($this->getAll('fish_article','*'))->fetchAll());
     }
 
     //insert fish article 
@@ -180,14 +180,15 @@ class Expert extends \Core\Controller
         $condition = "auth_id='".$authId."' AND article='".$this->data['article']."'";
         $articleId = $this->execute($this->get('article','*',$condition))->fetch()['id'];
         $fishCount = $this->data['countFish'];
+        $fishes = $this->data['relaventFishes'];
         for($i=0;$i< $fishCount ;$i++){
             $dataToInsertRelevantFish = [
-                "artcle_id" => $articleId,
-                "fish_article_id" => $this->data['relaventFishes'][$i]
+                "article_id" => $articleId,
+                "fish_article_id" => $fishes[$i]
             ];
             $this->exec($this->save('relevant_fish_for_article',$dataToInsertRelevantFish));
         }
-        View::response($this->data);
+        View::response("successfully uploaded the article");
         
 
 
