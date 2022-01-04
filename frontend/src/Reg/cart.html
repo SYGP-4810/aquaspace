@@ -45,12 +45,12 @@
                             <span>Reset Password</span>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="notification.html">
                             <i class="fas fa-bell" aria-hidden="true"></i>
                             <span>Notification Settings</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="active-posts.html">
                             <i class="fas fa-money-check"></i>
@@ -81,12 +81,12 @@
                             <span>Questions</span>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="coins.html">
                             <i class="fas fa-coins" aria-hidden="true"></i>
                             <span>Coins</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </nav>
             <section class="section-1">
@@ -94,8 +94,6 @@
                     <p id="cart">Shopping Cart</p>
                     <i class="fas fa-chevron-right"></i>
                     <p id="checkout">Checkout Details</p>
-                    <i class="fas fa-chevron-right"></i>
-                    <p id="complete">Order Complete</p>
                 </div>
                 <div class="shopping-cart">
                     <div class="table-responsive">
@@ -143,9 +141,10 @@
                     <button id="proceed">PROCEED <i class="fas fa-chevron-right"></i><i
                             class="fas fa-chevron-right"></i></button>
                 </div>
-                <div class="checkout">
+                <div class="checkout cart-checkout">
                     <div class="d-flex">
-                        <form method="post" action="https://sandbox.payhere.lk/pay/checkout">
+                        
+                        <form method="post" action="https://sandbox.payhere.lk/pay/checkout" >
                             <input type="hidden" name="merchant_id" value="1219322"> <!-- Replace your Merchant ID -->
                             <input type="hidden" name="return_url" value="http://localhost/aquaspace/frontend/src/index.html">
                             <input type="hidden" name="cancel_url" value="http://localhost/aquaspace/frontend/src/Reg/cart.html">
@@ -179,9 +178,9 @@
                                 <input type="text" name="city" prequired>
                             </label>
                             <input type="hidden" name="country" value="Sri Lanka">
-                            <input type="submit" value="pay">
-
-                        </form>
+                            <input type="submit" value="pay" onclick="payhere()">
+                            
+                        </form> 
                         <div class="Yorder">
                             <table id="order-list">
                                 <!---<tr>
@@ -246,48 +245,6 @@
                     </div>
                 </div>
 
-                <div class="complete">
-                    <!-- <div class="sub-container"> -->
-                    <div class="Yorder add-margin">
-                        <i class="far fa-check-circle"></i>
-                        <table class="border">
-                            <tr>
-                                <th colspan="2">Order Completed!</th>
-                            </tr>
-                        <div id="gg">
-                            <tr>
-                                <td>Goldfish x 1(Qty)</td>
-                                <td>3500.00</td>
-                            </tr>
-                            <tr>
-                                <td>Asian Arowana x 1(Qty)</td>
-                                <td>3000.00</td>
-                            </tr>
-                        </div>
-                            
-                            <tr>
-                                <td>Subtotal</td>
-                                <td>6500.00</td>
-                            </tr>
-                            <tr>
-                                <td>Shipping</td>
-                                <td>Free shipping</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <!-- <div class="product-list">
-                            <div class="list-item">
-                                <img src="../../images/download.png" alt="">
-                                <h5>Lorem Ipsum 1</h5>
-                            </div>
-                            <div class="list-item">
-                                <img src="../../images/download.png" alt="">
-                                <h5>Lorem Ipsum 2</h5>
-                            </div>
-                        </div> -->
-                    <!-- </div> -->
-
-                </div>
 
 
             </section>
