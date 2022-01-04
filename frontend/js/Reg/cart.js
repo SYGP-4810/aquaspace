@@ -3,6 +3,7 @@ function setUrl(text) {
 }
 
 $(document).ready(function () {
+  const shipping = 0;
   // jQuery methods go here...
 
   $("#cart").click(function () {
@@ -75,7 +76,7 @@ $(document).ready(function () {
       });
     },
     // error: function (errMsg) {
-    //   window.location.replace("../src/Error" + errMsg.status + ".html");
+    //   window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
     // },
   });
 
@@ -105,7 +106,7 @@ $(document).ready(function () {
             array.push(result);
           },
           error: function (errMsg) {
-            window.location.replace("../src/Error" + errMsg.status + ".html");
+            window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
           },
         });
       }
@@ -140,7 +141,7 @@ $(document).ready(function () {
             <th colspan="2">Order ${i + 1}</th>
         </tr>
       `);
-      let shipping = 0;
+      
       let amount = 0;
       let j;
       let l = map[i].id.length;
@@ -241,7 +242,7 @@ $(document).ready(function () {
                   },
                   error: function (errMsg) {
                     window.location.replace(
-                      "../src/Error" + errMsg.status + ".html"
+                      "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
                     );
                   },
                 });
@@ -249,7 +250,7 @@ $(document).ready(function () {
             }
           },
           error: function (errMsg) {
-            window.location.replace("../src/Error" + errMsg.status + ".html");
+            window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
           },
         });
       }
@@ -284,7 +285,7 @@ $(document).ready(function () {
 
       },
       // error: function (errMsg) {
-      //   window.location.replace("../src/Error" + errMsg.status + ".html");
+      //   window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
       // },
     });
     -------------*/

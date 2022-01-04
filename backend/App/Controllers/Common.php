@@ -70,6 +70,21 @@ class Common extends \Core\Controller
         View::response("Successfully appeal inserted");
     }
 
+    //get list of product blocked which account blocked
+    public function getProductBlockedDetailsAction(){
+        View::response($this->execute($this->get('products',
+        '*',"status = '4' AND auth_id='".$this->data['authId']."'" ))->fetchAll());
+    }
+
+    public function insertProductAppealAccountAction(){
+        $data = [
+            "auth_id" => $this->data['authId'],
+            "appeal" => $this->data['appeal']
+        ];
+        $this->exec($this->save('user_appeal',$data));
+        View::response("Successfully appeal inserted");
+    }
+
 
 
 }

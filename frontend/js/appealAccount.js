@@ -1,36 +1,43 @@
 $(document).ready(function() {
     let url_string = window.location.href;
     let url = new URL(url_string);
-    let productId = url.searchParams.get("productId");
+    let authId = url.searchParams.get("authId");
     let req = {
-        "productId": productId
+        "authId" : authId
     }
     $.ajax({
         type: "POST",
-        url:setUrl("Common/getProductDetail"),
+        url:setUrl("Common/getProductBlockedDetails"),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         data: JSON.stringify(req),
         success: function(data){
-            $("#itemDetails").html(`
-            <div style="display: flex; margin-top: 30px;">
-            <div style="width: 250px;"><img style="height: 135px;" src="../images/product/${data.img1}" alt="${data.product_name}" /></div>
-             <div style="margin-left: 20px; font-size: 17px; font-weight: 500;">Product Name : <span
-          style="font-size: 15px; font-weight: 400;">${data.product_name} </span> <a
-          style="font-size: 15px; font-weight: 400; text-decoration: underline;" href="/aquaspace/frontend/src/reg/view-product-page.html?id=${data.id}" target='_blank'>link</a> <br>
-          <br>
-          Reasons : <br>
-          <ul id='product${data.id}'></ul>
-          </div>
-    </div>
-    `);
-    
-    $.ajax({
+            data.forEach(element => {
+                $("#product-list").append(`
+                <div style="display: flex; margin-top: 30px;">
+                <div style="width: 250px;"><img style="height: 135px;" src="../images/product/${element.img1}" alt="${element.name}"></div>
+                
+                <div style="margin-left: 20px; font-size: 17px; font-weight: 500;">Product Name : <span
+                    style="font-size: 15px; font-weight: 400;">${element.product_name}</span> <a
+                    style="font-size: 15px; font-weight: 400; text-decoration: underline;" href="/aquaspace/frontend/src/Reg/view-product-page.html?id=${element.id}" target="_blank">link</a> <br>
+                  <br>
+                  reasons : 
+                  <br>
+                  <ul id="product${element.id}"></ul>
+                     </div>
+              </div>
+                `);
+
+                let req1 = {
+                    "productId" : element.id
+                }
+
+                $.ajax({
         type: "POST",
         url:setUrl("Common/getReportDetail"),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        data: JSON.stringify(req),
+        data: JSON.stringify(req1),
         success: function(data1){
             let reportList = "";
             let reportSet = new Set();
@@ -50,8 +57,9 @@ $(document).ready(function() {
                     reportStr = "other";
                 }
                 reportList += "<li>" + reportStr + "</li>";
-            })
-            let idName = "#product"+ data.id;
+            });
+            let idName = "#product"+ element.id;
+            console.log(idName);
             $(idName).append(`${reportList}`);
         },
         error: function(errMsg) {
@@ -59,29 +67,32 @@ $(document).ready(function() {
         }
     });
 
+            })
+            
+            
         },
         error: function(errMsg) {
              window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
+
     
-    
-})
+
+});
 
 $("#submitAppeal").click(function(){
-    console.log("hello world");
     let url_string = window.location.href;
     let url = new URL(url_string);
-    let productId = url.searchParams.get("productId");
+    let authId = url.searchParams.get("authId");
     let appeal = $("#appealMsg").val();
     if(appeal.length > 0){
         let req = {
-            "productId" : productId,
+            "authId" : authId,
             "appeal" : appeal
         };
         $.ajax({
             type: "POST",
-            url:setUrl("Common/insertProductAppeal"),
+            url:setUrl("Common/insertProductAppealAccount"),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: JSON.stringify(req),
@@ -92,7 +103,7 @@ $("#submitAppeal").click(function(){
                 },3000)
             },
             error: function(errMsg) {
-                 window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+                //  window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
     }else{

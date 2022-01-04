@@ -80,15 +80,7 @@ function setUrl(text) {
             $("#column_2").html(`
           <h2 id="name">${data.product_name}</h2>
                   <p id="price">Rs. ${data.price}</p>
-                  <!-- <select id="delivery_method">
-                      <option orderselected hidden value="">Delivery Option</option>
-                      <option value="0">In Store Pick-up</option>
-                      <option value="1">In Store Delivery Service</option>
-                      <option value="2">Third Party Delivery Service</option>
-                  </select> -->
-              
                   <input type="number" id="item-qty" min="1" max=${data.quantity} value="1"><span id="quantity">${data.quantity}</span><span>     </span><span>Available</span><br>
-                  <a href="#" class="btn" onclick="addToCart()">Add to Cart</a>
                   <h3>Product Details</h3>
                   <br>
                   <p id="description">${data.description}</p>

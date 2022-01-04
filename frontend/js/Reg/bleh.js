@@ -251,10 +251,10 @@ $("#btn").click(function () {
     errors.push("Quantity is required");
     errFlag++;
   }
-  // if(description == ''){
-  //   errors.push("details required");
-  //   errFlag++;
-  // }
+  if(description == ''){
+    errors.push("details required");
+    errFlag++;
+  }
   // if(question == 0){
   //   errors.push("deliveryMode required");
   //   errFlag++;

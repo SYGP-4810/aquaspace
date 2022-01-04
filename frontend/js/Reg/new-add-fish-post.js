@@ -267,13 +267,13 @@ $("#btn").click(function () {
     $(".post-details").css("display", "none");
     $(".checkout").css("display", "block");
 
-    $("#f-order").click(function () {
+    $("#order").click(function () {
       var req = {
         product_name: name,
         duration: duration,
         description: description,
         price: price,
-        // "question":question,
+        question:question,
         category: category,
         address: address,
         lat: lat,
