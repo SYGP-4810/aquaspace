@@ -164,7 +164,7 @@
                         <label for="cost">Delivery Charges<span class="required">*</span></label>
                         <div class="cost">
                             <div class="store">
-                                <span>In Store Delivery Service</span>
+                                <span>In Store Delivery Service for Fish</span>
                                 <table class="store-table">
                                     <tr>
                                         <th>Range</th>
@@ -175,23 +175,23 @@
                                     </tr>
                                     <tr>
                                         <td><b>1KG</b></td>
-                                        <td><input type="number"  min="0.00" step=".01" id="inOne"></td>
-                                        <td><input type="number"  min="0.00" step=".01" id="inTwo"></td>
-                                        <td><input type="number"  min="0.00" step=".01" id="inThree"></td>
-                                        <td><input type="number"  min="0.00" step=".01" id="inFour"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inOneFish"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inTwoFish"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inThreeFish"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inFourFish"></td>
                                     </tr>
                                     <tr>
                                         <td><b>+ 1KG</b></td>
-                                        <td><input type="number"  min="0.00" step=".01" id="inOneAdd"></td>
-                                        <td><input type="number" min="0.00" step=".01" id="inTwoAdd"></td>
-                                        <td><input type="number"  min="0.00" step=".01" id="inThreeAdd"></td>
-                                        <td><input type="number"  min="0.00" step=".01" id="inFourAdd"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inOneAddFish"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="inTwoAddFish"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inThreeAddFish"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inFourAddFish"></td>
                                     </tr>
                                 </table>
                             </div>
                             <br>
                             <div class="store">
-                                <span>Third Party Delivery Service</span>
+                                <span>Third Party Delivery Service for Fish</span>
                                 <table class="store-table">
                                     <tr>
                                         <th>Range</th>
@@ -202,17 +202,71 @@
                                     </tr>
                                     <tr>
                                         <td><b>1KG</b></td>
-                                        <td><input type="number" min="0.00" step=".01" id="outOne"></td>
-                                        <td><input type="number" min="0.00" step=".01" id="outTwo"></td>
-                                        <td><input type="number" min="0.00" step=".01" id="outThree"></td>
-                                        <td><input type="number" min="0.00" step=".01" id="outFour"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outOneFish"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outTwoFish"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outThreeFish"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outFourFish"></td>
                                     </tr>
                                     <tr>
                                         <td><b>+ 1KG</b></td>
-                                        <td><input type="number" min="0.00" step=".01" id="outOneAdd"></td>
-                                        <td><input type="number"  min="0.00" step=".01" id="outTwoAdd"></td>
-                                        <td><input type="number"  min="0.00" step=".01" id="outThreeAdd"></td>
-                                        <td><input type="number" min="0.00" step=".01" id="outFourAdd"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outOneAddFish"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="outTwoAddFish"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="outThreeAddFish"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outFourAddFish"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br>
+                            <div class="store">
+                                <span>In Store Delivery Service for Equipment</span>
+                                <table class="store-table">
+                                    <tr>
+                                        <th>Range</th>
+                                        <th>&#60 10KM</th>
+                                        <th>10KM - 50KM</th>
+                                        <th>50KM - 150KM</th>
+                                        <th>150KM &#60</th>
+                                    </tr>
+                                    <tr>
+                                        <td><b>1KG</b></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inOneEquipment"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inTwoEquipment"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inThreeEquipment"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inFourEquipment"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>+ 1KG</b></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inOneAddEquipment"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="inTwoAddEquipment"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inThreeAddEquipment"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="inFourAddEquipment"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br>
+                            <div class="store">
+                                <span>Third Party Delivery Service for Equipment</span>
+                                <table class="store-table">
+                                    <tr>
+                                        <th>Range</th>
+                                        <th>&#60 10KM</th>
+                                        <th>10KM - 50KM</th>
+                                        <th>50KM - 150KM</th>
+                                        <th>150KM &#60</th>
+                                    </tr>
+                                    <tr>
+                                        <td><b>1KG</b></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outOneEquipment"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outTwoEquipment"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outThreeEquipment"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outFourEquipment"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>+ 1KG</b></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outOneAddEquipment"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="outTwoAddEquipment"></td>
+                                        <td><input type="number"  min="0.00" step=".01" id="outThreeAddEquipment"></td>
+                                        <td><input type="number" min="0.00" step=".01" id="outFourAddEquipment"></td>
                                     </tr>
                                 </table>
                             </div>

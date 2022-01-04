@@ -311,6 +311,77 @@ class Store extends \Core\Controller
                 "additional_one_kg" => 0,
         ];
             $this->exec($this->save('delivery_cost',$data));
+            $data = [
+                "auth_id" => $id, 
+                "type" => 3,
+                "range_km" => 1,
+                "one_kg" => 0,
+                "additional_one_kg" => 0,
+        ];
+            $this->exec($this->save('delivery_cost',$data));
+
+            $data = [
+                "auth_id" => $id, 
+                "type" => 3,
+                "range_km" => 2,
+                "one_kg" => 0,
+                "additional_one_kg" => 0,
+        ];
+            $this->exec($this->save('delivery_cost',$data));
+
+            $data = [
+                "auth_id" => $id, 
+                "type" => 3,
+                "range_km" => 3,
+                "one_kg" => 0,
+                "additional_one_kg" => 0,
+        ];
+            $this->exec($this->save('delivery_cost',$data));
+
+            $data = [
+                "auth_id" => $id, 
+                "type" => 3,
+                "range_km" => 4,
+                "one_kg" => 0,
+                "additional_one_kg" => 0,
+        ];
+            $this->exec($this->save('delivery_cost',$data));
+
+            $data = [
+                "auth_id" => $id, 
+                "type" => 4,
+                "range_km" => 1,
+                "one_kg" => 0,
+                "additional_one_kg" => 0,
+        ];
+            $this->exec($this->save('delivery_cost',$data));
+
+            $data = [
+                "auth_id" => $id, 
+                "type" => 4,
+                "range_km" => 2,
+                "one_kg" => 0,
+                "additional_one_kg" => 0,
+        ];
+            $this->exec($this->save('delivery_cost',$data));
+
+            $data = [
+                "auth_id" => $id, 
+                "type" => 4,
+                "range_km" => 3,
+                "one_kg" => 0,
+                "additional_one_kg" => 0,
+        ];
+            $this->exec($this->save('delivery_cost',$data));
+
+            $data = [
+                "auth_id" => $id, 
+                "type" => 4,
+                "range_km" => 4,
+                "one_kg" => 0,
+                "additional_one_kg" => 0,
+        ];
+            $this->exec($this->save('delivery_cost',$data));
             
         }
 
@@ -400,52 +471,100 @@ class Store extends \Core\Controller
         $this->exec($this->update('user_auth' , $updateAuth , "id='" . $id . "'")); 
 
         $updateDel = [ 
-            "one_kg" => $this->data['inOne'],
-            "additional_one_kg" => $this->data['inOneAdd'],
+            "one_kg" => $this->data['inOneFish'],
+            "additional_one_kg" => $this->data['inOneAddFish'],
         ];
         $this->exec($this->update('delivery_cost' , $updateDel , "auth_id='" . $id . "' AND type = 1 AND range_km = 1"));
 
         $updateDel = [ 
-            "one_kg" => $this->data['inTwo'],
-            "additional_one_kg" => $this->data['inTwoAdd'],
+            "one_kg" => $this->data['inTwoFish'],
+            "additional_one_kg" => $this->data['inTwoAddFish'],
         ];
         $this->exec($this->update('delivery_cost' , $updateDel , "auth_id='" . $id . "' AND type = 1 AND range_km = 2"));
 
         $updateDel = [ 
-            "one_kg" => $this->data['inThree'],
-            "additional_one_kg" => $this->data['inThreeAdd'],
+            "one_kg" => $this->data['inThreeFish'],
+            "additional_one_kg" => $this->data['inThreeAddFish'],
         ];
         $this->exec($this->update('delivery_cost' , $updateDel , "auth_id='" . $id . "' AND type = 1 AND range_km = 3"));
 
         $updateDel = [ 
-            "one_kg" => $this->data['inFour'],
-            "additional_one_kg" => $this->data['inFourAdd'],
+            "one_kg" => $this->data['inFourFish'],
+            "additional_one_kg" => $this->data['inFourAddFish'],
         ];
         $this->exec($this->update('delivery_cost' , $updateDel , "auth_id='" . $id . "' AND type = 1 AND range_km = 4"));
 
         $updateDel = [ 
-            "one_kg" => $this->data['outOne'],
-            "additional_one_kg" => $this->data['outOneAdd'],
+            "one_kg" => $this->data['outOneFish'],
+            "additional_one_kg" => $this->data['outOneAddFish'],
         ];
         $this->exec($this->update('delivery_cost' , $updateDel , "auth_id='" . $id . "' AND type = 2 AND range_km = 1"));
 
         $updateDel = [ 
-            "one_kg" => $this->data['outTwo'],
-            "additional_one_kg" => $this->data['outTwoAdd'],
+            "one_kg" => $this->data['outTwoFish'],
+            "additional_one_kg" => $this->data['outTwoAddFish'],
         ];
         $this->exec($this->update('delivery_cost' , $updateDel , "auth_id='" . $id . "' AND type = 2 AND range_km = 2"));
 
         $updateDel = [ 
-            "one_kg" => $this->data['outThree'],
-            "additional_one_kg" => $this->data['outThreeAdd'],
+            "one_kg" => $this->data['outThreeFish'],
+            "additional_one_kg" => $this->data['outThreeAddFish'],
         ];
         $this->exec($this->update('delivery_cost' , $updateDel , "auth_id='" . $id . "' AND type = 2 AND range_km = 3"));
 
         $updateDel = [ 
-            "one_kg" => $this->data['outFour'],
-            "additional_one_kg" => $this->data['outFourAdd'],
+            "one_kg" => $this->data['outFourFish'],
+            "additional_one_kg" => $this->data['outFourAddFish'],
         ];
         $this->exec($this->update('delivery_cost' , $updateDel , "auth_id='" . $id . "' AND type = 2 AND range_km = 4"));
+
+        $updateDel = [ 
+            "one_kg" => $this->data['inOneEquipment'],
+            "additional_one_kg" => $this->data['inOneAddEquipment'],
+        ];
+        $this->exec($this->update('delivery_cost' , $updateDel , "auth_id='" . $id . "' AND type = 3 AND range_km = 1"));
+
+        $updateDel = [ 
+            "one_kg" => $this->data['inTwoEquipment'],
+            "additional_one_kg" => $this->data['inTwoAddEquipment'],
+        ];
+        $this->exec($this->update('delivery_cost' , $updateDel , "auth_id='" . $id . "' AND type = 3 AND range_km = 2"));
+
+        $updateDel = [ 
+            "one_kg" => $this->data['inThreeEquipment'],
+            "additional_one_kg" => $this->data['inThreeAddEquipment'],
+        ];
+        $this->exec($this->update('delivery_cost' , $updateDel , "auth_id='" . $id . "' AND type = 3 AND range_km = 3"));
+
+        $updateDel = [ 
+            "one_kg" => $this->data['inFourEquipment'],
+            "additional_one_kg" => $this->data['inFourAddEquipment'],
+        ];
+        $this->exec($this->update('delivery_cost' , $updateDel , "auth_id='" . $id . "' AND type = 3 AND range_km = 4"));
+
+        $updateDel = [ 
+            "one_kg" => $this->data['outOneEquipment'],
+            "additional_one_kg" => $this->data['outOneAddEquipment'],
+        ];
+        $this->exec($this->update('delivery_cost' , $updateDel , "auth_id='" . $id . "' AND type = 4 AND range_km = 1"));
+
+        $updateDel = [ 
+            "one_kg" => $this->data['outTwoEquipment'],
+            "additional_one_kg" => $this->data['outTwoAddEquipment'],
+        ];
+        $this->exec($this->update('delivery_cost' , $updateDel , "auth_id='" . $id . "' AND type = 4 AND range_km = 2"));
+
+        $updateDel = [ 
+            "one_kg" => $this->data['outThreeEquipment'],
+            "additional_one_kg" => $this->data['outThreeAddEquipment'],
+        ];
+        $this->exec($this->update('delivery_cost' , $updateDel , "auth_id='" . $id . "' AND type = 4 AND range_km = 3"));
+
+        $updateDel = [ 
+            "one_kg" => $this->data['outFourEquipment'],
+            "additional_one_kg" => $this->data['outFourAddEquipment'],
+        ];
+        $this->exec($this->update('delivery_cost' , $updateDel , "auth_id='" . $id . "' AND type = 4 AND range_km = 4"));
 
         View::response("success");
     
