@@ -124,7 +124,7 @@ $(document).ready(function() {
                 }
                 if(deliveryPrice[i].type == 4 && deliveryPrice[i].range_km == 4){
                     $("#outFourEquipment").val(deliveryPrice[i].one_kg);
-                    $("#outFourAddFEquipment").val(deliveryPrice[i].additional_one_kg);
+                    $("#outFourAddEquipment").val(deliveryPrice[i].additional_one_kg);
                 }
             }          
             
