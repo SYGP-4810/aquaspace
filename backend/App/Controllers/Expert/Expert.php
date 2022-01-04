@@ -172,15 +172,28 @@ class Expert extends \Core\Controller
 
     public function addArticleAction(){
         $authId = $this->execute($this->get('user_auth','*',"access_token ='" . $_COOKIE['access_token'] . "'"))->fetch()['id'] ;
+        //save images
+        $iName1 = "";
+        $iName1 = microtime(true) . "." . $this->data['picExtension'];
+        $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/article/" . $iName1;
+        $flag1 = file_put_contents($iDir1, base64_decode($this->data['pic']));
+        if (!$flag1) {
+            throw new \Exception("thumbnail didn't come to backend");
+        }
         $dataToSaveArcticle = [
             "auth_id" => $authId,
-            "article" => $this->data['article']
+            "article" => $this->data['article'],
+            "summary" => $this->data['summary'],
+            "title" => $this->data['title'],
+            "pic" => $iName1
         ];
         $this->exec($this->save('article',$dataToSaveArcticle));
         $condition = "auth_id='".$authId."' AND article='".$this->data['article']."'";
         $articleId = $this->execute($this->get('article','*',$condition))->fetch()['id'];
         $fishCount = $this->data['countFish'];
         $fishes = $this->data['relaventFishes'];
+        
+
         for($i=0;$i< $fishCount ;$i++){
             $dataToInsertRelevantFish = [
                 "article_id" => $articleId,
@@ -188,10 +201,17 @@ class Expert extends \Core\Controller
             ];
             $this->exec($this->save('relevant_fish_for_article',$dataToInsertRelevantFish));
         }
+        $this->notifyHimself("You can view Your new article in the blog section");
         View::response("successfully uploaded the article");
         
 
 
+    }
+
+    //view the article list which expert added
+    public function viewArticleList(){
+        $authId = $this->execute($this->get('user_auth','*',"access_token ='" . $_COOKIE['access_token'] . "'"))->fetch()['id'] ;
+        View::response($this->execute($this->get('article','*',"auth_id ='" . $authId . "'"))->fetchAll());
     }
     
 }

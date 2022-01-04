@@ -77,11 +77,34 @@
             </ul>
         </nav>
 		<section class="section-1">
+
+            <br>
+            <label for="title">
+                <span>Title</span>
+                <input type="text" id="titleForTheBlog">
+            </label>
+            <br><br>
+            <span>Thumbnail</span>
+            <div class="box">
+                <div class="js--image-preview"></div>
+                <div class="upload-options">
+                    <label>
+                        <input type="file" id="inventory-img1" class="image-upload"
+                            onchange="encodeImageFileAsURL1(this)">
+                    </label>
+                </div>
+            </div>
+            <br><br>
 			<!-- Create the editor container -->
             <div class="editor-layout">
                 <div id="editor"></div>
               </div>
             <br><br>
+            <label for="summary">
+                <span>Summary Of the article</span>
+                <textarea name="summary" id="summary" cols="100" rows="10">
+                </textarea>
+            </label>
             <div style="position: relative; left: 5%;">
                 <label>
                     <span>Relavant Fish</span>
@@ -108,5 +131,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="../../js/base.js"></script>
 <script src="../../js/expert/AddBlog.js"></script>
+<script src="../../js/image-upload.js"></script>
 </body>
 </html>
