@@ -36,4 +36,28 @@ $(document).ready(function() {
             window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
+
+    $.ajax({
+        type: "GET",
+        url: setUrl("Expert/Expert/viewFishArticleList"),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            console.log(data);
+            data.forEach(element =>{
+                $("#fishDataRow").append(`
+                <a href="../../src/Reg/view-fish-details.html?id=${element.id}">
+                    <div class="col-4">
+                        <img src="../../images/fish_article/${element.img_1}" alt="${element.name}" />
+                        <h4>e${element.name}</h4>
+                    </div>
+                </a>
+                
+                `)
+            });
+        },
+        error: function(errMsg) {
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+        }
+    });
 });

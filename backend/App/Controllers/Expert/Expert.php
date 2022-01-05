@@ -208,9 +208,15 @@ class Expert extends \Core\Controller
     }
 
     //view the article list which expert added
-    public function viewArticleList(){
+    public function viewArticleListAction(){
         $authId = $this->execute($this->get('user_auth','*',"access_token ='" . $_COOKIE['access_token'] . "'"))->fetch()['id'] ;
         View::response($this->execute($this->get('article','*',"auth_id ='" . $authId . "'"))->fetchAll());
+    }
+
+    //view fish related Articles
+    public function viewFishArticleListAction(){
+        $authId = $this->execute($this->get('user_auth','*',"access_token ='" . $_COOKIE['access_token'] . "'"))->fetch()['id'] ;
+        View::response($this->execute($this->get('fish_article','*',"auth_id ='" . $authId . "'"))->fetchAll());
     }
     
 }
