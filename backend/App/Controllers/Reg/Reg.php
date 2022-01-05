@@ -520,6 +520,9 @@ class Reg extends \Core\Controller
         $this->exec($this->update('notification', $dataToUpdate, "auth_id='" . $id . "' AND id = '" . $this->data['id'] ."'"));
         View::response("success");  
     }
+    public function getArticleAction(){
+        View::response($this->execute($this->get('article','*',"id='" . $this->data['id'] ."'"))->fetch());
+    }
 
   
 
