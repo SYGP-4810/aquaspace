@@ -418,12 +418,28 @@ class Admin extends \Core\Controller
         View::response($res);
     }
 
+    //last date experts are paid
     public function getLastExpertPaidDateAction(){
         $sql = "SELECT * FROM `expert_whole_payment` ORDER BY id DESC LIMIT 1";
         View::response($this->execute($sql)->fetch());
     }
 
-    
+    //get details to show in the Admin home
+    public function getDetailsToHomeAction(){
+        $numberOfActiveAdmins = $this->execute($this->get('user_auth','*',"user_type ='4' AND user_status='4'"))->rowCount();
+        $numberOfExpertVerification = $this->execute($this->get('user_auth','*',"user_type ='2' AND user_status='5'"))->rowCount(); 
+        $numberOfStoreVerification = $this->execute($this->get('user_auth','*',"user_type='3' AND user_status='5'"))->rowCount();
+        $numberOfProductAppeal = $this->execute($this->join('products, appeal','products.id',"products.id=appeal.product_id AND products.status = '4'"))->rowCount();
+        $numberOfAccountAppeal = $this->execute($this->get('user_appeal','*',"status='1'"))->rowCount();
+        $res = [
+            "numberOfActiveAdmins" => $numberOfActiveAdmins,
+            "numberOfExpertVerification" => $numberOfExpertVerification,
+            "numberOfStoreVerification" => $numberOfStoreVerification,
+            "numberOfProductAppeal" => $numberOfProductAppeal,
+            "numberOfAccountAppeal" => $numberOfAccountAppeal
+        ];
+        View::response($res);
+    }
 
 
 }

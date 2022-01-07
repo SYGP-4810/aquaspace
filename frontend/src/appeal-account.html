@@ -7,11 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../assets/fontawesome-free-5.15.4-web/css/all.css">
   <link rel="stylesheet" href="../css/landing-styles.css">
+  <link rel="stylesheet" href="../css/base.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <title>Appeal Account</title>
 </head>
 
 <body>
+  <div id="alertDiv"></div>
   <div class="container">
     <div class="nav">
       <div class="logo">
@@ -149,16 +151,9 @@
       <h3 style="color: rgb(78, 78, 78);">Products Blocked</h2>
     </div>
 
-    <div style="display: flex; margin-top: 30px;">
-      <div style="width: 250px;"><img style="height: 135px;" src="../images/product/angel1.jpg" alt=""></div>
-      
-      <div style="margin-left: 20px; font-size: 17px; font-weight: 500;">Product Name : <span
-          style="font-size: 15px; font-weight: 400;">Angel Fish </span> <a
-          style="font-size: 15px; font-weight: 400; text-decoration: underline;" href="#">link</a> <br>
-        This product was reported under "reason A" and "reason B".</div>
-    </div>
+    <div id="product-list"></div>
 
-    <div style="display: flex; margin-top: 30px;">
+    <!-- <div style="display: flex; margin-top: 30px;">
       <div style="width: 250px;"><img style="height: 135px;" src="../images/product/arawana2.jpg" alt=""></div>
       
       <div style="margin-left: 20px; font-size: 17px; font-weight: 500;">Product Name : <span
@@ -174,7 +169,7 @@
           style="font-size: 15px; font-weight: 400;">Filter</span> <a
           style="font-size: 15px; font-weight: 400; text-decoration: underline;" href="#">link</a> <br>
         This product was reported under "reason A" and "reason B".</div>
-    </div>
+    </div> -->
 
 
 
@@ -188,10 +183,10 @@
     <div style="margin-top: 50px;">
       <h3 style="color: rgb(78, 78, 78);">Send us your appeal here</h2>
     </div>
-    <textarea style="outline:none; border:1px solid rgb(175, 174, 174);" id="q" placeholder="Type here" tabindex="5"
+    <textarea id="appealMsg" style="outline:none; border:1px solid rgb(175, 174, 174);" id="q" placeholder="Type here" tabindex="5"
       rows="10" cols="100" maxlength="500" required></textarea>
 
-    <button
+    <button id="submitAppeal"
       style="background-color: rgb(79, 148, 110); border: none;height: 40px; color: white; font-size: 17px;">Submit</button>
 
 
@@ -252,9 +247,11 @@
 
   </footer>
 
+  <script src="../js/base.js"></script>
   <script src="../js/landing-app.js"></script>
   <script src="../js/landing-ani.js"></script>
   <script src="../js/notif.js"></script>
+  <script src="../js/appealAccount.js"></script>
 </body>
 
 </html>

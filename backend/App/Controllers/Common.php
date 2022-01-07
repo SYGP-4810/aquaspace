@@ -50,5 +50,41 @@ class Common extends \Core\Controller
         ]);
     }
 
+    //get product details to individual product appeal
+    public function getProductDetailAction(){
+        View::response($this->execute($this->get('products','*',"id='".$this->data['productId']."'"))->fetch());
+    }
+
+    //get report details about a project
+    public function getReportDetailAction(){
+        View::response($this->execute($this->get('report','*',"product_id='". $this->data['productId'] . "'"))->fetchAll());
+    }
+
+    //insert data about product appeal
+    public function insertProductAppealAction(){
+        $data = [
+            "product_id" => $this->data['productId'],
+            "appeal" => $this->data['appeal']
+        ];
+        $this->exec($this->save('appeal',$data));
+        View::response("Successfully appeal inserted");
+    }
+
+    //get list of product blocked which account blocked
+    public function getProductBlockedDetailsAction(){
+        View::response($this->execute($this->get('products',
+        '*',"status = '4' AND auth_id='".$this->data['authId']."'" ))->fetchAll());
+    }
+
+    public function insertProductAppealAccountAction(){
+        $data = [
+            "auth_id" => $this->data['authId'],
+            "appeal" => $this->data['appeal']
+        ];
+        $this->exec($this->save('user_appeal',$data));
+        View::response("Successfully appeal inserted");
+    }
+
+
 
 }
