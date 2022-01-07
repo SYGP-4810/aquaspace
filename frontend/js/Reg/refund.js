@@ -135,6 +135,7 @@ $("#btn").click(function () {
       data: JSON.stringify(req),
       success: function (data) {
         console.log(data);
+        window.location.replace("../src/Reg/transactions.html");
       },
       error: function (errMsg) {
         //   window.location.replace("../src/Error"+errMsg.status+".html");

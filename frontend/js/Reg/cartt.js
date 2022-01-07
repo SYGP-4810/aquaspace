@@ -248,86 +248,86 @@ function setUrl(text) {
                 });
               }
   
-              // if (data.delivery != 0) {
-              //   if ("geolocation" in navigator) {
-              //     navigator.geolocation.getCurrentPosition(function (position) {
-              //       let user_lat = position.coords.latitude;
-              //       let user_lng = position.coords.longitude;
+              if (data.delivery != 0) {
+                if ("geolocation" in navigator) {
+                  navigator.geolocation.getCurrentPosition(function (position) {
+                    let user_lat = position.coords.latitude;
+                    let user_lng = position.coords.longitude;
   
-              //       let product_lat = parseFloat(data.lat);
-              //       let product_lng = parseFloat(data.lan);
-              //         const user_location = {
-              //           lat: user_lat,
-              //           lng: user_lng,
-              //         };
-              //         const product_location = {
-              //           lat: product_lat,
-              //           lng: product_lng,
-              //         };
+                    let product_lat = parseFloat(data.lat);
+                    let product_lng = parseFloat(data.lan);
+                      const user_location = {
+                        lat: user_lat,
+                        lng: user_lng,
+                      };
+                      const product_location = {
+                        lat: product_lat,
+                        lng: product_lng,
+                      };
   
-              //         let directionsService = new google.maps.DirectionsService();
-              //         let directionsRenderer =
-              //           new google.maps.DirectionsRenderer();
-              //         // Create route from existing points used for markers
-              //         const route = {
-              //           origin: user_location,
-              //           destination: product_location,
-              //           travelMode: "DRIVING",
-              //         };
+                      let directionsService = new google.maps.DirectionsService();
+                      let directionsRenderer =
+                        new google.maps.DirectionsRenderer();
+                      // Create route from existing points used for markers
+                      const route = {
+                        origin: user_location,
+                        destination: product_location,
+                        travelMode: "DRIVING",
+                      };
   
-              //         directionsService.route(route, function (response, status) {
-              //           // anonymous function to capture directions
-              //           if (status !== "OK") {
-              //             window.alert(
-              //               "Directions request failed due to " + status
-              //             );
-              //             return;
-              //           } else {
-              //             directionsRenderer.setDirections(response); // Add route to the map
-              //             var directionsData = response.routes[0].legs[0]; // Get data about the mapped route
-              //             if (!directionsData) {
-              //               window.alert("Directions request failed");
-              //               return;
-              //             } else {
-              //               let actual_distance =
-              //                 directionsData.distance.value / 1000;
+                      directionsService.route(route, function (response, status) {
+                        // anonymous function to capture directions
+                        if (status !== "OK") {
+                          window.alert(
+                            "Directions request failed due to " + status
+                          );
+                          return;
+                        } else {
+                          directionsRenderer.setDirections(response); // Add route to the map
+                          var directionsData = response.routes[0].legs[0]; // Get data about the mapped route
+                          if (!directionsData) {
+                            window.alert("Directions request failed");
+                            return;
+                          } else {
+                            let actual_distance =
+                              directionsData.distance.value / 1000;
   
-              //               let req3 = {
-              //                 product_id: data.product_id,
-              //                 delivery: data.delivery,
-              //                 quantity: data.quantity,
-              //                 weight: data.weight,
-              //                 distance : actual_distance,
-              //                 seller : data.auth_id,
-              //               };
+                            let req3 = {
+                              product_id: data.product_id,
+                              delivery: data.delivery,
+                              quantity: data.quantity,
+                              weight: data.weight,
+                              distance : actual_distance,
+                              seller : data.auth_id,
+                            };
   
-              //               console.log(req3);
-              //               $.ajax({
-              //                 type: "POST",
-              //                 url: setUrl("Reg/Reg/getShipping"),
-              //                 contentType: "application/json; charset=utf-8",
-              //                 dataType: "json",
-              //                 data: JSON.stringify(req3),
-              //                 success: function (data) {
-              //                   // console.log(data);
-              //                   shipping = shipping + data;
-              //                   console.log(shipping)
-              //                 },
-              //                 error: function (errMsg) {
-              //                   window.location.replace(
-              //                     "../src/Error" + errMsg.status + ".html"
-              //                   );
-              //                 },
+                            console.log(req3);
+                            $.ajax({
+                              type: "POST",
+                              url: setUrl("Reg/Reg/getShipping"),
+                              contentType: "application/json; charset=utf-8",
+                              dataType: "json",
+                              data: JSON.stringify(req3),
+                              success: function (data) {
+                                // console.log(data);
+                                shipping = shipping + data;
+                                console.log(shipping)
+                              },
+                              error: function (errMsg) {
+                                window.location.replace(
+                                  "../src/Error" + errMsg.status + ".html"
+                                );
+                              },
   
-              //               });
+                            });
   
-              //             }
-              //           }
-              //         });
+                          }
+                        }
+                      });
   
-              //     });
-              //   }
-              // }
+                  });
+                }
+              }
             },
             error: function (errMsg) {
               window.location.replace("../src/Error" + errMsg.status + ".html");

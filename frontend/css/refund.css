@@ -1,4 +1,4 @@
-.refund-.form {
+.refund-form {
   width: 90%;
   margin: auto;
 }
@@ -42,7 +42,7 @@
 .d-flex {
   display: flex;
   flex-direction: row;
-  background: #f7f7f7;
+  background: #f8f8f8;
   border-radius: 0 0 5px 5px;
   padding: 25px;
 }
