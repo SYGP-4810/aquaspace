@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Store.css">
+    <link rel="stylesheet" href="../../css/base.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -96,85 +97,62 @@
                     <i class="fas fa-chevron-right"></i>
                     <p id="past">PAST ORDERS</p>
                 </div>
-                <table class="pending">
+                <table class="pending" id="pending_orders">
                     <tr style="outline: unset;">
                         <th>Order No</th>
                         <th>Order Description</th>
                         <th></th>
-                    </tr>
-                    <tr>
-                        <td>1255</td>
-                        <td>Seachem Prime, Kaytee Koi's Choice Premium Fish Food</td>
-                        <td><a href="../Store/StoreOdersDetailsAccept.html" class="button">Order Details</a></td>
-                    </tr>
-                    <tr>
-                        <td>4852</td>
-                        <td>Female Elephant Ear Betta, Anubias nana - Aquarium Tube Plant</td>
-                        <td><a href="../Store/StoreOdersDetailsAccept.html" class="button">Order Details</a></td>
-                    </tr>
+                    </tr>                    
                 </table>
-                <table class="accept">
+                <table class="accept" id="accept_orders">
                     <tr style="outline: unset;">
                         <th>Order No</th>
                         <th>Order Description</th>
                         <th></th>
                         <th></th>
                     </tr>
-                    <tr>
-                        <td>1256</td>
-                        <td>Female Elephant Ear Betta, Anubias nana - Aquarium Tube Plant</td>
-                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
-                        <td><input type="submit" class="button" value="Send Order"></td>
-                    </tr>
-                    <tr>
-                        <td>1564</td>
-                        <td>Seachem Prime, Kaytee Koi's Choice Premium Fish Food</td>
-                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
-                        <td><input type="submit" class="button" value="Send Order"></td>
-                    </tr>
+                    <div id="confirm" class="confirm-box">
+                        <div class="confirm-box-container">
+                            <span onclick="document.getElementById('confirm').style.display='none'" class="close" title="Close ">×</span>
+                            <h1>Send Order</h1>
+                            <p>Are you sure you send this Order?</p>
+                            <div class="clearfix" id="confirmation-btn">
+                            </div>
+                        </div>
+                    </div>
                 </table>
-                <table class="send">
+                <table class="send" id="send_orders">
                     <tr style="outline: unset;">
                         <th>Order No</th>
                         <th>Order Description</th>
                         <th></th>
                         <th></th>
                     </tr>
-                    <tr>
-                        <td>1255</td>
-                        <td>Seachem Prime, Kaytee Koi's Choice Premium Fish Food</td>
-                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
-                        <td><input type="submit" class="button" value="Done"></td>
-                    </tr>
-                    <tr>
-                        <td>8674</td>
-                        <td>Female Elephant Ear Betta, Anubias nana - Aquarium Tube Plant</td>
-                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
-                        <td><input type="submit" class="button" value="Done"></td>
-                    </tr>
+                    <div id="done" class="confirm-box">
+                        <div class="confirm-box-container">
+                            <span onclick="document.getElementById('done').style.display='none'" class="close" title="Close ">×</span>
+                            <h1>Done Order</h1>
+                            <p>Are you sure you Done this Order?</p>
+                            <div class="clearfix" id="Send-confirmation-btn">
+                            </div>
+                        </div>
+                    </div>
                 </table>
-                <table class="past">
+                <table class="past" id="past_orders">
                     <tr style="outline: unset;">
                         <th>Order No</th>
                         <th>Order Description</th>
                         <th></th>
                         <th></th>
                     </tr>
-                    <tr>
-                        <td>4854</td>
-                        <td>Seachem Prime, Kaytee Koi's Choice Premium Fish Food</td>
-                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
-                    </tr>
-                    <tr>
-                        <td>1255</td>
-                        <td>Female Elephant Ear Betta, Anubias nana - Aquarium Tube Plant</td>
-                        <td><a href="../Store/StoreOdersDetails.html" class="button">Order Details</a></td>
-                    </tr>
+                    
                 </table>
+                <div id="alertDiv"></div>
             </div>        
 		</section>
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/base.js"></script>
     <script src="../../js/logo.js"></script>
     <script src="../../js/Store/StoreOrders.js"></script>
 </body>

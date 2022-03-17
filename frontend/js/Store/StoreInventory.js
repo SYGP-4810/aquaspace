@@ -68,7 +68,9 @@ $( document ).ready(function() {
                 else {
                     type = "";
                 }
-                $("#invent-list").append(`
+
+                if(element.status == 1 || element.status == 2 || element.status == 3 || element.status == 4){
+                    $("#invent-list").append(`
             <tr>
                 <td class="inv-img"><img src="/aquaspace/frontend/images/product/${element.img1}"></td>
                 <td>${element.product_name}</td>
@@ -79,6 +81,8 @@ $( document ).ready(function() {
                 <td><a href="../Store/StoreInventoryEdit.html?id=${element.id}" class="button">Edit</a></td>
                 <td><button class="del-button" onclick="appendInformationTodelete(${element.id})">Delete</button></td>
             </tr>`);
+                
+                };
                 
             });
             
