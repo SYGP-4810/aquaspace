@@ -53,43 +53,43 @@ class Expert extends \Core\Controller
 
     //insert fish article 
     public function addFishArticleAction(){
-
-        //save images
+        
+        // //save images
         $iName1 = "";
         $iName1 = microtime(true) . "." . $this->data['exen1'];
         $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/fish_article/" . $iName1;
-        $flag1 = file_put_contents($iDir1, base64_decode($this->data['pic1']));
+        // $flag1 = file_put_contents($iDir1, base64_decode($this->data['pic1']));
 
         $iName2 = "";
         $iName2 = microtime(true) . "." . $this->data['exen2'];
         $iDir2 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/fish_article/" . $iName2;
-        $flag2 = file_put_contents($iDir2, base64_decode($this->data['pic2']));
+        // $flag2 = file_put_contents($iDir2, base64_decode($this->data['pic2']));
 
         $iName3 = "";
         $iName3 = microtime(true) . "." . $this->data['exen3'];
         $iDir3 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/fish_article/" . $iName3;
-        $flag3 = file_put_contents($iDir3, base64_decode($this->data['pic3']));
+        // $flag3 = file_put_contents($iDir3, base64_decode($this->data['pic3']));
 
         $iName4 = "";
         $iName4 = microtime(true) . "." . $this->data['exen4'];
         $iDir4 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/fish_article/" . $iName4;
-        $flag4 = file_put_contents($iDir4, base64_decode($this->data['pic4']));
+        // $flag4 = file_put_contents($iDir4, base64_decode($this->data['pic4']));
 
-        if (!$flag1) {
-            throw new \Exception("file1 didn't come to backend");
-        }
-        if (!$flag2) {
-            throw new \Exception("file2 didn't come to backend");
-        }
-        if (!$flag3) {
-            throw new \Exception("file3 didn't come to backend");
-        }
-        if (!$flag4) {
-            throw new \Exception("file4 didn't come to backend");
-        }
+        // if (!$flag1) {
+        //     throw new \Exception("file1 didn't come to backend");
+        // }
+        // if (!$flag2) {
+        //     throw new \Exception("file2 didn't come to backend");
+        // }
+        // if (!$flag3) {
+        //     throw new \Exception("file3 didn't come to backend");
+        // }
+        // if (!$flag4) {
+        //     throw new \Exception("file4 didn't come to backend");
+        // }
 
 
-        // //save in database
+        //save in database
         $dataToInsertToFishArticleTable = [
             'description' => $this->data['description'],
             'max_water_temp' => $this->data['maxWaterTemp'],
@@ -109,39 +109,39 @@ class Expert extends \Core\Controller
             'img_4' => $iName4
         ];
         $this->exec($this->save('fish_article',$dataToInsertToFishArticleTable));
-        $id = $this->execute($this->get('fish_article','id',"name ='".$this->data['name']. "'"))->fetch()['id'];//id of the fish that jst inserted
-        $dataToInsertOtherFishName = [
-            'fish_article_id' => $id,
-            'name' => $this->data['name']
-        ];
-        $this->exec($this->save('other_names_of_fish',$dataToInsertOtherFishName));
-        $numberOfOtherNames  = count($this->data['otherNames']);
-        for($i=0;$i<$numberOfOtherNames;$i++){
-            $dataToInsertOtherFishName = [
-                'fish_article_id' => $id,
-                'name' => $this->data['otherNames'][$i]
-            ];
-            $this->exec($this->save('other_names_of_fish',$dataToInsertOtherFishName));
-        }
-        if(isset($this->data['compatibleFishes'])){
-            $numberOfCompatibleFish = count($this->data['compatibleFishes']);
-            for($i=0;$i<$numberOfCompatibleFish;$i++){
-                $dataToInsertOtherCompatibleFishTable = [
-                    'fish_article_id' => $id,
-                    'compatible_fish_id' => $this->data['compatibleFishes'][$i]
-                ];
-            $this->exec($this->save('compatible_fish',$dataToInsertOtherCompatibleFishTable));
-        }
-        }
-        $numberOfNative = count($this->data['nativeTo']);
-        for($i = 0; $i < $numberOfNative; $i++){
-            $dataToInsertNativeToTable = [
-                'fish_article_id' => $id,
-                'country' => $this->data['nativeTo'][$i]
-            ];
-            $this->exec($this->save('native_to',$dataToInsertNativeToTable));
-        }
-        $this->notifyHimself("successfully add new fish ".$this->data['name']);
+        // $id = $this->execute($this->get('fish_article','id',"name ='".$this->data['name']. "'"))->fetch()['id'];//id of the fish that jst inserted
+        // $dataToInsertOtherFishName = [
+        //     'fish_article_id' => $id,
+        //     'name' => $this->data['name']
+        // ];
+        // $this->exec($this->save('other_names_of_fish',$dataToInsertOtherFishName));
+        // $numberOfOtherNames  = count($this->data['otherNames']);
+        // for($i=0;$i<$numberOfOtherNames;$i++){
+        //     $dataToInsertOtherFishName = [
+        //         'fish_article_id' => $id,
+        //         'name' => $this->data['otherNames'][$i]
+        //     ];
+        //     $this->exec($this->save('other_names_of_fish',$dataToInsertOtherFishName));
+        // }
+        // if(isset($this->data['compatibleFishes'])){
+        //     $numberOfCompatibleFish = count($this->data['compatibleFishes']);
+        //     for($i=0;$i<$numberOfCompatibleFish;$i++){
+        //         $dataToInsertOtherCompatibleFishTable = [
+        //             'fish_article_id' => $id,
+        //             'compatible_fish_id' => $this->data['compatibleFishes'][$i]
+        //         ];
+        //     $this->exec($this->save('compatible_fish',$dataToInsertOtherCompatibleFishTable));
+        // }
+        // }
+        // $numberOfNative = count($this->data['nativeTo']);
+        // for($i = 0; $i < $numberOfNative; $i++){
+        //     $dataToInsertNativeToTable = [
+        //         'fish_article_id' => $id,
+        //         'country' => $this->data['nativeTo'][$i]
+        //     ];
+        //     $this->exec($this->save('native_to',$dataToInsertNativeToTable));
+        // }
+        // $this->notifyHimself("successfully add new fish ".$this->data['name']);
         View::response("successfully added");
     }
 
@@ -172,15 +172,28 @@ class Expert extends \Core\Controller
 
     public function addArticleAction(){
         $authId = $this->execute($this->get('user_auth','*',"access_token ='" . $_COOKIE['access_token'] . "'"))->fetch()['id'] ;
+        //save images
+        $iName1 = "";
+        $iName1 = microtime(true) . "." . $this->data['picExtension'];
+        $iDir1 = $_SERVER['DOCUMENT_ROOT'] . "/aquaspace/frontend/images/article/" . $iName1;
+        $flag1 = file_put_contents($iDir1, base64_decode($this->data['pic']));
+        if (!$flag1) {
+            throw new \Exception("thumbnail didn't come to backend");
+        }
         $dataToSaveArcticle = [
             "auth_id" => $authId,
-            "article" => $this->data['article']
+            "article" => $this->data['article'],
+            "summary" => $this->data['summary'],
+            "title" => $this->data['title'],
+            "pic" => $iName1
         ];
         $this->exec($this->save('article',$dataToSaveArcticle));
         $condition = "auth_id='".$authId."' AND article='".$this->data['article']."'";
         $articleId = $this->execute($this->get('article','*',$condition))->fetch()['id'];
         $fishCount = $this->data['countFish'];
         $fishes = $this->data['relaventFishes'];
+        
+
         for($i=0;$i< $fishCount ;$i++){
             $dataToInsertRelevantFish = [
                 "article_id" => $articleId,
@@ -188,10 +201,72 @@ class Expert extends \Core\Controller
             ];
             $this->exec($this->save('relevant_fish_for_article',$dataToInsertRelevantFish));
         }
+        $this->notifyHimself("You can view Your new article in the blog section");
         View::response("successfully uploaded the article");
         
 
 
+    }
+
+    //view the article list which expert added
+    public function viewArticleListAction(){
+        $authId = $this->execute($this->get('user_auth','*',"access_token ='" . $_COOKIE['access_token'] . "'"))->fetch()['id'] ;
+        View::response($this->execute($this->get('article','*',"auth_id ='" . $authId . "'"))->fetchAll());
+    }
+
+    //view fish related Articles
+    public function viewFishArticleListAction(){
+        $authId = $this->execute($this->get('user_auth','*',"access_token ='" . $_COOKIE['access_token'] . "'"))->fetch()['id'] ;
+        View::response($this->execute($this->get('fish_article','*',"auth_id ='" . $authId . "'"))->fetchAll());
+    }
+
+    //get request to validate name of the fishe
+    public function getRequestAction(){
+        View::response($this->execute($this->get('products','*',"status = '3'"))->fetchAll());
+    }
+
+    //verify the fish names
+    public function verifyFishName(){
+        $expertId = $this->execute($this->get('user_auth','*',"access_token ='" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $status = $this->execute($this->get('fish_article','*', "name='" . $this->data['name'] . "'"))->fetch()['ability_to_sell'];
+        if($status == 1){
+            $dataToUpdate = [
+                "status" => '1',
+                "product_name" => $this->data['name'],
+                "verifier_id" => $expertId
+            ];
+            $mail = "
+            <html>
+                <head>
+                    <title>product relasing</title>
+                </head>
+                <body>
+                    <p>Your product ".$this->data['oldName']." is released to sell with new name ".$this->data['name']."</p>
+                </body>
+            </html>
+        ";
+        }else{
+            $dataToUpdate = [
+                "status" => '5',
+                "product_name" => $this->data['name'],
+                "verifier_id" => $expertId
+            ];
+            $mail = "
+            <html>
+                <head>
+                    <title>product relasing</title>
+                </head>
+                <body>
+                    <p>Your product ".$this->data['oldName']." is  removed from the products with new name ".$this->data['name']."</p>
+                </body>
+            </html>
+        ";
+        }
+        $this->exec($this->update('products', $dataToUpdate, "id='" . $this->data['productId']."'"));
+        $email = $this->execute($this->get('user_auth','*',"id='" . $this->data['authId']. "'"))->fetch()['email'];
+        $this->notifyOther($this->data['authId'], "your product, ".$this->data['oldName']." has been updated to sell with new name ".$this->data['name']);
+        $this->sendMail($email,"about product verificataion", $mail);
+        View::response($email);
     }
     
 }

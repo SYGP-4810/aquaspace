@@ -188,66 +188,43 @@
 
     <div class="checkout">
       <div class="d-flex">
-        <form>
+        <form method="post" action="https://sandbox.payhere.lk/pay/checkout" >
+          <input type="hidden" name="merchant_id" value="1219322"> <!-- Replace your Merchant ID -->
+          <input type="hidden" name="return_url" value="http://localhost/aquaspace/frontend/src/index.html">
+          <input type="hidden" name="cancel_url" value="http://localhost/aquaspace/frontend/src/Reg/cart.html">
+          <input type="hidden" name="notify_url" value="http://localhost/aquaspace/frontend/src/index.html">
+          <input type="text" name="items" value="Door bell wireless" hidden>
+          <input type="hidden" name="currency" value="LKR">
+          <input type="number" name="amount" hidden value="15000">  
+          <input type="text" name="order_id" value="ItemNo12345" hidden>
           <label>
-            <span class="fname">First Name<span class="required">*</span></span>
-            <input type="text" name="fname">
+              <span class="fname">First Name<span class="required">*</span></span>
+              <input type="text" name="first_name">
           </label>
           <label>
-            <span class="lname">Last Name <span class="required">*</span></span>
-            <input type="text" name="lname">
+              <span class="lname">Last Name <span class="required">*</span></span>
+              <input type="text" name="last_name">
           </label>
           <label>
-            <span>Address<span class="required">*</span></span>
-            <input type="text" name="houseadd" prequired>
+              <span>Email<span class="required">*</span></span>
+              <input type="text" name="email">
           </label>
           <label>
-            <span>Card Type<span class="required">*</span></span>
-            <input type="radio" name="dbt" value="dbt" checked><i class="fab fa-cc-visa ms"></i>
-            <input type="radio" name="dbt" value="dbt" checked><i class="fab fa-cc-mastercard"></i>
+              <span>Tel No<span class="required">*</span></span>
+              <input type="text" name="phone">
           </label>
           <label>
-            <span>Card Number <span class="required">*</span></span>
-            <input type="text" name="city">
+              <span>Address<span class="required">*</span></span>
+              <input type="text" name="address" prequired>
           </label>
-          <div class="f"><label>
-              <span>Expiration Month <span class="required">*</span></span>
-              <select name="selection">
-                <option value="select">Select </option>
-                <option value="AFG">Januaru</option>
-                <option value="ALA">February</option>
-                <option value="select">March</option>
-                <option value="AFG">April</option>
-                <option value="ALA">May</option>
-                <option value="select">June</option>
-                <option value="AFG">July</option>
-                <option value="ALA">August</option>
-                <option value="select">September</option>
-                <option value="AFG">October</option>
-                <option value="ALA">November</option>
-                <option value="ALA">December</option>
-              </select>
-            </label>
-            <label>
-              <span>Expiration Year <span class="required">*</span></span>
-              <select name="selection">
-                <option value="select">Select </option>
-                <option value="AFG">2021</option>
-                <option value="ALA">2022</option>
-                <option value="select">2023</option>
-                <option value="AFG">2024</option>
-                <option value="ALA">2025</option>
-                <option value="select">2026</option>
-                <option value="AFG">2027</option>
-              </select>
-            </label>
-          </div>
           <label>
-            <span>CVN<span class="required">*</span></span>
-            <input type="text" name="city">
+              <span>City<span class="required">*</span></span>
+              <input type="text" name="city" prequired>
           </label>
+          <input type="hidden" name="country" value="Sri Lanka">
+          <input type="submit" value="pay">
 
-        </form>
+      </form>
 
         <div class="Yorder">
           <table>

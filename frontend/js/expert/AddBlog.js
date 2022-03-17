@@ -28,14 +28,66 @@ var quill = new Quill('#editor', {
 
 var compatibleFishes = new Set();
 
+// get extention varibales
+var imgExtension1 = " ";
+
+$("#inventory-img1").change(function (e) {
+    var fileName = e.target.files[0].name;
+    fileExtension = fileName.split('.').pop();
+    imgExtension1 = fileExtension;
+ });
+
+ // get images
+ var imagebase64_1 = "";
+
+function encodeImageFileAsURL1(element) {  
+  let file = element.files[0];  
+  let reader = new FileReader();  
+  reader.onloadend = function() {  
+      imagebase64_1 = reader.result;  
+  }  
+  reader.readAsDataURL(file);  
+}
+
+
 $("#saveBlog").click(function(){
     let editor = document.querySelector('.ql-editor');
-    let req = {
-      "relaventFishes" : Array.from(compatibleFishes),
-      "article" : editor.innerHTML,
-      "countFish" : compatibleFishes.size
+    let errFlag = 0;
+    let errors = [];
+    let title = $("#titleForTheBlog").val();
+    if(title ==""){
+      errors.push("Title for the blog should be entered");
+      errFlag++;
     }
-    console.log("req"+req);
+    const acceptedFileTypes = ["png", "jpg", "jpeg"];
+    if(acceptedFileTypes.indexOf(imgExtension1.toLowerCase())===-1){
+        errors.push("Image 1 type must be jpg ,jpeg or png");
+        errFlag++;
+    }
+    let summary = $("#summary").val();
+    if(summary == ""){
+      errors.push("You Shuold enter the summary for the blog");
+      errFlag++;
+    }
+    if(summary.length > 200){
+      errors.push("length of the summary must be less than 200 characters");
+      errFlag++;
+    }
+    if(editor.innerHTML ==  ""){
+      errors.push("article should be entered using text editor");
+      errFlag++;
+    }
+    if(errFlag == 0){
+      let req = {
+        "relaventFishes" : Array.from(compatibleFishes),
+        "article" : editor.innerHTML,
+        "countFish" : compatibleFishes.size,
+        "summary" : summary,
+        "title" : title,
+        "pic" : imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
+        "picExtension":imgExtension1
+      }
+      console.log(req);
     loading();
     $.ajax({
       type: "POST",
@@ -47,7 +99,7 @@ $("#saveBlog").click(function(){
           loadingFinish();
           successMsg(["successfully added article"]);
           delay(function(){
-            window.location.replace("/aquaspace/frontend/src/exepert/articles.html");
+            window.location.replace("/aquaspace/frontend/src/expert/articles.html");
           },3000);
           
       },
@@ -55,7 +107,13 @@ $("#saveBlog").click(function(){
           loadingFinish();
           window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
       }
-  });  
+  });
+
+    }else{
+      errorShow(errors);
+    }
+    
+     
 });
 
 function getValuesOfFish(data) {

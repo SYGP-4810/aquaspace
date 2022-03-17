@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Admin.css">
+    <link rel="stylesheet" href="../../css/base.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
 </head>
 <body>
@@ -99,7 +100,7 @@
                 <div class="time">
                     <span>From</span><input type="date" id="from" name="from">
                     <span> </span>
-                    <span style="margin-left: 15px;">To</span><input type="date" id="from" name="from">
+                    <span style="margin-left: 15px;">To</span><input type="date" id="To" name="from">
                 </div>
             </div>
             <div class="small-carts">
@@ -187,9 +188,12 @@
             </div>
 		</section>
 	</div>
+    <div id="loadingIcon"></div>
+    <div id="alertDiv"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/base.js"></script>
     <script src="../../js/logo.js"></script>
     <script src="../../js/Store/StoreChart.js"></script>
-
+    <script src="../../js/Admin/adminReport.js"></script>
 </body>
 </html>

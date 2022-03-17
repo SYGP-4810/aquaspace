@@ -42,6 +42,69 @@ var userType = 0;
         if (userType == 1) {
           foo(true);
           getNotification(true);
+
+  //         var interval = 5000;
+ 
+  //   function doAjax(){
+  //     $.ajax({
+  //     type: "GET",
+  //     url: setUrl("Reg/Reg/getNotifs"),
+  //     contentType: "application/json; charset=utf-8",
+  //     dataType: "json",
+  //     success: function (data) {
+  
+  //       $('#notifs').html(``);
+  //       console.log(data);
+    
+  //       let count = 0;
+  //       if(data.length == 0){
+  //         $("#notifs").append(`
+  //       <li class="show_all" >
+  //                   <p class="link">You have no notifications</p>
+  //                 </li>`)
+  //       }
+  //       else{
+  //         data.forEach((element) => {
+  //         count++;
+  //         $("#notifs").append(`
+  //             <li onmouseover=popup(this) onmouseleave=closepopup()>
+  //             <div class="notify_icon">
+  //               <img src="../images/notif${count}.png" alt="">
+  //             </div>
+  //             <div class="notify_data">
+  //               <div class="sub_title">
+  //                 ${element.msg}
+  //               </div>
+               
+  //             </div>
+  //            <div class="close_btn" value="${element.id}"  onclick=hideNotif(this.getAttribute("value"))>
+  //                       <img src="../images/cross.png" alt="">
+  //                     </div>
+  //           </li>
+  //             `);
+  //       });
+    
+  //       $("#notifs").append(`
+  //       <li class="show_all" onclick=readAll()>
+  //                   <p class="link">Read All</p>
+  //                 </li>`)
+  //       }
+        
+  //     },
+  //     complete: function (data) {
+  //       // Schedule the next
+  //       setTimeout(doAjax, interval);
+  //   },
+  //     error: function (errMsg) {
+  //       window.location.replace("../src/Error/" + errMsg.status + ".html");
+  //     },
+  //   });
+
+  //   }
+    
+  // setTimeout(doAjax, interval);
+
+  
         } else {
           notRegAccount();
         }
@@ -212,8 +275,10 @@ $("#profile").click(function () {
 });
 
 function getNotification(loggedIn){
+  var interval = 2000;
   if(loggedIn == 1){
-    $.ajax({
+    function doAjax(){
+      $.ajax({
       type: "GET",
       url: setUrl("Reg/Reg/getNotifs"),
       contentType: "application/json; charset=utf-8",
@@ -258,21 +323,23 @@ function getNotification(loggedIn){
         }
         
       },
-    //   complete: function (data) {
-    //     // Schedule the next
-    //     setTimeout(doAjax, interval);
-    // },
-      // error: function (errMsg) {
-      //   window.location.replace("../src/Error/" + errMsg.status + ".html");
-      // },
+      complete: function (data) {
+        // Schedule the next
+        setTimeout(doAjax, interval);
+    },
+      error: function (errMsg) {
+        window.location.replace("../src/Error/" + errMsg.status + ".html");
+      },
     });
+
+    }
+    
   
 
   }
+  setTimeout(doAjax, interval);
 
 }
-
- 
 
 
 function readAll(){

@@ -59,7 +59,7 @@ $.ajax({
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function(data){
-        console.log(data.date);
+        // console.log(data.date);
         $("#lastPaidDate").html(`${data.date}`)
        
     },

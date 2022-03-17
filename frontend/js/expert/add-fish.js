@@ -80,8 +80,6 @@ function getValuesOfFish(data) {
   $('#fish_list').hide();
   // console.log($("#auto").val());
 
-  
-  
 }
 
 
@@ -274,6 +272,7 @@ $("#save").click(function(){
               "exen3" : imgExtension3,
               "exen4" : imgExtension4
             }
+            console.log(req);
     $.ajax({
         type: "POST",
         url:setUrl("Expert/Expert/addFishArticle"),

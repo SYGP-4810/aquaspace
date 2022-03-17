@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Admin.css">
+    <link rel="stylesheet" href="../../css/base.css">
 </head>
 <body>
 	<input type="checkbox" id="checkbox">
@@ -109,7 +110,11 @@
             <div style="position:relative; left:50px;">
                     <span>Last paid date : </span>
                     <span id="lastPaidDate"></span>
-                <button id="payNow" class="button" style="position:absolute; left:500px; background: rgb(14, 135, 5);">pay now </button>
+                <button id="payNow" class="button" style="position:absolute; left:500px; background: rgb(14, 135, 5); width: 13%">Get paysheet</button> </button>
+            </div>
+            <br>
+            <div style="position:relative; left:50px;">
+                <button id="paid" class="button" style="position:absolute; left:500px; background:orangered; width: 13%">Paid</button> </button>
             </div>
             <br>
             <br>
@@ -122,14 +127,16 @@
                 </tr>
             </table> 
 		</section>
-	</div>
-    <div id="loadingIcon" class="loading">
-        
+	</div> 
     </div>
+    <div id="alertDiv"></div>
+    <div id="loadingIcon" class="loading">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
     <script src="../../js/base.js"></script>
     <script src="../../js/Admin/expertContribution.js"></script>
     <script src="../../js/logo.js"></script>
+    <script src="../../js/Admin/AdminContPdf.js"></script> 
 </body>
 </html>
