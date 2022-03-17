@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Expert.css">
     <link rel="stylesheet" href="../../css/questions.css">
-    <link rel="stylesheet" href="../../css/">
+    <link rel="stylesheet" href="../../css/base.css">
 </head>
 
 <body>
@@ -87,47 +87,7 @@
             <div style="margin-top: 30px;" class="topics">
                 <p id="blog-topic">Verify Post</p>
             </div>
-            <div style="margin-left: 90px; margin-top: 50px; margin-right: 400px;">
-                <img style="width: 200px;" src="../../images/tank/type1.jpg" alt="">
-                <br>
-                <label for="uname" style="font-size: 15px;">Blue Discus Fish</label><br>
-                <input style="font-size: 13px;
-                            padding:0.4em;
-                            outline: none;
-                            border-radius: 0;
-                            border: 1px solid #ccc;
-                            color:#555;" type="text" id="uname" name="uname" placeholder="User entered name">
-                <br>
-                <div><input style="background-color: #ec7f71; /* Green */
-                        width: 80px;
-                        border: none;
-                        border-radius: 4px;
-                        color: white;
-                        padding: 4px;
-                        text-align: center;
-                        text-decoration: none;
-                        display: inline-block;
-                        font-size: 15px;
-                        margin-top: 20px;
-                        cursor: pointer;" type="submit" class="button" value="REJECT">
-                <input style="background-color: #688aca; /* Green */
-                            width: 80px;
-                            border: none;
-                            border-radius: 4px;
-                            color: white;
-                            padding: 4px;
-                            text-align: center;
-                            text-decoration: none;
-                            display: inline-block;
-                            font-size: 15px;
-                            margin-top: 20px;
-                          
-                            cursor: pointer;" type="submit" class="button" value="ACCEPT"></div>
-                
-
-
-
-
+            <div style="margin-left: 90px; margin-top: 50px; margin-right: 400px;" id="fishData">
             </div>
 
 
@@ -137,7 +97,10 @@
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../../js/expert/requests.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/expert/verify-post.js"></script>
+    <div id="alertDiv"></div>
+    <div id="loadingIcon"></div>
 </body>
 
 </html>

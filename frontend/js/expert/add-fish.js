@@ -80,8 +80,6 @@ function getValuesOfFish(data) {
   $('#fish_list').hide();
   // console.log($("#auto").val());
 
-  
-  
 }
 
 

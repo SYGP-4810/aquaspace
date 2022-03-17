@@ -127,10 +127,14 @@ li{
     padding-left: 10px;
 }
 
-.loading > img{
-  position:fixed;
-     left: 50%;
-     top:  50%;
-     width : 50%;
-     height : 50%;
+#loadingIcon {
+  position: fixed;
+  top: 40%;
+  left: 40%;
+  width: 60%;
+}
+
+#loadingIcon > img{
+  height: 100px;
+  width: 100px;
 }
