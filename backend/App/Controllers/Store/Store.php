@@ -591,11 +591,21 @@ class Store extends \Core\Controller
 
     //save store item sell or not
     public function saveStoreFrontAction()
-    {
-        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'"));
-        $result1 = $stmt->fetch();
-        $id = $result1['id'];
-        
+    {        
+        foreach ($this->data['active'] as $pid) {
+            $updateProduct = [
+                "status" => 1                
+            ];
+            $this->exec($this->update('products', $updateProduct, "id='" . $pid . "'"));
+        };
+
+        foreach ($this->data['deactive'] as $pid) {
+            $updateProduct = [
+                "status" => 2                
+            ];
+            $this->exec($this->update('products', $updateProduct, "id='" . $pid . "'"));
+        };
+
         View::response("success");
     }
 
@@ -808,4 +818,16 @@ class Store extends \Core\Controller
         View::response("success");
         
     }
+
+    public function getStoreReport()
+    {    
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
+        $result = $stmt->fetch();
+        $id = $result['id'];
+        $stmt = $this->execute($this->get('productS', "*", "auth_id ='" . $id . "'"));
+        $result = $stmt->fetchAll();
+        View::response($result);
+        
+    }
+
 }
