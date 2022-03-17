@@ -20,14 +20,18 @@
     text-align: left;
 }
 
-th, td {
+th{
     font-size: .9rem;
+    font-weight: 500;
     padding: 1rem 1rem;
-    color: #29311d;
+    
+
 }
 
 td {
     font-size: .8rem;
+    padding: 1rem 1rem;
+    color: #29311d;
 }
 
 tbody tr:nth-child(even) {
@@ -70,7 +74,12 @@ tbody tr:nth-child(even) {
 }
 
 td button {
-    padding: 3px;
+    padding: 0 3px 0 3px;
+    font-size: 12px;
+    background-color: rgb(228, 228, 228);
+    outline: none;
+    border: 1px solid rgb(201, 199, 199);
+    border-radius: 3px;
 }
 
 

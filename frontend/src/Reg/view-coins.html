@@ -14,7 +14,7 @@
         <input type="checkbox" id="checkbox">
         <header class="header">
             <div class="u-name">
-                <img class="logo" src="../../images/logo.png"><span class="logo">AquaSpace</span>
+                <img class="logo" src="../../images/logo.png"><span class="logo" >AquaSpace</span>
                 <label for="checkbox">
                     <i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
                 </label>
@@ -90,68 +90,17 @@
                 </ul>
             </nav>
             <section class="section-1">
-                <div class="topics">
-                    <p id="cart">Shopping Cart</p>
-                    <i class="fas fa-chevron-right"></i>
-                    <p id="checkout">Checkout Details</p>
-                </div>
-                <div class="shopping-cart">
-                    <div class="table-responsive">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Product</th>
-                                    <th>Unit Price</th>
-                                    <th>Quantity</th>
-                                    <th>Subtotal</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>Overhead Filter</td>
-                                    <td>Rs3030</td>
-                                    <td>2</td>
-                                    <td>Rs6060</td>
-                                    <td><i class="far fa-trash-alt"></i></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>Overhead Filter</td>
-                                    <td>Rs3030</td>
-                                    <td>2</td>
-                                    <td>Rs6060</td>
-                                    <td><i class="far fa-trash-alt"></i></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>Bio Balls</td>
-                                    <td>Rs30</td>
-                                    <td>22</td>
-                                    <td>Rs6060</td>
-                                    <td><i class="far fa-trash-alt"></i></td>
-                                </tr> -->
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <button id="proceed">PROCEED <i class="fas fa-chevron-right"></i><i
-                            class="fas fa-chevron-right"></i></button>
-                </div>
-                <div class="checkout cart-checkout">
+                <div class="checkout">
                     <div class="d-flex">
                         
                         <form method="post" action="https://sandbox.payhere.lk/pay/checkout" >
                             <input type="hidden" name="merchant_id" value="1219322"> <!-- Replace your Merchant ID -->
-                            <input type="hidden" name="return_url" value="http://localhost/aquaspace/frontend/src/index.html">
+                            <input type="hidden" name="return_url" value="http://localhost/aquaspace/frontend/src/Reg/questions.html">
                             <input type="hidden" name="cancel_url" value="http://localhost/aquaspace/frontend/src/Reg/cart.html">
                             <input type="hidden" name="notify_url" value="http://localhost/aquaspace/frontend/src/index.html">
-                            <input type="text" name="items" value="Door bell wireless" hidden>
+                            <input type="text" name="items" value="Coins" hidden>
                             <input type="hidden" name="currency" value="LKR">
-                            <input type="number" name="amount" hidden value="15000">  
+                            <input type="number" name="amount" hidden id="form-amount">  
                             <input type="text" name="order_id" value="ItemNo12345" hidden>
                             <label>
                                 <span class="fname">First Name<span class="required">*</span></span>
@@ -178,15 +127,24 @@
                                 <input type="text" name="city" prequired>
                             </label>
                             <input type="hidden" name="country" value="Sri Lanka">
-                            <input type="submit" value="pay" onclick="payhere()">
+                            <input type="submit" value="pay" onclick="addCoins()">
                             
                         </form> 
                         <div class="Yorder">
                             <table id="order-list">
-                                <!---<tr>
-                                    <th colspan="2">Order 1</th>
-                                </tr>
                                 <tr>
+                                    <th colspan="2">Payment</th>
+                                </tr>
+                                <tr id="coin-amount">
+                                   
+                                </tr>
+                                <tr id="coin-rate">
+                                   
+                                </tr>
+                                <tr id="total">
+                                    
+                                </tr>
+                              <!---- <tr>
                                     <td>Goldfish x 1(Qty)</td>
                                     <td>3500.00</td>
                                 </tr>
@@ -244,15 +202,121 @@
                         </div><!-- Yorder -->
                     </div>
                 </div>
+               <div class="topics">
+                    <p id="coins">Coins</p>
+                    <i class="fas fa-chevron-right"></i>
+                    <p id="checkout">Buy Coins</p>
+                    <i class="fas fa-chevron-right"></i>
+                    <p id="complete">Payment Complete</p>
+                </div>
+                <div class="coins">
+                    <h3 style="font-size: 30px; font-weight: 500;">You have a total of</h3>
+                    <img src="../../images/gold-coin.png" alt="">
+                    <div><h1 class="coin-count">100</h1><h1>Coins</h1></div>
+                    
+                </div> 
+       <!--           <div class="checkout">
+                    <div class="d-flex">
+                        <form action="" method="">
+                            <label>
+                                <span class="fname">First Name<span class="required">*</span></span>
+                                <input type="text" name="fname">
+                            </label>
+                            <label>
+                                <span class="lname">Last Name <span class="required">*</span></span>
+                                <input type="text" name="lname">
+                            </label>
+                            <label>
+                                <span>Address Line 1 <span class="required">*</span></span>
+                                <input type="text" name="houseadd" prequired>
+                            </label>
+                            <label>
+                                <span>Address Line 2 <span class="required">*</span></span>
+                                <input type="text" name="city">
+                            </label>
+                            <label>
+                                <span>Card Type<span class="required">*</span></span>
+                                <input type="radio" name="dbt" value="dbt" checked><i class="fab fa-cc-visa ms"></i>
+                                <input type="radio" name="dbt" value="dbt" checked><i class="fab fa-cc-mastercard"></i>
+                            </label>
+                            <label>
+                                <span>Card Number <span class="required">*</span></span>
+                                <input type="text" name="city">
+                            </label>
+                            <div class="f"><label>
+                                    <span>Expiration Month <span class="required">*</span></span>
+                                    <select name="selection">
+                                        <option value="select">Select </option>
+                                        <option value="AFG">Januaru</option>
+                                        <option value="ALA">February</option>
+                                        <option value="select">March</option>
+                                        <option value="AFG">April</option>
+                                        <option value="ALA">May</option>
+                                        <option value="select">June</option>
+                                        <option value="AFG">July</option>
+                                        <option value="ALA">August</option>
+                                        <option value="select">September</option>
+                                        <option value="AFG">October</option>
+                                        <option value="ALA">November</option>
+                                        <option value="ALA">December</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <span>Expiration Year <span class="required">*</span></span>
+                                    <select name="selection">
+                                        <option value="select">Select </option>
+                                        <option value="AFG">2021</option>
+                                        <option value="ALA">2022</option>
+                                        <option value="select">2023</option>
+                                        <option value="AFG">2024</option>
+                                        <option value="ALA">2025</option>
+                                        <option value="select">2026</option>
+                                        <option value="AFG">2027</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <label>
+                                <span>CVN<span class="required">*</span></span>
+                                <input type="text" name="city">
+                            </label>
 
+                        </form>
+
+                        <div class="Yorder">
+                            <table>
+                                <tr>
+                                    <th colspan="2">Your order</th>
+                                </tr>
+                                <tr>
+                                    <td>Product Name x 2(Qty)</td>
+                                    <td>$80.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Product Name x 1(Qty)</td>
+                                    <td>$20.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Subtotal</td>
+                                    <td>$100.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Shipping</td>
+                                    <td>Free shipping</td>
+                                </tr>
+                            </table><br>
+                            <button id="order" type="button">Buy Coins</button>
+                        </div>-->
+                    </div>
+                </div>
+
+              
 
 
             </section>
         </div>
     </div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSmzq86uUiJERkmaTeVryt4pEu8pU8xo0&callback=initMap">
-    </script>
-    <script src="../../js/Reg/cart.js"></script>
+
+    <script src="../../js/Reg/coins.js"></script>
     <script src="../../js/logo.js"></script>
 
 </body>

@@ -15,7 +15,7 @@
         <input type="checkbox" id="checkbox">
         <header class="header">
             <div class="u-name">
-                <img class="logo" src="../../images/logo.png"><span class="logo" >AquaSpace</span>
+                <img class="logo" src="../../images/logo.png"><span class="logo">AquaSpace</span>
                 <label for="checkbox">
                     <i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
                 </label>
@@ -46,12 +46,12 @@
                             <span>Reset Password</span>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="notification.html">
                             <i class="fas fa-bell" aria-hidden="true"></i>
                             <span>Notification Settings</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="active-posts.html">
                             <i class="fas fa-money-check"></i>
@@ -82,23 +82,63 @@
                             <span>Questions</span>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="coins.html">
                             <i class="fas fa-coins" aria-hidden="true"></i>
                             <span>Coins</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </nav>
             <section class="section-1">
                 <div class="heading">
                     <h2>Questions</h2>
-                    <form method="get" action="ask-question.html">
-                        <button type="submit">Ask</button>
+
+                    <form >
+                        <div id="btn">Ask</div>
+                        <div id="btn-popup"></div>
                     </form>
-                </div>
-                <div class="questions">
                     
+                </div>
+              
+                <div class="coin-info">
+                    <div class="coin-info-div">
+                        <div>
+                            <span>Coin Count</span>
+                            <!-- <span style="margin-left: 20px;height: 30px; ">100</span> -->
+                            <input type="text" readonly name="" id="count" >
+                        </div>
+
+                    </div>
+                    <div class="coin-info-div">
+                        <div>
+                            <span>Coin Price</span>
+                            <!-- <span style="margin-left: 20px;height: 30px; ">100</span> -->
+                            <input  type="text" readonly name="" id="price" value="50">
+                        </div>
+
+                    </div>
+                    <div class="coin-info-div">
+                        <div>
+                            <span>Coins Per Question</span>
+                            <!-- <span style="margin-left: 20px;height: 30px; ">100</span> -->
+                            <input type="text" readonly name="" id="per-question" value="10">
+                        </div>
+
+                    </div>
+                    <div class="coin-info-div">
+                        <div>
+                            <span>Buy Coins</span>
+                            <!-- <span style="margin-left: 20px;height: 30px; ">100</span> -->
+                            <input id="coin" type="number" min="0">
+                            <i id="buy-coins" class="fas fa-arrow-right"></i>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="questions">
+
                 </div>
 
 

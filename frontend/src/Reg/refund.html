@@ -15,7 +15,7 @@
         <input type="checkbox" id="checkbox">
         <header class="header">
             <div class="u-name">
-                <img class="logo" src="../../images/logo.png"><span class="logo" >AquaSpace</span>
+                <img class="logo" src="../../images/logo.png"><span class="logo">AquaSpace</span>
                 <label for="checkbox">
                     <i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
                 </label>
@@ -46,12 +46,12 @@
                             <span>Reset Password</span>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="notification.html">
                             <i class="fas fa-bell" aria-hidden="true"></i>
                             <span>Notification Settings</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="active-posts.html">
                             <i class="fas fa-money-check"></i>
@@ -82,12 +82,12 @@
                             <span>Questions</span>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="coins.html">
                             <i class="fas fa-coins" aria-hidden="true"></i>
                             <span>Coins</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </nav>
             <section class="section-1">
@@ -104,28 +104,113 @@
                                     <th>Status</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
+                            <tbody id="table">
+                                <!-- <tr>
                                     <td>129387</td>
                                     <td>Lorem Ipsum</td>
                                     <td>xx/xx/xxxx</td>
                                     <td>$60</td>
                                     <td>Pending</td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
 
                     </div>
-                    <form action="">
-                        <div>
-                         <label for="appeal">Reason</label>
-                        <textarea id="appeal" name="w3review" rows="6" cols="100"></textarea>   
-                        </div>
+                    <!-- <form action="">
+                        
+                         <label>
+                            <span class="fname">Reason<span class="required">*</span></span>
+                            <textarea id="appeal" name="w3review" rows="6" cols="100"></textarea>   
+                         </label>
+                        
+                        
+                        <label>
+                            <span class="fname">You recieved your items?<span class="required">*</span></span>
+                            <input type="radio" name="item" value="dbt" checked>Yes
+                            <input type="radio" name="item" value="dbt" checked>No
+                          </label>
                         <br><br>
-                        <input type="submit" value="Submit">
-                    </form>
-                </div>
+                        <input type="submit" value="Submit">4 -->
 
+
+                    <div class="checkout">
+                        <div class="d-flex">
+                            <div class="form">
+                                <label>
+                                    <span>You recieved your items?<span class="required">*</span></span>
+                                    <input id="delivered" type="radio" name="item" value="1" checked><span>Yes</span>
+                                    <input id="not_delivered" type="radio" name="item" value="2"><span>No</span>
+                                </label>
+                                <label>
+                                    <span>Reason<span class="required">*</span></span>
+                                    <textarea id="reason" rows="6" cols="100"></textarea>
+                                </label>
+                                <label id="img-label">
+                                    <span>Upload your images<span class="required">*</span></span>
+                                </label>
+
+                                <!-- <label id="img-label">
+                                    <span>Upload your images<span class="required">*</span></span>
+                                    <div style="display: flex; flex-direction: column; position: relative; left: -360px;"><input type="file" id="img1" accept="image/png, image/jpeg">
+                                    <input type="file" id="img2" accept="image/png, image/jpeg">
+                                    <input type="file" id="img3" accept="image/png, image/jpeg"></div>
+                                    
+                                </label> -->
+
+                                <div id="img">
+                                    <input type="file" id="img1" accept="image/png, image/jpeg"  onchange="encodeImageFileAsURL1(this)" >
+                                    <input type="file" id="img2" accept="image/png, image/jpeg"  onchange="encodeImageFileAsURL2(this)" >
+                                    <input type="file" id="img3" accept="image/png, image/jpeg"  onchange="encodeImageFileAsURL3(this)" >
+
+                                </div>
+
+
+
+                                <!-- <div class="wrapper">
+                                    <div class="box">
+                                        <div class="js--image-preview"></div>
+                                        <div class="upload-options">
+                                            <label>
+                                                <input id="img1" type="file" class="image-upload"
+                                                    onchange="encodeImageFileAsURL1(this)" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <div class="js--image-preview"></div>
+                                        <div class="upload-options">
+                                            <label>
+                                                <input id="img2" type="file" class="image-upload"
+                                                    onchange="encodeImageFileAsURL2(this)" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <div class="js--image-preview"></div>
+                                        <div class="upload-options">
+                                            <label>
+                                                <input id="img3" type="file" class="image-upload"
+                                                    onchange="encodeImageFileAsURL3(this)" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <div class="js--image-preview"></div>
+                                        <div class="upload-options">
+                                            <label>
+                                                <input id="img4" type="file" class="image-upload"
+                                                    onchange="encodeImageFileAsURL4(this)" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div> -->
+
+                                <button id="btn">Submit</button>
+
+                            </div>
+
+                        </div>
+                    </div>
 
 
 
@@ -133,7 +218,9 @@
         </div>
     </div>
 
-    <script src="../../js/reg-dashboard.js"></script>
+    <script src="../../js/Reg/refund.js"></script>
+    <script src="../../js/Reg/refund-functions.js"></script>
+
     <script src="../../js/logo.js"></script>
 
 </body>
