@@ -72,21 +72,22 @@ $("#save").click(function() {
     let req = {"active":active,
                "deactive":deactive
             }
-            console.log(req);
-    // $.ajax({
-    //     type: "POST",
-    //     url:setUrl("Store/Store/saveStoreFront"),
-    //     contentType: "application/json; charset=utf-8",
-    //     data: JSON.stringify(req),
-    //     dataType: "json",
-    //     success: function(data){         
-    //         successMsg(["Save Changes"]);
-    //         delay(function(){
-    //         window.location.replace("/aquaspace/frontend/src/Store/StoreStoreFront.html")
-    //         },5000);
-    //     },
-    //     error: function(errMsg) {
-    //         window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
-    //     }
-    // });
+            // console.log(req);
+    $.ajax({
+        type: "POST",
+        url:setUrl("Store/Store/saveStoreFront"),
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(req),
+        dataType: "json",
+        success: function(data){  
+            // console.log(data);       
+            successMsg(["Save Changes"]);
+            delay(function(){
+            window.location.replace("/aquaspace/frontend/src/Store/StoreStoreFront.html")
+            },5000);
+        },
+        error: function(errMsg) {
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+        }
+    });
 });

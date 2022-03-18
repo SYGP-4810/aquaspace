@@ -1,3 +1,25 @@
+function setUrl(text){
+  return "/aquaspace/backend/public/index.php?"+text;
+}
+
+$(document).ready(function() {
+  $.ajax({
+      type: "GET",
+      url:setUrl("Store/Store/getStoreReport"),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      async: false,
+      success: function(data){
+          
+      },
+      error: function(errMsg) {
+           window.location.replace("../src/Error"+errMsg.status+".html");
+      }
+  });
+
+  
+});
+
 let DATA_COUNT = 30;
 let labels = [];
 for (let i = 1; i <= DATA_COUNT; ++i) {
