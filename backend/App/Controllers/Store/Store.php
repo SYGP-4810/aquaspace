@@ -819,14 +819,38 @@ class Store extends \Core\Controller
         
     }
 
-    public function getStoreReport()
+    // public function getStoreReportAction()
+    // {    
+    //     $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
+    //     $result = $stmt->fetch();
+    //     $id = $result['id'];
+    //     $stmt = $this->execute($this->get('productS', "*", "auth_id ='" . $id . "'"));
+    //     $result = $stmt->fetchAll();
+    //     View::response($result);
+        
+    // }
+
+    public function getHomeAction()
     {    
         $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
         $result = $stmt->fetch();
         $id = $result['id'];
-        $stmt = $this->execute($this->get('productS', "*", "auth_id ='" . $id . "'"));
+
+        $stmt = $this->execute($this->get('selling_order', "id", "seller_auth_id =". $id ." AND status = 1"));
         $result = $stmt->fetchAll();
-        View::response($result);
+        $oderCount=count($result);
+
+        $stmt = $this->execute($this->get('product_quetion', "id", "store_auth_id =". $id ." AND reply = NULL"));
+        $result = $stmt->fetchAll();
+        $questionCount=count($result);
+
+        $stmt = $this->execute("SELECT refund.id FROM refund,selling_order WHERE refund.product_order_id = selling_order.id AND selling_order.buyer_auth_id = '".$id."'");
+        $result = $stmt->fetchAll();
+        $refundCount=count($result);
+
+        $count = array("order"=> $oderCount, "question"=> $questionCount, "refund"=>$refundCount);
+
+        View::response($count);
         
     }
 
