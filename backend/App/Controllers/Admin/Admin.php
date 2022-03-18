@@ -467,19 +467,18 @@ class Admin extends \Core\Controller
         $sqlBestStore = "SELECT store.company_name , user_auth.create_date, SUM(selling_order.amount) AS sum_amount FROM store, user_auth, selling_order WHERE user_auth.id = store.auth_id AND user_auth.id = selling_order.seller_auth_id GROUP BY user_auth.id ORDER BY sum_amount LIMIT 5 ";
         $bestCustomerList = $this->execute($sqlBestStore)->fetchAll();
         $totalPointExpert = (int)$this->countTotalContributions();
-        $sqlBestExpert = ""; //have to write
         $bestCustomerList = $this->execute($sqlBestStore)->fetchAll();
-        $sqlDailySales = "SELECT SUM(amount) FROM subscription WHERE date >= '".$this->data['dateFrom']."' AND date<= '".$this->data['dateTo']."'GROUP BY date";
+        $sqlDailySales = "SELECT SUM(price) FROM subscription WHERE date_from >= '".$this->data['dateFrom']."' AND date_to <= '".$this->data['dateTo']."' GROUP BY date_from ORDER BY date_from";
         $dailySales = $this->execute($sqlDailySales)->fetchAll();
-        $sqlDailyProductAdding = "SELECT COUNT(id) AS daily_product_adding FROM products WHERE created_date >= '".$this->data['dateFrom']."' AND created_date <= '".$this->data['dateTo']."' GROUP BYORDER BY created_date";
+        $sqlDailyProductAdding = "SELECT COUNT(id) AS daily_product_adding FROM products WHERE created_date >= '".$this->data['dateFrom']."' AND created_date <= '".$this->data['dateTo']."' GROUP BY created_date ORDER BY created_date";
         $dailyProductAdding = $this->execute($sqlDailyProductAdding)->fetchAll();
-        $sqlBestExpert = "SELECT (COUNT(expert_question.id)*2 + COUNT(products.id)*3 + COUNT(fish_article.id)*10) AS point, expert.first_name, expert.last_name, user_auth.create_date FROM user_auth, expert, expert_question,fish_article,products WHERE expert.auth_id = user_auth.id AND user_auth.id = expert_question.replyer_id AND user_auth.id = fish_article.auth_id AND products.verifier_id = user_auth.id GROUP BY user_auth.id ORDER BY point LIMIT 5";
+        $sqlBestExpert = "SELECT (COUNT(expert_question.id)*2 + COUNT(products.id)*3 + COUNT(fish_article.id)*10) AS point, expert.first_name, expert.last_name, user_auth.create_date FROM user_auth, expert, expert_question,fish_article,products WHERE expert.auth_id = user_auth.id AND user_auth.id = expert_question.replyer_id AND user_auth.id = fish_article.auth_id AND products.verifier_id = user_auth.id GROUP BY user_auth.id ORDER BY point DESC LIMIT 5";
         $bestExpertList =  $this->execute($sqlBestExpert)->fetchAll();
         $res = [
             "subscriptionSum" => $subscriptionSum,
             "totalNumOfProducts" => $totalNumberOfProducts,
             "totalNumOfUsers" => $totalNumberOfUsers,
-            "bestCustomerList" => $bestCustomerList,
+            "bestStoreList" => $bestCustomerList,
             "totalPointExpert" => $totalPointExpert,
             "dailySales" => $dailySales,
             "dailyProductAdding" => $dailyProductAdding,
