@@ -472,8 +472,42 @@ class Admin extends \Core\Controller
         $dailySales = $this->execute($sqlDailySales)->fetchAll();
         $sqlDailyProductAdding = "SELECT COUNT(id) AS daily_product_adding FROM products WHERE created_date >= '".$this->data['dateFrom']."' AND created_date <= '".$this->data['dateTo']."' GROUP BY created_date ORDER BY created_date";
         $dailyProductAdding = $this->execute($sqlDailyProductAdding)->fetchAll();
-        $sqlBestExpert = "SELECT (COUNT(expert_question.id)*2 + COUNT(products.id)*3 + COUNT(fish_article.id)*10) AS point, expert.first_name, expert.last_name, user_auth.create_date FROM user_auth, expert, expert_question,fish_article,products WHERE expert.auth_id = user_auth.id AND user_auth.id = expert_question.replyer_id AND user_auth.id = fish_article.auth_id AND products.verifier_id = user_auth.id GROUP BY user_auth.id ORDER BY point DESC LIMIT 5";
-        $bestExpertList =  $this->execute($sqlBestExpert)->fetchAll();
+        $sqlListOfExpert = "SELECT user_auth.id AS id , expert.first_name AS first_name , expert.last_name AS last_name, user_auth.create_date AS date FROM expert,user_auth WHERE user_auth.id = expert.auth_id";
+        $listOfExpert = $this->execute($sqlListOfExpert)->fetchAll();
+        $sqlPostPayment = "SELECT SUM(post_payments.payment) AS post_payment FROM post_payments,products WHERE products.id = post_payments.product_id AND products.created_date >= '" . $this->data['dateFrom']."' AND products.created_date <= '" . $this->data['dateTo']."'";
+        $postSum = $this->execute($sqlPostPayment)->fetch()['post_payment'];
+        $i = 0;
+        foreach ($listOfExpert as $expert){
+            $countOfQuestionSql = 
+                "SELECT COUNT(expert_question.id) FROM expert_question WHERE expert_question.replyer_id = '". $expert['id']."'";
+            $countOfQuestion = $this->execute($countOfQuestionSql)->fetch()['COUNT(expert_question.id)'];
+            $countOfArticleSql = 
+                "SELECT COUNT(id) FROM fish_article WHERE auth_id = '".$expert['id']."'";
+            $countOfArticle = $this->execute($countOfArticleSql)->fetch()['COUNT(id)'];
+            $countOfProductSql = 
+                "SELECT COUNT(id) FROM products WHERE verifier_id";
+            $countOfProduct = $this->execute($countOfProductSql)->fetch()['COUNT(id)'];
+            $listOfExpert[$i]["totalPoint"] = $countOfArticle*10+$countOfProduct*2+$countOfQuestion*3; 
+        }
+
+    do
+	{
+		$swapped = false;
+		for( $i = 0, $c = count( $listOfExpert ) - 1; $i < $c; $i++ )
+		{
+			if( $listOfExpert[$i]["totalPoint"] < $listOfExpert[$i+1]["totalPoint"] )
+			{
+				list( $listOfExpert[$i + 1], $listOfExpert[$i] ) =
+						array( $listOfExpert[$i], $listOfExpert[$i + 1] );
+				$swapped = true;
+			}
+		}
+	}
+	while( $swapped );
+    for( $i = 0; $i <5;$i++ ) {
+        $bestExpertList[$i] = $listOfExpert[$i];
+    }
+    $bestExpertList = array_slice($listOfExpert, 0, 5, true);
         $res = [
             "subscriptionSum" => $subscriptionSum,
             "totalNumOfProducts" => $totalNumberOfProducts,
@@ -482,8 +516,10 @@ class Admin extends \Core\Controller
             "totalPointExpert" => $totalPointExpert,
             "dailySales" => $dailySales,
             "dailyProductAdding" => $dailyProductAdding,
-            "bestExpertList" => $bestExpertList
+            "bestExpertList" => $bestExpertList,
+            "postSum" => $postSum
         ];
+        
         View::response($res);
     }
 
