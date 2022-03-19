@@ -351,7 +351,7 @@ $("#InventorySaveF").click(function(){
                 "exen4" : imgExtension4,
                 "type" : "1"
             }
-            console.log(req);
+            // console.log(req);
             $.ajax({
                 type: "POST",
                 url:setUrl("Store/Store/addInventory"),

@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Store.css">
+    <link rel="stylesheet" href="../../css/base.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -92,74 +93,63 @@
                     <table class="o-detail">
                         <tr>
                             <td>Order No</td>
-                            <td>254646</td>
+                            <td id="order-no"></td>
                         </tr>
                         <tr>
                             <td>Custormer Name</td>
-                            <td>Rashmika Lakshan</td>
+                            <td id="name"></td>
                         </tr>
                         <tr>
                             <td>Custormer Address</td>
-                            <td>No 123, Jaya Mw, Hakmana</td>
+                            <td id="address"></td>
                         </tr>
                         <tr>
                             <td>Custormer Telephone No</td>
-                            <td>077-2821117</td>
+                            <td id="telephone"></td>
                         </tr>
                         <tr>
-                            <td>Delivery Methord</td>
-                            <td>In Store Delivery Service</td>
+                            <td>Delivery status</td>
+                            <td id="delivery-status"></td>
                         </tr>
                     </table>
                     <h3>Products</h3>
                     <div class="o-product">
-                        <div class="p-card">
-                            <img src="../../images/storepic.jpg" alt="">
-                            <label for="text">
-                                <span style="font-weight: 600;">Name: -</span>
-                                <span>Seachem Prime</span>
-                            </label>
-                            <label for="text">
-                                <span style="font-weight: 600;">Price: -</span>
-                                <span>Rs 250.00</span>
-                            </label>
-                            <label for="text">
-                                <span style="font-weight: 600;">Quantity: -</span>
-                                <span>2</span>
-                            </label>
+                        <div class="p-card" id="refund">
+                            
+                            
                         </div>
-                        <div class="p-card">
-                            <img src="../../images/pic1.jpg" alt="">
+                        <div class="right">
                             <label for="text">
-                                <span style="font-weight: 600;">Name: -</span>
-                                <span>Kaytee Koi's Fish Food</span>
+                                <span style="font-weight: 500;">Name: -</span>
+                                <span id="p-name"></span>
                             </label>
                             <label for="text">
-                                <span style="font-weight: 600;">Price: -</span>
-                                <span>Rs 550.00</span>
+                                <span style="font-weight: 500;">Price: -</span>
+                                <span id="p-price"></span>
                             </label>
-                            <label for="text">
-                                <span style="font-weight: 600;">Quantity: -</span>
-                                <span>5</span>
-                            </label>
+                            <br>
                         </div>
                     </div>
                     <table class="o-detail">
                         <tr>
-                            <td>Reason</td>
-                            <td style="background-color: rgba(136, 136, 136, 0.185);"><span class="reason">this items dosent work.can you refund pleace.</span></td>
+                            <td style="font-weight: bold;">Reason</td>
+                            <td style="background-color: rgba(136, 136, 136, 0.185);"><span class="reason" id="rea">this items dosent work.can you refund pleace.</span></td>
                         </tr>
                     </table>
-                    <div class="btn">
-                    <input type="submit" class="button" value="REFUND">
-                    <input type="submit" class="del-button" value="REJECT">
+                    <div class="btn" id="conf">
+                        <input type="submit" class="button" value="REFUND" id="refund-accept" >
+                        <input type="submit" class="del-button" value="REJECT" id="refund-reject">
                     </div>
                 </div>
-            </div>        
+            </div>  
+            <div id="alertDiv"></div>      
 		</section>
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/base.js"></script>
     <script src="../../js/logo.js"></script>
+    <script src="../../js/Store/StoreRefund.js"></script>
+
 </body>
 </html>
 

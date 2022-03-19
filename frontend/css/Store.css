@@ -57,6 +57,7 @@
   cursor: pointer;
   opacity: 0.9;
   border: 2px solid #495057;
+  margin-bottom: 10px;
 }
 
 .nav-button{
@@ -74,6 +75,7 @@
   opacity: 0.9;
   float: right;
   margin-right: 15px;
+  margin-bottom: 10px;
 }
 
 .del-button{
@@ -91,6 +93,7 @@
   opacity: 0.9;
   float: right;
   margin-right: 15px;
+  margin-bottom: 10px;
 }
 
 .button:hover,.can-button:hover,.nav-button:hover {
@@ -997,11 +1000,19 @@ div > label {
   margin-bottom: 10px;
 }
 
-.right {
+.right{
   display: flex;
   flex-direction: column;
   margin-left: 10px;
   justify-content: center;
+}
+
+#refund  img:hover {
+    transform: scale(2.5);
+}
+
+#refund img{
+  margin-right: 10px;
 }
 
 .po-card {
