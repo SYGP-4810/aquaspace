@@ -624,8 +624,47 @@ class Reg extends \Core\Controller
         $this->exec($this->update('notification', $dataToUpdate, "auth_id='" . $id . "' AND id = '" . $this->data['id'] ."'"));
         View::response("success");  
     }
+
+    public function getArticlesAction(){
+        // $stmt = $this->execute($this->get('article', "*", "status = 1"));
+        $stmt = $this->execute("SELECT id, pic, summary, category, title, DATE(date) AS date FROM article WHERE status=1 ");
+        View::response($stmt->fetchAll());
+    }
+    public function getLatestArticlesAction(){
+        $stmt = $this->execute("SELECT id, pic, summary, category, title, DATE(date) AS date FROM article WHERE status=1 ORDER BY id DESC LIMIT 3");
+        View::response($stmt->fetchAll());
+    }
     public function getArticleAction(){
         View::response($this->execute($this->get('article','*',"id='" . $this->data['id'] ."'"))->fetch());
+    }
+
+    public function getFishDataAction(){
+        $stmt = $this->execute($this->get('fish_article','*'));
+        View::response($stmt->fetchAll());
+    }
+
+    public function getNativeCountriesAction(){
+        $stmt = $this->execute($this->get('native_to','country',"fish_article_id='" . $this->data['id'] ."'"));
+        View::response($stmt->fetchAll());
+    }
+
+    public function getOtherNameOfFishAction(){
+        $stmt = $this->execute($this->get('other_names_of_fish','name',"fish_article_id='" . $this->data['id'] ."'"));
+        View::response($stmt->fetchAll());
+    }
+
+    public function getCompatibleFishAction(){
+        $id = $this->data['id'];
+        $stmt = $this->execute(" SELECT fish_article.name
+        FROM compatible_fish
+        INNER JOIN fish_article ON fish_article.id = compatible_fish.compatible_fish_id
+        WHERE compatible_fish.fish_article_id = $id
+        ") ;
+        View::response($stmt->fetchAll());
+    }
+
+    public function getFishDataPostAction(){
+        View::response($this->execute($this->get('fish_article','*',"id='" . $this->data['id'] ."'"))->fetch());
     }
 
     public function getTransactionsAction(){
@@ -695,7 +734,7 @@ class Reg extends \Core\Controller
 
     public function getActivePostsAction(){
         $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
-        $stmt = $this->execute($this->get("products","*", "auth_id = '" . $id . "' AND status = 1 "))->fetchAll();
+        $stmt = $this->execute($this->get("products","*", "auth_id = '" . $id . "'"))->fetchAll();
         View::response($stmt);
     
     }
@@ -744,4 +783,11 @@ class Reg extends \Core\Controller
 
     }
 
+    public function removeMyPostAction(){
+        $dataToUpdate = [
+            "status" => 2,
+        ];
+        $this->exec($this->update('products', $dataToUpdate,"id='" . $this->data['id'] . "'"));
+
+    }
 }
