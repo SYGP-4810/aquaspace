@@ -223,14 +223,14 @@ $("#InventorySaveE").click(function(){
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data){
-                    // console.log(data);
+                    //  console.log(data);
                     if(data.flag == 1){
                         errorShow([data.msg,"Update Package"]);
                         delay(function(){
                         window.location.replace("/aquaspace/frontend/src/Store/StoreEdit.html#sub")
                         },4000)
-                    }else if(data.flag == 2,"Buy Relevent Package"){
-                        errorShow([data.msg]);
+                    }else if(data.flag == 2){
+                        errorShow([data.msg,"Buy Relevent Package"]);
                         delay(function(){
                         window.location.replace("/aquaspace/frontend/src/Store/StoreEdit.html#sub")
                         },4000)
@@ -365,8 +365,8 @@ $("#InventorySaveF").click(function(){
                         delay(function(){
                         window.location.replace("/aquaspace/frontend/src/Store/StoreEdit.html#sub")
                         },4000)
-                    }else if(data.flag == 2,"Buy Relevent Package"){
-                        errorShow([data.msg]);
+                    }else if(data.flag == 2){
+                        errorShow([data.msg,"Buy Relevent Package"]);
                         delay(function(){
                         window.location.replace("/aquaspace/frontend/src/Store/StoreEdit.html#sub")
                         },4000)
@@ -500,8 +500,8 @@ $("#InventorySaveP").click(function(){
                         delay(function(){
                         window.location.replace("/aquaspace/frontend/src/Store/StoreEdit.html#sub")
                         },4000)
-                    }else if(data.flag == 2,"Buy Relevent Package"){
-                        errorShow([data.msg]);
+                    }else if(data.flag == 2){
+                        errorShow([data.msg,"Buy Relevent Package"]);
                         delay(function(){
                         window.location.replace("/aquaspace/frontend/src/Store/StoreEdit.html#sub")
                         },4000)

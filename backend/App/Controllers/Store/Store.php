@@ -819,16 +819,16 @@ class Store extends \Core\Controller
         
     }
 
-    // public function getStoreReportAction()
-    // {    
-    //     $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
-    //     $result = $stmt->fetch();
-    //     $id = $result['id'];
-    //     $stmt = $this->execute($this->get('productS', "*", "auth_id ='" . $id . "'"));
-    //     $result = $stmt->fetchAll();
-    //     View::response($result);
+    public function getStoreReportAction()
+    {    
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
+        $result = $stmt->fetch();
+        $id = $result['id'];
+        $stmt = $this->execute($this->get('productS', "*", "auth_id ='" . $id . "'"));
+        $result = $stmt->fetchAll();
+        View::response($result);
         
-    // }
+    }
 
     public function getHomeAction()
     {    
