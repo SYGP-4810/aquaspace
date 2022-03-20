@@ -819,17 +819,6 @@ class Store extends \Core\Controller
         
     }
 
-    public function getStoreReportAction()
-    {    
-        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
-        $result = $stmt->fetch();
-        $id = $result['id'];
-        $stmt = $this->execute($this->get('productS', "*", "auth_id ='" . $id . "'"));
-        $result = $stmt->fetchAll();
-        View::response($result);
-        
-    }
-
     public function getHomeAction()
     {    
         $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
@@ -917,6 +906,17 @@ class Store extends \Core\Controller
         // $this->sendMail("wrlakshan@gmail.com","Accepted refund request",$msg);
 
         View::response("succes");
+        
+    }
+
+    public function getStoreReportAction()
+    {    
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
+        $result = $stmt->fetch();
+        $id = $result['id'];
+        $stmt = $this->execute($this->get('productS', "*", "auth_id ='" . $id . "'"));
+        $result = $stmt->fetchAll();
+        View::response($result);
         
     }
 

@@ -10,7 +10,7 @@ $(document).ready(function() {
       dataType: "json",
       async: false,
       success: function(data){
-          
+          console.log(data);
       },
       error: function(errMsg) {
            window.location.replace("../src/Error"+errMsg.status+".html");
