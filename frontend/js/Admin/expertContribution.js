@@ -1,5 +1,54 @@
 $(document).ready(function() {
 
+    $.ajax({
+        type: "GET",
+        url:setUrl("Admin/Admin/getNotPaidPaysheet"),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            console.log(data);
+            data.forEach(function(element){
+                $("#paidDate").append(`<option value="${element.date}">${element.date}</option>`);
+            });
+        },
+        error: function(errMsg) {
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+        }
+    });
+
+    // $.ajax({
+    //     type: "GET",
+    //     url:setUrl("Admin/Admin/getNotPaidPaysheet"),
+    //     contentType: "application/json; charset=utf-8",
+    //     dataType: "json",
+    //     success: function(data){
+    //         console.log(data);
+    //         data.forEach(function(element){
+    //             $("#paidDate").append(`<option value="${element.date}">${element.date}</option>`);
+    //         });
+    //     },
+    //     error: function(errMsg) {
+    //         window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+    //     }
+    // });
+
+    $.ajax({
+        type: "GET",
+        url:setUrl("Admin/Admin/getPaidPaysheet"),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            console.log(data);
+            data.forEach(function(element){
+                $("#pPaidDate").append(`<option value="${element.date}">${element.date}</option>`);
+            });
+        },
+        error: function(errMsg) {
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+        }
+    });
+
+
 $.ajax({
     type: "GET",
     url:setUrl("Admin/Admin/countTotalContribution"),
@@ -59,8 +108,9 @@ $.ajax({
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function(data){
-        // console.log(data.date);
-        $("#lastPaidDate").html(`${data.date}`)
+         console.log(data);
+        $("#lastPaidDate").html(`${data.date}`);
+        $("#lastPaidAmount").html(`${data.amount}`);
        
     },
     error: function(errMsg) {
@@ -72,9 +122,9 @@ $.ajax({
 
 });
 
-$("#payNow").click(function(){
-    loading();
-    delay(function(){
-        loadingFinish();
-    },5000);
-})
+// $("#payNow").click(function(){
+//     loading();
+//     delay(function(){
+//         loadingFinish();
+//     },5000);
+// })

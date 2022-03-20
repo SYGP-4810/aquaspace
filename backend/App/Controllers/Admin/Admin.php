@@ -430,7 +430,7 @@ class Admin extends \Core\Controller
 
     //last date experts are paid
     public function getLastExpertPaidDateAction(){
-        $sql = "SELECT * FROM `expert_whole_payment` ORDER BY id DESC LIMIT 1";
+        $sql = "SELECT * FROM `expert_whole_payment` WHERE status = '1' ORDER BY id DESC LIMIT 1";
         View::response($this->execute($sql)->fetch());
     }
 
@@ -533,15 +533,19 @@ class Admin extends \Core\Controller
        }else{
         $expertIds = $this->execute($this->get('user_auth','id',"user_type='2'"))->fetch();
         $i = 0;
+        $expertDetails = [];
         foreach($expertIds as $expertId){
             $sqlProduct = "SELECT COUNT(id) AS pCount FROM products WHERE verifier_id='".$expertId."'";
             $sqlArticle = "SELECT COUNT(id) AS aCount FROM fish_article WHERE auth_id='".$expertId."'";
             $sqlQuestion = "SELECT COUNT(id) AS qCount FROM expert_question WHERE replyer_id='".$expertId."'";
-            $reExpert = $this->execute($this->get('expert','*',"auth_id='".$expertId."'"))->fetch(); 
+            $reExpert = $this->execute($this->get('expert','*',"auth_id='".$expertId."'"))->fetch();
+            $pCount =  $this->execute($sqlProduct)->fetch()['pCount'];
+            $aCount = $this->execute($sqlArticle)->fetch()['aCount'];
+            $qCount = $this->execute($sqlQuestion)->fetch()['qCount'];
             $res[$i] = [
-                "productCount" => $this->execute($sqlProduct)->fetch()['pCount'],
-                "articleCount" => $this->execute($sqlArticle)->fetch()['aCount'],
-                "questionCount" => $this->execute($sqlQuestion)->fetch()['qCount'],
+                "productCount" => $pCount,
+                "articleCount" => $aCount,
+                "questionCount" => $qCount,
                 "auth_id" => $expertId,
                 "profile_img" => $this->execute($this->get('user_auth','*',"id='".$expertId."'"))->fetch()['profile_img'],
                 "first_name" => $reExpert['first_name'],
@@ -549,6 +553,10 @@ class Admin extends \Core\Controller
                 "account_no" => $reExpert['account_no'],
                 "branch_code" => $reExpert['branch_id'],
                 "bank" => $reExpert['bank_name']
+            ];
+            $expertDetails[$i] = [
+                "auth_id" => $expertId,
+                "contribution" => 2*$pCount + 10*$aCount + 3*$qCount
             ];
             $i++;
         }
@@ -571,20 +579,61 @@ class Admin extends \Core\Controller
             "today" => $tDay,
             "status" => 1
         ];
-        $this->execute($this->save('expert_whole_payment',['amount' => $totalAmmount]));
+        $totalContribution = (int)$this->countTotalContributions();
+        $this->exec('DELETE FROM expert_whole_payment WHERE DATE(date) = CURDATE()');
+        $this->execute($this->save('expert_whole_payment',['amount' => $totalAmmount*0.4, 'total_contribution' => $totalContribution]));
+        $sql = "SELECT * FROM `expert_whole_payment` ORDER BY id DESC LIMIT 1";
+        $idExpertWholePayment = $this->execute($sql)->fetch()['id'];
+        foreach($expertDetails as $eDet){
+            $dataToSave = [
+                "auth_id" => $eDet['auth_id'],
+                "total_contribution" => $eDet["contribution"],
+                "expert_whole_id" => $idExpertWholePayment
+            ];
+            $this->exec($this->save('expert_payment_details',$dataToSave));
+        }
        }
-          
+       $result["test"] = $expertDetails;
       View::response($result);
     }
 
     //record expert paid ammount
     public function expertPaidAction(){
-        $id = $this->execute("SELECT * FROM `expert_whole_payment` ORDER BY id DESC LIMIT 1")->fetch()['id'];
+        $id = $this->execute($this->get('expert_whole_payment','id',"date = '".$this->data['date']."'"))->fetch()['id'];
         $data = [
             "status" => 1
         ];
         $this->exec($this->update('expert_whole_payment',$data,"id='".$id."'"));
+        $this->exec("DELETE FROM `expert_whole_payment` WHERE WHERE status = '0'");
         View::response("successfully updated");
     }
 
+    //get paysheet details which are not yet paid
+    public function getNotPaidPaysheetAction(){
+        View::response(
+            $this->execute(
+                $this->get('expert_whole_payment','*','status = 0 ')
+            )->fetchAll()
+        );
+    }
+
+    public function getPaidPaysheetAction(){
+        View::response(
+            $this->execute(
+                $this->get('expert_whole_payment','*','status = 1 ')
+            )->fetchAll()
+        );
+    }
+
+    public function expertPreviousPaidPaySheetAction(){
+        $sql = $this->get('expert_whole_payment','*',"date ='".$this->data['date']."' AND status='1' ");
+        $wPaymentDetail = $this->execute($sql)->fetch();
+        $sql = "SELECT expert.first_name , expert.last_name, expert_payment_details.total_contribution,expert.bank_name,expert.account_no,expert.branch_id FROM expert_payment_details,expert WHERE expert_payment_details.auth_id = expert.auth_id AND expert_payment_details.expert_whole_id ='".$wPaymentDetail['id']."'";
+        $paymentDetail = $this->execute($sql)->fetchAll();
+        $res = [
+            "wholePaymentDetail" => $wPaymentDetail,
+            "paymentDetail" => $paymentDetail
+        ];
+        View::response($res);
+    }
 }
