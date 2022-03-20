@@ -81,7 +81,7 @@ $( document ).ready(function() {
             $("#tp").append(data.tp);
         },
         error: function(errMsg) {
-            window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+            // window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
         }
         
     });
@@ -136,7 +136,7 @@ $( document ).ready(function() {
                 
         },
         error: function(errMsg) {
-            window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+            // window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
         }
         
     });

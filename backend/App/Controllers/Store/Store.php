@@ -909,14 +909,25 @@ class Store extends \Core\Controller
         
     }
 
+    public function getStoreReportDateAction()
+    {    
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
+        $result = $stmt->fetch();
+        $start = $result['create_date'];
+        $today = date("Y-m-d");
+        $dates = ["start" =>$start, "today" =>$today];
+        // $stmt = $this->execute($this->get('selling_order', "*", "seller_auth_id ='" . $id . . "'" . " ORDER BY date ASC'"));
+        // $result = $stmt->fetchAll();
+        View::response($dates);
+        
+    }
+
     public function getStoreReportAction()
     {    
         $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
         $result = $stmt->fetch();
         $id = $result['id'];
-        $stmt = $this->execute($this->get('productS', "*", "auth_id ='" . $id . "'"));
-        $result = $stmt->fetchAll();
-        View::response($result);
+        View::response("store");
         
     }
 
