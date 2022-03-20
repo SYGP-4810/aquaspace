@@ -298,10 +298,10 @@ $(document).ready(function () {
   
           <div class="tags">
               <div class="tag">tag 1</div>
-              <div class="tag">tag 2</div>
+              <div class="tag">tag 2</div>b
               <div class="tag">tag 3</div>
           </div> 
-          `
+          ` 
           );
         }
       },
