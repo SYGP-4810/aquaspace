@@ -1,16 +1,12 @@
-//api setter
-
-function setUrl(text){
-    return "/aquaspace/backend/public/index.php?"+text;
-  }
-
-  $( document ).ready(function() {
+ $( document ).ready(function() {
+     loading();
     $.ajax({
         type: "GET",
         url:setUrl("/Reg/Reg/getPosts"),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
+            loadingFinish();
             console.log(data);
             // var name = '';
             // data.forEach(element => {
@@ -22,7 +18,7 @@ function setUrl(text){
             
         },
         error: function(errMsg) {
-            //window.location.replace("../src/Error"+errMsg.status+".html");
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
 });

@@ -1,13 +1,9 @@
-//api setter
-
-function setUrl(text){
-    return "/aquaspace/backend/public/index.php?"+text;
-}
 $( document ).ready(function() {
     
 var url = new URL(window.location.href);
 var id = url.searchParams.get("id");
-var req = {"id":id}
+var req = {"id":id};
+loading();
     $.ajax({
         type: "POST",
         url:setUrl("Admin/Admin/getAdminDetails"),
@@ -15,6 +11,7 @@ var req = {"id":id}
         dataType: "json",
         data: JSON.stringify(req),
         success: function(data){
+            loadingFinish();
             if(data.profile_img != ""){
                 $("#profilePic").attr("src",`/aquaspace/frontend/images/profile/${data.profile_img}`);
             }
@@ -43,6 +40,7 @@ var req = {"id":id}
             `);
         },
         error: function(errMsg) {
+            loadingFinish();
             window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });

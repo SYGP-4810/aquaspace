@@ -1,9 +1,3 @@
-//api setter
-
-function setUrl(text){
-    return "/aquaspace/backend/public/index.php?"+text;
-  }
-
 var url = new URL(window.location.href);
 var id = url.searchParams.get("id");
 var type = url.searchParams.get("type");
@@ -11,6 +5,7 @@ var tel = url.searchParams.get("tel");
 var typeString = '';
 
 $(document).ready(function(e){
+    loading();
     if(type == 2){
         let req = {"id":id};
         $.ajax({
@@ -20,6 +15,7 @@ $(document).ready(function(e){
             dataType: "json",
             data: JSON.stringify(req),
             success: function(data){
+                    loadingFinish();
                     console.log(data);                   
                     let name = data.expert.first_name + " " + data.expert.last_name;
                     $("#Verify-list-details").append(`
@@ -64,12 +60,14 @@ $(document).ready(function(e){
                
             },
             error: function(errMsg) {
+                loadingFinish();
                 window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
 
     }else if(type == 3){
         let req = {"id":id};
+        loading();
         $.ajax({
             type: "POST",
             url:setUrl("Admin/Admin/getAdminVerifyDetailsStore"),
@@ -77,6 +75,7 @@ $(document).ready(function(e){
             dataType: "json",
             data: JSON.stringify(req),
             success: function(data){
+                loadingFinish();
                     $("#Verify-list-details").html(`<tr>
                         <td>Company Name</td>
                         <td>${data.company_name}</td>
@@ -122,6 +121,7 @@ $(document).ready(function(e){
                
             },
             error: function(errMsg) {
+                loadingFinish();
                 window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
@@ -132,6 +132,7 @@ $(document).ready(function(e){
 
 $("#acceptReq").click(function() {
     let req = {"id":id};
+        loading();
         $.ajax({
             type: "POST",
             url:setUrl("Admin/Admin/getAdminVerifyDetailsAccept"),
@@ -139,6 +140,7 @@ $("#acceptReq").click(function() {
             dataType: "json",
             data: JSON.stringify(req),
             success: function(data){
+                loadingFinish();
                 successMsg(["successfully inserted"]);
                 delay(function(){
                 window.location.replace("/aquaspace/frontend/src/Admin/AdminVerify.html")       
@@ -146,6 +148,7 @@ $("#acceptReq").click(function() {
                
             },
             error: function(errMsg) {
+                loadingFinish();
                 window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
@@ -154,19 +157,22 @@ $("#acceptReq").click(function() {
 });
 $("#rejReq").click(function() {
     let req = {"id":id, "type" : type};
+    loading();
         $.ajax({
             type: "POST",
             url:setUrl("Admin/Admin/getAdminVerifyDetailsReject"),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: JSON.stringify(req),
-            success: function(data){ 
+            success: function(data){
+                loadingFinish(); 
                 successMsg(["successfully rejected"]);
                 delay(function(){
                 window.location.replace("/aquaspace/frontend/src/Admin/AdminVerify.html")       
                 },5000);      
             },
             error: function(errMsg) {
+                loadingFinish();
                 window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
