@@ -685,6 +685,13 @@ class Reg extends \Core\Controller
 
     }
 
+    
+    public function getFishDataImageAction()
+    {
+        $stmt = $this->execute($this->get('fish_article', "description,img_1", "name ='" . $this->data['name'] . "'"));
+        View::response($stmt->fetch());
+    }
+
     public function refundAction(){
         $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "' AND user_type='1'"))->fetch()['id'];
 

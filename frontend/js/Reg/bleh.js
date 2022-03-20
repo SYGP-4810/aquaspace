@@ -1,6 +1,6 @@
-function blah(data) {
+function selectFish(data) {
   $("#auto").val($(data).html());
-  $('#fish_list').hide();
+  $("#fish_list").hide();
   // console.log($("#auto").val());
 
   let name = $("#auto").val();
@@ -25,7 +25,7 @@ function blah(data) {
   });
 }
 
-$("#auto").keyup(function(){
+$("#auto").keyup(function () {
   let name = $("#auto").val();
   var req = { name: name };
 
@@ -46,7 +46,7 @@ $("#auto").keyup(function(){
       }
     },
   });
-})
+});
 
 function searchFish() {
   $("#fish_list").show();
@@ -94,17 +94,17 @@ function searchbleh() {
   searchFish();
 }
 
-  $.ajax({
+$.ajax({
   type: "GET",
   url: setUrl("Reg/Reg/getFishNames"),
   contentType: "application/json; charset=utf-8",
   dataType: "json",
   success: function (data) {
-    console.log(data)
+    console.log(data);
     var names = [];
     data.forEach((element) => {
       $("#fish_list").append(`
-        <li onclick="blah(this)">${element.name}</li>`);
+        <li onclick="selectFish(this)">${element.name}</li>`);
     });
   },
 });
@@ -251,7 +251,7 @@ $("#btn").click(function () {
     errors.push("Quantity is required");
     errFlag++;
   }
-  if(description == ''){
+  if (description == "") {
     errors.push("details required");
     errFlag++;
   }

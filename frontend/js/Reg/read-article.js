@@ -1,7 +1,13 @@
+
+    var url = new URL(window.location.href);
+    var id = url.searchParams.get("id");
+
 $(document).ready(function() {
-    let url_string = window.location.href;
-    let url = new URL(url_string);
-    let id = url.searchParams.get("id");
+    // let url_string = window.location.href;
+    // let url = new URL(url_string);
+    // let id = url.searchParams.get("id");
+    var url = new URL(window.location.href);
+    var id = url.searchParams.get("id");
     let req = {
         "id" : id
     }
@@ -16,7 +22,7 @@ $(document).ready(function() {
             $(".article").html(`${data.article}`);
         },
         error: function(errMsg) {
-            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     }); 
 });
