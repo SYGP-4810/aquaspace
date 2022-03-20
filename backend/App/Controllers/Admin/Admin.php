@@ -504,9 +504,6 @@ class Admin extends \Core\Controller
 		}
 	}
 	while( $swapped );
-    for( $i = 0; $i <5;$i++ ) {
-        $bestExpertList[$i] = $listOfExpert[$i];
-    }
     $bestExpertList = array_slice($listOfExpert, 0, 5, true);
         $res = [
             "subscriptionSum" => $subscriptionSum,
