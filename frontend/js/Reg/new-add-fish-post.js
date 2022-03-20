@@ -1,4 +1,4 @@
-function blah(data) {
+function selectFish(data) {
   $("#auto").val($(data).html());
   $('#fish_list').hide();
   // console.log($("#auto").val());
@@ -29,6 +29,11 @@ function blah(data) {
 $("#auto").keyup(function () {
   let name = $("#auto").val();
   var req = { name: name };
+
+  if($("#auto").val()==""){
+    console.log("asjha")
+    $("#fish_list").hide();
+  }
 
   $.ajax({
     type: "POST",
@@ -79,7 +84,7 @@ $.ajax({
     var names = [];
     data.forEach((element) => {
       $("#fish_list").append(`
-        <li onclick="blah(this)">${element.name}</li>`);
+        <li onclick="selectFish(this)">${element.name}</li>`);
     });
   },
 });
@@ -313,3 +318,12 @@ $("#btn").click(function () {
     alert(JSON.stringify(errors));
   }
 });
+
+let item_name = $('#auto').val();
+let item_amount = "450.00";
+$('#item_name').val(item_name);
+$('#item_amount').val(item_amount);
+
+$('#Yorder_amount').html(`
+${item_amount}
+`)
