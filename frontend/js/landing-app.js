@@ -1,8 +1,3 @@
-//api setter
-function setUrl(text) {
-  return "/aquaspace/backend/public/index.php?" + text;
-}
-
 var userType = 0;
 
 
@@ -28,13 +23,14 @@ var userType = 0;
     }
   }
 
-  // jQuery methods go here...
+  loading();
   $.ajax({
     type: "POST",
     url: setUrl("Authentication/userTypeIdentify"),
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (data) {
+      loadingFinish();
       if (data.status == 1) {
         loggedIn = true;
         userType = data.type;
@@ -113,13 +109,12 @@ var userType = 0;
       }
     },
     error: function (errMsg) {
-      window.location.replace(
-        "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
-      );
+      window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
     },
   });
 
   //get product details
+  loading();
   $.ajax({
     type: "GET",
     url: setUrl("Common/getLandingPagePost"),
@@ -127,6 +122,7 @@ var userType = 0;
     dataType: "json",
     success: function (data) {
       console.log(data);
+      loadingFinish();
       //append new posts
       data.newPost.forEach((element) => {
         $("#newlyAddedFishContent").append(`<div class="col-4">
@@ -244,16 +240,18 @@ $(".dropdown ul li").click(function () {
 });
 
 $("#logOut").click(function () {
+  loading();
   $.ajax({
     type: "GET",
     url: setUrl("Authentication/requestLogout"),
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (data) {
+      loadingFinish();
       window.location.replace("/aquaspace/frontend/src/");
     },
     error: function (errMsg) {
-      window.location.replace("../src/Error/" + errMsg.status + ".html");
+      window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
     },
   });
 });
@@ -278,13 +276,14 @@ function getNotification(loggedIn){
   var interval = 2000;
   if(loggedIn == 1){
     function doAjax(){
+      loading();
       $.ajax({
       type: "GET",
       url: setUrl("Reg/Reg/getNotifs"),
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function (data) {
-  
+        loadingFinish();
         $('#notifs').html(``);
         console.log(data);
     
@@ -328,7 +327,7 @@ function getNotification(loggedIn){
         setTimeout(doAjax, interval);
     },
       error: function (errMsg) {
-        window.location.replace("../src/Error/" + errMsg.status + ".html");
+        window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
       },
     });
 
@@ -343,12 +342,14 @@ function getNotification(loggedIn){
 
 
 function readAll(){
+  loading();
   $.ajax({
     type: "GET",
     url: setUrl("Reg/Reg/readAll"),
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (data) {
+      
       console.log(data)
       $.ajax({
         type: "GET",
@@ -356,7 +357,7 @@ function readAll(){
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-    
+          loadingFinish();
           $('#notifs').html(``);
           console.log(data);
       
@@ -398,13 +399,13 @@ function readAll(){
           
         },
         error: function (errMsg) {
-          window.location.replace("../src/Error/" + errMsg.status + ".html");
+          window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         },
       });
 
     },
     error: function (errMsg) {
-      window.location.replace("../src/Error/" + errMsg.status + ".html");
+      window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
     },
   });
 
@@ -417,7 +418,8 @@ function hideNotif(data){
     id : data,
   }
 
-  console.log(req)
+  console.log(req);
+  loading();
   $.ajax({
     type: "POST",
     url: setUrl("Reg/Reg/hideNotif"),
@@ -432,7 +434,7 @@ function hideNotif(data){
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-    
+          loadingFinish();
           $('#notifs').html(``);
           console.log(data);
       
@@ -471,13 +473,13 @@ function hideNotif(data){
           
         },
         error: function (errMsg) {
-          window.location.replace("../src/Error/" + errMsg.status + ".html");
+          window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         },
       });
 
     },
     error: function (errMsg) {
-      window.location.replace("../src/Error/" + errMsg.status + ".html");
+      window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
     },
   });
 }

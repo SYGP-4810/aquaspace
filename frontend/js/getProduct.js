@@ -1,9 +1,3 @@
-//api setter
-
-function setUrl(text) {
-    return "/aquaspace/backend/public/index.php?" + text;
-  }
-  
   $(document).ready(function () {
     $("#reviews").click(function () {
       $(".reviews").css("display", "block");
@@ -18,6 +12,7 @@ function setUrl(text) {
     var id = url.searchParams.get("id");
   
     var req = { id: id };
+    loading();
     $.ajax({
       type: "POST",
       url: setUrl("Common/getProduct"),
@@ -26,6 +21,7 @@ function setUrl(text) {
       async: false,
       data: JSON.stringify(req),
       success: function (data) {
+          loadingFinish();
         // console.log(JSON.stringify(data));
         // console.log(data.delivery);
         $("#column_1").html(`
@@ -643,6 +639,7 @@ function setUrl(text) {
         let req = {"report" : report,
                     "productId" : productId
                 }
+        loading();
         $.ajax({
             type: "POST",
             url:setUrl("reg/reg/reportProduct"),
@@ -650,6 +647,7 @@ function setUrl(text) {
             dataType: "json",
             data: JSON.stringify(req),
             success: function(data){
+                loadingFinish();
                 console.log(data);
                 if(data.flag ==1){
                     errorShow([data.msg],"returning to home page");
@@ -662,7 +660,7 @@ function setUrl(text) {
                 
             },
             error: function(errMsg) {
-                // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+                window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
                     }
             });      
         

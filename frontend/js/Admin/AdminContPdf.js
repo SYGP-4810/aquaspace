@@ -77,7 +77,7 @@ $("#paid").click(function(){
             },3000);
         },
         error: function(errMsg) {
-            // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
 });

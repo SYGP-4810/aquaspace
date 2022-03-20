@@ -1,7 +1,3 @@
-//api setter
-function setUrl(text){
-  return "/aquaspace/backend/public/index.php?"+text;
-}
 //email validat
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -65,6 +61,7 @@ $("#signIn").click(function(){
         "email": email,
         "password": password,
     }
+  loading();
   $.ajax({
     type: "POST",
     url:setUrl("Authentication/requestLogin"),
@@ -72,6 +69,7 @@ $("#signIn").click(function(){
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function(data){
+      loadingFinish();
       var status = data.status;
       if(status == 1 ||status == 2 || status == 3 || status == 4 || status == 6 || status == 7){
         var redirect = data.redirect;
@@ -88,12 +86,12 @@ $("#signIn").click(function(){
 
     },
     error: function(errMsg) {
-        window.location.replace("../src/Error/"+errMsg.status+".html");
+      window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
     }
 });
     
 }else{
-  alert(JSON.stringify(errors));
+  errorShow(errors);
 }
       
 });
