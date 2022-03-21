@@ -19,7 +19,7 @@ $(document).ready(function() {
                     
                 </div>
             </div>
-                `)
+                `) 
             });
         },
         error: function(errMsg) {
