@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="../../css/new-build-tank.css">
     <link rel="stylesheet" href="../../css/build-tank.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../css/base.css">
     <title>Build Tank</title>
 </head>
 
 <body>
     <div class="nav">
-        <div class="logo">
+        <div class="logo" onclick="window.location.replace('/aquaspace/frontend/src/index.html')">
             <img src="../../images/logo.png" alt="">
             <h2>AquaSpace</h2>
         </div>
@@ -286,7 +287,10 @@
         </div>
     
       </footer>
+    <div id="alertDiv"></div>
+    <div id="loadingIcon"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/base.js"></script>
     <script src="../../js/Reg/build-tank.js"></script>
     <script src="../../js/Reg/autocomplete.js"></script>
 </body>

@@ -102,6 +102,7 @@ class Controller extends \Core\Token
         $mail->Host       = 'ssl://smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
         $mail->Username   = 'aquaspaceg48@gmail.com'; //                     //SMTP username
+        $mail->setFrom('aquaspaceg48@gmail.com');
         $mail->Password   = 'Aqua#2019';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`

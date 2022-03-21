@@ -187,7 +187,8 @@ class Expert extends \Core\Controller
             "article" => $this->data['article'],
             "summary" => $this->data['summary'],
             "title" => $this->data['title'],
-            "pic" => $iName1
+            "pic" => $iName1,
+            "category" => $this->data['category']
         ];
         $this->exec($this->save('article',$dataToSaveArcticle));
         $condition = "auth_id='".$authId."' AND article='".$this->data['article']."'";

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
     <link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/cart.css">
+    <link rel="stylesheet" href="../../css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
@@ -145,7 +146,7 @@
                     <div class="d-flex">
                         
                         <form method="post" action="https://sandbox.payhere.lk/pay/checkout" >
-                            <input type="hidden" name="merchant_id" value="1219322"> <!-- Replace your Merchant ID -->
+                            <input type="hidden" name="merchant_id" value="1218996"> <!-- Replace your Merchant ID -->
                             <input type="hidden" name="return_url" value="http://localhost/aquaspace/frontend/src/index.html">
                             <input type="hidden" name="cancel_url" value="http://localhost/aquaspace/frontend/src/Reg/cart.html">
                             <input type="hidden" name="notify_url" value="http://localhost/aquaspace/frontend/src/index.html">
@@ -250,8 +251,11 @@
             </section>
         </div>
     </div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPY9w_fGU6idanAxFC1S4otE4Ee5JbBjo&callback=initMap">
+    <div id="alertDiv"></div>
+    <div id="loadingIcon"></div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSmzq86uUiJERkmaTeVryt4pEu8pU8xo0&callback=initMap">
     </script>
+    <script src="../../js/base.js"></script>
     <script src="../../js/Reg/cart.js"></script>
     <script src="../../js/logo.js"></script>
 

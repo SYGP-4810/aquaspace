@@ -15,7 +15,7 @@ $("#payNow").click(function(){
                 dataType: "json",
                 success: function(data){
                     loadingFinish();
-                    console.log(data);
+                    // console.log(data);
                     if(data.status == 0){
                         alertMsg(["you have been paid experts for this month"]);
                         delay(function(){
@@ -63,18 +63,70 @@ $("#payNow").click(function(){
 
 $("#paid").click(function(){
     loading();
+    let req = {
+        "date" : $("#paidDate").val()
+    }
     $.ajax({
-        type: "GET",
+        type: "POST",
         url:setUrl("Admin/Admin/expertPaid"),
+        data: JSON.stringify(req),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            // console.log(data);
+            loadingFinish();
+            alertMsg(["You have been successfully recoreded expert payment"]);
+            delay(function(){
+                window.location.reload();
+            },3000);
+        },
+        error: function(errMsg) {
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+        }
+    });
+});
+
+$("#pPaid").click(function() {
+    loading();
+    let req = {
+        "date" : $("#pPaidDate").val()
+    }
+    console.log(req);
+    $.ajax({
+        type: "POST",
+        url:setUrl("Admin/Admin/expertPreviousPaidPaySheet"),
+        data: JSON.stringify(req),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
             console.log(data);
             loadingFinish();
-            successMsg(["You have been successfully recoreded exert paiyment"]);
-            delay(function(){
-                window.location.reload();
-            },3000);
+            
+            let i = 0;
+            i += 10;
+            doc.text(10,i,"Aquaspace Paysheet       Date : " + data.wholePaymentDetail.date);
+            i += 10;
+            doc.text(10,i,'First name | Last Name | Amount(RS) | Bank NO | Bank | Branch Code ');
+            i += 10;
+            let tAmountPaid = 0;
+            data.paymentDetail.forEach(element =>{
+                let persentage = 100*(element.total_contribution)/ data.wholePaymentDetail.total_contribution;
+                let amount = data.wholePaymentDetail.amount * persentage / 100;
+                tAmountPaid += amount;
+                i += 10;
+                doc.text(10,i,
+                    element.first_name + " | " +
+                    element.last_name + " | " +
+                    amount + " | " +
+                    element.account_no + " | " +
+                    element.bank_name + " | " +
+                    element.branch_id) 
+
+            });
+            i += 20;
+            doc.text(10,i,"Total amount need to pay => " + tAmountPaid);
+            doc.save('paysheet.pdf');
+                        
         },
         error: function(errMsg) {
             window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");

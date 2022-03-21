@@ -27,7 +27,7 @@ $(document).ready(function() {
                     <img src="../../images/article/${element.pic}" class="blog-image" alt="${element.title}">
                     <h4 class="blog-title">${element.title}</h4>
                         <p class="blog-overview">${element.summary}</p>
-                        <a href="/aquaspace/frontend/src/Reg/read-fish.html?id=${element.id}" class="btn dark">read</a>
+                        <a href="/aquaspace/frontend/src/Reg/read-article.html?id=${element.id}" class="btn dark">read</a>
                 </div>
                 `)
             });
@@ -46,7 +46,7 @@ $(document).ready(function() {
             console.log(data);
             data.forEach(element =>{
                 $("#fishDataRow").append(`
-                <a href="/aquaspace/frontend/src/Reg/read-article.html?id=${element.id}">
+                <a href="/aquaspace/frontend/src/Reg/read-fish.html?id=${element.id}">
                     <div class="col-4">
                         <img src="../../images/fish_article/${element.img_1}" alt="${element.name}" />
                         <h4>${element.name}</h4>
