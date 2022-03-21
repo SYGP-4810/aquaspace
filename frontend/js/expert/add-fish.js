@@ -121,7 +121,7 @@ $("#add").click(function () {
   $("#auto").val('');
   if(name != ''){
     compatibleFishes.push(name);
-  $('.compatible-fish-list').append(`
+  $('#compatible-fish-list').append(`
     <div class="compatible-fish-list-item">
                             ${name}
                         </div>`);

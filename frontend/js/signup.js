@@ -39,7 +39,7 @@ $(".verify").click(function(e){
                 dataType: "json",
                 success: function(data){
                     loadingFinish();
-                    successMsg([data.msg]);
+                    alert(data.msg) // no need of success message
                     if(data.status == 3){
                         $(".tab").hide();
                         if($("input[name='selection']:checked").val() == 'value-1') {
@@ -198,8 +198,10 @@ $("#signUp1").click(function(e){
             dataType: "json",
             success: function(data){
                 if(data.status ==1){
-                    alert("please login");
+                    successMsg(['please login']);
+                    delay(function(){
                     window.location.replace("../src/login.html");
+                    },3000);
                     }else{
                         errorShow([data.error])
                     }
@@ -583,7 +585,6 @@ $("#signUp3").click(function(){
             "branchId": branchId,
             "accountNo": accountNo
         }
-        console.log(req);
         loading();
           $.ajax({
             type: "POST",
@@ -592,6 +593,7 @@ $("#signUp3").click(function(){
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data){
+                console.log(data);
                 loadingFinish();
                 if(data.status ==1){
                     alertMsg(["wait until admin verify you may have email about confirm"]);
