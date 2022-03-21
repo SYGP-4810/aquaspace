@@ -272,5 +272,30 @@ class Expert extends \Core\Controller
         $this->sendMail($email,"about product verificataion", $mail);
         View::response($email);
     }
+
+
+    public function getHomeAction()
+    {    
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='2'"));
+        $result = $stmt->fetch();
+        $id = $result['id'];
+
+        $stmt = $this->execute($this->get('expert_question', "id", "reply IS NULL"));
+        $result = $stmt->fetchAll();
+        $questionCount=count($result);
+
+        $stmt = $this->execute($this->get('products', "id", "status = 3"));
+        $result = $stmt->fetchAll();
+        $productCount=count($result);
+
+        $stmt = $this->execute($this->get('article', "id", "auth_id = " . $id .""));
+        $result = $stmt->fetchAll();
+        $articleCount=count($result);
+
+        $count = array("question"=> $questionCount, "product"=> $productCount, "article"=>$articleCount);
+
+        View::response($count);
+        
+    }
     
 }
