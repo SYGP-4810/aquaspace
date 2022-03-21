@@ -145,6 +145,16 @@ class Store extends \Core\Controller
         View::response($delMOd);
     }
 
+    public function getInventoryHomeAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
+        $result = $stmt->fetch();
+        $id = $result['id'];
+        $stmt = $this->execute($this->get('productS', "*", "auth_id ='" . $id . "'"." AND status='1'"));
+        $result = $stmt->fetchAll();
+        View::response($result);
+    }
+
     public function getInventoryAction()
     {
         $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
@@ -382,6 +392,8 @@ class Store extends \Core\Controller
                 "additional_one_kg" => 0,
         ];
             $this->exec($this->save('delivery_cost',$data));
+
+            $this->notifyOther($id,"Please update your delivery cost");
             
         }
 
@@ -676,6 +688,20 @@ class Store extends \Core\Controller
         View::response("success");
     }
 
+    public function enableStoreFrontAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'"));
+        $result1 = $stmt->fetch();
+        $id = $result1['id'];
+        
+        $updateData = [
+            "status" => 1
+        ];
+
+        $this->exec($this->update('products', $updateData, "auth_id ='" . $id . "' AND status = 2"  ));  
+              
+        View::response("success");
+    }
 
     //delete inventory items -not
     public function deleteProductAction()

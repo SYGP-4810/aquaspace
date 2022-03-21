@@ -220,6 +220,19 @@ div > label {
   margin-left: 20px;
 }
 
+.title{
+  font-size: 30px;
+  color: #696c83d5;
+  margin-left: 15px;
+}
+
+.value{
+  font-size: 80px;
+  color: rgba(50, 47, 70, 0.788);
+  font-weight: 400;
+  padding-left: 124px;
+}
+
 /* .container {
   display: flex;
   flex-wrap: wrap;
@@ -579,9 +592,9 @@ div > label {
 
 .storefront a {
   text-decoration: none;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: bold;
-  padding: 4px 10px;
+  padding: 6px 10px;
   color: white;
   border: 2px solid white;
   background-color: rgba(0, 0, 0, 0.651);
@@ -650,6 +663,16 @@ div > label {
   margin-left: 10px;
 }
 
+.item-title .del-button{
+  margin: 0;
+  margin-left: 10px;
+}
+
+.item-title .nav-button{
+  margin: 0;
+  margin-left: 10px;
+}
+
 .items {
   display: flex;
   flex-direction: row;
@@ -705,9 +728,9 @@ div > label {
 .dropdown {
   position: relative;
   display: inline-block;
-  margin-right: 80px;
+  margin-left: 80px;
   font-weight: bold;
-  float: right;
+  /* float: right; */
 }
 
 .dropbtn {
