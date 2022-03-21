@@ -276,14 +276,13 @@ function getNotification(loggedIn){
   var interval = 2000;
   if(loggedIn == 1){
     function doAjax(){
-      loading();
+      // no need of loading since continuesly checking
       $.ajax({
       type: "GET",
       url: setUrl("Reg/Reg/getNotifs"),
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function (data) {
-        loadingFinish();
         $('#notifs').html(``);
         console.log(data);
     
@@ -419,7 +418,7 @@ function hideNotif(data){
   }
 
   console.log(req);
-  loading();
+  //no need of loading since it need to check continuesly
   $.ajax({
     type: "POST",
     url: setUrl("Reg/Reg/hideNotif"),
@@ -434,7 +433,6 @@ function hideNotif(data){
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-          loadingFinish();
           $('#notifs').html(``);
           console.log(data);
       
