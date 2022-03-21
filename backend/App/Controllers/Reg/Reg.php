@@ -271,7 +271,7 @@ class Reg extends \Core\Controller
         SELECT shopping_cart.id, shopping_cart.product_id, shopping_cart.quantity, products.product_name, products.price
         FROM shopping_cart 
         INNER JOIN products ON shopping_cart.product_id=products.id
-        WHERE shopping_cart.user_id = $id AND shopping_cart.status = 1
+        WHERE shopping_cart.user_id = $id AND shopping_cart.status = 1 AND products.status = 1
         ") ;
 
         $result = $stmt->fetchAll();

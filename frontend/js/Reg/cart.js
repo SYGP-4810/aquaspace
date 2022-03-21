@@ -1,8 +1,4 @@
-function setUrl(text) {
-  return "/aquaspace/backend/public/index.php?" + text;
-}
-
-  // $("#cart").click(function () {
+ // $("#cart").click(function () {
   //   $(".shopping-cart").css("display", "block");
   //   $("#cart").css("color", "rgb(61, 61, 61)");
   //   $(".checkout").css("display", "none");
