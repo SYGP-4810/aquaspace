@@ -6,11 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
-    <link rel="stylesheet" href="../../css/addpost.css">
     <link rel="stylesheet" href="../../css/landing-styles.css">
     <link rel="stylesheet" href="../../css/post-payment.css">
     <link rel="stylesheet" href="../../css/bleh.css">
     <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/new-build-tank.css">
+    <!-- <link rel="stylesheet" href="../../css/addpost.css"> -->
+    <!-- <link rel="stylesheet" href="../../css/build-tank.css"> -->
     <title>Category Page</title>
 </head>
 
@@ -61,18 +63,55 @@
             </ul>
         </div>
     </div>
-    <div style="position: relative; height: 1000px;">
+    <div style="position: relative;">
 
-        <img style="width: 100%; ;" src="../../images/Aquarium Fish _ Aquarium Design Ideas.jpg" alt="">
+        <img style="width: 100%;" src="../../images/Aquarium Fish _ Aquarium Design Ideas.jpg" alt="">
         <!-- <img style="width: 100%; ;" src="../../images/aquarium-tips.jpg" alt=""> -->
-        <div style="width: 100%;height: 130px; position: absolute;top: 413px; backdrop-filter: blur(30px); "> <div style="font-size: 90px; font-weight: 800;color: rgb(22, 32, 51); text-align: center;">Build Your Tank</div> </div>
-        
-        
+        <div style="width: 100%;height: 130px; position: absolute;top: 413px; backdrop-filter: blur(30px); ">
+            <div style="font-size: 90px; font-weight: 800;color: rgb(22, 32, 51); text-align: center;">Build Your Tank
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="container-1">
+            <h1>1. Select fish you wanna include in your tank</h1>
+            <label id="name_list">
+                <div>
+                    <div>
+                        <input type="text" id="auto" placeholder="Select fish to add.." onkeyup="searchFish()" />
+                        <span>
+                            <input type="number" placeholder="Quantity..."
+                                style="width: 100px; text-align: center;  border-left: 1px solid rgb(134, 132, 132);">
+                        </span>
+                        <span><i class="fas fa-arrow-right"></i></span>
+                        <ul id="fish_list">
+                    </div>
+
+                    </ul>
+                </div>
+
+            </label>
+            <label id="img-question" class="img-question">
+                <div style="display:flex; width: 100%;">
+                    <img id="db-img" src="" width="250px">
+                <div id="db-data"></div>
+                </div>
+                
+            </label>
+
+        </div>
+        <div class="container-2">
+            <h2>Fish</h2>
+            <div class="selected-fish">
+
+            </div>
+        </div>
     </div>
 
 
-    <br>
-    <br>
+
+
 
     <footer class="footer-distributed">
 
@@ -133,10 +172,11 @@
     </script>
     <script src="../../js/base.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-   
+
     <!-- <script src="../../js/add-fish-post.js"></script> -->
-    <script src="../../js/landing-app.js"></script>
-    <script src="../../js/Reg/bleh.js"></script>
+    <!-- <script src="../../js/landing-app.js"></script> -->
+    <script src="../../js/Reg/build-tank.js"></script>
+
 
 </body>
 

@@ -145,6 +145,16 @@ class Store extends \Core\Controller
         View::response($delMOd);
     }
 
+    public function getInventoryHomeAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
+        $result = $stmt->fetch();
+        $id = $result['id'];
+        $stmt = $this->execute($this->get('productS', "*", "auth_id ='" . $id . "'"." AND status='1'"));
+        $result = $stmt->fetchAll();
+        View::response($result);
+    }
+
     public function getInventoryAction()
     {
         $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
@@ -382,6 +392,8 @@ class Store extends \Core\Controller
                 "additional_one_kg" => 0,
         ];
             $this->exec($this->save('delivery_cost',$data));
+
+            $this->notifyOther($id,"Please update your delivery cost");
             
         }
 
@@ -676,6 +688,20 @@ class Store extends \Core\Controller
         View::response("success");
     }
 
+    public function enableStoreFrontAction()
+    {
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'"));
+        $result1 = $stmt->fetch();
+        $id = $result1['id'];
+        
+        $updateData = [
+            "status" => 1
+        ];
+
+        $this->exec($this->update('products', $updateData, "auth_id ='" . $id . "' AND status = 2"  ));  
+              
+        View::response("success");
+    }
 
     //delete inventory items -not
     public function deleteProductAction()
@@ -819,14 +845,115 @@ class Store extends \Core\Controller
         
     }
 
-    public function getStoreReport()
+    public function getHomeAction()
     {    
         $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
         $result = $stmt->fetch();
         $id = $result['id'];
-        $stmt = $this->execute($this->get('productS', "*", "auth_id ='" . $id . "'"));
+
+        $stmt = $this->execute($this->get('selling_order', "id", "seller_auth_id =". $id ." AND status = 1"));
         $result = $stmt->fetchAll();
+        $oderCount=count($result);
+
+        $stmt = $this->execute($this->get('product_quetion', "id", "store_auth_id =". $id ." AND reply = NULL"));
+        $result = $stmt->fetchAll();
+        $questionCount=count($result);
+
+        $stmt = $this->execute("SELECT refund.id FROM refund,selling_order,product_order WHERE refund.product_order_id = product_order.id AND product_order.selling_order_id = selling_order.id AND refund.status= 1 AND selling_order.seller_auth_id = '".$id."'");
+        $result = $stmt->fetchAll();
+        $refundCount=count($result);
+
+        $count = array("order"=> $oderCount, "question"=> $questionCount, "refund"=>$refundCount);
+
+        View::response($count);
+        
+    }
+
+    public function getRefundsAction()
+    {    
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
+        $result = $stmt->fetch();
+        $id = $result['id'];
+
+        $stmt = $this->execute("SELECT selling_order.id,products.product_name,refund.id AS refund FROM refund,selling_order,product_order,products WHERE product_order.product_id=products.id AND refund.product_order_id = product_order.id AND product_order.selling_order_id = selling_order.id AND refund.status= 1 AND selling_order.seller_auth_id = '".$id."'");
+        $result = $stmt->fetchAll();
+
         View::response($result);
+        
+    }
+
+    public function getrefundAction()
+    {
+        $id = $this->data['id'];
+        $stmt = $this->execute("SELECT selling_order.id,refund.user_id,regular_user.first_name,regular_user.last_name,regular_user.address,user_auth.tp,refund.deliver_status,refund.img1,refund.img2,refund.img3,products.product_name,products.price,refund.reason,refund.id AS refund FROM refund,user_auth,regular_user,product_order,products,selling_order WHERE refund.user_id = user_auth.id AND regular_user.auth_id = user_auth.id AND product_order.id = refund.product_order_id AND product_order.product_id = products.id AND product_order.selling_order_id = selling_order.id AND refund.id  = '".$id."'");
+        $result = $stmt->fetch();
+        
+        View::response($result);
+    }
+
+    public function refundAcceptAction()
+    {    
+        $updateData = [
+            "status" => 2
+        ];
+
+        $this->exec($this->update('refund', $updateData, "id='" . $this->data['ref-id'] . "'"));   
+        $this->notifyOther($this->data['refund-cus-id'],"Your refund request has been Accepted.Please check your e-mails");
+
+        $stmt = $this->execute($this->get('user_auth', 'email' , "id ='" . $this->data['refund-cus-id']. "'"));
+        $customer = $stmt->fetch()['email'];
+        $sql = "SELECT user_auth.tp,store.address,store.man_name FROM refund,user_auth,product_order,selling_order,store WHERE  refund.product_order_id = product_order.id AND product_order.selling_order_id = selling_order.id AND selling_order.seller_auth_id = user_auth.id AND user_auth.id = store.auth_id AND refund.id =  '".$this->data['ref-id']."'" ;
+        $stmt = $this->execute($sql);
+        $store = $stmt->fetch();
+        
+        $msg  = "your can contact the store using following details <br> Manager Name: ". $store['man_name'] . "<br> Store Address: ".$store['address']." <br>Store TP : ". $store['tp'];
+        // $this->sendMail("wrlakshan@gmail.com","Accepted refund request",$msg);
+
+        View::response("succes");
+        
+    }
+
+    public function refundRejectAction()
+    {    
+        $updateData = [
+            "status" => 3
+        ];
+
+        $this->exec($this->update('refund', $updateData, "id='" . $this->data['ref-id'] . "'"));   
+        $this->notifyOther($this->data['refund-cus-id'],"Your refund request has been Rejected.Please check your e-mails");
+
+        $stmt = $this->execute($this->get('user_auth', 'email' , "id ='" . $this->data['refund-cus-id']. "'"));
+        $customer = $stmt->fetch()['email'];
+        $sql = "SELECT user_auth.tp,store.address,store.man_name FROM refund,user_auth,product_order,selling_order,store WHERE  refund.product_order_id = product_order.id AND product_order.selling_order_id = selling_order.id AND selling_order.seller_auth_id = user_auth.id AND user_auth.id = store.auth_id AND refund.id =  '".$this->data['ref-id']."'" ;
+        $stmt = $this->execute($sql);
+        $store = $stmt->fetch();
+        
+        $msg  = "your can contact the store using following details <br> Manager Name: ". $store['man_name'] . "<br> Store Address: ".$store['address']." <br>Store TP : ". $store['tp'];
+        // $this->sendMail("wrlakshan@gmail.com","Accepted refund request",$msg);
+
+        View::response("succes");
+        
+    }
+
+    public function getStoreReportDateAction()
+    {    
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
+        $result = $stmt->fetch();
+        $start = $result['create_date'];
+        $today = date("Y-m-d");
+        $dates = ["start" =>$start, "today" =>$today];
+        // $stmt = $this->execute($this->get('selling_order', "*", "seller_auth_id ='" . $id . . "'" . " ORDER BY date ASC'"));
+        // $result = $stmt->fetchAll();
+        View::response($dates);
+        
+    }
+
+    public function getStoreReportAction()
+    {    
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
+        $result = $stmt->fetch();
+        $id = $result['id'];
+        View::response("store");
         
     }
 

@@ -86,68 +86,88 @@
             <div class="head-titles">
                 <h2>HOME</h2>
             </div>
-            <div class="container">
-                <div class="card">
-                    <a href="../Store/StoreStoreFront.html">
-                        <i class="fas fa-gifts" ></i>
-                        <br>
-                        <span>Storefront</span>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="../Store/StoreInventory.html">
-                        <i class="fas fa-tags"></i>
-                        <br>
-                        <span>Inventory</span>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="../Store/StoreQuestion.html">
-                        <i class="fas fa-flag-checkered"></i>
-                        <br>
-                        <span>Questions</span>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="../Store/StoreOrders.html">
-                        <i class="fas fa-shopping-basket"></i>
-                        <br>
-                        <span>Orders</span>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="../Store/StoreRefunds.html">
-                        <i class="fas fa-money-check-alt"></i>
-                        <br>
-                        <span>Refunds</span>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="../Store/StoreEdit.html">
-                        <i class="fas fa-edit" ></i>
-                        <br>
-                        <span>Edit Profile</span>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="../Store/StoreReports.html">
-                        <i class="fas fa-clipboard"></i>
-                        <br>
-                        <span>Generate Reports</span>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="../Store/StoreReset.html">
-                        <i class="fas fa-unlock-alt"></i>
-                        <br>
-                        <span>Reset Password</span>
-                    </a>
-                </div>
+            
+            <div class="first-row">
+                <a href="StoreOrders.html">
+                    <div class=" home-card">
+                        <div class="title">Ordes</div>
+                        <div class="value" id="countOrders">4</div>
+                        
+                    </div>
+                </a>
                 
+                <a href="StoreQuestion.html">
+                    <div class=" home-card">
+                        <div class="title">Product Questions</div>
+                        <div class="value" id="questionCount">4</div>
+                        
+                    </div>
+                </a>
+
+                <a href="StoreRefunds.html">
+                    <div class=" home-card">
+                        <div class="title">Refund Requests</div>
+                        <div class="value" id="refundCount">4</div>
+                        
+                    </div>
+                </a>
             </div>
+            
+            <div class="first-row">
+                <a href="StoreReports.html">
+                    <div class="home-cardd" style="text-align: center;">
+                        <img style="height: 130px; " src="../../images/seo-report.png"
+                            alt="">
+                        <div style="font-size: 20px;
+                        color: #79798bd0;">Generate Reports</div>
+                    </div>
+                </a>
+                <a href="StoreInventory.html">
+                    <div class="home-cardd" style="text-align: center;">
+                        <img style="height: 130px; " src="../../images/inventory.png"
+                            alt="">
+                        <div style="font-size: 20px;
+                        color: #79798bd0;">Inventory</div>
+                    </div>
+                </a>               
+                <a href="StoreStoreFront.html">
+                    <div class="home-cardd" style="text-align: center;">
+                        <img style="height: 130px; " src="../../images/shop.png"
+                            alt="">
+                        <div style="font-size: 20px;
+                        color: #79798bd0;">StoreFront</div>
+                    </div>
+                </a>  
+            </div>
+
+
+            <!-- <div class="first-row" id="thrid-row">
+                <a href="AdminIssuesPosts.html">
+                    <div class="home-card-row1 home-card">
+
+                        <div id="card-row-1">
+                            <div class="count" id="ProductBlockCount">2</div><span class="account-type">Appeals</button></span>
+                            <div class="card-title">Blocked Products</div>
+                        </div>
+    
+                    </div>
+                </a>
+                <a href="AdminIssuesUser.html">
+                    <div class="home-card-row1 home-card">
+                        <div id="card-row-1">
+                            <div class="count" id="appealAccountCount">2</div><span class="account-type">Appeals</span>
+                        </div>
+                        <div class="card-title">Blocked Accounts</div>
+    
+                    </div>
+                </a>
+            </div> -->
+
 		</section>
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../../js/logo.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src = "../../js/Store/StoreHome.js"></script>
 </body>
 </html>

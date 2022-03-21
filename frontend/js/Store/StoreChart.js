@@ -2,14 +2,41 @@ function setUrl(text){
   return "/aquaspace/backend/public/index.php?"+text;
 }
 
+function setTheReport(from,to){
+  let req = {"dateFrom":from, 
+            "dateTo":to
+          }
+    
+  $.ajax({
+    type: "GET",
+    url:setUrl("Store/Store/getStoreReport"),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    async: false,
+    success: function(data){
+      console.log(data);
+        
+    },
+    error: function(errMsg) {
+         window.location.replace("../src/Error"+errMsg.status+".html");
+    }
+});
+}
+
+
 $(document).ready(function() {
   $.ajax({
       type: "GET",
-      url:setUrl("Store/Store/getStoreReport"),
+      url:setUrl("Store/Store/getStoreReportDate"),
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       async: false,
       success: function(data){
+          // console.log(data);
+          $("#from").val(data['start']);
+          $("#to").val(data['today']);
+        
+          setTheReport(data['start'],data['today']);
           
       },
       error: function(errMsg) {

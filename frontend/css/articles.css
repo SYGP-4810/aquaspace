@@ -18,10 +18,12 @@
 
 .flex {
     display: flex;
+    height: 100vh;
 }
 
 .container-1 {
     width: 25%;
+    margin-bottom: 40px;
     
 }
 
@@ -71,16 +73,25 @@
      justify-content: space-between;
  }
 
- .col-3 > div h6{
+ .col-3 > div h5{
      font-weight: 400;
+     color: #555555;
  }
 .col-3 h3 {
-    font-weight: 400;
+    font-weight: 500;
+    
 }
 
+.col-3 h4{
+    font-weight: 400;
+    font-size: 15px;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
  
 .topics {
-    margin-top: 30px;
+    margin-top: -20px;
     margin-bottom: 50px;
     display: flex;
     align-items: center;
@@ -96,6 +107,10 @@
     color: #888888;
     text-transform: uppercase;
     cursor: pointer;
+  }
+  .topics p:first-child {
+    margin-left: 100px;
+    color: rgb(61, 61, 61);
   }
   
   .topics i {

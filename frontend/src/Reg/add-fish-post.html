@@ -156,13 +156,12 @@
         <span>Post Duration<span class="required">*</span></span>
         <select id="duration" name="selection">
           <option orderselected hidden value="">Select </option>
-          <option value="1">1 week</option>
-          <option value="2">2 weeks</option>
-          <option value="3">3 weeks</option>
-          <option value="4">1 month</option>
-          <option value="5">2 months</option>
-          <option value="6">3 months</option>
-          <option value="7">more than 3 months</option>
+          <option value="1">1 week (Rs.300.00)</option>
+          <option value="2">2 weeks (Rs.450.00)</option>
+          <option value="3">3 weeks (Rs.600.00)</option>
+          <option value="4">1 month (Rs.850.00)</option>
+          <option value="5">2 months (Rs.1000.00)</option>
+          <option value="6">3 months (Rs.1700.00)</option>
         </select>
       </label>
       <label class="address-checkbox">
@@ -189,43 +188,43 @@
 
     <div class="checkout">
       <div class="d-flex">
-        <form method="post" action="https://sandbox.payhere.lk/pay/checkout" >
+        <form method="post" action="https://sandbox.payhere.lk/pay/checkout">
           <input type="hidden" name="merchant_id" value="1219322"> <!-- Replace your Merchant ID -->
           <input type="hidden" name="return_url" value="http://localhost/aquaspace/frontend/src/index.html">
           <input type="hidden" name="cancel_url" value="http://localhost/aquaspace/frontend/src/Reg/cart.html">
           <input type="hidden" name="notify_url" value="http://localhost/aquaspace/frontend/src/index.html">
-          <input type="text" name="items" value="Door bell wireless" hidden>
+          <input type="text" name="items" id="item_name" hidden>
           <input type="hidden" name="currency" value="LKR">
-          <input type="number" name="amount" hidden value="15000">  
+          <input type="number" name="amount" id="item_amount" hidden value="15000">
           <input type="text" name="order_id" value="ItemNo12345" hidden>
           <label>
-              <span class="fname">First Name<span class="required">*</span></span>
-              <input type="text" name="first_name">
+            <span class="fname">First Name<span class="required">*</span></span>
+            <input type="text" name="first_name">
           </label>
           <label>
-              <span class="lname">Last Name <span class="required">*</span></span>
-              <input type="text" name="last_name">
+            <span class="lname">Last Name <span class="required">*</span></span>
+            <input type="text" name="last_name">
           </label>
           <label>
-              <span>Email<span class="required">*</span></span>
-              <input type="text" name="email">
+            <span>Email<span class="required">*</span></span>
+            <input type="text" name="email">
           </label>
           <label>
-              <span>Tel No<span class="required">*</span></span>
-              <input type="text" name="phone">
+            <span>Tel No<span class="required">*</span></span>
+            <input type="text" name="phone">
           </label>
           <label>
-              <span>Address<span class="required">*</span></span>
-              <input type="text" name="address" prequired>
+            <span>Address<span class="required">*</span></span>
+            <input type="text" name="address" prequired>
           </label>
           <label>
-              <span>City<span class="required">*</span></span>
-              <input type="text" name="city" prequired>
+            <span>City<span class="required">*</span></span>
+            <input type="text" name="city" prequired>
           </label>
           <input type="hidden" name="country" value="Sri Lanka">
           <input type="submit" value="pay">
 
-      </form>
+        </form>
 
         <div class="Yorder">
           <table>
@@ -238,7 +237,7 @@
             </tr>
             <tr>
               <td>Subtotal</td>
-              <td>$20.00</td>
+              <td id=Yorder_amount></td>
             </tr>
           </table><br>
           <button id="order" type="button">PAY</button>

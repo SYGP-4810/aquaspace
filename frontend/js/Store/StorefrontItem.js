@@ -39,23 +39,7 @@ $(document).ready(function() {
   });
 });
 
-$("#disable").click(function() {
-    $.ajax({
-        type: "POST",
-        url:setUrl("Store/Store/disableStoreFront"),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function(data){         
-            successMsg(["Disable All Items"]);
-            delay(function(){
-            window.location.replace("/aquaspace/frontend/src/Store/StoreStoreFront.html")
-            },5000);
-        },
-        error: function(errMsg) {
-            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
-        }
-    });
-});
+
 
 $("#save").click(function() {  
     let active = [], deactive = [];
