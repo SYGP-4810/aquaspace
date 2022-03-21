@@ -59,6 +59,7 @@ $("#saveBlog").click(function(){
       errors.push("Title for the blog should be entered");
       errFlag++;
     }
+    let category = $("#category").val();
     const acceptedFileTypes = ["png", "jpg", "jpeg"];
     if(acceptedFileTypes.indexOf(imgExtension1.toLowerCase())===-1){
         errors.push("Image 1 type must be jpg ,jpeg or png");
@@ -85,7 +86,8 @@ $("#saveBlog").click(function(){
         "summary" : summary,
         "title" : title,
         "pic" : imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
-        "picExtension":imgExtension1
+        "picExtension":imgExtension1,
+        "category" : category
       }
       console.log(req);
     loading();
