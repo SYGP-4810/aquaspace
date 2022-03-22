@@ -106,7 +106,6 @@ $("#saveBlog").click(function(){
           
       },
       error: function(errMsg) {
-          loadingFinish();
           window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
       }
   });

@@ -50,13 +50,22 @@ function setTheReport(dateFrom, dateTo) {
             `);
             $("#tProduct").html(`${data.totalNumOfProducts}`);
             $("#tUser").html(`${data.totalNumOfUsers}`);
-            let DATA_COUNT = 30;
+            let DATA_COUNT = 31;
     let labels = [];
+    let datapoints1 = new Array(31);
+    let datapoints2 = new Array(31);
     for (let i = 1; i <= DATA_COUNT; ++i) {
       labels.push(i.toString());
+      datapoints1[i] = 0;
+      datapoints2[i] = 0;
     }
-    let datapoints1 = [0, 20, 20, 60, 60, 120, 0, 180, 120, 125, 105, 110, 170,0, 20, 20, 60, 60, 120, 0, 180, 120, 125, 105, 110, 170, 78, 87, 69, 12, 54];
-    let datapoints2 = [60, 120, 0, 180, 120, 125, 105, 110, 170,0, 20, 20, 60, 60, 120, 0, 180, 120, 125, 105, 110, 170, 78, 87, 69, 12, 54,0, 20, 20, 60];
+    data.pMonthProductAdding.forEach(element => {
+      datapoints1[parseInt(element.cDate.slice(-2))] = parseInt(element.pSum);
+    });
+    data.pMonthSales.forEach(element => {
+      datapoints2[parseInt(element.date.slice(-2))] = parseInt(element.pSum);
+    })
+
         var ctx = document.getElementById('store-chart').getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'line',
@@ -64,7 +73,7 @@ function setTheReport(dateFrom, dateTo) {
                     labels: labels,
                     datasets: [
                       {
-                        label: 'Days product selling',
+                        label: 'Daily product selling',
                         data: datapoints1,
                         borderColor: '#33d7ff',
                         fill: false,
@@ -72,7 +81,7 @@ function setTheReport(dateFrom, dateTo) {
                         tension: 0.4
                       }
                       , {
-                        label: 'Days Product addings',
+                        label: 'Daily Product addings',
                         data: datapoints2,
                         borderColor: '#fe80ff',
                         fill: false,

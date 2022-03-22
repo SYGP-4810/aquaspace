@@ -468,10 +468,22 @@ class Admin extends \Core\Controller
         $bestCustomerList = $this->execute($sqlBestStore)->fetchAll();
         $totalPointExpert = (int)$this->countTotalContributions();
         $bestCustomerList = $this->execute($sqlBestStore)->fetchAll();
-        $sqlDailySales = "SELECT SUM(price) FROM subscription WHERE date_from >= '".$this->data['dateFrom']."' AND date_to <= '".$this->data['dateTo']."' GROUP BY date_from ORDER BY date_from";
-        $dailySales = $this->execute($sqlDailySales)->fetchAll();
-        $sqlDailyProductAdding = "SELECT COUNT(id) AS daily_product_adding FROM products WHERE created_date >= '".$this->data['dateFrom']."' AND created_date <= '".$this->data['dateTo']."' GROUP BY created_date ORDER BY created_date";
-        $dailyProductAdding = $this->execute($sqlDailyProductAdding)->fetchAll();
+        // $sqlDailySales = "SELECT SUM(price) FROM subscription WHERE date_from >= '".$this->data['dateFrom']."' AND date_to <= '".$this->data['dateTo']."' GROUP BY date_from ORDER BY date_from";
+        // $dailySales = $this->execute($sqlDailySales)->fetchAll();
+        // $sqlDailyProductAdding = "SELECT COUNT(id) AS daily_product_adding FROM products WHERE created_date >= '".$this->data['dateFrom']."' AND created_date <= '".$this->data['dateTo']."' GROUP BY created_date ORDER BY created_date";
+        // $dailyProductAdding = $this->execute($sqlDailyProductAdding)->fetchAll();
+
+        //previous month selling and product adding 
+
+        $datestring=date('Y-m-d').'first day of last month';
+        $dt=date_create($datestring);
+        $datestring=date('Y-m-d').'last day of last month';
+        $dtl=date_create($datestring);
+        $sqlPreviousMonthProductAdding = "SELECT SUM(products.quantity) AS pSum, products.created_date AS cDate FROM products,user_auth WHERE user_auth.id=products.auth_id AND user_auth.user_type = 3 AND products.created_date >= '".$dt->format('Y-m-d')."' AND products.created_date <= '".$dtl->format('Y-m-d')."' ORDER BY products.created_date";
+        $dailyProductAdding = $this->execute($sqlPreviousMonthProductAdding)->fetchAll();
+        $sqlPreviousMonthProductSelling = "SELECT SUM(product_order.quantity) AS pSum, selling_order.date FROM selling_order,product_order WHERE selling_order.id = product_order.selling_order_id AND selling_order.date >= '".$dt->format('Y-m-d')."' AND selling_order.date <= '".$dtl->format('Y-m-d')."'";
+        $dailySales = $this->execute($sqlPreviousMonthProductSelling)->fetchAll();
+
         $sqlListOfExpert = "SELECT user_auth.id AS id , expert.first_name AS first_name , expert.last_name AS last_name, user_auth.create_date AS date FROM expert,user_auth WHERE user_auth.id = expert.auth_id";
         $listOfExpert = $this->execute($sqlListOfExpert)->fetchAll();
         $sqlPostPayment = "SELECT SUM(post_payments.payment) AS post_payment FROM post_payments,products WHERE products.id = post_payments.product_id AND products.created_date >= '" . $this->data['dateFrom']."' AND products.created_date <= '" . $this->data['dateTo']."'";
@@ -511,10 +523,10 @@ class Admin extends \Core\Controller
             "totalNumOfUsers" => $totalNumberOfUsers,
             "bestStoreList" => $bestCustomerList,
             "totalPointExpert" => $totalPointExpert,
-            "dailySales" => $dailySales,
-            "dailyProductAdding" => $dailyProductAdding,
+            "pMonthSales" => $dailySales,
+            "pMonthProductAdding" => $dailyProductAdding,
             "bestExpertList" => $bestExpertList,
-            "postSum" => $postSum
+            "postSum" => $postSum,
         ];
         
         View::response($res);
