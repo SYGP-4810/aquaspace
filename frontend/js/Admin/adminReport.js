@@ -125,7 +125,7 @@ function setTheReport(dateFrom, dateTo) {
     
         },
         error: function(errMsg) {
-            // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
 
@@ -152,8 +152,7 @@ $(document).ready(function(){
             console.log("hello world");
         },
         error: function(errMsg) {
-            loadingFinish();
-            //  window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+             window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
 });

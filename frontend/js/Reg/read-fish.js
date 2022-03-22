@@ -16,11 +16,11 @@ $(document).ready(function () {
     dataType: "json",
     data: JSON.stringify(req),
     success: function (data) {
-
-      pics.push("../../images/" + data.img_1);
-      pics.push("../../images/" + data.img_2);
-      pics.push("../../images/" + data.img_3);
-      pics.push("../../images/" + data.img_4);
+      console.log(data);
+      pics.push("../../images/fish_article/" + data.img_1);
+      pics.push("../../images/fish_article/" + data.img_2);
+      pics.push("../../images/fish_article/" + data.img_3);
+      pics.push("../../images/fish_article/" + data.img_4);
       (function () {
         var i = 0;
         var el = document.getElementById("fish-img");
