@@ -364,3 +364,10 @@ div > input[type="text"] {
 .compatible-fish-list{
   margin-left: 40px;
 }
+
+.p-claim{
+  border-radius: 0;
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
