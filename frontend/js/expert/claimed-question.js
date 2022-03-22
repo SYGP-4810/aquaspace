@@ -1,3 +1,11 @@
+$('#blog-topic').click(function(){
+    window.location.href = "questions.html"; 
+})
+
+$('#fish-topic').click(function(){
+    window.location.href = "claimed-questions.html"; 
+})
+
 $(document).ready(function(){
     $.ajax({
         type: "GET",

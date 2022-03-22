@@ -34,17 +34,19 @@ $(document).ready(function() {
     var img4 = url.searchParams.get("img4");
     var authId = url.searchParams.get("authId");
     $("#fishData").html(`
-    <img style="width: 200px;" src="../../images/product/${img1}" alt="${name}" />
-    <img style="width: 200px;" src="../../images/product/${img2}" alt="${name}" />
-    <img style="width: 200px;" src="../../images/product/${img3}" alt="${name}">
-    <img style="width: 200px;" src="../../images/product/${img4}" alt="${name}">
+    <img style="width: 280px;" class="hover" src="../../images/product/${img1}" alt="${name}" />
+    <img style="width: 280px;" class="hover" src="../../images/product/${img2}" alt="${name}" />
+    <img style="width: 280px;" class="hover" src="../../images/product/${img3}" alt="${name}">
+    <img style="width: 280px;" class="hover" src="../../images/product/${img4}" alt="${name}">
     <br>
     <label for="uname" style="font-size: 15px;">
     <h4>suggested name</h4>
     <span>${name}</span> 
     </label><br>
     <div>
-        <input type="text" id="auto" style="font-size: 13px;
+        <input type="text" id="auto" style="
+        width:500px;
+        font-size: 13px;
         padding:0.4em;
         outline: none;
         border-radius: 0;
@@ -55,7 +57,7 @@ $(document).ready(function() {
                 
     <br>
     <div><button style="background-color: #ec7f71; /* Green */
-            width: 80px;
+            width: 220px;
             border: none;
             border-radius: 4px;
             color: white;
@@ -65,11 +67,13 @@ $(document).ready(function() {
             display: inline-block;
             font-size: 15px;
             margin-top: 20px;
+            margin-left: 40px;
+            margin-right: 30px;
             cursor: pointer;" class="button" id="reject-button">
             Could'nt find the fish
             </button>
     <button style="background-color: #688aca; /* Green */
-                width: 80px;
+                width: 160px;
                 border: none;
                 border-radius: 4px;
                 color: white;
@@ -79,7 +83,7 @@ $(document).ready(function() {
                 display: inline-block;
                 font-size: 15px;
                 margin-top: 20px;
-              
+                margin-left: 40px;
                 cursor: pointer;" class="button" id="updateName">Update Name</button></div>
     `);
 
