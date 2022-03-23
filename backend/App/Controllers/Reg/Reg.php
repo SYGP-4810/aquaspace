@@ -827,4 +827,8 @@ class Reg extends \Core\Controller
 
     }
 
+    public function getStoreDetailsAction(){
+        
+    }
+
 }
