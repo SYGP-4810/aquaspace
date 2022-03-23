@@ -193,16 +193,16 @@ $("#invent-save").click(function(){
     }
 
     if (document.getElementById('width')) {
-            let width = $("#width").val();
+            width = $("#width").val();
     }
     if (document.getElementById('height')) {
-            let height = $("#height").val();
+            height = $("#height").val();
     }
     if (document.getElementById('length')) {
-            let length = $("#length").val();
+            length = $("#length").val();
     }
     if (document.getElementById('capacity')) {
-            let capacity = $("#capacity").val();
+            capacity = $("#capacity").val();
     }
 
 
