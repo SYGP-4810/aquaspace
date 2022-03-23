@@ -405,6 +405,7 @@ class Store extends \Core\Controller
                 "SName" => $result2['company_name'],
                 "RegNo" => $result2['registration_num'],
                 "tp" => $result1['tp'],
+                "email" => $result1['email'],
                 "city" => $result2['city'],
                 "address" => $result2['address'],
                 "OwnerName" => $result2['man_name'],
@@ -424,6 +425,7 @@ class Store extends \Core\Controller
                 "SName" => $result2['company_name'],
                 "RegNo" => $result2['registration_num'],
                 "tp" => $result1['tp'],
+                "email" => $result1['email'],
                 "city" => $result2['city'],
                 "address" => $result2['address'],
                 "OwnerName" => $result2['man_name'],
@@ -710,6 +712,25 @@ class Store extends \Core\Controller
             "status" => 5
         ];
         $this->exec($this->update('products', $updateData, "id ='" . $this->data['id'] . "' "  ));
+
+        $stmt = $this->execute($this->get('shopping_cart',"user_id", "product_id	 ='" . $this->data['id'] . "' "  ));
+        $result = $stmt->fetchAll();
+
+        $stmt = $this->execute($this->get('products',"product_name", "id='" . $this->data['id'] . "' "  ));
+        $productName = $stmt->fetch();
+        $name = $productName['product_name'];
+
+
+        $updateData = [
+            "status" => 0
+        ];
+        $this->exec($this->update('shopping_cart', $updateData, "product_id ='" . $this->data['id'] . "' "  ));
+
+        foreach ($result as $value) {
+            $cusId = $value['user_id'];
+            $this->notifyOther($cusId ,"$name"." was Removed by the Store");
+        }
+
         View::response("successfully deleted product");
     }
 
@@ -956,5 +977,86 @@ class Store extends \Core\Controller
         View::response("store");
         
     }
+
+    public function getSubAction()
+    { 
+        $sub = $this->data["sub"];
+        
+        if($sub ==100){
+            $id = 1;
+        }
+        elseif($sub ==200){
+            $id = 2;
+        }
+        elseif($sub ==500){
+            $id = 3;
+        }
+        elseif($sub ==1000){
+            $id = 4;
+        }
+        elseif($sub ==5000){
+            $id = 5;
+        }
+
+        $stmt = $this->execute($this->get('rate', "rate", "id =".$id.""));
+        $subValue = $stmt->fetch();
+
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
+        $result = $stmt->fetch();
+        $id = $result['id'];
+
+        $stmt = $this->execute($this->get('subscription', "id", "auth_id =". $id .""));
+        $result = $stmt->fetchAll();
+        $subCount=count($result);
+
+        $count = array("subVal"=> $subValue, "subCouont"=> $subCount);
+
+        View::response($count);
+
+        
+    }
+
+    public function payAction()
+    { 
+        $size = $this->data["size"];
+        if($size ==100){
+            $id = 1;
+        }
+        elseif($size ==200){
+            $id = 2;
+        }
+        elseif($size ==500){
+            $id = 3;
+        }
+        elseif($size ==1000){
+            $id = 4;
+        }
+        elseif($size ==5000){
+            $id = 5;
+        }
+        $amount = $this->data["amount"];
+        $date = date('Y-m-d');
+        $endDate = date('Y-m-d', strtotime($date. ' + 1 years'));
+
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
+        $result = $stmt->fetch();
+        $id = $result['id'];
+
+        $DataToInsert = [
+            "auth_id" => $id,
+            "sub_type" => $id,
+            "price" => $amount,
+            "date_from" => $date,
+            "date_to" => $endDate
+            
+        ];
+
+        $this->exec($this->save('subscription', $DataToInsert));
+
+        View::response("success");
+
+        
+    }
+    
 
 }

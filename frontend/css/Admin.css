@@ -863,3 +863,32 @@ th {
   padding-left: 30px;
 
 } */
+
+.cover{
+  margin-left: 40px;
+}
+
+.cover .button{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+}
+
+.cover span{
+  font-size: 16px;
+  font-weight:500;
+}
+
+.cover select {
+  appearance: none;
+  background-color: transparent;
+  /* border: none; */
+  padding: 5px;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  text-align: center;
+}

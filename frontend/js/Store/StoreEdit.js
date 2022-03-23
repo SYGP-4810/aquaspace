@@ -2,6 +2,32 @@ function setUrl(text){
     return "/aquaspace/backend/public/index.php?"+text;
 }
 
+function subfunction() {
+    var x = document.getElementById("package-size").value;
+    
+    var req = {"sub":x}
+    // console.log(req);
+    $.ajax({
+        type: "POST",
+        url:setUrl("Store/Store/getSub"),
+        data: JSON.stringify(req),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            // console.log(data);
+            $("#amount").val(data.subVal["rate"]);
+            $("#order").val(data.subCouont);
+            $("#items").val(data.subCouont + data.subVal["rate"]);
+        },
+        error: function(errMsg) {
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+        }
+    });
+}
+
+
+
+
 $(document).ready(function() {
     $.ajax({
         type: "GET",
@@ -15,10 +41,16 @@ $(document).ready(function() {
                 $("#profile-pic").css("background-image", `url(/aquaspace/frontend/images/profile/${data.profilePic})`);
             }
             $("#sname").val(data.SName);
+            $("#fsname").val(data.SName);
+            $("#flname").val(data.SName);
             $("#regno").val(data.RegNo);
+            $("#femail").val(data.email);
             $("#tp").val(data.tp);
+            $("#ftp").val(data.tp);
             $("#city").val(data.city);
+            $("#fcity").val(data.city);
             $("#address").val(data.address);
+            $("#faddress").val(data.address);
             $("#lat").val(data.lat);
             $("#lang").val(data.lan);
             $("#oname").val(data.OwnerName);
@@ -357,5 +389,30 @@ $("#storeEdit").click(function(){
         errorShow(errors);
         alert(JSON.stringify(errors));
     }
+
+});
+
+$("#pay").click(function(){
+
+    let amount = $("#amount").val();
+    let size = $("#package-size").val();
+    var req = {
+        "amount" : amount,
+        "size" : size
+    }
+    console.log(req);
+        $.ajax({
+            type: "POST",
+            url:setUrl("Store/Store/pay"),
+            data: JSON.stringify(req),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data){
+                console.log(data);
+            },
+            error: function(errMsg) {
+                // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            }
+        });
 
 });

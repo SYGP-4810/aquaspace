@@ -19,6 +19,7 @@ function deleteProduct(id){
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
+            // console.log(data);
             successMsg(["successfully deleted product"]);
             delay(function (){
                 location.reload();

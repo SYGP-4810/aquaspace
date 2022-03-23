@@ -138,14 +138,32 @@
                         <br>
                         <div class="payment" >
                             <label for="sub">Update Subscription <small>(anual inventory item)</small>  </label>
-                            <select  id="package-size">
+                            <select  id="package-size" onchange="subfunction()">
                                 <option value="100">100</option>
                                 <option value="200">200</option>
                                 <option value="500">500</option>
                                 <option value="1000">1000</option>
                                 <option value="5000">5000</option>
                             </select>
-                            <a href="" class="nav-button" style="float: none; margin-left:10px">Pay</a>
+                            <form method="post" action="https://sandbox.payhere.lk/pay/checkout">   
+                                <input type="hidden" name="merchant_id" value="1219971">    <!-- Replace your Merchant ID -->
+                                <input type="hidden" name="return_url" value="http://localhost/aquaspace/frontend/src/Store/StoreEdit.html">
+                                <input type="hidden" name="cancel_url" value="http://localhost/aquaspace/frontend/src/Store/StoreEdit.html">
+                                <input type="hidden" name="notify_url" value="http://localhost/aquaspace/frontend/src/Store/StoreEdit.html">  
+                                
+                                <input type="hidden" name="order_id" id="order" value="">
+                                <input type="hidden" name="items" id="items"  value="">
+                                <input type="hidden" name="currency" value="LKR">
+                                <input type="hidden" name="amount" id="amount" value="">  
+                                <input type="hidden" name="first_name" id="fsname" value="">
+                                <input type="hidden" name="email" id="femail" value="">
+                                <input type="hidden" name="last_name" id="flname" value="">
+                                <input type="hidden" name="phone" id="ftp" value="">
+                                <input type="hidden" name="address" id="faddress" value="">
+                                <input type="hidden" name="city" id="fcity" value="">
+                                <input type="hidden" name="country" value="Sri Lanka">
+                                <input type="submit" class="nav-button" id="pay" style="float: none; margin-left:289px" value="Pay">   
+                            </form>
                         </div>
                         <br>
                         <label for="delivery">Modes of Delivery<span class="required">*</span></label>
