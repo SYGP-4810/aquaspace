@@ -676,17 +676,22 @@
                 <div class="review">
                 <h4>${element.fName} ${element.lName}</h4>
                 <div class="rating" id='rev${element.id}'>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
                 </div>
                 <p>${element.review}
                 </p>
             </div>
                 `);
-            let 
+                let rating = parseInt(element.rating);
+                for (var i = 0; i <rating;i++){
+                    $('#rev'+element.id).append(`
+                    <i class="fa fa-star"></i>
+                    `);
+                }
+                for (var i = 0; i < 5-rating;i++){
+                    $('#rev'+element.id).append(`
+                    <i class="fa fa-star-0"></i>
+                    `);
+                }
 
                 });
             }

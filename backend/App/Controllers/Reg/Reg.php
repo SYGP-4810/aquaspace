@@ -818,7 +818,7 @@ class Reg extends \Core\Controller
     }
 
     public function getReviewAction(){
-        $sql = "SELECT  selling_order.rating.id AS id,selling_order.rating AS rating, regular_user.first_name AS fName, regular_user.last_name AS lName, selling_order.review AS review FROM selling_order,regular_user,product_order WHERE selling_order.buyer_auth_id = regular_user.auth_id AND selling_order.id=product_order.selling_order_id AND selling_order.review IS NOT NULL AND product_order.product_id ='".$this->data['id']."'";
+        $sql = "SELECT  selling_order.id AS id,selling_order.rating AS rating, regular_user.first_name AS fName, regular_user.last_name AS lName, selling_order.review AS review FROM selling_order,regular_user,product_order WHERE selling_order.buyer_auth_id = regular_user.auth_id AND selling_order.id=product_order.selling_order_id AND selling_order.review IS NOT NULL AND product_order.product_id ='".$this->data['id']."'";
         View::response($this->execute($sql)->fetchAll());
     }
 
