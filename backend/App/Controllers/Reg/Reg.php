@@ -797,4 +797,29 @@ class Reg extends \Core\Controller
         $this->exec($this->update('products', $dataToUpdate,"id='" . $this->data['id'] . "'"));
 
     }
+
+    public function askProductQuestionAction(){
+        $sId = $this->execute($this->get('products','*',"id='". $this->data['id']."'"))->fetch()['auth_id'];
+        $senderId = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $data = [
+            "question" => $this->data['question'],
+            "product_id" => $this->data['id'],
+            "store_auth_id" => $sId,
+            "sender_id" => $senderId
+        ];
+        $this->exec($this->save('product_quetion',$data));
+        View::response("successfully inserted product question");
+
+    }
+
+    public function getProductAnswersAction(){
+        $result = $this->execute("SELECT product_quetion.question AS question , product_quetion.reply, regular_user.first_name AS fName, regular_user.last_name AS lName FROM product_quetion,regular_user WHERE regular_user.auth_id = product_quetion.sender_id AND product_quetion.product_id = '".$this->data['id']."'")->fetchAll();
+        View::response($result);
+    }
+
+    public function getReviewAction(){
+        $sql = "SELECT  selling_order.rating.id AS id,selling_order.rating AS rating, regular_user.first_name AS fName, regular_user.last_name AS lName, selling_order.review AS review FROM selling_order,regular_user,product_order WHERE selling_order.buyer_auth_id = regular_user.auth_id AND selling_order.id=product_order.selling_order_id AND selling_order.review IS NOT NULL AND product_order.product_id ='".$this->data['id']."'";
+        View::response($this->execute($sql)->fetchAll());
+    }
+
 }
