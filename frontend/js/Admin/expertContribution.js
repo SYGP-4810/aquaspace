@@ -64,13 +64,14 @@ $.ajax({
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data){
+                    console.log(data);
                     data.forEach(element => {
                         let persentage = 100*(element.productCount * 2 + element.questionCount *3 + element.articleCount*10)/tNum;
                         $(".con-list").append(`
                         <tr>
                     <td>
                         <div class="admin">
-                            <img src="../../images/profile/${element.profile_img}>
+                            <img src="/aquaspace/frontend/images/profile/${element.profile_img}">
                             <div class="text">
                                 <span class="name">${element.first_name} ${element.last_name}</span>
                                 <br>
