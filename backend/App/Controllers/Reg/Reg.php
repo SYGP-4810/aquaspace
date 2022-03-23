@@ -822,4 +822,9 @@ class Reg extends \Core\Controller
         View::response($this->execute($sql)->fetchAll());
     }
 
+    public function moveToStoreFrontAction(){
+        View::response($this->execute($this->get('products','*',"id='" . $this->data['id'] ."'"))->fetch()['auth_id']);
+
+    }
+
 }

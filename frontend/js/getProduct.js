@@ -789,6 +789,32 @@
         
         
       });
+
+      $('#view-more').click(function(){
+        let url = new URL(window.location.href);
+        let id = url.searchParams.get("id");
+        let req = {
+            "id" : id
+        }
+        loading();
+        $.ajax({
+            type: "POST",
+            url: setUrl("Reg/Reg/moveToStoreFront"),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(req),
+            success: function (data) {
+              loadingFinish();
+            console.log("store ",data);
+            window.location.replace("/aquaspace/frontend/src/Reg/store.html?store_id="+data);
+            },
+            error: function (errMsg) {
+              window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            }
+          }); 
+      });
     
+
+
   });
   
