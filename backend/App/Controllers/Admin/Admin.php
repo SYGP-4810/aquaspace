@@ -589,7 +589,8 @@ class Admin extends \Core\Controller
             "total_ammount" => $totalAmmount*0.4,
             "res" => $res,
             "today" => $tDay,
-            "status" => 1
+            "status" => 1,
+            "test" => $expertDetails
         ];
         $totalContribution = (int)$this->countTotalContributions();
         $this->exec('DELETE FROM expert_whole_payment WHERE DATE(date) = CURDATE()');
@@ -605,7 +606,6 @@ class Admin extends \Core\Controller
             $this->exec($this->save('expert_payment_details',$dataToSave));
         }
        }
-       $result["test"] = $expertDetails;
       View::response($result);
     }
 
@@ -616,7 +616,7 @@ class Admin extends \Core\Controller
             "status" => 1
         ];
         $this->exec($this->update('expert_whole_payment',$data,"id='".$id."'"));
-        $this->exec("DELETE FROM `expert_whole_payment` WHERE WHERE status = '0'");
+        $this->exec("DELETE FROM expert_whole_payment WHERE status = '0'");
         View::response("successfully updated");
     }
 

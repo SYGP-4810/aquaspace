@@ -119,6 +119,27 @@ $.ajax({
     }
 });
 
+$.ajax({
+    type: "GET",
+    url:setUrl("Admin/Admin/getPaySheetExpert"),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(data){
+        loadingFinish();
+        // console.log(data);
+        if(data.status == 0){
+            $("#payNow").css("display", "none");
+            $("#paidDate").css("display", "none");
+            $("#paid").css("display", "none");
+
+        }
+        
+    },
+    error: function(errMsg) {
+        //  window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+    }
+});
+        
 
 
 });
