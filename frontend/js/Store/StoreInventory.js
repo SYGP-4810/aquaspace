@@ -19,15 +19,15 @@ function deleteProduct(id){
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
-            console.log(data);
-            // successMsg(["successfully deleted product"]);
-            // delay(function (){
-            //     location.reload();
-            // },5000);
+            // console.log(data);
+            successMsg(["successfully deleted product"]);
+            delay(function (){
+                location.reload();
+            },5000);
                 
         },
         error: function(errMsg) {
-            // window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+            window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
         }
     });
  }
