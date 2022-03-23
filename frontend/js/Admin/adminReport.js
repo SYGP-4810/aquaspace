@@ -20,6 +20,7 @@ function setTheReport(dateFrom, dateTo) {
         success: function(data){  
             console.log(data);
             loadingFinish();
+            $("#bestExpertList").html(``);
             data.bestExpertList.forEach(function(element){
               let persentage = 100*(element.totalPoint/data.totalPointExpert);
               $("#bestExpertList").append(`
@@ -31,6 +32,7 @@ function setTheReport(dateFrom, dateTo) {
               
               `);
             });
+            $('#bestStoreList').html(``);
             data.bestStoreList.forEach((element =>{
               $("#bestStoreList").append(`
               <tr>
@@ -121,8 +123,33 @@ function setTheReport(dateFrom, dateTo) {
                 
             });
 
-    
-    
+            // const data1 = {
+            //   labels: [
+            //     'Red',
+            //     'Blue',
+            //     'Yellow'
+            //   ],
+            //   datasets: [{
+            //     label: 'My First Dataset',
+            //     data: [300, 50, 100],
+            //     backgroundColor: [
+            //       'rgb(255, 99, 132)',
+            //       'rgb(54, 162, 235)',
+            //       'rgb(255, 205, 86)'
+            //     ],
+            //     hoverOffset: 4
+            //   }]
+            // };
+            
+            // const config = {
+            //   type: 'doughnut',
+            //   data: data1,
+            // };
+
+            // const myChart1 = new Chart(
+            //   document.getElementById('categoryChart'),
+            //   config
+            // );
         },
         error: function(errMsg) {
             window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
@@ -142,11 +169,10 @@ $(document).ready(function(){
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
-            loadingFinish();
             // console.log(typeof data);
             $("#To").val(data);
             let fr = new Date("2021-01-01");
-            $("#from").val(fr.toLocaleDateString ("fr-CA"),data);
+            $("#From").val(fr.toLocaleDateString ("fr-CA"),data);
             // $("#from").val(fr);
             setTheReport(fr,data);
             console.log("hello world");
@@ -155,4 +181,18 @@ $(document).ready(function(){
              window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
+});
+
+$("#To").change(function(){
+  loading();
+  let to = $('#To').val();
+  let from = $('#From').val();
+  setTheReport(from,to);
+});
+
+$("#From").change(function(){
+  loading();
+  let to = $('#To').val();
+  let from = $('#From').val();
+  setTheReport(from,to);
 });
