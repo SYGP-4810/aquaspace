@@ -84,9 +84,7 @@ function setTheReport(from,to){
       }
 
       let i = 1;
-      let order = data.orderList;
-      $("#bestProduct").html(" ");
-      
+      let order = data.orderList;      
       if(order.length == 0){
         $("#bestProduct").html('<h4 style="color: red;">No Ordes Found In this Time Duration</h4>');
       }else{
