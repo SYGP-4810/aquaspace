@@ -123,33 +123,41 @@ function setTheReport(dateFrom, dateTo) {
                 
             });
 
-            // const data1 = {
-            //   labels: [
-            //     'Red',
-            //     'Blue',
-            //     'Yellow'
-            //   ],
-            //   datasets: [{
-            //     label: 'My First Dataset',
-            //     data: [300, 50, 100],
-            //     backgroundColor: [
-            //       'rgb(255, 99, 132)',
-            //       'rgb(54, 162, 235)',
-            //       'rgb(255, 205, 86)'
-            //     ],
-            //     hoverOffset: 4
-            //   }]
-            // };
             
-            // const config = {
-            //   type: 'doughnut',
-            //   data: data1,
-            // };
+            const data1 = {
+              labels: [
+                'Red',
+                'Blue',
+                'Yellow'
+              ],
+              datasets: [{
+                label: 'My First Dataset',
+                data: [300, 50, 100],
+                backgroundColor: [
+                  'rgb(255, 99, 132)',
+                  'rgb(54, 162, 235)',
+                  'rgb(255, 205, 86)'
+                ],
+                hoverOffset: 4
+              }]
+            };
 
-            // const myChart1 = new Chart(
-            //   document.getElementById('categoryChart'),
-            //   config
-            // );
+            
+            
+            const config = {
+              type: 'doughnut',
+              data: data1,
+              radius : '50%'
+            };
+
+            
+
+            const myChart1 = new Chart(
+              document.getElementById('categoryChart'),
+              config,
+            );
+            
+
         },
         error: function(errMsg) {
             window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
