@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
     <link rel="stylesheet" href="../../css/landing-styles.css">
     <link rel="stylesheet" href="../../css/new-build-tank.css">
-    <link rel="stylesheet" href="../../css/build-tank.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Build Tank</title>
+    <!-- <link rel="stylesheet" href="../../css/addpost.css"> -->
+    <!-- <link rel="stylesheet" href="../../css/build-tank.css"> -->
+    <title>Category Page</title>
 </head>
 
 <body>
@@ -37,13 +37,17 @@
             <ul>
                 <li class="active"><a href="../index.html">Home</a></li>
                 <li><a href="articles.html">Blog</a></li>
-                <li><a href="build-tank.html">Build Tank</a></li>
+                <li><a href="build-tank.html" style=" font-size: 18px; 
+                    font-weight: 600; 
+                    color: rgb(255, 137, 116);
+                    position: relative;
+                    top: -1px;">Build Tank</a></li>
                 <li id="a_parent"><a href="#">Add Post</a>
                     <div id="a_child" class="sub-menu sub-menu-1">
                         <ul>
                             <li><a href="add-fish-post.html">Fish</a></li>
                             <li><a href="add-other-post.html">Equipment</a></li>
-                            <li><a href="add-other-post.html">Plant</a></li>
+                            <li><a href="add-fish-post.html">Plant</a></li>
                             <li><a href="add-adopt-post.html">Adopt</a></li>
                         </ul>
                     </div>
@@ -52,243 +56,217 @@
                 <li><a href="#"><i class="fas fa-bell fa-lg"></i></a></li>
                 <li><a href="#"><i class="fas fa-user-circle fa-lg"></i></a>
                     <div class="sub-menu sub-menu-2">
-                        <ul>
-                            <li><a href="#">Profile</a></li>
+                        <ul class="options">
+                            <li><a href="account-overview.html">Profile</a></li>
                             <li><a href="#">Logout</a></li>
                         </ul>
                     </div>
             </ul>
         </div>
     </div>
-    <div class="topics">
-        <p id="fish">PICK A FISH</p>
-        <i class="fas fa-chevron-right"></i>
-        <p id="items">SELECT ITEMS</p>
-        <i class="fas fa-chevron-right"></i>
-        <p id="build">VIEW YOUR BUILD</p>
-    </div>
-    <div style="height: 200vh "class="fish">
-        <div class="small-container" style="display:flex;">
-            <div class="small-container-mini">
-                <label>Select a fish </label>
-                <select id="fishtype" name="selection">
-                    <option selected hidden value="">Select</option>
-                    <option value="Goldfish">Goldfish</option>
-                    <option value="Clown Fish">Clown fish</option>
-                    <option value="Gappi Fish">Gappi Fish</option>
-                    <option value="Angel">Angel Fish</option>
-                    <option value="Arowana">Arowana</option>
-                    <option value="Beta Fish">Beta Fish</option>
-                    <option value="Koi Fish">Koi Fish</option>
-                    <option value="Catfish">Catfish</option>
-                </select>
+    <div style="position: relative;">
 
-                <label for="quantity">Quantity</label>
-                <input type="number" id="quantity">
-
-                <button id="btn1">Add</button>
+        <img style="width: 100%;" src="../../images/Aquarium Fish _ Aquarium Design Ideas.jpg" alt="">
+        <!-- <img style="width: 100%; ;" src="../../images/aquarium-tips.jpg" alt=""> -->
+        <div style="width: 100%;height: 130px; position: absolute;top: 413px; backdrop-filter: blur(23px); ">
+            <div style="font-size: 90px; font-weight: 800;color: rgb(13, 12, 31); text-align: center;">Build Your Tank
             </div>
-            <div id="fish-list" class="small-container-mini">
-                <table style="width: 90%;" class="overview" id="profile-table">
-                    <tr style="border-bottom: 1px rgb(153, 153, 153) solid; ">
-                        <td style="border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">
-                            Image</td>
-                        <td style="border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">
-                            Name</td>
-                        <td style="border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">
-                            Quantity</td>
-                    </tr>
-
-
-                </table>
-
-
-            </div>
-            <button class="proceed-1">PROCEED</button>
-
-
-        </div>
-
-    </div>
-    <div class="items">
-        <div class="small-container">
-            <div class="q">
-                <input type="checkbox" name="tank" id="tank-q" value="">
-                <label>I have a tank</label>
-            </div>
-            <div class="small-container-mini select-tank">
-                <label>Select a tank</label>
-                <select id="tanktype" name="selection">
-                    <option selected hidden value="">Select</option>
-                    <option value="tank1">Tank Type 1</option>
-                    <option value="tank2">Tank Type 2</option>
-                    <option value="tank3">Tank Type 3</option>
-                    <option value="tank4">Tank Type 4</option>
-                    <option value="tank5">Tank Type 5</option>
-                    <option value="tank6">Tank Type 6</option>
-                    <option value="tank7">Tank Type 7</option>
-                    <option value="tank8">Tank Type 8</option>
-                </select>
-
-
-            </div>
-            <div id="tank-list" class="small-container-mini">
-                <table style="width: 90%;" class="overview" id="tank-table">
-                    <tr style="border-bottom: 1px rgb(153, 153, 153) solid;" id="show-tank">
-                        <!-- <td style="border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">
-                            Image
-                        </td>
-                        <td style="border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">
-                            Price
-                        </td> -->
-                    </tr>
-
-
-                </table>
-
-
-            </div>
-
-        </div>
-        <div class="small-container">
-            <div class="q">
-                <input type="checkbox" name="tank" id="filter-q" value="">
-                <label>I have a water filter</label>
-            </div>
-            <div class="small-container-mini select-filter">
-                <label>Select a filter</label>
-                <select id="filtertype" name="selection">
-                    <option selected hidden value="">Select</option>
-                    <option value="filter1">Filter Type 1</option>
-                    <option value="filter2">Filter Type 2</option>
-                    <option value="filter3">Filter Type 3</option>
-                    <option value="filter4">Filter Type 4</option>
-                    <option value="filter5">Filter Type 5</option>
-                </select>
-
-
-            </div>
-            <div id="filter-list" class="small-container-mini">
-                <table style="width: 90%;" class="overview" id="filter-table">
-                    <tr style="border-bottom: 1px rgb(153, 153, 153) solid;" id="show-filter">
-                        <!-- <td style="border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">
-                            Image
-                        </td>
-                        <td style="border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">
-                            Price
-                        </td> -->
-                    </tr>
-
-
-                </table>
-
-
-            </div>
-
-        </div>
-        <div class="small-container">
-            <div class="q">
-                <input type="checkbox" name="tank" id="light-q" value="">
-                <label>I have a tank lights</label>
-            </div>
-            <div class="small-container-mini select-light">
-                <label>Select a light</label>
-                <select id="lighttype" name="selection">
-                    <option selected hidden value="">Select</option>
-                    <option value="light1">Light Type 1</option>
-                    <option value="light2">Light Type 2</option>
-                    <option value="light3">Light Type 3</option>
-                </select>
-
-
-            </div>
-            <div id="light-list" class="small-container-mini">
-                <table style="width: 90%;" class="overview" id="light-table">
-                    <tr style="border-bottom: 1px rgb(153, 153, 153) solid;" id="show-light">
-                        <!-- <td style="border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">
-                            Image
-                        </td>
-                        <td style="border: none;font-size: 15px; color: black; font-weight: 600; " class="title-text">
-                            Price
-                        </td> -->
-                    </tr>
-
-
-                </table>
-
-
-            </div>
-            <button class="proceed-2">PROCEED</button>
-        </div>
-
-    </div>
-    <div style="height: 100vh "class="build">
-
-        <div class="small-container">
-            <h3>Total Cost: </h3><span>Rs. 14,000.00</span>
-            <p>You can buy these to have your dream aquarium now!</p>
-            <button class="proceed"><a href="cart.html">BUY NOW</a> </button>
-
-            <p>You can get information from our trusted database</p>
-            <button class="proceed">GET PDF</button>
-
         </div>
     </div>
+
+    <div class="container">
+        <div class="container-1">
+            <div id="section-1">
+                <h1>1. Select fish you wanna include in your plan</h1>
+                <label id="name_list">
+                    <div>
+                        <div>
+                            <input type="text" id="auto" placeholder="Select fish to add.." autocomplete="off"
+                                onkeyup="searchFish()" />
+                            <span>
+                                <input type="number" placeholder="Quantity..." id="auto-qty" min="1"
+                                    style="width: 100px; text-align: center;  border-left: 1px solid rgb(134, 132, 132);">
+                            </span>
+                            <span><i id="add-fish-btn" class="fas fa-arrow-right"></i></span>
+                            <ul id="fish_list">
+                        </div>
+
+                        </ul>
+                    </div>
+
+                </label>
+                <label id="img-question" class="img-question">
+                    <div style="display:flex; width: 100%;">
+                        <img id="db-img" src="" width="250px">
+                        <div id="db-data" style="font-size: 13px; margin-left: 20px; color: rgb(88, 87, 85);">
+                        </div>
+                    </div>
+
+                </label>
+                <button>NEXT</button>
+            </div>
+            <div id="section-2">
+                <h4 id="capacity-statement"></h4>
+                <h1>2. Select the tank you wish to buy</h1>
+                <h4 id="capacity-statement"></h4>
+                <label id="tank_post_list">
+                    <div>
+                        <div>
+                            <input type="text" id="tank-auto" placeholder="Select tank to add.." autocomplete="off"
+                                onkeyup="searchTank()" />
+                            <!-- <span>
+                                <input type="number" placeholder="Quantity..." id="auto-qty" min="1"
+                                    style="width: 100px; text-align: center;  border-left: 1px solid rgb(134, 132, 132);">
+                            </span> -->
+                            <span><i id="add-tank-btn" class="fas fa-arrow-right"></i></span>
+                            <ul id="tank_list">
+                        </div>
+
+                        </ul>
+                    </div>
+
+                </label>
+                <label id="tank-img-question" class="img-question">
+                    <div style="display:flex; width: 100%;">
+                        <img id="tank-db-img" src="" width="250px">
+                        <div id="tank-db-data" style="font-size: 13px; margin-left: 20px; color: rgb(88, 87, 85);">
+                            <h5>Price</h5><span>Rs.20000.00</span>
+                            <div>lkdsjdkjaskdjaskldjlsdjklsjdkas jdksjdka sjdksdjsla jdklsajd sajdlksajdklas </div>
+                        </div>
+                    </div>
+
+                </label>
+
+                <br>
+                <br>
+                <h1>3. Select the filter you wish to buy</h1>
+
+                <label id="filter_post_list">
+                    <div>
+                        <div>
+                            <input type="text" id="filter-auto" placeholder="Select filter to add.." autocomplete="off"
+                                onkeyup="searchFilter()" />
+                            <!-- <span>
+                                <input type="number" placeholder="Quantity..." id="auto-qty" min="1"
+                                    style="width: 100px; text-align: center;  border-left: 1px solid rgb(134, 132, 132);">
+                            </span> -->
+                            <span><i id="add-filter-btn" class="fas fa-arrow-right"></i></span>
+                            <ul id="filter_list">
+                        </div>
+
+                        </ul>
+                    </div>
+
+                </label>
+                <label id="filter-img-question" class="img-question">
+                    <div style="display:flex; width: 100%;">
+                        <img id="filter-db-img" src="" width="250px">
+                        <div id="filter-db-data" style="font-size: 13px; margin-left: 20px; color: rgb(88, 87, 85);">
+                        </div>
+                    </div>
+
+                </label>
+                <div class="btn-div">
+                    <button id="btn1">Add to Cart</button>
+                    <button id="btn2" onmouseover="openMsg(this)" onmouseleave="closeMsg()">Print PDF</button> <span>Get details of your build tank plan</span>
+                </div>
+
+            </div>
+            <div id="section-3">
+
+            </div>
+
+
+        </div>
+        <div class="container-2">
+            <h2>Fish</h2>
+            <div class="selected-fish">
+                You have not selected any fish
+                <!-- <div style="display: flex; justify-content: center; align-items: center;">
+                    
+                    <h4 style="width: 70%; font-weight: 400; color: rgb(115, 116, 115);">ksajdkl</h4>
+                    <span style="width: 30%;color: rgb(115, 116, 115);">2</span>
+                    <i class="fas fa-times-circle"></i>
+                </div> -->
+
+            </div>
+            <h2>Tank</h2>
+            <div class="selected-tank">
+                You have not selected any tank
+            </div>
+            <h2>Filter</h2>
+            <div class="selected-filter">
+                You have not selected any filter
+            </div>
+        </div>
+    </div>
+
+
+
+
+
     <footer class="footer-distributed">
 
         <div class="footer-left">
-    
-          <div class="logo">
-            <img src="../images/logo.png" alt="">
-            <h2>AquaSpace</h2>
-          </div>
-    
-          <p class="footer-links">
-            <a href="#" class="link-1">Home</a>
-    
-            <a href="Reg/articles.html">Blog</a>
-    
-            <a href="#">Add Post</a>
-    
-            <a href="Reg/build-tank.html">Build Tank</a>
-          </p>
-          <p class="footer-company-name">AquaSpace © 2021</p>
+
+            <div class="logo">
+                <img src="../../images/logo.png" alt="">
+                <h2>AquaSpace</h2>
+            </div>
+
+            <p class="footer-links">
+                <a href="#" class="link-1">Home</a>
+
+                <a href="Reg/articles.html">Blog</a>
+
+                <a href="#">Add Post</a>
+
+                <a href="Reg/build-tank.html">Build Tank</a>
+            </p>
+            <p class="footer-company-name">AquaSpace © 2021</p>
         </div>
-    
+
         <div class="footer-center">
-          <div>
-            <i class="fa fa-phone"></i>
-            <p>077-1234567</p>
-          </div>
-    
-          <div>
-            <i class="fa fa-envelope"></i>
-            <p><a href="mailto:support@company.com">aquaspace@gmail.com</a></p>
-          </div>
-    
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>077-1234567</p>
+            </div>
+
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:support@company.com">aquaspace@gmail.com</a></p>
+            </div>
+
         </div>
-    
+
         <div class="footer-right">
-    
-          <p class="footer-company-about">
-            <span>About AquaSpace</span>
-            AquaSpace is an online quarium marketplace which allows you to connect with community of
-            fish owners, fish enthusiasts and aquarium stores.
-          </p>
-    
-          <!-- <div class="footer-icons">
-    
-            <a href="#"><i class="far fa-facebook"></i></a>
-            <a href="#"><i class="far fa-twitter"></i></a>
-    
-          </div> -->
-    
+
+            <p class="footer-company-about">
+                <span>About AquaSpace</span>
+                AquaSpace is an online quarium marketplace which allows you to connect with community of
+                fish owners, fish enthusiasts and aquarium stores.
+            </p>
+
+            <!-- <div class="footer-icons">
+
+        <a href="#"><i class="far fa-facebook"></i></a>
+        <a href="#"><i class="far fa-twitter"></i></a>
+
+      </div> -->
+
         </div>
-    
-      </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js">
+    </script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+    <!-- <script src="../../js/add-fish-post.js"></script> -->
+    <!-- <script src="../../js/landing-app.js"></script> -->
     <script src="../../js/Reg/build-tank.js"></script>
-    <script src="../../js/Reg/autocomplete.js"></script>
+
+
 </body>
 
 </html>
