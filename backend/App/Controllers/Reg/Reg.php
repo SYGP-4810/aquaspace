@@ -828,7 +828,10 @@ class Reg extends \Core\Controller
     }
 
     public function getStoreDetailsAction(){
-        
+        $sql = "SELECT store.company_name, store.cover_img, user_auth.profile_img, store.address, user_auth.create_date,store.about FROM user_auth,store WHERE user_auth.id = store.auth_id AND user_auth.id = '".$this->data['id']."'";
+        $storeDetails = $this->execute($sql)->fetch();
+        $productList = $this->execute($this->get('products','*',"auth_id ='".$this->data['id']."'"))->fetchAll();
+        View::response(["storeDetails" => $storeDetails, "productList" => $productList]);
     }
 
 }

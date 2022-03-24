@@ -809,7 +809,7 @@
             window.location.replace("/aquaspace/frontend/src/Reg/store.html?store_id="+data);
             },
             error: function (errMsg) {
-              window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            //   window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
           }); 
       });
