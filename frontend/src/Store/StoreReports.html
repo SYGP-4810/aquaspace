@@ -86,75 +86,57 @@
             <div class="head-titles">
                 <h2>GENERATE REPORTS</h2>
                 <div class="time">
-                    <span>From</span><input type="date" id="from" name="from">
+                    <span style="margin-right: 5px;">From</span>
+                    <input type="date" id="from" name="from"  style="text-align: center;" onchange="subfunction()"> 
                     <span> </span>
-                    <span style="margin-left: 15px;">To</span><input type="date" id="to" name="to">
+                    <span style="margin-left: 15px; margin-right: 5px;">To</span>
+                    <input type="date" id="to" name="to" style="text-align: center;" onchange="subfunction()">
                 </div>
             </div>
             <div class="small-carts">
                 <div class="s-box">
-                    <img src="../../images/calculator.png" alt="coin">
-                    <div class="text">
-                        <span>Total Eranings</span>
-                        <h2 id="total"></h2>
-                    </div>
-                </div>
-                <div class="s-box">
                     <img src="../../images/coin.png" alt="coin">
                     <div class="text">
-                        <span>Monthly Earning</span>
-                        <h2 id="month"></h2>
+                        <span>Total Earning</span>
+                        <h2 id="earnings"></h2>
                     </div>
                 </div>
                 <div class="s-box">
                     <img src="../../images/trolley.png" alt="coin">
                     <div class="text">
-                        <span>Product Sold</span>
+                        <span>Total Product</span>
                         <h2 id="product"></h2>
                     </div>
                 </div>
+                <div class="s-box">
+                    <img src="../../images/calculator.png" alt="coin">
+                    <div class="text">
+                        <span>Total Orders</span>
+                        <h2 id="orders"></h2>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="reson-orders">
+                <h3>Best Selling Product</h3>
+                <table class="orders" id="bestProduct">
+                    <tr style="outline: unset;">
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Orders</th>
+                    </tr>
+                </table>
             </div>
             <div class="big-cart" >
                 <canvas id="store-chart" height="140"></canvas>
-            </div>
-            <div class="reson-orders">
-                <h3>Best Selling Product</h3>
-                <table class="orders">
-                    <tr style="outline: unset;">
-                        <th>Order ID</th>
-                        <th>Date</th>
-                        <th>Orders</th>
-                        <th>Fulfilment</th>
-                        <th>Total</th>
-                    </tr>
-                    <tr>
-                        <td>1255</td>
-                        <td>Aug 03,2021</td>
-                        <td>Lorem ipsum or lipsum as it is sometimes</td>
-                        <td>Pending</td>
-                        <td>Rs. 469</td>
-                    </tr>
-                    <tr>
-                        <td>1255</td>
-                        <td>Aug 03,2021</td>
-                        <td>Lorem ipsum or lipsum as it is sometimes</td>
-                        <td>Pending</td>
-                        <td>Rs. 469</td>
-                    </tr>
-                    <tr>
-                        <td>1255</td>
-                        <td>Aug 03,2021</td>
-                        <td>Lorem ipsum or lipsum as it is sometimes</td>
-                        <td>Pending</td>
-                        <td>Rs. 469</td>
-                    </tr>
-                </table>
             </div>
 		</section>
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
     <script src="../../js/logo.js"></script>
-    <script src="../../js/store/StoreChart.js"></script>
+    <script src="../../js/store/StoreReport.js"></script>
 </body>
 </html>
