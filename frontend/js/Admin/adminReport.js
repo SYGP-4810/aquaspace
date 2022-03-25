@@ -27,7 +27,7 @@ function setTheReport(dateFrom, dateTo) {
               <tr>
               <td>${element.first_name} ${element.last_name}</td>
               <td>${element.date}</td>
-              <td>${persentage}%</td>
+              <td>${persentage.toFixed(0)}%</td>
               </tr>
               
               `);
@@ -122,40 +122,59 @@ function setTheReport(dateFrom, dateTo) {
                   },
                 
             });
-
-            
-            const data1 = {
-              labels: [
-                'Red',
-                'Blue',
-                'Yellow'
-              ],
-              datasets: [{
-                label: 'My First Dataset',
-                data: [300, 50, 100],
-                backgroundColor: [
-                  'rgb(255, 99, 132)',
-                  'rgb(54, 162, 235)',
-                  'rgb(255, 205, 86)'
-                ],
-                hoverOffset: 4
-              }]
-            };
-
-            
-            
-            const config = {
-              type: 'doughnut',
-              data: data1,
-              radius : '50%'
-            };
-
-            
-
-            const myChart1 = new Chart(
-              document.getElementById('categoryChart'),
-              config,
-            );
+            let dataCategory = [];
+            let backgroundCategory = [];
+            let labelsCategory = [];
+            data.category.forEach((element)=>{
+              if(element.type == 1){
+                dataCategory.push(element.pCount);
+                backgroundCategory.push('rgba(10, 236, 74, 0.8)');
+                labelsCategory.push('Fish');
+              }
+              else if(element.type == 2){
+                dataCategory.push(element.pCount);
+                backgroundCategory.push('rgba(226, 81, 77, 0.8)');
+                labelsCategory.push('Plant');
+              }else if(element.type == 3){
+                dataCategory.push(element.pCount);
+                backgroundCategory.push('rgba(221, 39, 190, 0.67)');
+                labelsCategory.push('Equipment');
+              }else if(element.type == 4){
+                dataCategory.push(element.pCount);
+                backgroundCategory.push('rgba(12, 217, 65, 0.42)');
+                labelsCategory.push('Adopt');
+              }
+            });
+            var ctx2 = document.getElementById('categoryChart').getContext('2d');
+            var campaignDonut = new Chart(ctx2, {
+                type: 'doughnut',
+                data: {
+                  labels: labelsCategory,
+                  datasets: [{
+                  label: 'Categories of selling',
+                  data: dataCategory,
+                backgroundColor: backgroundCategory,
+                }],
+                },
+            options: {
+          layout: {
+              padding: {
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 0,
+            }
+        },
+        responsive: true,
+        cutoutPercentage: 90,
+        legend: {
+            display: false,
+        },
+        title: {
+            display: false,
+        },
+    }
+});
             
 
         },
@@ -163,6 +182,8 @@ function setTheReport(dateFrom, dateTo) {
             window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
+
+    
 
     
 

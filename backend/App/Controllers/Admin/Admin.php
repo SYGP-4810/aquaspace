@@ -517,6 +517,8 @@ class Admin extends \Core\Controller
 	}
 	while( $swapped );
     $bestExpertList = array_slice($listOfExpert, 0, 5, true);
+    $sqlCategory = "SELECT count(products.id) AS pCount , products.type FROM products WHERE products.created_date >= '".$this->data['dateFrom']."' AND products.created_date <= '".$this->data['dateTo']."' AND products.status = '1' GROUP BY products.type;";
+    $category = $this->execute($sqlCategory)->fetchAll();    
         $res = [
             "subscriptionSum" => $subscriptionSum,
             "totalNumOfProducts" => $totalNumberOfProducts,
@@ -527,6 +529,7 @@ class Admin extends \Core\Controller
             "pMonthProductAdding" => $dailyProductAdding,
             "bestExpertList" => $bestExpertList,
             "postSum" => $postSum,
+            "category" => $category
         ];
         
         View::response($res);
