@@ -9,20 +9,21 @@ var randomColorGenerator = function () {
 
 let labels = [];
 
-let data = {
+let data1 = {
   labels: labels,
   datasets: [{
     label: 'Count',
-    yAxisID: 'yAxis',
-    backgroundColor: randomColorGenerator(),
+    backgroundColor: [],
     borderColor: 'rgb(255, 99, 132)',
     data: [],
   }]
 };
 
+
+
 const config = {
   type: 'bar',
-  data: data,
+  data: data1,
   options: {
     responsive: true,
     plugins: {
@@ -32,9 +33,27 @@ const config = {
       title: {
         display: true,
         text: 'Best Selling Product Categories'
+      }},
+    interaction: {
+      intersect: false,
+    },
+    scales: {
+      x: {
+        display: true,
+        title: {
+          display: true
+        }
+      },
+      y: {
+        display: true,
+        title: {
+          color: true,
+          display: true,
+          text: 'Items of Product'
+        },
       }
     }
-  }
+  },
 };
 
 
@@ -48,6 +67,16 @@ function addData(chart, label, data) {
   chart.data.labels.push(label);
   chart.data.datasets.forEach((dataset) => {
       dataset.data.push(data);
+      dataset.backgroundColor.push(randomColorGenerator());
+  });
+  chart.update();
+}
+
+function removeData(chart) {
+  chart.data.labels.pop();
+  chart.data.datasets.forEach((dataset) => {
+      dataset.data.pop();
+      dataset.backgroundColor.pop();
   });
   chart.update();
 }
@@ -102,7 +131,12 @@ function setTheReport(from,to){
       }
 
       let orderCat = data.orderCat;
-      console.log(orderCat);
+      console.log(data1);
+      while(labels.length > 0) {
+        removeData(myChart);
+      }
+      
+
       orderCat.forEach(element => {
         addData(myChart,element.category,element.pCount);
       }) 
