@@ -807,8 +807,8 @@ class Store extends \Core\Controller
         $buyerid = $result1['buyer_auth_id'];
         $stmt = $this->execute($this->join("user_auth,regular_user", "user_auth.tp, regular_user.first_name, regular_user.last_name, regular_user.address", "user_auth.id ='" . $buyerid . "' AND regular_user.auth_id ='" . $buyerid . "'"));
         $result2 = $stmt->fetch();
-        $stmt = $this->execute($this->join("product_order,products", "products.product_name, products.img1, products.price, product_order.quantity, product_order.delivery", "product_order.selling_order_id='" . $id . "' AND  product_order.	product_id = products.id"));
-        $result3 = $stmt->fetchAll();
+        // $stmt = $this->execute($this->join("product_order,products", "products.product_name, products.img1, products.price, product_order.quantity, product_order.delivery", "product_order.selling_order_id='" . $id . "' AND  product_order.	product_id = products.id"));
+        // $result3 = $stmt->fetchAll();
         
         View::response($result2);
     }
@@ -963,18 +963,8 @@ class Store extends \Core\Controller
         $start = $result['create_date'];
         $today = date("Y-m-d");
         $dates = ["start" =>$start, "today" =>$today];
-        // $stmt = $this->execute($this->get('selling_order', "*", "seller_auth_id ='" . $id . . "'" . " ORDER BY date ASC'"));
-        // $result = $stmt->fetchAll();
-        View::response($dates);
         
-    }
-
-    public function getStoreReportAction()
-    {    
-        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
-        $result = $stmt->fetch();
-        $id = $result['id'];
-        View::response("store");
+        View::response($dates);
         
     }
 
@@ -1058,5 +1048,40 @@ class Store extends \Core\Controller
         
     }
     
+    public function getStoreReportAction()
+    {   
+
+        $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
+        $result = $stmt->fetch();
+        $id = $result['id'];
+        
+        $sqlErnings = "SELECT SUM(amount) FROM selling_order WHERE date >= '".$this->data['dateFrom']."' AND date <= '".$this->data['dateTo']."' AND seller_auth_id = '".$id."'";
+        $stmt = $this->execute($sqlErnings);
+        $result = $stmt->fetch();
+        $ernings = $result['SUM(amount)'];
+
+        $sqlProcuct = "SELECT COUNT(product_order.id) AS products FROM selling_order,product_order WHERE selling_order.id=product_order.selling_order_id AND date >='".$this->data['dateFrom']."' AND date <= '".$this->data['dateTo']."' AND seller_auth_id = '".$id."'";
+        $stmt = $this->execute($sqlProcuct);
+        $result = $stmt->fetch();
+        $products = $result['products'];
+
+        $sqlOrder = "SELECT COUNT(id) FROM selling_order WHERE date >= '".$this->data['dateFrom']."' AND date <= '".$this->data['dateTo']."' AND seller_auth_id = '".$id."'";
+        $stmt = $this->execute($sqlOrder);
+        $result = $stmt->fetch();
+        $orders = $result['COUNT(id)'];
+
+        $sqlMost = "SELECT COUNT(product_order.id) AS pCount , products.product_name AS name , products.price AS price FROM product_order,products,selling_order WHERE product_order.selling_order_id = selling_order.id AND product_order.product_id = products.id AND selling_order.date >= '".$this->data['dateFrom']."' AND selling_order.date <= '".$this->data['dateTo']."' AND selling_order.seller_auth_id = '".$id."' GROUP BY product_order.product_id ORDER BY pCount DESC LIMIT 5";
+        $stmt = $this->execute($sqlMost);
+        $orderList = $stmt->fetchAll();
+
+        $sqlCat = "SELECT COUNT(product_order.id) AS pCount , products.category AS category  FROM product_order,products,selling_order WHERE product_order.selling_order_id = selling_order.id AND product_order.product_id = products.id AND selling_order.date >= '".$this->data['dateFrom']."' AND selling_order.date <= '".$this->data['dateTo']."' AND selling_order.seller_auth_id = '".$id."' GROUP BY product_order.product_id ORDER BY pCount DESC ";
+        $stmt = $this->execute($sqlCat);
+        $orderCat = $stmt->fetchAll();
+
+        $count = array("ernings"=> $ernings, "products"=> $products,"orders"=> $orders,"orderList"=> $orderList, "orderCat"=> $orderCat);
+
+        View::response($count);
+        
+    }
 
 }

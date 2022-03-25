@@ -7,11 +7,11 @@ function addToCart() {
   var max =document.getElementById("item-qty").max;
   var min =document.getElementById("item-qty").min;
   if(delivery==""){
-    alert("Please select the deliveRy method!");
+    errorShow(["Please select the deliveRy method!"]);
     return
   }
   if(qty <= 0 ||  qty > max || qty < min){
-    alert("Please select the correct quantity!");
+    errorShow(["Please select the correct quantity!"]);
     return;
   }
   
@@ -28,7 +28,10 @@ function addToCart() {
       dataType: "json",
       data: JSON.stringify(req),
       success: function (data) {
-        successMsg([data])
+        successMsg([data]);
+        delay(function (){
+          window.location.reload()
+          },3000);
       },
       error: function (errMsg) {
         window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");

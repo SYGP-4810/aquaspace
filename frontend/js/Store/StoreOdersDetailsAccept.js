@@ -75,6 +75,7 @@ $( document ).ready(function() {
         dataType: "json",
         async: false,
         success: function(data){
+            console.log(data);
             $("#id").append(id);
             $("#name").append(data.first_name + " " + data.last_name);    
             $("#address").append(data.address);
