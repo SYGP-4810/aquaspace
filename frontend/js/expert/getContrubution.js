@@ -20,7 +20,7 @@ $(document).ready(function() {
                 <dt>No of questions answered : </dt>
                 <dd>${data.questionCount}</dd>
                 <dt>Percentage : </dt>
-                <dd>${persentage}%</dd>
+                <dd>${parseInt(persentage)}%</dd>
                 </dl>`); 
         },
         error: function(errMsg) {

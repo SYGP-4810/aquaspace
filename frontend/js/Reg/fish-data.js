@@ -12,7 +12,7 @@ $.ajax({
     data.forEach((element) => {
       $(".small-container-1").append(`
                 <div class="col-4">
-                <a href="/aquaspace/frontend/src/Reg/read-fish.html?id=${element.id}"><img src="../../images/${element.img_1}" alt=""></a> 
+                <a href="/aquaspace/frontend/src/Reg/read-fish.html?id=${element.id}"><img src="../../images/fish_article/${element.img_1}" alt=""></a> 
                 <h3>${element.name}</h3>
             </div>
                     `);

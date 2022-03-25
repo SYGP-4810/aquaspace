@@ -1,7 +1,3 @@
-function setUrl(text) {
-  return "/aquaspace/backend/public/index.php?" + text;
-}
-
 $(document).ready(function () {
   var url = new URL(window.location.href);
   var id = url.searchParams.get("id");
@@ -16,11 +12,11 @@ $(document).ready(function () {
     dataType: "json",
     data: JSON.stringify(req),
     success: function (data) {
-
-      pics.push("../../images/" + data.img_1);
-      pics.push("../../images/" + data.img_2);
-      pics.push("../../images/" + data.img_3);
-      pics.push("../../images/" + data.img_4);
+      console.log(data);
+      pics.push("../../images/fish_article/" + data.img_1);
+      pics.push("../../images/fish_article/" + data.img_2);
+      pics.push("../../images/fish_article/" + data.img_3);
+      pics.push("../../images/fish_article/" + data.img_4);
       (function () {
         var i = 0;
         var el = document.getElementById("fish-img");
@@ -43,6 +39,13 @@ $(document).ready(function () {
       $("#environment").val(data.environment);
       $("#careLevel").val(data.care_level);
       $("#tankCapacity").val(data.tank_capacity);
+      $("#petMaxLength").val(data.max_length);
+      if(data.ability_to_sell){
+        $('#abilityToSell').prop('checked', true);
+      }
+      if(data.ability_to_release){
+        $('#abilityToRelease').prop('checked', true);
+      }
     },
     error: function (errMsg) {
       // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");

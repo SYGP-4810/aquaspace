@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../css/adopt-page.css">
     <link rel="stylesheet" href="../../css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Product Dettails</title>
+    <title>Product Details</title>
 </head>
 
 <body>
@@ -171,21 +171,9 @@
             <p id="questions">Questions</p>
         </div>
 
-        <div class="reviews">
-            <div class="review">
-                <h4>K.P Darmaratne</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>I highly recommend the seller. I have bought multiple fish from this fellow and i can gurauntee
-                    that they will not dissppoint.
-                </p>
-            </div>
-            <div class="review">
+        <div class="reviews" id="review-1">
+
+            <!-- <div class="review">
                 <h4>P.A Samarajeewa</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
@@ -210,7 +198,7 @@
                     good condition.
                     Highly recomment the seller.
                 </p>
-            </div>
+            </div> -->
 
         </div>
         <div class="questions">
@@ -218,7 +206,7 @@
 
             <textarea style="box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.24),
             0 17px 50px 0 rgba(0, 0, 0, 0.19); border: 1px solid rgb(202, 202, 202); outline:none; padding: 10px;"
-                id="description" name="reason" rows="5" cols="100" placeholder="Ask your question"></textarea>
+                id="description1" name="reason" rows="5" cols="100" placeholder="Ask your question"></textarea>
             <button style="background-color: #688aca;
             width: 80px;
             border: none;
@@ -230,24 +218,23 @@
             display: inline-block;
             font-size: 15px;
             margin-top: 20px;
-            cursor: pointer; position: relative ;top:-10px;">ASK</button>
+            cursor: pointer; position: relative ;top:-10px;" id="askQuestion">ASK</button>
 
-            <div style="margin-top: 40px;" class="question">
-                <h4>Ama Perera</h4>
-                <p>Is this fish available to buy?
-                </p>
+            <div id="questionList">
+                
             </div>
-            <div class="question">
+
+            <!-- <div class="question">
                 <h4>Joel Peter</h4>
                 <p>Does the age of the fish matters when it comes to buying a suitable tank?
                 </p>
-            </div>
+            </div> -->
         </div>
     </div>
     <div style="margin-bottom: 50px;" class="small-container">
         <div class="row row-2">
             <h2>More items from the store</h2>
-            <p><a href="store.html">View More</a> </p>
+            <p id="view-more">View More</p>
         </div>
     </div>
     <div class="small-container">
@@ -321,7 +308,7 @@
           </div>
     
           <p class="footer-links">
-            <a href="#" class="link-1">Home</a>
+            <a href="/aquaspace/frontend/src/" class="link-1">Home</a>
     
             <a href="Reg/articles.html">Blog</a>
     
@@ -340,7 +327,7 @@
     
           <div>
             <i class="fa fa-envelope"></i>
-            <p><a href="mailto:support@company.com">aquaspace@gmail.com</a></p>
+            <p><a href="#">aquaspace@gmail.com</a></p>
           </div>
     
         </div>

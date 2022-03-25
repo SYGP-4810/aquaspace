@@ -108,7 +108,8 @@ class Expert extends \Core\Controller
             'img_2' => $iName2,
             'img_3' => $iName3,
             'img_4' => $iName4,
-            'auth_id' => $authId
+            'auth_id' => $authId,
+            'max_length' => $this->data['petMaxLength'],
         ];
         $this->exec($this->save('fish_article',$dataToInsertToFishArticleTable));
         $id = $this->execute($this->get('fish_article','id',"name ='".$this->data['fishName']. "'"))->fetch()['id'];//id of the fish that jst inserted
@@ -125,16 +126,22 @@ class Expert extends \Core\Controller
             ];
             $this->exec($this->save('other_names_of_fish',$dataToInsertOtherFishName));
         }
-        if(isset($this->data['compatibleFishes'])){
-            $numberOfCompatibleFish = count($this->data['compatibleFishes']);
-            for($i=0;$i<$numberOfCompatibleFish;$i++){
+        if($this->data['compatibleFishes']){
+            foreach($this->data['compatibleFishes'] as $cFish){
+                $cId = $this->execute($this->get('fish_article','*',"name LIKE '".$cFish ."%'"))->fetch()['id'];
+                if(!is_null($cId)){
                 $dataToInsertOtherCompatibleFishTable = [
                     'fish_article_id' => $id,
-                    'compatible_fish_id' => $this->data['compatibleFishes'][$i]
+                    'compatible_fish_id' => $cId
                 ];
-            $this->exec($this->save('compatible_fish',$dataToInsertOtherCompatibleFishTable));
+                $this->exec($this->save('compatible_fish',$dataToInsertOtherCompatibleFishTable));
+                }
+
+            }
+
         }
-        }
+
+
         $numberOfNative = count($this->data['nativeTo']);
         for($i = 0; $i < $numberOfNative; $i++){
             $dataToInsertNativeToTable = [

@@ -46,16 +46,16 @@ $("#payNow").click(function(){
                     i += 20;
                     doc.text(10,i,"Total amount need to pay => " + tAmountPaid);
                     doc.save('paysheet.pdf');
+                    window.location.reload();
                     }
                 },
                 error: function(errMsg) {
-                    loadingFinish();
-                     window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+                    //  window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
                 }
             });
         },
         error: function(errMsg) {
-            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
    
@@ -81,7 +81,7 @@ $("#paid").click(function(){
             },3000);
         },
         error: function(errMsg) {
-            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
 });
@@ -129,7 +129,7 @@ $("#pPaid").click(function() {
                         
         },
         error: function(errMsg) {
-            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
 });

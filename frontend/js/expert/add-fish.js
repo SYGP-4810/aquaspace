@@ -121,7 +121,7 @@ $("#add").click(function () {
   $("#auto").val('');
   if(name != ''){
     compatibleFishes.push(name);
-  $('.compatible-fish-list').append(`
+  $('#compatible-fish-list').append(`
     <div class="compatible-fish-list-item">
                             ${name}
                         </div>`);
@@ -164,14 +164,14 @@ $("#save").click(function(){
   let environment = $("#environment").val();
   let careLevel = $("#careLevel").val();
   let tankCapacity = $("#tankCapacity").val();
-  let abilityToSell = false;
+  let abilityToSell = 0;
   let minWaterTemp = $("#minWaterTemp").val();
-  if($("#abiltyToSell").is(":checked")){
-    abilityToSell = true;
+  if($("#abilityToSell").is(":checked")){
+    abilityToSell = 1;
   }
-  let abiltiyToRelease = false;
-  if($("#abiltyToRelease").is(":checked")){
-    abiltiyToRelease = true;
+  let abiltiyToRelease = 0;
+  if($("#abilityToRelease").is(":checked")){
+    abiltiyToRelease = 1;
   }
   let errFlag = 0;
   let errors = [];

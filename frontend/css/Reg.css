@@ -73,7 +73,7 @@ form > input[type="password"] {
   margin-top: 5px;
   margin-left: 60px;
   margin-right: 60px;
-  color: rgb(0, 0, 0);
+  color: rgb(39, 39, 39);
 }
 
 .profile-pic {
@@ -107,7 +107,7 @@ form > input[type="password"] {
 .overview td {
   width: 20%;
   font-size: 1.2em;
-  border-bottom: 3px solid rgb(139, 139, 139);
+  border-bottom: 3px solid rgba(139, 139, 139, 0.575);
   padding-top: 10px;
   padding-left: 5px;
 }
