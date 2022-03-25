@@ -92,7 +92,7 @@
 }
 
 .side-bar ul li:hover {
-  background: #151031;
+  background: rgb(16, 16, 41);
 }
 
 .side-bar ul li a {
@@ -146,4 +146,12 @@
   height: 100px;
   width: 100px;
   background: #151031;
+}
+
+.nav-active{
+  background-color: rgb(16, 16, 41);
+}
+
+.nav-active a{
+  color: white;
 }
