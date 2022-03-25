@@ -29,6 +29,7 @@ $(".verify").click(function(e){
             
             // The key needs to match your method's input parameter (case-sensitive).
             var req = {"email": email};
+            loading();
             $.ajax({
                 type: "POST",
                 url: setUrl("Authentication/emailVerificationTokenCreate"),
@@ -37,7 +38,8 @@ $(".verify").click(function(e){
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data){
-                    alert(data.msg);
+                    loadingFinish();
+                    alert(data.msg) // no need of success message
                     if(data.status == 3){
                         $(".tab").hide();
                         if($("input[name='selection']:checked").val() == 'value-1') {
@@ -55,7 +57,7 @@ $(".verify").click(function(e){
 
                 },
                 error: function(errMsg) {
-                    window.location.replace("../src/Error/"+errMsg.status+".html");
+                    window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
                 }
             });
 
@@ -187,6 +189,7 @@ $("#signUp1").click(function(e){
             "emailToken": emailToken,
             "tp":tp
         }
+        loading();
           $.ajax({
             type: "POST",
             url: setUrl("Authentication/signUpRegularUser"),
@@ -195,13 +198,16 @@ $("#signUp1").click(function(e){
             dataType: "json",
             success: function(data){
                 if(data.status ==1){
-                    alert("please login");
+                    successMsg(['please login']);
+                    delay(function(){
                     window.location.replace("../src/login.html");
+                    },3000);
                     }else{
                         errorShow([data.error])
                     }
             },
             error: function(errMsg) {
+                loadingFinish();
                 window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
@@ -377,7 +383,7 @@ $("#signUp2").click(function(){
                 "branchId": branchId,
                 "accountNo": accountNo
             }
-        
+        loading();
           $.ajax({
             type: "POST",
             url:setUrl("Authentication/signUpExpert"),
@@ -385,6 +391,7 @@ $("#signUp2").click(function(){
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data){
+                loadingFinish();
                 if(data.status ==1){
                 alertMsg(["wait until admin verify you may have email about confirm"]);
                 delay(function(){
@@ -394,13 +401,15 @@ $("#signUp2").click(function(){
 
             },
             error: function(errMsg) {
-                // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+                window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
         }
         reader.onerror = function (error) {
             errorShow([error]);
-            //window.location.replace("../src/Error/"+errMsg.status+".html");
+            delay(function(){
+                window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            },3000);
 
         }
         
@@ -576,7 +585,7 @@ $("#signUp3").click(function(){
             "branchId": branchId,
             "accountNo": accountNo
         }
-        console.log(req);
+        loading();
           $.ajax({
             type: "POST",
             url: setUrl("Authentication/signUpStore"),
@@ -584,17 +593,19 @@ $("#signUp3").click(function(){
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data){
+                console.log(data);
+                loadingFinish();
                 if(data.status ==1){
                     alertMsg(["wait until admin verify you may have email about confirm"]);
                     delay(function(){
                     window.location.replace("/aquaspace/frontend/src/Error/WaitUntilConfirm.html");
                 },5000);
                     }else{
-                        alert(data);
+                        errorShow[data];
                     }
             },
             error: function(errMsg) {
-                // window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+                window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
 
             }
         });

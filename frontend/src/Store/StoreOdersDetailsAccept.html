@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Store.css">
+    <link rel="stylesheet" href="../../css/base.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -93,68 +94,57 @@
                     <table class="o-detail">
                         <tr>
                             <td>Order No</td>
-                            <td>254646</td>
+                            <td id="id"></td>
                         </tr>
                         <tr>
                             <td>Custormer Name</td>
-                            <td>Rashmika Lakshan</td>
+                            <td id="name"></td>
                         </tr>
                         <tr>
                             <td>Custormer Address</td>
-                            <td>No 123, Jaya Mw, Hakmana</td>
+                            <td id="address"></td>
                         </tr>
                         <tr>
                             <td>Custormer Telephone No</td>
-                            <td>077-2821117</td>
+                            <td id="tp"></td>
                         </tr>
-                        <tr>
-                            <td>Delivery Methord</td>
-                            <td>In Store Delivery Service</td>
-                        </tr>
+        
                     </table>
                     <h3 style="margin-top: 10px;">Products</h3>
-                    <div class="o-product">
-                        <div class="p-card">
-                            <img src="../../images/storepic.jpg" alt="">
-                            <label for="text">
-                                <span style="font-weight: 600;">Name: -</span>
-                                <span>Seachem Prime</span>
-                            </label>
-                            <label for="text">
-                                <span style="font-weight: 600;">Price: -</span>
-                                <span>Rs 250.00</span>
-                            </label>
-                            <label for="text">
-                                <span style="font-weight: 600;">Quantity: -</span>
-                                <span>2</span>
-                            </label>
-                        </div>
-                        <div class="p-card">
-                            <img src="../../images/pic1.jpg" alt="">
-                            <label for="text">
-                                <span style="font-weight: 600;">Name: -</span>
-                                <span>Kaytee Koi's Fish Food</span>
-                            </label>
-                            <label for="text">
-                                <span style="font-weight: 600;">Price: -</span>
-                                <span>Rs 550.00</span>
-                            </label>
-                            <label for="text">
-                                <span style="font-weight: 600;">Quantity: -</span>
-                                <span>5</span>
-                            </label>
-                        </div>
+                    <div class="o-product" id="product">
+                        
                     </div>
                     <div class="btn">
-                    <input type="submit" class="button" value="Accept">
-                    <input type="submit" class="del-button" value="Reject">
+                        <button class="button" onclick= "AcceptOrderConfirm()">Accept</button>
+                        <button class="del-button" onclick= "RejectOrderConfirm()">Reject</button>
+                    </div>
+                    <div id="confirm" class="confirm-box">
+                        <div class="confirm-box-container">
+                            <span onclick="document.getElementById('confirm').style.display='none'" class="close" title="Close ">×</span>
+                            <h1>Accept Order</h1>
+                            <p>Are you sure you want to Accept this Order?</p>
+                            <div class="clearfix" id="confirmation-btn">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="reject" class="confirm-box">
+                        <div class="confirm-box-container">
+                            <span onclick="document.getElementById('reject').style.display='none'" class="close" title="Close ">×</span>
+                            <h1>Reject Order</h1>
+                            <p>Are you sure you want to Reject this Order?</p>
+                            <div class="clearfix" id="Reject-confirmation-btn">
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div id="alertDiv"></div>
             </div>        
 		</section>
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/base.js"></script>
     <script src="../../js/logo.js"></script>
+    <script src="../../js/Store/StoreOdersDetailsAccept.js"></script>
 </body>
 </html>
 

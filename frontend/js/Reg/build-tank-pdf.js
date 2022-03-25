@@ -13,7 +13,7 @@ for(i=1;i<=no_of_fish;i++){
 }
 
 function renderArticle(data){
-  var id = data.
+  var id 
   let req = {
     id: id,
   };

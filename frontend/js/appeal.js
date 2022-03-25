@@ -5,6 +5,7 @@ $(document).ready(function() {
     let req = {
         "productId": productId
     }
+    loading();
     $.ajax({
         type: "POST",
         url:setUrl("Common/getProductDetail"),
@@ -12,6 +13,7 @@ $(document).ready(function() {
         dataType: "json",
         data: JSON.stringify(req),
         success: function(data){
+            loadingFinish();
             $("#itemDetails").html(`
             <div style="display: flex; margin-top: 30px;">
             <div style="width: 250px;"><img style="height: 135px;" src="../images/product/${data.img1}" alt="${data.product_name}" /></div>
@@ -24,7 +26,7 @@ $(document).ready(function() {
           </div>
     </div>
     `);
-    
+    loading();
     $.ajax({
         type: "POST",
         url:setUrl("Common/getReportDetail"),
@@ -32,6 +34,7 @@ $(document).ready(function() {
         dataType: "json",
         data: JSON.stringify(req),
         success: function(data1){
+            loadingFinish();
             let reportList = "";
             let reportSet = new Set();
             data1.forEach(el => {
@@ -79,6 +82,7 @@ $("#submitAppeal").click(function(){
             "productId" : productId,
             "appeal" : appeal
         };
+        loading();
         $.ajax({
             type: "POST",
             url:setUrl("Common/insertProductAppeal"),
@@ -86,6 +90,7 @@ $("#submitAppeal").click(function(){
             dataType: "json",
             data: JSON.stringify(req),
             success: function(data){
+                loadingFinish();
                 successMsg(['successfully send an appeal']);
                 delay(function(){
                     window.location.replace("/aquaspace/frontend/src/");

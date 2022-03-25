@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/questions.css">
     <link rel="stylesheet" href="../../css/Expert.css">
+    <link rel="stylesheet" href="../../css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
@@ -85,8 +86,10 @@
                 </ul>
             </nav>
             <section class="section-1">
-                <div class="topics">
-                    <p style="color: #828283;" id="blog-topic">Questions</p>
+                <div class="topics" style="position: relative; left: 5%;">
+                    <script>
+                    </script>
+                        <p style="color: #828283;" id="blog-topic" onclick="window.location.replace('questions.html')">Questions</p>
                     <p>|</p>
                     <p style="color: rgb(61, 61, 61);" id="fish-topic">Claimed Questions</p>
                 </div>
@@ -99,6 +102,8 @@
             </section>
         </div>
     </div>
+    <div id="alertDiv"></div>
+    <div id="loadingIcon"></div>
     <script src="../../js/base.js"></script>
     <script src="../../js/expert/claimed-question.js"></script>
     <script src="../../js/logo.js"></script>

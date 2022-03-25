@@ -7,10 +7,10 @@
 	<link rel="stylesheet" href="../../assets/fontawesome-free-5.15.4-web/css/all.css">
 	<link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/Store.css">
+    <link rel="stylesheet" href="../../css/base.css">
     <title>Dashboard</title>
 </head>
 <body>
-	<input type="checkbox" id="checkbox">
 	<header class="header">
 		<div class="u-name">
             <img class="logo" src="../../images/logo.png"><span class="logo" >AquaSpace</span>
@@ -89,42 +89,18 @@
             <div class="storefrontFeatured">
                 <div class="head">
                     <h3>Featured Item</h3>
-                    <input type="submit" class="del-button" value="DISABLE">
                 </div>
                 <table class="list-item">
-                    <tr>
-                        <td><input type="checkbox" ></td>
-                        <td><img src="../../images/pic1.jpg" alt=""></td>
-                        <td>
-                            <span>Petco Anubias Betta</span>
-                            <br>
-                            <span style="color: #41436A; font-size: .9em;">Rs 150.00</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" ></td>
-                        <td><img src="../../images/storepic.jpg" alt=""></td>
-                        <td>
-                            <span>Domestic Koi (Cyprinus carpio) - X-Large</span>
-                            <br>
-                            <span style="color: #41436A; font-size: .9em;">Rs 480.00</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" ></td>
-                        <td><img src="../../images/pic2.jpg" alt=""></td>
-                        <td>
-                            <span>Saddleback Butterfly</span>
-                            <br>
-                            <span style="color: #41436A; font-size: .9em;">Rs 354.00</span>
-                        </td>
-                    </tr>
+                    
                 </table>
-                <input type="submit" class="button" value="SAVE">
+                <input type="submit" class="button" value="SAVE" id="save">
+                <div id="alertDiv"></div>
             </div>   
 		</section>
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/base.js"></script>
     <script src="../../js/logo.js"></script>
+    <script src="../../js/Store/StorefrontItem.js"></script>
 </body>
 </html>

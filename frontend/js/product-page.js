@@ -28,14 +28,16 @@ function addToCart() {
       dataType: "json",
       data: JSON.stringify(req),
       success: function (data) {
-        alert(data);
+        successMsg([data])
       },
-      // error: function (errMsg) {
-      //   window.location.replace("../src/Error" + errMsg.status + ".html");
-      // },
+      error: function (errMsg) {
+        window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+      }
     });
 
   
 
   
 }
+
+

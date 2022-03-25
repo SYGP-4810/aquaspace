@@ -1,16 +1,12 @@
-//api setter
-
-function setUrl(text){
-    return "/aquaspace/backend/public/index.php?"+text;
-}
-
 $( document ).ready(function() {
+    loading();
     $.ajax({
         type: "GET",
         url:setUrl("Admin/Admin/getAdminList"),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
+            loadingFinish();
             console.log(data);
             var name = '';
             data.forEach(element => {
@@ -33,6 +29,7 @@ $( document ).ready(function() {
             
         },
         error: function(errMsg) {
+            loadingFinish();
             window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });

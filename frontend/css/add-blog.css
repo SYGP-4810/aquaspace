@@ -532,7 +532,8 @@ i.material-icons {
   border-bottom: 1px solid #e1e1e1;
   cursor: pointer;
   color: #6e6e6e;
-  margin-left: 0px;
+  margin-left: -25px;
+
 }
 
 #name_list ul li:hover {

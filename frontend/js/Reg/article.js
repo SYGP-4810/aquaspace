@@ -12,7 +12,7 @@ $(document).ready(function () {
       data.forEach((element) => {
         $(".container-2").append(`
                 <div class="col-3">
-                <a href="/aquaspace/frontend/src/Reg/read-article.html?id=${element.id}"><img src="../../images/${element.pic}" alt=""></a>
+                <a href="/aquaspace/frontend/src/Reg/read-article.html?id=${element.id}"><img src="../../images/article/${element.pic}" alt=""></a>
                 <h3>${element.title}</h3>
                 <h4>${element.summary}</h4>
                 <div id="details">

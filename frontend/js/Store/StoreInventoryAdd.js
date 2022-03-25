@@ -187,7 +187,7 @@ $("#InventorySaveE").click(function(){
         errors.push("Image 3 type must be jpg ,jpeg or png");
         errFlag++;
     }
-    if(acceptedFileTypes.indexOf(imgExtension3.toLowerCase())===-1){
+    if(acceptedFileTypes.indexOf(imgExtension4.toLowerCase())===-1){
         errors.push("Image 4 type must be jpg ,jpeg or png");
         errFlag++;
     }
@@ -223,11 +223,24 @@ $("#InventorySaveE").click(function(){
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data){
-                    // console.log(data);
-                    successMsg(["Added Inventory"]);
-                    delay(function(){
-                    window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
-                    },5000)
+                    //  console.log(data);
+                    if(data.flag == 1){
+                        errorShow([data.msg,"Update Package"]);
+                        delay(function(){
+                        window.location.replace("/aquaspace/frontend/src/Store/StoreEdit.html#sub")
+                        },4000)
+                    }else if(data.flag == 2){
+                        errorShow([data.msg,"Buy Relevent Package"]);
+                        delay(function(){
+                        window.location.replace("/aquaspace/frontend/src/Store/StoreEdit.html#sub")
+                        },4000)
+                    }else if(data.flag == 0){
+                        successMsg([data.msg]);
+                        delay(function(){
+                        window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
+                        },5000)
+                    }
+                    
                 },
                 error: function(errMsg) {
                     window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
@@ -311,7 +324,7 @@ $("#InventorySaveF").click(function(){
         errors.push("Image 3 type must be jpg ,jpeg or png");
         errFlag++;
     }
-    if(acceptedFileTypes.indexOf(imgExtension3.toLowerCase())===-1){
+    if(acceptedFileTypes.indexOf(imgExtension4.toLowerCase())===-1){
         errors.push("Image 4 type must be jpg ,jpeg or png");
         errFlag++;
     }
@@ -338,7 +351,7 @@ $("#InventorySaveF").click(function(){
                 "exen4" : imgExtension4,
                 "type" : "1"
             }
-            console.log(req);
+            // console.log(req);
             $.ajax({
                 type: "POST",
                 url:setUrl("Store/Store/addInventory"),
@@ -347,10 +360,22 @@ $("#InventorySaveF").click(function(){
                 dataType: "json",
                 success: function(data){
                     // console.log(data);
-                    successMsg(["Added Inventory"]);
-                    delay(function(){
-                    window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
-                    },5000);
+                    if(data.flag == 1){
+                        errorShow([data.msg,"Update Package"]);
+                        delay(function(){
+                        window.location.replace("/aquaspace/frontend/src/Store/StoreEdit.html#sub")
+                        },4000)
+                    }else if(data.flag == 2){
+                        errorShow([data.msg,"Buy Relevent Package"]);
+                        delay(function(){
+                        window.location.replace("/aquaspace/frontend/src/Store/StoreEdit.html#sub")
+                        },4000)
+                    }else if(data.flag == 0){
+                        successMsg([data.msg]);
+                        delay(function(){
+                        window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
+                        },5000)
+                    }
                 },
                 error: function(errMsg) {
                     window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
@@ -433,7 +458,7 @@ $("#InventorySaveP").click(function(){
         errors.push("Image 3 type must be jpg ,jpeg or png");
         errFlag++;
     }
-    if(acceptedFileTypes.indexOf(imgExtension3.toLowerCase())===-1){
+    if(acceptedFileTypes.indexOf(imgExtension4.toLowerCase())===-1){
         errors.push("Image 4 type must be jpg ,jpeg or png");
         errFlag++;
     }
@@ -470,10 +495,22 @@ $("#InventorySaveP").click(function(){
                 dataType: "json",
                 success: function(data){
                     // console.log(data);
-                    successMsg(["Added Inventory"]);
-                    delay(function(){
-                    window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
-                    },5000);
+                    if(data.flag == 1){
+                        errorShow([data.msg,"Update Package"]);
+                        delay(function(){
+                        window.location.replace("/aquaspace/frontend/src/Store/StoreEdit.html#sub")
+                        },4000)
+                    }else if(data.flag == 2){
+                        errorShow([data.msg,"Buy Relevent Package"]);
+                        delay(function(){
+                        window.location.replace("/aquaspace/frontend/src/Store/StoreEdit.html#sub")
+                        },4000)
+                    }else if(data.flag == 0){
+                        successMsg([data.msg]);
+                        delay(function(){
+                        window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
+                        },5000)
+                    }
                 },
                 error: function(errMsg) {
                     window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");

@@ -17,12 +17,14 @@ $(document).ready(function(){
             data.forEach(element =>{
                 let name = element.first_name + " " + element.last_name;
                 $("#content-section").append(`<div class="questions">
-                <div><a href='answer-question.html?id=${element.id}'><button id="claim">claim</button></a>
                     <div class="question">
                         <h4>${name}</h4>
                         <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                         ${element.question}
                         </p>
+                        <div><a href='answer-question.html?id=${element.id}'>
+                            <button id="claim" style="top: -40px; left: -30px; background-color: rgb(57, 73, 145); padding: 4px 14px; border-radius: 4px; color: rgb(255, 255, 255); float: right;">claim</button>
+                        </a>
                     </div>
                 </div>`);
             });

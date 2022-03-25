@@ -1,4 +1,4 @@
-//email validat
+//email validate
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email);
@@ -52,7 +52,7 @@ $("#save123").click(function(){
             "city" : city
 
         }
-        
+        loading();
         $.ajax({
             type: "POST",
             url:setUrl("Admin/Admin/addAdmin"),
@@ -60,7 +60,7 @@ $("#save123").click(function(){
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data){
-               
+               loadingFinish();
                 if(data.status == 1){
                     $("#email").focus();
                     errorShow([data.msg]);
@@ -142,6 +142,7 @@ $("#updatePass").click(function(){
             "currentPassword" : currentPassword,
             "newPassword" : newPass
         }
+        loading();
         $.ajax({
             type: "POST",
             url:setUrl("Admin/Admin/updatePassword"),
@@ -149,6 +150,7 @@ $("#updatePass").click(function(){
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data){
+                loadingFinish();
                 if(data.status == 1){
                     errorShow([data.msg]);
                 }
@@ -164,6 +166,7 @@ $("#updatePass").click(function(){
         
             },
             error: function(errMsg) {
+                loadingFinish();
                 window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });

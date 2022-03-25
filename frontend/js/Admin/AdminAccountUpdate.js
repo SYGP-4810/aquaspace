@@ -1,10 +1,12 @@
 $(document).ready(function () {
+    loading();
     $.ajax({
         type: "GET",
         url: setUrl("Admin/Admin/getAdmin"),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
+            loadingFinish();
             $("#fName").val(data.fName);
             $("#lName").val(data.lName);
             $("#address").val(data.address);
@@ -97,7 +99,7 @@ $("#updateAdmin").click(function () {
             "pic": imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
             "exen": imgExtension1
         }
-
+        loading();
         $.ajax({
             type: "POST",
             url: setUrl("Admin/Admin/updateAdmin"),
@@ -105,13 +107,15 @@ $("#updateAdmin").click(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
+                loadingFinish();
                 alertMsg(["Successfully updated"]);
                 delay(function () {
                     window.location.replace("/aquaspace/frontend/src/Admin/AdminAccount.html");
                 }, 5000);
             },
             error: function (errMsg) {
-                // window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+                loadingFinish();
+                window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
             }
         });
 

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../../css/addpost.css">
   <link rel="stylesheet" href="../../css/landing-styles.css">
   <link rel="stylesheet" href="../../css/post-payment.css">
+  <link rel="stylesheet" href="../../css/base.css">
   <!-- <link rel="stylesheet" href="../../css/base.css"> -->
   <title>Category Page</title>
 </head>
@@ -256,13 +257,13 @@
 
   <footer class="footer-distributed">
 
+
     <div class="footer-left">
-
-      <div class="logo">
-        <img src="../../images/logo.png" alt="">
-        <h2>AquaSpace</h2>
-      </div>
-
+        <div class="logo" onclick="window.location.replace('/aquaspace/frontend/src/index.html')">
+          <img src="../../images/logo.png" alt="">
+          <h2>AquaSpace</h2>
+        </div>  
+      
       <p class="footer-links">
         <a href="#" class="link-1">Home</a>
 
@@ -306,17 +307,18 @@
     </div>
 
   </footer>
-
+<div id="alertDiv"></div>
+<div id="loadingIcon"></div>
   <script src="https://code.jquery.com/jquery-1.12.4.js">
   </script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
   </script>
+  <script src="../../js/base.js"></script>
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
   <script src="../../js/image-upload.js"></script>
   <!-- <script src="../../js/add-fish-post.js"></script> -->
   <script src="../../js/landing-app.js"></script>
   <script src="../../js/Reg/new-add-fish-post.js"></script>
-  <script src="../../js/base.js"></script>
 </body>
 
 </html>

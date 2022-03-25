@@ -1,7 +1,3 @@
-function setUrl(text){
-    return "/aquaspace/backend/public/index.php?"+text;
-}
-
 $(document).ready(function(){
     var url = new URL(window.location.href);
     var id = url.searchParams.get("id");
@@ -98,28 +94,32 @@ $(document).ready(function(){
 })
 
 // edit save not complete
-
+var flag1 =0, flag2 =0, flag3 =0, flag4 =0;
 var imgExtension1 = " ", imgExtension2 = " ", imgExtension3 = " ", imgExtension4 = " ";
 
-$("#inventory-img1").change(function (e) {
+$("#inventoryimg1").change(function (e) {
+    flag1++;
     var fileName = e.target.files[0].name;
     fileExtension = fileName.split('.').pop();
     imgExtension1 = fileExtension;
  });
 
- $("#inventory-img2").change(function (e) {
+ $("#inventoryimg2").change(function (e) {
+    flag2++;
     var fileName = e.target.files[0].name;
     fileExtension = fileName.split('.').pop();
     imgExtension2 = fileExtension;
  });
 
- $("#inventory-img3").change(function (e) {
+ $("#inventoryimg3").change(function (e) {
+    flag3++;
     var fileName = e.target.files[0].name;
     fileExtension = fileName.split('.').pop();
     imgExtension3 = fileExtension;
  });
 
- $("#inventory-img4").change(function (e) {
+ $("#inventoryimg4").change(function (e) {
+    flag4++;
     var fileName = e.target.files[0].name;
     fileExtension = fileName.split('.').pop();
     imgExtension4 = fileExtension;
@@ -193,16 +193,16 @@ $("#invent-save").click(function(){
     }
 
     if (document.getElementById('width')) {
-            let width = $("#width").val();
+            width = $("#width").val();
     }
     if (document.getElementById('height')) {
-            let height = $("#height").val();
+            height = $("#height").val();
     }
     if (document.getElementById('length')) {
-            let length = $("#length").val();
+            length = $("#length").val();
     }
     if (document.getElementById('capacity')) {
-            let capacity = $("#capacity").val();
+            capacity = $("#capacity").val();
     }
 
 
@@ -225,21 +225,32 @@ $("#invent-save").click(function(){
     
 
     const acceptedFileTypes = ["png", "jpg", "jpeg"];
-    if(acceptedFileTypes.indexOf(imgExtension1.toLowerCase())===-1){
-        errors.push("Image 1 type must be jpg ,jpeg or png");
-        errFlag++;
+    if(flag1 > 0){
+        if(acceptedFileTypes.indexOf(imgExtension1.toLowerCase())===-1){
+            errors.push("Image 1 type must be jpg ,jpeg or png");
+            errFlag++;
+        }
     }
-    if(acceptedFileTypes.indexOf(imgExtension2.toLowerCase())===-1){
-        errors.push("Image 2 type must be jpg ,jpeg or png");
-        errFlag++;
+    
+    if(flag2 > 0){
+        if(acceptedFileTypes.indexOf(imgExtension2.toLowerCase())===-1){
+            errors.push("Image 2 type must be jpg ,jpeg or png");
+            errFlag++;
+        }
     }
-    if(acceptedFileTypes.indexOf(imgExtension3.toLowerCase())===-1){
-        errors.push("Image 3 type must be jpg ,jpeg or png");
-        errFlag++;
+    
+    if(flag3 > 0){
+        if(acceptedFileTypes.indexOf(imgExtension3.toLowerCase())===-1){
+            errors.push("Image 3 type must be jpg ,jpeg or png");
+            errFlag++;
+        }
     }
-    if(acceptedFileTypes.indexOf(imgExtension3.toLowerCase())===-1){
-        errors.push("Image 4 type must be jpg ,jpeg or png");
-        errFlag++;
+    
+    if(flag4 > 0){
+        if(acceptedFileTypes.indexOf(imgExtension4.toLowerCase())===-1){
+            errors.push("Image 4 type must be jpg ,jpeg or png");
+            errFlag++;
+        }
     }
 
     if(errFlag == 0){
@@ -251,21 +262,40 @@ $("#invent-save").click(function(){
                 "details" : details,
                 "deliveryMode" : deliveryMode,
                 "weight" : weight,
-                "pic1" :imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, ""),
-                "pic2" :imagebase64_2.replace(/^data:image\/[a-z]+;base64,/, ""),
-                "pic3" :imagebase64_3.replace(/^data:image\/[a-z]+;base64,/, ""),
-                "pic4" :imagebase64_4.replace(/^data:image\/[a-z]+;base64,/, ""),
-                "exen1" : imgExtension1,
-                "exen2" : imgExtension2,
-                "exen3" : imgExtension3,
-                "exen4" : imgExtension4,
                 "status" :status,  
                 "height" : height,
                 "width" : width,
                 "length" : length,
-                "capacity" :capacity,
+                "capacity" : capacity,
+                "flag1" : false,
+                "flag2" : false,
+                "flag3" : false,
+                "flag4" : false
             }
 
+            if(flag1 > 0){
+                req["flag1"] = true;
+                req["pic1"] = imagebase64_1.replace(/^data:image\/[a-z]+;base64,/, "");
+                req["exen1"] = imgExtension1;
+            }
+
+            if(flag2 > 0){
+                req["flag2"] = true;
+                req["pic2"] = imagebase64_2.replace(/^data:image\/[a-z]+;base64,/, "");
+                req["exen2"] = imgExtension2;
+            }
+
+            if(flag3 > 0){
+                req["flag3"] = true;
+                req["pic3"] = imagebase64_3.replace(/^data:image\/[a-z]+;base64,/, "");
+                req["exen3"] = imgExtension3;
+            }
+
+            if(flag4 > 0){
+                req["flag4"] = true;
+                req["pic4"] = imagebase64_4.replace(/^data:image\/[a-z]+;base64,/, "");
+                req["exen4"] = imgExtension4;
+            }
             $.ajax({
                 type: "POST",
                 url:setUrl("Store/Store/editInventory"),
@@ -273,7 +303,6 @@ $("#invent-save").click(function(){
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data){
-                    // console.log(data);
                     successMsg(["Updated Inventory"]);
                     delay(function(){
                     window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
@@ -286,7 +315,6 @@ $("#invent-save").click(function(){
         }
     else{
         errorShow(errors);
-        // alert(JSON.stringify(errors));
     }
 });
   

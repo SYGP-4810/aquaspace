@@ -35,7 +35,7 @@ $(document).ready(function(){
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
-            console.log(data);
+            // console.log(data);
             $(".chat").html(`<div class="question">
             ${data.question}
         </div>`)

@@ -271,7 +271,7 @@ class Reg extends \Core\Controller
         SELECT shopping_cart.id, shopping_cart.product_id, shopping_cart.quantity, products.product_name, products.price
         FROM shopping_cart 
         INNER JOIN products ON shopping_cart.product_id=products.id
-        WHERE shopping_cart.user_id = $id AND shopping_cart.status = 1
+        WHERE shopping_cart.user_id = $id AND shopping_cart.status = 1 AND products.status = 1
         ") ;
 
         $result = $stmt->fetchAll();
@@ -855,6 +855,42 @@ class Reg extends \Core\Controller
         $stmt = $this->execute($this->get('products','*', "category = 'filter' AND status=1 AND capacity >= '" . $this->data['capacity'] ."'" ));
         View::response($stmt->fetchAll());
     }
+    public function askProductQuestionAction(){
+        $sId = $this->execute($this->get('products','*',"id='". $this->data['id']."'"))->fetch()['auth_id'];
+        $senderId = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $data = [
+            "question" => $this->data['question'],
+            "product_id" => $this->data['id'],
+            "store_auth_id" => $sId,
+            "sender_id" => $senderId
+        ];
+        $this->exec($this->save('product_quetion',$data));
+        View::response("successfully inserted product question");
+
+    }
+
+    public function getProductAnswersAction(){
+        $result = $this->execute("SELECT product_quetion.question AS question , product_quetion.reply, regular_user.first_name AS fName, regular_user.last_name AS lName FROM product_quetion,regular_user WHERE regular_user.auth_id = product_quetion.sender_id AND product_quetion.product_id = '".$this->data['id']."'")->fetchAll();
+        View::response($result);
+    }
+
+    public function getReviewAction(){
+        $sql = "SELECT  selling_order.id AS id,selling_order.rating AS rating, regular_user.first_name AS fName, regular_user.last_name AS lName, selling_order.review AS review FROM selling_order,regular_user,product_order WHERE selling_order.buyer_auth_id = regular_user.auth_id AND selling_order.id=product_order.selling_order_id AND selling_order.review IS NOT NULL AND product_order.product_id ='".$this->data['id']."'";
+        View::response($this->execute($sql)->fetchAll());
+    }
+
+    public function moveToStoreFrontAction(){
+        View::response($this->execute($this->get('products','*',"id='" . $this->data['id'] ."'"))->fetch()['auth_id']);
+
+    }
+
+    public function getStoreDetailsAction(){
+        $sql = "SELECT store.company_name, store.cover_img, user_auth.profile_img, store.address, user_auth.create_date,store.about FROM user_auth,store WHERE user_auth.id = store.auth_id AND user_auth.id = '".$this->data['id']."'";
+        $storeDetails = $this->execute($sql)->fetch();
+        $productList = $this->execute($this->get('products','*',"auth_id ='".$this->data['id']."'"))->fetchAll();
+        View::response(["storeDetails" => $storeDetails, "productList" => $productList]);
+    }
+
 }
 
 

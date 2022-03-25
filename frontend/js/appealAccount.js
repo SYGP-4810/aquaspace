@@ -5,6 +5,7 @@ $(document).ready(function() {
     let req = {
         "authId" : authId
     }
+    loading();
     $.ajax({
         type: "POST",
         url:setUrl("Common/getProductBlockedDetails"),
@@ -12,6 +13,7 @@ $(document).ready(function() {
         dataType: "json",
         data: JSON.stringify(req),
         success: function(data){
+            loadingFinish();
             data.forEach(element => {
                 $("#product-list").append(`
                 <div style="display: flex; margin-top: 30px;">
@@ -31,14 +33,16 @@ $(document).ready(function() {
                 let req1 = {
                     "productId" : element.id
                 }
-
-                $.ajax({
+        
+        loading();        
+        $.ajax({
         type: "POST",
         url:setUrl("Common/getReportDetail"),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         data: JSON.stringify(req1),
         success: function(data1){
+            loadingFinish();
             let reportList = "";
             let reportSet = new Set();
             data1.forEach(el => {
@@ -90,6 +94,7 @@ $("#submitAppeal").click(function(){
             "authId" : authId,
             "appeal" : appeal
         };
+        loading();
         $.ajax({
             type: "POST",
             url:setUrl("Common/insertProductAppealAccount"),
@@ -97,13 +102,14 @@ $("#submitAppeal").click(function(){
             dataType: "json",
             data: JSON.stringify(req),
             success: function(data){
+                loadingFinish();
                 successMsg(['successfully send an appeal']);
                 delay(function(){
                     window.location.replace("/aquaspace/frontend/src/");
                 },3000)
             },
             error: function(errMsg) {
-                //  window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+                 window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
             }
         });
     }else{

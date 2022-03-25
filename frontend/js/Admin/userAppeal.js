@@ -42,7 +42,7 @@ $(document).ready(function() {
             
         },
         error: function(errMsg) {
-            //window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
 });

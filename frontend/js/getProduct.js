@@ -1,9 +1,3 @@
-//api setter
-
-function setUrl(text) {
-    return "/aquaspace/backend/public/index.php?" + text;
-  }
-  
   $(document).ready(function () {
     $("#reviews").click(function () {
       $(".reviews").css("display", "block");
@@ -18,6 +12,7 @@ function setUrl(text) {
     var id = url.searchParams.get("id");
   
     var req = { id: id };
+    loading();
     $.ajax({
       type: "POST",
       url: setUrl("Common/getProduct"),
@@ -26,6 +21,7 @@ function setUrl(text) {
       async: false,
       data: JSON.stringify(req),
       success: function (data) {
+          loadingFinish();
         // console.log(JSON.stringify(data));
         // console.log(data.delivery);
         $("#column_1").html(`
@@ -618,6 +614,94 @@ function setUrl(text) {
         window.location.replace("../src/Error" + errMsg.status + ".html");
       },
     });
+
+    //print question asked by the store
+    loading();
+    let req1 = {
+        "id" : id
+    }
+    $.ajax({
+        type: "POST",
+        url:setUrl("reg/reg/getProductAnswers"),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify(req1),
+        success: function(data){
+            loadingFinish();
+            console.log("result of answer",data);
+            if( Object.keys(data).length === 0){
+                $('#questionList').html(`<p>No question asked yet</p>`);
+            }else{
+                data.forEach((element) => {
+                    let answer = 'Not yet answered';
+                    if(element.reply != null){
+                        answer = element.reply;
+                    }
+                $('#questionList').append(`
+                <div style="margin-top: 40px;" class="question">
+                <h4>${element.fName} ${element.lName}</h4>
+                <p>Q : ${element.question}</p>
+                <p>A : ${answer}</p>
+            </div>
+                `);
+                });
+            }
+            
+            
+        },
+        error: function(errMsg) {
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+                }
+        });
+
+    //show review of the seller for the item
+    $.ajax({
+        type: "POST",
+        url:setUrl("reg/reg/getReview"),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify(req1),
+        success: function(data){
+            loadingFinish();
+            console.log("review",data);
+            if( Object.keys(data).length === 0){
+                $('#review-1').html(`<p>No question asked yet</p>`);
+            }else{
+                data.forEach((element) => {
+                    let review = 'Not yet reviewed';
+                    if(element.review != null){
+                        review = element.review;
+                    }
+                $('#review-1').append(`
+                <div class="review">
+                <h4>${element.fName} ${element.lName}</h4>
+                <div class="rating" id='rev${element.id}'>
+                </div>
+                <p>${element.review}
+                </p>
+            </div>
+                `);
+                let rating = parseInt(element.rating);
+                for (var i = 0; i <rating;i++){
+                    $('#rev'+element.id).append(`
+                    <i class="fa fa-star"></i>
+                    `);
+                }
+                for (var i = 0; i < 5-rating;i++){
+                    $('#rev'+element.id).append(`
+                    <i class="fa fa-star-0"></i>
+                    `);
+                }
+
+                });
+            }
+        },
+        error: function(errMsg) {
+            // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+                }
+        });
+
+
   
     /*when the report button is clicked, the user selects the reason and confirm the report */
     $(".report-btn").click(function () {
@@ -643,6 +727,7 @@ function setUrl(text) {
         let req = {"report" : report,
                     "productId" : productId
                 }
+        loading();
         $.ajax({
             type: "POST",
             url:setUrl("reg/reg/reportProduct"),
@@ -650,6 +735,7 @@ function setUrl(text) {
             dataType: "json",
             data: JSON.stringify(req),
             success: function(data){
+                loadingFinish();
                 console.log(data);
                 if(data.flag ==1){
                     errorShow([data.msg],"returning to home page");
@@ -662,11 +748,73 @@ function setUrl(text) {
                 
             },
             error: function(errMsg) {
-                // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+                window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
                     }
             });      
         
     });
+
+    $("#askQuestion").click(function() {
+        let question = $('#description1').val();
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        loading();
+        let req = {
+          "question" : question,
+          "id" : id
+        }
+        if(question == ''){
+            loadingFinish();
+            errorShow(['question is empty']);
+        }else{
+            $.ajax({
+                type: "POST",
+                url: setUrl("Reg/Reg/askProductQuestion"),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify(req),
+                success: function (data) {
+                  loadingFinish();
+                  successMsg(["successfully asked the question"]);
+                  delay(function(){
+                    window.location.reload();
+                  },3000);
+                },
+                error: function (errMsg) {
+                  window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+                }
+              });  
+        }
+       
+        
+        
+      });
+
+      $('#view-more').click(function(){
+        let url = new URL(window.location.href);
+        let id = url.searchParams.get("id");
+        let req = {
+            "id" : id
+        }
+        loading();
+        $.ajax({
+            type: "POST",
+            url: setUrl("Reg/Reg/moveToStoreFront"),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(req),
+            success: function (data) {
+              loadingFinish();
+            console.log("store ",data);
+            window.location.replace("/aquaspace/frontend/src/Reg/store.html?store_id="+data);
+            },
+            error: function (errMsg) {
+            //   window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            }
+          }); 
+      });
     
+
+
   });
   

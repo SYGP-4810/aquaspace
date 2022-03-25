@@ -1,5 +1,54 @@
 $(document).ready(function() {
 
+    $.ajax({
+        type: "GET",
+        url:setUrl("Admin/Admin/getNotPaidPaysheet"),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            console.log(data);
+            data.forEach(function(element){
+                $("#paidDate").append(`<option value="${element.date}">${element.date}</option>`);
+            });
+        },
+        error: function(errMsg) {
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+        }
+    });
+
+    // $.ajax({
+    //     type: "GET",
+    //     url:setUrl("Admin/Admin/getNotPaidPaysheet"),
+    //     contentType: "application/json; charset=utf-8",
+    //     dataType: "json",
+    //     success: function(data){
+    //         console.log(data);
+    //         data.forEach(function(element){
+    //             $("#paidDate").append(`<option value="${element.date}">${element.date}</option>`);
+    //         });
+    //     },
+    //     error: function(errMsg) {
+    //         window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+    //     }
+    // });
+
+    $.ajax({
+        type: "GET",
+        url:setUrl("Admin/Admin/getPaidPaysheet"),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            console.log(data);
+            data.forEach(function(element){
+                $("#pPaidDate").append(`<option value="${element.date}">${element.date}</option>`);
+            });
+        },
+        error: function(errMsg) {
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+        }
+    });
+
+
 $.ajax({
     type: "GET",
     url:setUrl("Admin/Admin/countTotalContribution"),
@@ -15,13 +64,14 @@ $.ajax({
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data){
+                    console.log(data);
                     data.forEach(element => {
                         let persentage = 100*(element.productCount * 2 + element.questionCount *3 + element.articleCount*10)/tNum;
                         $(".con-list").append(`
                         <tr>
                     <td>
                         <div class="admin">
-                            <img src="../../images/profile/${element.profile_img}>
+                            <img src="/aquaspace/frontend/images/profile/${element.profile_img}">
                             <div class="text">
                                 <span class="name">${element.first_name} ${element.last_name}</span>
                                 <br>
@@ -59,8 +109,9 @@ $.ajax({
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function(data){
-        console.log(data.date);
-        $("#lastPaidDate").html(`${data.date}`)
+         console.log(data);
+        $("#lastPaidDate").html(`${data.date}`);
+        $("#lastPaidAmount").html(`${data.amount}`);
        
     },
     error: function(errMsg) {
@@ -68,13 +119,34 @@ $.ajax({
     }
 });
 
+$.ajax({
+    type: "GET",
+    url:setUrl("Admin/Admin/getPaySheetExpert"),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(data){
+        loadingFinish();
+        // console.log(data);
+        if(data.status == 0){
+            $("#payNow").css("display", "none");
+            $("#paidDate").css("display", "none");
+            $("#paid").css("display", "none");
+
+        }
+        
+    },
+    error: function(errMsg) {
+        //  window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+    }
+});
+        
 
 
 });
 
-$("#payNow").click(function(){
-    loading();
-    delay(function(){
-        loadingFinish();
-    },5000);
-})
+// $("#payNow").click(function(){
+//     loading();
+//     delay(function(){
+//         loadingFinish();
+//     },5000);
+// })

@@ -104,28 +104,34 @@
                         <div id="card-row-1">
                             <div class="count" id="countAdmin"></div><span class="account-type">Admin</span>
                         </div>
-                        <div class="card-title">Active Staff</div>
+                        
     
                     </div>
                 </a>
                 <a href="AdminVerify.html">
                     <div class=" home-card">
-                        <div id="card-row-1">
-                            <div class="count" id="expertRequestCount">5</div><span class="account-type">Expert</span>
-                        </div>
-                        <div class="card-title">Account Verifications</div>
-    
+                        <div class="title-home">Account Verifications</div>
+                        <div class="data"><div id="expertRequestCount"></div><span class="type">Expert</span></div>
+                        <br>
+                        <div class="data"><div id="storeRequestCount"></div><span class="type">Store</span></div>
+                        
                     </div>
                 </a>
-                <a href="AdminVerify.html">
-                    <div class=" home-card">
-                        <div id="card-row-1">
-                            <div class="count" id="storeRequestCount">10</div><span class="account-type">Store</span>
-                        </div>
-                        <div class="card-title">Account Verifications</div>
-    
-                    </div>
-                </a>
+                
+                <div class=" home-card">
+                    <div class="title-home">Appeals</div>
+                    <a href="AdminIssuesPosts.html">
+                        <div class="data"><div id="ProductBlockCount"></div><span class="type">Products</span></div>
+                    </a>
+                    <br>
+                    <a href="AdminIssuesUser.html">
+                        <div class="data"><div id="appealAccountCount"></div><span class="type">Accounts</span></div>
+                    </a>
+                    
+                    
+                                            
+                </div>
+                
                 
                 
 
@@ -161,37 +167,10 @@
                 
             </div>
 
-
-            <div class="first-row">
-                <a href="AdminIssuesPosts.html">
-                    <div class="home-card-row1 home-card">
-
-                        <div id="card-row-1">
-                            <div class="count" id="ProductBlockCount">2</div><span class="account-type">Appeals</button></span>
-                            <div class="card-title">Blocked Products</div>
-                        </div>
-    
-                    </div>
-                </a>
-                <a href="AdminIssuesUser.html">
-                    <div class="home-card-row1 home-card">
-                        <div id="card-row-1">
-                            <div class="count" id="appealAccountCount">2</div><span class="account-type">Appeals</span>
-                        </div>
-                        <div class="card-title">Blocked Accounts</div>
-    
-                    </div>
-                </a>
-                
-
-
-            </div>
-
-
-
         </section>
     </div>
-
+    <div id="alertDiv"></div>
+    <div id="loadingIcon"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../../js/logo.js"></script>
     <script src="../../js/base.js"></script>

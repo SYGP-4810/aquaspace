@@ -77,51 +77,58 @@
             </ul>
         </nav>
 		<section class="section-1">
-
-            <br>
-            <label for="title">
-                <span>Title</span>
-                <input type="text" id="titleForTheBlog">
-            </label>
-            <br><br>
-            <span>Thumbnail</span>
-            <div class="box">
-                <div class="js--image-preview"></div>
-                <div class="upload-options">
-                    <label>
-                        <input type="file" id="inventory-img1" class="image-upload"
-                            onchange="encodeImageFileAsURL1(this)">
-                    </label>
-                </div>
-            </div>
-            <br><br>
-			<!-- Create the editor container -->
+            <table class="table">       
+                <tr>
+                    <td>Title<span class="required">*</span></td>
+                    <td><input type="text" id="titleForTheBlog" style="width: 500px;"></td>
+                </tr>
+                <tr>
+                    <td>Category<span class="required">*</span></td>
+                    <td>
+                        <div class="select">
+                            <select name="category" id="category">
+                                <option value="" selected disabled hidden>Choose here...</option>
+                                <option value="1">Fish</option>
+                                <option value="2">Plant</option>
+                                <option value="3">Other</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Thumbnail<span class="required">*</span></td>
+                    <td>
+                        <div class="box">
+                            <div class="js--image-preview"></div>
+                            <div class="upload-options">
+                                <label>
+                                    <input type="file" id="inventory-img1" class="image-upload"
+                                        onchange="encodeImageFileAsURL1(this)">
+                                </label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
             <div class="editor-layout">
                 <div id="editor"></div>
-              </div>
-            <br><br>
-            <label for="summary">
-                <span>Summary Of the article</span>
-                <textarea name="summary" id="summary" cols="100" rows="10">
-                </textarea>
-            </label>
-            <div style="position: relative; left: 5%;">
-                <label>
-                    <span>Relavant Fish</span>
-                    <div>
-                        <input type="text" id="auto" placeholder="enter fish name" autocomplete="off" onkeyup="searchFish()" />
-                        <ul id="fish_list">
-                    </div>
-    
-                    </ul>
-                    <button class="button" style="background-color: brown; position: relative; right: 90%" id="add">add</button>
-                    <button style="position:relative; right: 50%;" class="button" id="saveBlog">Upload Artcle</button>
-                </label>
-                <br><br>
-                <div class="compatible-fish-list" id="compatible-fish-list">
-                           
-                </div>
             </div>
+            <div class="sum">
+                <span>Summary Of the article</span>
+                <br>
+                <textarea name="summary" id="summary" cols="180" rows="10"></textarea>
+                <br>
+                <span>Relavant Fish</span>
+                    <div>
+                        <input type="text" id="auto" style="width:40%" placeholder="enter fish name" autocomplete="off" onkeyup="searchFish()" />
+                        <button class="button" style="background-color: brown;  margin-top:0; float:none;" id="add">add</button>
+                        <ul id="fish_list"> </ul>
+                    </div>
+            </div>
+            <div class="compatible-fish-list" id="compatible-fish-list">
+                           
+            </div>
+            <button style="position:relative; right: 50%; width: 150px; margin-bottom: 30px;" class="button" id="saveBlog">Upload Artcle</button>
             
 		</section>
 	</div>
@@ -132,5 +139,6 @@
 <script src="../../js/base.js"></script>
 <script src="../../js/expert/AddBlog.js"></script>
 <script src="../../js/image-upload.js"></script>
+<script src="../../js/logo.js"></script>
 </body>
 </html>

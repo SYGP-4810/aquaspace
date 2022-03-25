@@ -1,15 +1,12 @@
-//api setter
-
-function setUrl(text){
-    return "/aquaspace/backend/public/index.php?"+text;
-  }
 $(document).ready(function(){
+    loading();
     $.ajax({
         type: "GET",
         url:setUrl("Admin/Admin/getAdminVerifyDetails"),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
+            loadingFinish();
             data.forEach(element => {
                 let userType = '';
                 if(element.user_type == 2){
@@ -37,7 +34,8 @@ $(document).ready(function(){
             });
         },
         error: function(errMsg) {
-            //window.location.replace("../src/Error"+errMsg.status+".html");
+            loadingFinish();
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
 })

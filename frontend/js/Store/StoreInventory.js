@@ -19,6 +19,7 @@ function deleteProduct(id){
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
+            // console.log(data);
             successMsg(["successfully deleted product"]);
             delay(function (){
                 location.reload();
@@ -26,7 +27,7 @@ function deleteProduct(id){
                 
         },
         error: function(errMsg) {
-            // window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
+            window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
         }
     });
  }
@@ -68,7 +69,9 @@ $( document ).ready(function() {
                 else {
                     type = "";
                 }
-                $("#invent-list").append(`
+
+                if(element.status == 1 || element.status == 2 || element.status == 3 || element.status == 4){
+                    $("#invent-list").append(`
             <tr>
                 <td class="inv-img"><img src="/aquaspace/frontend/images/product/${element.img1}"></td>
                 <td>${element.product_name}</td>
@@ -80,11 +83,13 @@ $( document ).ready(function() {
                 <td><button class="del-button" onclick="appendInformationTodelete(${element.id})">Delete</button></td>
             </tr>`);
                 
+                };
+                
             });
             
         },
         error: function(errMsg) {
-            //window.location.replace("../src/Error"+errMsg.status+".html");
+            window.location.replace("../src/Error"+errMsg.status+".html");
         }
     });
 });

@@ -1,7 +1,3 @@
-//api setter
-function setUrl(text){
-    return "/aquaspace/backend/public/index.php?"+text;
-  }
 //email validate
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -16,6 +12,7 @@ $("#submit").click(function() {
         var req = {
             "email": email
         }
+      loading();
       $.ajax({
         type: "POST",
         url:setUrl("Authentication/recoverEmailVerificationCreate"),
@@ -23,6 +20,7 @@ $("#submit").click(function() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
+            loadingFinish();
             if(data.status == 1){
                 alert(data.msg);
             }else if(data.status == 2){
@@ -32,7 +30,7 @@ $("#submit").click(function() {
 
         },
         error: function(errMsg) {
-            window.location.replace("../src/Error/"+errMsg.status+".html");
+            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
     }

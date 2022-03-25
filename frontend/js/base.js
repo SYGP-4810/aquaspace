@@ -2,6 +2,7 @@
 function setUrl(text){
     return "/aquaspace/backend/public/index.php?"+text;
   }
+  
 //error showing function first create div with id alertDiv 
 function errorShow(er){
     $("#alertDiv").html(`<div class="alert">
@@ -73,8 +74,11 @@ window.onclick = function(event) {
     </div> */
 
 function loading(){
-  $("#loadingIcon").html(`<img src="/aquaspace/frontend/images/loading.gif" alt="loading the request">
-  <span>Loading</span>`);
+  $("#loadingIcon").html(`<div id="loadingIcon">
+  <img src="/aquaspace/frontend/images/loading.gif" alt="loading the request">
+  <span class="loading">Loading ..</span>
+</div>`);
+  
 }
 
 function loadingFinish(){

@@ -106,8 +106,13 @@ class Controller extends \Core\Token
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
+        $mailFrom = "aquaspaceg48@gmail.com";
         //Recipients
         $mail->setFrom('aquaspaceg48@gmail.com', 'Admin');
+        if (!$mail->addReplyTo($mailFrom)) {
+        echo 'Invalid email address';
+        exit;
+}
         //Add a recipient
         $mail->addAddress($to);               //Name is optional
 

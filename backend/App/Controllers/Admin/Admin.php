@@ -395,6 +395,16 @@ class Admin extends \Core\Controller
 
     }
 
+    //get the total value for contribution (get best customer)
+    private function countTotalContributions(){
+        $tPost = $this->tNumPost();
+        $tNumQuestion = $this->tNumQuestion();
+        $tArticle = $this->tNumArticle();
+        return ($tPost*2+$tNumQuestion*3+$tArticle*10);
+        
+
+    }
+
     //get contribution of experts
     public function getContributionAction(){
         $expertIds = $this->execute($this->get('user_auth','id',"user_type='2'"))->fetch();
@@ -420,7 +430,7 @@ class Admin extends \Core\Controller
 
     //last date experts are paid
     public function getLastExpertPaidDateAction(){
-        $sql = "SELECT * FROM `expert_whole_payment` ORDER BY id DESC LIMIT 1";
+        $sql = "SELECT * FROM `expert_whole_payment` WHERE status = '1' ORDER BY id DESC LIMIT 1";
         View::response($this->execute($sql)->fetch());
     }
 
@@ -441,5 +451,201 @@ class Admin extends \Core\Controller
         View::response($res);
     }
 
+    //get date details to create the initial report
+    public function getTodayAction(){
+        View::response(date("Y-m-d"));
+    }
 
+    //get the report of the admin for the whole system
+    public function getReportAction(){
+        $sqlSubSum = "SELECT SUM(price) AS subSum FROM `subscription` WHERE date_from >= '". $this->data['dateFrom']."' AND date_to <= '".$this->data['dateTo']."'";
+        $subscriptionSum = $this->execute($sqlSubSum)->fetch()['subSum'];
+        $sqlTproduct = "SELECT COUNT(id) AS cProduct FROM `products` WHERE created_date >= '".$this->data['dateFrom']."' AND created_date <= '" . $this->data['dateTo']."'";
+        $totalNumberOfProducts = $this->execute($sqlTproduct)->fetch()['cProduct'];
+        $sqlTUser = "SELECT COUNT(id) AS cUser FROM `user_auth` WHERE create_date >= '".$this->data['dateFrom']."' AND create_date <= '".$this->data['dateTo']."'";
+        $totalNumberOfUsers = $this->execute($sqlTUser)->fetch()['cUser'];
+        $sqlBestStore = "SELECT store.company_name , user_auth.create_date, SUM(selling_order.amount) AS sum_amount FROM store, user_auth, selling_order WHERE user_auth.id = store.auth_id AND user_auth.id = selling_order.seller_auth_id GROUP BY user_auth.id ORDER BY sum_amount LIMIT 5 ";
+        $bestCustomerList = $this->execute($sqlBestStore)->fetchAll();
+        $totalPointExpert = (int)$this->countTotalContributions();
+        $bestCustomerList = $this->execute($sqlBestStore)->fetchAll();
+        // $sqlDailySales = "SELECT SUM(price) FROM subscription WHERE date_from >= '".$this->data['dateFrom']."' AND date_to <= '".$this->data['dateTo']."' GROUP BY date_from ORDER BY date_from";
+        // $dailySales = $this->execute($sqlDailySales)->fetchAll();
+        // $sqlDailyProductAdding = "SELECT COUNT(id) AS daily_product_adding FROM products WHERE created_date >= '".$this->data['dateFrom']."' AND created_date <= '".$this->data['dateTo']."' GROUP BY created_date ORDER BY created_date";
+        // $dailyProductAdding = $this->execute($sqlDailyProductAdding)->fetchAll();
+
+        //previous month selling and product adding 
+
+        $datestring=date('Y-m-d').'first day of last month';
+        $dt=date_create($datestring);
+        $datestring=date('Y-m-d').'last day of last month';
+        $dtl=date_create($datestring);
+        $sqlPreviousMonthProductAdding = "SELECT SUM(products.quantity) AS pSum, products.created_date AS cDate FROM products,user_auth WHERE user_auth.id=products.auth_id AND user_auth.user_type = 3 AND products.created_date >= '".$dt->format('Y-m-d')."' AND products.created_date <= '".$dtl->format('Y-m-d')."' ORDER BY products.created_date";
+        $dailyProductAdding = $this->execute($sqlPreviousMonthProductAdding)->fetchAll();
+        $sqlPreviousMonthProductSelling = "SELECT SUM(product_order.quantity) AS pSum, selling_order.date FROM selling_order,product_order WHERE selling_order.id = product_order.selling_order_id AND selling_order.date >= '".$dt->format('Y-m-d')."' AND selling_order.date <= '".$dtl->format('Y-m-d')."'";
+        $dailySales = $this->execute($sqlPreviousMonthProductSelling)->fetchAll();
+
+        $sqlListOfExpert = "SELECT user_auth.id AS id , expert.first_name AS first_name , expert.last_name AS last_name, user_auth.create_date AS date FROM expert,user_auth WHERE user_auth.id = expert.auth_id";
+        $listOfExpert = $this->execute($sqlListOfExpert)->fetchAll();
+        $sqlPostPayment = "SELECT SUM(post_payments.payment) AS post_payment FROM post_payments,products WHERE products.id = post_payments.product_id AND products.created_date >= '" . $this->data['dateFrom']."' AND products.created_date <= '" . $this->data['dateTo']."'";
+        $postSum = $this->execute($sqlPostPayment)->fetch()['post_payment'];
+        $i = 0;
+        foreach ($listOfExpert as $expert){
+            $countOfQuestionSql = 
+                "SELECT COUNT(expert_question.id) FROM expert_question WHERE expert_question.replyer_id = '". $expert['id']."'";
+            $countOfQuestion = $this->execute($countOfQuestionSql)->fetch()['COUNT(expert_question.id)'];
+            $countOfArticleSql = 
+                "SELECT COUNT(id) FROM fish_article WHERE auth_id = '".$expert['id']."'";
+            $countOfArticle = $this->execute($countOfArticleSql)->fetch()['COUNT(id)'];
+            $countOfProductSql = 
+                "SELECT COUNT(id) FROM products WHERE verifier_id";
+            $countOfProduct = $this->execute($countOfProductSql)->fetch()['COUNT(id)'];
+            $listOfExpert[$i]["totalPoint"] = $countOfArticle*10+$countOfProduct*2+$countOfQuestion*3; 
+        }
+
+    do
+	{
+		$swapped = false;
+		for( $i = 0, $c = count( $listOfExpert ) - 1; $i < $c; $i++ )
+		{
+			if( $listOfExpert[$i]["totalPoint"] < $listOfExpert[$i+1]["totalPoint"] )
+			{
+				list( $listOfExpert[$i + 1], $listOfExpert[$i] ) =
+						array( $listOfExpert[$i], $listOfExpert[$i + 1] );
+				$swapped = true;
+			}
+		}
+	}
+	while( $swapped );
+    $bestExpertList = array_slice($listOfExpert, 0, 5, true);
+        $res = [
+            "subscriptionSum" => $subscriptionSum,
+            "totalNumOfProducts" => $totalNumberOfProducts,
+            "totalNumOfUsers" => $totalNumberOfUsers,
+            "bestStoreList" => $bestCustomerList,
+            "totalPointExpert" => $totalPointExpert,
+            "pMonthSales" => $dailySales,
+            "pMonthProductAdding" => $dailyProductAdding,
+            "bestExpertList" => $bestExpertList,
+            "postSum" => $postSum,
+        ];
+        
+        View::response($res);
+    }
+
+    //get the data to generate pay sheet for experts
+    public function getPaySheetExpertAction(){
+       $lastPaidMonth = date("Ym", strtotime(
+       $this->execute("SELECT * FROM `expert_whole_payment` WHERE status = 1 ORDER BY id DESC LIMIT 1;")->fetch()['date']
+       ));
+       $thisMonth =  date("Ym");
+       if($thisMonth == $lastPaidMonth){
+            $result = [
+                "status" => 0
+            ];
+       }else{
+        $expertIds = $this->execute($this->get('user_auth','id',"user_type='2'"))->fetch();
+        $i = 0;
+        $expertDetails = [];
+        foreach($expertIds as $expertId){
+            $sqlProduct = "SELECT COUNT(id) AS pCount FROM products WHERE verifier_id='".$expertId."'";
+            $sqlArticle = "SELECT COUNT(id) AS aCount FROM fish_article WHERE auth_id='".$expertId."'";
+            $sqlQuestion = "SELECT COUNT(id) AS qCount FROM expert_question WHERE replyer_id='".$expertId."'";
+            $reExpert = $this->execute($this->get('expert','*',"auth_id='".$expertId."'"))->fetch();
+            $pCount =  $this->execute($sqlProduct)->fetch()['pCount'];
+            $aCount = $this->execute($sqlArticle)->fetch()['aCount'];
+            $qCount = $this->execute($sqlQuestion)->fetch()['qCount'];
+            $res[$i] = [
+                "productCount" => $pCount,
+                "articleCount" => $aCount,
+                "questionCount" => $qCount,
+                "auth_id" => $expertId,
+                "profile_img" => $this->execute($this->get('user_auth','*',"id='".$expertId."'"))->fetch()['profile_img'],
+                "first_name" => $reExpert['first_name'],
+                "last_name" => $reExpert['last_name'],
+                "account_no" => $reExpert['account_no'],
+                "branch_code" => $reExpert['branch_id'],
+                "bank" => $reExpert['bank_name']
+            ];
+            $expertDetails[$i] = [
+                "auth_id" => $expertId,
+                "contribution" => 2*$pCount + 10*$aCount + 3*$qCount
+            ];
+            $i++;
+        }
+        $year = date('Y');
+        $month = date('m');
+        $startOfMonth = date('Y-m-d',mktime(0,0,0,$month,1,$year));
+        $endOfMonth = date('Y-m-d',mktime(0,0,0,$month,30,$year));
+        $sql = "SELECT SUM(price) FROM subscription WHERE date_from <= '" .date('Y-m-d') ."' AND date_to >= '" .date('Y-m-d')."'";
+        $totalAmmount = 0;
+        $totalAmmount += (int)$this->execute($sql)->fetch()['SUM(price)'];
+        $totalAmmount = (int)$totalAmmount/12;
+        $sql = "SELECT SUM(post_payments.payment) FROM post_payments, products WHERE post_payments.product_id = products.id AND products.created_date >='" .$startOfMonth ."' AND products.created_date <= '" .$endOfMonth."'";
+        $totalAmmount += (int)$this->execute($sql)->fetch()['SUM(post_payments.payment)'];
+        $tDay = date("Y-m-d");
+        $result = [
+            "res" => $res,
+            "status" => 1,
+            "total_ammount" => $totalAmmount*0.4,
+            "res" => $res,
+            "today" => $tDay,
+            "status" => 1,
+            "test" => $expertDetails
+        ];
+        $totalContribution = (int)$this->countTotalContributions();
+        $this->exec('DELETE FROM expert_whole_payment WHERE DATE(date) = CURDATE()');
+        $this->execute($this->save('expert_whole_payment',['amount' => $totalAmmount*0.4, 'total_contribution' => $totalContribution]));
+        $sql = "SELECT * FROM `expert_whole_payment` ORDER BY id DESC LIMIT 1";
+        $idExpertWholePayment = $this->execute($sql)->fetch()['id'];
+        foreach($expertDetails as $eDet){
+            $dataToSave = [
+                "auth_id" => $eDet['auth_id'],
+                "total_contribution" => $eDet["contribution"],
+                "expert_whole_id" => $idExpertWholePayment
+            ];
+            $this->exec($this->save('expert_payment_details',$dataToSave));
+        }
+       }
+      View::response($result);
+    }
+
+    //record expert paid ammount
+    public function expertPaidAction(){
+        $id = $this->execute($this->get('expert_whole_payment','id',"date = '".$this->data['date']."'"))->fetch()['id'];
+        $data = [
+            "status" => 1
+        ];
+        $this->exec($this->update('expert_whole_payment',$data,"id='".$id."'"));
+        $this->exec("DELETE FROM expert_whole_payment WHERE status = '0'");
+        View::response("successfully updated");
+    }
+
+    //get paysheet details which are not yet paid
+    public function getNotPaidPaysheetAction(){
+        View::response(
+            $this->execute(
+                $this->get('expert_whole_payment','*','status = 0 ')
+            )->fetchAll()
+        );
+    }
+
+    public function getPaidPaysheetAction(){
+        View::response(
+            $this->execute(
+                $this->get('expert_whole_payment','*','status = 1 ')
+            )->fetchAll()
+        );
+    }
+
+    public function expertPreviousPaidPaySheetAction(){
+        $sql = $this->get('expert_whole_payment','*',"date ='".$this->data['date']."' AND status='1' ");
+        $wPaymentDetail = $this->execute($sql)->fetch();
+        $sql = "SELECT expert.first_name , expert.last_name, expert_payment_details.total_contribution,expert.bank_name,expert.account_no,expert.branch_id FROM expert_payment_details,expert WHERE expert_payment_details.auth_id = expert.auth_id AND expert_payment_details.expert_whole_id ='".$wPaymentDetail['id']."'";
+        $paymentDetail = $this->execute($sql)->fetchAll();
+        $res = [
+            "wholePaymentDetail" => $wPaymentDetail,
+            "paymentDetail" => $paymentDetail
+        ];
+        View::response($res);
+    }
 }
