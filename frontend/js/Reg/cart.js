@@ -55,14 +55,14 @@
         let total = element.price * element.quantity;
         $(".shopping-cart .table-responsive tbody").append(
           `
-                                   <tr>
-                                      <td><input type="checkbox" class="chkbox" id="${element.id}" value="${element.product_id}"></td>
-                                      <td>${element.product_name}</td>
-                                      <td>${element.price}</td>
-                                      <td>${element.quantity}</td>
-                                      <td>${total}</td>
-                                      <td><i class="far fa-trash-alt"></i></td>
-                                  </tr>
+           <tr>
+              <td><input type="checkbox" class="chkbox" id="${element.id}" value="${element.product_id}"></td>
+              <td>${element.product_name}</td>
+              <td>${element.price}</td>
+              <td>${element.quantity}</td>
+              <td>${total}</td>
+              <td><i class="far fa-trash-alt"></i></td>
+          </tr>
               `
         );
       });
