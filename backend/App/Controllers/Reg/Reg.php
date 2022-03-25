@@ -903,6 +903,11 @@ class Reg extends \Core\Controller
         }
     }
 
+    public function deleteFromCartAction(){
+        $this->exec("DELETE FROM shopping_cart WHERE id='". $this->data['id'] ."'");
+        View::response("successfully delete the row");
+    }
+
 
 
 
