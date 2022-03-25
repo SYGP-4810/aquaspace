@@ -369,12 +369,17 @@ $("#InventorySaveF").click(function(){
                         errorShow([data.msg,"Buy Relevent Package"]);
                         delay(function(){
                         window.location.replace("/aquaspace/frontend/src/Store/StoreEdit.html#sub")
-                        },4000)
+                        },4000);
                     }else if(data.flag == 0){
                         successMsg([data.msg]);
                         delay(function(){
                         window.location.replace("/aquaspace/frontend/src/Store/StoreInventory.html")
                         },5000)
+                    }else if(data.flag == 3){
+                        errorShow([data.msg,"Give the location to proceed"]);
+                        delay(function(){
+                        window.location.replace("/aquaspace/frontend/src/Store/StoreEdit.html#lat")
+                        },4000)
                     }
                 },
                 error: function(errMsg) {
