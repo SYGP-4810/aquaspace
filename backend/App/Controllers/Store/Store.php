@@ -127,7 +127,7 @@ class Store extends \Core\Controller
         if($countAds < $maxAds){
             $this->exec($this->save('products', $DataToInsert));
             $responce = ["flag" => 0,
-                        "msg" => "success"];
+                        "msg" => "Successfuly added to the Inventory"];
         }else{
             $responce = ["flag" => 2,
                         "msg" => "haven't valide subscription"];
@@ -1010,19 +1010,19 @@ class Store extends \Core\Controller
     { 
         $size = $this->data["size"];
         if($size ==100){
-            $id = 1;
+            $sid = 1;
         }
         elseif($size ==200){
-            $id = 2;
+            $sid = 2;
         }
         elseif($size ==500){
-            $id = 3;
+            $sid = 3;
         }
         elseif($size ==1000){
-            $id = 4;
+            $sid = 4;
         }
         elseif($size ==5000){
-            $id = 5;
+            $sid = 5;
         }
         $amount = $this->data["amount"];
         $date = date('Y-m-d');
@@ -1034,7 +1034,7 @@ class Store extends \Core\Controller
 
         $DataToInsert = [
             "auth_id" => $id,
-            "sub_type" => $id,
+            "sub_type" => $sid,
             "price" => $amount,
             "date_from" => $date,
             "date_to" => $endDate
