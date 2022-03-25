@@ -279,6 +279,8 @@ class Reg extends \Core\Controller
 
     }
 
+    
+
     //insert report about products
     public function reportProductAction() {
         $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
