@@ -508,8 +508,8 @@ i.material-icons {
 
 #name_list ul {
   width: 596px;
-  /* margin-left: 100px; */
-  display: none;
+  margin-left: -25px;
+  display: block;
   list-style-type: none;
   background-color: #fff;
   border-radius: 0 0 5px 5px;
@@ -531,8 +531,8 @@ i.material-icons {
   padding: 7px 9px;
   border-bottom: 1px solid #e1e1e1;
   cursor: pointer;
-  color: #6e6e6e;
-  margin-left: -25px;
+  color: hsl(0, 0%, 43%);
+  margin-left: 0px;
 
 }
 
@@ -550,4 +550,47 @@ i.material-icons {
   /* padding: 5px 10px; */
   width: 600px;
   margin-left: 25px;
+}
+
+
+#fish_list {
+  width: 419px;
+  margin-left: 0px;
+  display: block;
+  list-style-type: none;
+  background-color: #fff;
+  border-radius: 0 0 5px 5px;
+  border: 1px solid #e1e1e1;
+  border-top: none;
+  max-height: 180px;
+  /* margin-top: -20px; */
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0;
+  
+}
+
+#fish_list li {
+  font-size: 13px;
+  padding: 7px 9px;
+  border-bottom: 1px solid #e1e1e1;
+  cursor: pointer;
+  color: hsl(0, 0%, 43%);
+  margin-left: 0px;
+
+}
+
+#fish_list li:hover {
+  background-color: #cac9c9;
+  color: rgb(75, 75, 75);
+}
+
+#fish_list li.selected {
+  background-color: #e8e8e8;
+  color: #333;
+}
+
+
+.section-1{
+  padding: 30px;
 }
