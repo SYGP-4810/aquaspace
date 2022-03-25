@@ -122,6 +122,9 @@ function setTheReport(dateFrom, dateTo) {
                   },
                 
             });
+
+            //category chart start here
+
             let dataCategory = [];
             let backgroundCategory = [];
             let labelsCategory = [];
@@ -174,7 +177,70 @@ function setTheReport(dateFrom, dateTo) {
             display: false,
         },
     }
+
+
 });
+
+    //userType chart start here
+
+            let dataCategoryUser = [];
+            let backgroundCategoryUser = [];
+            let labelsCategoryUser = [];
+            data.userType.forEach((element)=>{
+              if(element.user_type == 1){
+                dataCategoryUser.push(element.uCount);
+                backgroundCategoryUser.push('rgba(245, 0, 0, 0.8)');
+                labelsCategoryUser.push('Regular User');
+              }
+              else if(element.user_type == 2){
+                dataCategoryUser.push(element.uCount);
+                backgroundCategoryUser.push('rgba(0, 255, 0, 0.8)');
+                labelsCategoryUser.push('Expert');
+              }else if(element.user_type == 3){
+                dataCategoryUser.push(element.uCount);
+                backgroundCategoryUser.push('rgba(0, 223, 255, 0.8)');
+                labelsCategoryUser.push('Store');
+              }else if(element.user_type == 4){
+                dataCategoryUser.push(element.uCount);
+                backgroundCategoryUser.push('rgba(12, 217, 65, 0.42)');
+                labelsCategoryUser.push('Admin');
+              }
+            });
+            console.log(dataCategoryUser);
+            var ctx3 = document.getElementById('userCategory').getContext('2d');
+            var campaignPie = new Chart(ctx3, {
+                type: 'pie',
+                data: {
+                  labels: labelsCategoryUser,
+                  datasets: [{
+                  label: 'Categories of Users',
+                  data: dataCategoryUser,
+                backgroundColor: backgroundCategoryUser,
+                }],
+                },
+            options: {
+          layout: {
+              padding: {
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 0,
+            }
+        },
+        responsive: true,
+        cutoutPercentage: 90,
+        legend: {
+            display: false,
+        },
+        title: {
+            display: false,
+        },
+    }
+
+
+});
+
+
             
 
         },
