@@ -465,7 +465,6 @@ class Reg extends \Core\Controller
 
                 $t = $r1['quantity']*$r2['price'];
                 $t_amount = $t_amount + $t;
-                
             }
             
             $dataToInsert1 = [
@@ -662,6 +661,16 @@ class Reg extends \Core\Controller
         ") ;
         View::response($stmt->fetchAll());
     }
+    public function getCompatibleFishByNameAction(){
+        $stmt1 = $this->execute($this->get('fish_article','id',"name='" . $this->data['name'] ."'"));
+        $id = ($stmt1->fetch())['id'];
+        $stmt = $this->execute(" SELECT fish_article.name, fish_article.img_1
+        FROM compatible_fish
+        INNER JOIN fish_article ON fish_article.id = compatible_fish.compatible_fish_id
+        WHERE compatible_fish.fish_article_id = $id
+        ") ;
+        View::response($stmt->fetchAll());
+    }
 
     public function getFishDataPostAction(){
         View::response($this->execute($this->get('fish_article','*',"id='" . $this->data['id'] ."'"))->fetch());
@@ -692,6 +701,12 @@ class Reg extends \Core\Controller
         View::response($stmt->fetch());
     }
 
+    public function getPostImageAction()
+    {
+        $stmt = $this->execute($this->get('products', "price,img1,description", "id ='" . $this->data['id'] . "'"));
+        View::response($stmt->fetch());
+    }
+  
     public function refundAction(){
         $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "' AND user_type='1'"))->fetch()['id'];
 
@@ -798,6 +813,48 @@ class Reg extends \Core\Controller
 
     }
 
+    public function getTankCapacityAction(){
+
+        $data = json_encode($this->data);
+        $obj = json_decode($data);
+
+        $max_capacity = 0;
+        $biggest_fish = "";
+        foreach($obj as $key=>$value){
+
+            $capacity = $this->execute($this->get('fish_article', 'tank_capacity',"name = '" . $key ."'" ))->fetch();
+            if($capacity['tank_capacity']>$max_capacity){
+                $max_capacity = $capacity['tank_capacity'];
+                $biggest_fish = $key;
+            }
+        }
+
+        $required_capacity = $max_capacity;
+        foreach($obj as $key=>$value){
+
+            if($key != $biggest_fish){
+                $capacity = $this->execute($this->get('fish_article', 'tank_capacity',"name = '" . $key ."'" ))->fetch();
+                $required_capacity = $required_capacity + ($capacity['tank_capacity'])*(25/100)*((int)($value));
+            }
+            else{
+                $final_value = ((int)($value))-1;
+                $capacity = $this->execute($this->get('fish_article', 'tank_capacity',"name = '" . $key ."'" ))->fetch();
+                $required_capacity = $required_capacity + (($capacity['tank_capacity'])*(25/100))*($final_value);
+            }
+        }
+
+        View::response($required_capacity);
+
+    }
+
+    public function getTanks(){
+        $stmt = $this->execute($this->get('products','*', "category = 'tank' AND status=1 AND capacity >= '" . $this->data['capacity'] ."'" ));
+        View::response($stmt->fetchAll());
+    }
+    public function getFilters(){
+        $stmt = $this->execute($this->get('products','*', "category = 'filter' AND status=1 AND capacity >= '" . $this->data['capacity'] ."'" ));
+        View::response($stmt->fetchAll());
+    }
     public function askProductQuestionAction(){
         $sId = $this->execute($this->get('products','*',"id='". $this->data['id']."'"))->fetch()['auth_id'];
         $senderId = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
@@ -835,3 +892,6 @@ class Reg extends \Core\Controller
     }
 
 }
+
+
+

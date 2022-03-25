@@ -581,7 +581,7 @@
         //             </select> -->
   
         //             <input  id="item-qty"  type="number" min="1" max=${data.quantity} value="1"><span id="quantity">${data.quantity}</span><span>     </span><span>Available</span><br>
-        //             <a href="#" class="btn" onclick="addToCart()>Add to Cart</a>
+        //             <a href="#" class="btn" onclick="()>Add to Cart</a>
         //             <a href="#" class="btn">Wishlist</a>
         //             <h3>Product Details</h3>
         //             <br>
