@@ -891,6 +891,22 @@ class Reg extends \Core\Controller
         View::response(["storeDetails" => $storeDetails, "productList" => $productList]);
     }
 
+    public function moreItemFromStoreAction(){
+        $id = $this->execute($this->get('products','*',"id='" . $this->data['id']."'"))->fetch()['auth_id'];
+        $userType = $this->execute($this->get('user_auth','*',"id ='".$id."'"))->fetch()['user_type'];
+        if($userType == 1){
+            View::response(["status" =>1]);
+        }else{
+            $sql = "SELECT * FROM products WHERE status ='1' AND auth_id = ".$id." LIMIT 4";
+            View::response(["status" => 2, "moreItem" => $this->execute($sql)->fetchAll()]);
+
+        }
+    }
+
+
+
+
+
 }
 
 
