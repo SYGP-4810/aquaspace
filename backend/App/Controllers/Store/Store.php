@@ -784,8 +784,15 @@ class Store extends \Core\Controller
         $updateData = [
             "reply" => $this->data['answer']
         ];
-    
-        $this->exec($this->update('product_quetion', $updateData, "id='" . $this->data['id'] . "'"));        
+        
+        $this->exec($this->update('product_quetion', $updateData, "id='" . $this->data['id'] . "'"));  
+        
+        $stmt = $this->execute($this->get('product_quetion', "*",  "id='" . $this->data['id'] . "'"));
+        $result1 = $stmt->fetch();
+        $id = $result1['sender_id'];
+        $que =$result1['question'];
+        $this->notifyOther($id,"$que"."  question has been Answered");
+
         View::response("success");
         
     }
