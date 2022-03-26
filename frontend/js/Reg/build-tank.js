@@ -320,6 +320,7 @@ $("#tank-auto").click(function (data) {
 
 let itemArray = {};
 $("#add-tank-btn").click(function () {
+  $("#tank-img-question").css("display", "none");
   let tankName = $("#tank-auto").val();
   let tankID = $("#tank-auto").attr("name");
   $("#tank-auto").val("");
@@ -397,6 +398,7 @@ $("#filter-auto").click(function (data) {
 });
 
 $("#add-filter-btn").click(function () {
+  $("#filter-img-question").css("display", "none");
   let filterName = $("#filter-auto").val();
   let filterID = $("#filter-auto").attr("name");
   $("#filter-auto").val("");
@@ -440,6 +442,23 @@ function closeMsg() {
   $(".btn-div span").css("display", "none");
 }
 
+$("#btn1").click(function () {
+  let flag;
+  if (itemArray["tank"] != 0) {
+    window.open(
+      "/aquaspace/frontend/src/Reg/product-page.html?id=" + itemArray["tank"],
+      "_blank"
+    );
+  }
+  if (itemArray["filter"] != 0) {
+    window.open(
+      "/aquaspace/frontend/src/Reg/product-page.html?id=" + itemArray["filter"],
+      "_blank"
+    );
+  }
+ 
+});
+
 $("#btn2").click(function () {
   let text = "";
   // for (i = 1; i <= Object.keys(fishArray).length; i++) {
@@ -447,20 +466,21 @@ $("#btn2").click(function () {
   //   text = text + "id" + i + "=" + fish;
   // }
   let i = 1;
-  for (var key in fishArray){
+  for (var key in fishArray) {
     text = text + "id" + i + "=" + key + "&";
-    i=i+1;
+    i = i + 1;
   }
   text = text + "ids= " + Object.keys(fishArray).length + "&";
   if (itemArray["tank"] != 0) {
-    text = text + "tank=" + itemArray["tank"]+ "&";
+    text = text + "tank=" + itemArray["tank"] + "&";
   }
   if (itemArray["filter"] != 0) {
-    text = text + "filter=" + itemArray["filter"]+ "&";
+    text = text + "filter=" + itemArray["filter"] + "&";
   }
   text = text + "capacity=" + capacity;
 
   window.open(
-    "/aquaspace/frontend/src/Reg/build-tank-pdf.html?" + text  , "_blank"
+    "/aquaspace/frontend/src/Reg/build-tank-pdf.html?" + text,
+    "_blank"
   );
 });

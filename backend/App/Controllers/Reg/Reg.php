@@ -155,8 +155,10 @@ class Reg extends \Core\Controller
 
         $question = $this->data['question'];
 
+        $status = 1;
+
         if($question == 0 || $question == 2){
-            
+            $status = 3;
         }
 
         $dataToInsert = [
@@ -176,7 +178,7 @@ class Reg extends \Core\Controller
             "img4" => $iName4,
             "auth_id" => $id,
             "created_date" => $date,
-            "status" => $this->data['status']
+            "status" => $status
         ];
         // View::response($dataToInsert);
         $this->exec($this->save('products', $dataToInsert));
@@ -217,6 +219,7 @@ class Reg extends \Core\Controller
         $stmt = $this->execute($this->get('fish', "image", "name ='" . $this->data['name'] . "'"));
         View::response($stmt->fetch());
     }
+
 
     public function getAddressAction()
     {
@@ -536,6 +539,7 @@ class Reg extends \Core\Controller
                     "selling_order_id" => $max_id['MAX(id)'],
                     "product_id" => $obj[$i]->product_id[$y],
                     "delivery" => $r1['delivery'],
+                    "quantity" => $r1['quantity'],
                     "amount" => $t,
                     "delivery_fee" => $shipping,
                 ];
@@ -735,7 +739,7 @@ class Reg extends \Core\Controller
             throw new \Exception("file didn't come to backend");
         }
 
-        $dataToInsert = [
+        $dataToInsert1 = [
             "user_id" => $id,
             "product_order_id" => $this->data['product_order_id'],
             "reason" => $this->data['reason'],
@@ -745,9 +749,17 @@ class Reg extends \Core\Controller
             "img3" => $iName3,
         ];
 
-        
+        $stmt = $this->execute($this->get('product_order','product_id',"id='". $this->data['product_order_id']."'"))->fetch();
+        $stmt1 = $this->execute($this->get('products','auth_id',"id='". $stmt['product_id']."'"))->fetch();
+
+        $msg = "Refund request";
+        $dataToInsert2 = [
+            "auth_id" => $stmt1['auth_id'],
+            "msg" => $msg
+        ];
         // $this->exec($this->save('products', $dataToInsert));
-        $this->exec($this->save('refund', $dataToInsert ));
+        $this->exec($this->save('refund', $dataToInsert1 ));
+        $this->exec($this->save('notification', $dataToInsert2));
 
         View::response("success");
       
@@ -891,6 +903,36 @@ class Reg extends \Core\Controller
         View::response(["storeDetails" => $storeDetails, "productList" => $productList]);
     }
 
+    public function getFishID(){
+        $stmt = $this->execute($this->get('fish_article', 'id', "name = '".$this->data['name']."'"));
+        View::response($stmt->fetch()['id']);
+    }
+
+    public function getRegUserRates(){
+        if($this->data['price']<=1000){
+            $stmt = $this->execute("SELECT * FROM rate LIMIT 6")->fetchAll();
+        }
+        else if($this->data['price']<=10000){
+            $stmt = $this->execute("SELECT * FROM rate LIMIT 6,6")->fetchAll();
+        }
+        else if($this->data['price']<=50000){
+            $stmt = $this->execute("SELECT * FROM rate LIMIT 12,6")->fetchAll();
+        }
+        else if($this->data['price']<=100000){
+            $stmt = $this->execute("SELECT * FROM rate LIMIT 24,6")->fetchAll();
+        }
+        else if($this->data['price']>100000){
+            $stmt = $this->execute("SELECT * FROM rate LIMIT 30,6")->fetchAll();
+        }
+
+        View::response($stmt);
+    }
+
+    public function getCoinCount(){
+        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $stmt = $this->execute($this->get('coins','coins', "user_id = '".$id."'"));
+        View::response($stmt->fetch()['coins']);
+    }
 }
 
 

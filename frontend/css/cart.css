@@ -283,33 +283,3 @@ align-items: center;
   height: 30px;
 }
 
-
-.coins{
-  text-align: center;
-}
-
-.coins img {
-  height: 150px;
-  margin-top: 30px;
-}
-
-.coins div {
-  margin: auto;
-  width: 27%;
-  display: flex;
-  align-items: center;
-  text-align: center;
-}
- .coins div h1{
-   position: relative;
-   left: 21px;
- }
-
- .coins h3{
-   margin-top: 80px;
-   color: #666565;
- }
- 
- #coins {
-  color: rgb(61, 61, 61);
- }
