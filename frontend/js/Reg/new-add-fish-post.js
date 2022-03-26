@@ -31,7 +31,6 @@ $("#auto").keyup(function () {
   var req = { name: name };
 
   if($("#auto").val()==""){
-    console.log("asjha")
     $("#fish_list").hide();
   }
 
@@ -84,7 +83,8 @@ $.ajax({
     var names = [];
     data.forEach((element) => {
       $("#fish_list").append(`
-        <li onclick="selectFish(this)">${element.name}</li>`);
+        <li onclick="selectFish(this)">${element.name}</li>
+        `);
     });
   },
 });
@@ -103,6 +103,7 @@ $("#chkBox").change(function () {
   }
 });
 
+
 $("#location-btn").click(function () {
   if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -118,6 +119,30 @@ $("#location-btn").click(function () {
 function setUrl(text) {
   return "/aquaspace/backend/public/index.php?" + text;
 }
+
+$("#price").change(function(){
+  let price = $("#price").val();
+  req = {
+    price : price
+  }
+  $.ajax({
+    type: "POST",
+    url: setUrl("Reg/Reg/getRegUserRates"),
+    data: JSON.stringify(req),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (data) {
+      data.forEach((element) => {
+        $("#rate"+element.id).text(element.id+" weeks (" +element.rate +")");
+      });
+      console.log(data)
+    },
+    error: function (errMsg) {
+      // window.location.replace("../src/Error"+errMsg.status+".html");
+    },
+  });
+
+})
 
 // get extention varibales
 var imgExtension1 = "";
