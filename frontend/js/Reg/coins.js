@@ -49,15 +49,7 @@
 //       });
 
 
-//       $({ Counter: 0 }).animate({
-//         Counter: $('.coin-count').text()
-//       }, {
-//         duration: 1000,
-//         easing: 'swing',
-//         step: function() {
-//           $('.coin-count').text(Math.ceil(this.Counter));
-//         }
-//       });
+
 
 // });  
 

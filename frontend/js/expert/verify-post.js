@@ -45,14 +45,14 @@ $(document).ready(function() {
     </label><br>
     <div>
         <input type="text" id="auto" style="
-        width:500px;
+        width:419px;
         font-size: 13px;
         padding:0.4em;
         outline: none;
         border-radius: 0;
         border: 1px solid #ccc;
         color:#555;" name="uname" placeholder="correct name" placeholder="enter fish name" autocomplete="off" onkeyup="searchFish()" />
-        <ul id="fish_list"></div>
+        <ul id="fish_list" style="margin-top:-20px;"></div>
         </ul>
                 
     <br>

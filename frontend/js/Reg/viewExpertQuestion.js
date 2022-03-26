@@ -1,3 +1,5 @@
+
+
 $.ajax({
   type: "GET",
   url: setUrl("Reg/Reg/getQuestionForExpert"),
@@ -31,7 +33,16 @@ $.ajax({
   dataType: "json",
   success: function (data) {
     console.log(data);
-    $("#count").val(data);
+    $("#count").html(`${data}`);
+    $({ Counter: 0 }).animate({
+      Counter: $('#count').text()
+    }, {
+      duration: 1000,
+      easing: 'swing',
+      step: function() {
+        $('#count').text(Math.ceil(this.Counter));
+      }
+    });
   },
   error: function (errMsg) {
     //   window.location.replace(
@@ -41,7 +52,7 @@ $.ajax({
 });
 
 $("#btn").mouseover(function () {
-  if ($("#count").val() < $("#per-question").val()) {
+  if ($("#count").text() < $("#per-question").val()) {
     $("#btn-popup").html(`
         You do not have enough coins to use this service. You can buy coins and try again
         `);
@@ -55,7 +66,7 @@ $("#btn").mouseover(function () {
 });
 
 $('#btn').click(function(){
-    if($("#count").val() < $("#per-question").val()){
+    if($("#count").text() < $("#per-question").text()){
         alert("You do not have enough coins to use this service. You can buy coins and try again")
     }
     else{
@@ -69,12 +80,12 @@ $("#btn").mouseout(function () {
 });
 
 $("#buy-coins").click(function () {
-  if ($("#coin").val() == 0 || $("#coin").val() == "") {
+  if ($("#coin").val() == 0 || $("#coin").val() == "" || $("#coin").val()<0) {
     alert("Please enter the number of coins you wish to buy");
     return;
   } else {
     let no_of_coins = $("#coin").val();
-    let rate = $("#price").val();
+    let rate = $("#price").text();
     window.location.replace(
       "/aquaspace/frontend/src/Reg/coins.html?count=" +
         no_of_coins +

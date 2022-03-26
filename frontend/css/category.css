@@ -147,8 +147,8 @@
   display: flex;
   border: 1px solid #ccc;
   padding: 5px;
-  /* margin-left: 57px; */
-  width: 170px;
+  margin-left: 45px;
+  width: 200px;
 }
 
 .price-field {
@@ -298,6 +298,7 @@
 
 .price-wrap-1,
 .price-wrap-2 {
+  width: 50%;
   display: flex;
   margin-left: 0px;
 }
@@ -312,6 +313,7 @@
 
 .price-wrap #one,
 .price-wrap #two {
+  width: 70%;
   text-align: right;
   margin: 0;
   padding: 0;
@@ -327,7 +329,7 @@
 }
 
 .price-wrap #one {
-  width: 30px;
+  width: 60px;
 }
 .price-wrap #two {
   width: 60px;
@@ -511,21 +513,18 @@
   transform: translateY(-7px);
 }
 
-.col-3 img{
+.col-3 img {
   transition: none;
 }
-.col-3 img:hover{
+.col-3 img:hover {
   transform: none;
 }
-
 
 .category-col-3 img {
   border-radius: 10px;
   width: 100%;
   height: 200px;
-  
 }
-
 
 .category-col-3 {
   flex-basis: 33%;
@@ -536,4 +535,22 @@
 
 .category-col-3 p {
   font-size: 14px;
+}
+
+#idkk {
+  margin-top: -20px;
+  text-align: center;
+  display: none;
+  margin: auto;
+}
+
+#idkk img {
+  height: 500px;
+  width: 500px;
+}
+
+#idkk h2{
+  text-align: center;
+  margin-top: -140px;
+  color: #acafb1;
 }
