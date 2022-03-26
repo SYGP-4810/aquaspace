@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../../css/dashboard-styles.css">
     <link rel="stylesheet" href="../../css/transactions.css">
     <link rel="stylesheet" href="../../css/questions.css">
-    <link rel="stylesheet" href="../../css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
@@ -95,47 +94,80 @@
                 <div class="heading">
                     <h2>Questions</h2>
 
-                    <form >
+                    <form>
                         <div id="btn">Ask</div>
                         <div id="btn-popup"></div>
                     </form>
-                    
+
                 </div>
-              
+               
+
                 <div class="coin-info">
-                    <div class="coin-info-div">
+                    <div class="coins">
+                        <h3>Coin Count</h3>
+                        <div>
+                            <img src="../../images/gold-coin.png" alt="">
+                            <h1 id="count" class="coin-count">100 </h1>
+    
+                        </div>
+    
+                    </div>
+                    <div class="coins">
+                        <h3>Per Question</h3>
+                        <div>
+                            <img src="../../images/gold-coin.png" alt="">
+                            <h1 id="per-question" class="coin-count">10</h1>
+    
+                        </div>
+    
+                    </div>
+                    <div class="coins">
+                        <h3 style="color: #6482b9;">Coin Price</h3>
+                        <div>
+                            <h4>Rs.</h4>
+                            <h1 id="price" class="coin-count">10</h1>
+    
+                        </div>
+    
+                    </div>
+                    <div class="coins">
+                        <h3 style="color: #6482b9;">Buy Coins</h3>
+                        <div>
+                            <input id="coin" type="number" min="0">
+                            <i id="buy-coins" class="fas fa-arrow-right"></i>
+    
+                        </div>
+    
+                    </div>
+                    <!-- <div class="coin-info-div">
                         <div>
                             <span>Coin Count</span>
-                            <!-- <span style="margin-left: 20px;height: 30px; ">100</span> -->
                             <input type="text" readonly name="" id="count" >
                         </div>
 
-                    </div>
-                    <div class="coin-info-div">
+                    </div> -->
+                    <!-- <div class="coin-info-div">
                         <div>
-                            <span>Coin Price</span>
-                            <!-- <span style="margin-left: 20px;height: 30px; ">100</span> -->
-                            <input  type="text" readonly name="" id="price" value="50">
+                            <span>Coin Price(Rs.)</span>
+                            <input type="text" readonly name="" id="price" value="50">
                         </div>
 
-                    </div>
-                    <div class="coin-info-div">
+                    </div> -->
+                    <!-- <div class="coin-info-div">
                         <div>
                             <span>Coins Per Question</span>
-                            <!-- <span style="margin-left: 20px;height: 30px; ">100</span> -->
                             <input type="text" readonly name="" id="per-question" value="10">
                         </div>
 
-                    </div>
-                    <div class="coin-info-div">
+                    </div> -->
+                    <!-- <div class="coin-info-div">
                         <div>
                             <span>Buy Coins</span>
-                            <!-- <span style="margin-left: 20px;height: 30px; ">100</span> -->
-                            <input id="coin" type="number" min="0">
+                              <input id="coin" type="number" min="0">
                             <i id="buy-coins" class="fas fa-arrow-right"></i>
                         </div>
 
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="questions">
@@ -149,8 +181,6 @@
         </div>
     </div>
 
-    <div id="alertDiv"></div>
-    <div id="loadingIcon"></div>
     <script src="../../js/logo.js"></script>
     <script src="../../js/base.js"></script>
     <script src="../../js/Reg/viewExpertQuestion.js"></script>

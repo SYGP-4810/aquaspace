@@ -8,6 +8,7 @@ $(document).ready(function () {
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (data) {
+      $("#category0").addClass("active-category");
       console.log(data);
       data.forEach((element) => {
         $(".container-2").append(`
@@ -23,6 +24,8 @@ $(document).ready(function () {
       });
 
       $("#category1").click(function () {
+        $("#category1").addClass("active-category");
+        $("#category0,#category2,#category3").removeClass("active-category");
         $(".container-2").html(``);
         data.forEach((element) => {
           if (element.category == 1) {
@@ -41,6 +44,8 @@ $(document).ready(function () {
       });
 
       $("#category2").click(function () {
+        $("#category2").addClass("active-category");
+        $("#category0,#category1,#category3").removeClass("active-category");
         $(".container-2").html(``);
         data.forEach((element) => {
           if (element.category == 2) {
@@ -59,6 +64,8 @@ $(document).ready(function () {
       });
 
       $("#category3").click(function () {
+        $("#category3").addClass("active-category");
+        $("#category0,#category2,#category1").removeClass("active-category");
         $(".container-2").html(``);
         data.forEach((element) => {
           if (element.category == 3) {
@@ -76,6 +83,8 @@ $(document).ready(function () {
         });
       });
       $("#category0").click(function () {
+        $("#category0").addClass("active-category");
+        $("#category1,#category2,#category3").removeClass("active-category");
         $(".container-2").html(``);
         data.forEach((element) => {
           $(".container-2").append(`

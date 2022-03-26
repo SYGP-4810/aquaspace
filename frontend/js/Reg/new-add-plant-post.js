@@ -128,6 +128,7 @@ $.ajax({
   });
   
   $("#location-btn").click(function () {
+    console.log($("#lat"))
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {
         $("#lat").val(position.coords.latitude);

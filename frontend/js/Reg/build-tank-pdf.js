@@ -2,21 +2,132 @@ function setUrl(text) {
   return "/aquaspace/backend/public/index.php?" + text;
 }
 
-console.log(fish)
 var url = new URL(window.location.href);
+
+//get the number of fish articles we need to render
 var no_of_fish = url.searchParams.get("ids");
 
-for(i=1;i<=no_of_fish;i++){
-    let id = "id"+i;
-    var fishName = url.searchParams.get(id);
+/* since we pass the names of the fish in the url, here we get the ids of each fish, 
+so that we can use it to get the corresponding article for the fish */ 
+for (i = 1; i <= no_of_fish; i++) {
+  let id = "id" + i;
+  var fishName = url.searchParams.get(id);
+  req = {
+    name: fishName,
+  };
+  $.ajax({
+    type: "POST",
+    url: setUrl("Reg/Reg/getFishID"),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    async: false,
+    data: JSON.stringify(req),
+    success: function (data) {
 
+      //for each fish id, i render the html needed for the pdf with different element ids but we no content
+      $("#article").append(`
+  <div class="k">
+                <h1 id="fish-title${data}"></h1>
+                <div class="d">
+                    <div class="col-2">
+
+                        <div class="img" style="height: 300px;"><img id="fish-img${data}" src=""
+                                alt="">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div style="margin-bottom: 10px; ">
+                            <span style="font-size: 17px; font-weight: 500;">Other Names
+                                :
+                            </span>
+                            <span id="other-names${data}" style="font-style: italic; font-weight: 400; font-size: 14px;">
+                            </span>
+                        </div>
+                        <div>
+                            <span style="font-size: 17px; font-weight: 500;">Desription : </span>
+                            <span id="desc${data}" style=" font-weight: 400; font-size: 14px; ">
+                            </span>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="form">
+                    <label class="label">
+                        <span>Pet Max Length <small>(cm)</small></span>
+                        <input id="petMaxLength${data}">
+                    </label>
+
+                    <label class="label">
+                        <span>Diet</span>
+                        <input id="diet${data}">
+                    </label>
+                    <label class="label">
+                        <span>Water Parameters-PH Min</span>
+                        <input id="minPh${data}" readonly>
+                    </label>
+
+                    <label class="label">
+                        <span>Water Parameters-PH Max</span>
+                        <input id="maxPh${data}" readonly>
+                    </label>
+
+                    <label class="label">
+                        <span>Min Water Temp</span>
+                        <input id="minWaterTemp${data}" readonly>
+                    </label>
+                    <label class="label">
+                        <span>Max water Temp</span>
+                        <input id="maxWaterTemp${data}" readonly>
+                    </label>
+                    <label class="label">
+                        <span>Environment</span>
+                        <input id="environment${data}" readonly>
+                    </label>
+                    <label class="label">
+                        <span>Native To</span>
+                        <input id="nativeTo${data}" readonly>
+                    </label>
+                    <label class="label">
+                        <span>Care Level</span>
+                        <input id="careLevel${data}" readonly>
+                    </label>
+                    <label class="label">
+                        <span>Tank Capacity <small>(gallon)</small></span>
+                        <input id="tankCapacity${data}" readonly value="10">
+                    </label>
+                    <label id="name_list">
+                        <span>Compatible Fish</span>
+                        <input id="compatible-fish${data}" readonly>
+                    </label>
+                    <label for="abilityToSell">
+                        <span>Ability to Sell</span>
+                        <input type="checkbox" id="abilityToSell${data}" readonly>
+                    </label>
+                    <label for="abilityToRelease">
+                        <span>Ability to release</span>
+                        <input type="checkbox" id="abilityToRelease${data}" readonly>
+                    </label>
+                </div>
+            </div>
+  `);
+
+  //passing the fish id, i call the renderArticle function tht will load up the data in the empty html tags
+      renderArticle(data);
+    },
+    error: function (errMsg) {
+      // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+    },
+  });
 }
 
-function renderArticle(data){
-  var id 
+function renderArticle(aritcleID) {
   let req = {
-    id: id,
+    id: aritcleID,
   };
+
+  console.log(req);
+  console.log($("#tankCapacity" + aritcleID).val());
   var pics = [];
   $.ajax({
     type: "POST",
@@ -25,33 +136,34 @@ function renderArticle(data){
     dataType: "json",
     data: JSON.stringify(req),
     success: function (data) {
+      console.log(data)
+      pics.push("../../images/fish_article/" + img_1);
+      pics.push("../../images/fish_article/" + img_2);
+      pics.push("../../images/fish_article/" + img_3);
+      pics.push("../../images/fish_article/" + img_4);     
+      //   (function () {
+      //     var i = 0;
+      //     var el = document.getElementById("fish-img" + aritcleID);
 
-      pics.push("../../images/" + data.img_1);
-      pics.push("../../images/" + data.img_2);
-      pics.push("../../images/" + data.img_3);
-      pics.push("../../images/" + data.img_4);
-      (function () {
-        var i = 0;
-        var el = document.getElementById("fish-img");
-    
-        function toggle() {
-          el.src = pics[i]; // set the image
-          i = (i + 1) % pics.length; // update the counter
-        }
-        toggle();
-        setInterval(toggle, 3000);
-      })();
+      //     console.log(pics[1])
+      //     function toggle() {
+      //       el.src = pics[i]; // set the image
+      //       i = (i + 1) % pics.length; // update the counter
+      //     }
+      //     toggle();
+      //     setInterval(toggle, 3000);
+      //   })();
 
-      $("#fish-title").html(`${data.name}`);
-      $("#desc").html(`${data.description}`);
-      $("#diet").val(data.special_diet);
-      $("#minPh").val(data.min_ph);
-      $("#maxPh").val(data.max_ph);
-      $("#minWaterTemp").val(data.min_water_temp);
-      $("#maxWaterTemp").val(data.max_water_temp);
-      $("#environment").val(data.environment);
-      $("#careLevel").val(data.care_level);
-      $("#tankCapacity").val(data.tank_capacity);
+      $("#fish-title" + aritcleID).html(`${data.name}`);
+      $("#desc" + aritcleID).html(`${data.description}`);
+      $("#diet" + aritcleID).val(data.special_diet);
+      $("#minPh" + aritcleID).val(data.min_ph);
+      $("#maxPh" + aritcleID).val(data.max_ph);
+      $("#minWaterTemp" + aritcleID).val(data.min_water_temp);
+      $("#maxWaterTemp" + aritcleID).val(data.max_water_temp);
+      $("#environment" + aritcleID).val(data.environment);
+      $("#careLevel" + aritcleID).val(data.care_level);
+      $("#tankCapacity" + aritcleID).val(data.tank_capacity);
     },
     error: function (errMsg) {
       // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
@@ -65,17 +177,15 @@ function renderArticle(data){
     dataType: "json",
     data: JSON.stringify(req),
     success: function (data) {
-
       var count = 0;
       data.forEach((element) => {
         if (count == 0) {
           count++;
-          $("#other-names").append(`
+          $("#other-names" + aritcleID).append(`
         ${element.name}
                   `);
-        }
-        else {
-          $("#other-names").append(`
+        } else {
+          $("#other-names" + aritcleID).append(`
         , ${element.name}
                   `);
         }
@@ -95,16 +205,15 @@ function renderArticle(data){
       var text = "";
       var count = 0;
       data.forEach((element) => {
-        if(count==0){
+        if (count == 0) {
           count++;
           text = text + element.country;
-        }
-        else{
+        } else {
           text = text + ", " + element.country;
         }
       });
 
-      $("#nativeTo").val(text);
+      $("#nativeTo" + aritcleID).val(text);
     },
     error: function (errMsg) {
       // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
@@ -117,20 +226,19 @@ function renderArticle(data){
     dataType: "json",
     data: JSON.stringify(req),
     success: function (data) {
-      console.log(data)
+      console.log(data);
       var text = "";
       var count = 0;
       data.forEach((element) => {
-        if(count==0){
+        if (count == 0) {
           count++;
           text = text + element.name;
-        }
-        else{
+        } else {
           text = text + ", " + element.name;
         }
       });
 
-      $("#compatible-fish").val(text);
+      $("#compatible-fish" + aritcleID).val(text);
     },
     error: function (errMsg) {
       // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
@@ -138,19 +246,15 @@ function renderArticle(data){
   });
 }
 
+function generatePDF() {
+  const element = document.getElementsByTagName("html");
+  var opt = {
+    margin: 0,
+    filename: "myfile.pdf",
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: "in", format: "a4", orientation: "landscape" },
+  };
 
-function generatePDF(){
-    const element = document.getElementsByTagName("html");
-    var opt = {
-        margin:       0,
-        filename:     'myfile.pdf',
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 },
-        jsPDF:        { unit: 'in', format: 'a4', orientation: 'landscape' }
-      };
-
-    html2pdf()
-    .set(opt)
-    .from(element)
-    .save();
+  html2pdf().set(opt).from(element).save();
 }

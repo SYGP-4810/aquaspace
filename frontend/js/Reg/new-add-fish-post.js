@@ -1,6 +1,6 @@
 function selectFish(data) {
   $("#auto").val($(data).html());
-  $('#fish_list').hide();
+  $("#fish_list").hide();
   // console.log($("#auto").val());
 
   let name = $("#auto").val();
@@ -25,12 +25,11 @@ function selectFish(data) {
   });
 }
 
-
 $("#auto").keyup(function () {
   let name = $("#auto").val();
   var req = { name: name };
 
-  if($("#auto").val()==""){
+  if ($("#auto").val() == "") {
     $("#fish_list").hide();
   }
 
@@ -79,7 +78,7 @@ $.ajax({
   contentType: "application/json; charset=utf-8",
   dataType: "json",
   success: function (data) {
-    console.log(data)
+    console.log(data);
     var names = [];
     data.forEach((element) => {
       $("#fish_list").append(`
@@ -103,7 +102,6 @@ $("#chkBox").change(function () {
   }
 });
 
-
 $("#location-btn").click(function () {
   if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -120,29 +118,43 @@ function setUrl(text) {
   return "/aquaspace/backend/public/index.php?" + text;
 }
 
-$("#price").change(function(){
+$("#price").change(function () {
   let price = $("#price").val();
-  req = {
-    price : price
+  if ($("#price").val() != 0) {
+    req = {
+      price: price,
+    };
+    $.ajax({
+      type: "POST",
+      url: setUrl("Reg/Reg/getRegUserRates"),
+      data: JSON.stringify(req),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (data) {
+        var i = 1;
+        data.forEach((element) => {
+          if (i < 4) {
+            $("#rate" + i).text(i + " weeks (" + element.rate + ")");
+          } else {
+            $("#rate" + i).text(i - 3 + " months (" + element.rate + ")");
+          }
+          i++;
+        });
+      },
+      error: function (errMsg) {
+        // window.location.replace("../src/Error"+errMsg.status+".html");
+      },
+    });
   }
-  $.ajax({
-    type: "POST",
-    url: setUrl("Reg/Reg/getRegUserRates"),
-    data: JSON.stringify(req),
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    success: function (data) {
-      data.forEach((element) => {
-        $("#rate"+element.id).text(element.id+" weeks (" +element.rate +")");
-      });
-      console.log(data)
-    },
-    error: function (errMsg) {
-      // window.location.replace("../src/Error"+errMsg.status+".html");
-    },
-  });
-
-})
+  else{
+    $("#rate1").text("1 weeks (Please enter the price to view the charges)");
+    $("#rate2").text("2 weeks");
+    $("#rate3").text("3 weeks");
+    $("#rate4").text("1 months");
+    $("#rate5").text("2 months");
+    $("#rate6").text("3 months");
+  }
+});
 
 // get extention varibales
 var imgExtension1 = "";
@@ -230,8 +242,7 @@ $("#btn").click(function () {
   let question = 0;
   let errors = [];
   let errFlag = 0;
-  let status = 1; //this soud be change acoding tothe auto data
-  //validation criteria
+  // let status = 1;
 
   if ($("#radio_1").is(":checked")) {
     question = $("#radio_1").val();
@@ -257,15 +268,15 @@ $("#btn").click(function () {
     errors.push("Quantity is required");
     errFlag++;
   }
-  if(description == ''){
+  if (description == "") {
     errors.push("details required");
     errFlag++;
   }
-  if(duration == ""){
+  if (duration == "") {
     errors.push("duration required");
     errFlag++;
   }
-  if(address == ""){
+  if (address == "") {
     errors.push("address required");
     errFlag++;
   }
@@ -303,7 +314,7 @@ $("#btn").click(function () {
         duration: duration,
         description: description,
         price: price,
-        question:question,
+        question: question,
         category: category,
         address: address,
         lat: lat,
@@ -318,9 +329,8 @@ $("#btn").click(function () {
         exen3: imgExtension3,
         exen4: imgExtension4,
         type: 1,
-        status: status
       };
-      
+
       $.ajax({
         type: "POST",
         url: setUrl("Reg/Reg/addPost"),
@@ -330,9 +340,11 @@ $("#btn").click(function () {
         success: function (data) {
           // console.log(data);
           successMsg(["Added Fish"]);
-          delay(function(){
-          window.location.replace("/aquaspace/frontend/src/Reg/add-fish-post.html")
-          },5000)
+          delay(function () {
+            window.location.replace(
+              "/aquaspace/frontend/src/Reg/add-fish-post.html"
+            );
+          }, 5000);
         },
         error: function (errMsg) {
           // window.location.replace("../src/Error"+errMsg.status+".html");
@@ -344,11 +356,11 @@ $("#btn").click(function () {
   }
 });
 
-let item_name = $('#auto').val();
+let item_name = $("#auto").val();
 let item_amount = "450.00";
-$('#item_name').val(item_name);
-$('#item_amount').val(item_amount);
+$("#item_name").val(item_name);
+$("#item_amount").val(item_amount);
 
-$('#Yorder_amount').html(`
+$("#Yorder_amount").html(`
 ${item_amount}
-`)
+`);
