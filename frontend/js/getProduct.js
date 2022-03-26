@@ -12,6 +12,46 @@
     var id = url.searchParams.get("id");
   
     var req = { id: id };
+    //loading more items from the store
+    
+    $.ajax({
+        type: "POST",
+        url:setUrl("Reg/Reg/moreItemFromStore"),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify(req),
+        success: function(data){
+            loadingFinish();
+            console.log("more item from the store", data);
+            if(data.status == 1){
+                $('#moreItemFromTheStore').css('display', 'none');
+                $("#view-more").css('display', 'none');
+            }else{
+                if(Object.keys(data.moreItem).length === 0){
+                    $("#view-more").css('display', 'none');
+                    $('#moreItemFromTheStore').html(`<div>
+                    <h3 style="text-align:center; color:red;">No more items available</h3>
+                    <br>
+                    <br>
+                </div>`);
+                }
+                else {
+                    data.moreItem.forEach((element => {
+                        $('#moreItemFromTheStore').append(`
+                        <div class="col-4">
+                        <img src="/aquaspace/frontend/images/product/${element.img1}" alt="${element.product_name}" />
+                        <h4>${element.product_name}</h4>
+                        <p>Price: Rs${element.price}</p>
+                        </div>
+                        `);
+                    }));
+                }
+            }
+        },
+        error: function(errMsg) {
+            // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+        }
+    });
     loading();
     $.ajax({
       type: "POST",

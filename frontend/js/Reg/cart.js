@@ -1,3 +1,30 @@
+ function deleteItem(id){
+   loading();
+   let req = { 
+     "id": id };
+  $.ajax({
+    type: "POST",
+    async: false,
+    url: setUrl("Reg/Reg/deleteFromCart"),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: JSON.stringify(req),
+    success: function (data) {
+      loadingFinish();
+      successMsg(["successfully delete the item from the cart"]);
+      delay(function(){
+        window.location.reload();
+      },3000);
+      
+    },
+    error: function (errMsg) {
+      // window.location.replace(
+      //   "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
+      // );
+    },
+  });
+ }
+ 
  // $("#cart").click(function () {
   //   $(".shopping-cart").css("display", "block");
   //   $("#cart").css("color", "rgb(61, 61, 61)");
@@ -55,14 +82,14 @@
         let total = element.price * element.quantity;
         $(".shopping-cart .table-responsive tbody").append(
           `
-           <tr>
-              <td><input type="checkbox" class="chkbox" id="${element.id}" value="${element.product_id}"></td>
-              <td>${element.product_name}</td>
-              <td>${element.price}</td>
-              <td>${element.quantity}</td>
-              <td>${total}</td>
-              <td><i class="far fa-trash-alt"></i></td>
-          </tr>
+                                   <tr>
+                                      <td><input type="checkbox" class="chkbox" id="${element.id}" value="${element.product_id}"></td>
+                                      <td>${element.product_name}</td>
+                                      <td>${element.price}</td>
+                                      <td>${element.quantity}</td>
+                                      <td>${total}</td>
+                                      <td onclick="deleteItem(${element.id})"><i class="far fa-trash-alt"></i></td>
+                                  </tr>
               `
         );
       });

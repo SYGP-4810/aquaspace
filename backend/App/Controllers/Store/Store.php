@@ -124,13 +124,17 @@ class Store extends \Core\Controller
             return;
         }
 
-        if($countAds < $maxAds){
+        if($countAds < $maxAds || $lat != 0 || $lang != 0 ){
             $this->exec($this->save('products', $DataToInsert));
             $responce = ["flag" => 0,
-                        "msg" => "Successfuly added to the Inventory"];
-        }else{
+                        "msg" => "successfully added to the store"];
+        }else if( $lat == 0 || $lang == 0 ){
+            $responce = ["flag" => 3,
+            "msg" => "haven't give the location"];  
+        }
+        else{
             $responce = ["flag" => 2,
-                        "msg" => "haven't valide subscription"];
+                        "msg" => "haven't valid subscription"];
         }
         View::response($responce);
     }
