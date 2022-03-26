@@ -160,30 +160,30 @@
         <span>Post Duration<span class="required">*</span></span>
         <select id="duration" name="selection">
           <option orderselected hidden value="">Select </option>
-          <option value="1">1 week (Rs.300.00)</option>
-          <option value="2">2 weeks (Rs.450.00)</option>
-          <option value="3">3 weeks (Rs.600.00)</option>
-          <option value="4">1 month (Rs.850.00)</option>
-          <option value="5">2 months (Rs.1000.00)</option>
-          <option value="6">3 months (Rs.1700.00)</option>
+          <option id="rate1" value="1">1 week (Rs.300.00)</option>
+          <option id="rate2" value="2">2 weeks (Rs.450.00)</option>
+          <option id="rate3" value="3">3 weeks (Rs.600.00)</option>
+          <option id="rate4" value="4">1 month (Rs.850.00)</option>
+          <option id="rate5" value="5">2 months (Rs.1000.00)</option>
+          <option id="rate6" value="6">3 months (Rs.1700.00)</option>
         </select>
       </label>
       <label class="address-checkbox">
         <input type="checkbox" id="chkBox" name="HelpCheckbox" value="Help" />
-        <span>Use the address I gave you</span>
+        <span>Use the account address</span>
       </label>
       <label>
         <span>Address<span class="required">*</span></span>
         <input id="address" type="text" name="address">
       </label>
-      <button id="location-btn">Take My Location</button>
-      <label>
+      <button id="location-btn">Take My Location</button> <span style="font-size: 14px; color: rgb(94, 92, 92);">(Helps to enhance visibility of the product in filtered search results)</span>
+      <label style="display: none;">
         <span>Latitude</span>
-        <input id="lat" type="text" name="location">
+        <input id="lat1" type="text" name="location" value="0">
       </label>
-      <label>
+      <label style="display: none;">
         <span>Langitude</span>
-        <input id="lang" type="text" name="location">
+        <input id="lang" type="text" name="location" value="0">
       </label>
 
       <button id="btn">next</button>
