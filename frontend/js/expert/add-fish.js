@@ -272,7 +272,7 @@ $("#save").click(function(){
               "exen3" : imgExtension3,
               "exen4" : imgExtension4
             }
-            console.log(req);
+            // console.log(req);
     $.ajax({
         type: "POST",
         url:setUrl("Expert/Expert/addFishArticle"),
@@ -287,7 +287,7 @@ $("#save").click(function(){
           },3000);
         },
         error: function(errMsg) {
-            //window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
 
