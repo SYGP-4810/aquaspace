@@ -299,7 +299,6 @@ $("#proceed").click(function () {
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (data) {
-      console.log("ys yes");
       let text =
         "http://localhost/aquaspace/frontend/src/index.html?coins=" + data;
       $("#return_url").val(text);
@@ -319,7 +318,6 @@ function payhere() {
     dataType: "json",
     data: JSON.stringify(map),
     success: function (data) {
-      console.log("ys yes");
 
       console.log(data);
     },
