@@ -1,9 +1,3 @@
-
-
-
-
-
-
 //tttttttttttttttttttttttttttttttt
 var lowerSlider = document.querySelector("#lower");
 var lowerSlider = document.querySelector("#lower");
@@ -89,14 +83,39 @@ $(document).ready(function () {
       //append new posts
 
       data.allPost.forEach((element) => {
+        let req = {
+          "id" : element.id
+        }
+        $.ajax({
+          type: "POST",
+          url: setUrl("Common/getRatingForIndividualProduct"),
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          data: JSON.stringify(req),
+          success: function (data1) {
+            console.log(data1);
+            let rating = data1;
+        let htmlToRating = `<div class="rating">`;
+        for (let i = 0; i < rating; i++) {
+          htmlToRating += `<i class="fa fa-star"></i>`;
+        }
+        for (let i = 0; i < 5-rating; i++) {
+          htmlToRating += `<i class="far fa-star"></i>`;
+        }
+        htmlToRating += `</div>`;
 
         $("#row").append(`
            <div class="category-col-3 col-3">
            <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
            <img src=".../../../../images/product/${element.img1}" alt="" />
            <h4>${element.product_name}</h4>
+           ${htmlToRating}
            <p>${element.price}</p>
        </div>`);
+          },
+        });
+
+        
       });
     },
     error: function (errMsg) {
@@ -147,14 +166,41 @@ $(document).ready(function () {
               console.log(element.id + "price checked");
               if (delivery == 0 || element.delivery == delivery) {
                 i++;
+                //new 
 
+                let req = {
+                  "id" : element.id
+                }
+                $.ajax({
+                  type: "POST",
+                  url: setUrl("Common/getRatingForIndividualProduct"),
+                  contentType: "application/json; charset=utf-8",
+                  dataType: "json",
+                  data: JSON.stringify(req),
+                  success: function (data1) {
+                    console.log(data1);
+                    let rating = data1;
+                let htmlToRating = `<div class="rating">`;
+                for (let i = 0; i < rating; i++) {
+                  htmlToRating += `<i class="fa fa-star"></i>`;
+                }
+                for (let i = 0; i < 5-rating; i++) {
+                  htmlToRating += `<i class="far fa-star"></i>`;
+                }
+                htmlToRating += `</div>`;
+        
                 $("#row").append(`
                    <div class="category-col-3 col-3">
                    <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                   <img src=".../../../../images/product/${element.img1}" alt="" />
+                   <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
                    <h4>${element.product_name}</h4>
+                   ${htmlToRating}
                    <p>${element.price}</p>
                </div>`);
+                  },
+                });
+
+                
               }
             }
           });
@@ -168,19 +214,37 @@ $(document).ready(function () {
           data.adoptPost.forEach((element) => {
             if (delivery == 0 || element.delivery == delivery) {
               i++;
+              let req = {
+                "id" : element.id
+              }
+              $.ajax({
+                type: "POST",
+                url: setUrl("Common/getRatingForIndividualProduct"),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify(req),
+                success: function (data1) {
+                  console.log(data1);
+                  let rating = data1;
+              let htmlToRating = `<div class="rating">`;
+              for (let i = 0; i < rating; i++) {
+                htmlToRating += `<i class="fa fa-star"></i>`;
+              }
+              for (let i = 0; i < 5-rating; i++) {
+                htmlToRating += `<i class="far fa-star"></i>`;
+              }
+              htmlToRating += `</div>`;
+      
               $("#row").append(`
-                                <div class="category-col-3 col-3">
-                                <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                                <div class="img-wrapper">
-                                                  <div class="ribbon-wrapper-red">
-                                                      <div class="ribbon-red">ADOPT</div>
-                                                  </div>
-                                                  <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />
-                                              </div>
-                      
-                                  <h4>${element.product_name}</h4>
-                      
-                              </div>`);
+                 <div class="category-col-3 col-3">
+                 <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                 <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                 <h4>${element.product_name}</h4>
+                 ${htmlToRating}
+                 <p>${element.price}</p>
+             </div>`);
+                },
+              });
             }
           });
           if (i == 0) {
@@ -199,13 +263,37 @@ $(document).ready(function () {
               if (delivery == 0 || element.delivery == delivery) {
                 i++;
 
+                let req = {
+                  "id" : element.id
+                }
+                $.ajax({
+                  type: "POST",
+                  url: setUrl("Common/getRatingForIndividualProduct"),
+                  contentType: "application/json; charset=utf-8",
+                  dataType: "json",
+                  data: JSON.stringify(req),
+                  success: function (data1) {
+                    console.log(data1);
+                    let rating = data1;
+                let htmlToRating = `<div class="rating">`;
+                for (let i = 0; i < rating; i++) {
+                  htmlToRating += `<i class="fa fa-star"></i>`;
+                }
+                for (let i = 0; i < 5-rating; i++) {
+                  htmlToRating += `<i class="far fa-star"></i>`;
+                }
+                htmlToRating += `</div>`;
+        
                 $("#row").append(`
                    <div class="category-col-3 col-3">
                    <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                   <img src=".../../../../images/product/${element.img1}" alt="" />
+                   <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
                    <h4>${element.product_name}</h4>
+                   ${htmlToRating}
                    <p>${element.price}</p>
                </div>`);
+                  },
+                });
               }
             }
           });
@@ -225,13 +313,37 @@ $(document).ready(function () {
               if (delivery == 0 || element.delivery == delivery) {
                 i++;
 
+                let req = {
+                  "id" : element.id
+                }
+                $.ajax({
+                  type: "POST",
+                  url: setUrl("Common/getRatingForIndividualProduct"),
+                  contentType: "application/json; charset=utf-8",
+                  dataType: "json",
+                  data: JSON.stringify(req),
+                  success: function (data1) {
+                    console.log(data1);
+                    let rating = data1;
+                let htmlToRating = `<div class="rating">`;
+                for (let i = 0; i < rating; i++) {
+                  htmlToRating += `<i class="fa fa-star"></i>`;
+                }
+                for (let i = 0; i < 5-rating; i++) {
+                  htmlToRating += `<i class="far fa-star"></i>`;
+                }
+                htmlToRating += `</div>`;
+        
                 $("#row").append(`
                    <div class="category-col-3 col-3">
                    <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                   <img src=".../../../../images/product/${element.img1}" alt="" />
+                   <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
                    <h4>${element.product_name}</h4>
+                   ${htmlToRating}
                    <p>${element.price}</p>
                </div>`);
+                  },
+                });
               }
             }
           });
@@ -250,16 +362,37 @@ $(document).ready(function () {
               console.log(element.id + "price checked");
               if (delivery == 0 || element.delivery == delivery) {
                 i++;
-                $("#row").append(
-                  `
+                let req = {
+                  "id" : element.id
+                }
+                $.ajax({
+                  type: "POST",
+                  url: setUrl("Common/getRatingForIndividualProduct"),
+                  contentType: "application/json; charset=utf-8",
+                  dataType: "json",
+                  data: JSON.stringify(req),
+                  success: function (data1) {
+                    console.log(data1);
+                    let rating = data1;
+                let htmlToRating = `<div class="rating">`;
+                for (let i = 0; i < rating; i++) {
+                  htmlToRating += `<i class="fa fa-star"></i>`;
+                }
+                for (let i = 0; i < 5-rating; i++) {
+                  htmlToRating += `<i class="far fa-star"></i>`;
+                }
+                htmlToRating += `</div>`;
+        
+                $("#row").append(`
                    <div class="category-col-3 col-3">
                    <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                   <img src=".../../../../images/product/${element.img1}" alt="" />
+                   <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
                    <h4>${element.product_name}</h4>
+                   ${htmlToRating}
                    <p>${element.price}</p>
-               </div>
-               `
-                );
+               </div>`);
+                  },
+                });
               }
             }
           });
@@ -364,13 +497,37 @@ $(document).ready(function () {
                             if (delivery == 0 || element.delivery == delivery) {
                               console.log(element.id + "delivery checked");
 
+                              let req = {
+                                "id" : element.id
+                              }
+                              $.ajax({
+                                type: "POST",
+                                url: setUrl("Common/getRatingForIndividualProduct"),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                data: JSON.stringify(req),
+                                success: function (data1) {
+                                  console.log(data1);
+                                  let rating = data1;
+                              let htmlToRating = `<div class="rating">`;
+                              for (let i = 0; i < rating; i++) {
+                                htmlToRating += `<i class="fa fa-star"></i>`;
+                              }
+                              for (let i = 0; i < 5-rating; i++) {
+                                htmlToRating += `<i class="far fa-star"></i>`;
+                              }
+                              htmlToRating += `</div>`;
+                      
                               $("#row").append(`
-                   <div class="category-col-3 col-3">
-                   <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                   <img src=".../../../../images/product/${element.img1}" alt="" />
-                   <h4>${element.product_name}</h4>
-                   <p>${element.price}</p>
-               </div>`);
+                                 <div class="category-col-3 col-3">
+                                 <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                                 <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                                 <h4>${element.product_name}</h4>
+                                 ${htmlToRating}
+                                 <p>${element.price}</p>
+                             </div>`);
+                                },
+                              });
                             }
                           }
                         }
@@ -446,19 +603,37 @@ $(document).ready(function () {
                           if (delivery == 0 || element.delivery == delivery) {
                             console.log(element.id + "delivery checked");
 
+                            let req = {
+                              "id" : element.id
+                            }
+                            $.ajax({
+                              type: "POST",
+                              url: setUrl("Common/getRatingForIndividualProduct"),
+                              contentType: "application/json; charset=utf-8",
+                              dataType: "json",
+                              data: JSON.stringify(req),
+                              success: function (data1) {
+                                console.log(data1);
+                                let rating = data1;
+                            let htmlToRating = `<div class="rating">`;
+                            for (let i = 0; i < rating; i++) {
+                              htmlToRating += `<i class="fa fa-star"></i>`;
+                            }
+                            for (let i = 0; i < 5-rating; i++) {
+                              htmlToRating += `<i class="far fa-star"></i>`;
+                            }
+                            htmlToRating += `</div>`;
+                    
                             $("#row").append(`
-                                <div class="category-col-3 col-3">
-                                <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                                <div class="img-wrapper">
-                                                  <div class="ribbon-wrapper-red">
-                                                      <div class="ribbon-red">ADOPT</div>
-                                                  </div>
-                                                  <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />
-                                              </div>
-                      
-                                  <h4>${element.product_name}</h4>
-                      
-                              </div>`);
+                               <div class="category-col-3 col-3">
+                               <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                               <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                               <h4>${element.product_name}</h4>
+                               ${htmlToRating}
+                               <p>${element.price}</p>
+                           </div>`);
+                              },
+                            });
                           }
                         }
                       }
@@ -538,13 +713,37 @@ $(document).ready(function () {
                             if (delivery == 0 || element.delivery == delivery) {
                               console.log(element.id + "delivery checked");
 
+                              let req = {
+                                "id" : element.id
+                              }
+                              $.ajax({
+                                type: "POST",
+                                url: setUrl("Common/getRatingForIndividualProduct"),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                data: JSON.stringify(req),
+                                success: function (data1) {
+                                  console.log(data1);
+                                  let rating = data1;
+                              let htmlToRating = `<div class="rating">`;
+                              for (let i = 0; i < rating; i++) {
+                                htmlToRating += `<i class="fa fa-star"></i>`;
+                              }
+                              for (let i = 0; i < 5-rating; i++) {
+                                htmlToRating += `<i class="far fa-star"></i>`;
+                              }
+                              htmlToRating += `</div>`;
+                      
                               $("#row").append(`
-                   <div class="category-col-3 col-3">
-                   <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                   <img src=".../../../../images/product/${element.img1}" alt="" />
-                   <h4>${element.product_name}</h4>
-                   <p>${element.price}</p>
-               </div>`);
+                                 <div class="category-col-3 col-3">
+                                 <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                                 <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                                 <h4>${element.product_name}</h4>
+                                 ${htmlToRating}
+                                 <p>${element.price}</p>
+                             </div>`);
+                                },
+                              });
                             }
                           }
                         }
@@ -625,13 +824,37 @@ $(document).ready(function () {
                             if (delivery == 0 || element.delivery == delivery) {
                               console.log(element.id + "delivery checked");
 
+                              let req = {
+                                "id" : element.id
+                              }
+                              $.ajax({
+                                type: "POST",
+                                url: setUrl("Common/getRatingForIndividualProduct"),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                data: JSON.stringify(req),
+                                success: function (data1) {
+                                  console.log(data1);
+                                  let rating = data1;
+                              let htmlToRating = `<div class="rating">`;
+                              for (let i = 0; i < rating; i++) {
+                                htmlToRating += `<i class="fa fa-star"></i>`;
+                              }
+                              for (let i = 0; i < 5-rating; i++) {
+                                htmlToRating += `<i class="far fa-star"></i>`;
+                              }
+                              htmlToRating += `</div>`;
+                      
                               $("#row").append(`
-                   <div class="category-col-3 col-3">
-                   <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                   <img src=".../../../../images/product/${element.img1}" alt="" />
-                   <h4>${element.product_name}</h4>
-                   <p>${element.price}</p>
-               </div>`);
+                                 <div class="category-col-3 col-3">
+                                 <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                                 <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                                 <h4>${element.product_name}</h4>
+                                 ${htmlToRating}
+                                 <p>${element.price}</p>
+                             </div>`);
+                                },
+                              });
                             }
                           }
                         }
@@ -712,16 +935,37 @@ $(document).ready(function () {
                             if (delivery == 0 || element.delivery == delivery) {
                               console.log(element.id + "delivery checked");
 
-                              $("#row").append(
-                                `
-                   <div class="category-col-3 col-3">
-                   <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                   <img src=".../../../../images/product/${element.img1}" alt="" />
-                   <h4>${element.product_name}</h4>
-                   <p>${element.price}</p>
-               </div>
-               `
-                              );
+                              let req = {
+                                "id" : element.id
+                              }
+                              $.ajax({
+                                type: "POST",
+                                url: setUrl("Common/getRatingForIndividualProduct"),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                data: JSON.stringify(req),
+                                success: function (data1) {
+                                  console.log(data1);
+                                  let rating = data1;
+                              let htmlToRating = `<div class="rating">`;
+                              for (let i = 0; i < rating; i++) {
+                                htmlToRating += `<i class="fa fa-star"></i>`;
+                              }
+                              for (let i = 0; i < 5-rating; i++) {
+                                htmlToRating += `<i class="far fa-star"></i>`;
+                              }
+                              htmlToRating += `</div>`;
+                      
+                              $("#row").append(`
+                                 <div class="category-col-3 col-3">
+                                 <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                                 <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                                 <h4>${element.product_name}</h4>
+                                 ${htmlToRating}
+                                 <p>${element.price}</p>
+                             </div>`);
+                                },
+                              });
                             }
                           }
                         }
@@ -834,13 +1078,37 @@ $(document).ready(function () {
                             if (delivery == 0 || element.delivery == delivery) {
                               console.log(element.id + "delivery checked");
 
+                              let req = {
+                                "id" : element.id
+                              }
+                              $.ajax({
+                                type: "POST",
+                                url: setUrl("Common/getRatingForIndividualProduct"),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                data: JSON.stringify(req),
+                                success: function (data1) {
+                                  console.log(data1);
+                                  let rating = data1;
+                              let htmlToRating = `<div class="rating">`;
+                              for (let i = 0; i < rating; i++) {
+                                htmlToRating += `<i class="fa fa-star"></i>`;
+                              }
+                              for (let i = 0; i < 5-rating; i++) {
+                                htmlToRating += `<i class="far fa-star"></i>`;
+                              }
+                              htmlToRating += `</div>`;
+                      
                               $("#row").append(`
-                   <div class="category-col-3 col-3">
-                   <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                   <img src=".../../../../images/product/${element.img1}" alt="" />
-                   <h4>${element.product_name}</h4>
-                   <p>${element.price}</p>
-               </div>`);
+                                 <div class="category-col-3 col-3">
+                                 <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                                 <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                                 <h4>${element.product_name}</h4>
+                                 ${htmlToRating}
+                                 <p>${element.price}</p>
+                             </div>`);
+                                },
+                              });
                             }
                           }
                         }
@@ -916,19 +1184,37 @@ $(document).ready(function () {
                           if (delivery == 0 || element.delivery == delivery) {
                             console.log(element.id + "delivery checked");
 
+                            let req = {
+                              "id" : element.id
+                            }
+                            $.ajax({
+                              type: "POST",
+                              url: setUrl("Common/getRatingForIndividualProduct"),
+                              contentType: "application/json; charset=utf-8",
+                              dataType: "json",
+                              data: JSON.stringify(req),
+                              success: function (data1) {
+                                console.log(data1);
+                                let rating = data1;
+                            let htmlToRating = `<div class="rating">`;
+                            for (let i = 0; i < rating; i++) {
+                              htmlToRating += `<i class="fa fa-star"></i>`;
+                            }
+                            for (let i = 0; i < 5-rating; i++) {
+                              htmlToRating += `<i class="far fa-star"></i>`;
+                            }
+                            htmlToRating += `</div>`;
+                    
                             $("#row").append(`
-                                <div class="category-col-3 col-3">
-                                <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                                <div class="img-wrapper">
-                                                  <div class="ribbon-wrapper-red">
-                                                      <div class="ribbon-red">ADOPT</div>
-                                                  </div>
-                                                  <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />
-                                              </div>
-                      
-                                  <h4>${element.product_name}</h4>
-                      
-                              </div>`);
+                               <div class="category-col-3 col-3">
+                               <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                               <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                               <h4>${element.product_name}</h4>
+                               ${htmlToRating}
+                               <p>${element.price}</p>
+                           </div>`);
+                              },
+                            });
                           }
                         }
                       }
@@ -1008,13 +1294,37 @@ $(document).ready(function () {
                             if (delivery == 0 || element.delivery == delivery) {
                               console.log(element.id + "delivery checked");
 
+                              let req = {
+                                "id" : element.id
+                              }
+                              $.ajax({
+                                type: "POST",
+                                url: setUrl("Common/getRatingForIndividualProduct"),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                data: JSON.stringify(req),
+                                success: function (data1) {
+                                  console.log(data1);
+                                  let rating = data1;
+                              let htmlToRating = `<div class="rating">`;
+                              for (let i = 0; i < rating; i++) {
+                                htmlToRating += `<i class="fa fa-star"></i>`;
+                              }
+                              for (let i = 0; i < 5-rating; i++) {
+                                htmlToRating += `<i class="far fa-star"></i>`;
+                              }
+                              htmlToRating += `</div>`;
+                      
                               $("#row").append(`
-                   <div class="category-col-3 col-3">
-                   <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                   <img src=".../../../../images/product/${element.img1}" alt="" />
-                   <h4>${element.product_name}</h4>
-                   <p>${element.price}</p>
-               </div>`);
+                                 <div class="category-col-3 col-3">
+                                 <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                                 <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                                 <h4>${element.product_name}</h4>
+                                 ${htmlToRating}
+                                 <p>${element.price}</p>
+                             </div>`);
+                                },
+                              });
                             }
                           }
                         }
@@ -1095,13 +1405,37 @@ $(document).ready(function () {
                             if (delivery == 0 || element.delivery == delivery) {
                               console.log(element.id + "delivery checked");
 
+                              let req = {
+                                "id" : element.id
+                              }
+                              $.ajax({
+                                type: "POST",
+                                url: setUrl("Common/getRatingForIndividualProduct"),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                data: JSON.stringify(req),
+                                success: function (data1) {
+                                  console.log(data1);
+                                  let rating = data1;
+                              let htmlToRating = `<div class="rating">`;
+                              for (let i = 0; i < rating; i++) {
+                                htmlToRating += `<i class="fa fa-star"></i>`;
+                              }
+                              for (let i = 0; i < 5-rating; i++) {
+                                htmlToRating += `<i class="far fa-star"></i>`;
+                              }
+                              htmlToRating += `</div>`;
+                      
                               $("#row").append(`
-                   <div class="category-col-3 col-3">
-                   <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                   <img src=".../../../../images/product/${element.img1}" alt="" />
-                   <h4>${element.product_name}</h4>
-                   <p>${element.price}</p>
-               </div>`);
+                                 <div class="category-col-3 col-3">
+                                 <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                                 <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                                 <h4>${element.product_name}</h4>
+                                 ${htmlToRating}
+                                 <p>${element.price}</p>
+                             </div>`);
+                                },
+                              });
                             }
                           }
                         }
@@ -1182,16 +1516,37 @@ $(document).ready(function () {
                             if (delivery == 0 || element.delivery == delivery) {
                               console.log(element.id + "delivery checked");
 
-                              $("#row").append(
-                                `
-                   <div class="category-col-3 col-3">
-                   <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                   <img src=".../../../../images/product/${element.img1}" alt="" />
-                   <h4>${element.product_name}</h4>
-                   <p>${element.price}</p>
-               </div>
-               `
-                              );
+                              let req = {
+                                "id" : element.id
+                              }
+                              $.ajax({
+                                type: "POST",
+                                url: setUrl("Common/getRatingForIndividualProduct"),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                data: JSON.stringify(req),
+                                success: function (data1) {
+                                  console.log(data1);
+                                  let rating = data1;
+                              let htmlToRating = `<div class="rating">`;
+                              for (let i = 0; i < rating; i++) {
+                                htmlToRating += `<i class="fa fa-star"></i>`;
+                              }
+                              for (let i = 0; i < 5-rating; i++) {
+                                htmlToRating += `<i class="far fa-star"></i>`;
+                              }
+                              htmlToRating += `</div>`;
+                      
+                              $("#row").append(`
+                                 <div class="category-col-3 col-3">
+                                 <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                                 <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                                 <h4>${element.product_name}</h4>
+                                 ${htmlToRating}
+                                 <p>${element.price}</p>
+                             </div>`);
+                                },
+                              });
                             }
                           }
                         }
@@ -1304,13 +1659,37 @@ $(document).ready(function () {
                             if (delivery == 0 || element.delivery == delivery) {
                               console.log(element.id + "delivery checked");
 
+                              let req = {
+                                "id" : element.id
+                              }
+                              $.ajax({
+                                type: "POST",
+                                url: setUrl("Common/getRatingForIndividualProduct"),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                data: JSON.stringify(req),
+                                success: function (data1) {
+                                  console.log(data1);
+                                  let rating = data1;
+                              let htmlToRating = `<div class="rating">`;
+                              for (let i = 0; i < rating; i++) {
+                                htmlToRating += `<i class="fa fa-star"></i>`;
+                              }
+                              for (let i = 0; i < 5-rating; i++) {
+                                htmlToRating += `<i class="far fa-star"></i>`;
+                              }
+                              htmlToRating += `</div>`;
+                      
                               $("#row").append(`
-                   <div class="category-col-3 col-3">
-                   <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                   <img src=".../../../../images/product/${element.img1}" alt="" />
-                   <h4>${element.product_name}</h4>
-                   <p>${element.price}</p>
-               </div>`);
+                                 <div class="category-col-3 col-3">
+                                 <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                                 <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                                 <h4>${element.product_name}</h4>
+                                 ${htmlToRating}
+                                 <p>${element.price}</p>
+                             </div>`);
+                                },
+                              });
                             }
                           }
                         }
@@ -1386,19 +1765,37 @@ $(document).ready(function () {
                           if (delivery == 0 || element.delivery == delivery) {
                             console.log(element.id + "delivery checked");
 
+                            let req = {
+                              "id" : element.id
+                            }
+                            $.ajax({
+                              type: "POST",
+                              url: setUrl("Common/getRatingForIndividualProduct"),
+                              contentType: "application/json; charset=utf-8",
+                              dataType: "json",
+                              data: JSON.stringify(req),
+                              success: function (data1) {
+                                console.log(data1);
+                                let rating = data1;
+                            let htmlToRating = `<div class="rating">`;
+                            for (let i = 0; i < rating; i++) {
+                              htmlToRating += `<i class="fa fa-star"></i>`;
+                            }
+                            for (let i = 0; i < 5-rating; i++) {
+                              htmlToRating += `<i class="far fa-star"></i>`;
+                            }
+                            htmlToRating += `</div>`;
+                    
                             $("#row").append(`
-                                <div class="category-col-3 col-3">
-                                <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                                <div class="img-wrapper">
-                                                  <div class="ribbon-wrapper-red">
-                                                      <div class="ribbon-red">ADOPT</div>
-                                                  </div>
-                                                  <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />
-                                              </div>
-                      
-                                  <h4>${element.product_name}</h4>
-                      
-                              </div>`);
+                               <div class="category-col-3 col-3">
+                               <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                               <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                               <h4>${element.product_name}</h4>
+                               ${htmlToRating}
+                               <p>${element.price}</p>
+                           </div>`);
+                              },
+                            });
                           }
                         }
                       }
@@ -1478,13 +1875,37 @@ $(document).ready(function () {
                             if (delivery == 0 || element.delivery == delivery) {
                               console.log(element.id + "delivery checked");
 
+                              let req = {
+                                "id" : element.id
+                              }
+                              $.ajax({
+                                type: "POST",
+                                url: setUrl("Common/getRatingForIndividualProduct"),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                data: JSON.stringify(req),
+                                success: function (data1) {
+                                  console.log(data1);
+                                  let rating = data1;
+                              let htmlToRating = `<div class="rating">`;
+                              for (let i = 0; i < rating; i++) {
+                                htmlToRating += `<i class="fa fa-star"></i>`;
+                              }
+                              for (let i = 0; i < 5-rating; i++) {
+                                htmlToRating += `<i class="far fa-star"></i>`;
+                              }
+                              htmlToRating += `</div>`;
+                      
                               $("#row").append(`
-                   <div class="category-col-3 col-3">
-                   <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                   <img src=".../../../../images/product/${element.img1}" alt="" />
-                   <h4>${element.product_name}</h4>
-                   <p>${element.price}</p>
-               </div>`);
+                                 <div class="category-col-3 col-3">
+                                 <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                                 <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                                 <h4>${element.product_name}</h4>
+                                 ${htmlToRating}
+                                 <p>${element.price}</p>
+                             </div>`);
+                                },
+                              });
                             }
                           }
                         }
@@ -1565,13 +1986,37 @@ $(document).ready(function () {
                             if (delivery == 0 || element.delivery == delivery) {
                               console.log(element.id + "delivery checked");
 
+                              let req = {
+                                "id" : element.id
+                              }
+                              $.ajax({
+                                type: "POST",
+                                url: setUrl("Common/getRatingForIndividualProduct"),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                data: JSON.stringify(req),
+                                success: function (data1) {
+                                  console.log(data1);
+                                  let rating = data1;
+                              let htmlToRating = `<div class="rating">`;
+                              for (let i = 0; i < rating; i++) {
+                                htmlToRating += `<i class="fa fa-star"></i>`;
+                              }
+                              for (let i = 0; i < 5-rating; i++) {
+                                htmlToRating += `<i class="far fa-star"></i>`;
+                              }
+                              htmlToRating += `</div>`;
+                      
                               $("#row").append(`
-                   <div class="category-col-3 col-3">
-                   <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                   <img src=".../../../../images/product/${element.img1}" alt="" />
-                   <h4>${element.product_name}</h4>
-                   <p>${element.price}</p>
-               </div>`);
+                                 <div class="category-col-3 col-3">
+                                 <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                                 <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                                 <h4>${element.product_name}</h4>
+                                 ${htmlToRating}
+                                 <p>${element.price}</p>
+                             </div>`);
+                                },
+                              });
                             }
                           }
                         }
@@ -1652,16 +2097,37 @@ $(document).ready(function () {
                             if (delivery == 0 || element.delivery == delivery) {
                               console.log(element.id + "delivery checked");
 
-                              $("#row").append(
-                                `
-                   <div class="category-col-3 col-3">
-                   <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                   <img src=".../../../../images/product/${element.img1}" alt="" />
-                   <h4>${element.product_name}</h4>
-                   <p>${element.price}</p>
-               </div>
-               `
-                              );
+                              let req = {
+                                "id" : element.id
+                              }
+                              $.ajax({
+                                type: "POST",
+                                url: setUrl("Common/getRatingForIndividualProduct"),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                data: JSON.stringify(req),
+                                success: function (data1) {
+                                  console.log(data1);
+                                  let rating = data1;
+                              let htmlToRating = `<div class="rating">`;
+                              for (let i = 0; i < rating; i++) {
+                                htmlToRating += `<i class="fa fa-star"></i>`;
+                              }
+                              for (let i = 0; i < 5-rating; i++) {
+                                htmlToRating += `<i class="far fa-star"></i>`;
+                              }
+                              htmlToRating += `</div>`;
+                      
+                              $("#row").append(`
+                                 <div class="category-col-3 col-3">
+                                 <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                                 <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                                 <h4>${element.product_name}</h4>
+                                 ${htmlToRating}
+                                 <p>${element.price}</p>
+                             </div>`);
+                                },
+                              });
                             }
                           }
                         }
@@ -1700,16 +2166,37 @@ $(document).ready(function () {
           let keyword = $("#search").val().toLowerCase();
           if (element.product_name.toLowerCase().includes(keyword)){
               i++;
-            $("#row").append(
-                `
-                        <div class="category-col-3 col-3">
-                        <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
-                        <img src=".../../../../images/product/${element.img1}" alt="" />
-                        <h4>${element.product_name}</h4>
-                        <p>${element.price}</p>
-                        </div>
-                `
-              );
+              let req = {
+                "id" : element.id
+              }
+              $.ajax({
+                type: "POST",
+                url: setUrl("Common/getRatingForIndividualProduct"),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify(req),
+                success: function (data1) {
+                  console.log(data1);
+                  let rating = data1;
+              let htmlToRating = `<div class="rating">`;
+              for (let i = 0; i < rating; i++) {
+                htmlToRating += `<i class="fa fa-star"></i>`;
+              }
+              for (let i = 0; i < 5-rating; i++) {
+                htmlToRating += `<i class="far fa-star"></i>`;
+              }
+              htmlToRating += `</div>`;
+      
+              $("#row").append(`
+                 <div class="category-col-3 col-3">
+                 <a href="/aquaspace/frontend/src/Reg/product-page.html?id=${element.id}">
+                 <img src=".../../../../images/product/${element.img1}" alt="${element.product_name}" />
+                 <h4>${element.product_name}</h4>
+                 ${htmlToRating}
+                 <p>${element.price}</p>
+             </div>`);
+                },
+              });
 
           }
 
