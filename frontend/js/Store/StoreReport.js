@@ -93,7 +93,7 @@ function setTheReport(from,to){
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function(data){
-      // console.log(data);
+      console.log(data);
       if(data.ernings == null){
         $("#earnings").html(`0`);
       }else{
@@ -117,6 +117,7 @@ function setTheReport(from,to){
       if(order.length == 0){
         $("#bestProduct").html('<h4 style="color: red;">No Ordes Found In this Time Duration</h4>');
       }else{
+        $("#bestProduct").html('');
         order.forEach(element => {  
           $("#bestProduct").append(`
               <tr>
@@ -131,7 +132,7 @@ function setTheReport(from,to){
       }
 
       let orderCat = data.orderCat;
-      console.log(data1);
+      // console.log(data1);
       while(labels.length > 0) {
         removeData(myChart);
       }

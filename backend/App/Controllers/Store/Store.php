@@ -917,7 +917,7 @@ class Store extends \Core\Controller
         $result = $stmt->fetchAll();
         $oderCount=count($result);
 
-        $stmt = $this->execute($this->get('product_quetion', "id", "store_auth_id =". $id ." AND reply = NULL"));
+        $stmt = $this->execute($this->get('product_quetion', "id", "store_auth_id =". $id ." AND reply IS NULL"));
         $result = $stmt->fetchAll();
         $questionCount=count($result);
 
@@ -1101,7 +1101,7 @@ class Store extends \Core\Controller
         $result = $stmt->fetch();
         $ernings = $result['SUM(amount)'];
 
-        $sqlProcuct = "SELECT COUNT(product_order.id) AS products FROM selling_order,product_order WHERE selling_order.id=product_order.selling_order_id AND date >='".$this->data['dateFrom']."' AND date <= '".$this->data['dateTo']."' AND seller_auth_id = '".$id."'";
+        $sqlProcuct = "SELECT SUM(product_order.quantity) AS products FROM selling_order,product_order WHERE selling_order.id=product_order.selling_order_id AND date >='".$this->data['dateFrom']."' AND date <= '".$this->data['dateTo']."' AND seller_auth_id = '".$id."'";
         $stmt = $this->execute($sqlProcuct);
         $result = $stmt->fetch();
         $products = $result['products'];
@@ -1111,11 +1111,11 @@ class Store extends \Core\Controller
         $result = $stmt->fetch();
         $orders = $result['COUNT(id)'];
 
-        $sqlMost = "SELECT COUNT(product_order.id) AS pCount , products.product_name AS name , products.price AS price FROM product_order,products,selling_order WHERE product_order.selling_order_id = selling_order.id AND product_order.product_id = products.id AND selling_order.date >= '".$this->data['dateFrom']."' AND selling_order.date <= '".$this->data['dateTo']."' AND selling_order.seller_auth_id = '".$id."' GROUP BY product_order.product_id ORDER BY pCount DESC LIMIT 5";
+        $sqlMost = "SELECT SUM(product_order.quantity) AS pCount , products.product_name AS name , products.price AS price FROM product_order,products,selling_order WHERE product_order.selling_order_id = selling_order.id AND product_order.product_id = products.id AND selling_order.date >= '".$this->data['dateFrom']."' AND selling_order.date <= '".$this->data['dateTo']."' AND selling_order.seller_auth_id = '".$id."' GROUP BY product_order.product_id ORDER BY pCount DESC LIMIT 5";
         $stmt = $this->execute($sqlMost);
         $orderList = $stmt->fetchAll();
 
-        $sqlCat = "SELECT COUNT(product_order.id) AS pCount , products.category AS category  FROM product_order,products,selling_order WHERE product_order.selling_order_id = selling_order.id AND product_order.product_id = products.id AND selling_order.date >= '".$this->data['dateFrom']."' AND selling_order.date <= '".$this->data['dateTo']."' AND selling_order.seller_auth_id = '".$id."' GROUP BY product_order.product_id ORDER BY pCount DESC ";
+        $sqlCat = "SELECT SUM(product_order.quantity) AS pCount , products.category AS category  FROM product_order,products,selling_order WHERE product_order.selling_order_id = selling_order.id AND product_order.product_id = products.id AND selling_order.date >= '".$this->data['dateFrom']."' AND selling_order.date <= '".$this->data['dateTo']."' AND selling_order.seller_auth_id = '".$id."' GROUP BY product_order.product_id ORDER BY pCount DESC ";
         $stmt = $this->execute($sqlCat);
         $orderCat = $stmt->fetchAll();
 
