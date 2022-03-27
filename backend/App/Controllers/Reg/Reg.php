@@ -256,15 +256,9 @@ class Reg extends \Core\Controller
             "quantity" => $this->data['quantity'],
             "delivery" => $this->data['delivery'],
         ];
-        $stmt = $this->execute("SELECT id FROM shopping_cart WHERE user_id=$id AND product_id=$product_id");
-        if(!$stmt->fetch()){
-            
             $this->exec($this->save("shopping_cart", $dataToInsert));
             View::response("Added to Your Cart!");
 
-        }
-        else View::response("Item is already in your cart!");
-        
     }
 
     public function showCartAction()

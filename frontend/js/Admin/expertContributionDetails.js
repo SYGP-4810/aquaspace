@@ -7,6 +7,7 @@ $(document).ready(function() {
     let numOfPost = url.searchParams.get("post");
     let numOfArticle = url.searchParams.get("article");
     let numOfQuestion = url.searchParams.get("question");
+    let bCount = url.searchParams.get("bCount");
     $("#contributionD").html(`
     <li>
                         <span class="l-name">Name</span>
@@ -17,8 +18,12 @@ $(document).ready(function() {
                         <span class="l-value"> ${numOfPost}</span>
                     </li>
                     <li>
-                        <span class="l-name">No of articles added</span>
+                        <span class="l-name">No of fish articles wrote</span>
                         <span class="l-value">${numOfArticle}</span>
+                    </li>
+                    <li>
+                        <span class="l-name">No of blog articles wrote</span>
+                        <span class="l-value">${bCount}</span>
                     </li>
                     <li>
                         <span class="l-name">No of questions answered</span>

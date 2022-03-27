@@ -372,17 +372,22 @@ class Admin extends \Core\Controller
     }
 
     //get total number of question expert answered
-    public function tNumQuestion(){
+    private function tNumQuestion(){
         $sql = "SELECT COUNT(id) AS tNumOfQuestion FROM expert_question WHERE replyer_id IS NOT NULL";
         // View::response($this->execute($sql)->fetch()['tNumOfQuestion']);
         return $this->execute($sql)->fetch()['tNumOfQuestion'];
     }
     
     //get total number of posts verified by experts
-    public function tNumPost(){
+    private function tNumPost(){
         $sql = "SELECT COUNT(id) AS tNumOfPost FROM products WHERE verifier_id IS NOT NULL";
         // View::response($this->execute($sql)->fetch()['tNumOfPost']);
         return $this->execute($sql)->fetch()['tNumOfPost'];
+    }
+
+    //get total number of blog post by expert
+    private function tBlogArticle(){
+        return $this->execute("SELECT COUNT(article.id) AS tBCount FROM article ")->fetch()['tBCount'];
     }
     
     //get the total value for contribution
@@ -390,7 +395,8 @@ class Admin extends \Core\Controller
         $tPost = $this->tNumPost();
         $tNumQuestion = $this->tNumQuestion();
         $tArticle = $this->tNumArticle();
-        View::response($tPost*2+$tNumQuestion*3+$tArticle*10);
+        $tBlog = $this->tBlogArticle();
+        View::response($tPost*2+$tNumQuestion*3+$tArticle*10+$tBlog*5);
         
 
     }
@@ -400,7 +406,8 @@ class Admin extends \Core\Controller
         $tPost = $this->tNumPost();
         $tNumQuestion = $this->tNumQuestion();
         $tArticle = $this->tNumArticle();
-        return ($tPost*2+$tNumQuestion*3+$tArticle*10);
+        $bArticle = $this->tBlogArticle();
+        return ($tPost*2+$tNumQuestion*3+$tArticle*10+$bArticle*5);
         
 
     }
@@ -413,11 +420,13 @@ class Admin extends \Core\Controller
             $sqlProduct = "SELECT COUNT(id) AS pCount FROM products WHERE verifier_id='".$expertId."'";
             $sqlArticle = "SELECT COUNT(id) AS aCount FROM fish_article WHERE auth_id='".$expertId."'";
             $sqlQuestion = "SELECT COUNT(id) AS qCount FROM expert_question WHERE replyer_id='".$expertId."'";
+            $sqlBArticle = "SELECT COUNT(article.id) AS bCount FROM article WHERE auth_id='".$expertId."'";
             $reExpert = $this->execute($this->get('expert','*',"auth_id='".$expertId."'"))->fetch(); 
             $res[$i] = [
                 "productCount" => $this->execute($sqlProduct)->fetch()['pCount'],
                 "articleCount" => $this->execute($sqlArticle)->fetch()['aCount'],
                 "questionCount" => $this->execute($sqlQuestion)->fetch()['qCount'],
+                "blogArticleCount" => $this->execute($sqlBArticle)->fetch()['bCount'],
                 "auth_id" => $expertId,
                 "profile_img" => $this->execute($this->get('user_auth','*',"id='".$expertId."'"))->fetch()['profile_img'],
                 "first_name" => $reExpert['first_name'],

@@ -56,6 +56,7 @@ $.ajax({
     dataType: "json",
     success: function(data){
         let tNum = data;
+        console.log(tNum);
         if(tNum >0){
 
             $.ajax({
@@ -66,7 +67,7 @@ $.ajax({
                 success: function(data){
                     console.log(data);
                     data.forEach(element => {
-                        let persentage = 100*(element.productCount * 2 + element.questionCount *3 + element.articleCount*10)/tNum;
+                        let persentage = 100*(element.productCount * 2 + element.questionCount *3 + element.articleCount*10 + element.blogArticleCount*5)/tNum;
                         $(".con-list").append(`
                         <tr>
                     <td>
@@ -82,7 +83,7 @@ $.ajax({
                         ${Math.round(persentage)}%
                     </td>
                     <td>
-                        <a href="../Admin/AdminContributionDetails.html?persentage=${Math.round(persentage)}&post=${element.productCount}&question=${element.questionCount}&article=${element.articleCount}&firstName=${element.first_name}&lastName=${element.last_name}" class="button">Contribution Details</a>
+                        <a href="../Admin/AdminContributionDetails.html?persentage=${Math.round(persentage)}&post=${element.productCount}&question=${element.questionCount}&article=${element.articleCount}&firstName=${element.first_name}&lastName=${element.last_name}&bCount=${element.blogArticleCount}" class="button">Contribution Details</a>
                     </td>
                 </tr>
                         `);

@@ -164,7 +164,13 @@ class Expert extends \Core\Controller
         $sqlArticle = "SELECT COUNT(id) AS aCount FROM fish_article WHERE auth_id='".$expertId."'";
         $sqlQuestion = "SELECT COUNT(id) AS qCount FROM expert_question WHERE replyer_id='".$expertId."'";
         $reExpert = $this->execute($this->get('expert','*',"auth_id='".$expertId."'"))->fetch(); 
+        $allBlogArticlesql = "SELECT COUNT(article.id) aBlogCount FROM article ";
+        $allBlogArticleCount = $this->execute($allBlogArticlesql)->fetch()['aBlogCount'];
+        $bArticleSql = "SELECT COUNT(article.id) bCount FROM article WHERE auth_id = '".$expertId."'";
+        $bArticleCount = $this->execute($bArticleSql)->fetch()['bCount'];
         $res = [
+            "aBcount" => $allBlogArticleCount,
+            "bCount" => $bArticleCount,
             "productCount" => $this->execute($sqlProduct)->fetch()['pCount'],
             "articleCount" => $this->execute($sqlArticle)->fetch()['aCount'],
             "questionCount" => $this->execute($sqlQuestion)->fetch()['qCount'],

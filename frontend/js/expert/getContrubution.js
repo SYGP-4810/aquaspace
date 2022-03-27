@@ -6,7 +6,7 @@ $(document).ready(function() {
         dataType: "json",
         success: function(data){
             console.log(data);
-            let persentage = 100*(data.productCount*2+data.questionCount*3+data.articleCount*10)/(data.allPost*2+data.allQuestion*3+data.articleCount*10)
+            let persentage = 100*(data.productCount*2+data.questionCount*3+data.articleCount*10+data.bCount*5)/(data.allPost*2+data.allQuestion*3+data.articleCount*10+data.aBcount*5)
             $(".con-details").append(`
             <br>
             <br>
@@ -15,8 +15,10 @@ $(document).ready(function() {
                 <dd>${data.first_name} ${data.last_name}</dd>
                 <dt>No of post verification : </dt>
                 <dd> ${data.productCount}</dd>
-                <dt>No of articles added : </dt>
+                <dt>No of fish articles added : </dt>
                 <dd>${data.articleCount}</dd>
+                <dt>No of blog articles added : </dt>
+                <dd>${data.bCount}</dd>
                 <dt>No of questions answered : </dt>
                 <dd>${data.questionCount}</dd>
                 <dt>Percentage : </dt>
