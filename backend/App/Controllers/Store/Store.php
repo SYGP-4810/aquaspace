@@ -818,8 +818,7 @@ class Store extends \Core\Controller
         $buyerid = $result1['buyer_auth_id'];
         $stmt = $this->execute($this->join("user_auth,regular_user", "user_auth.tp, regular_user.first_name, regular_user.last_name, regular_user.address", "user_auth.id ='" . $buyerid . "' AND regular_user.auth_id ='" . $buyerid . "'"));
         $result2 = $stmt->fetch();
-        // $stmt = $this->execute($this->join("product_order,products", "products.product_name, products.img1, products.price, product_order.quantity, product_order.delivery", "product_order.selling_order_id='" . $id . "' AND  product_order.	product_id = products.id"));
-        // $result3 = $stmt->fetchAll();
+        
         
         View::response($result2);
     }
