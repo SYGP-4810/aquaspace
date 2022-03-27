@@ -838,7 +838,14 @@ class Store extends \Core\Controller
             "status" => 2
         ];
     
-        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));        
+        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'")); 
+
+        $stmt = $this->execute($this->get('selling_order', "buyer_auth_id , id", "id ='" . $this->data['id'] . "'"));
+        $result1 = $stmt->fetch();  
+        $id = $result1['buyer_auth_id'];
+        $oid = $result1['id'];
+        $msg = $oid . " order has been accepted by the store";
+        $this->notifyOther($id,$msg);     
         View::response("success");
         
     }
@@ -849,7 +856,15 @@ class Store extends \Core\Controller
             "status" => 5
         ];
     
-        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));        
+        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));  
+        
+        $stmt = $this->execute($this->get('selling_order', "buyer_auth_id , id", "id ='" . $this->data['id'] . "'"));
+        $result1 = $stmt->fetch();  
+        $id = $result1['buyer_auth_id'];
+        $oid = $result1['id'];
+        $msg = $oid . " order has been Reject by the store";
+        $this->notifyOther($id,$msg); 
+
         View::response("success");
         
     }
@@ -860,7 +875,15 @@ class Store extends \Core\Controller
             "status" => 3
         ];
     
-        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));        
+        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));    
+        
+        $stmt = $this->execute($this->get('selling_order', "buyer_auth_id , id", "id ='" . $this->data['id'] . "'"));
+        $result1 = $stmt->fetch();  
+        $id = $result1['buyer_auth_id'];
+        $oid = $result1['id'];
+        $msg = $oid . " order has been Sent by the store";
+        $this->notifyOther($id,$msg); 
+        
         View::response("success");
         
     }
@@ -871,7 +894,15 @@ class Store extends \Core\Controller
             "status" => 4
         ];
     
-        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));        
+        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));     
+        
+        $stmt = $this->execute($this->get('selling_order', "buyer_auth_id , id", "id ='" . $this->data['id'] . "'"));
+        $result1 = $stmt->fetch();  
+        $id = $result1['buyer_auth_id'];
+        $oid = $result1['id'];
+        $msg = $oid . " order has been Done by the store";
+        $this->notifyOther($id,$msg); 
+        
         View::response("success");
         
     }
