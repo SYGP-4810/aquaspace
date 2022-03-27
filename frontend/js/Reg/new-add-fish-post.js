@@ -145,8 +145,7 @@ $("#price").change(function () {
         // window.location.replace("../src/Error"+errMsg.status+".html");
       },
     });
-  }
-  else{
+  } else {
     $("#rate1").text("1 weeks (Please enter the price to view the charges)");
     $("#rate2").text("2 weeks");
     $("#rate3").text("3 weeks");
@@ -309,6 +308,8 @@ $("#btn").click(function () {
     $(".checkout").css("display", "block");
 
     $("#order").click(function () {
+      $("#item_name").val(price);
+      $("#item_amount").val(name);
       var req = {
         product_name: name,
         duration: duration,
@@ -356,10 +357,10 @@ $("#btn").click(function () {
   }
 });
 
-let item_name = $("#auto").val();
-let item_amount = "450.00";
-$("#item_name").val(item_name);
-$("#item_amount").val(item_amount);
+// let item_name = $("#auto").val();
+// let item_amount = "450.00";
+// $("#item_name").val(item_name);
+// $("#item_amount").val(item_amount);
 
 $("#Yorder_amount").html(`
 ${item_amount}

@@ -114,6 +114,7 @@ $(document).ready(function(){
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function(data){
+      console.log(data);
       var PendingorderIdSet = new Set();
       var AcceptorderIdSet = new Set();
       var SendorderIdSet = new Set();

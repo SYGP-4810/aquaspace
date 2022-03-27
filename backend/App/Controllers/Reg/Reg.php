@@ -256,15 +256,9 @@ class Reg extends \Core\Controller
             "quantity" => $this->data['quantity'],
             "delivery" => $this->data['delivery'],
         ];
-        $stmt = $this->execute("SELECT id FROM shopping_cart WHERE user_id=$id AND product_id=$product_id");
-        if(!$stmt->fetch()){
-            
             $this->exec($this->save("shopping_cart", $dataToInsert));
             View::response("Added to Your Cart!");
 
-        }
-        else View::response("Item is already in your cart!");
-        
     }
 
     public function showCartAction()
@@ -689,13 +683,14 @@ class Reg extends \Core\Controller
         $array = array();
         for($x=0 ; $x < sizeof($stmt) ; $x++){
             $res = array();
-            $stmt2 = $this->execute($this->get('product_order', "*", "selling_order_id = '" . $stmt[$x]['id'] . "'"))->fetch();
-            $stmt3 = $this->execute($this->get('products', "product_name", "id = '" . $stmt2['product_id'] . "'"))->fetch();
-            $total = $stmt2['amount'] + $stmt2['delivery_fee'];
-            $res = array("id" => $stmt2['id'] ,"order_id" => $stmt2['selling_order_id'] , "product_name" => $stmt3['product_name'], "amount" => $total , "date" => $stmt[$x]['date'], "status" => $stmt[$x]['status']);
-            array_push($array,$res);
+            $stmt2 = $this->execute($this->get('product_order', "*", "selling_order_id = '" . $stmt[$x]['id'] . "'"))->fetchAll();
+            for($y=0; $y < sizeof($stmt2) ; $y++){
+                $stmt3 = $this->execute($this->get('products', "product_name", "id = '" . $stmt2[$y]['product_id'] . "'"))->fetch();
+                $total = $stmt2[$y]['amount'] + $stmt2[$y]['delivery_fee'];
+                $res = array("id" => $stmt2[$y]['id'] ,"order_id" => $stmt2[$y]['selling_order_id'] , "product_name" => $stmt3['product_name'], "amount" => $total , "date" => $stmt[$x]['date'], "status" => $stmt[$x]['status']);
+                array_push($array,$res);
+            } 
         }
- 
         View::response($array);
 
     }
@@ -772,7 +767,6 @@ class Reg extends \Core\Controller
         $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
         $stmt = $this->execute($this->get("products","*", "auth_id = '" . $id . "'"))->fetchAll();
         View::response($stmt);
-    
     }
 
     public function getCoinCountAction(){
@@ -784,7 +778,6 @@ class Reg extends \Core\Controller
         else{
             View::response($stmt['coins']);
         }
-
     }
   
     public function addCoinsAction(){

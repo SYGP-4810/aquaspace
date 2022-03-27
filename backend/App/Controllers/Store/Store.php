@@ -784,8 +784,15 @@ class Store extends \Core\Controller
         $updateData = [
             "reply" => $this->data['answer']
         ];
-    
-        $this->exec($this->update('product_quetion', $updateData, "id='" . $this->data['id'] . "'"));        
+        
+        $this->exec($this->update('product_quetion', $updateData, "id='" . $this->data['id'] . "'"));  
+        
+        $stmt = $this->execute($this->get('product_quetion', "*",  "id='" . $this->data['id'] . "'"));
+        $result1 = $stmt->fetch();
+        $id = $result1['sender_id'];
+        $que =$result1['question'];
+        $this->notifyOther($id,"$que"."  question has been Answered");
+
         View::response("success");
         
     }
@@ -811,8 +818,7 @@ class Store extends \Core\Controller
         $buyerid = $result1['buyer_auth_id'];
         $stmt = $this->execute($this->join("user_auth,regular_user", "user_auth.tp, regular_user.first_name, regular_user.last_name, regular_user.address", "user_auth.id ='" . $buyerid . "' AND regular_user.auth_id ='" . $buyerid . "'"));
         $result2 = $stmt->fetch();
-        // $stmt = $this->execute($this->join("product_order,products", "products.product_name, products.img1, products.price, product_order.quantity, product_order.delivery", "product_order.selling_order_id='" . $id . "' AND  product_order.	product_id = products.id"));
-        // $result3 = $stmt->fetchAll();
+        
         
         View::response($result2);
     }
@@ -832,7 +838,14 @@ class Store extends \Core\Controller
             "status" => 2
         ];
     
-        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));        
+        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'")); 
+
+        $stmt = $this->execute($this->get('selling_order', "buyer_auth_id , id", "id ='" . $this->data['id'] . "'"));
+        $result1 = $stmt->fetch();  
+        $id = $result1['buyer_auth_id'];
+        $oid = $result1['id'];
+        $msg = $oid . " order has been accepted by the store";
+        $this->notifyOther($id,$msg);     
         View::response("success");
         
     }
@@ -843,7 +856,15 @@ class Store extends \Core\Controller
             "status" => 5
         ];
     
-        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));        
+        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));  
+        
+        $stmt = $this->execute($this->get('selling_order', "buyer_auth_id , id", "id ='" . $this->data['id'] . "'"));
+        $result1 = $stmt->fetch();  
+        $id = $result1['buyer_auth_id'];
+        $oid = $result1['id'];
+        $msg = $oid . " order has been Reject by the store";
+        $this->notifyOther($id,$msg); 
+
         View::response("success");
         
     }
@@ -854,7 +875,15 @@ class Store extends \Core\Controller
             "status" => 3
         ];
     
-        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));        
+        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));    
+        
+        $stmt = $this->execute($this->get('selling_order', "buyer_auth_id , id", "id ='" . $this->data['id'] . "'"));
+        $result1 = $stmt->fetch();  
+        $id = $result1['buyer_auth_id'];
+        $oid = $result1['id'];
+        $msg = $oid . " order has been Sent by the store";
+        $this->notifyOther($id,$msg); 
+        
         View::response("success");
         
     }
@@ -865,7 +894,15 @@ class Store extends \Core\Controller
             "status" => 4
         ];
     
-        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));        
+        $this->exec($this->update('selling_order', $updateData, "id='" . $this->data['id'] . "'"));     
+        
+        $stmt = $this->execute($this->get('selling_order', "buyer_auth_id , id", "id ='" . $this->data['id'] . "'"));
+        $result1 = $stmt->fetch();  
+        $id = $result1['buyer_auth_id'];
+        $oid = $result1['id'];
+        $msg = $oid . " order has been Done by the store";
+        $this->notifyOther($id,$msg); 
+        
         View::response("success");
         
     }

@@ -151,7 +151,7 @@ $(document).ready(function () {
         console.log(data.fishPost);
         console.log(delivery);
         //append new posts
-        $("#idkk").hide();
+        $("#no-results-div").hide();
         $("#row").html(``);
 
         /*-----------------if the user selects post type "all"---------------- */
@@ -205,7 +205,7 @@ $(document).ready(function () {
             }
           });
           if (i == 0) {
-            $("#idkk").show();
+            $("#no-results-div").show();
           }
         }
 
@@ -248,7 +248,7 @@ $(document).ready(function () {
             }
           });
           if (i == 0) {
-            $("#idkk").show();
+            $("#no-results-div").show();
           }
         }
 
@@ -298,7 +298,7 @@ $(document).ready(function () {
             }
           });
           if (i == 0) {
-            $("#idkk").show();
+            $("#no-results-div").show();
           }
         }
 
@@ -348,7 +348,7 @@ $(document).ready(function () {
             }
           });
           if (i == 0) {
-            $("#idkk").show();
+            $("#no-results-div").show();
           }
         }
 
@@ -397,7 +397,7 @@ $(document).ready(function () {
             }
           });
           if (i == 0) {
-            $("#idkk").show();
+            $("#no-results-div").show();
           }
         }
       },
@@ -2153,7 +2153,7 @@ $(document).ready(function () {
   });
 
   $("#search").keyup(function () {
-      $("#idkk").hide();
+      $("#no-results-div").hide();
     $("#row").html(``);
     $.ajax({
       type: "GET",
@@ -2202,7 +2202,7 @@ $(document).ready(function () {
 
         });
         if(i==0){
-            $("#idkk").show();
+            $("#no-results-div").show();
         }
       },
       error: function (errMsg) {
