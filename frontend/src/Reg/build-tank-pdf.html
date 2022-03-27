@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../css/read-fish.css">
     <!-- <link rel="stylesheet" href="../../css/addpost.css"> -->
     <!-- <link rel="stylesheet" href="../../css/build-tank.css"> -->
-    <title>Category Page</title>
+    <title>Build tank guide</title>
 </head>
 
 <body>
@@ -27,6 +27,10 @@
         <div
             style="height: 80px; text-align: center; margin-top: 100px; padding-top: 20px;padding-bottom: 20px; font-size: 30px; background-color: rgb(143, 143, 143); color:white;">
             Read Articles of the Fish</div>
+        <br>
+        <br>
+        <h2 style="margin-left: 30px">Fish Data</h2>
+        <br>
         <div id="articles">
             <!-- <div class="k">
                 <h1 id="fish-title">GOLD FISH</h1>
@@ -122,13 +126,15 @@
 
             </div> -->
         </div>
-
+        <br>
+        <br>
+        <h2 style="margin-left: 30px">Related article</h2>
         <div id="relatedBlog">
         </div>
 
     </div>
 
-    <button onclick="generatePDF()">pdf</button>
+    <!-- <button onclick="generatePDF()">pdf</button> -->
 
 
 
@@ -137,12 +143,13 @@
 
     <script src="https://code.jquery.com/jquery-1.12.4.js">
     </script>
-    <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
     <!-- <script src="../../js/add-fish-post.js"></script> -->
     <!-- <script src="../../js/landing-app.js"></script> -->
     <script src="../../js/Reg/build-tank-pdf.js"></script>
+    <script defer src="../../js/Reg/generate-pdf.js"></script>
 
 
 </body>

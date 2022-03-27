@@ -105,10 +105,14 @@ for (i = 1; i <= no_of_fish; i++) {
                     </label>
                 </div>
             </div>
+            <br>
+            <br>
   `);
 
   //passing the fish id, i call the renderArticle function tht will load up the data in the empty html tags
       renderArticle(data);
+      renderBlog(data);
+
     },
     error: function (errMsg) {
       // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
@@ -129,6 +133,7 @@ function renderArticle(aritcleID) {
     url: setUrl("Reg/Reg/getFishDataPost"),
     contentType: "application/json; charset=utf-8",
     dataType: "json",
+    async: false,
     data: JSON.stringify(req),
     success: function (data) {
       console.log(data)
@@ -171,6 +176,7 @@ function renderArticle(aritcleID) {
     url: setUrl("Reg/Reg/getOtherNameOfFish"),
     contentType: "application/json; charset=utf-8",
     dataType: "json",
+    async: false,
     data: JSON.stringify(req),
     success: function (data) {
       var count = 0;
@@ -196,6 +202,7 @@ function renderArticle(aritcleID) {
     url: setUrl("Reg/Reg/getNativeCountries"),
     contentType: "application/json; charset=utf-8",
     dataType: "json",
+    async: false,
     data: JSON.stringify(req),
     success: function (data) {
       var text = "";
@@ -220,6 +227,7 @@ function renderArticle(aritcleID) {
     url: setUrl("Reg/Reg/getCompatibleFish"),
     contentType: "application/json; charset=utf-8",
     dataType: "json",
+    async: false,
     data: JSON.stringify(req),
     success: function (data) {
       console.log(data);
@@ -246,11 +254,13 @@ function renderBlog(fishId){
   let req1 = {
     "id" :fishId
   }
+  console.log("req1",req1);
 
   $.ajax({
     type: "POST",
-    url: setUrl("Reg/Reg/getListOfArticles"),
+    url: setUrl("Reg/Reg/getListOfArtcles"),
     data: JSON.stringify(req1),
+    async: false,
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (data) {
@@ -260,6 +270,8 @@ function renderBlog(fishId){
           blogArticleIdList.push(element.id);
           $("#relatedBlog").append(`
               ${element.article}
+              <br>
+              <br>
           `);
         }
       })
@@ -272,15 +284,3 @@ function renderBlog(fishId){
 
 }
 
-function generatePDF() {
-  const element = document.getElementsByTagName("html");
-  var opt = {
-    margin: 0,
-    filename: "myfile.pdf",
-    image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: "in", format: "a4", orientation: "landscape" },
-  };
-
-  html2pdf().set(opt).from(element).save();
-}

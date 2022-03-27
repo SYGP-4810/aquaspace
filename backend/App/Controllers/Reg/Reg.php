@@ -958,7 +958,7 @@ class Reg extends \Core\Controller
     }
 
     public function getListOfArtclesAction(){
-        View::response($this->execute($this->get('article','*',"fish_article_id"))->fetchAll());
+        View::response($this->execute("SELECT article.id , article.article FROM article,relevant_fish_for_article WHERE relevant_fish_for_article.article_id=article.id AND relevant_fish_for_article.fish_article_id='".$this->data['id']."'")->fetchAll());
     }
 
 
