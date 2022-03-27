@@ -257,9 +257,15 @@ $("#proceed").click(function () {
                 dataType: "json",
                 data: JSON.stringify(req3),
                 success: function (data) {
-                  // console.log(data);
-                  shipping = shipping + data;
+                  console.log(data);
+                  shipping = shipping + parseInt(data);
                   console.log(shipping);
+                  if(j = map.length-1){
+                    updateShipping(amount,shipping);
+                  }
+                  
+                  
+
                 },
                 error: function (errMsg) {
                   // window.location.replace(
@@ -277,20 +283,8 @@ $("#proceed").click(function () {
         },
       });
     }
-    $("#order-list").append(`
-      <tr>
-            <td>Subtotal</td>
-            <td>${amount}</td>
-      </tr>
-                            `);
-    $("#order-list").append(`
-      <tr>
-            <td>Shipping</td>
-            <td>${shipping}</td>
-      </tr>
-                            `);
-
     console.log(shipping);
+    
   }
   $.ajax({
     type: "POST",
@@ -325,4 +319,22 @@ function payhere() {
     //   window.location.replace("/aquaspace/frontend/src/Error/" + errMsg.status + ".html");
     // },
   });
+}
+
+
+function updateShipping(amount, shipping){
+  console.log("fish")
+  $("#order-list").append(`
+  <tr>
+        <td>Subtotal</td>
+        <td>${amount}</td>
+  </tr>
+                        `);
+$("#order-list").append(`
+  <tr>
+        <td>Shipping</td>
+        <td>${shipping}</td>
+  </tr>
+                        `);
+
 }
