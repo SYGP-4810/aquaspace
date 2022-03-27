@@ -956,6 +956,12 @@ class Reg extends \Core\Controller
         $stmt = $this->execute($this->get('coins','coins', "user_id = '".$id."'"));
         View::response($stmt->fetch()['coins']);
     }
+
+    public function getListOfArtclesAction(){
+        View::response($this->execute($this->get('article','*',"fish_article_id"))->fetchAll());
+    }
+
+
 }
 
 
