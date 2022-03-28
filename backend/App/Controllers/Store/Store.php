@@ -164,7 +164,7 @@ class Store extends \Core\Controller
         $stmt = $this->execute($this->get('user_auth', "*", "access_token ='" . $_COOKIE['access_token'] . "'" . " AND user_type='3'"));
         $result = $stmt->fetch();
         $id = $result['id'];
-        $stmt = $this->execute($this->get('productS', "*", "auth_id ='" . $id . "'"));
+        $stmt = $this->execute($this->get('productS', "*", "auth_id ='" . $id . "' ORDER BY id DESC"));
         $result = $stmt->fetchAll();
         View::response($result);
     }

@@ -200,7 +200,7 @@ class Reg extends \Core\Controller
 
     public function getFishNamesAction()
     {
-        $stmt = $this->execute($this->get('fish', "name"));
+        $stmt = $this->execute($this->get('fish_article', "name"));
         // $result = $stmt->fetchAll();
         // $output = array();
         // foreach($result as $row)
@@ -216,7 +216,7 @@ class Reg extends \Core\Controller
 
     public function getFishImageAction()
     {
-        $stmt = $this->execute($this->get('fish', "image", "name ='" . $this->data['name'] . "'"));
+        $stmt = $this->execute($this->get('fish_article', "img_1", "name ='" . $this->data['name'] . "'"));
         View::response($stmt->fetch());
     }
 
