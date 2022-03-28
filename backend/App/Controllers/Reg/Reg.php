@@ -539,9 +539,13 @@ class Reg extends \Core\Controller
                     "amount" => $t,
                     "delivery_fee" => $shipping,
                 ];
-
                 $this->exec($this->save('product_order', $dataToInsert2));
 
+                $stmtt = $this->execute($this->get('products', "quantity", "id ='" . $obj[$i]->product_id[$y] . "'"))->fetch();
+                $dataToUpdatee = [
+                    "quantity" => $stmtt['id']-$r1['quantity']
+                ];
+                $this->exec($this->update('products', $dataToUpdatee,"id ='" . $obj[$i]->product_id[$y] . "'"));
             }
 
             $total_amount = $t_amount + $t_shipping;
@@ -854,11 +858,11 @@ class Reg extends \Core\Controller
 
     }
 
-    public function getTanks(){
+    public function getTanksAction(){
         $stmt = $this->execute($this->get('products','*', "category = 'tank' AND status=1 AND capacity >= '" . $this->data['capacity'] ."'" ));
         View::response($stmt->fetchAll());
     }
-    public function getFilters(){
+    public function getFiltersAction(){
         $stmt = $this->execute($this->get('products','*', "category = 'filter' AND status=1 AND capacity >= '" . $this->data['capacity'] ."'" ));
         View::response($stmt->fetchAll());
     }
@@ -919,12 +923,12 @@ class Reg extends \Core\Controller
 
 
 
-    public function getFishID(){
+    public function getFishIDAction(){
         $stmt = $this->execute($this->get('fish_article', 'id', "name = '".$this->data['name']."'"));
         View::response($stmt->fetch()['id']);
     }
 
-    public function getRegUserRates(){
+    public function getRegUserRatesAction(){
         if($this->data['price']<=1000){
             $stmt = $this->execute("SELECT * FROM rate LIMIT 6")->fetchAll();
         }
@@ -944,7 +948,7 @@ class Reg extends \Core\Controller
         View::response($stmt);
     }
 
-    public function getCoinCount(){
+    public function getCoinCheckoutAction(){
         $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
         $stmt = $this->execute($this->get('coins','coins', "user_id = '".$id."'"));
         View::response($stmt->fetch()['coins']);
@@ -955,6 +959,110 @@ class Reg extends \Core\Controller
     }
 
 
+    public function deletePostAction(){
+        $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
+        $stmt = $this->execute("SELECT id, product_name, duration, DATEDIFF(created_date, CURDATE()) AS date_diff FROM products WHERE auth_id = $id AND status=1 ")->fetchAll();
+        for($x=0 ; $x < sizeof($stmt) ; $x++){
+            if($stmt[$x]['duration']==1){
+                if($stmt[$x]['date_diff'] >= -7){
+                    $dataToUpdate = [
+                        "status" => 2
+                    ];
+                    $this->exec($this->update('products', $dataToUpdate,"id='" . $stmt[$x]['id'] . "'"));
+                    $dataToInsert = [
+                        "auth_id" => $id,
+                        "msg" => "Your advertisement \"$stmt[$x]['product_name']\" has reached its expiry date"
+                    ];
+                    $this->exec($this->save('notification', $dataToInsert));
+
+
+                }
+                
+            }
+            else if($stmt[$x]['duration']==2){
+                if($stmt[$x]['date_diff'] <= -14){
+                    $dataToUpdate = [
+                        "status" => 2
+                    ];
+                    $this->exec($this->update('products', $dataToUpdate,"id='" . $stmt[$x]['id'] . "'"));
+                    $dataToInsert = [
+                        "auth_id" => $id,
+                        "msg" => "Your advertisement \"$stmt[$x]['product_name']\" has reached its expiry date"
+                    ];
+                    $this->exec($this->save('notification', $dataToInsert));
+
+
+                }
+                
+            }
+            else if($stmt[$x]['duration']==3){
+                if($stmt[$x]['date_diff'] <= -21){
+                    $dataToUpdate = [
+                        "status" => 2
+                    ];
+                    $this->exec($this->update('products', $dataToUpdate,"id ='" . $stmt[$x]['id'] . "'"));
+                    $dataToInsert = [
+                        "auth_id" => $id,
+                        "msg" => "Your advertisement \"$stmt[$x]['product_name']\" has reached its expiry date"
+                    ];
+                    $this->exec($this->save('notification', $dataToInsert));
+                }
+                
+            }
+            else if($stmt[$x]['duration']==4){
+                if($stmt[$x]['date_diff'] <= -30){
+                    $dataToUpdate = [
+                        "status" => 2
+                    ];
+                    $this->exec($this->update('products', $dataToUpdate,"id='" . $stmt[$x]['id'] . "'"));
+                    $dataToInsert = [
+                        "auth_id" => $id,
+                        "msg" => "Your advertisement \"$stmt[$x]['product_name']\" has reached its expiry date"
+                    ];
+                    $this->exec($this->save('notification', $dataToInsert));
+
+
+                }
+                
+            }
+            else if($stmt[$x]['duration']==5){
+                if($stmt[$x]['date_diff'] <= -60){
+                    $dataToUpdate = [
+                        "status" => 2
+                    ];
+                    $this->exec($this->update('products', $dataToUpdate,"id='" . $stmt[$x]['productId'] . "'"));
+                    $dataToInsert = [
+                        "auth_id" => $id,
+                        "msg" => "Your advertisement \"$stmt[$x]['product_name']\" has reached its expiry date"
+                    ];
+                    $this->exec($this->save('notification', $dataToInsert));
+
+
+                }
+                
+            }
+            else if($stmt[$x]['duration']==6){
+                if($stmt[$x]['date_diff'] <= -90){
+                    $dataToUpdate = [
+                        "status" => 2
+                    ];
+                    $this->exec($this->update('products', $dataToUpdate,"id='" . $stmt[$x]['id'] . "'"));
+                    $dataToInsert = [
+                        "auth_id" => $id,
+                        "msg" => "Your advertisement \"$stmt[$x]['product_name'] \" has reached its expiry date"
+                    ];
+                    $this->exec($this->save('notification', $dataToInsert));
+
+
+                }
+                
+            }
+
+        }
+
+        View::response($stmt);
+
+    }
 }
 
 
