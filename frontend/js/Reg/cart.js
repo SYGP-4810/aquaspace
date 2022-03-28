@@ -132,7 +132,7 @@ $("#proceed").click(function () {
             dataType: "json",
             data: JSON.stringify(req),
             success: function (data) {
-              if(data.quantity > availableQuantity){
+              if(parseInt(data.quantity) > availableQuantity){
                 alert("The item " + productName + " is not available in stock!");
                 window.location.replace(
                 "/aquaspace/frontend/src/Reg/cart.html"
