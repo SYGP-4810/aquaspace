@@ -34,10 +34,10 @@ $(document).ready(function() {
     var img4 = url.searchParams.get("img4");
     var authId = url.searchParams.get("authId");
     $("#fishData").html(`
-    <img style="width: 280px;" class="hover" src="../../images/product/${img1}" alt="${name}" />
-    <img style="width: 280px;" class="hover" src="../../images/product/${img2}" alt="${name}" />
-    <img style="width: 280px;" class="hover" src="../../images/product/${img3}" alt="${name}">
-    <img style="width: 280px;" class="hover" src="../../images/product/${img4}" alt="${name}">
+    <img style="width: 250px; height: 250px;" class="hover" src="../../images/product/${img1}" alt="${name}" />
+    <img style="width: 250px; height: 250px;" class="hover" src="../../images/product/${img2}" alt="${name}" />
+    <img style="width: 250px; height: 250px;" class="hover" src="../../images/product/${img3}" alt="${name}">
+    <img style="width: 250px; height: 250px;" class="hover" src="../../images/product/${img4}" alt="${name}">
     <br>
     <label for="uname" style="font-size: 15px;">
     <h4>suggested name</h4>
