@@ -302,7 +302,7 @@ class Admin extends \Core\Controller
     public function getUserAppealAction(){
         $dataColumn = "user_auth.email, user_auth.profile_img,user_auth.user_type, user_appeal.appeal,user_appeal.auth_id";
         $tables = "user_appeal, user_auth";
-        $condition = "user_auth.id=user_appeal.auth_id AND user_auth.user_status='3' AND user_appeal.status='1'";
+        $condition = "user_auth.id=user_appeal.auth_id AND user_auth.user_status='2' AND user_appeal.status='1'";
         $sql = $this->join($tables,$dataColumn,$condition);
         // View::response($sql);
         View::response($this->execute($sql)->fetchAll());

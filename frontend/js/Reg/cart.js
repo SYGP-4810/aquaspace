@@ -324,6 +324,8 @@ $("#proceed").click(function () {
 
  `);
 
+ $("#order_amount").val(amount);
+
   }
   $.ajax({
     type: "POST",

@@ -16,7 +16,7 @@ function selectFish(data) {
       if (data != false) {
         $("#img-question").css("display", "block");
         $("#radio").css("display", "block");
-        $("#db-img").attr("src", "../../images/" + data.image);
+        $("#db-img").attr("src", "../../images/fish_article/" + data.img_1);
       } else {
         $("#img-question").css("display", "none");
         $("#radio").css("display", "none");
@@ -43,7 +43,7 @@ $("#auto").keyup(function () {
       if (data != false) {
         $("#img-question").css("display", "block");
         $("#radio").css("display", "block");
-        $("#db-img").attr("src", "../../images/" + data.image);
+        $("#db-img").attr("src", "../../images/fish_article/" + data.img_1);
       } else {
         $("#img-question").css("display", "none");
         $("#radio").css("display", "none");
@@ -306,10 +306,13 @@ $("#btn").click(function () {
   if (errFlag == 0) {
     $(".post-details").css("display", "none");
     $(".checkout").css("display", "block");
-
+    $("#Yorder_amount").html(`
+          ${price}
+    `);
+    
     $("#order").click(function () {
-      $("#item_name").val(price);
-      $("#item_amount").val(name);
+      $("#item_name").val(name);
+      $("#item_amount").val(price);
       var req = {
         product_name: name,
         duration: duration,
@@ -331,7 +334,7 @@ $("#btn").click(function () {
         exen4: imgExtension4,
         type: 1,
       };
-
+console.log(req)
       $.ajax({
         type: "POST",
         url: setUrl("Reg/Reg/addPost"),
@@ -339,13 +342,13 @@ $("#btn").click(function () {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-          // console.log(data);
+          console.log(data);
           successMsg(["Added Fish"]);
-          delay(function () {
-            window.location.replace(
-              "/aquaspace/frontend/src/Reg/add-fish-post.html"
-            );
-          }, 5000);
+          // delay(function () {
+          //   window.location.replace(
+          //     "/aquaspace/frontend/src/Reg/add-fish-post.html"
+          //   );
+          // }, 5000);
         },
         error: function (errMsg) {
           // window.location.replace("../src/Error"+errMsg.status+".html");
@@ -362,6 +365,3 @@ $("#btn").click(function () {
 // $("#item_name").val(item_name);
 // $("#item_amount").val(item_amount);
 
-$("#Yorder_amount").html(`
-${item_amount}
-`);
