@@ -11,7 +11,7 @@ $(document).ready(function(){
     req["productId"] = productId;
     $("#linkOf").attr("href", `/aquaspace/frontend/src/reg/view-product-page.html?id=${productId}`);
     $("#productName").html(`${productName}`);
-    $("#productImg").html(`<img id="productImg" style="height: 135px;" src="aquaspace/frontend/images/${productImg}" alt=${productName} />`);
+    $("#productImg").html(`<img id="producsImg" style="height: 135px;" src="/aquaspace/frontend/images/product/${productImg}" alt=${productName} />`);
     $.ajax({
         type: "POST",
         url:setUrl("Admin/Admin/getReasonsAppeal"),

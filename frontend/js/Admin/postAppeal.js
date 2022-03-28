@@ -11,7 +11,7 @@ $(document).ready(function(){
             <tr>
                     <td>
                         <div class="admin">
-                            <img src="${element.img1}">
+                            <img src="/aquaspace/frontend/images/product/${element.img1}">
                             <div class="text">
                                 <span class="name">${element.product_name}</span>
                                 <br>
