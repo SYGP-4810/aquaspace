@@ -27,19 +27,43 @@ var coins = url.searchParams.get("coins");
 
 $.ajax({
   type: "POST",
-  url: setUrl("Reg/Reg/getCoinCount"),
+  url: setUrl("Reg/Reg/deletePost"),
+  contentType: "application/json; charset=utf-8",
+  dataType: "json",
+  success: function (data) {
+   console.log(data)
+  },
+  error: function (errMsg) {
+    // window.location.replace(
+    //   "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
+    // );
+  },
+});
+
+$.ajax({
+  type: "POST",
+  url: setUrl("Reg/Reg/getCoinCheckout"),
   contentType: "application/json; charset=utf-8",
   dataType: "json",
   success: function (data) {
     if (coins != null) {
+      console.log("gagagagaga")
       let coin_gain = data - coins;
-      alert(
+      if(coin_gain>0){
+        alert(
         "Thank you for your purchase. You have recieved " +
           coin_gain +
           " coins! You can use coins to ask questions from our AquaSpace experts. Please go to questions page in profile"
       );
+      }
+      
       window.location.replace("../src/index.html");
     }
+  },
+  error: function (errMsg) {
+    // window.location.replace(
+    //   "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
+    // );
   },
 });
 
@@ -127,9 +151,9 @@ $.ajax({
     }
   },
   error: function (errMsg) {
-    window.location.replace(
-      "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
-    );
+    // window.location.replace(
+    //   "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
+    // );
   },
 });
 
@@ -242,9 +266,9 @@ $.ajax({
     });
   },
   error: function (errMsg) {
-    window.location.replace(
-      "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
-    );
+    // window.location.replace(
+    //   "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
+    // );
   },
 });
 
@@ -270,9 +294,9 @@ $("#logOut").click(function () {
       window.location.replace("/aquaspace/frontend/src/");
     },
     error: function (errMsg) {
-      window.location.replace(
-        "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
-      );
+      // window.location.replace(
+      //   "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
+      // );
     },
   });
 });
@@ -347,9 +371,9 @@ function getNotification(loggedIn) {
           setTimeout(doAjax, interval);
         },
         error: function (errMsg) {
-          window.location.replace(
-            "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
-          );
+          // window.location.replace(
+          //   "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
+          // );
         },
       });
     }
@@ -409,16 +433,16 @@ function readAll() {
           }
         },
         error: function (errMsg) {
-          window.location.replace(
-            "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
-          );
+          // window.location.replace(
+          //   "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
+          // );
         },
       });
     },
     error: function (errMsg) {
-      window.location.replace(
-        "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
-      );
+      // window.location.replace(
+      //   "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
+      // );
     },
   });
 }
@@ -481,16 +505,16 @@ function hideNotif(data) {
           }
         },
         error: function (errMsg) {
-          window.location.replace(
-            "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
-          );
+          // window.location.replace(
+          //   "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
+          // );
         },
       });
     },
     error: function (errMsg) {
-      window.location.replace(
-        "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
-      );
+      // window.location.replace(
+      //   "/aquaspace/frontend/src/Error/" + errMsg.status + ".html"
+      // );
     },
   });
 }
