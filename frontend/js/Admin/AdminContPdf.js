@@ -30,8 +30,8 @@ $("#payNow").click(function(){
                     i += 10;
                     let tAmountPaid = 0;
                     data.res.forEach(element =>{
-                        let persentage = 100*(element.productCount * 2 + element.questionCount *3 + element.articleCount*10)/tNum;
-                        let amount = data.total_ammount * persentage / 100;
+                        let persentage = parseInt(100*(element.productCount * 2 + element.questionCount *3 + element.articleCount*10)/tNum);
+                        let amount = parseInt(data.total_ammount * persentage) / 100;
                         i += 10;
                         tAmountPaid += amount;
                         doc.text(10,i,
