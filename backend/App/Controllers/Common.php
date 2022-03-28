@@ -16,7 +16,7 @@ class Common extends \Core\Controller
         $stmtForFish = $this->execute("SELECT products.id,products.product_name, COUNT(product_order.product_id) AS countOfRating, SUM(selling_order.rating) AS sumOfRating, products.price,products.img1 FROM selling_order,product_order,products WHERE products.id=product_order.product_id AND selling_order.id=product_order.selling_order_id AND products.type='1' GROUP BY products.id ORDER BY products.id DESC LIMIT 4;");
         $stmtForPlant = $this->execute("SELECT products.id,products.product_name, COUNT(product_order.product_id) AS countOfRating, SUM(selling_order.rating) AS sumOfRating, products.price,products.img1 FROM selling_order,product_order,products WHERE products.id=product_order.product_id AND selling_order.id=product_order.selling_order_id AND products.type='2' GROUP BY products.id ORDER BY products.id DESC LIMIT 4;");
         $stmtForeq = $this->execute("SELECT products.id,products.product_name, COUNT(product_order.product_id) AS countOfRating, SUM(selling_order.rating) AS sumOfRating, products.price,products.img1 FROM selling_order,product_order,products WHERE products.id=product_order.product_id AND selling_order.id=product_order.selling_order_id AND products.type='3' GROUP BY products.id ORDER BY products.id DESC LIMIT 4;");
-        $stmtForAdopt = $this->execute("SELECT * FROM products WHERE type='4' AND status='1' ORDER BY id DESC LIMIT 4");
+        $stmtForAdopt = $this->execute("SELECT * FROM products WHERE type='4' ORDER BY id DESC LIMIT 4");
         View::response([
             "newPost" => $stmtForNewPost->fetchAll(),
             "fishPost" => $stmtForFish->fetchAll(),
