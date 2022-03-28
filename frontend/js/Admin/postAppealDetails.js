@@ -23,6 +23,7 @@ $(document).ready(function(){
             data.forEach(element =>{
                 reasons.add(element.report);
             });
+            console.log("reasons",reasons);
             if(reasons.has("1")){
                 $("#reasons").append(`<li>False informations</li>`);
             }

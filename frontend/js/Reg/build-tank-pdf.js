@@ -2,6 +2,8 @@ function setUrl(text) {
   return "/aquaspace/backend/public/index.php?" + text;
 }
 
+var blogArticleIdList = [];
+
 var url = new URL(window.location.href);
 
 //get the number of fish articles we need to render
@@ -23,14 +25,12 @@ for (i = 1; i <= no_of_fish; i++) {
     async: false,
     data: JSON.stringify(req),
     success: function (data) {
-
       //for each fish id, i render the html needed for the pdf with different element ids but we no content
-      $("#article").append(`
+      $("#articles").append(`
   <div class="k">
                 <h1 id="fish-title${data}"></h1>
                 <div class="d">
                     <div class="col-2">
-
                         <div class="img" style="height: 300px;"><img id="fish-img${data}" src=""
                                 alt="">
                         </div>
@@ -48,8 +48,6 @@ for (i = 1; i <= no_of_fish; i++) {
                             <span id="desc${data}" style=" font-weight: 400; font-size: 14px; ">
                             </span>
                         </div>
-
-
                     </div>
                 </div>
                 <div class="form">
@@ -57,7 +55,6 @@ for (i = 1; i <= no_of_fish; i++) {
                         <span>Pet Max Length <small>(cm)</small></span>
                         <input id="petMaxLength${data}">
                     </label>
-
                     <label class="label">
                         <span>Diet</span>
                         <input id="diet${data}">
@@ -66,12 +63,10 @@ for (i = 1; i <= no_of_fish; i++) {
                         <span>Water Parameters-PH Min</span>
                         <input id="minPh${data}" readonly>
                     </label>
-
                     <label class="label">
                         <span>Water Parameters-PH Max</span>
                         <input id="maxPh${data}" readonly>
                     </label>
-
                     <label class="label">
                         <span>Min Water Temp</span>
                         <input id="minWaterTemp${data}" readonly>
@@ -110,10 +105,14 @@ for (i = 1; i <= no_of_fish; i++) {
                     </label>
                 </div>
             </div>
+            <br>
+            <br>
   `);
 
   //passing the fish id, i call the renderArticle function tht will load up the data in the empty html tags
       renderArticle(data);
+      renderBlog(data);
+
     },
     error: function (errMsg) {
       // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
@@ -134,25 +133,26 @@ function renderArticle(aritcleID) {
     url: setUrl("Reg/Reg/getFishDataPost"),
     contentType: "application/json; charset=utf-8",
     dataType: "json",
+    async: false,
     data: JSON.stringify(req),
     success: function (data) {
       console.log(data)
-      pics.push("../../images/fish_article/" + img_1);
-      pics.push("../../images/fish_article/" + img_2);
-      pics.push("../../images/fish_article/" + img_3);
-      pics.push("../../images/fish_article/" + img_4);     
-      //   (function () {
-      //     var i = 0;
-      //     var el = document.getElementById("fish-img" + aritcleID);
+      pics.push("../../images/fish_article/" + data.img_1);
+      pics.push("../../images/fish_article/" + data.img_2);
+      pics.push("../../images/fish_article/" + data.img_3);
+      pics.push("../../images/fish_article/" + data.img_4);     
+        (function () {
+          var i = 0;
+          var el = document.getElementById("fish-img" + aritcleID);
 
-      //     console.log(pics[1])
-      //     function toggle() {
-      //       el.src = pics[i]; // set the image
-      //       i = (i + 1) % pics.length; // update the counter
-      //     }
-      //     toggle();
-      //     setInterval(toggle, 3000);
-      //   })();
+          console.log(pics[1])
+          // function toggle() {
+            el.src = pics[i]; // set the image
+            // i = (i + 1) % pics.length; // update the counter
+          // }
+          // toggle();
+          // setInterval(toggle, 3000);
+        })();
 
       $("#fish-title" + aritcleID).html(`${data.name}`);
       $("#desc" + aritcleID).html(`${data.description}`);
@@ -164,6 +164,7 @@ function renderArticle(aritcleID) {
       $("#environment" + aritcleID).val(data.environment);
       $("#careLevel" + aritcleID).val(data.care_level);
       $("#tankCapacity" + aritcleID).val(data.tank_capacity);
+      // $("fish-img"+ aritcleID).val("../../images/fish_article/" + data.img_1);
     },
     error: function (errMsg) {
       // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
@@ -175,6 +176,7 @@ function renderArticle(aritcleID) {
     url: setUrl("Reg/Reg/getOtherNameOfFish"),
     contentType: "application/json; charset=utf-8",
     dataType: "json",
+    async: false,
     data: JSON.stringify(req),
     success: function (data) {
       var count = 0;
@@ -200,6 +202,7 @@ function renderArticle(aritcleID) {
     url: setUrl("Reg/Reg/getNativeCountries"),
     contentType: "application/json; charset=utf-8",
     dataType: "json",
+    async: false,
     data: JSON.stringify(req),
     success: function (data) {
       var text = "";
@@ -224,6 +227,7 @@ function renderArticle(aritcleID) {
     url: setUrl("Reg/Reg/getCompatibleFish"),
     contentType: "application/json; charset=utf-8",
     dataType: "json",
+    async: false,
     data: JSON.stringify(req),
     success: function (data) {
       console.log(data);
@@ -246,15 +250,37 @@ function renderArticle(aritcleID) {
   });
 }
 
-function generatePDF() {
-  const element = document.getElementsByTagName("html");
-  var opt = {
-    margin: 0,
-    filename: "myfile.pdf",
-    image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: "in", format: "a4", orientation: "landscape" },
-  };
+function renderBlog(fishId){
+  let req1 = {
+    "id" :fishId
+  }
+  console.log("req1",req1);
 
-  html2pdf().set(opt).from(element).save();
+  $.ajax({
+    type: "POST",
+    url: setUrl("Reg/Reg/getListOfArtcles"),
+    data: JSON.stringify(req1),
+    async: false,
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (data) {
+      console.log("list of article",data);
+      data.forEach(element => {
+        if(!blogArticleIdList.includes(element.id)){
+          blogArticleIdList.push(element.id);
+          $("#relatedBlog").append(`
+              ${element.article}
+              <br>
+              <br>
+          `);
+        }
+      })
+      
+    },
+    error: function (errMsg) {
+      // window.location.replace("../src/Error"+errMsg.status+".html");
+    },
+  });
+
 }
+

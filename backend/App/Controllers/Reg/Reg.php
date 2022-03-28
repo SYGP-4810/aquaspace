@@ -954,6 +954,11 @@ class Reg extends \Core\Controller
         View::response($stmt->fetch()['coins']);
     }
 
+    public function getListOfArtclesAction(){
+        View::response($this->execute("SELECT article.id , article.article FROM article,relevant_fish_for_article WHERE relevant_fish_for_article.article_id=article.id AND relevant_fish_for_article.fish_article_id='".$this->data['id']."'")->fetchAll());
+    }
+
+
     public function deletePostAction(){
         $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];
         $stmt = $this->execute("SELECT id, product_name, duration, DATEDIFF(created_date, CURDATE()) AS date_diff FROM products WHERE auth_id = $id AND status=1 ")->fetchAll();
