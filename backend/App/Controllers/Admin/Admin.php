@@ -488,7 +488,7 @@ class Admin extends \Core\Controller
         $dt=date_create($datestring);
         $datestring=date('Y-m-d').'last day of last month';
         $dtl=date_create($datestring);
-        $sqlPreviousMonthProductAdding = "SELECT SUM(products.quantity) AS pSum, products.created_date AS cDate FROM products,user_auth WHERE user_auth.id=products.auth_id AND products.created_date >= '".$dt->format('Y-m-d')."' AND products.created_date <= '".$dtl->format('Y-m-d')."' ORDER BY products.created_date";
+        $sqlPreviousMonthProductAdding = "SELECT SUM(products.quantity) AS pSum, products.created_date AS cDate FROM products WHERE products.created_date >= '".$dt->format('Y-m-d')."' AND products.created_date <= '".$dtl->format('Y-m-d')."' ORDER BY products.created_date";
         $dailyProductAdding = $this->execute($sqlPreviousMonthProductAdding)->fetchAll();
         $sqlPreviousMonthProductSelling = "SELECT SUM(product_order.quantity) AS pSum, selling_order.date FROM selling_order,product_order WHERE selling_order.id = product_order.selling_order_id AND selling_order.date >= '".$dt->format('Y-m-d')."' AND selling_order.date <= '".$dtl->format('Y-m-d')."'";
         $dailySales = $this->execute($sqlPreviousMonthProductSelling)->fetchAll();
