@@ -297,7 +297,7 @@ class Expert extends \Core\Controller
         $result = $stmt->fetchAll();
         $questionCount=count($result);
 
-        $stmt = $this->execute($this->get('products', "id", "status = 3"));
+        $stmt = $this->execute($this->get('products', "id", "status = 0"));
         $result = $stmt->fetchAll();
         $productCount=count($result);
 
