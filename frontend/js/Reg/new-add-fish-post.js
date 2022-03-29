@@ -308,8 +308,8 @@ $("#btn").click(function () {
     $(".checkout").css("display", "block");
 
     $("#order").click(function () {
-      $("#item_name").val(price);
-      $("#item_amount").val(name);
+      $("#item_name").val(name);
+      $("#item_amount").val(price);
       var req = {
         product_name: name,
         duration: duration,
