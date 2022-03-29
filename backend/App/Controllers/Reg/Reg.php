@@ -237,6 +237,12 @@ class Reg extends \Core\Controller
             "question" => $this->data['question'],
             "sender_id" => $id
         ];
+        $stmt = $this->execute($this->get('coins','coins',"user_id = '".$id."'" ))->fetch();
+        $total_coins = (int)($stmt['coins']) -10;
+        $dataToUpdate = [
+            "coins" => $total_coins
+        ];
+        $this->exec($this->update("coins", $dataToUpdate, "user_id = '".$id."'"  ));
         $this->exec($this->save('expert_question', $dataToInsert));
         View::response("successfully inserted");
     }
