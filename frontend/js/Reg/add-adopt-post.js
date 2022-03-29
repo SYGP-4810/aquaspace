@@ -104,7 +104,7 @@ $("#auto").keyup(function () {
       if (data != false) {
         $("#img-question").css("display", "block");
         $("#radio").css("display", "block");
-        $("#db-img").attr("src", "../../images/" + data.image);
+        $("#db-img").attr("src", "../../images/fish_article/" + data.image);
       } else {
         $("#img-question").css("display", "none");
         $("#radio").css("display", "none");
