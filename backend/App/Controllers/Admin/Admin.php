@@ -302,7 +302,7 @@ class Admin extends \Core\Controller
     public function getUserAppealAction(){
         $dataColumn = "user_auth.email, user_auth.profile_img,user_auth.user_type, user_appeal.appeal,user_appeal.auth_id";
         $tables = "user_appeal, user_auth";
-        $condition = "user_auth.id=user_appeal.auth_id AND user_auth.user_status='3' AND user_appeal.status='1'";
+        $condition = "user_auth.id=user_appeal.auth_id AND user_auth.user_status='2' AND user_appeal.status='1'";
         $sql = $this->join($tables,$dataColumn,$condition);
         // View::response($sql);
         View::response($this->execute($sql)->fetchAll());
@@ -488,7 +488,7 @@ class Admin extends \Core\Controller
         $dt=date_create($datestring);
         $datestring=date('Y-m-d').'last day of last month';
         $dtl=date_create($datestring);
-        $sqlPreviousMonthProductAdding = "SELECT SUM(products.quantity) AS pSum, products.created_date AS cDate FROM products,user_auth WHERE user_auth.id=products.auth_id AND user_auth.user_type = 3 AND products.created_date >= '".$dt->format('Y-m-d')."' AND products.created_date <= '".$dtl->format('Y-m-d')."' ORDER BY products.created_date";
+        $sqlPreviousMonthProductAdding = "SELECT SUM(products.quantity) AS pSum, products.created_date AS cDate FROM products WHERE products.created_date >= '".$dt->format('Y-m-d')."' AND products.created_date <= '".$dtl->format('Y-m-d')."' ORDER BY products.created_date";
         $dailyProductAdding = $this->execute($sqlPreviousMonthProductAdding)->fetchAll();
         $sqlPreviousMonthProductSelling = "SELECT SUM(product_order.quantity) AS pSum, selling_order.date FROM selling_order,product_order WHERE selling_order.id = product_order.selling_order_id AND selling_order.date >= '".$dt->format('Y-m-d')."' AND selling_order.date <= '".$dtl->format('Y-m-d')."'";
         $dailySales = $this->execute($sqlPreviousMonthProductSelling)->fetchAll();
@@ -498,6 +498,7 @@ class Admin extends \Core\Controller
         $sqlPostPayment = "SELECT SUM(post_payments.payment) AS post_payment FROM post_payments,products WHERE products.id = post_payments.product_id AND products.created_date >= '" . $this->data['dateFrom']."' AND products.created_date <= '" . $this->data['dateTo']."'";
         $postSum = $this->execute($sqlPostPayment)->fetch()['post_payment'];
         $i = 0;
+        
         foreach ($listOfExpert as $expert){
             $countOfQuestionSql = 
                 "SELECT COUNT(expert_question.id) FROM expert_question WHERE expert_question.replyer_id = '". $expert['id']."'";
@@ -508,7 +509,8 @@ class Admin extends \Core\Controller
             $countOfProductSql = 
                 "SELECT COUNT(id) FROM products WHERE verifier_id";
             $countOfProduct = $this->execute($countOfProductSql)->fetch()['COUNT(id)'];
-            $listOfExpert[$i]["totalPoint"] = $countOfArticle*10+$countOfProduct*2+$countOfQuestion*3; 
+            $listOfExpert[$i]["totalPoint"] = $countOfArticle*10+$countOfProduct*2+$countOfQuestion*3;
+            $i++; 
         }
 
     do

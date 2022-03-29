@@ -200,7 +200,7 @@ class Reg extends \Core\Controller
 
     public function getFishNamesAction()
     {
-        $stmt = $this->execute($this->get('fish', "name"));
+        $stmt = $this->execute($this->get('fish_article', "name"));
         // $result = $stmt->fetchAll();
         // $output = array();
         // foreach($result as $row)
@@ -216,7 +216,7 @@ class Reg extends \Core\Controller
 
     public function getFishImageAction()
     {
-        $stmt = $this->execute($this->get('fish', "image", "name ='" . $this->data['name'] . "'"));
+        $stmt = $this->execute($this->get('fish_article', "img_1", "name ='" . $this->data['name'] . "'"));
         View::response($stmt->fetch());
     }
 
@@ -953,6 +953,11 @@ class Reg extends \Core\Controller
         $stmt = $this->execute($this->get('coins','coins', "user_id = '".$id."'"));
         View::response($stmt->fetch()['coins']);
     }
+
+    public function getListOfArtclesAction(){
+        View::response($this->execute("SELECT article.id , article.article FROM article,relevant_fish_for_article WHERE relevant_fish_for_article.article_id=article.id AND relevant_fish_for_article.fish_article_id='".$this->data['id']."'")->fetchAll());
+    }
+
 
     public function deletePostAction(){
         $id = $this->execute($this->get('user_auth', "*", "access_token = '" . $_COOKIE['access_token'] . "'"))->fetch()['id'];

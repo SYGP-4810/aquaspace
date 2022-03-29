@@ -239,7 +239,7 @@ class Expert extends \Core\Controller
 
     //get request to validate name of the fishe
     public function getRequestAction(){
-        View::response($this->execute($this->get('products','*',"status = '3'"))->fetchAll());
+        View::response($this->execute($this->get('products','*',"status = '0'"))->fetchAll());
     }
 
     //verify the fish names

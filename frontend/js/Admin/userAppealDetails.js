@@ -52,15 +52,19 @@ $(document).ready(function () {
   img = url.searchParams.get("img");
   userType = url.searchParams.get("userType");
   userId = url.searchParams.get("userId");
+  console.log(appeal);
   $(".iss-profile").html(`<div class="admin">
     <img src="/aquaspace/frontend/images/profile/${img}">
     <div class="text">
         <span class="name">${email}</span>
         <br>
         <span>${userType}</span>
+        <br>
+        <br>
+        <br>
+        <span>${appeal}</span>
     </div>
 </div>`);
-  $("#appeal").html(`<span>${appeal}</span>`);
   let req = {
     email: email,
   };

@@ -13,9 +13,9 @@ class Common extends \Core\Controller
     public function getLandingPagePostAction()
     {
         $stmtForNewPost = $this->execute("SELECT * FROM products WHERE status='1' ORDER BY id DESC LIMIT 4");
-        $stmtForFish = $this->execute("SELECT products.id,products.product_name, COUNT(product_order.product_id) AS countOfRating, SUM(selling_order.rating) AS sumOfRating, products.price,products.img1 FROM selling_order,product_order,products WHERE products.id=product_order.product_id AND selling_order.id=product_order.selling_order_id AND products.type='1' GROUP BY products.id ORDER BY products.id DESC LIMIT 4;");
-        $stmtForPlant = $this->execute("SELECT products.id,products.product_name, COUNT(product_order.product_id) AS countOfRating, SUM(selling_order.rating) AS sumOfRating, products.price,products.img1 FROM selling_order,product_order,products WHERE products.id=product_order.product_id AND selling_order.id=product_order.selling_order_id AND products.type='2' GROUP BY products.id ORDER BY products.id DESC LIMIT 4;");
-        $stmtForeq = $this->execute("SELECT products.id,products.product_name, COUNT(product_order.product_id) AS countOfRating, SUM(selling_order.rating) AS sumOfRating, products.price,products.img1 FROM selling_order,product_order,products WHERE products.id=product_order.product_id AND selling_order.id=product_order.selling_order_id AND products.type='3' GROUP BY products.id ORDER BY products.id DESC LIMIT 4;");
+        $stmtForFish = $this->execute("SELECT products.id,products.product_name, COUNT(product_order.product_id) AS countOfRating, SUM(selling_order.rating) AS sumOfRating, products.price,products.img1 FROM selling_order,product_order,products WHERE products.id=product_order.product_id AND selling_order.id=product_order.selling_order_id AND products.type='1' AND products.status = 1 GROUP BY products.id ORDER BY products.id DESC LIMIT 4;");
+        $stmtForPlant = $this->execute("SELECT products.id,products.product_name, COUNT(product_order.product_id) AS countOfRating, SUM(selling_order.rating) AS sumOfRating, products.price,products.img1 FROM selling_order,product_order,products WHERE products.id=product_order.product_id AND selling_order.id=product_order.selling_order_id AND products.type='2' AND products.status = 1 GROUP BY products.id ORDER BY products.id DESC LIMIT 4;");
+        $stmtForeq = $this->execute("SELECT products.id,products.product_name, COUNT(product_order.product_id) AS countOfRating, SUM(selling_order.rating) AS sumOfRating, products.price,products.img1 FROM selling_order,product_order,products WHERE products.id=product_order.product_id AND selling_order.id=product_order.selling_order_id AND products.type='3' AND products.status = 1 GROUP BY products.id ORDER BY products.id DESC LIMIT 4;");
         $stmtForAdopt = $this->execute("SELECT * FROM products WHERE type='4' AND status='1' ORDER BY id DESC LIMIT 4");
         View::response([
             "newPost" => $stmtForNewPost->fetchAll(),
@@ -35,12 +35,12 @@ class Common extends \Core\Controller
 
     public function getCategoryPostAction()
     {
-        // $stmtForNewPost = $this->execute("SELECT * FROM products WHERE status='1' ORDER BY id DESC ");
-        $stmtForAll = $this->execute("SELECT products.id,products.product_name, products.delivery,products.lat,products.lan,  COUNT(product_order.product_id) AS countOfRating, SUM(selling_order.rating) AS sumOfRating, products.price,products.img1 FROM selling_order,product_order,products WHERE products.id=product_order.product_id AND selling_order.id=product_order.selling_order_id AND products.type !='4' GROUP BY products.id ORDER BY products.id DESC;");
-        $stmtForFish = $this->execute("SELECT products.id,products.product_name, products.delivery, products.lat,products.lan,   COUNT(product_order.product_id) AS countOfRating, SUM(selling_order.rating) AS sumOfRating, products.price,products.img1 FROM selling_order,product_order,products WHERE products.id=product_order.product_id AND selling_order.id=product_order.selling_order_id AND products.type='1' GROUP BY products.id ORDER BY products.id DESC;");
-        $stmtForPlant = $this->execute("SELECT products.id,products.product_name, products.delivery, products.lat,products.lan,   COUNT(product_order.product_id) AS countOfRating, SUM(selling_order.rating) AS sumOfRating, products.price,products.img1 FROM selling_order,product_order,products WHERE products.id=product_order.product_id AND selling_order.id=product_order.selling_order_id AND products.type='2' GROUP BY products.id ORDER BY products.id DESC;");
-        $stmtForEq = $this->execute("SELECT products.id,products.product_name, products.delivery, products.lat,products.lan,   COUNT(product_order.product_id) AS countOfRating, SUM(selling_order.rating) AS sumOfRating, products.price,products.img1 FROM selling_order,product_order,products WHERE products.id=product_order.product_id AND selling_order.id=product_order.selling_order_id AND products.type='3' GROUP BY products.id ORDER BY products.id DESC;");
-        $stmtForAdopt = $this->execute("SELECT * FROM products WHERE type='4' AND status='1' ORDER BY id DESC");
+         // $stmtForNewPost = $this->execute("SELECT * FROM products WHERE status='1' ORDER BY id DESC ");
+         $stmtForAll = $this->execute("SELECT products.id,products.product_name, products.delivery,products.lat,products.lan, products.price,products.img1 FROM products WHERE products.type !='4' AND products.status = 1 ORDER BY products.id DESC ");
+         $stmtForFish = $this->execute("SELECT products.id,products.product_name, products.delivery, products.lat,products.lan, products.price,products.img1 FROM products WHERE products.type='1' AND products.status = 1 ORDER BY products.id DESC;");
+         $stmtForPlant = $this->execute("SELECT products.id,products.product_name, products.delivery, products.lat,products.lan, products.price,products.img1 FROM products WHERE products.type='2' AND products.status = 1 ORDER BY products.id DESC;");
+         $stmtForEq = $this->execute("SELECT products.id,products.product_name, products.delivery, products.lat,products.lan, products.price,products.img1 FROM products WHERE products.type='3' AND products.status = 1 ORDER BY products.id DESC;");
+         $stmtForAdopt = $this->execute("SELECT * FROM products WHERE type='4' AND status='1' ORDER BY id DESC");
         View::response([
             "allPost" => $stmtForAll->fetchAll(),
             "fishPost" => $stmtForFish->fetchAll(),
@@ -85,6 +85,17 @@ class Common extends \Core\Controller
         View::response("Successfully appeal inserted");
     }
 
+    public function getRatingForIndividualProductAction(){
+        $result = $this->execute("SELECT COUNT(product_order.id) AS pCount,SUM(selling_order.rating) AS pSum FROM product_order,selling_order WHERE product_order.product_id = '".$this->data['id']."'")->fetch();
+        $pCount = $result['pCount'];
+        $pSum = $result['pSum'];
+        if($pSum == 0){
+            $rating = 0;
+        }else{
+            $rating = $pSum / $pCount;
+        }
+        View::response($rating);
+    }
 
 
 }

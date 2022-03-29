@@ -44,7 +44,7 @@ $("#auto").keyup(function () {
     success: function (data) {
       if (data != false) {
         $("#img-question").css("display", "block");
-        $("#db-img").attr("src", "../../images/fish_article" + data.img_1);
+        $("#db-img").attr("src", "../../images/fish_article/" + data.img_1);
         $("#db-data").html(`${data.description}`);
       } else {
         $("#img-question").css("display", "none");
@@ -68,7 +68,7 @@ $("#auto").click(function () {
     success: function (data) {
       if (data != false) {
         $("#img-question").css("display", "block");
-        $("#db-img").attr("src", "../../images/fish_article" + data.img_1);
+        $("#db-img").attr("src", "../../images/fish_article/" + data.img_1);
         $("#db-data").html(`${data.description}`);
       } else {
         $("#img-question").css("display", "none");

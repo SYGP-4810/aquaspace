@@ -94,17 +94,18 @@ $( document ).ready(function() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         async: false,
-        success: function(data){            
+        success: function(data){    
+            console.log(data);        
             data.forEach(element => {
                 let delMode = element.delivery;
                 let delivery;
-                if(delMode >= 4){
+                if(delMode == 2){
                     delivery = "Third Party Delivery Service";
                 }
-                if(delMode >= 2){
+                if(delMode == 1){
                     delivery = "In Store Delivery Service";
                 }
-                if(delMode >= 1){
+                if(delMode == 0){
                     delivery = "In Store Pick-up";
                 }
 

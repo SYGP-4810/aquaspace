@@ -10,7 +10,7 @@ function addToCart() {
     errorShow(["Please select the deliveRy method!"]);
     return
   }
-  if(qty <= 0 ||  qty > max || qty < min){
+  if(parseInt(qty) <= 0 ||  parseInt(qty) > max || parseInt(qty) < min){
     errorShow(["Please select the correct quantity!"]);
     return;
   }

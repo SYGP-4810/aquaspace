@@ -20,6 +20,7 @@ function setTheReport(dateFrom, dateTo) {
         success: function(data){  
             console.log(data);
             loadingFinish();
+            
             $("#bestExpertList").html(``);
             data.bestExpertList.forEach(function(element){
               let persentage = 100*(element.totalPoint/data.totalPointExpert);
@@ -61,12 +62,13 @@ function setTheReport(dateFrom, dateTo) {
       datapoints1[i] = 0;
       datapoints2[i] = 0;
     }
-    data.pMonthProductAdding.forEach(element => {
-      datapoints1[parseInt(element.cDate.slice(-2))] = parseInt(element.pSum);
+    data.pMonthProductAdding.forEach(element1 => {
+      datapoints1[parseInt(element1.cDate.slice(-2))] = parseInt(element1.pSum);
     });
-    data.pMonthSales.forEach(element => {
-      datapoints2[parseInt(element.date.slice(-2))] = parseInt(element.pSum);
-    })
+    data.pMonthSales.forEach(element1 => {
+      datapoints2[parseInt(element1.date.slice(-2))] = parseInt(element1.pSum);
+    });
+   
 
         var ctx = document.getElementById('store-chart').getContext('2d');
             var myChart = new Chart(ctx, {
@@ -236,6 +238,7 @@ function setTheReport(dateFrom, dateTo) {
             display: false,
         },
     }
+    
 
 
 });
@@ -245,7 +248,7 @@ function setTheReport(dateFrom, dateTo) {
 
         },
         error: function(errMsg) {
-            window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
 
@@ -273,7 +276,7 @@ $(document).ready(function(){
             console.log("hello world");
         },
         error: function(errMsg) {
-             window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+            //  window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
         }
     });
 });
