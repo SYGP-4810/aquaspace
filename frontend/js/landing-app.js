@@ -175,7 +175,7 @@ $.ajax({
              <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
              <h3>${element.product_name}</h3>
            </a>
-           <p>Price : ${element.price}</p>
+           <p>Price : Rs. ${element.price}</p>
          </div>`);
     });
     //append fish post
@@ -200,7 +200,7 @@ $.ajax({
              <h3>${element.product_name}</h3>
            </a>
            ${htmlToRating}
-           <p>Price : ${element.price}</p>
+           <p>Price : Rs. ${element.price}</p>
          </div>`);
     });
 
@@ -225,7 +225,7 @@ $.ajax({
              <h3>${element.product_name}</h3>
            </a>
            ${htmlToRating}
-           <p>Price : ${element.price}</p>
+           <p>Price : Rs. ${element.price}</p>
          </div>`);
     });
     //append equipment post
@@ -249,7 +249,7 @@ $.ajax({
              <h3>${element.product_name}</h3>
            </a>
            ${htmlToRating}
-           <p>Price : ${element.price}</p>
+           <p>Price : Rs. ${element.price}</p>
          </div>`);
     });
 
@@ -261,7 +261,7 @@ $.ajax({
            <img src="/aquaspace/frontend/images/product/${element.img1}" alt="product image" />    
            <h3>${element.product_name}</h3>
          </a>
-         <p>Price : ${element.price}</p>
+         <p>Price : Rs. ${element.price}</p>
        </div>`);
     });
   },
