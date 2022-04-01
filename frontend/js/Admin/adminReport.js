@@ -294,3 +294,23 @@ $("#From").change(function(){
   let from = $('#From').val();
   setTheReport(from,to);
 });
+
+$("#codeButton").click(function(){
+  let type = $('#codeCheck').val();
+  let req = {
+    "id" : type
+  }
+  $.ajax({
+    type: "POST",
+    url:setUrl("Admin/Admin/codeCheck"),
+    data: JSON.stringify(req),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(data){
+      $("#codeTestCount").html(`${data}`);
+    },
+    error: function(errMsg) {
+        // window.location.replace("/aquaspace/frontend/src/Error/"+errMsg.status+".html");
+    }
+});
+});

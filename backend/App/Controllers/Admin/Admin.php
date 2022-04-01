@@ -665,4 +665,8 @@ class Admin extends \Core\Controller
         ];
         View::response($res);
     }
+
+    public function codeCheckAction() {
+        View::response($this->execute("SELECT COUNT(id) AS pCount FROM products WHERE type = '".$this->data['id']."'")->fetch()['pCount']);
+    }
 }
